@@ -2,9 +2,12 @@ name: Update Stock Data
 
 on:
   schedule:
-    # 每天台灣時間下午 3:30 執行 (UTC 07:30)，避開股市收盤後的尖峰
     - cron: "30 8 * * *"
-  workflow_dispatch: # 允許手動觸發測試
+  workflow_dispatch:
+
+# 明確宣告權限，確保 Action 有權寫入內容
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -12,6 +15,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # 使用預設 token 並保持持久化，這對 push 回去比較穩定
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -29,5 +35,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add data/*.json
-          git commit -m "Auto update stock data: $(date +'%Y-%m-%d')" || exit 0
-          git push
+          # 檢查是否有變更，避免在沒有資料更新時報錯
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update stock data: $(date +'%Y-%m-%d')" && git push)
