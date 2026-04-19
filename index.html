@@ -171,7 +171,7 @@
 
                 <div class="card">
                     <div class="card-title">
-                        <span>個股行情</span>
+                        <span>個股行情 <span id="stock-count" style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);"></span></span>
                         <select id="date-picker" class="date-select"></select>
                     </div>
                     <div class="search-box">
@@ -256,7 +256,7 @@
 
                 // Load initial data
                 if (manifest.daily_index.length > 0) {
-                    await loadIndexData(manifest.daily_index[0]);
+                    await loadIndexData();
                 }
                 if (manifest.daily_price.length > 0) {
                     await loadStockData(manifest.daily_price[0]);
@@ -278,17 +278,38 @@
             }
         }
 
-        async function loadIndexData(date) {
-            const response = await fetch(`data/daily_index/${date}.json`);
-            indexData = await response.json();
+        async function loadIndexData() {
+            const allData = [];
+            const seenDates = new Set();
             
-            const latest = indexData[indexData.length - 1];
-            document.getElementById('last-update').textContent = `最後更新: ${latest.date}`;
-            document.getElementById('summary-turnover').textContent = (latest.turnover / 100000000).toFixed(2) + ' 億';
-            document.getElementById('summary-volume').textContent = (latest.volume / 1000000).toFixed(2) + ' 百萬';
-            document.getElementById('summary-transactions').textContent = (latest.transactions / 10000).toFixed(2) + ' 萬';
-
-            renderChart(indexData);
+            // Load all index files to get full history
+            for (const date of manifest.daily_index) {
+                try {
+                    const response = await fetch(`data/daily_index/${date}.json`);
+                    const data = await response.json();
+                    data.forEach(item => {
+                        if (!seenDates.has(item.date)) {
+                            allData.push(item);
+                            seenDates.add(item.date);
+                        }
+                    });
+                } catch (e) {
+                    console.error(`Error loading index ${date}:`, e);
+                }
+            }
+            
+            // Sort by date (assuming format is YY/MM/DD or similar, might need better sorting)
+            allData.sort((a, b) => a.date.localeCompare(b.date));
+            indexData = allData;
+            
+            if (indexData.length > 0) {
+                const latest = indexData[indexData.length - 1];
+                document.getElementById('last-update').textContent = `最後更新: ${latest.date}`;
+                document.getElementById('summary-turnover').textContent = (latest.turnover / 100000000).toFixed(2) + ' 億';
+                document.getElementById('summary-volume').textContent = (latest.volume / 1000000).toFixed(2) + ' 百萬';
+                document.getElementById('summary-transactions').textContent = (latest.transactions / 10000).toFixed(2) + ' 萬';
+                renderChart(indexData);
+            }
         }
 
         async function loadStockData(date) {
@@ -309,8 +330,9 @@
         function renderStockTable(stocks) {
             const tbody = document.getElementById('stock-list');
             tbody.innerHTML = '';
+            document.getElementById('stock-count').textContent = `(共 ${stocks.length} 筆)`;
             
-            stocks.slice(0, 100).forEach(stock => { // Limit to 100 for performance
+            stocks.forEach(stock => {
                 const diff = (stock.close - stock.open).toFixed(2);
                 const diffClass = diff > 0 ? 'price-up' : (diff < 0 ? 'price-down' : '');
                 const diffPrefix = diff > 0 ? '+' : '';
