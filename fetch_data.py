@@ -1,32 +1,63 @@
 import requests
 import json
 import os
+import argparse
 from datetime import datetime
+from typing import Dict, Any
 
-# API 網址 (可以根據需求動態調整日期)
-date_str = datetime.now().strftime("%Y-%m-%d")
-url = f"https://market.smallplum.xyz/api/strategy/daily/stock_price?date_str={date_str}"
-
-def fetch_and_save():
+def get_daily_index(date_str: str) -> Dict[str, Any]:
+    index_url = (
+        f"https://market.smallplum.xyz/api/strategy/daily/index?date_str={date_str}"
+    )
     try:
-        response = requests.get(url)
+        response = requests.get(index_url)
         response.raise_for_status()
-        data = response.json()
+        return response.json()
+    except Exception as e:
+        print(f"抓取日線數據失敗: {e}")
+        return None
 
-        # 確保資料夾存在
+
+def get_daily_price(date_str: str) -> Dict[str, Any]:
+    daily_url = f"https://market.smallplum.xyz/api/strategy/daily/stock_price?date_str={date_str}"
+    try:
+        response = requests.get(daily_url)
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        print(f"抓取日線數據失敗: {e}")
+        return None
+
+
+def save_to_file(data: Dict[str, Any], path: str, filename: str) -> None:
+    try:
         os.makedirs("data", exist_ok=True)
-        
-        # 儲存為今日資料
-        with open(f"data/{date_str}.json", "w", encoding="utf-8") as f:
+        os.makedirs(f"data/{path}", exist_ok=True)
+
+        with open(f"data/{path}/{filename}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
-            
-        # 同時儲存一份為 latest.json 方便前端固定讀取
-        with open("data/latest.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-            
-        print(f"成功更新資料: {date_str}")
+
+        print(f"成功更新資料: {filename}")
     except Exception as e:
         print(f"抓取失敗: {e}")
 
+
 if __name__ == "__main__":
-    fetch_and_save()
+    parser = argparse.ArgumentParser(description="Fetch daily market data.")
+    parser.add_argument(
+        "--date_str",
+        type=str,
+        default=datetime.now().strftime("%Y-%m-%d"),
+        help="Date string in YYYY-MM-DD format (default: today)",
+    )
+    args = parser.parse_args()
+
+    date_str = args.date_str
+
+    daily_data = get_daily_index(date_str)
+    if daily_data:
+        save_to_file(daily_data, "daily_index", date_str)
+    
+    daily_price_data = get_daily_price(date_str)
+    if daily_price_data:
+        save_to_file(daily_price_data, "daily_price", date_str)

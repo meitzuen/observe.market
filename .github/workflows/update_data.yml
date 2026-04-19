@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "30 8 * * *"
   workflow_dispatch:
+    inputs:
+      date_str:
+        description: "Date string to fetch (YYYY-MM-DD). If empty, today's date will be used."
+        required: false
+        default: ""
 
 # 明確宣告權限，確保 Action 有權寫入內容
 permissions:
@@ -28,7 +33,13 @@ jobs:
         run: pip install requests
 
       - name: Run fetch script
-        run: python fetch_data.py
+        run: |
+          # Use the input date if provided, otherwise default to today
+          DATE_STR="${{ github.event.inputs.date_str }}"
+          if [ -z "$DATE_STR" ]; then
+            DATE_STR=$(date +'%Y-%m-%d')
+          fi
+          python fetch_data.py --date_str="$DATE_STR"
 
       - name: Commit and Push changes
         run: |
