@@ -12,7 +12,8 @@
 ## 系統架構
 
 1.  **數據抓取 (`fetch_data.py`)**：從 API 抓取每日行情並儲存為 JSON 檔案。
-2.  **清單生成 (`generate_manifest.py`)**：掃描數據資料夾，生成前端所需的 `manifest.json` 索引。
+2.  **跳空上漲策略 (`strategy_gap_jump.py`)**：分析每日數據，找出收盤價高於前一日最高價的股票。
+3.  **清單生成 (`generate_manifest.py`)**：掃描數據資料夾，生成前端所需的 `manifest.json` 索引。
 3.  **網頁介面 (`index.html`)**：讀取 JSON 數據並呈現互動式圖表與表格。
 4.  **自動化流程 (`.github/workflows/update_data.yml`)**：每天 16:30 (UTC+8) 自動執行更新任務。
 

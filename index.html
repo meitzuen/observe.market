@@ -212,6 +212,16 @@
             </div>
 
             <div class="sidebar">
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <div class="card-title">
+                        <span>跳空上漲 (Gap Jump)</span>
+                        <span id="gap-count" style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);"></span>
+                    </div>
+                    <div id="gap-list" style="max-height: 400px; overflow-y: auto; font-size: 0.875rem;">
+                        <div class="loader">載入中...</div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-title">市場摘要</div>
                     <div id="market-summary" class="stats">
@@ -316,16 +326,58 @@
         async function loadStockData(date) {
             document.getElementById('stock-list').innerHTML = '';
             document.getElementById('stock-loader').style.display = 'flex';
+            document.getElementById('gap-list').innerHTML = '<div class="loader">載入中...</div>';
             
             try {
+                // Load daily price
                 const response = await fetch(`data/daily_price/${date}.json`);
                 currentStockData = await response.json();
                 renderStockTable(currentStockData);
+
+                // Load gap jump if available
+                if (manifest.gap_jump.includes(date)) {
+                    const gapResponse = await fetch(`data/gap_jump/${date}.json`);
+                    const gapData = await gapResponse.json();
+                    renderGapList(gapData);
+                } else {
+                    document.getElementById('gap-list').innerHTML = '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無此日期策略數據</div>';
+                    document.getElementById('gap-count').textContent = '';
+                }
             } catch (error) {
-                console.error('Error loading stock data:', error);
+                console.error('Error loading data:', error);
             } finally {
                 document.getElementById('stock-loader').style.display = 'none';
             }
+        }
+
+        function renderGapList(data) {
+            const container = document.getElementById('gap-list');
+            const countLabel = document.getElementById('gap-count');
+            container.innerHTML = '';
+            countLabel.textContent = `(共 ${data.length} 筆)`;
+
+            if (data.length === 0) {
+                container.innerHTML = '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無符合條件股票</div>';
+                return;
+            }
+
+            const list = document.createElement('div');
+            data.sort((a, b) => b.diff - a.diff).forEach(stock => {
+                const item = document.createElement('div');
+                item.style.cssText = 'padding: 0.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;';
+                item.innerHTML = `
+                    <div>
+                        <div style="font-weight: 600;">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted);">${stock.id}</span></div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume/1000).toFixed(0)}K</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="price-up">${stock.today_close}</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">跳空: +${stock.diff}</div>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+            container.appendChild(list);
         }
 
         function renderStockTable(stocks) {
