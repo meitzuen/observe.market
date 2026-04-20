@@ -2,7 +2,7 @@ name: Update Stock Data
 
 on:
   schedule:
-    - cron: "30 8 * * *"
+    - cron: "30 9 * * *"
   workflow_dispatch:
     inputs:
       date_str:
@@ -32,7 +32,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install -r requirements.txt
 
       - name: Run fetch script
         run: |
