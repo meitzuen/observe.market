@@ -41,7 +41,7 @@ jobs:
           if [ -z "$DATE_STR" ]; then
             DATE_STR=$(date +'%Y-%m-%d')
           fi
-          python fetch_data.py --date_str="$DATE_STR"
+          python fetch_and_save.py --date_str="$DATE_STR"
           python gap_strategy.py --date_str="$DATE_STR"
           python generate_manifest.py
 
