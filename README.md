@@ -11,11 +11,11 @@
 
 ## 系統架構
 
-1.  **數據抓取 (`fetch_data.py`)**：從 API 抓取每日行情並儲存為 JSON 檔案。
-2.  **跳空上漲策略 (`strategy_gap_jump.py`)**：分析每日數據，找出收盤價高於前一日最高價的股票。
+1.  **數據抓取 (`fetch_and_save.py`)**：從 API 抓取每日行情並儲存為 JSON 檔案。
+2.  **跳空上漲策略 (`gap_strategy.py`)**：分析每日數據，找出收盤價高於前一日最高價的股票。
 3.  **清單生成 (`generate_manifest.py`)**：掃描數據資料夾，生成前端所需的 `manifest.json` 索引。
-3.  **網頁介面 (`index.html`)**：讀取 JSON 數據並呈現互動式圖表與表格。
-4.  **自動化流程 (`.github/workflows/update_data.yml`)**：每天 16:30 (UTC+8) 自動執行更新任務。
+4.  **網頁介面 (`index.html`)**：讀取 JSON 數據並呈現互動式圖表與表格。
+5.  **自動化流程 (`.github/workflows/update_data.yml`)**：每天 16:30 (UTC+8) 自動執行更新任務。
 
 ## 本地開發
 
@@ -23,20 +23,25 @@
 
 ### 1. 安裝依賴
 ```bash
-pip install requests
+pip install -r requirements.txt
 ```
 
 ### 2. 抓取數據
 ```bash
-python fetch_data.py --date_str 2026-04-17
+python fetch_and_save.py --date_str 2026-04-20
 ```
 
-### 3. 生成清單
+### 3. 運行策略
+```bash
+python gap_strategy.py --date_str 2026-04-20
+```
+
+### 4. 生成清單
 ```bash
 python generate_manifest.py
 ```
 
-### 4. 啟動網頁
+### 5. 啟動網頁
 使用任何靜態伺服器啟動（例如 Python 自帶的）：
 ```bash
 python3 -m http.server 8000
