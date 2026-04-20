@@ -195,11 +195,11 @@
                         <table id="stock-table">
                             <thead>
                                 <tr>
-                                    <th>代號</th>
-                                    <th>名稱</th>
-                                    <th>成交價</th>
-                                    <th>漲跌</th>
-                                    <th>成交量</th>
+                                    <th style="cursor: pointer;" onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                                    <th style="cursor: pointer;" onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
+                                    <th style="cursor: pointer;" onclick="setSort('close')">成交價 <span id="sort-close"></span></th>
+                                    <th style="cursor: pointer;" onclick="setSort('diff')">漲跌 <span id="sort-diff"></span></th>
+                                    <th style="cursor: pointer;" onclick="setSort('volume')">成交量 <span id="sort-volume"></span></th>
                                 </tr>
                             </thead>
                             <tbody id="stock-list">
@@ -208,6 +208,11 @@
                         </table>
                     </div>
                     <div id="stock-loader" class="loader">載入中...</div>
+                    <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; padding: 1rem 0; border-top: 1px solid var(--border);">
+                        <button id="prev-page" class="date-select" style="cursor: pointer;">上一頁</button>
+                        <span id="page-info" style="font-size: 0.875rem; color: var(--text-muted);">第 1 / 1 頁</span>
+                        <button id="next-page" class="date-select" style="cursor: pointer;">下一頁</button>
+                    </div>
                 </div>
             </div>
 
@@ -247,7 +252,14 @@
         let manifest = null;
         let indexData = [];
         let currentStockData = [];
+        let filteredStocks = [];
         let chart = null;
+
+        // Pagination & Sorting State
+        let currentPage = 1;
+        const rowsPerPage = 50;
+        let sortColumn = 'id';
+        let sortDirection = 'asc';
 
         async function init() {
             try {
@@ -283,6 +295,21 @@
                     document.getElementById('price-max').value = '';
                     document.getElementById('volume-min').value = '';
                     filterStocks();
+                });
+
+                // Pagination listeners
+                document.getElementById('prev-page').addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderStockTable();
+                    }
+                });
+                document.getElementById('next-page').addEventListener('click', () => {
+                    const maxPage = Math.ceil(filteredStocks.length / rowsPerPage);
+                    if (currentPage < maxPage) {
+                        currentPage++;
+                        renderStockTable();
+                    }
                 });
             } catch (error) {
                 console.error('Initialization error:', error);
@@ -332,7 +359,13 @@
                 // Load daily price
                 const response = await fetch(`data/daily_price/${date}.json`);
                 currentStockData = await response.json();
-                renderStockTable(currentStockData);
+                
+                // Pre-calculate diff for sorting
+                currentStockData.forEach(s => {
+                    s.diff = s.close - s.open;
+                });
+
+                filterStocks();
 
                 // Load gap jump if available
                 if (manifest.gap_jump.includes(date)) {
@@ -380,13 +413,59 @@
             container.appendChild(list);
         }
 
-        function renderStockTable(stocks) {
+        function setSort(column) {
+            if (sortColumn === column) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortColumn = column;
+                sortDirection = 'asc';
+            }
+            currentPage = 1;
+            renderStockTable();
+        }
+
+        function renderStockTable() {
+            const stocks = filteredStocks;
             const tbody = document.getElementById('stock-list');
             tbody.innerHTML = '';
             document.getElementById('stock-count').textContent = `(共 ${stocks.length} 筆)`;
             
-            stocks.forEach(stock => {
-                const diff = (stock.close - stock.open).toFixed(2);
+            // Sort
+            stocks.sort((a, b) => {
+                let valA = a[sortColumn];
+                let valB = b[sortColumn];
+                
+                if (typeof valA === 'string') {
+                    return sortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                } else {
+                    return sortDirection === 'asc' ? valA - valB : valB - valA;
+                }
+            });
+
+            // Update Sort Indicators
+            ['id', 'name', 'close', 'diff', 'volume'].forEach(col => {
+                const span = document.getElementById(`sort-${col}`);
+                if (col === sortColumn) {
+                    span.textContent = sortDirection === 'asc' ? '▲' : '▼';
+                } else {
+                    span.textContent = '';
+                }
+            });
+
+            // Pagination
+            const maxPage = Math.ceil(stocks.length / rowsPerPage) || 1;
+            if (currentPage > maxPage) currentPage = maxPage;
+            
+            document.getElementById('page-info').textContent = `第 ${currentPage} / ${maxPage} 頁`;
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            document.getElementById('next-page').disabled = currentPage === maxPage;
+
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = stocks.slice(start, end);
+
+            pageData.forEach(stock => {
+                const diff = stock.diff.toFixed(2);
                 const diffClass = diff > 0 ? 'price-up' : (diff < 0 ? 'price-down' : '');
                 const diffPrefix = diff > 0 ? '+' : '';
 
@@ -408,13 +487,15 @@
             const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
             const minVolume = parseInt(document.getElementById('volume-min').value) || 0;
 
-            const filtered = currentStockData.filter(s => {
+            filteredStocks = currentStockData.filter(s => {
                 const matchesSearch = s.id.toLowerCase().includes(query) || s.name.toLowerCase().includes(query);
                 const matchesPrice = s.close >= minPrice && s.close <= maxPrice;
                 const matchesVolume = s.volume >= minVolume;
                 return matchesSearch && matchesPrice && matchesVolume;
             });
-            renderStockTable(filtered);
+            
+            currentPage = 1;
+            renderStockTable();
         }
 
         function renderChart(data) {
