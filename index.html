@@ -1,547 +1,794 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Market Observer | 市場觀測站</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --up: #ef4444;
-            --down: #22c55e;
-        }
+      :root {
+        --primary: #2563eb;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #1e293b;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+      }
 
-        body {
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            line-height: 1.5;
-        }
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.5;
+      }
 
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+      header {
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
 
-        h1 { margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
 
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 1024px) {
         .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+          grid-template-columns: 2fr 1fr;
         }
+      }
 
-        @media (min-width: 1024px) {
-            .grid { grid-template-columns: 2fr 1fr; }
-        }
+      .card {
+        background: var(--card-bg);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 0.75rem;
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .card-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .table-container {
+        overflow-x: auto;
+      }
 
-        .table-container {
-            overflow-x: auto;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
+      th {
+        padding: 0.75rem;
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
 
-        th {
-            padding: 0.75rem;
-            border-bottom: 2px solid var(--border);
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
+      td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+      }
 
-        td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.875rem;
-        }
+      .price-up {
+        color: var(--up);
+        font-weight: 600;
+      }
+      .price-down {
+        color: var(--down);
+        font-weight: 600;
+      }
 
-        .price-up { color: var(--up); font-weight: 600; }
-        .price-down { color: var(--down); font-weight: 600; }
+      .search-box {
+        margin-bottom: 1rem;
+        position: relative;
+      }
 
-        .search-box {
-            margin-bottom: 1rem;
-            position: relative;
-        }
+      .search-box input {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        box-sizing: border-box;
+      }
 
-        .search-box input {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            outline: none;
-            box-sizing: border-box;
-        }
+      .search-box input:focus {
+        border-color: var(--primary);
+      }
 
-        .search-box input:focus { border-color: var(--primary); }
+      .date-select {
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background: white;
+        font-size: 0.875rem;
+      }
 
-        .date-select {
-            padding: 0.4rem 0.75rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            background: white;
-            font-size: 0.875rem;
-        }
+      .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
 
-        .loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            font-style: italic;
-            color: var(--text-muted);
-        }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
+      .stat-item {
+        background: var(--bg);
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
 
-        .stat-item {
-            background: var(--bg);
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
+      .stat-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        display: block;
+      }
+      .stat-value {
+        font-size: 1.125rem;
+        font-weight: 700;
+      }
 
-        .stat-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
-        .stat-value { font-size: 1.125rem; font-weight: 700; }
-
-        [v-cloak] { display: none; }
+      [v-cloak] {
+        display: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Market Observer</h1>
-        <div id="last-update" style="font-size: 0.75rem; color: var(--text-muted);"></div>
+      <h1>Market Observer</h1>
+      <div
+        id="last-update"
+        style="font-size: 0.75rem; color: var(--text-muted)"
+      ></div>
     </header>
 
     <div class="container">
-        <div class="grid">
-            <div class="main-content">
-                <div class="card" style="margin-bottom: 1.5rem;">
-                    <div class="card-title">
-                        <span>大盤指數趨勢</span>
-                        <div id="index-date" style="font-size: 0.875rem; font-weight: normal;"></div>
-                    </div>
-                    <canvas id="indexChart" height="100"></canvas>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">
-                        <span>個股行情 <span id="stock-count" style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);"></span></span>
-                        <select id="date-picker" class="date-select"></select>
-                    </div>
-                    <div class="search-box">
-                        <input type="text" id="stock-search" placeholder="搜尋代號或名稱...">
-                    </div>
-                    <div class="filter-controls" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; background: #eee; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem;">
-                            <span>價格:</span>
-                            <input type="number" id="price-min" placeholder="最小" style="width: 60px; border: 1px solid var(--border); border-radius: 4px;">
-                            <span>-</span>
-                            <input type="number" id="price-max" placeholder="最大" style="width: 60px; border: 1px solid var(--border); border-radius: 4px;">
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; background: #eee; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem;">
-                            <span>成交量 > </span>
-                            <input type="number" id="volume-min" placeholder="10000000" style="width: 100px; border: 1px solid var(--border); border-radius: 4px;">
-                        </div>
-                        <button id="clear-filters" style="background: var(--text-muted); color: white; border: none; padding: 0.25rem 0.75rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.875rem;">清除</button>
-                    </div>
-                    <div class="table-container">
-                        <table id="stock-table">
-                            <thead>
-                                <tr>
-                                    <th style="cursor: pointer;" onclick="setSort('id')">代號 <span id="sort-id"></span></th>
-                                    <th style="cursor: pointer;" onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
-                                    <th style="cursor: pointer;" onclick="setSort('close')">成交價 <span id="sort-close"></span></th>
-                                    <th style="cursor: pointer;" onclick="setSort('diff')">漲跌 <span id="sort-diff"></span></th>
-                                    <th style="cursor: pointer;" onclick="setSort('volume')">成交量 <span id="sort-volume"></span></th>
-                                </tr>
-                            </thead>
-                            <tbody id="stock-list">
-                                <!-- Data will be loaded here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="stock-loader" class="loader">載入中...</div>
-                    <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1rem; padding: 1rem 0; border-top: 1px solid var(--border);">
-                        <button id="prev-page" class="date-select" style="cursor: pointer;">上一頁</button>
-                        <span id="page-info" style="font-size: 0.875rem; color: var(--text-muted);">第 1 / 1 頁</span>
-                        <button id="next-page" class="date-select" style="cursor: pointer;">下一頁</button>
-                    </div>
-                </div>
+      <div class="grid">
+        <div class="main-content">
+          <div class="card" style="margin-bottom: 1.5rem">
+            <div class="card-title">
+              <span>大盤指數趨勢</span>
+              <div
+                id="index-date"
+                style="font-size: 0.875rem; font-weight: normal"
+              ></div>
             </div>
+            <canvas id="indexChart" height="100"></canvas>
+          </div>
 
-            <div class="sidebar">
-                <div class="card" style="margin-bottom: 1.5rem;">
-                    <div class="card-title">
-                        <span>跳空上漲 (Gap Jump)</span>
-                        <span id="gap-count" style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);"></span>
-                    </div>
-                    <div id="gap-list" style="max-height: 400px; overflow-y: auto; font-size: 0.875rem;">
-                        <div class="loader">載入中...</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">市場摘要</div>
-                    <div id="market-summary" class="stats">
-                        <div class="stat-item">
-                            <span class="stat-label">成交金額</span>
-                            <span id="summary-turnover" class="stat-value">--</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">成交股數</span>
-                            <span id="summary-volume" class="stat-value">--</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">成交筆數</span>
-                            <span id="summary-transactions" class="stat-value">--</span>
-                        </div>
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-title">
+              <span
+                >個股行情
+                <span
+                  id="stock-count"
+                  style="
+                    font-size: 0.75rem;
+                    font-weight: normal;
+                    color: var(--text-muted);
+                  "
+                ></span
+              ></span>
+              <select id="date-picker" class="date-select"></select>
             </div>
+            <div class="search-box">
+              <input
+                type="text"
+                id="stock-search"
+                placeholder="搜尋代號或名稱..."
+              />
+            </div>
+            <div
+              class="filter-controls"
+              style="
+                display: flex;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+                flex-wrap: wrap;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                  background: #eee;
+                  padding: 0.25rem 0.75rem;
+                  border-radius: 0.5rem;
+                  font-size: 0.875rem;
+                "
+              >
+                <span>價格:</span>
+                <input
+                  type="number"
+                  id="price-min"
+                  placeholder="最小"
+                  style="
+                    width: 60px;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                  "
+                />
+                <span>-</span>
+                <input
+                  type="number"
+                  id="price-max"
+                  placeholder="最大"
+                  style="
+                    width: 60px;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                  background: #eee;
+                  padding: 0.25rem 0.75rem;
+                  border-radius: 0.5rem;
+                  font-size: 0.875rem;
+                "
+              >
+                <span>成交量 > </span>
+                <input
+                  type="number"
+                  id="volume-min"
+                  placeholder="10000000"
+                  style="
+                    width: 100px;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                  "
+                />
+              </div>
+              <button
+                id="clear-filters"
+                style="
+                  background: var(--text-muted);
+                  color: white;
+                  border: none;
+                  padding: 0.25rem 0.75rem;
+                  border-radius: 0.5rem;
+                  cursor: pointer;
+                  font-size: 0.875rem;
+                "
+              >
+                清除
+              </button>
+            </div>
+            <div class="table-container">
+              <table id="stock-table">
+                <thead>
+                  <tr>
+                    <th style="cursor: pointer" onclick="setSort('id')">
+                      代號 <span id="sort-id"></span>
+                    </th>
+                    <th style="cursor: pointer" onclick="setSort('name')">
+                      名稱 <span id="sort-name"></span>
+                    </th>
+                    <th style="cursor: pointer" onclick="setSort('close')">
+                      成交價 <span id="sort-close"></span>
+                    </th>
+                    <th style="cursor: pointer" onclick="setSort('diff')">
+                      漲跌 <span id="sort-diff"></span>
+                    </th>
+                    <th style="cursor: pointer" onclick="setSort('volume')">
+                      成交量(張) <span id="sort-volume"></span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="stock-list">
+                  <!-- Data will be loaded here -->
+                </tbody>
+              </table>
+            </div>
+            <div id="stock-loader" class="loader">載入中...</div>
+            <div
+              id="pagination-controls"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 1rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--border);
+              "
+            >
+              <button
+                id="prev-page"
+                class="date-select"
+                style="cursor: pointer"
+              >
+                上一頁
+              </button>
+              <span
+                id="page-info"
+                style="font-size: 0.875rem; color: var(--text-muted)"
+                >第 1 / 1 頁</span
+              >
+              <button
+                id="next-page"
+                class="date-select"
+                style="cursor: pointer"
+              >
+                下一頁
+              </button>
+            </div>
+          </div>
         </div>
+
+        <div class="sidebar">
+          <div class="card" style="margin-bottom: 1.5rem">
+            <div class="card-title">
+              <span>跳空上漲 (Gap Jump)</span>
+              <select
+                id="gap-sort"
+                class="date-select"
+                style="
+                  font-size: 0.75rem;
+                  padding: 0.2rem 0.5rem;
+                  margin-left: auto;
+                  margin-right: 0.5rem;
+                "
+              >
+                <option value="diff-desc">上漲量 ↓</option>
+                <option value="diff-asc">上漲量 ↑</option>
+                <option value="ratio-desc">漲幅 ↓</option>
+                <option value="ratio-asc">漲幅 ↑</option>
+              </select>
+              <span
+                id="gap-count"
+                style="
+                  font-size: 0.75rem;
+                  font-weight: normal;
+                  color: var(--text-muted);
+                "
+              ></span>
+            </div>
+            <div
+              id="gap-list"
+              style="max-height: 400px; overflow-y: auto; font-size: 0.875rem"
+            >
+              <div class="loader">載入中...</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">市場摘要</div>
+            <div id="market-summary" class="stats">
+              <div class="stat-item">
+                <span class="stat-label">成交金額</span>
+                <span id="summary-turnover" class="stat-value">--</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">成交股數</span>
+                <span id="summary-volume" class="stat-value">--</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">成交筆數</span>
+                <span id="summary-transactions" class="stat-value">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        let manifest = null;
-        let indexData = [];
-        let currentStockData = [];
-        let filteredStocks = [];
-        let chart = null;
+      let manifest = null;
+      let indexData = [];
+      let currentStockData = [];
+      let currentGapData = [];
+      let filteredStocks = [];
+      let chart = null;
 
-        // Pagination & Sorting State
-        let currentPage = 1;
-        const rowsPerPage = 50;
-        let sortColumn = 'id';
-        let sortDirection = 'asc';
+      // Pagination & Sorting State
+      let currentPage = 1;
+      const rowsPerPage = 50;
+      let sortColumn = "id";
+      let sortDirection = "asc";
 
-        async function init() {
-            try {
-                const response = await fetch('data/manifest.json');
-                manifest = await response.json();
-                
-                // Populate date picker
-                const datePicker = document.getElementById('date-picker');
-                manifest.daily_price.forEach((date, i) => {
-                    const option = document.createElement('option');
-                    option.value = date;
-                    option.textContent = date;
-                    datePicker.appendChild(option);
-                });
+      async function init() {
+        try {
+          const response = await fetch("data/manifest.json");
+          manifest = await response.json();
 
-                datePicker.addEventListener('change', (e) => loadStockData(e.target.value));
+          // Populate date picker
+          const datePicker = document.getElementById("date-picker");
+          manifest.daily_price.forEach((date, i) => {
+            const option = document.createElement("option");
+            option.value = date;
+            option.textContent = date;
+            datePicker.appendChild(option);
+          });
 
-                // Load initial data
-                if (manifest.daily_index.length > 0) {
-                    await loadIndexData();
-                }
-                if (manifest.daily_price.length > 0) {
-                    await loadStockData(manifest.daily_price[0]);
-                }
+          datePicker.addEventListener("change", (e) =>
+            loadStockData(e.target.value),
+          );
 
-                document.getElementById('stock-search').addEventListener('input', filterStocks);
-                document.getElementById('price-min').addEventListener('input', filterStocks);
-                document.getElementById('price-max').addEventListener('input', filterStocks);
-                document.getElementById('volume-min').addEventListener('input', filterStocks);
-                document.getElementById('clear-filters').addEventListener('click', () => {
-                    document.getElementById('stock-search').value = '';
-                    document.getElementById('price-min').value = '';
-                    document.getElementById('price-max').value = '';
-                    document.getElementById('volume-min').value = '';
-                    filterStocks();
-                });
+          // Load initial data
+          if (manifest.daily_index.length > 0) {
+            await loadIndexData();
+          }
+          if (manifest.daily_price.length > 0) {
+            await loadStockData(manifest.daily_price[0]);
+          }
 
-                // Pagination listeners
-                document.getElementById('prev-page').addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderStockTable();
-                    }
-                });
-                document.getElementById('next-page').addEventListener('click', () => {
-                    const maxPage = Math.ceil(filteredStocks.length / rowsPerPage);
-                    if (currentPage < maxPage) {
-                        currentPage++;
-                        renderStockTable();
-                    }
-                });
-            } catch (error) {
-                console.error('Initialization error:', error);
+          document
+            .getElementById("stock-search")
+            .addEventListener("input", filterStocks);
+          document
+            .getElementById("price-min")
+            .addEventListener("input", filterStocks);
+          document
+            .getElementById("price-max")
+            .addEventListener("input", filterStocks);
+          document
+            .getElementById("volume-min")
+            .addEventListener("input", filterStocks);
+          document
+            .getElementById("clear-filters")
+            .addEventListener("click", () => {
+              document.getElementById("stock-search").value = "";
+              document.getElementById("price-min").value = "";
+              document.getElementById("price-max").value = "";
+              document.getElementById("volume-min").value = "";
+              filterStocks();
+            });
+
+          // Gap Jump sort listener
+          document
+            .getElementById("gap-sort")
+            .addEventListener("change", renderGapList);
+
+          // Pagination listeners
+          document.getElementById("prev-page").addEventListener("click", () => {
+            if (currentPage > 1) {
+              currentPage--;
+              renderStockTable();
             }
+          });
+          document.getElementById("next-page").addEventListener("click", () => {
+            const maxPage = Math.ceil(filteredStocks.length / rowsPerPage);
+            if (currentPage < maxPage) {
+              currentPage++;
+              renderStockTable();
+            }
+          });
+        } catch (error) {
+          console.error("Initialization error:", error);
+        }
+      }
+
+      async function loadIndexData() {
+        const allData = [];
+        const seenDates = new Set();
+
+        // Load all index files to get full history
+        for (const date of manifest.daily_index) {
+          try {
+            const response = await fetch(`data/daily_index/${date}.json`);
+            const data = await response.json();
+            data.forEach((item) => {
+              if (!seenDates.has(item.date)) {
+                allData.push(item);
+                seenDates.add(item.date);
+              }
+            });
+          } catch (e) {
+            console.error(`Error loading index ${date}:`, e);
+          }
         }
 
-        async function loadIndexData() {
-            const allData = [];
-            const seenDates = new Set();
-            
-            // Load all index files to get full history
-            for (const date of manifest.daily_index) {
-                try {
-                    const response = await fetch(`data/daily_index/${date}.json`);
-                    const data = await response.json();
-                    data.forEach(item => {
-                        if (!seenDates.has(item.date)) {
-                            allData.push(item);
-                            seenDates.add(item.date);
-                        }
-                    });
-                } catch (e) {
-                    console.error(`Error loading index ${date}:`, e);
-                }
-            }
-            
-            // Sort by date (assuming format is YY/MM/DD or similar, might need better sorting)
-            allData.sort((a, b) => a.date.localeCompare(b.date));
-            indexData = allData;
-            
-            if (indexData.length > 0) {
-                const latest = indexData[indexData.length - 1];
-                document.getElementById('last-update').textContent = `最後更新: ${latest.date}`;
-                document.getElementById('summary-turnover').textContent = (latest.turnover / 100000000).toFixed(2) + ' 億';
-                document.getElementById('summary-volume').textContent = (latest.volume / 1000000).toFixed(2) + ' 百萬';
-                document.getElementById('summary-transactions').textContent = (latest.transactions / 10000).toFixed(2) + ' 萬';
-                renderChart(indexData);
-            }
+        // Sort by date (assuming format is YY/MM/DD or similar, might need better sorting)
+        allData.sort((a, b) => a.date.localeCompare(b.date));
+        indexData = allData;
+
+        if (indexData.length > 0) {
+          const latest = indexData[indexData.length - 1];
+          document.getElementById("last-update").textContent =
+            `最後更新: ${latest.date}`;
+          document.getElementById("summary-turnover").textContent =
+            (latest.turnover / 100000000).toFixed(2) + " 億";
+          document.getElementById("summary-volume").textContent =
+            (latest.volume / 1000000).toFixed(2) + " 百萬";
+          document.getElementById("summary-transactions").textContent =
+            (latest.transactions / 10000).toFixed(2) + " 萬";
+          renderChart(indexData);
+        }
+      }
+
+      async function loadStockData(date) {
+        document.getElementById("stock-list").innerHTML = "";
+        document.getElementById("stock-loader").style.display = "flex";
+        document.getElementById("gap-list").innerHTML =
+          '<div class="loader">載入中...</div>';
+
+        try {
+          // Load daily price
+          const response = await fetch(`data/daily_price/${date}.json`);
+          currentStockData = await response.json();
+
+          // Pre-calculate diff for sorting
+          currentStockData.forEach((s) => {
+            s.diff = s.close - s.open;
+          });
+
+          filterStocks();
+
+          // Load gap jump if available
+          if (manifest.gap_jump.includes(date)) {
+            const gapResponse = await fetch(`data/gap_jump/${date}.json`);
+            currentGapData = await gapResponse.json();
+            renderGapList();
+          } else {
+            currentGapData = [];
+            document.getElementById("gap-list").innerHTML =
+              '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無此日期策略數據</div>';
+            document.getElementById("gap-count").textContent = "";
+          }
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          document.getElementById("stock-loader").style.display = "none";
+        }
+      }
+
+      function renderGapList() {
+        const container = document.getElementById("gap-list");
+        const countLabel = document.getElementById("gap-count");
+        const sortVal = document.getElementById("gap-sort").value;
+
+        container.innerHTML = "";
+        countLabel.textContent = `(共 ${currentGapData.length} 筆)`;
+
+        if (currentGapData.length === 0) {
+          if (
+            manifest.gap_jump.includes(
+              document.getElementById("date-picker").value,
+            )
+          ) {
+            container.innerHTML =
+              '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無符合條件股票</div>';
+          }
+          return;
         }
 
-        async function loadStockData(date) {
-            document.getElementById('stock-list').innerHTML = '';
-            document.getElementById('stock-loader').style.display = 'flex';
-            document.getElementById('gap-list').innerHTML = '<div class="loader">載入中...</div>';
-            
-            try {
-                // Load daily price
-                const response = await fetch(`data/daily_price/${date}.json`);
-                currentStockData = await response.json();
-                
-                // Pre-calculate diff for sorting
-                currentStockData.forEach(s => {
-                    s.diff = s.close - s.open;
-                });
+        // Copy for sorting
+        const data = [...currentGapData];
+        const [sortKey, sortDir] = sortVal.split("-");
 
-                filterStocks();
+        data.sort((a, b) => {
+          const valA = a[sortKey];
+          const valB = b[sortKey];
+          return sortDir === "asc" ? valA - valB : valB - valA;
+        });
 
-                // Load gap jump if available
-                if (manifest.gap_jump.includes(date)) {
-                    const gapResponse = await fetch(`data/gap_jump/${date}.json`);
-                    const gapData = await gapResponse.json();
-                    renderGapList(gapData);
-                } else {
-                    document.getElementById('gap-list').innerHTML = '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無此日期策略數據</div>';
-                    document.getElementById('gap-count').textContent = '';
-                }
-            } catch (error) {
-                console.error('Error loading data:', error);
-            } finally {
-                document.getElementById('stock-loader').style.display = 'none';
-            }
-        }
-
-        function renderGapList(data) {
-            const container = document.getElementById('gap-list');
-            const countLabel = document.getElementById('gap-count');
-            container.innerHTML = '';
-            countLabel.textContent = `(共 ${data.length} 筆)`;
-
-            if (data.length === 0) {
-                container.innerHTML = '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無符合條件股票</div>';
-                return;
-            }
-
-            const list = document.createElement('div');
-            data.sort((a, b) => b.diff - a.diff).forEach(stock => {
-                const item = document.createElement('div');
-                item.style.cssText = 'padding: 0.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;';
-                item.innerHTML = `
+        const list = document.createElement("div");
+        data.forEach((stock) => {
+          const item = document.createElement("div");
+          item.style.cssText =
+            "padding: 0.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;";
+          item.innerHTML = `
                     <div>
                         <div style="font-weight: 600;">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted);">${stock.id}</span></div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume/1000).toFixed(0)}K</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)}</div>
                     </div>
                     <div style="text-align: right;">
                         <div class="price-up">${stock.today_close}</div>
                         <div style="font-size: 0.75rem; color: var(--text-muted);">跳空: +${stock.diff} (${stock.ratio}%)</div>
                     </div>
                 `;
-                list.appendChild(item);
-            });
-            container.appendChild(list);
+          list.appendChild(item);
+        });
+        container.appendChild(list);
+      }
+
+      function setSort(column) {
+        if (sortColumn === column) {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+        } else {
+          sortColumn = column;
+          sortDirection = "asc";
         }
+        currentPage = 1;
+        renderStockTable();
+      }
 
-        function setSort(column) {
-            if (sortColumn === column) {
-                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-            } else {
-                sortColumn = column;
-                sortDirection = 'asc';
-            }
-            currentPage = 1;
-            renderStockTable();
-        }
+      function renderStockTable() {
+        const stocks = filteredStocks;
+        const tbody = document.getElementById("stock-list");
+        tbody.innerHTML = "";
+        document.getElementById("stock-count").textContent =
+          `(共 ${stocks.length} 筆)`;
 
-        function renderStockTable() {
-            const stocks = filteredStocks;
-            const tbody = document.getElementById('stock-list');
-            tbody.innerHTML = '';
-            document.getElementById('stock-count').textContent = `(共 ${stocks.length} 筆)`;
-            
-            // Sort
-            stocks.sort((a, b) => {
-                let valA = a[sortColumn];
-                let valB = b[sortColumn];
-                
-                if (typeof valA === 'string') {
-                    return sortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                } else {
-                    return sortDirection === 'asc' ? valA - valB : valB - valA;
-                }
-            });
+        // Sort
+        stocks.sort((a, b) => {
+          let valA = a[sortColumn];
+          let valB = b[sortColumn];
 
-            // Update Sort Indicators
-            ['id', 'name', 'close', 'diff', 'volume'].forEach(col => {
-                const span = document.getElementById(`sort-${col}`);
-                if (col === sortColumn) {
-                    span.textContent = sortDirection === 'asc' ? '▲' : '▼';
-                } else {
-                    span.textContent = '';
-                }
-            });
+          if (typeof valA === "string") {
+            return sortDirection === "asc"
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
+          } else {
+            return sortDirection === "asc" ? valA - valB : valB - valA;
+          }
+        });
 
-            // Pagination
-            const maxPage = Math.ceil(stocks.length / rowsPerPage) || 1;
-            if (currentPage > maxPage) currentPage = maxPage;
-            
-            document.getElementById('page-info').textContent = `第 ${currentPage} / ${maxPage} 頁`;
-            document.getElementById('prev-page').disabled = currentPage === 1;
-            document.getElementById('next-page').disabled = currentPage === maxPage;
+        // Update Sort Indicators
+        ["id", "name", "close", "diff", "volume"].forEach((col) => {
+          const span = document.getElementById(`sort-${col}`);
+          if (col === sortColumn) {
+            span.textContent = sortDirection === "asc" ? "▲" : "▼";
+          } else {
+            span.textContent = "";
+          }
+        });
 
-            const start = (currentPage - 1) * rowsPerPage;
-            const end = start + rowsPerPage;
-            const pageData = stocks.slice(start, end);
+        // Pagination
+        const maxPage = Math.ceil(stocks.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
 
-            pageData.forEach(stock => {
-                const diff = stock.diff.toFixed(2);
-                const diffClass = diff > 0 ? 'price-up' : (diff < 0 ? 'price-down' : '');
-                const diffPrefix = diff > 0 ? '+' : '';
+        document.getElementById("page-info").textContent =
+          `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
 
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageData = stocks.slice(start, end);
+
+        pageData.forEach((stock) => {
+          const diff = stock.diff.toFixed(2);
+          const diffClass =
+            diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
+          const diffPrefix = diff > 0 ? "+" : "";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
                     <td>${stock.id}</td>
                     <td>${stock.name}</td>
                     <td>${stock.close}</td>
                     <td class="${diffClass}">${diffPrefix}${diff}</td>
-                    <td>${(stock.volume / 1000).toFixed(0)}K</td>
+                    <td>${(stock.volume / 1000).toFixed(0)}張</td>
                 `;
-                tbody.appendChild(tr);
-            });
-        }
+          tbody.appendChild(tr);
+        });
+      }
 
-        function filterStocks() {
-            const query = document.getElementById('stock-search').value.toLowerCase();
-            const minPrice = parseFloat(document.getElementById('price-min').value) || 0;
-            const maxPrice = parseFloat(document.getElementById('price-max').value) || Infinity;
-            const minVolume = parseInt(document.getElementById('volume-min').value) || 0;
+      function filterStocks() {
+        const query = document
+          .getElementById("stock-search")
+          .value.toLowerCase();
+        const minPrice =
+          parseFloat(document.getElementById("price-min").value) || 0;
+        const maxPrice =
+          parseFloat(document.getElementById("price-max").value) || Infinity;
+        const minVolume =
+          parseInt(document.getElementById("volume-min").value) || 0;
 
-            filteredStocks = currentStockData.filter(s => {
-                const matchesSearch = s.id.toLowerCase().includes(query) || s.name.toLowerCase().includes(query);
-                const matchesPrice = s.close >= minPrice && s.close <= maxPrice;
-                const matchesVolume = s.volume >= minVolume;
-                return matchesSearch && matchesPrice && matchesVolume;
-            });
-            
-            currentPage = 1;
-            renderStockTable();
-        }
+        filteredStocks = currentStockData.filter((s) => {
+          const matchesSearch =
+            s.id.toLowerCase().includes(query) ||
+            s.name.toLowerCase().includes(query);
+          const matchesPrice = s.close >= minPrice && s.close <= maxPrice;
+          const matchesVolume = s.volume >= minVolume;
+          return matchesSearch && matchesPrice && matchesVolume;
+        });
 
-        function renderChart(data) {
-            const ctx = document.getElementById('indexChart').getContext('2d');
-            
-            if (chart) chart.destroy();
+        currentPage = 1;
+        renderStockTable();
+      }
 
-            const labels = data.map(d => d.date);
-            const prices = data.map(d => d.index);
+      function renderChart(data) {
+        const ctx = document.getElementById("indexChart").getContext("2d");
 
-            chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: '大盤指數',
-                        data: prices,
-                        borderColor: '#2563eb',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: { color: '#f1f5f9' }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    }
-                }
-            });
-        }
+        if (chart) chart.destroy();
 
-        init();
+        const labels = data.map((d) => d.date);
+        const prices = data.map((d) => d.index);
+
+        chart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "大盤指數",
+                data: prices,
+                borderColor: "#2563eb",
+                backgroundColor: "rgba(37, 99, 235, 0.1)",
+                fill: true,
+                tension: 0.3,
+                pointRadius: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              y: {
+                beginAtZero: false,
+                grid: { color: "#f1f5f9" },
+              },
+              x: {
+                grid: { display: false },
+              },
+            },
+          },
+        });
+      }
+
+      init();
     </script>
-</body>
+  </body>
 </html>
