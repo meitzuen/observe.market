@@ -439,6 +439,9 @@
                     <th style="cursor: pointer" onclick="setSort('diff')">
                       漲跌 <span id="sort-diff"></span>
                     </th>
+                    <th style="cursor: pointer" onclick="setSort('ratio')">
+                      漲幅 <span id="sort-ratio"></span>
+                    </th>
                     <th style="cursor: pointer" onclick="setSort('volume')">
                       成交量(張) <span id="sort-volume"></span>
                     </th>
@@ -718,21 +721,32 @@
         document.getElementById("punish-list").innerHTML = '<div class="loader" style="height: 100px">載入中...</div>';
 
         try {
-          // Load daily price
           const response = await fetch(`data/daily_price/${date}.json`);
           currentStockData = await response.json();
 
-          // Pre-calculate diff for sorting
+          const dates = manifest.daily_price;
+          const idx = dates.indexOf(date);
+          let prevData = [];
+          if (idx !== -1 && idx + 1 < dates.length) {
+              const prevDate = dates[idx + 1];
+              try {
+                  const prevResponse = await fetch(`data/daily_price/${prevDate}.json`);
+                  prevData = await prevResponse.json();
+              } catch (e) { console.error("Error loading prev day:", e); }
+          }
+          const prevMap = new Map(prevData.map(s => [s.id, s.close]));
+
           currentStockData.forEach((s) => {
             s.diff = s.close - s.open;
+            s.prev_close = prevMap.get(s.id);
+            s.ratio = (s.prev_close && s.prev_close !== 0) 
+                      ? parseFloat(((s.close - s.prev_close) / s.prev_close * 100).toFixed(2)) 
+                      : 0;
           });
 
           filterStocks();
-
-          // Load gap data based on switcher
           await loadGapData(date);
 
-          // Load punish data if available
           if (manifest.daily_punish && manifest.daily_punish.includes(date)) {
             const punishResponse = await fetch(`data/daily_punish/${date}.json`);
             currentPunishData = await punishResponse.json();
@@ -885,7 +899,6 @@
         tbody.innerHTML = "";
         document.getElementById("stock-count").textContent = stocks.length;
 
-        // Sort
         stocks.sort((a, b) => {
           let valA = a[sortColumn];
           let valB = b[sortColumn];
@@ -899,23 +912,17 @@
           }
         });
 
-        // Update Sort Indicators
-        ["id", "name", "close", "diff", "volume"].forEach((col) => {
+        ["id", "name", "close", "diff", "ratio", "volume"].forEach((col) => {
           const span = document.getElementById(`sort-${col}`);
-          if (col === sortColumn) {
-            span.textContent = sortDirection === "asc" ? "↑" : "↓";
-            span.style.color = "var(--primary)";
-          } else {
-            span.textContent = "";
+          if (span) {
+            span.textContent = col === sortColumn ? (sortDirection === "asc" ? "↑" : "↓") : "";
+            span.style.color = col === sortColumn ? "var(--primary)" : "";
           }
         });
 
-        // Pagination
         const maxPage = Math.ceil(stocks.length / rowsPerPage) || 1;
         if (currentPage > maxPage) currentPage = maxPage;
-
-        document.getElementById("page-info").textContent =
-          `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
         document.getElementById("prev-page").disabled = currentPage === 1;
         document.getElementById("next-page").disabled = currentPage === maxPage;
 
@@ -925,9 +932,11 @@
 
         pageData.forEach((stock) => {
           const diff = stock.diff.toFixed(2);
-          const diffClass =
-            diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
+          const diffClass = diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
           const diffPrefix = diff > 0 ? "+" : "";
+          
+          const ratioText = stock.prev_close ? (stock.ratio >= 0 ? "+" : "") + stock.ratio.toFixed(2) + "%" : "n/a";
+          const ratioClass = stock.ratio > 0 ? "price-up" : stock.ratio < 0 ? "price-down" : "";
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
@@ -935,6 +944,7 @@
                     <td style="font-weight: 600;">${stock.name}</td>
                     <td style="font-weight: 600;">${stock.close}</td>
                     <td class="${diffClass}" style="font-weight: 700;">${diffPrefix}${diff}</td>
+                    <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
                     <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, {maximumFractionDigits:0})}張</td>
                 `;
           tbody.appendChild(tr);
