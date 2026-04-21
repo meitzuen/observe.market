@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Market Observer | 市場觀測站</title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>"
-    />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -300,7 +297,11 @@
   </head>
   <body>
     <header>
-      <h1><span>📈</span> Market Observer</h1>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem;">📈</span>
+        <h1>Market Observer</h1>
+      </div>
       <div
         id="last-update"
         style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"

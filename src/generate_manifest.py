@@ -3,7 +3,10 @@ import json
 
 
 def generate_manifest():
-    data_dir = "data"
+    # Base directory is one level up from this script (in the project root)
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir = os.path.join(base_dir, "docs", "data")
+    
     manifest = {
         "daily_index": [],
         "daily_price": [],
@@ -51,10 +54,11 @@ def generate_manifest():
             reverse=True,
         )
 
-    with open(os.path.join(data_dir, "manifest.json"), "w", encoding="utf-8") as f:
+    manifest_path = os.path.join(data_dir, "manifest.json")
+    with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=4)
 
-    print("Manifest generated successfully.")
+    print(f"Manifest generated successfully at {manifest_path}")
 
 
 if __name__ == "__main__":

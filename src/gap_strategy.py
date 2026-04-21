@@ -5,11 +5,14 @@ from datetime import datetime
 
 
 def run_strategy(date_str=None):
-    data_dir = "data"
+    # Base directory is one level up from this script (in the project root)
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir = os.path.join(base_dir, "docs", "data")
+    
     manifest_path = os.path.join(data_dir, "manifest.json")
 
     if not os.path.exists(manifest_path):
-        print("Manifest not found.")
+        print(f"Manifest not found at {manifest_path}.")
         return
 
     with open(manifest_path, "r", encoding="utf-8") as f:

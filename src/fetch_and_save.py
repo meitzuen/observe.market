@@ -43,13 +43,19 @@ def get_punish_stock(date_str: str) -> Dict[str, Any]:
 
 def save_to_file(data: Dict[str, Any], path: str, filename: str) -> None:
     try:
-        os.makedirs("data", exist_ok=True)
-        os.makedirs(f"data/{path}", exist_ok=True)
+        # Base directory is one level up from this script (in the project root)
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        data_root = os.path.join(base_dir, "docs", "data")
+        target_dir = os.path.join(data_root, path)
+        
+        os.makedirs(data_root, exist_ok=True)
+        os.makedirs(target_dir, exist_ok=True)
 
-        with open(f"data/{path}/{filename}.json", "w", encoding="utf-8") as f:
+        file_path = os.path.join(target_dir, f"{filename}.json")
+        with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
-        print(f"成功更新資料: {filename}")
+        print(f"成功更新資料: {filename} at {file_path}")
     except Exception as e:
         print(f"抓取失敗: {e}")
 
