@@ -11,6 +11,7 @@ def generate_manifest():
         "daily_index": [],
         "daily_price": [],
         "gap_jump": [],
+        "gap_drop": [],
         "daily_punish": [],
     }
 
@@ -39,6 +40,16 @@ def generate_manifest():
             [
                 f.replace(".json", "")
                 for f in os.listdir(os.path.join(data_dir, "gap_jump"))
+                if f.endswith(".json")
+            ],
+            reverse=True,
+        )
+
+    if os.path.exists(os.path.join(data_dir, "gap_drop")):
+        manifest["gap_drop"] = sorted(
+            [
+                f.replace(".json", "")
+                for f in os.listdir(os.path.join(data_dir, "gap_drop"))
                 if f.endswith(".json")
             ],
             reverse=True,
