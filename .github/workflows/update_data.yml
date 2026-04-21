@@ -32,7 +32,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install -r requirements.txt
 
       - name: Run fetch script
         run: |
@@ -41,16 +41,19 @@ jobs:
           if [ -z "$DATE_STR" ]; then
             DATE_STR=$(date +'%Y-%m-%d')
           fi
-          python fetch_and_save.py --date_str="$DATE_STR"
-          python gap_strategy.py --date_str="$DATE_STR"
-          python generate_manifest.py
+          python src/fetch_and_save.py --date_str="$DATE_STR"
+          python src/gap_strategy.py --date_str="$DATE_STR"
+          python src/generate_manifest.py
 
       - name: Commit and Push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/*.json
-          git add data/manifest.json
-          git add data/gap_jump/*.json
+          git add docs/data/*.json
+          git add docs/data/daily_index/*.json
+          git add docs/data/daily_price/*.json
+          git add docs/data/daily_punish/*.json
+          git add docs/data/gap_jump/*.json
+          git add docs/data/manifest.json
           # 檢查是否有變更，避免在沒有資料更新時報錯
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update stock data: $(date +'%Y-%m-%d')" && git push)
