@@ -130,7 +130,7 @@ def run_drop_strategy(date_str=None):
 
     prev_date = daily_price_dates[idx + 1]
 
-    print(f"Running Gap Drop Strategy: Comparing today ({today_date}) with previous date ({prev_date})")
+    print(f"Running Gap Drop strategy: Comparing today ({today_date}) with previous date ({prev_date})")
 
     # Load today's data
     today_file = os.path.join(data_dir, "daily_price", f"{today_date}.json")
@@ -179,7 +179,7 @@ def run_drop_strategy(date_str=None):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
 
-    print(f"Found {len(results)} stocks for gap drop. Results saved to {output_path}")
+    print(f"Found {len(results)} stocks for Gap Drop. Results saved to {output_path}")
 
 
 if __name__ == "__main__":
