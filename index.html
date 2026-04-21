@@ -17,14 +17,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       :root {
-        --primary: #2563eb;
-        --bg: #f8fafc;
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
         --card-bg: #ffffff;
-        --text: #1e293b;
+        --text: #0f172a;
         --text-muted: #64748b;
         --border: #e2e8f0;
         --up: #ef4444;
         --down: #22c55e;
+        --accent: #8b5cf6;
       }
 
       body {
@@ -35,13 +37,11 @@
           BlinkMacSystemFont,
           "Segoe UI",
           Roboto,
-          Helvetica,
-          Arial,
           sans-serif;
         background-color: var(--bg);
         color: var(--text);
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.6;
       }
 
       header {
@@ -53,20 +53,27 @@
         align-items: center;
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 100;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       }
 
       h1 {
         margin: 0;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--primary);
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 2rem auto;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
       }
 
       .grid {
@@ -77,25 +84,33 @@
 
       @media (min-width: 1024px) {
         .grid {
-          grid-template-columns: 2fr 1fr;
+          grid-template-columns: 2.5fr 1fr;
         }
       }
 
       .card {
         background: var(--card-bg);
-        border-radius: 0.75rem;
+        border-radius: 1rem;
         border: 1px solid var(--border);
         padding: 1.5rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s;
+      }
+
+      .card:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       }
 
       .card-title {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        margin-bottom: 1.25rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-left: 4px solid var(--primary);
+        padding-left: 0.75rem;
       }
 
       .table-container {
@@ -104,22 +119,30 @@
 
       table {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
         text-align: left;
       }
 
       th {
-        padding: 0.75rem;
+        padding: 1rem 0.75rem;
+        background-color: #f8fafc;
         border-bottom: 2px solid var(--border);
         font-weight: 600;
         color: var(--text-muted);
         font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
       }
 
       td {
-        padding: 0.75rem;
+        padding: 1rem 0.75rem;
         border-bottom: 1px solid var(--border);
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
+      }
+
+      tr:hover td {
+        background-color: #f8fafc;
       }
 
       .price-up {
@@ -132,30 +155,41 @@
       }
 
       .search-box {
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
         position: relative;
       }
 
       .search-box input {
         width: 100%;
-        padding: 0.5rem 0.75rem;
+        padding: 0.75rem 1rem;
         border: 1px solid var(--border);
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
+        border-radius: 0.75rem;
+        font-size: 0.9375rem;
         outline: none;
         box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        background-color: #f8fafc;
       }
 
       .search-box input:focus {
         border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        background-color: white;
       }
 
       .date-select {
-        padding: 0.4rem 0.75rem;
-        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
         border: 1px solid var(--border);
         background: white;
         font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .date-select:focus {
+        border-color: var(--primary);
       }
 
       .loader {
@@ -169,25 +203,94 @@
 
       .stats {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: 1fr;
         gap: 1rem;
         margin-bottom: 1.5rem;
       }
 
       .stat-item {
-        background: var(--bg);
-        padding: 1rem;
-        border-radius: 0.5rem;
+        background: #f8fafc;
+        padding: 1.25rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
       }
 
       .stat-label {
-        font-size: 0.75rem;
+        font-size: 0.875rem;
         color: var(--text-muted);
-        display: block;
+        font-weight: 500;
       }
       .stat-value {
-        font-size: 1.125rem;
-        font-weight: 700;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--primary-dark);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+
+      .badge-primary { background-color: #dbeafe; color: #1e40af; }
+      .badge-accent { background-color: #ede9fe; color: #5b21b6; }
+      .badge-danger { background-color: #fee2e2; color: #991b1b; }
+
+      .sidebar-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .list-item {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border);
+        transition: background-color 0.2s;
+      }
+
+      .list-item:hover {
+        background-color: #f8fafc;
+      }
+
+      .list-item:last-child {
+        border-bottom: none;
+      }
+
+      .tag {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        background: #eee;
+        color: #666;
+        margin-right: 0.3rem;
+      }
+
+      .btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+
+      .btn:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-secondary {
+        background: var(--text-muted);
+      }
+
+      .btn-secondary:hover {
+        background: #475569;
       }
 
       [v-cloak] {
@@ -197,10 +300,10 @@
   </head>
   <body>
     <header>
-      <h1>Market Observer</h1>
+      <h1><span>📈</span> Market Observer</h1>
       <div
         id="last-update"
-        style="font-size: 0.75rem; color: var(--text-muted)"
+        style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
       ></div>
     </header>
 
@@ -212,10 +315,12 @@
               <span>大盤指數趨勢</span>
               <div
                 id="index-date"
-                style="font-size: 0.875rem; font-weight: normal"
+                style="font-size: 0.875rem; font-weight: normal; color: var(--text-muted)"
               ></div>
             </div>
-            <canvas id="indexChart" height="100"></canvas>
+            <div style="height: 300px; position: relative">
+                <canvas id="indexChart"></canvas>
+            </div>
           </div>
 
           <div class="card">
@@ -224,11 +329,7 @@
                 >個股行情
                 <span
                   id="stock-count"
-                  style="
-                    font-size: 0.75rem;
-                    font-weight: normal;
-                    color: var(--text-muted);
-                  "
+                  class="badge badge-primary"
                 ></span
               ></span>
               <select id="date-picker" class="date-select"></select>
@@ -244,9 +345,10 @@
               class="filter-controls"
               style="
                 display: flex;
-                gap: 0.5rem;
-                margin-bottom: 1rem;
+                gap: 0.75rem;
+                margin-bottom: 1.25rem;
                 flex-wrap: wrap;
+                align-items: center;
               "
             >
               <div
@@ -254,32 +356,35 @@
                   display: flex;
                   align-items: center;
                   gap: 0.5rem;
-                  background: #eee;
-                  padding: 0.25rem 0.75rem;
-                  border-radius: 0.5rem;
+                  background: #f1f5f9;
+                  padding: 0.4rem 0.75rem;
+                  border-radius: 0.75rem;
                   font-size: 0.875rem;
+                  border: 1px solid var(--border);
                 "
               >
-                <span>價格:</span>
+                <span style="color: var(--text-muted); font-weight: 500">價格:</span>
                 <input
                   type="number"
                   id="price-min"
                   placeholder="最小"
                   style="
-                    width: 60px;
+                    width: 70px;
                     border: 1px solid var(--border);
-                    border-radius: 4px;
+                    border-radius: 6px;
+                    padding: 0.2rem;
                   "
                 />
-                <span>-</span>
+                <span style="color: var(--text-muted)">-</span>
                 <input
                   type="number"
                   id="price-max"
                   placeholder="最大"
                   style="
-                    width: 60px;
+                    width: 70px;
                     border: 1px solid var(--border);
-                    border-radius: 4px;
+                    border-radius: 6px;
+                    padding: 0.2rem;
                   "
                 />
               </div>
@@ -288,37 +393,33 @@
                   display: flex;
                   align-items: center;
                   gap: 0.5rem;
-                  background: #eee;
-                  padding: 0.25rem 0.75rem;
-                  border-radius: 0.5rem;
+                  background: #f1f5f9;
+                  padding: 0.4rem 0.75rem;
+                  border-radius: 0.75rem;
                   font-size: 0.875rem;
+                  border: 1px solid var(--border);
                 "
               >
-                <span>成交量 > </span>
+                <span style="color: var(--text-muted); font-weight: 500">成交量 > </span>
                 <input
                   type="number"
                   id="volume-min"
-                  placeholder="10000000"
+                  placeholder="10,000"
                   style="
-                    width: 100px;
+                    width: 90px;
                     border: 1px solid var(--border);
-                    border-radius: 4px;
+                    border-radius: 6px;
+                    padding: 0.2rem;
                   "
                 />
+                <span style="color: var(--text-muted)">張</span>
               </div>
               <button
                 id="clear-filters"
-                style="
-                  background: var(--text-muted);
-                  color: white;
-                  border: none;
-                  padding: 0.25rem 0.75rem;
-                  border-radius: 0.5rem;
-                  cursor: pointer;
-                  font-size: 0.875rem;
-                "
+                class="btn btn-secondary"
+                style="padding: 0.4rem 0.75rem"
               >
-                清除
+                清除條件
               </button>
             </div>
             <div class="table-container">
@@ -354,28 +455,28 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 1rem;
-                margin-top: 1rem;
-                padding: 1rem 0;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
                 border-top: 1px solid var(--border);
               "
             >
               <button
                 id="prev-page"
-                class="date-select"
-                style="cursor: pointer"
+                class="btn btn-secondary"
+                style="padding: 0.5rem 1rem"
               >
                 上一頁
               </button>
               <span
                 id="page-info"
-                style="font-size: 0.875rem; color: var(--text-muted)"
+                style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600"
                 >第 1 / 1 頁</span
               >
               <button
                 id="next-page"
-                class="date-select"
-                style="cursor: pointer"
+                class="btn btn-secondary"
+                style="padding: 0.5rem 1rem"
               >
                 下一頁
               </button>
@@ -384,55 +485,75 @@
         </div>
 
         <div class="sidebar">
-          <div class="card" style="margin-bottom: 1.5rem">
-            <div class="card-title">
-              <span>跳空上漲 (Gap Jump)</span>
-              <select
-                id="gap-sort"
-                class="date-select"
-                style="
-                  font-size: 0.75rem;
-                  padding: 0.2rem 0.5rem;
-                  margin-left: auto;
-                  margin-right: 0.5rem;
-                "
-              >
-                <option value="diff-desc">上漲量 ↓</option>
-                <option value="diff-asc">上漲量 ↑</option>
-                <option value="ratio-desc">漲幅 ↓</option>
-                <option value="ratio-asc">漲幅 ↑</option>
-              </select>
-              <span
-                id="gap-count"
-                style="
-                  font-size: 0.75rem;
-                  font-weight: normal;
-                  color: var(--text-muted);
-                "
-              ></span>
-            </div>
-            <div
-              id="gap-list"
-              style="max-height: 400px; overflow-y: auto; font-size: 0.875rem"
-            >
-              <div class="loader">載入中...</div>
+          <div class="sidebar-section">
+            <div class="card">
+              <div class="card-title">市場摘要</div>
+              <div id="market-summary" class="stats">
+                <div class="stat-item" style="border-left: 4px solid var(--primary);">
+                  <span class="stat-label">大盤指數</span>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <span id="summary-index" class="stat-value">--</span>
+                    <span id="summary-changes" style="font-weight: 700; font-size: 0.875rem;">--</span>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">成交金額</span>
+                  <span id="summary-turnover" class="stat-value">--</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">成交股數</span>
+                  <span id="summary-volume" class="stat-value">--</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">成交筆數</span>
+                  <span id="summary-transactions" class="stat-value">--</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-title">市場摘要</div>
-            <div id="market-summary" class="stats">
-              <div class="stat-item">
-                <span class="stat-label">成交金額</span>
-                <span id="summary-turnover" class="stat-value">--</span>
+          <div class="sidebar-section">
+            <div class="card">
+              <div class="card-title">
+                <span>跳空上漲</span>
+                <span
+                  id="gap-count"
+                  class="badge badge-accent"
+                ></span>
               </div>
-              <div class="stat-item">
-                <span class="stat-label">成交股數</span>
-                <span id="summary-volume" class="stat-value">--</span>
+              <div
+                style="margin-bottom: 0.75rem; display: flex; justify-content: flex-end"
+              >
+                  <select id="gap-sort" class="date-select" style="font-size: 0.75rem; padding: 0.25rem 0.5rem">
+                    <option value="diff-desc">漲點 ↓</option>
+                    <option value="diff-asc">漲點 ↑</option>
+                    <option value="ratio-desc">漲幅 ↓</option>
+                    <option value="ratio-asc">漲幅 ↑</option>
+                  </select>
               </div>
-              <div class="stat-item">
-                <span class="stat-label">成交筆數</span>
-                <span id="summary-transactions" class="stat-value">--</span>
+              <div
+                id="gap-list"
+                style="max-height: 350px; overflow-y: auto; font-size: 0.875rem"
+              >
+                <div class="loader" style="height: 100px">載入中...</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="card">
+              <div class="card-title">
+                <span>處置股票</span>
+                <span
+                  id="punish-count"
+                  class="badge badge-danger"
+                ></span>
+              </div>
+              <div
+                id="punish-list"
+                style="max-height: 350px; overflow-y: auto; font-size: 0.875rem"
+              >
+                <div class="loader" style="height: 100px">載入中...</div>
               </div>
             </div>
           </div>
@@ -445,6 +566,7 @@
       let indexData = [];
       let currentStockData = [];
       let currentGapData = [];
+      let currentPunishData = [];
       let filteredStocks = [];
       let chart = null;
 
@@ -531,7 +653,10 @@
         const seenDates = new Set();
 
         // Load all index files to get full history
-        for (const date of manifest.daily_index) {
+        // Optimize: only load a few recent ones for the chart if many exist, but here we load all
+        const indexFiles = manifest.daily_index.slice(0, 30).reverse(); // Last 30 days
+        
+        for (const date of indexFiles) {
           try {
             const response = await fetch(`data/daily_index/${date}.json`);
             const data = await response.json();
@@ -546,7 +671,7 @@
           }
         }
 
-        // Sort by date (assuming format is YY/MM/DD or similar, might need better sorting)
+        // Sort by date
         allData.sort((a, b) => a.date.localeCompare(b.date));
         indexData = allData;
 
@@ -554,6 +679,14 @@
           const latest = indexData[indexData.length - 1];
           document.getElementById("last-update").textContent =
             `最後更新: ${latest.date}`;
+          document.getElementById("summary-index").textContent = 
+            latest.index.toLocaleString();
+          
+          const changes = parseFloat(latest.changes);
+          const changesEl = document.getElementById("summary-changes");
+          changesEl.textContent = (changes >= 0 ? "+" : "") + changes.toFixed(2);
+          changesEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
+
           document.getElementById("summary-turnover").textContent =
             (latest.turnover / 100000000).toFixed(2) + " 億";
           document.getElementById("summary-volume").textContent =
@@ -567,8 +700,8 @@
       async function loadStockData(date) {
         document.getElementById("stock-list").innerHTML = "";
         document.getElementById("stock-loader").style.display = "flex";
-        document.getElementById("gap-list").innerHTML =
-          '<div class="loader">載入中...</div>';
+        document.getElementById("gap-list").innerHTML = '<div class="loader" style="height: 100px">載入中...</div>';
+        document.getElementById("punish-list").innerHTML = '<div class="loader" style="height: 100px">載入中...</div>';
 
         try {
           // Load daily price
@@ -583,15 +716,27 @@
           filterStocks();
 
           // Load gap jump if available
-          if (manifest.gap_jump.includes(date)) {
+          if (manifest.gap_jump && manifest.gap_jump.includes(date)) {
             const gapResponse = await fetch(`data/gap_jump/${date}.json`);
             currentGapData = await gapResponse.json();
             renderGapList();
           } else {
             currentGapData = [];
             document.getElementById("gap-list").innerHTML =
-              '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無此日期策略數據</div>';
-            document.getElementById("gap-count").textContent = "";
+              '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無此日期數據</div>';
+            document.getElementById("gap-count").textContent = "0";
+          }
+
+          // Load punish data if available
+          if (manifest.daily_punish && manifest.daily_punish.includes(date)) {
+            const punishResponse = await fetch(`data/daily_punish/${date}.json`);
+            currentPunishData = await punishResponse.json();
+            renderPunishList();
+          } else {
+            currentPunishData = [];
+            document.getElementById("punish-list").innerHTML =
+              '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無此日期數據</div>';
+            document.getElementById("punish-count").textContent = "0";
           }
         } catch (error) {
           console.error("Error loading data:", error);
@@ -606,18 +751,11 @@
         const sortVal = document.getElementById("gap-sort").value;
 
         container.innerHTML = "";
-        countLabel.textContent = `(共 ${currentGapData.length} 筆)`;
+        countLabel.textContent = currentGapData.length;
 
         if (currentGapData.length === 0) {
-          if (
-            manifest.gap_jump.includes(
-              document.getElementById("date-picker").value,
-            )
-          ) {
-            container.innerHTML =
-              '<div style="padding: 1rem; color: var(--text-muted); font-style: italic;">無符合條件股票</div>';
-          }
-          return;
+            container.innerHTML = '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無符合條件股票</div>';
+            return;
         }
 
         // Copy for sorting
@@ -630,24 +768,55 @@
           return sortDir === "asc" ? valA - valB : valB - valA;
         });
 
-        const list = document.createElement("div");
         data.forEach((stock) => {
           const item = document.createElement("div");
-          item.style.cssText =
-            "padding: 0.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;";
+          item.className = "list-item";
+          item.style.display = "flex";
+          item.style.justifyContent = "space-between";
+          item.style.alignItems = "center";
+          
           item.innerHTML = `
                     <div>
-                        <div style="font-weight: 600;">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted);">${stock.id}</span></div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)}</div>
+                        <div style="font-weight: 700; color: var(--text);">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
                     </div>
                     <div style="text-align: right;">
-                        <div class="price-up">${stock.today_close}</div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted);">跳空: +${stock.diff} (${stock.ratio}%)</div>
+                        <div class="price-up" style="font-size: 1rem;">${stock.today_close}</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">+${stock.diff} (${stock.ratio}%)</div>
                     </div>
                 `;
-          list.appendChild(item);
+          container.appendChild(item);
         });
-        container.appendChild(list);
+      }
+
+      function renderPunishList() {
+        const container = document.getElementById("punish-list");
+        const countLabel = document.getElementById("punish-count");
+
+        container.innerHTML = "";
+        countLabel.textContent = currentPunishData.length;
+
+        if (currentPunishData.length === 0) {
+            container.innerHTML = '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">今日無處置股票</div>';
+            return;
+        }
+
+        currentPunishData.forEach((stock) => {
+          const item = document.createElement("div");
+          item.className = "list-item";
+          
+          item.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
+                        <div style="font-weight: 700; color: var(--text);">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
+                        <span class="tag" style="margin: 0; background: #fee2e2; color: #b91c1c;">${stock.measure}</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                        <span>期間: ${stock.from} ~ ${stock.to}</span>
+                        <span>次數: ${stock.accumulated}</span>
+                    </div>
+                `;
+          container.appendChild(item);
+        });
       }
 
       function setSort(column) {
@@ -665,8 +834,7 @@
         const stocks = filteredStocks;
         const tbody = document.getElementById("stock-list");
         tbody.innerHTML = "";
-        document.getElementById("stock-count").textContent =
-          `(共 ${stocks.length} 筆)`;
+        document.getElementById("stock-count").textContent = stocks.length;
 
         // Sort
         stocks.sort((a, b) => {
@@ -686,7 +854,8 @@
         ["id", "name", "close", "diff", "volume"].forEach((col) => {
           const span = document.getElementById(`sort-${col}`);
           if (col === sortColumn) {
-            span.textContent = sortDirection === "asc" ? "▲" : "▼";
+            span.textContent = sortDirection === "asc" ? "↑" : "↓";
+            span.style.color = "var(--primary)";
           } else {
             span.textContent = "";
           }
@@ -713,11 +882,11 @@
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
-                    <td>${stock.id}</td>
-                    <td>${stock.name}</td>
-                    <td>${stock.close}</td>
-                    <td class="${diffClass}">${diffPrefix}${diff}</td>
-                    <td>${(stock.volume / 1000).toFixed(0)}張</td>
+                    <td style="font-weight: 500;">${stock.id}</td>
+                    <td style="font-weight: 600;">${stock.name}</td>
+                    <td style="font-weight: 600;">${stock.close}</td>
+                    <td class="${diffClass}" style="font-weight: 700;">${diffPrefix}${diff}</td>
+                    <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, {maximumFractionDigits:0})}張</td>
                 `;
           tbody.appendChild(tr);
         });
@@ -732,7 +901,7 @@
         const maxPrice =
           parseFloat(document.getElementById("price-max").value) || Infinity;
         const minVolume =
-          parseInt(document.getElementById("volume-min").value) || 0;
+          (parseInt(document.getElementById("volume-min").value) || 0) * 1000;
 
         filteredStocks = currentStockData.filter((s) => {
           const matchesSearch =
@@ -763,26 +932,48 @@
               {
                 label: "大盤指數",
                 data: prices,
-                borderColor: "#2563eb",
-                backgroundColor: "rgba(37, 99, 235, 0.1)",
+                borderColor: "#3b82f6",
+                backgroundColor: "rgba(59, 130, 246, 0.1)",
+                borderWidth: 3,
                 fill: true,
-                tension: 0.3,
-                pointRadius: 2,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: "#3b82f6",
+                pointBorderColor: "#fff",
+                pointHoverRadius: 6,
               },
             ],
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
+              tooltip: {
+                backgroundColor: "rgba(15, 23, 42, 0.9)",
+                padding: 12,
+                titleFont: { size: 14, weight: "bold" },
+                bodyFont: { size: 13 },
+                displayColors: false,
+              }
             },
             scales: {
               y: {
                 beginAtZero: false,
                 grid: { color: "#f1f5f9" },
+                ticks: {
+                  font: { size: 11 },
+                  color: "#64748b"
+                }
               },
               x: {
                 grid: { display: false },
+                ticks: {
+                  font: { size: 11 },
+                  color: "#64748b",
+                  maxRotation: 45,
+                  minRotation: 45
+                }
               },
             },
           },
