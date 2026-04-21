@@ -54,6 +54,7 @@ jobs:
           git add docs/data/daily_price/*.json
           git add docs/data/daily_punish/*.json
           git add docs/data/gap_jump/*.json
+          git add docs/data/gap_drop/*.json
           git add docs/data/manifest.json
           # 檢查是否有變更，避免在沒有資料更新時報錯
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update stock data: $(date +'%Y-%m-%d')" && git push)
