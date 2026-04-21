@@ -903,6 +903,15 @@
           let valA = a[sortColumn];
           let valB = b[sortColumn];
 
+          // Handle n/a cases for sorting
+          if (sortColumn === 'ratio') {
+              valA = a.prev_close ? a.ratio : -Infinity;
+              valB = b.prev_close ? b.ratio : -Infinity;
+          } else if (sortColumn === 'diff') {
+              valA = a.prev_close ? (a.close - a.prev_close) : -Infinity;
+              valB = b.prev_close ? (b.close - b.prev_close) : -Infinity;
+          }
+
           if (typeof valA === "string") {
             return sortDirection === "asc"
               ? valA.localeCompare(valB)
@@ -931,9 +940,10 @@
         const pageData = stocks.slice(start, end);
 
         pageData.forEach((stock) => {
-          const diff = stock.diff.toFixed(2);
+          const diff = stock.prev_close ? (stock.close - stock.prev_close) : null;
           const diffClass = diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
           const diffPrefix = diff > 0 ? "+" : "";
+          const diffText = diff !== null ? diff.toFixed(2) : "n/a";
           
           const ratioText = stock.prev_close ? (stock.ratio >= 0 ? "+" : "") + stock.ratio.toFixed(2) + "%" : "n/a";
           const ratioClass = stock.ratio > 0 ? "price-up" : stock.ratio < 0 ? "price-down" : "";
@@ -943,7 +953,7 @@
                     <td style="font-weight: 500;">${stock.id}</td>
                     <td style="font-weight: 600;">${stock.name}</td>
                     <td style="font-weight: 600;">${stock.close}</td>
-                    <td class="${diffClass}" style="font-weight: 700;">${diffPrefix}${diff}</td>
+                    <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
                     <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
                     <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, {maximumFractionDigits:0})}張</td>
                 `;
