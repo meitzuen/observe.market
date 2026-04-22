@@ -1,14 +1,14 @@
 import os
 import json
 import argparse
-from datetime import datetime
 
 
-def run_jump_strategy(date_str=None):
+def run_strategy_for_market(market_type, date_str=None):
     # Base directory is one level up from this script (in the project root)
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_dir = os.path.join(base_dir, "docs", "data")
-    
+    market_dir = os.path.join(data_dir, market_type)
+
     manifest_path = os.path.join(data_dir, "manifest.json")
 
     if not os.path.exists(manifest_path):
@@ -18,55 +18,62 @@ def run_jump_strategy(date_str=None):
     with open(manifest_path, "r", encoding="utf-8") as f:
         manifest = json.load(f)
 
-    daily_price_dates = manifest.get("daily_price", [])
-    if not daily_price_dates:
-        print("No daily price data available.")
+    price_dir = os.path.join(market_dir, "daily_price")
+    if not os.path.exists(price_dir):
+        print(f"Price directory not found: {price_dir}")
         return
 
-    # If no date provided, use the latest from manifest
+    daily_price_dates = sorted(
+        [f.replace(".json", "") for f in os.listdir(price_dir) if f.endswith(".json")],
+        reverse=True,
+    )
+
+    if not daily_price_dates:
+        print(f"No daily price data available for {market_type}.")
+        return
+
     if not date_str:
         today_date = daily_price_dates[0]
     else:
         today_date = date_str
 
     if today_date not in daily_price_dates:
-        print(f"Data for {today_date} not found in manifest.")
+        print(f"Data for {today_date} not found in {market_type} price data.")
         return
 
-    # Find the previous available date
     idx = daily_price_dates.index(today_date)
     if idx + 1 >= len(daily_price_dates):
-        print(f"No previous date data available for {today_date}.")
+        print(f"No previous date data available for {today_date} in {market_type}.")
         return
 
     prev_date = daily_price_dates[idx + 1]
 
-    print(f"Running Gap Jump strategy: Comparing today ({today_date}) with previous date ({prev_date})")
+    print(f"Running strategy for {market_type}: {today_date} vs {prev_date}")
 
-    # Load today's data
-    today_file = os.path.join(data_dir, "daily_price", f"{today_date}.json")
-    with open(today_file, "r", encoding="utf-8") as f:
+    # Load data
+    with open(
+        os.path.join(price_dir, f"{today_date}.json"), "r", encoding="utf-8"
+    ) as f:
         today_data = json.load(f)
-
-    # Load previous day's data
-    prev_file = os.path.join(data_dir, "daily_price", f"{prev_date}.json")
-    with open(prev_file, "r", encoding="utf-8") as f:
+    with open(os.path.join(price_dir, f"{prev_date}.json"), "r", encoding="utf-8") as f:
         prev_data = json.load(f)
 
-    # Convert prev_data to a dict for quick lookup
     prev_lookup = {stock["id"]: stock for stock in prev_data}
 
-    results = []
+    jump_results = []
+    drop_results = []
+
     for stock in today_data:
         stock_id = stock["id"]
         if stock_id in prev_lookup:
             today_close = stock.get("close")
             prev_high = prev_lookup[stock_id].get("high")
+            prev_low = prev_lookup[stock_id].get("low")
 
-            if today_close is not None and prev_high is not None:
-                if today_close > prev_high:
-                    # Found a match
-                    results.append(
+            if today_close is not None:
+                # Jump strategy
+                if prev_high is not None and today_close > prev_high:
+                    jump_results.append(
                         {
                             "id": stock_id,
                             "name": stock["name"],
@@ -82,80 +89,9 @@ def run_jump_strategy(date_str=None):
                         }
                     )
 
-    # Save results
-    output_dir = os.path.join(data_dir, "gap_jump")
-    os.makedirs(output_dir, exist_ok=True)
-
-    output_path = os.path.join(output_dir, f"{today_date}.json")
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=4)
-
-    print(f"Found {len(results)} stocks for Gap Jump. Results saved to {output_path}")
-
-
-def run_drop_strategy(date_str=None):
-    # Base directory is one level up from this script (in the project root)
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    data_dir = os.path.join(base_dir, "docs", "data")
-    
-    manifest_path = os.path.join(data_dir, "manifest.json")
-
-    if not os.path.exists(manifest_path):
-        print(f"Manifest not found at {manifest_path}.")
-        return
-
-    with open(manifest_path, "r", encoding="utf-8") as f:
-        manifest = json.load(f)
-
-    daily_price_dates = manifest.get("daily_price", [])
-    if not daily_price_dates:
-        print("No daily price data available.")
-        return
-
-    # If no date provided, use the latest from manifest
-    if not date_str:
-        today_date = daily_price_dates[0]
-    else:
-        today_date = date_str
-
-    if today_date not in daily_price_dates:
-        print(f"Data for {today_date} not found in manifest.")
-        return
-
-    # Find the previous available date
-    idx = daily_price_dates.index(today_date)
-    if idx + 1 >= len(daily_price_dates):
-        print(f"No previous date data available for {today_date}.")
-        return
-
-    prev_date = daily_price_dates[idx + 1]
-
-    print(f"Running Gap Drop strategy: Comparing today ({today_date}) with previous date ({prev_date})")
-
-    # Load today's data
-    today_file = os.path.join(data_dir, "daily_price", f"{today_date}.json")
-    with open(today_file, "r", encoding="utf-8") as f:
-        today_data = json.load(f)
-
-    # Load previous day's data
-    prev_file = os.path.join(data_dir, "daily_price", f"{prev_date}.json")
-    with open(prev_file, "r", encoding="utf-8") as f:
-        prev_data = json.load(f)
-
-    # Convert prev_data to a dict for quick lookup
-    prev_lookup = {stock["id"]: stock for stock in prev_data}
-
-    results = []
-    for stock in today_data:
-        stock_id = stock["id"]
-        if stock_id in prev_lookup:
-            today_close = stock.get("close")
-            prev_low = prev_lookup[stock_id].get("low")
-
-            if today_close is not None and prev_low is not None:
-                if today_close < prev_low:
-                    # Found a match
-                    results.append(
+                # Drop strategy
+                if prev_low is not None and today_close < prev_low:
+                    drop_results.append(
                         {
                             "id": stock_id,
                             "name": stock["name"],
@@ -171,15 +107,19 @@ def run_drop_strategy(date_str=None):
                         }
                     )
 
-    # Save results
-    output_dir = os.path.join(data_dir, "gap_drop")
-    os.makedirs(output_dir, exist_ok=True)
+    # Save Gap Jump
+    jump_dir = os.path.join(market_dir, "gap_jump")
+    os.makedirs(jump_dir, exist_ok=True)
+    with open(os.path.join(jump_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
+        json.dump(jump_results, f, ensure_ascii=False, indent=4)
+    print(f"[{market_type}] Found {len(jump_results)} stocks for Gap Jump.")
 
-    output_path = os.path.join(output_dir, f"{today_date}.json")
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=4)
-
-    print(f"Found {len(results)} stocks for Gap Drop. Results saved to {output_path}")
+    # Save Gap Drop
+    drop_dir = os.path.join(market_dir, "gap_drop")
+    os.makedirs(drop_dir, exist_ok=True)
+    with open(os.path.join(drop_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
+        json.dump(drop_results, f, ensure_ascii=False, indent=4)
+    print(f"[{market_type}] Found {len(drop_results)} stocks for Gap Drop.")
 
 
 if __name__ == "__main__":
@@ -190,5 +130,6 @@ if __name__ == "__main__":
         help="Date string in YYYY-MM-DD format",
     )
     args = parser.parse_args()
-    run_jump_strategy(args.date_str)
-    run_drop_strategy(args.date_str)
+
+    run_strategy_for_market("twse", args.date_str)
+    run_strategy_for_market("tpex", args.date_str)
