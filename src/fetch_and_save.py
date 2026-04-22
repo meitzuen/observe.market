@@ -6,10 +6,8 @@ from datetime import datetime
 from typing import Dict, Any
 
 
-def get_daily_index(date_str: str) -> Dict[str, Any]:
-    index_url = (
-        f"https://market.smallplum.xyz/api/strategy/twse/daily/index?date_str={date_str}"
-    )
+def get_daily_index(type: str, date_str: str) -> Dict[str, Any]:
+    index_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/index?date_str={date_str}"
     try:
         response = requests.get(index_url)
         response.raise_for_status()
@@ -19,8 +17,8 @@ def get_daily_index(date_str: str) -> Dict[str, Any]:
         return None
 
 
-def get_daily_price(date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/twse/daily/stock_price?date_str={date_str}"
+def get_daily_price(type: str, date_str: str) -> Dict[str, Any]:
+    daily_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/stock_price?date_str={date_str}"
     try:
         response = requests.get(daily_url)
         response.raise_for_status()
@@ -30,8 +28,8 @@ def get_daily_price(date_str: str) -> Dict[str, Any]:
         return None
 
 
-def get_punish_stock(date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/twse/daily/punishment?start_date={date_str}&end_date={date_str}"
+def get_punish_stock(type: str, date_str: str) -> Dict[str, Any]:
+    daily_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/punishment?start_date={date_str}&end_date={date_str}"
     try:
         response = requests.get(daily_url)
         response.raise_for_status()
@@ -47,7 +45,7 @@ def save_to_file(data: Dict[str, Any], path: str, filename: str) -> None:
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         data_root = os.path.join(base_dir, "docs", "data")
         target_dir = os.path.join(data_root, path)
-        
+
         os.makedirs(data_root, exist_ok=True)
         os.makedirs(target_dir, exist_ok=True)
 
@@ -72,14 +70,26 @@ if __name__ == "__main__":
 
     date_str = args.date_str
 
-    daily_data = get_daily_index(date_str)
-    if daily_data:
-        save_to_file(daily_data, "daily_index", date_str)
+    twse_daily_data = get_daily_index("twse", date_str)
+    if twse_daily_data:
+        save_to_file(twse_daily_data, "twse/daily_index", date_str)
 
-    daily_price_data = get_daily_price(date_str)
-    if daily_price_data:
-        save_to_file(daily_price_data, "daily_price", date_str)
+    tpex_daily_data = get_daily_index("tpex", date_str)
+    if tpex_daily_data:
+        save_to_file(tpex_daily_data, "tpex/daily_index", date_str)
 
-    daily_punish_data = get_punish_stock(date_str)
-    if daily_punish_data:
-        save_to_file(daily_punish_data, "daily_punish", date_str)
+    twse_daily_price_data = get_daily_price("twse", date_str)
+    if twse_daily_price_data:
+        save_to_file(twse_daily_price_data, "twse/daily_price", date_str)
+
+    tpex_daily_price_data = get_daily_price("tpex", date_str)
+    if tpex_daily_price_data:
+        save_to_file(tpex_daily_price_data, "tpex/daily_price", date_str)
+
+    twse_daily_punish_data = get_punish_stock("twse", date_str)
+    if twse_daily_punish_data:
+        save_to_file(twse_daily_punish_data, "twse/daily_punish", date_str)
+
+    tpex_daily_punish_data = get_punish_stock("tpex", date_str)
+    if tpex_daily_punish_data:
+        save_to_file(tpex_daily_punish_data, "tpex/daily_punish", date_str)
