@@ -8,7 +8,7 @@ from typing import Dict, Any
 
 def get_daily_index(date_str: str) -> Dict[str, Any]:
     index_url = (
-        f"https://market.smallplum.xyz/api/strategy/daily/index?date_str={date_str}"
+        f"https://market.smallplum.xyz/api/strategy/twse/daily/index?date_str={date_str}"
     )
     try:
         response = requests.get(index_url)
@@ -20,7 +20,7 @@ def get_daily_index(date_str: str) -> Dict[str, Any]:
 
 
 def get_daily_price(date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/daily/stock_price?date_str={date_str}"
+    daily_url = f"https://market.smallplum.xyz/api/strategy/twse/daily/stock_price?date_str={date_str}"
     try:
         response = requests.get(daily_url)
         response.raise_for_status()
@@ -31,7 +31,7 @@ def get_daily_price(date_str: str) -> Dict[str, Any]:
 
 
 def get_punish_stock(date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/daily/punishment?start_date={date_str}&end_date={date_str}"
+    daily_url = f"https://market.smallplum.xyz/api/strategy/twse/daily/punishment?start_date={date_str}&end_date={date_str}"
     try:
         response = requests.get(daily_url)
         response.raise_for_status()
