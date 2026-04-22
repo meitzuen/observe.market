@@ -7,63 +7,32 @@ def generate_manifest():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_dir = os.path.join(base_dir, "docs", "data")
     
-    manifest = {
-        "daily_index": [],
-        "daily_price": [],
-        "gap_jump": [],
-        "gap_drop": [],
-        "daily_punish": [],
-    }
+    manifest = {}
 
-    if os.path.exists(os.path.join(data_dir, "daily_index")):
-        manifest["daily_index"] = sorted(
-            [
-                f.replace(".json", "")
-                for f in os.listdir(os.path.join(data_dir, "daily_index"))
-                if f.endswith(".json")
-            ],
-            reverse=True,
-        )
+    for market in ["twse", "tpex"]:
+        market_dir = os.path.join(data_dir, market)
+        if not os.path.exists(market_dir):
+            continue
+            
+        manifest[market] = {
+            "daily_index": [],
+            "daily_price": [],
+            "gap_jump": [],
+            "gap_drop": [],
+            "daily_punish": [],
+        }
 
-    if os.path.exists(os.path.join(data_dir, "daily_price")):
-        manifest["daily_price"] = sorted(
-            [
-                f.replace(".json", "")
-                for f in os.listdir(os.path.join(data_dir, "daily_price"))
-                if f.endswith(".json")
-            ],
-            reverse=True,
-        )
-
-    if os.path.exists(os.path.join(data_dir, "gap_jump")):
-        manifest["gap_jump"] = sorted(
-            [
-                f.replace(".json", "")
-                for f in os.listdir(os.path.join(data_dir, "gap_jump"))
-                if f.endswith(".json")
-            ],
-            reverse=True,
-        )
-
-    if os.path.exists(os.path.join(data_dir, "gap_drop")):
-        manifest["gap_drop"] = sorted(
-            [
-                f.replace(".json", "")
-                for f in os.listdir(os.path.join(data_dir, "gap_drop"))
-                if f.endswith(".json")
-            ],
-            reverse=True,
-        )
-
-    if os.path.exists(os.path.join(data_dir, "daily_punish")):
-        manifest["daily_punish"] = sorted(
-            [
-                f.replace(".json", "")
-                for f in os.listdir(os.path.join(data_dir, "daily_punish"))
-                if f.endswith(".json")
-            ],
-            reverse=True,
-        )
+        for category in manifest[market].keys():
+            category_dir = os.path.join(market_dir, category)
+            if os.path.exists(category_dir):
+                manifest[market][category] = sorted(
+                    [
+                        f.replace(".json", "")
+                        for f in os.listdir(category_dir)
+                        if f.endswith(".json")
+                    ],
+                    reverse=True,
+                )
 
     manifest_path = os.path.join(data_dir, "manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:

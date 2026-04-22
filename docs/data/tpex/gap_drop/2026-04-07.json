@@ -1,0 +1,2225 @@
+[
+    {
+        "id": "1259",
+        "name": "安心",
+        "today_close": 58.7,
+        "prev_low": 60.3,
+        "diff": -1.6,
+        "ratio": -2.65,
+        "volume": 7000
+    },
+    {
+        "id": "1295",
+        "name": "生合",
+        "today_close": 59.8,
+        "prev_low": 63.9,
+        "diff": -4.1,
+        "ratio": -6.42,
+        "volume": 174000
+    },
+    {
+        "id": "1336",
+        "name": "台翰",
+        "today_close": 13.85,
+        "prev_low": 13.95,
+        "diff": -0.1,
+        "ratio": -0.72,
+        "volume": 134000
+    },
+    {
+        "id": "1565",
+        "name": "精華",
+        "today_close": 103.0,
+        "prev_low": 104.0,
+        "diff": -1.0,
+        "ratio": -0.96,
+        "volume": 111000
+    },
+    {
+        "id": "1584",
+        "name": "精剛",
+        "today_close": 21.65,
+        "prev_low": 21.7,
+        "diff": -0.05,
+        "ratio": -0.23,
+        "volume": 388000
+    },
+    {
+        "id": "1593",
+        "name": "祺驊",
+        "today_close": 33.35,
+        "prev_low": 34.0,
+        "diff": -0.65,
+        "ratio": -1.91,
+        "volume": 54000
+    },
+    {
+        "id": "1595",
+        "name": "川寶",
+        "today_close": 40.9,
+        "prev_low": 41.05,
+        "diff": -0.15,
+        "ratio": -0.37,
+        "volume": 113000
+    },
+    {
+        "id": "1599",
+        "name": "宏佳騰",
+        "today_close": 25.35,
+        "prev_low": 25.5,
+        "diff": -0.15,
+        "ratio": -0.59,
+        "volume": 6000
+    },
+    {
+        "id": "1742",
+        "name": "台蠟",
+        "today_close": 16.05,
+        "prev_low": 16.25,
+        "diff": -0.2,
+        "ratio": -1.23,
+        "volume": 43000
+    },
+    {
+        "id": "2063",
+        "name": "世鎧",
+        "today_close": 27.3,
+        "prev_low": 27.6,
+        "diff": -0.3,
+        "ratio": -1.09,
+        "volume": 21000
+    },
+    {
+        "id": "2064",
+        "name": "晉椿",
+        "today_close": 11.7,
+        "prev_low": 12.05,
+        "diff": -0.35,
+        "ratio": -2.9,
+        "volume": 269000
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "today_close": 30.9,
+        "prev_low": 31.0,
+        "diff": -0.1,
+        "ratio": -0.32,
+        "volume": 11000
+    },
+    {
+        "id": "2230",
+        "name": "泰茂",
+        "today_close": 30.15,
+        "prev_low": 30.7,
+        "diff": -0.55,
+        "ratio": -1.79,
+        "volume": 397000
+    },
+    {
+        "id": "2640",
+        "name": "大車隊",
+        "today_close": 168.0,
+        "prev_low": 171.5,
+        "diff": -3.5,
+        "ratio": -2.04,
+        "volume": 180000
+    },
+    {
+        "id": "2718",
+        "name": "全心投控",
+        "today_close": 46.45,
+        "prev_low": 46.5,
+        "diff": -0.05,
+        "ratio": -0.11,
+        "volume": 13000
+    },
+    {
+        "id": "2729",
+        "name": "瓦城",
+        "today_close": 171.0,
+        "prev_low": 173.0,
+        "diff": -2.0,
+        "ratio": -1.16,
+        "volume": 7000
+    },
+    {
+        "id": "2732",
+        "name": "六角",
+        "today_close": 66.2,
+        "prev_low": 66.9,
+        "diff": -0.7,
+        "ratio": -1.05,
+        "volume": 22000
+    },
+    {
+        "id": "2743",
+        "name": "山富",
+        "today_close": 72.6,
+        "prev_low": 73.5,
+        "diff": -0.9,
+        "ratio": -1.22,
+        "volume": 92000
+    },
+    {
+        "id": "2754",
+        "name": "亞洲藏壽司",
+        "today_close": 69.2,
+        "prev_low": 69.5,
+        "diff": -0.3,
+        "ratio": -0.43,
+        "volume": 132000
+    },
+    {
+        "id": "2755",
+        "name": "揚秦",
+        "today_close": 140.5,
+        "prev_low": 142.0,
+        "diff": -1.5,
+        "ratio": -1.06,
+        "volume": 43000
+    },
+    {
+        "id": "2948",
+        "name": "寶陞",
+        "today_close": 38.7,
+        "prev_low": 39.0,
+        "diff": -0.3,
+        "ratio": -0.77,
+        "volume": 2000
+    },
+    {
+        "id": "3064",
+        "name": "泰偉",
+        "today_close": 21.95,
+        "prev_low": 24.35,
+        "diff": -2.4,
+        "ratio": -9.86,
+        "volume": 7000
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "today_close": 17.25,
+        "prev_low": 18.0,
+        "diff": -0.75,
+        "ratio": -4.17,
+        "volume": 733000
+    },
+    {
+        "id": "3073",
+        "name": "天方能源",
+        "today_close": 25.95,
+        "prev_low": 26.9,
+        "diff": -0.95,
+        "ratio": -3.53,
+        "volume": 139000
+    },
+    {
+        "id": "3115",
+        "name": "富榮綱",
+        "today_close": 9.48,
+        "prev_low": 9.49,
+        "diff": -0.01,
+        "ratio": -0.11,
+        "volume": 11000
+    },
+    {
+        "id": "3128",
+        "name": "昇銳",
+        "today_close": 24.05,
+        "prev_low": 24.3,
+        "diff": -0.25,
+        "ratio": -1.03,
+        "volume": 93000
+    },
+    {
+        "id": "3205",
+        "name": "佰研",
+        "today_close": 59.3,
+        "prev_low": 60.3,
+        "diff": -1.0,
+        "ratio": -1.66,
+        "volume": 836000
+    },
+    {
+        "id": "3206",
+        "name": "志豐",
+        "today_close": 37.9,
+        "prev_low": 40.3,
+        "diff": -2.4,
+        "ratio": -5.96,
+        "volume": 539000
+    },
+    {
+        "id": "3219",
+        "name": "倚強科",
+        "today_close": 61.4,
+        "prev_low": 61.5,
+        "diff": -0.1,
+        "ratio": -0.16,
+        "volume": 92000
+    },
+    {
+        "id": "3221",
+        "name": "台嘉碩",
+        "today_close": 35.0,
+        "prev_low": 35.5,
+        "diff": -0.5,
+        "ratio": -1.41,
+        "volume": 5552000
+    },
+    {
+        "id": "3224",
+        "name": "三顧",
+        "today_close": 40.6,
+        "prev_low": 41.1,
+        "diff": -0.5,
+        "ratio": -1.22,
+        "volume": 19000
+    },
+    {
+        "id": "3236",
+        "name": "千如",
+        "today_close": 29.6,
+        "prev_low": 30.5,
+        "diff": -0.9,
+        "ratio": -2.95,
+        "volume": 1068000
+    },
+    {
+        "id": "3259",
+        "name": "鑫創",
+        "today_close": 17.3,
+        "prev_low": 17.6,
+        "diff": -0.3,
+        "ratio": -1.7,
+        "volume": 56000
+    },
+    {
+        "id": "3264",
+        "name": "欣銓",
+        "today_close": 156.0,
+        "prev_low": 161.0,
+        "diff": -5.0,
+        "ratio": -3.11,
+        "volume": 10235000
+    },
+    {
+        "id": "3287",
+        "name": "廣寰科",
+        "today_close": 27.9,
+        "prev_low": 28.0,
+        "diff": -0.1,
+        "ratio": -0.36,
+        "volume": 24000
+    },
+    {
+        "id": "3289",
+        "name": "宜特",
+        "today_close": 128.0,
+        "prev_low": 129.0,
+        "diff": -1.0,
+        "ratio": -0.78,
+        "volume": 1277000
+    },
+    {
+        "id": "3294",
+        "name": "英濟",
+        "today_close": 31.05,
+        "prev_low": 31.1,
+        "diff": -0.05,
+        "ratio": -0.16,
+        "volume": 302000
+    },
+    {
+        "id": "3297",
+        "name": "杭特",
+        "today_close": 32.65,
+        "prev_low": 33.0,
+        "diff": -0.35,
+        "ratio": -1.06,
+        "volume": 104000
+    },
+    {
+        "id": "3313",
+        "name": "斐成",
+        "today_close": 12.5,
+        "prev_low": 12.65,
+        "diff": -0.15,
+        "ratio": -1.19,
+        "volume": 147000
+    },
+    {
+        "id": "3317",
+        "name": "尼克森",
+        "today_close": 50.1,
+        "prev_low": 50.3,
+        "diff": -0.2,
+        "ratio": -0.4,
+        "volume": 908000
+    },
+    {
+        "id": "3354",
+        "name": "律勝",
+        "today_close": 24.05,
+        "prev_low": 24.4,
+        "diff": -0.35,
+        "ratio": -1.43,
+        "volume": 235000
+    },
+    {
+        "id": "3430",
+        "name": "奇鈦科",
+        "today_close": 68.2,
+        "prev_low": 68.8,
+        "diff": -0.6,
+        "ratio": -0.87,
+        "volume": 281000
+    },
+    {
+        "id": "3434",
+        "name": "哲固",
+        "today_close": 28.45,
+        "prev_low": 28.6,
+        "diff": -0.15,
+        "ratio": -0.52,
+        "volume": 82000
+    },
+    {
+        "id": "3498",
+        "name": "陽程",
+        "today_close": 72.1,
+        "prev_low": 72.8,
+        "diff": -0.7,
+        "ratio": -0.96,
+        "volume": 2566000
+    },
+    {
+        "id": "3499",
+        "name": "環天科",
+        "today_close": 17.75,
+        "prev_low": 18.15,
+        "diff": -0.4,
+        "ratio": -2.2,
+        "volume": 196000
+    },
+    {
+        "id": "3508",
+        "name": "位速",
+        "today_close": 32.45,
+        "prev_low": 36.05,
+        "diff": -3.6,
+        "ratio": -9.99,
+        "volume": 180000
+    },
+    {
+        "id": "3520",
+        "name": "華盈",
+        "today_close": 14.05,
+        "prev_low": 14.3,
+        "diff": -0.25,
+        "ratio": -1.75,
+        "volume": 97000
+    },
+    {
+        "id": "3523",
+        "name": "迎輝",
+        "today_close": 13.2,
+        "prev_low": 13.5,
+        "diff": -0.3,
+        "ratio": -2.22,
+        "volume": 36000
+    },
+    {
+        "id": "3527",
+        "name": "聚積",
+        "today_close": 51.6,
+        "prev_low": 52.0,
+        "diff": -0.4,
+        "ratio": -0.77,
+        "volume": 53000
+    },
+    {
+        "id": "3531",
+        "name": "先益",
+        "today_close": 21.0,
+        "prev_low": 21.55,
+        "diff": -0.55,
+        "ratio": -2.55,
+        "volume": 10000
+    },
+    {
+        "id": "3546",
+        "name": "宇峻",
+        "today_close": 69.7,
+        "prev_low": 69.9,
+        "diff": -0.2,
+        "ratio": -0.29,
+        "volume": 50000
+    },
+    {
+        "id": "3552",
+        "name": "同致",
+        "today_close": 53.7,
+        "prev_low": 54.9,
+        "diff": -1.2,
+        "ratio": -2.19,
+        "volume": 494000
+    },
+    {
+        "id": "3570",
+        "name": "大塚",
+        "today_close": 164.0,
+        "prev_low": 164.5,
+        "diff": -0.5,
+        "ratio": -0.3,
+        "volume": 13000
+    },
+    {
+        "id": "3581",
+        "name": "博磊",
+        "today_close": 64.6,
+        "prev_low": 65.8,
+        "diff": -1.2,
+        "ratio": -1.82,
+        "volume": 441000
+    },
+    {
+        "id": "3609",
+        "name": "三一東林",
+        "today_close": 25.3,
+        "prev_low": 26.6,
+        "diff": -1.3,
+        "ratio": -4.89,
+        "volume": 383000
+    },
+    {
+        "id": "3611",
+        "name": "鼎翰",
+        "today_close": 184.5,
+        "prev_low": 185.0,
+        "diff": -0.5,
+        "ratio": -0.27,
+        "volume": 27000
+    },
+    {
+        "id": "3623",
+        "name": "富晶通",
+        "today_close": 21.15,
+        "prev_low": 21.6,
+        "diff": -0.45,
+        "ratio": -2.08,
+        "volume": 86000
+    },
+    {
+        "id": "3625",
+        "name": "西勝",
+        "today_close": 16.05,
+        "prev_low": 16.4,
+        "diff": -0.35,
+        "ratio": -2.13,
+        "volume": 222000
+    },
+    {
+        "id": "3628",
+        "name": "盈正",
+        "today_close": 64.1,
+        "prev_low": 64.5,
+        "diff": -0.4,
+        "ratio": -0.62,
+        "volume": 110000
+    },
+    {
+        "id": "3630",
+        "name": "新鉅科",
+        "today_close": 27.05,
+        "prev_low": 27.45,
+        "diff": -0.4,
+        "ratio": -1.46,
+        "volume": 672000
+    },
+    {
+        "id": "3632",
+        "name": "研勤",
+        "today_close": 9.21,
+        "prev_low": 9.58,
+        "diff": -0.37,
+        "ratio": -3.86,
+        "volume": 8000
+    },
+    {
+        "id": "4109",
+        "name": "加捷生醫",
+        "today_close": 12.4,
+        "prev_low": 12.7,
+        "diff": -0.3,
+        "ratio": -2.36,
+        "volume": 259000
+    },
+    {
+        "id": "4121",
+        "name": "優盛",
+        "today_close": 15.3,
+        "prev_low": 15.55,
+        "diff": -0.25,
+        "ratio": -1.61,
+        "volume": 205000
+    },
+    {
+        "id": "4123",
+        "name": "晟德",
+        "today_close": 40.95,
+        "prev_low": 41.5,
+        "diff": -0.55,
+        "ratio": -1.33,
+        "volume": 1868000
+    },
+    {
+        "id": "4128",
+        "name": "中天",
+        "today_close": 17.15,
+        "prev_low": 17.2,
+        "diff": -0.05,
+        "ratio": -0.29,
+        "volume": 573000
+    },
+    {
+        "id": "4129",
+        "name": "聯合",
+        "today_close": 99.1,
+        "prev_low": 99.4,
+        "diff": -0.3,
+        "ratio": -0.3,
+        "volume": 286000
+    },
+    {
+        "id": "4131",
+        "name": "浩泰",
+        "today_close": 33.2,
+        "prev_low": 34.25,
+        "diff": -1.05,
+        "ratio": -3.07,
+        "volume": 146000
+    },
+    {
+        "id": "4147",
+        "name": "中裕",
+        "today_close": 55.1,
+        "prev_low": 56.3,
+        "diff": -1.2,
+        "ratio": -2.13,
+        "volume": 1078000
+    },
+    {
+        "id": "4154",
+        "name": "樂威科-KY",
+        "today_close": 14.15,
+        "prev_low": 14.5,
+        "diff": -0.35,
+        "ratio": -2.41,
+        "volume": 3000
+    },
+    {
+        "id": "4157",
+        "name": "太景*-KY",
+        "today_close": 11.2,
+        "prev_low": 11.3,
+        "diff": -0.1,
+        "ratio": -0.88,
+        "volume": 841000
+    },
+    {
+        "id": "4162",
+        "name": "智擎",
+        "today_close": 58.5,
+        "prev_low": 58.9,
+        "diff": -0.4,
+        "ratio": -0.68,
+        "volume": 180000
+    },
+    {
+        "id": "4167",
+        "name": "松瑞藥",
+        "today_close": 20.7,
+        "prev_low": 20.95,
+        "diff": -0.25,
+        "ratio": -1.19,
+        "volume": 1341000
+    },
+    {
+        "id": "4168",
+        "name": "醣聯",
+        "today_close": 23.1,
+        "prev_low": 23.15,
+        "diff": -0.05,
+        "ratio": -0.22,
+        "volume": 64000
+    },
+    {
+        "id": "4171",
+        "name": "瑞基",
+        "today_close": 18.45,
+        "prev_low": 18.85,
+        "diff": -0.4,
+        "ratio": -2.12,
+        "volume": 113000
+    },
+    {
+        "id": "4305",
+        "name": "世坤",
+        "today_close": 43.8,
+        "prev_low": 43.95,
+        "diff": -0.15,
+        "ratio": -0.34,
+        "volume": 2000
+    },
+    {
+        "id": "4416",
+        "name": "三圓",
+        "today_close": 13.05,
+        "prev_low": 13.7,
+        "diff": -0.65,
+        "ratio": -4.74,
+        "volume": 242000
+    },
+    {
+        "id": "4417",
+        "name": "金洲",
+        "today_close": 50.1,
+        "prev_low": 50.3,
+        "diff": -0.2,
+        "ratio": -0.4,
+        "volume": 157000
+    },
+    {
+        "id": "4420",
+        "name": "光明",
+        "today_close": 41.15,
+        "prev_low": 43.0,
+        "diff": -1.85,
+        "ratio": -4.3,
+        "volume": 75000
+    },
+    {
+        "id": "4432",
+        "name": "銘旺實",
+        "today_close": 15.3,
+        "prev_low": 15.65,
+        "diff": -0.35,
+        "ratio": -2.24,
+        "volume": 10000
+    },
+    {
+        "id": "4433",
+        "name": "興采",
+        "today_close": 20.95,
+        "prev_low": 21.0,
+        "diff": -0.05,
+        "ratio": -0.24,
+        "volume": 6000
+    },
+    {
+        "id": "4510",
+        "name": "高鋒",
+        "today_close": 41.6,
+        "prev_low": 41.85,
+        "diff": -0.25,
+        "ratio": -0.6,
+        "volume": 397000
+    },
+    {
+        "id": "4513",
+        "name": "福裕",
+        "today_close": 16.35,
+        "prev_low": 16.6,
+        "diff": -0.25,
+        "ratio": -1.51,
+        "volume": 212000
+    },
+    {
+        "id": "4533",
+        "name": "協易機",
+        "today_close": 29.15,
+        "prev_low": 30.05,
+        "diff": -0.9,
+        "ratio": -3.0,
+        "volume": 1353000
+    },
+    {
+        "id": "4534",
+        "name": "慶騰",
+        "today_close": 22.7,
+        "prev_low": 22.95,
+        "diff": -0.25,
+        "ratio": -1.09,
+        "volume": 501000
+    },
+    {
+        "id": "4535",
+        "name": "至興",
+        "today_close": 28.0,
+        "prev_low": 28.05,
+        "diff": -0.05,
+        "ratio": -0.18,
+        "volume": 23000
+    },
+    {
+        "id": "4543",
+        "name": "萬在",
+        "today_close": 30.6,
+        "prev_low": 31.9,
+        "diff": -1.3,
+        "ratio": -4.08,
+        "volume": 528000
+    },
+    {
+        "id": "4550",
+        "name": "長佳",
+        "today_close": 24.2,
+        "prev_low": 24.55,
+        "diff": -0.35,
+        "ratio": -1.43,
+        "volume": 18000
+    },
+    {
+        "id": "4558",
+        "name": "寶緯",
+        "today_close": 19.3,
+        "prev_low": 19.5,
+        "diff": -0.2,
+        "ratio": -1.03,
+        "volume": 161000
+    },
+    {
+        "id": "4561",
+        "name": "健椿",
+        "today_close": 31.7,
+        "prev_low": 32.5,
+        "diff": -0.8,
+        "ratio": -2.46,
+        "volume": 93000
+    },
+    {
+        "id": "4580",
+        "name": "捷流閥業",
+        "today_close": 79.7,
+        "prev_low": 79.9,
+        "diff": -0.2,
+        "ratio": -0.25,
+        "volume": 30000
+    },
+    {
+        "id": "4702",
+        "name": "中美實",
+        "today_close": 9.99,
+        "prev_low": 10.0,
+        "diff": -0.01,
+        "ratio": -0.1,
+        "volume": 79000
+    },
+    {
+        "id": "4714",
+        "name": "永捷",
+        "today_close": 13.95,
+        "prev_low": 14.0,
+        "diff": -0.05,
+        "ratio": -0.36,
+        "volume": 693000
+    },
+    {
+        "id": "4721",
+        "name": "美琪瑪",
+        "today_close": 71.4,
+        "prev_low": 71.9,
+        "diff": -0.5,
+        "ratio": -0.7,
+        "volume": 478000
+    },
+    {
+        "id": "4726",
+        "name": "永昕",
+        "today_close": 30.75,
+        "prev_low": 31.2,
+        "diff": -0.45,
+        "ratio": -1.44,
+        "volume": 284000
+    },
+    {
+        "id": "4728",
+        "name": "雙美",
+        "today_close": 383.5,
+        "prev_low": 384.5,
+        "diff": -1.0,
+        "ratio": -0.26,
+        "volume": 5000
+    },
+    {
+        "id": "4729",
+        "name": "熒茂",
+        "today_close": 19.1,
+        "prev_low": 19.15,
+        "diff": -0.05,
+        "ratio": -0.26,
+        "volume": 100000
+    },
+    {
+        "id": "4744",
+        "name": "皇將",
+        "today_close": 36.5,
+        "prev_low": 37.4,
+        "diff": -0.9,
+        "ratio": -2.41,
+        "volume": 1430000
+    },
+    {
+        "id": "4754",
+        "name": "國碳科",
+        "today_close": 37.1,
+        "prev_low": 37.5,
+        "diff": -0.4,
+        "ratio": -1.07,
+        "volume": 13000
+    },
+    {
+        "id": "4804",
+        "name": "大略-KY",
+        "today_close": 4.96,
+        "prev_low": 5.51,
+        "diff": -0.55,
+        "ratio": -9.98,
+        "volume": 341000
+    },
+    {
+        "id": "4972",
+        "name": "湯石照明",
+        "today_close": 17.55,
+        "prev_low": 17.6,
+        "diff": -0.05,
+        "ratio": -0.28,
+        "volume": 56000
+    },
+    {
+        "id": "5011",
+        "name": "久陽",
+        "today_close": 12.85,
+        "prev_low": 13.1,
+        "diff": -0.25,
+        "ratio": -1.91,
+        "volume": 394000
+    },
+    {
+        "id": "5014",
+        "name": "建錩",
+        "today_close": 10.15,
+        "prev_low": 10.3,
+        "diff": -0.15,
+        "ratio": -1.46,
+        "volume": 160000
+    },
+    {
+        "id": "5015",
+        "name": "華祺",
+        "today_close": 25.4,
+        "prev_low": 25.5,
+        "diff": -0.1,
+        "ratio": -0.39,
+        "volume": 10000
+    },
+    {
+        "id": "5202",
+        "name": "力新",
+        "today_close": 12.65,
+        "prev_low": 12.8,
+        "diff": -0.15,
+        "ratio": -1.17,
+        "volume": 115000
+    },
+    {
+        "id": "5205",
+        "name": "中茂",
+        "today_close": 28.9,
+        "prev_low": 29.15,
+        "diff": -0.25,
+        "ratio": -0.86,
+        "volume": 1000
+    },
+    {
+        "id": "5210",
+        "name": "寶碩",
+        "today_close": 21.85,
+        "prev_low": 21.9,
+        "diff": -0.05,
+        "ratio": -0.23,
+        "volume": 30000
+    },
+    {
+        "id": "5227",
+        "name": "立凱-KY",
+        "today_close": 22.05,
+        "prev_low": 23.2,
+        "diff": -1.15,
+        "ratio": -4.96,
+        "volume": 384000
+    },
+    {
+        "id": "5228",
+        "name": "鈺鎧",
+        "today_close": 22.85,
+        "prev_low": 23.4,
+        "diff": -0.55,
+        "ratio": -2.35,
+        "volume": 111000
+    },
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "today_close": 16.0,
+        "prev_low": 16.25,
+        "diff": -0.25,
+        "ratio": -1.54,
+        "volume": 140000
+    },
+    {
+        "id": "5245",
+        "name": "智晶",
+        "today_close": 23.1,
+        "prev_low": 24.1,
+        "diff": -1.0,
+        "ratio": -4.15,
+        "volume": 127000
+    },
+    {
+        "id": "5251",
+        "name": "天鉞電",
+        "today_close": 28.25,
+        "prev_low": 28.45,
+        "diff": -0.2,
+        "ratio": -0.7,
+        "volume": 103000
+    },
+    {
+        "id": "5272",
+        "name": "笙科",
+        "today_close": 21.7,
+        "prev_low": 22.05,
+        "diff": -0.35,
+        "ratio": -1.59,
+        "volume": 139000
+    },
+    {
+        "id": "5274",
+        "name": "信驊",
+        "today_close": 11470.0,
+        "prev_low": 11500.0,
+        "diff": -30.0,
+        "ratio": -0.26,
+        "volume": 209000
+    },
+    {
+        "id": "5278",
+        "name": "尚凡*",
+        "today_close": 23.9,
+        "prev_low": 24.35,
+        "diff": -0.45,
+        "ratio": -1.85,
+        "volume": 352000
+    },
+    {
+        "id": "5291",
+        "name": "邑昇",
+        "today_close": 66.8,
+        "prev_low": 71.9,
+        "diff": -5.1,
+        "ratio": -7.09,
+        "volume": 2833000
+    },
+    {
+        "id": "5302",
+        "name": "太欣",
+        "today_close": 10.6,
+        "prev_low": 10.65,
+        "diff": -0.05,
+        "ratio": -0.47,
+        "volume": 355000
+    },
+    {
+        "id": "5310",
+        "name": "天剛",
+        "today_close": 25.65,
+        "prev_low": 26.7,
+        "diff": -1.05,
+        "ratio": -3.93,
+        "volume": 11000
+    },
+    {
+        "id": "5321",
+        "name": "美而快",
+        "today_close": 23.75,
+        "prev_low": 24.0,
+        "diff": -0.25,
+        "ratio": -1.04,
+        "volume": 18000
+    },
+    {
+        "id": "5328",
+        "name": "華容",
+        "today_close": 22.7,
+        "prev_low": 22.8,
+        "diff": -0.1,
+        "ratio": -0.44,
+        "volume": 1712000
+    },
+    {
+        "id": "5351",
+        "name": "鈺創",
+        "today_close": 64.6,
+        "prev_low": 66.1,
+        "diff": -1.5,
+        "ratio": -2.27,
+        "volume": 13890000
+    },
+    {
+        "id": "5371",
+        "name": "中光電",
+        "today_close": 72.7,
+        "prev_low": 73.4,
+        "diff": -0.7,
+        "ratio": -0.95,
+        "volume": 1643000
+    },
+    {
+        "id": "5398",
+        "name": "慕康生醫",
+        "today_close": 21.9,
+        "prev_low": 22.5,
+        "diff": -0.6,
+        "ratio": -2.67,
+        "volume": 105000
+    },
+    {
+        "id": "5432",
+        "name": "新門",
+        "today_close": 131.5,
+        "prev_low": 133.0,
+        "diff": -1.5,
+        "ratio": -1.13,
+        "volume": 30000
+    },
+    {
+        "id": "5438",
+        "name": "東友",
+        "today_close": 18.7,
+        "prev_low": 18.85,
+        "diff": -0.15,
+        "ratio": -0.8,
+        "volume": 129000
+    },
+    {
+        "id": "5460",
+        "name": "同協",
+        "today_close": 14.55,
+        "prev_low": 14.6,
+        "diff": -0.05,
+        "ratio": -0.34,
+        "volume": 101000
+    },
+    {
+        "id": "5478",
+        "name": "智冠",
+        "today_close": 98.9,
+        "prev_low": 99.1,
+        "diff": -0.2,
+        "ratio": -0.2,
+        "volume": 138000
+    },
+    {
+        "id": "5490",
+        "name": "同亨",
+        "today_close": 26.45,
+        "prev_low": 27.45,
+        "diff": -1.0,
+        "ratio": -3.64,
+        "volume": 781000
+    },
+    {
+        "id": "5512",
+        "name": "力麒",
+        "today_close": 7.83,
+        "prev_low": 7.87,
+        "diff": -0.04,
+        "ratio": -0.51,
+        "volume": 708000
+    },
+    {
+        "id": "5520",
+        "name": "力泰",
+        "today_close": 82.0,
+        "prev_low": 82.5,
+        "diff": -0.5,
+        "ratio": -0.61,
+        "volume": 9000
+    },
+    {
+        "id": "5536",
+        "name": "聖暉*",
+        "today_close": 688.0,
+        "prev_low": 692.0,
+        "diff": -4.0,
+        "ratio": -0.58,
+        "volume": 1002000
+    },
+    {
+        "id": "5543",
+        "name": "桓鼎-KY",
+        "today_close": 26.15,
+        "prev_low": 26.4,
+        "diff": -0.25,
+        "ratio": -0.95,
+        "volume": 3000
+    },
+    {
+        "id": "5604",
+        "name": "中連",
+        "today_close": 34.6,
+        "prev_low": 34.7,
+        "diff": -0.1,
+        "ratio": -0.29,
+        "volume": 3000
+    },
+    {
+        "id": "5878",
+        "name": "台名",
+        "today_close": 41.0,
+        "prev_low": 41.2,
+        "diff": -0.2,
+        "ratio": -0.49,
+        "volume": 9000
+    },
+    {
+        "id": "6020",
+        "name": "大展證",
+        "today_close": 19.4,
+        "prev_low": 19.5,
+        "diff": -0.1,
+        "ratio": -0.51,
+        "volume": 4000
+    },
+    {
+        "id": "6028",
+        "name": "公勝保經",
+        "today_close": 87.0,
+        "prev_low": 88.0,
+        "diff": -1.0,
+        "ratio": -1.14,
+        "volume": 104000
+    },
+    {
+        "id": "6103",
+        "name": "合邦",
+        "today_close": 42.35,
+        "prev_low": 42.65,
+        "diff": -0.3,
+        "ratio": -0.7,
+        "volume": 35000
+    },
+    {
+        "id": "6104",
+        "name": "創惟",
+        "today_close": 90.8,
+        "prev_low": 91.2,
+        "diff": -0.4,
+        "ratio": -0.44,
+        "volume": 648000
+    },
+    {
+        "id": "6113",
+        "name": "亞矽",
+        "today_close": 19.7,
+        "prev_low": 20.05,
+        "diff": -0.35,
+        "ratio": -1.75,
+        "volume": 127000
+    },
+    {
+        "id": "6114",
+        "name": "久威",
+        "today_close": 29.2,
+        "prev_low": 29.45,
+        "diff": -0.25,
+        "ratio": -0.85,
+        "volume": 20000
+    },
+    {
+        "id": "6125",
+        "name": "廣運",
+        "today_close": 51.8,
+        "prev_low": 53.1,
+        "diff": -1.3,
+        "ratio": -2.45,
+        "volume": 1367000
+    },
+    {
+        "id": "6127",
+        "name": "九豪",
+        "today_close": 39.0,
+        "prev_low": 39.9,
+        "diff": -0.9,
+        "ratio": -2.26,
+        "volume": 6234000
+    },
+    {
+        "id": "6129",
+        "name": "普誠",
+        "today_close": 14.45,
+        "prev_low": 14.65,
+        "diff": -0.2,
+        "ratio": -1.37,
+        "volume": 416000
+    },
+    {
+        "id": "6134",
+        "name": "萬旭",
+        "today_close": 27.75,
+        "prev_low": 27.8,
+        "diff": -0.05,
+        "ratio": -0.18,
+        "volume": 487000
+    },
+    {
+        "id": "6140",
+        "name": "訊達",
+        "today_close": 17.8,
+        "prev_low": 18.65,
+        "diff": -0.85,
+        "ratio": -4.56,
+        "volume": 329000
+    },
+    {
+        "id": "6148",
+        "name": "驊宏資",
+        "today_close": 32.05,
+        "prev_low": 32.75,
+        "diff": -0.7,
+        "ratio": -2.14,
+        "volume": 154000
+    },
+    {
+        "id": "6160",
+        "name": "欣技",
+        "today_close": 15.4,
+        "prev_low": 15.6,
+        "diff": -0.2,
+        "ratio": -1.28,
+        "volume": 100000
+    },
+    {
+        "id": "6167",
+        "name": "久正",
+        "today_close": 12.8,
+        "prev_low": 13.0,
+        "diff": -0.2,
+        "ratio": -1.54,
+        "volume": 903000
+    },
+    {
+        "id": "6171",
+        "name": "大城地產",
+        "today_close": 26.45,
+        "prev_low": 26.5,
+        "diff": -0.05,
+        "ratio": -0.19,
+        "volume": 5000
+    },
+    {
+        "id": "6175",
+        "name": "立敦",
+        "today_close": 45.8,
+        "prev_low": 46.25,
+        "diff": -0.45,
+        "ratio": -0.97,
+        "volume": 640000
+    },
+    {
+        "id": "6182",
+        "name": "合晶",
+        "today_close": 30.9,
+        "prev_low": 31.3,
+        "diff": -0.4,
+        "ratio": -1.28,
+        "volume": 3141000
+    },
+    {
+        "id": "6207",
+        "name": "雷科",
+        "today_close": 49.55,
+        "prev_low": 50.0,
+        "diff": -0.45,
+        "ratio": -0.9,
+        "volume": 536000
+    },
+    {
+        "id": "6229",
+        "name": "研通",
+        "today_close": 20.45,
+        "prev_low": 20.55,
+        "diff": -0.1,
+        "ratio": -0.49,
+        "volume": 119000
+    },
+    {
+        "id": "6233",
+        "name": "旺玖",
+        "today_close": 24.75,
+        "prev_low": 24.9,
+        "diff": -0.15,
+        "ratio": -0.6,
+        "volume": 231000
+    },
+    {
+        "id": "6237",
+        "name": "驊訊",
+        "today_close": 34.8,
+        "prev_low": 35.0,
+        "diff": -0.2,
+        "ratio": -0.57,
+        "volume": 139000
+    },
+    {
+        "id": "6263",
+        "name": "普萊德",
+        "today_close": 123.0,
+        "prev_low": 123.5,
+        "diff": -0.5,
+        "ratio": -0.4,
+        "volume": 34000
+    },
+    {
+        "id": "6265",
+        "name": "方土昶",
+        "today_close": 36.0,
+        "prev_low": 36.5,
+        "diff": -0.5,
+        "ratio": -1.37,
+        "volume": 3275000
+    },
+    {
+        "id": "6270",
+        "name": "倍微",
+        "today_close": 24.15,
+        "prev_low": 24.25,
+        "diff": -0.1,
+        "ratio": -0.41,
+        "volume": 203000
+    },
+    {
+        "id": "6279",
+        "name": "胡連",
+        "today_close": 106.5,
+        "prev_low": 107.5,
+        "diff": -1.0,
+        "ratio": -0.93,
+        "volume": 470000
+    },
+    {
+        "id": "6292",
+        "name": "迅德",
+        "today_close": 44.55,
+        "prev_low": 44.85,
+        "diff": -0.3,
+        "ratio": -0.67,
+        "volume": 134000
+    },
+    {
+        "id": "6294",
+        "name": "智基",
+        "today_close": 40.35,
+        "prev_low": 40.5,
+        "diff": -0.15,
+        "ratio": -0.37,
+        "volume": 14000
+    },
+    {
+        "id": "6418",
+        "name": "詠昇",
+        "today_close": 29.1,
+        "prev_low": 29.7,
+        "diff": -0.6,
+        "ratio": -2.02,
+        "volume": 46000
+    },
+    {
+        "id": "6419",
+        "name": "京晨科",
+        "today_close": 89.8,
+        "prev_low": 93.8,
+        "diff": -4.0,
+        "ratio": -4.26,
+        "volume": 271000
+    },
+    {
+        "id": "6432",
+        "name": "今展科",
+        "today_close": 32.0,
+        "prev_low": 32.1,
+        "diff": -0.1,
+        "ratio": -0.31,
+        "volume": 102000
+    },
+    {
+        "id": "6462",
+        "name": "神盾",
+        "today_close": 101.0,
+        "prev_low": 104.5,
+        "diff": -3.5,
+        "ratio": -3.35,
+        "volume": 1154000
+    },
+    {
+        "id": "6470",
+        "name": "宇智",
+        "today_close": 46.0,
+        "prev_low": 46.5,
+        "diff": -0.5,
+        "ratio": -1.08,
+        "volume": 113000
+    },
+    {
+        "id": "6474",
+        "name": "華豫寧",
+        "today_close": 35.9,
+        "prev_low": 35.95,
+        "diff": -0.05,
+        "ratio": -0.14,
+        "volume": 18000
+    },
+    {
+        "id": "6485",
+        "name": "點序",
+        "today_close": 77.8,
+        "prev_low": 78.0,
+        "diff": -0.2,
+        "ratio": -0.26,
+        "volume": 249000
+    },
+    {
+        "id": "6492",
+        "name": "生華科",
+        "today_close": 48.6,
+        "prev_low": 48.9,
+        "diff": -0.3,
+        "ratio": -0.61,
+        "volume": 332000
+    },
+    {
+        "id": "6499",
+        "name": "益安",
+        "today_close": 88.5,
+        "prev_low": 90.4,
+        "diff": -1.9,
+        "ratio": -2.1,
+        "volume": 699000
+    },
+    {
+        "id": "6509",
+        "name": "聚和",
+        "today_close": 43.0,
+        "prev_low": 44.45,
+        "diff": -1.45,
+        "ratio": -3.26,
+        "volume": 5684000
+    },
+    {
+        "id": "6512",
+        "name": "啟發電",
+        "today_close": 19.6,
+        "prev_low": 19.65,
+        "diff": -0.05,
+        "ratio": -0.25,
+        "volume": 5000
+    },
+    {
+        "id": "6517",
+        "name": "保勝光學",
+        "today_close": 55.3,
+        "prev_low": 55.5,
+        "diff": -0.2,
+        "ratio": -0.36,
+        "volume": 108000
+    },
+    {
+        "id": "6535",
+        "name": "順藥",
+        "today_close": 139.0,
+        "prev_low": 141.5,
+        "diff": -2.5,
+        "ratio": -1.77,
+        "volume": 162000
+    },
+    {
+        "id": "6546",
+        "name": "正基",
+        "today_close": 66.2,
+        "prev_low": 67.5,
+        "diff": -1.3,
+        "ratio": -1.93,
+        "volume": 607000
+    },
+    {
+        "id": "6574",
+        "name": "霈方",
+        "today_close": 103.0,
+        "prev_low": 104.5,
+        "diff": -1.5,
+        "ratio": -1.44,
+        "volume": 82000
+    },
+    {
+        "id": "6577",
+        "name": "勁豐",
+        "today_close": 75.7,
+        "prev_low": 76.0,
+        "diff": -0.3,
+        "ratio": -0.39,
+        "volume": 17000
+    },
+    {
+        "id": "6596",
+        "name": "寬宏藝術",
+        "today_close": 95.3,
+        "prev_low": 96.2,
+        "diff": -0.9,
+        "ratio": -0.94,
+        "volume": 414000
+    },
+    {
+        "id": "6603",
+        "name": "富強鑫",
+        "today_close": 20.8,
+        "prev_low": 21.0,
+        "diff": -0.2,
+        "ratio": -0.95,
+        "volume": 670000
+    },
+    {
+        "id": "6609",
+        "name": "瀧澤科",
+        "today_close": 37.15,
+        "prev_low": 38.2,
+        "diff": -1.05,
+        "ratio": -2.75,
+        "volume": 269000
+    },
+    {
+        "id": "6612",
+        "name": "奈米醫材",
+        "today_close": 69.0,
+        "prev_low": 70.0,
+        "diff": -1.0,
+        "ratio": -1.43,
+        "volume": 17000
+    },
+    {
+        "id": "6613",
+        "name": "朋億*",
+        "today_close": 201.0,
+        "prev_low": 206.0,
+        "diff": -5.0,
+        "ratio": -2.43,
+        "volume": 186000
+    },
+    {
+        "id": "6640",
+        "name": "均華",
+        "today_close": 1330.0,
+        "prev_low": 1360.0,
+        "diff": -30.0,
+        "ratio": -2.21,
+        "volume": 450000
+    },
+    {
+        "id": "6643",
+        "name": "M31",
+        "today_close": 463.0,
+        "prev_low": 470.5,
+        "diff": -7.5,
+        "ratio": -1.59,
+        "volume": 786000
+    },
+    {
+        "id": "6649",
+        "name": "台生材",
+        "today_close": 44.95,
+        "prev_low": 45.3,
+        "diff": -0.35,
+        "ratio": -0.77,
+        "volume": 121000
+    },
+    {
+        "id": "6654",
+        "name": "天正國際",
+        "today_close": 88.8,
+        "prev_low": 89.0,
+        "diff": -0.2,
+        "ratio": -0.22,
+        "volume": 16000
+    },
+    {
+        "id": "6680",
+        "name": "鑫創電子",
+        "today_close": 57.2,
+        "prev_low": 58.0,
+        "diff": -0.8,
+        "ratio": -1.38,
+        "volume": 8000
+    },
+    {
+        "id": "6684",
+        "name": "安格",
+        "today_close": 41.85,
+        "prev_low": 42.15,
+        "diff": -0.3,
+        "ratio": -0.71,
+        "volume": 50000
+    },
+    {
+        "id": "6721",
+        "name": "信實",
+        "today_close": 58.6,
+        "prev_low": 58.8,
+        "diff": -0.2,
+        "ratio": -0.34,
+        "volume": 38000
+    },
+    {
+        "id": "6733",
+        "name": "博晟生醫",
+        "today_close": 32.45,
+        "prev_low": 32.7,
+        "diff": -0.25,
+        "ratio": -0.76,
+        "volume": 134000
+    },
+    {
+        "id": "6735",
+        "name": "美達科技",
+        "today_close": 58.4,
+        "prev_low": 62.1,
+        "diff": -3.7,
+        "ratio": -5.96,
+        "volume": 390000
+    },
+    {
+        "id": "6804",
+        "name": "明係",
+        "today_close": 16.65,
+        "prev_low": 16.7,
+        "diff": -0.05,
+        "ratio": -0.3,
+        "volume": 15000
+    },
+    {
+        "id": "6821",
+        "name": "聯寶",
+        "today_close": 52.0,
+        "prev_low": 56.5,
+        "diff": -4.5,
+        "ratio": -7.96,
+        "volume": 1120000
+    },
+    {
+        "id": "6841",
+        "name": "長佳智能",
+        "today_close": 59.2,
+        "prev_low": 60.1,
+        "diff": -0.9,
+        "ratio": -1.5,
+        "volume": 211000
+    },
+    {
+        "id": "6843",
+        "name": "進典",
+        "today_close": 43.85,
+        "prev_low": 44.0,
+        "diff": -0.15,
+        "ratio": -0.34,
+        "volume": 24000
+    },
+    {
+        "id": "6895",
+        "name": "宏碩系統",
+        "today_close": 173.5,
+        "prev_low": 174.0,
+        "diff": -0.5,
+        "ratio": -0.29,
+        "volume": 129000
+    },
+    {
+        "id": "6910",
+        "name": "德鴻",
+        "today_close": 29.35,
+        "prev_low": 29.65,
+        "diff": -0.3,
+        "ratio": -1.01,
+        "volume": 103000
+    },
+    {
+        "id": "6925",
+        "name": "意藍",
+        "today_close": 71.0,
+        "prev_low": 71.9,
+        "diff": -0.9,
+        "ratio": -1.25,
+        "volume": 29000
+    },
+    {
+        "id": "6996",
+        "name": "力領科技",
+        "today_close": 164.5,
+        "prev_low": 165.0,
+        "diff": -0.5,
+        "ratio": -0.3,
+        "volume": 132000
+    },
+    {
+        "id": "7402",
+        "name": "邑錡",
+        "today_close": 117.0,
+        "prev_low": 118.5,
+        "diff": -1.5,
+        "ratio": -1.27,
+        "volume": 201000
+    },
+    {
+        "id": "7547",
+        "name": "碩網",
+        "today_close": 75.5,
+        "prev_low": 77.2,
+        "diff": -1.7,
+        "ratio": -2.2,
+        "volume": 660000
+    },
+    {
+        "id": "7703",
+        "name": "銳澤",
+        "today_close": 217.0,
+        "prev_low": 220.0,
+        "diff": -3.0,
+        "ratio": -1.36,
+        "volume": 188000
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "today_close": 67.4,
+        "prev_low": 68.2,
+        "diff": -0.8,
+        "ratio": -1.17,
+        "volume": 748000
+    },
+    {
+        "id": "7714",
+        "name": "創泓科技",
+        "today_close": 128.5,
+        "prev_low": 129.0,
+        "diff": -0.5,
+        "ratio": -0.39,
+        "volume": 51000
+    },
+    {
+        "id": "7715",
+        "name": "裕山",
+        "today_close": 28.8,
+        "prev_low": 28.9,
+        "diff": -0.1,
+        "ratio": -0.35,
+        "volume": 37000
+    },
+    {
+        "id": "7743",
+        "name": "金利食安",
+        "today_close": 20.1,
+        "prev_low": 20.4,
+        "diff": -0.3,
+        "ratio": -1.47,
+        "volume": 17000
+    },
+    {
+        "id": "7747",
+        "name": "昕奇雲端",
+        "today_close": 114.0,
+        "prev_low": 115.0,
+        "diff": -1.0,
+        "ratio": -0.87,
+        "volume": 16000
+    },
+    {
+        "id": "7770",
+        "name": "君曜",
+        "today_close": 49.5,
+        "prev_low": 50.5,
+        "diff": -1.0,
+        "ratio": -1.98,
+        "volume": 12000
+    },
+    {
+        "id": "7811",
+        "name": "民盛",
+        "today_close": 87.2,
+        "prev_low": 88.6,
+        "diff": -1.4,
+        "ratio": -1.58,
+        "volume": 34000
+    },
+    {
+        "id": "8032",
+        "name": "光菱",
+        "today_close": 33.3,
+        "prev_low": 33.7,
+        "diff": -0.4,
+        "ratio": -1.19,
+        "volume": 20000
+    },
+    {
+        "id": "8043",
+        "name": "蜜望實",
+        "today_close": 63.6,
+        "prev_low": 64.2,
+        "diff": -0.6,
+        "ratio": -0.93,
+        "volume": 639000
+    },
+    {
+        "id": "8044",
+        "name": "網家",
+        "today_close": 22.15,
+        "prev_low": 22.4,
+        "diff": -0.25,
+        "ratio": -1.12,
+        "volume": 388000
+    },
+    {
+        "id": "8050",
+        "name": "廣積",
+        "today_close": 40.0,
+        "prev_low": 40.3,
+        "diff": -0.3,
+        "ratio": -0.74,
+        "volume": 237000
+    },
+    {
+        "id": "8054",
+        "name": "安國",
+        "today_close": 90.4,
+        "prev_low": 92.0,
+        "diff": -1.6,
+        "ratio": -1.74,
+        "volume": 1009000
+    },
+    {
+        "id": "8071",
+        "name": "能率網通",
+        "today_close": 15.7,
+        "prev_low": 15.8,
+        "diff": -0.1,
+        "ratio": -0.63,
+        "volume": 182000
+    },
+    {
+        "id": "8076",
+        "name": "伍豐",
+        "today_close": 22.9,
+        "prev_low": 23.45,
+        "diff": -0.55,
+        "ratio": -2.35,
+        "volume": 679000
+    },
+    {
+        "id": "8088",
+        "name": "品安",
+        "today_close": 48.7,
+        "prev_low": 49.7,
+        "diff": -1.0,
+        "ratio": -2.01,
+        "volume": 1340000
+    },
+    {
+        "id": "8089",
+        "name": "康全電訊",
+        "today_close": 22.0,
+        "prev_low": 22.6,
+        "diff": -0.6,
+        "ratio": -2.65,
+        "volume": 273000
+    },
+    {
+        "id": "8093",
+        "name": "保銳",
+        "today_close": 19.45,
+        "prev_low": 19.55,
+        "diff": -0.1,
+        "ratio": -0.51,
+        "volume": 49000
+    },
+    {
+        "id": "8097",
+        "name": "常珵",
+        "today_close": 55.1,
+        "prev_low": 55.2,
+        "diff": -0.1,
+        "ratio": -0.18,
+        "volume": 24000
+    },
+    {
+        "id": "8102",
+        "name": "傑霖科技",
+        "today_close": 54.4,
+        "prev_low": 56.6,
+        "diff": -2.2,
+        "ratio": -3.89,
+        "volume": 16000
+    },
+    {
+        "id": "8107",
+        "name": "大億金茂",
+        "today_close": 12.75,
+        "prev_low": 12.85,
+        "diff": -0.1,
+        "ratio": -0.78,
+        "volume": 166000
+    },
+    {
+        "id": "8121",
+        "name": "越峰",
+        "today_close": 23.05,
+        "prev_low": 23.2,
+        "diff": -0.15,
+        "ratio": -0.65,
+        "volume": 204000
+    },
+    {
+        "id": "8176",
+        "name": "智捷",
+        "today_close": 10.9,
+        "prev_low": 11.0,
+        "diff": -0.1,
+        "ratio": -0.91,
+        "volume": 380000
+    },
+    {
+        "id": "8182",
+        "name": "加高",
+        "today_close": 27.45,
+        "prev_low": 27.65,
+        "diff": -0.2,
+        "ratio": -0.72,
+        "volume": 132000
+    },
+    {
+        "id": "8183",
+        "name": "精星",
+        "today_close": 31.9,
+        "prev_low": 32.0,
+        "diff": -0.1,
+        "ratio": -0.31,
+        "volume": 141000
+    },
+    {
+        "id": "8234",
+        "name": "新漢",
+        "today_close": 58.3,
+        "prev_low": 59.4,
+        "diff": -1.1,
+        "ratio": -1.85,
+        "volume": 457000
+    },
+    {
+        "id": "8240",
+        "name": "華宏",
+        "today_close": 52.1,
+        "prev_low": 54.2,
+        "diff": -2.1,
+        "ratio": -3.87,
+        "volume": 1783000
+    },
+    {
+        "id": "8277",
+        "name": "商丞",
+        "today_close": 7.71,
+        "prev_low": 7.8,
+        "diff": -0.09,
+        "ratio": -1.15,
+        "volume": 272000
+    },
+    {
+        "id": "8289",
+        "name": "泰藝",
+        "today_close": 35.4,
+        "prev_low": 35.5,
+        "diff": -0.1,
+        "ratio": -0.28,
+        "volume": 1005000
+    },
+    {
+        "id": "8342",
+        "name": "益張",
+        "today_close": 87.1,
+        "prev_low": 88.3,
+        "diff": -1.2,
+        "ratio": -1.36,
+        "volume": 6000
+    },
+    {
+        "id": "8426",
+        "name": "紅木-KY",
+        "today_close": 25.15,
+        "prev_low": 25.4,
+        "diff": -0.25,
+        "ratio": -0.98,
+        "volume": 40000
+    },
+    {
+        "id": "8431",
+        "name": "匯鑽科",
+        "today_close": 55.3,
+        "prev_low": 55.9,
+        "diff": -0.6,
+        "ratio": -1.07,
+        "volume": 945000
+    },
+    {
+        "id": "8432",
+        "name": "東生華",
+        "today_close": 51.2,
+        "prev_low": 51.6,
+        "diff": -0.4,
+        "ratio": -0.78,
+        "volume": 12000
+    },
+    {
+        "id": "8433",
+        "name": "弘帆",
+        "today_close": 61.5,
+        "prev_low": 62.0,
+        "diff": -0.5,
+        "ratio": -0.81,
+        "volume": 150000
+    },
+    {
+        "id": "8435",
+        "name": "鉅邁",
+        "today_close": 56.5,
+        "prev_low": 56.7,
+        "diff": -0.2,
+        "ratio": -0.35,
+        "volume": 5000
+    },
+    {
+        "id": "8436",
+        "name": "大江",
+        "today_close": 124.5,
+        "prev_low": 125.5,
+        "diff": -1.0,
+        "ratio": -0.8,
+        "volume": 854000
+    },
+    {
+        "id": "8440",
+        "name": "綠電",
+        "today_close": 22.2,
+        "prev_low": 22.45,
+        "diff": -0.25,
+        "ratio": -1.11,
+        "volume": 56000
+    },
+    {
+        "id": "8444",
+        "name": "綠河-KY",
+        "today_close": 8.4,
+        "prev_low": 8.88,
+        "diff": -0.48,
+        "ratio": -5.41,
+        "volume": 28000
+    },
+    {
+        "id": "8450",
+        "name": "霹靂",
+        "today_close": 17.0,
+        "prev_low": 17.15,
+        "diff": -0.15,
+        "ratio": -0.87,
+        "volume": 39000
+    },
+    {
+        "id": "8905",
+        "name": "裕國",
+        "today_close": 39.5,
+        "prev_low": 40.05,
+        "diff": -0.55,
+        "ratio": -1.37,
+        "volume": 8000
+    },
+    {
+        "id": "8924",
+        "name": "大田",
+        "today_close": 66.7,
+        "prev_low": 66.8,
+        "diff": -0.1,
+        "ratio": -0.15,
+        "volume": 22000
+    },
+    {
+        "id": "8931",
+        "name": "大汽電",
+        "today_close": 41.3,
+        "prev_low": 43.0,
+        "diff": -1.7,
+        "ratio": -3.95,
+        "volume": 98000
+    },
+    {
+        "id": "8933",
+        "name": "愛地雅",
+        "today_close": 6.7,
+        "prev_low": 6.75,
+        "diff": -0.05,
+        "ratio": -0.74,
+        "volume": 364000
+    },
+    {
+        "id": "8935",
+        "name": "邦泰",
+        "today_close": 17.9,
+        "prev_low": 18.5,
+        "diff": -0.6,
+        "ratio": -3.24,
+        "volume": 653000
+    },
+    {
+        "id": "8936",
+        "name": "國統",
+        "today_close": 50.2,
+        "prev_low": 50.6,
+        "diff": -0.4,
+        "ratio": -0.79,
+        "volume": 2350000
+    },
+    {
+        "id": "8938",
+        "name": "明安",
+        "today_close": 63.1,
+        "prev_low": 63.2,
+        "diff": -0.1,
+        "ratio": -0.16,
+        "volume": 100000
+    },
+    {
+        "id": "9962",
+        "name": "有益",
+        "today_close": 10.5,
+        "prev_low": 10.6,
+        "diff": -0.1,
+        "ratio": -0.94,
+        "volume": 62000
+    }
+]

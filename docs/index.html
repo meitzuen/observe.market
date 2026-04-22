@@ -302,10 +302,16 @@
         <span id="header-emoji" style="display: none; font-size: 1.5rem;">📈</span>
         <h1>Market Observer</h1>
       </div>
-      <div
-        id="last-update"
-        style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
-      ></div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <select id="market-select" class="date-select" style="font-weight: 700; border-color: var(--primary);">
+            <option value="twse">上市</option>
+            <option value="tpex">上櫃</option>
+        </select>
+        <div
+          id="last-update"
+          style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
+        ></div>
+      </div>
     </header>
 
     <div class="container">
@@ -571,7 +577,9 @@
     </div>
 
     <script>
+      let fullManifest = null;
       let manifest = null;
+      let currentMarket = "twse";
       let indexData = [];
       let currentStockData = [];
       let currentGapData = [];
@@ -588,28 +596,15 @@
       async function init() {
         try {
           const response = await fetch("data/manifest.json");
-          manifest = await response.json();
-
-          // Populate date picker
-          const datePicker = document.getElementById("date-picker");
-          manifest.daily_price.forEach((date, i) => {
-            const option = document.createElement("option");
-            option.value = date;
-            option.textContent = date;
-            datePicker.appendChild(option);
+          fullManifest = await response.json();
+          
+          const marketSelect = document.getElementById("market-select");
+          marketSelect.addEventListener("change", (e) => {
+              currentMarket = e.target.value;
+              updateMarketData();
           });
 
-          datePicker.addEventListener("change", (e) =>
-            loadStockData(e.target.value),
-          );
-
-          // Load initial data
-          if (manifest.daily_index.length > 0) {
-            await loadIndexData();
-          }
-          if (manifest.daily_price.length > 0) {
-            await loadStockData(manifest.daily_price[0]);
-          }
+          updateMarketData();
 
           document
             .getElementById("stock-search")
@@ -665,17 +660,46 @@
         }
       }
 
+      async function updateMarketData() {
+          manifest = fullManifest[currentMarket];
+          if (!manifest) return;
+
+          // Populate date picker
+          const datePicker = document.getElementById("date-picker");
+          const savedDate = datePicker.value;
+          datePicker.innerHTML = "";
+          manifest.daily_price.forEach((date, i) => {
+            const option = document.createElement("option");
+            option.value = date;
+            option.textContent = date;
+            datePicker.appendChild(option);
+          });
+
+          // Try to keep the same date if available in the new market
+          if (savedDate && manifest.daily_price.includes(savedDate)) {
+              datePicker.value = savedDate;
+          }
+
+          datePicker.onchange = (e) => loadStockData(e.target.value);
+
+          // Load initial data
+          if (manifest.daily_index.length > 0) {
+            await loadIndexData();
+          }
+          if (manifest.daily_price.length > 0) {
+            await loadStockData(datePicker.value);
+          }
+      }
+
       async function loadIndexData() {
         const allData = [];
         const seenDates = new Set();
 
-        // Load all index files to get full history
-        // Optimize: only load a few recent ones for the chart if many exist, but here we load all
         const indexFiles = manifest.daily_index.slice(0, 30).reverse(); // Last 30 days
         
         for (const date of indexFiles) {
           try {
-            const response = await fetch(`data/daily_index/${date}.json`);
+            const response = await fetch(`data/${currentMarket}/daily_index/${date}.json`);
             const data = await response.json();
             data.forEach((item) => {
               if (!seenDates.has(item.date)) {
@@ -721,7 +745,7 @@
         document.getElementById("punish-list").innerHTML = '<div class="loader" style="height: 100px">載入中...</div>';
 
         try {
-          const response = await fetch(`data/daily_price/${date}.json`);
+          const response = await fetch(`data/${currentMarket}/daily_price/${date}.json`);
           currentStockData = await response.json();
 
           const dates = manifest.daily_price;
@@ -730,7 +754,7 @@
           if (idx !== -1 && idx + 1 < dates.length) {
               const prevDate = dates[idx + 1];
               try {
-                  const prevResponse = await fetch(`data/daily_price/${prevDate}.json`);
+                  const prevResponse = await fetch(`data/${currentMarket}/daily_price/${prevDate}.json`);
                   prevData = await prevResponse.json();
               } catch (e) { console.error("Error loading prev day:", e); }
           }
@@ -748,7 +772,7 @@
           await loadGapData(date);
 
           if (manifest.daily_punish && manifest.daily_punish.includes(date)) {
-            const punishResponse = await fetch(`data/daily_punish/${date}.json`);
+            const punishResponse = await fetch(`data/${currentMarket}/daily_punish/${date}.json`);
             currentPunishData = await punishResponse.json();
             renderPunishList();
           } else {
@@ -787,7 +811,7 @@
 
         if (manifest[type] && manifest[type].includes(date)) {
           try {
-            const gapResponse = await fetch(`data/${type}/${date}.json`);
+            const gapResponse = await fetch(`data/${currentMarket}/${type}/${date}.json`);
             currentGapData = await gapResponse.json();
             renderGapList();
           } catch (e) {
@@ -955,7 +979,7 @@
                     <td style="font-weight: 600;">${stock.close}</td>
                     <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
                     <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
-                    <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, {maximumFractionDigits:0})}張</td>
+                    <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, {maximumFractionDigits:0})} 張</td>
                 `;
           tbody.appendChild(tr);
         });

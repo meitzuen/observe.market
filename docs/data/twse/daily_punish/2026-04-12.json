@@ -1,0 +1,62 @@
+[
+    {
+        "publish_date": "2026-03-30",
+        "measure": "第一次處置",
+        "id": "2231",
+        "name": "為升",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-31",
+        "to": "2026-04-15"
+    },
+    {
+        "publish_date": "2026-03-31",
+        "measure": "第一次處置",
+        "id": "3135",
+        "name": "凌航",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-04-01",
+        "to": "2026-04-16"
+    },
+    {
+        "publish_date": "2026-04-01",
+        "measure": "第一次處置",
+        "id": "1905",
+        "name": "華紙",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-04-02",
+        "to": "2026-04-17"
+    },
+    {
+        "publish_date": "2026-04-01",
+        "measure": "第一次處置",
+        "id": "7721",
+        "name": "微程式",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-04-02",
+        "to": "2026-04-17"
+    },
+    {
+        "publish_date": "2026-04-07",
+        "measure": "第二次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-04-08",
+        "to": "2026-04-21"
+    },
+    {
+        "publish_date": "2026-04-08",
+        "measure": "第二次處置",
+        "id": "6830",
+        "name": "汎銓",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-04-09",
+        "to": "2026-04-22"
+    }
+]
