@@ -306,6 +306,7 @@
         <select id="market-select" class="date-select" style="font-weight: 700; border-color: var(--primary);">
             <option value="twse">上市</option>
             <option value="tpex">上櫃</option>
+            <option value="warrant">權證</option>
         </select>
         <div
           id="last-update"
@@ -598,8 +599,19 @@
           const response = await fetch("data/manifest.json");
           fullManifest = await response.json();
           
+          const urlParams = new URLSearchParams(window.location.search);
+          const marketParam = urlParams.get('market');
+          if (marketParam && ['twse', 'tpex'].includes(marketParam)) {
+              currentMarket = marketParam;
+          }
+
           const marketSelect = document.getElementById("market-select");
+          marketSelect.value = currentMarket;
           marketSelect.addEventListener("change", (e) => {
+              if (e.target.value === "warrant") {
+                  window.location.href = "warrant.html";
+                  return;
+              }
               currentMarket = e.target.value;
               updateMarketData();
           });
@@ -761,8 +773,8 @@
           const prevMap = new Map(prevData.map(s => [s.id, s.close]));
 
           currentStockData.forEach((s) => {
-            s.diff = s.close - s.open;
             s.prev_close = prevMap.get(s.id);
+            s.diff = s.prev_close ? parseFloat((s.close - s.prev_close).toFixed(2)) : 0;
             s.ratio = (s.prev_close && s.prev_close !== 0) 
                       ? parseFloat(((s.close - s.prev_close) / s.prev_close * 100).toFixed(2)) 
                       : 0;
@@ -864,7 +876,7 @@
 
           item.innerHTML = `
                     <div>
-                        <div style="font-weight: 700; color: var(--text);">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="warrant.html?search=${stock.id}" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--text-muted);">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
                         <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
                     </div>
                     <div style="text-align: right;">
@@ -894,7 +906,7 @@
           
           item.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                        <div style="font-weight: 700; color: var(--text);">${stock.name} <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="warrant.html?search=${stock.id}" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--text-muted);">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
                         <span class="tag" style="margin: 0; background: #fee2e2; color: #b91c1c;">${stock.measure}</span>
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
@@ -964,18 +976,19 @@
         const pageData = stocks.slice(start, end);
 
         pageData.forEach((stock) => {
-          const diff = stock.prev_close ? (stock.close - stock.prev_close) : null;
+          const hasPrev = stock.prev_close !== undefined;
+          const diff = stock.diff;
           const diffClass = diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
           const diffPrefix = diff > 0 ? "+" : "";
-          const diffText = diff !== null ? diff.toFixed(2) : "n/a";
+          const diffText = hasPrev ? diff.toFixed(2) : "n/a";
           
-          const ratioText = stock.prev_close ? (stock.ratio >= 0 ? "+" : "") + stock.ratio.toFixed(2) + "%" : "n/a";
+          const ratioText = hasPrev ? (stock.ratio >= 0 ? "+" : "") + stock.ratio.toFixed(2) + "%" : "n/a";
           const ratioClass = stock.ratio > 0 ? "price-up" : stock.ratio < 0 ? "price-down" : "";
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
                     <td style="font-weight: 500;">${stock.id}</td>
-                    <td style="font-weight: 600;">${stock.name}</td>
+                    <td style="font-weight: 600;"><a href="warrant.html?search=${stock.id}" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--text-muted);">${stock.name}</a></td>
                     <td style="font-weight: 600;">${stock.close}</td>
                     <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
                     <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
