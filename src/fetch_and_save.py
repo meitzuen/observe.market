@@ -4,7 +4,7 @@ import os
 import argparse
 from datetime import datetime
 from typing import Dict, Any
-from src.config import API_DOMAIN, PATH
+from config import API_DOMAIN, PATH
 
 
 def get_daily_index(type: str, date_str: str) -> Dict[str, Any]:
@@ -40,10 +40,10 @@ def get_punish_stock(type: str, date_str: str) -> Dict[str, Any]:
         return None
 
 
-def get_warrent_stock() -> Dict[str, Any]:
-    warrent_url = f"{API_DOMAIN}/{PATH}/twse/daily/warrent"
+def get_warrant_stock() -> Dict[str, Any]:
+    warrant_url = f"{API_DOMAIN}/{PATH}/twse/daily/warrent"
     try:
-        response = requests.get(warrent_url)
+        response = requests.get(warrant_url)
         response.raise_for_status()
         return response.json()
     except Exception as e:
@@ -52,6 +52,7 @@ def get_warrent_stock() -> Dict[str, Any]:
 
 
 def save_to_file(data: Dict[str, Any], path: str, filename: str) -> None:
+
     try:
         # Base directory is one level up from this script (in the project root)
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -106,6 +107,7 @@ if __name__ == "__main__":
     if tpex_daily_punish_data:
         save_to_file(tpex_daily_punish_data, "tpex/daily_punish", date_str)
 
-    warrent_data = get_warrent_stock()
-    if warrent_data:
-        save_to_file(warrent_data, "warrent", date_str)
+    warrant_data = get_warrant_stock()
+    if warrant_data:
+        save_to_file(warrant_data, "warrant", date_str)
+
