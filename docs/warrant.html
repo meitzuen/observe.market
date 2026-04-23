@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warrant Observer | 權證觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+        --accent: #8b5cf6;
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid var(--primary);
+        padding-left: 0.75rem;
+      }
+
+      .table-container {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
+      }
+
+      th {
+        padding: 1rem 0.75rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      th:hover {
+        background-color: #f1f5f9;
+      }
+
+      td {
+        padding: 1rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+
+      tr:hover td {
+        background-color: #f8fafc;
+      }
+
+      .search-box {
+        margin-bottom: 1.25rem;
+        position: relative;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        font-size: 0.9375rem;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+        background-color: #f8fafc;
+      }
+
+      .search-box input:focus {
+        border-color: var(--primary);
+        background-color: white;
+      }
+
+      .date-select {
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        background: white;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+
+      .badge-primary { background-color: #dbeafe; color: #1e40af; }
+      
+      .btn-secondary {
+        background: var(--text-muted);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      [v-cloak] { display: none; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
+        <span style="display: none; font-size: 1.5rem;">📜</span>
+        <h1>Warrant Observer</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <select id="market-select" class="date-select" style="font-weight: 700; border-color: var(--primary);">
+            <option value="twse">上市</option>
+            <option value="tpex">上櫃</option>
+            <option value="warrant" selected>權證</option>
+        </select>
+        <div id="last-update" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"></div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-title">
+          <span>權證行情 <span id="warrant-count" class="badge badge-primary"></span></span>
+          <select id="date-picker" class="date-select"></select>
+        </div>
+        <div class="search-box">
+          <input type="text" id="warrant-search" placeholder="搜尋代號、名稱或標的..." />
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr id="table-header">
+                <th onclick="setSort('權證代碼')">權證代碼 <span id="sort-權證代碼"></span></th>
+                <th onclick="setSort('權證名稱')">權證名稱 <span id="sort-權證名稱"></span></th>
+                <th onclick="setSort('標的名稱')">標的 <span id="sort-標的名稱"></span></th>
+                <th onclick="setSort('認購/認售')">認購/認售 <span id="sort-認購/認售"></span></th>
+                <th onclick="setSort('權證成交價')">成交價 <span id="sort-權證成交價"></span></th>
+                <th onclick="setSort('權證成交量')">成交量 <span id="sort-權證成交量"></span></th>
+                <th onclick="setSort('流通在外比例')">流通在外% <span id="sort-流通在外比例"></span></th>
+                <th onclick="setSort('最新履約價')">履約價 <span id="sort-最新履約價"></span></th>
+                <th onclick="setSort('剩餘天數')">剩餘天數 <span id="sort-剩餘天數"></span></th>
+                <th onclick="setSort('價內外程度')">價內外 <span id="sort-價內外程度"></span></th>
+                <th onclick="setSort('實質槓桿')">實質槓桿 <span id="sort-實質槓桿"></span></th>
+              </tr>
+            </thead>
+            <tbody id="warrant-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader">載入中...</div>
+        
+        <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span id="page-info" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600">第 1 / 1 頁</span>
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let manifest = null;
+      let rawData = [];
+      let filteredData = [];
+      let currentPage = 1;
+      const rowsPerPage = 20;
+      let sortColumn = "權證成交量";
+      let sortDirection = "desc";
+
+      async function init() {
+        try {
+          const resp = await fetch("data/manifest.json");
+          const fullManifest = await resp.json();
+          manifest = fullManifest.warrant;
+
+          if (!manifest || !manifest.daily) {
+            console.error("Warrant manifest not found or daily data missing", fullManifest);
+            document.getElementById("loader").textContent = "暫無權證資料";
+            return;
+          }
+
+          const marketSelect = document.getElementById("market-select");
+          marketSelect.onchange = (e) => {
+              if (e.target.value !== "warrant") {
+                  window.location.href = "index.html?market=" + e.target.value;
+              }
+          };
+
+          const datePicker = document.getElementById("date-picker");
+          manifest.daily.forEach(date => {
+            const opt = document.createElement("option");
+            opt.value = date;
+            opt.textContent = date;
+            datePicker.appendChild(opt);
+          });
+
+          datePicker.onchange = (e) => loadData(e.target.value);
+          document.getElementById("warrant-search").oninput = filterData;
+          
+          document.getElementById("prev-page").onclick = () => {
+              if (currentPage > 1) { currentPage--; renderTable(); }
+          };
+          document.getElementById("next-page").onclick = () => {
+              const max = Math.ceil(filteredData.length / rowsPerPage);
+              if (currentPage < max) { currentPage++; renderTable(); }
+          };
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const searchParam = urlParams.get('search');
+          if (searchParam) {
+              document.getElementById("warrant-search").value = searchParam;
+          }
+
+          if (manifest.daily.length > 0) {
+            loadData(manifest.daily[0]);
+          }
+        } catch (e) { 
+          console.error("Error in init:", e);
+          document.getElementById("loader").textContent = "載入失敗";
+        }
+      }
+
+      async function loadData(date) {
+        document.getElementById("warrant-list").innerHTML = "";
+        document.getElementById("loader").style.display = "flex";
+        try {
+          const resp = await fetch(`data/warrant/${date}.json`);
+          rawData = await resp.json();
+          document.getElementById("last-update").textContent = "最後更新: " + date;
+          filterData();
+        } catch (e) { console.error(e); }
+        finally { document.getElementById("loader").style.display = "none"; }
+      }
+
+      function filterData() {
+        const q = document.getElementById("warrant-search").value.toLowerCase();
+        filteredData = rawData.filter(w => {
+          try {
+            return (w["權證代碼"] || "").toLowerCase().includes(q) || 
+                   (w["權證名稱"] || "").toLowerCase().includes(q) ||
+                   (w["標的名稱"] || "").toLowerCase().includes(q) ||
+                   (w["標的代碼"] || "").toLowerCase().includes(q);
+          } catch (e) { return false; }
+        });
+        currentPage = 1;
+        renderTable();
+      }
+
+      function setSort(col) {
+        if (sortColumn === col) {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+        } else {
+          sortColumn = col;
+          sortDirection = "desc";
+        }
+        renderTable();
+      }
+
+      function renderTable() {
+        const list = document.getElementById("warrant-list");
+        list.innerHTML = "";
+        document.getElementById("warrant-count").textContent = filteredData.length;
+
+        filteredData.sort((a, b) => {
+          let vA = a[sortColumn];
+          let vB = b[sortColumn];
+          
+          // Numeric fields
+          if (["權證成交價", "權證成交量", "流通在外比例", "最新履約價", "剩餘天數", "實質槓桿"].includes(sortColumn)) {
+              vA = parseFloat(vA) || 0;
+              vB = parseFloat(vB) || 0;
+          }
+
+          if (vA < vB) return sortDirection === "asc" ? -1 : 1;
+          if (vA > vB) return sortDirection === "asc" ? 1 : -1;
+          return 0;
+        });
+
+        // Update sort indicators
+        document.querySelectorAll("th span").forEach(s => s.textContent = "");
+        const indicator = document.getElementById("sort-" + sortColumn);
+        if (indicator) indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
+
+        const maxPage = Math.ceil(filteredData.length / rowsPerPage) || 1;
+        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
+        
+        const start = (currentPage - 1) * rowsPerPage;
+        filteredData.slice(start, start + rowsPerPage).forEach(w => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="font-weight: 500;">
+                <a href="https://www.warrantwin.com.tw/eyuanta/warrant/Info.aspx?WID=${w["權證代碼"]}" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--text-muted);">${w["權證代碼"]}</a>
+            </td>
+            <td style="font-weight: 600;">${w["權證名稱"]}</td>
+            <td>
+                <div style="font-weight: 600;">${w["標的名稱"]}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">${w["標的代碼"]}</div>
+            </td>
+            <td>${w["認購/認售"]}</td>
+            <td style="font-weight: 700; color: var(--primary);">${w["權證成交價"]}</td>
+            <td>${parseInt(w["權證成交量"] || 0).toLocaleString()}</td>
+            <td>${w["流通在外比例"]}%</td>
+            <td>${w["最新履約價"]}</td>
+            <td>${w["剩餘天數"]}</td>
+            <td>${w["價內外程度"]}</td>
+            <td style="font-weight: 700;">${w["實質槓桿"]}</td>
+          `;
+          list.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
