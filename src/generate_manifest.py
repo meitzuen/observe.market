@@ -34,6 +34,20 @@ def generate_manifest():
                     reverse=True,
                 )
 
+    # Add warrant
+    warrant_dir = os.path.join(data_dir, "warrant")
+    if os.path.exists(warrant_dir):
+        manifest["warrant"] = {
+            "daily": sorted(
+                [
+                    f.replace(".json", "")
+                    for f in os.listdir(warrant_dir)
+                    if f.endswith(".json")
+                ],
+                reverse=True,
+            )
+        }
+
     manifest_path = os.path.join(data_dir, "manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=4)
