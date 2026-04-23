@@ -4,10 +4,11 @@ import os
 import argparse
 from datetime import datetime
 from typing import Dict, Any
+from src.config import API_DOMAIN, PATH
 
 
 def get_daily_index(type: str, date_str: str) -> Dict[str, Any]:
-    index_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/index?date_str={date_str}"
+    index_url = f"{API_DOMAIN}/{PATH}/{type}/daily/index?date_str={date_str}"
     try:
         response = requests.get(index_url)
         response.raise_for_status()
@@ -18,7 +19,7 @@ def get_daily_index(type: str, date_str: str) -> Dict[str, Any]:
 
 
 def get_daily_price(type: str, date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/stock_price?date_str={date_str}"
+    daily_url = f"{API_DOMAIN}/{PATH}/{type}/daily/stock_price?date_str={date_str}"
     try:
         response = requests.get(daily_url)
         response.raise_for_status()
@@ -29,9 +30,20 @@ def get_daily_price(type: str, date_str: str) -> Dict[str, Any]:
 
 
 def get_punish_stock(type: str, date_str: str) -> Dict[str, Any]:
-    daily_url = f"https://market.smallplum.xyz/api/strategy/{type}/daily/punishment?start_date={date_str}&end_date={date_str}"
+    daily_url = f"{API_DOMAIN}/{PATH}/{type}/daily/punishment?start_date={date_str}&end_date={date_str}"
     try:
         response = requests.get(daily_url)
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        print(f"抓取日線數據失敗: {e}")
+        return None
+
+
+def get_warrent_stock() -> Dict[str, Any]:
+    warrent_url = f"{API_DOMAIN}/{PATH}/twse/daily/warrent"
+    try:
+        response = requests.get(warrent_url)
         response.raise_for_status()
         return response.json()
     except Exception as e:
@@ -93,3 +105,7 @@ if __name__ == "__main__":
     tpex_daily_punish_data = get_punish_stock("tpex", date_str)
     if tpex_daily_punish_data:
         save_to_file(tpex_daily_punish_data, "tpex/daily_punish", date_str)
+
+    warrent_data = get_warrent_stock()
+    if warrent_data:
+        save_to_file(warrent_data, "warrent", date_str)
