@@ -41,7 +41,7 @@ def get_punish_stock(type: str, date_str: str) -> Dict[str, Any]:
 
 
 def get_warrant_stock() -> Dict[str, Any]:
-    warrant_url = f"{API_DOMAIN}/{PATH}/twse/daily/warrent"
+    warrant_url = f"{API_DOMAIN}/{PATH}/twse/daily/warrant"
     try:
         response = requests.get(warrant_url)
         response.raise_for_status()
