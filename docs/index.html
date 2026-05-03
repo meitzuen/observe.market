@@ -290,6 +290,31 @@
         background: #475569;
       }
 
+      .nav-bar {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+        font-size: 0.9375rem;
+      }
+
+      .nav-link:hover {
+        background-color: #f1f5f9;
+        color: var(--primary);
+      }
+
+      .nav-link.active {
+        background-color: #dbeafe;
+        color: var(--primary-dark);
+      }
+
       [v-cloak] {
         display: none;
       }
@@ -300,19 +325,17 @@
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
         <span id="header-emoji" style="display: none; font-size: 1.5rem;">📈</span>
-        <h1>Market Observer</h1>
+        <h1 style="margin-right: 1rem;">Market Observer</h1>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link active">上市</a>
+            <a href="tpex.html" class="nav-link">上櫃</a>
+            <a href="warrant.html" class="nav-link">權證</a>
+        </nav>
       </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <select id="market-select" class="date-select" style="font-weight: 700; border-color: var(--primary);">
-            <option value="twse">上市</option>
-            <option value="tpex">上櫃</option>
-            <option value="warrant">權證</option>
-        </select>
-        <div
-          id="last-update"
-          style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
-        ></div>
-      </div>
+      <div
+        id="last-update"
+        style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
+      ></div>
     </header>
 
     <div class="container">
@@ -601,20 +624,13 @@
           
           const urlParams = new URLSearchParams(window.location.search);
           const marketParam = urlParams.get('market');
-          if (marketParam && ['twse', 'tpex'].includes(marketParam)) {
-              currentMarket = marketParam;
+          if (marketParam === 'tpex') {
+              window.location.href = "tpex.html";
+              return;
+          } else if (marketParam === 'warrant') {
+              window.location.href = "warrant.html";
+              return;
           }
-
-          const marketSelect = document.getElementById("market-select");
-          marketSelect.value = currentMarket;
-          marketSelect.addEventListener("change", (e) => {
-              if (e.target.value === "warrant") {
-                  window.location.href = "warrant.html";
-                  return;
-              }
-              currentMarket = e.target.value;
-              updateMarketData();
-          });
 
           updateMarketData();
 
