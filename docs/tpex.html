@@ -327,8 +327,8 @@
         <span id="header-emoji" style="display: none; font-size: 1.5rem;">📈</span>
         <h1 style="margin-right: 1rem;">Market Observer</h1>
         <nav class="nav-bar">
-            <a href="index.html" class="nav-link active">上市</a>
-            <a href="tpex.html" class="nav-link">上櫃</a>
+            <a href="index.html" class="nav-link">上市</a>
+            <a href="tpex.html" class="nav-link active">上櫃</a>
             <a href="warrant.html" class="nav-link">權證</a>
         </nav>
       </div>
@@ -603,7 +603,7 @@
     <script>
       let fullManifest = null;
       let manifest = null;
-      let currentMarket = "twse";
+      let currentMarket = "tpex";
       let indexData = [];
       let currentStockData = [];
       let currentGapData = [];
@@ -624,8 +624,8 @@
           
           const urlParams = new URLSearchParams(window.location.search);
           const marketParam = urlParams.get('market');
-          if (marketParam === 'tpex') {
-              window.location.href = "tpex.html";
+          if (marketParam === 'twse') {
+              window.location.href = "index.html";
               return;
           } else if (marketParam === 'warrant') {
               window.location.href = "warrant.html";

@@ -193,6 +193,31 @@
         font-weight: 600;
       }
 
+      .nav-bar {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+        font-size: 0.9375rem;
+      }
+
+      .nav-link:hover {
+        background-color: #f1f5f9;
+        color: var(--primary);
+      }
+
+      .nav-link.active {
+        background-color: #dbeafe;
+        color: var(--primary-dark);
+      }
+
       [v-cloak] { display: none; }
     </style>
   </head>
@@ -201,16 +226,14 @@
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <img src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
         <span style="display: none; font-size: 1.5rem;">📜</span>
-        <h1>Warrant Observer</h1>
+        <h1 style="margin-right: 1rem;">Warrant Observer</h1>
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">上市</a>
+            <a href="tpex.html" class="nav-link">上櫃</a>
+            <a href="warrant.html" class="nav-link active">權證</a>
+        </nav>
       </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <select id="market-select" class="date-select" style="font-weight: 700; border-color: var(--primary);">
-            <option value="twse">上市</option>
-            <option value="tpex">上櫃</option>
-            <option value="warrant" selected>權證</option>
-        </select>
-        <div id="last-update" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"></div>
-      </div>
+      <div id="last-update" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"></div>
     </header>
 
     <div class="container">
@@ -273,12 +296,15 @@
             return;
           }
 
-          const marketSelect = document.getElementById("market-select");
-          marketSelect.onchange = (e) => {
-              if (e.target.value !== "warrant") {
-                  window.location.href = "index.html?market=" + e.target.value;
-              }
-          };
+          const urlParams = new URLSearchParams(window.location.search);
+          const marketParam = urlParams.get('market');
+          if (marketParam === 'twse') {
+              window.location.href = "index.html";
+              return;
+          } else if (marketParam === 'tpex') {
+              window.location.href = "tpex.html";
+              return;
+          }
 
           const datePicker = document.getElementById("date-picker");
           manifest.daily.forEach(date => {
@@ -299,7 +325,6 @@
               if (currentPage < max) { currentPage++; renderTable(); }
           };
 
-          const urlParams = new URLSearchParams(window.location.search);
           const searchParam = urlParams.get('search');
           if (searchParam) {
               document.getElementById("warrant-search").value = searchParam;
