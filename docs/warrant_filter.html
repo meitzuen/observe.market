@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Warrant Observer | 權證觀測站</title>
+    <title>Warrant Filter | 權證篩選器</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -78,6 +78,7 @@
         border: 1px solid var(--border);
         padding: 1.5rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin-bottom: 1.5rem;
       }
 
       .card-title {
@@ -90,6 +91,46 @@
         align-items: center;
         border-left: 4px solid var(--primary);
         padding-left: 0.75rem;
+      }
+
+      .filter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .filter-label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .filter-range {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .filter-input {
+        flex: 1;
+        padding: 0.6rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        min-width: 0;
+      }
+
+      .filter-input:focus {
+        border-color: var(--primary);
       }
 
       .table-container {
@@ -129,68 +170,24 @@
         background-color: #f8fafc;
       }
 
-      .search-box {
-        margin-bottom: 1.25rem;
-        position: relative;
-      }
-
-      .search-box input {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 1px solid var(--border);
+      .btn {
+        padding: 0.6rem 1.25rem;
         border-radius: 0.75rem;
-        font-size: 0.9375rem;
-        outline: none;
-        box-sizing: border-box;
-        transition: border-color 0.2s;
-        background-color: #f8fafc;
-      }
-
-      .search-box input:focus {
-        border-color: var(--primary);
-        background-color: white;
-      }
-
-      .date-select {
-        padding: 0.5rem 1rem;
-        border-radius: 0.75rem;
-        border: 1px solid var(--border);
-        background: white;
-        font-size: 0.875rem;
-        font-weight: 500;
+        font-weight: 700;
         cursor: pointer;
-        outline: none;
-      }
-
-      .loader {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-        font-style: italic;
-        color: var(--text-muted);
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 0.125rem 0.5rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-left: 0.5rem;
-      }
-
-      .badge-primary { background-color: #dbeafe; color: #1e40af; }
-      
-      .btn-secondary {
-        background: var(--text-muted);
-        color: white;
         border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.75rem;
-        cursor: pointer;
+        transition: all 0.2s;
         font-size: 0.875rem;
-        font-weight: 600;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-1px);
       }
 
       .nav-bar {
@@ -218,38 +215,112 @@
         color: var(--primary-dark);
       }
 
-      [v-cloak] { display: none; }
+      .loader {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+
+      .badge-primary { background-color: #dbeafe; color: #1e40af; }
     </style>
   </head>
   <body>
     <header>
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <img src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-        <span style="display: none; font-size: 1.5rem;">📜</span>
-        <h1 style="margin-right: 1rem;">Warrant Observer</h1>
+        <span style="display: none; font-size: 1.5rem;">🔍</span>
+        <h1 style="margin-right: 1rem;">Warrant Filter</h1>
         <nav class="nav-bar">
             <a href="index.html" class="nav-link">上市</a>
             <a href="tpex.html" class="nav-link">上櫃</a>
-            <a href="warrant.html" class="nav-link active">權證</a>
-            <a href="warrant_filter.html" class="nav-link">權證篩選</a>
+            <a href="warrant.html" class="nav-link">權證</a>
+            <a href="warrant_filter.html" class="nav-link active">權證篩選</a>
         </nav>
       </div>
-      <div id="last-update" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"></div>
     </header>
 
     <div class="container">
       <div class="card">
-        <div class="card-title">
-          <span>權證行情 <span id="warrant-count" class="badge badge-primary"></span></span>
-          <select id="date-picker" class="date-select"></select>
+        <div class="card-title">篩選條件</div>
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label class="filter-label">標的代號 (多個請用逗號隔開)</label>
+            <input type="text" id="stock_codes" class="filter-input" placeholder="例如: 2330, 2317" />
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">權證類型</label>
+            <select id="type" class="filter-input">
+              <option value="0">全部</option>
+              <option value="1" selected>認購</option>
+              <option value="2">認售</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">價內外程度 (%)</label>
+            <div class="filter-range">
+                <input type="text" id="in_out_left" class="filter-input" value="-20" />
+                <span>~</span>
+                <input type="text" id="in_out_right" class="filter-input" value="20" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">實質槓桿</label>
+            <div class="filter-range">
+                <input type="text" id="leverage_left" class="filter-input" placeholder="最小" value="3" />
+                <span>~</span>
+                <input type="text" id="leverage_right" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">成交量 (張)</label>
+            <div class="filter-range">
+                <input type="text" id="volume_left" class="filter-input" placeholder="最小" value="500" />
+                <span>~</span>
+                <input type="text" id="volume_right" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">剩餘天數</label>
+            <div class="filter-range">
+                <input type="text" id="period_left" class="filter-input" value="90" />
+                <span>~</span>
+                <input type="text" id="period_right" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">流通在外比例 (%)</label>
+            <div class="filter-range">
+                <input type="text" id="out_vol_rate_left" class="filter-input" placeholder="最小" value="20" />
+                <span>~</span>
+                <input type="text" id="out_vol_rate_right" class="filter-input" placeholder="最大" value="80" />
+            </div>
+          </div>
         </div>
-        <div class="search-box">
-          <input type="text" id="warrant-search" placeholder="搜尋代號、名稱或標的..." />
+        <div style="display: flex; justify-content: flex-end;">
+          <button id="search-btn" class="btn btn-primary">執行篩選</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>篩選結果 <span id="warrant-count" class="badge badge-primary">0</span></span>
         </div>
         <div class="table-container">
           <table>
             <thead>
-              <tr id="table-header">
+              <tr>
                 <th onclick="setSort('權證代碼')">權證代碼 <span id="sort-權證代碼"></span></th>
                 <th onclick="setSort('權證名稱')">權證名稱 <span id="sort-權證名稱"></span></th>
                 <th onclick="setSort('標的名稱')">標的 <span id="sort-標的名稱"></span></th>
@@ -266,104 +337,70 @@
             <tbody id="warrant-list"></tbody>
           </table>
         </div>
-        <div id="loader" class="loader">載入中...</div>
-        
-        <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-          <button id="prev-page" class="btn-secondary">上一頁</button>
-          <span id="page-info" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600">第 1 / 1 頁</span>
-          <button id="next-page" class="btn-secondary">下一頁</button>
-        </div>
+        <div id="loader" class="loader">正在分析市場數據...</div>
       </div>
     </div>
 
     <script>
-      let manifest = null;
-      let rawData = [];
-      let filteredData = [];
-      let currentPage = 1;
-      const rowsPerPage = 20;
+      let currentData = [];
       let sortColumn = "權證成交量";
       let sortDirection = "desc";
 
-      async function init() {
+      async function fetchFilteredWarrants() {
+        const loader = document.getElementById("loader");
+        const list = document.getElementById("warrant-list");
+        const countLabel = document.getElementById("warrant-count");
+
+        loader.style.display = "flex";
+        list.innerHTML = "";
+        countLabel.textContent = "0";
+
+        const stockCodesInput = document.getElementById("stock_codes").value;
+        const typeSelect = document.getElementById("type");
+        const selectedType = typeSelect.value;
+
+        const payload = {
+          stock_codes: stockCodesInput ? stockCodesInput.split(",").map(s => s.trim()) : [],
+          type: [selectedType],
+          in_out: {
+            left: document.getElementById("in_out_left").value || "",
+            right: document.getElementById("in_out_right").value || ""
+          },
+          leverage: {
+            left: document.getElementById("leverage_left").value || "",
+            right: document.getElementById("leverage_right").value || ""
+          },
+          volume: {
+            left: document.getElementById("volume_left").value || "",
+            right: document.getElementById("volume_right").value || ""
+          },
+          period: {
+            left: document.getElementById("period_left").value || "",
+            right: document.getElementById("period_right").value || ""
+          },
+          out_vol_rate: {
+            left: document.getElementById("out_vol_rate_left").value || "",
+            right: document.getElementById("out_vol_rate_right").value || ""
+          }
+        };
+
         try {
-          const resp = await fetch("data/manifest.json");
-          const fullManifest = await resp.json();
-          manifest = fullManifest.warrant;
-
-          if (!manifest || !manifest.daily) {
-            console.error("Warrant manifest not found or daily data missing", fullManifest);
-            document.getElementById("loader").textContent = "暫無權證資料";
-            return;
-          }
-
-          const urlParams = new URLSearchParams(window.location.search);
-          const marketParam = urlParams.get('market');
-          if (marketParam === 'twse') {
-              window.location.href = "index.html";
-              return;
-          } else if (marketParam === 'tpex') {
-              window.location.href = "tpex.html";
-              return;
-          }
-
-          const datePicker = document.getElementById("date-picker");
-          manifest.daily.forEach(date => {
-            const opt = document.createElement("option");
-            opt.value = date;
-            opt.textContent = date;
-            datePicker.appendChild(opt);
+          const response = await fetch("https://market.smallplum.xyz/api/strategy/warrant/filter", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
           });
 
-          datePicker.onchange = (e) => loadData(e.target.value);
-          document.getElementById("warrant-search").oninput = filterData;
-          
-          document.getElementById("prev-page").onclick = () => {
-              if (currentPage > 1) { currentPage--; renderTable(); }
-          };
-          document.getElementById("next-page").onclick = () => {
-              const max = Math.ceil(filteredData.length / rowsPerPage);
-              if (currentPage < max) { currentPage++; renderTable(); }
-          };
+          if (!response.ok) throw new Error("API request failed");
 
-          const searchParam = urlParams.get('search');
-          if (searchParam) {
-              document.getElementById("warrant-search").value = searchParam;
-          }
-
-          if (manifest.daily.length > 0) {
-            loadData(manifest.daily[0]);
-          }
-        } catch (e) { 
-          console.error("Error in init:", e);
-          document.getElementById("loader").textContent = "載入失敗";
+          currentData = await response.json();
+          renderTable();
+        } catch (error) {
+          console.error("Error:", error);
+          list.innerHTML = `<tr><td colspan="11" style="text-align: center; color: var(--up);">載入失敗，請稍後再試</td></tr>`;
+        } finally {
+          loader.style.display = "none";
         }
-      }
-
-      async function loadData(date) {
-        document.getElementById("warrant-list").innerHTML = "";
-        document.getElementById("loader").style.display = "flex";
-        try {
-          const resp = await fetch(`data/warrant/${date}.json`);
-          rawData = await resp.json();
-          document.getElementById("last-update").textContent = "最後更新: " + date;
-          filterData();
-        } catch (e) { console.error(e); }
-        finally { document.getElementById("loader").style.display = "none"; }
-      }
-
-      function filterData() {
-        const q = document.getElementById("warrant-search").value.toLowerCase();
-        filteredData = rawData.filter(w => {
-          try {
-            return (w["權證代碼"] || "").toLowerCase().includes(q) || 
-                   (w["權證名稱"] || "").toLowerCase().includes(q) ||
-                   (w["標的名稱"] || "").toLowerCase().includes(q) ||
-                   (w["標的代碼"] || "").toLowerCase().includes(q);
-          } catch (e) { return false; }
-        });
-        currentPage = 1;
-        renderTable();
       }
 
       function setSort(col) {
@@ -378,14 +415,14 @@
 
       function renderTable() {
         const list = document.getElementById("warrant-list");
+        const countLabel = document.getElementById("warrant-count");
         list.innerHTML = "";
-        document.getElementById("warrant-count").textContent = filteredData.length;
+        countLabel.textContent = currentData.length;
 
-        filteredData.sort((a, b) => {
+        const sortedData = [...currentData].sort((a, b) => {
           let vA = a[sortColumn];
           let vB = b[sortColumn];
           
-          // Numeric fields
           if (["權證成交價", "權證成交量", "流通在外比例", "最新履約價", "剩餘天數", "實質槓桿"].includes(sortColumn)) {
               vA = parseFloat(vA) || 0;
               vB = parseFloat(vB) || 0;
@@ -396,16 +433,11 @@
           return 0;
         });
 
-        // Update sort indicators
         document.querySelectorAll("th span").forEach(s => s.textContent = "");
         const indicator = document.getElementById("sort-" + sortColumn);
         if (indicator) indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
 
-        const maxPage = Math.ceil(filteredData.length / rowsPerPage) || 1;
-        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
-        
-        const start = (currentPage - 1) * rowsPerPage;
-        filteredData.slice(start, start + rowsPerPage).forEach(w => {
+        sortedData.forEach(w => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td style="font-weight: 500;">
@@ -427,9 +459,16 @@
           `;
           list.appendChild(tr);
         });
+
+        if (currentData.length === 0) {
+          list.innerHTML = `<tr><td colspan="11" style="text-align: center; color: var(--text-muted);">無符合條件的權證</td></tr>`;
+        }
       }
 
-      init();
+      document.getElementById("search-btn").onclick = fetchFilteredWarrants;
+
+      // Initial fetch
+      fetchFilteredWarrants();
     </script>
   </body>
 </html>
