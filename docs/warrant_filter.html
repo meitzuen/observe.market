@@ -43,19 +43,53 @@
       header {
         background-color: var(--card-bg);
         border-bottom: 1px solid var(--border);
-        padding: 1rem 2rem;
+        padding: 0.75rem 1rem;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        gap: 0.75rem;
         position: sticky;
         top: 0;
         z-index: 100;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       }
 
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+
+      @media (min-width: 768px) {
+        .header-right {
+          justify-content: flex-end;
+        }
+      }
+
       h1 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 800;
         font-family: "Huninn", "Noto Sans TC", sans-serif;
         background: linear-gradient(to right, var(--primary), var(--accent));
@@ -64,12 +98,26 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
       }
 
       .container {
         max-width: 1400px;
-        margin: 2rem auto;
-        padding: 0 1.5rem;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          margin: 2rem auto;
+          padding: 0 1.5rem;
+        }
       }
 
       .card {
@@ -238,10 +286,10 @@
   </head>
   <body>
     <header>
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <img src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-        <span style="display: none; font-size: 1.5rem;">🔍</span>
-        <h1 style="margin-right: 1rem;">Warrant Filter</h1>
+      <div class="header-left">
+        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem;">🔍</span>
+        <h1><span class="title-text">Warrant Filter</span></h1>
         <nav class="nav-bar">
             <a href="index.html" class="nav-link">上市</a>
             <a href="tpex.html" class="nav-link">上櫃</a>
