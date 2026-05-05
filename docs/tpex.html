@@ -333,10 +333,13 @@
             <a href="warrant_filter.html" class="nav-link">權證篩選</a>
         </nav>
       </div>
-      <div
-        id="last-update"
-        style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
-      ></div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <select id="date-picker" class="date-select"></select>
+        <div
+          id="last-update"
+          style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500"
+        ></div>
+      </div>
     </header>
 
     <div class="container">
@@ -364,7 +367,6 @@
                   class="badge badge-primary"
                 ></span
               ></span>
-              <select id="date-picker" class="date-select"></select>
             </div>
             <div class="search-box">
               <input
