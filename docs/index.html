@@ -891,7 +891,7 @@
           
           const isUp = type === "gap_jump";
           const priceClass = isUp ? "price-up" : "price-down";
-          const diffPrefix = stock.diff > 0 ? "+" : "";
+          const diffPrefix = stock.gap_diff > 0 ? "+" : "";
 
           item.innerHTML = `
                     <div>
@@ -900,7 +900,7 @@
                     </div>
                     <div style="text-align: right;">
                         <div class="${priceClass}" style="font-size: 1rem;">${stock.today_close}</div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">${diffPrefix}${stock.diff} (${stock.ratio}%)</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">${diffPrefix}${stock.gap_diff} (${stock.gap_ratio}%)</div>
                     </div>
                 `;
           container.appendChild(item);
