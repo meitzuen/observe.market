@@ -6,6 +6,8 @@
         "prev_low": 279.0,
         "diff": -0.5,
         "ratio": -0.18,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.18,
         "volume": 21000
     },
     {
@@ -13,8 +15,10 @@
         "name": "生合",
         "today_close": 60.1,
         "prev_low": 60.2,
-        "diff": -0.1,
-        "ratio": -0.17,
+        "diff": -0.4,
+        "ratio": -0.66,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.17,
         "volume": 37000
     },
     {
@@ -22,8 +26,10 @@
         "name": "新麥",
         "today_close": 128.5,
         "prev_low": 129.0,
-        "diff": -0.5,
-        "ratio": -0.39,
+        "diff": -1.5,
+        "ratio": -1.15,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.39,
         "volume": 127000
     },
     {
@@ -31,8 +37,10 @@
         "name": "精剛",
         "today_close": 21.25,
         "prev_low": 21.65,
-        "diff": -0.4,
-        "ratio": -1.85,
+        "diff": -0.7,
+        "ratio": -3.19,
+        "gap_diff": -0.4,
+        "gap_ratio": -1.85,
         "volume": 1454000
     },
     {
@@ -40,8 +48,10 @@
         "name": "合世",
         "today_close": 11.9,
         "prev_low": 11.95,
-        "diff": -0.05,
-        "ratio": -0.42,
+        "diff": -0.1,
+        "ratio": -0.83,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.42,
         "volume": 34000
     },
     {
@@ -51,6 +61,8 @@
         "prev_low": 41.1,
         "diff": -1.5,
         "ratio": -3.65,
+        "gap_diff": -1.5,
+        "gap_ratio": -3.65,
         "volume": 17000
     },
     {
@@ -58,8 +70,10 @@
         "name": "易威",
         "today_close": 41.3,
         "prev_low": 41.55,
-        "diff": -0.25,
-        "ratio": -0.6,
+        "diff": -1.15,
+        "ratio": -2.71,
+        "gap_diff": -0.25,
+        "gap_ratio": -0.6,
         "volume": 155000
     },
     {
@@ -67,8 +81,10 @@
         "name": "富喬",
         "today_close": 110.0,
         "prev_low": 110.5,
-        "diff": -0.5,
-        "ratio": -0.45,
+        "diff": -11.5,
+        "ratio": -9.47,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.45,
         "volume": 116058000
     },
     {
@@ -78,6 +94,8 @@
         "prev_low": 11.8,
         "diff": -0.15,
         "ratio": -1.27,
+        "gap_diff": -0.15,
+        "gap_ratio": -1.27,
         "volume": 12000
     },
     {
@@ -87,6 +105,8 @@
         "prev_low": 49.8,
         "diff": -0.45,
         "ratio": -0.9,
+        "gap_diff": -0.45,
+        "gap_ratio": -0.9,
         "volume": 23000
     },
     {
@@ -94,8 +114,10 @@
         "name": "嘉鋼",
         "today_close": 7.35,
         "prev_low": 7.44,
-        "diff": -0.09,
-        "ratio": -1.21,
+        "diff": -0.25,
+        "ratio": -3.29,
+        "gap_diff": -0.09,
+        "gap_ratio": -1.21,
         "volume": 64000
     },
     {
@@ -105,6 +127,8 @@
         "prev_low": 34.0,
         "diff": -0.9,
         "ratio": -2.65,
+        "gap_diff": -0.9,
+        "gap_ratio": -2.65,
         "volume": 12000
     },
     {
@@ -112,8 +136,10 @@
         "name": "大車隊",
         "today_close": 166.0,
         "prev_low": 166.5,
-        "diff": -0.5,
-        "ratio": -0.3,
+        "diff": -2.5,
+        "ratio": -1.48,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.3,
         "volume": 75000
     },
     {
@@ -123,6 +149,8 @@
         "prev_low": 46.3,
         "diff": -0.3,
         "ratio": -0.65,
+        "gap_diff": -0.3,
+        "gap_ratio": -0.65,
         "volume": 36000
     },
     {
@@ -132,6 +160,8 @@
         "prev_low": 27.3,
         "diff": -0.6,
         "ratio": -2.2,
+        "gap_diff": -0.6,
+        "gap_ratio": -2.2,
         "volume": 7000
     },
     {
@@ -141,6 +171,8 @@
         "prev_low": 171.5,
         "diff": -1.0,
         "ratio": -0.58,
+        "gap_diff": -1.0,
+        "gap_ratio": -0.58,
         "volume": 11000
     },
     {
@@ -150,6 +182,8 @@
         "prev_low": 72.5,
         "diff": -0.4,
         "ratio": -0.55,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.55,
         "volume": 134000
     },
     {
@@ -157,8 +191,10 @@
         "name": "王座",
         "today_close": 57.7,
         "prev_low": 58.3,
-        "diff": -0.6,
-        "ratio": -1.03,
+        "diff": -1.3,
+        "ratio": -2.2,
+        "gap_diff": -0.6,
+        "gap_ratio": -1.03,
         "volume": 17000
     },
     {
@@ -168,6 +204,8 @@
         "prev_low": 20.65,
         "diff": -1.05,
         "ratio": -5.08,
+        "gap_diff": -1.05,
+        "gap_ratio": -5.08,
         "volume": 3000
     },
     {
@@ -175,8 +213,10 @@
         "name": "僑威",
         "today_close": 54.7,
         "prev_low": 57.3,
-        "diff": -2.6,
-        "ratio": -4.54,
+        "diff": -2.7,
+        "ratio": -4.7,
+        "gap_diff": -2.6,
+        "gap_ratio": -4.54,
         "volume": 4297000
     },
     {
@@ -186,6 +226,8 @@
         "prev_low": 13.2,
         "diff": -0.05,
         "ratio": -0.38,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.38,
         "volume": 1000
     },
     {
@@ -193,8 +235,10 @@
         "name": "笙泉",
         "today_close": 24.85,
         "prev_low": 24.95,
-        "diff": -0.1,
-        "ratio": -0.4,
+        "diff": -0.15,
+        "ratio": -0.6,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.4,
         "volume": 65000
     },
     {
@@ -202,8 +246,10 @@
         "name": "昇銳",
         "today_close": 24.25,
         "prev_low": 24.35,
-        "diff": -0.1,
-        "ratio": -0.41,
+        "diff": -0.35,
+        "ratio": -1.42,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.41,
         "volume": 168000
     },
     {
@@ -211,8 +257,10 @@
         "name": "弘塑",
         "today_close": 3170.0,
         "prev_low": 3255.0,
-        "diff": -85.0,
-        "ratio": -2.61,
+        "diff": -100.0,
+        "ratio": -3.06,
+        "gap_diff": -85.0,
+        "gap_ratio": -2.61,
         "volume": 1260000
     },
     {
@@ -220,8 +268,10 @@
         "name": "精確",
         "today_close": 63.2,
         "prev_low": 66.0,
-        "diff": -2.8,
-        "ratio": -4.24,
+        "diff": -4.3,
+        "ratio": -6.37,
+        "gap_diff": -2.8,
+        "gap_ratio": -4.24,
         "volume": 5609000
     },
     {
@@ -229,8 +279,10 @@
         "name": "基亞",
         "today_close": 32.0,
         "prev_low": 32.2,
-        "diff": -0.2,
-        "ratio": -0.62,
+        "diff": -0.9,
+        "ratio": -2.74,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.62,
         "volume": 362000
     },
     {
@@ -240,6 +292,8 @@
         "prev_low": 66.5,
         "diff": -1.2,
         "ratio": -1.8,
+        "gap_diff": -1.2,
+        "gap_ratio": -1.8,
         "volume": 224000
     },
     {
@@ -249,6 +303,8 @@
         "prev_low": 38.0,
         "diff": -0.75,
         "ratio": -1.97,
+        "gap_diff": -0.75,
+        "gap_ratio": -1.97,
         "volume": 191000
     },
     {
@@ -256,8 +312,10 @@
         "name": "東碩",
         "today_close": 14.8,
         "prev_low": 15.05,
-        "diff": -0.25,
-        "ratio": -1.66,
+        "diff": -0.3,
+        "ratio": -1.99,
+        "gap_diff": -0.25,
+        "gap_ratio": -1.66,
         "volume": 157000
     },
     {
@@ -267,6 +325,8 @@
         "prev_low": 31.9,
         "diff": -0.3,
         "ratio": -0.94,
+        "gap_diff": -0.3,
+        "gap_ratio": -0.94,
         "volume": 336000
     },
     {
@@ -276,6 +336,8 @@
         "prev_low": 32.3,
         "diff": -0.15,
         "ratio": -0.46,
+        "gap_diff": -0.15,
+        "gap_ratio": -0.46,
         "volume": 546000
     },
     {
@@ -283,8 +345,10 @@
         "name": "彬台",
         "today_close": 36.75,
         "prev_low": 37.45,
-        "diff": -0.7,
-        "ratio": -1.87,
+        "diff": -0.75,
+        "ratio": -2.0,
+        "gap_diff": -0.7,
+        "gap_ratio": -1.87,
         "volume": 224000
     },
     {
@@ -294,6 +358,8 @@
         "prev_low": 28.3,
         "diff": -0.05,
         "ratio": -0.18,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.18,
         "volume": 68000
     },
     {
@@ -301,8 +367,10 @@
         "name": "德晉",
         "today_close": 33.95,
         "prev_low": 34.0,
-        "diff": -0.05,
-        "ratio": -0.15,
+        "diff": -0.75,
+        "ratio": -2.16,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.15,
         "volume": 230000
     },
     {
@@ -310,8 +378,10 @@
         "name": "長盛",
         "today_close": 23.75,
         "prev_low": 23.9,
-        "diff": -0.15,
-        "ratio": -0.63,
+        "diff": -0.25,
+        "ratio": -1.04,
+        "gap_diff": -0.15,
+        "gap_ratio": -0.63,
         "volume": 43000
     },
     {
@@ -321,6 +391,8 @@
         "prev_low": 26.35,
         "diff": -2.6,
         "ratio": -9.87,
+        "gap_diff": -2.6,
+        "gap_ratio": -9.87,
         "volume": 306000
     },
     {
@@ -328,8 +400,10 @@
         "name": "安可",
         "today_close": 31.3,
         "prev_low": 32.1,
-        "diff": -0.8,
-        "ratio": -2.49,
+        "diff": -0.85,
+        "ratio": -2.64,
+        "gap_diff": -0.8,
+        "gap_ratio": -2.49,
         "volume": 1502000
     },
     {
@@ -337,8 +411,10 @@
         "name": "艾恩特",
         "today_close": 23.45,
         "prev_low": 23.7,
-        "diff": -0.25,
-        "ratio": -1.05,
+        "diff": -0.3,
+        "ratio": -1.26,
+        "gap_diff": -0.25,
+        "gap_ratio": -1.05,
         "volume": 26000
     },
     {
@@ -346,8 +422,10 @@
         "name": "安瑞-KY",
         "today_close": 8.68,
         "prev_low": 8.7,
-        "diff": -0.02,
-        "ratio": -0.23,
+        "diff": -0.12,
+        "ratio": -1.36,
+        "gap_diff": -0.02,
+        "gap_ratio": -0.23,
         "volume": 26000
     },
     {
@@ -355,8 +433,10 @@
         "name": "家登",
         "today_close": 390.5,
         "prev_low": 397.5,
-        "diff": -7.0,
-        "ratio": -1.76,
+        "diff": -27.0,
+        "ratio": -6.47,
+        "gap_diff": -7.0,
+        "gap_ratio": -1.76,
         "volume": 3723000
     },
     {
@@ -364,8 +444,10 @@
         "name": "榮昌",
         "today_close": 56.4,
         "prev_low": 59.8,
-        "diff": -3.4,
-        "ratio": -5.69,
+        "diff": -4.2,
+        "ratio": -6.93,
+        "gap_diff": -3.4,
+        "gap_ratio": -5.69,
         "volume": 424000
     },
     {
@@ -373,8 +455,10 @@
         "name": "歐買尬",
         "today_close": 68.1,
         "prev_low": 68.6,
-        "diff": -0.5,
-        "ratio": -0.73,
+        "diff": -0.6,
+        "ratio": -0.87,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.73,
         "volume": 82000
     },
     {
@@ -384,6 +468,8 @@
         "prev_low": 19.35,
         "diff": -0.05,
         "ratio": -0.26,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.26,
         "volume": 57000
     },
     {
@@ -391,8 +477,10 @@
         "name": "健喬",
         "today_close": 30.95,
         "prev_low": 31.0,
-        "diff": -0.05,
-        "ratio": -0.16,
+        "diff": -0.1,
+        "ratio": -0.32,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.16,
         "volume": 763000
     },
     {
@@ -400,8 +488,10 @@
         "name": "友華",
         "today_close": 47.1,
         "prev_low": 47.2,
-        "diff": -0.1,
-        "ratio": -0.21,
+        "diff": -0.25,
+        "ratio": -0.53,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.21,
         "volume": 6000
     },
     {
@@ -409,8 +499,10 @@
         "name": "杏一",
         "today_close": 55.8,
         "prev_low": 56.0,
-        "diff": -0.2,
-        "ratio": -0.36,
+        "diff": -0.4,
+        "ratio": -0.71,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.36,
         "volume": 7000
     },
     {
@@ -420,6 +512,8 @@
         "prev_low": 77.5,
         "diff": -0.8,
         "ratio": -1.03,
+        "gap_diff": -0.8,
+        "gap_ratio": -1.03,
         "volume": 40000
     },
     {
@@ -427,8 +521,10 @@
         "name": "環泰",
         "today_close": 18.0,
         "prev_low": 18.35,
-        "diff": -0.35,
-        "ratio": -1.91,
+        "diff": -0.4,
+        "ratio": -2.17,
+        "gap_diff": -0.35,
+        "gap_ratio": -1.91,
         "volume": 749000
     },
     {
@@ -436,8 +532,10 @@
         "name": "信立",
         "today_close": 53.6,
         "prev_low": 54.0,
-        "diff": -0.4,
-        "ratio": -0.74,
+        "diff": -0.5,
+        "ratio": -0.92,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.74,
         "volume": 568000
     },
     {
@@ -447,6 +545,8 @@
         "prev_low": 45.9,
         "diff": -1.2,
         "ratio": -2.61,
+        "gap_diff": -1.2,
+        "gap_ratio": -2.61,
         "volume": 7000
     },
     {
@@ -454,8 +554,10 @@
         "name": "興采",
         "today_close": 20.4,
         "prev_low": 20.65,
-        "diff": -0.25,
-        "ratio": -1.21,
+        "diff": -0.35,
+        "ratio": -1.69,
+        "gap_diff": -0.25,
+        "gap_ratio": -1.21,
         "volume": 40000
     },
     {
@@ -465,6 +567,8 @@
         "prev_low": 41.1,
         "diff": -0.15,
         "ratio": -0.36,
+        "gap_diff": -0.15,
+        "gap_ratio": -0.36,
         "volume": 610000
     },
     {
@@ -472,8 +576,10 @@
         "name": "江興鍛",
         "today_close": 17.0,
         "prev_low": 17.1,
-        "diff": -0.1,
-        "ratio": -0.58,
+        "diff": -0.2,
+        "ratio": -1.16,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.58,
         "volume": 29000
     },
     {
@@ -481,8 +587,10 @@
         "name": "協易機",
         "today_close": 29.25,
         "prev_low": 29.65,
-        "diff": -0.4,
-        "ratio": -1.35,
+        "diff": -0.45,
+        "ratio": -1.52,
+        "gap_diff": -0.4,
+        "gap_ratio": -1.35,
         "volume": 1643000
     },
     {
@@ -490,8 +598,10 @@
         "name": "桓達",
         "today_close": 96.5,
         "prev_low": 97.7,
-        "diff": -1.2,
-        "ratio": -1.23,
+        "diff": -1.6,
+        "ratio": -1.63,
+        "gap_diff": -1.2,
+        "gap_ratio": -1.23,
         "volume": 201000
     },
     {
@@ -499,8 +609,10 @@
         "name": "寶緯",
         "today_close": 19.0,
         "prev_low": 19.1,
-        "diff": -0.1,
-        "ratio": -0.52,
+        "diff": -0.35,
+        "ratio": -1.81,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.52,
         "volume": 58000
     },
     {
@@ -508,8 +620,10 @@
         "name": "健椿",
         "today_close": 31.95,
         "prev_low": 32.15,
-        "diff": -0.2,
-        "ratio": -0.62,
+        "diff": -0.35,
+        "ratio": -1.08,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.62,
         "volume": 64000
     },
     {
@@ -519,6 +633,8 @@
         "prev_low": 42.3,
         "diff": -0.8,
         "ratio": -1.89,
+        "gap_diff": -0.8,
+        "gap_ratio": -1.89,
         "volume": 45000
     },
     {
@@ -528,6 +644,8 @@
         "prev_low": 386.5,
         "diff": -2.0,
         "ratio": -0.52,
+        "gap_diff": -2.0,
+        "gap_ratio": -0.52,
         "volume": 5000
     },
     {
@@ -537,6 +655,8 @@
         "prev_low": 53.1,
         "diff": -0.2,
         "ratio": -0.38,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.38,
         "volume": 1245000
     },
     {
@@ -544,8 +664,10 @@
         "name": "強生",
         "today_close": 54.3,
         "prev_low": 54.7,
-        "diff": -0.4,
-        "ratio": -0.73,
+        "diff": -0.7,
+        "ratio": -1.27,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.73,
         "volume": 17000
     },
     {
@@ -555,6 +677,8 @@
         "prev_low": 4.03,
         "diff": -0.4,
         "ratio": -9.93,
+        "gap_diff": -0.4,
+        "gap_ratio": -9.93,
         "volume": 405000
     },
     {
@@ -562,8 +686,10 @@
         "name": "台聯電",
         "today_close": 83.5,
         "prev_low": 83.9,
-        "diff": -0.4,
-        "ratio": -0.48,
+        "diff": -0.6,
+        "ratio": -0.71,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.48,
         "volume": 61000
     },
     {
@@ -571,8 +697,10 @@
         "name": "德英",
         "today_close": 37.9,
         "prev_low": 38.35,
-        "diff": -0.45,
-        "ratio": -1.17,
+        "diff": -0.9,
+        "ratio": -2.32,
+        "gap_diff": -0.45,
+        "gap_ratio": -1.17,
         "volume": 34000
     },
     {
@@ -580,8 +708,10 @@
         "name": "力士",
         "today_close": 35.45,
         "prev_low": 35.85,
-        "diff": -0.4,
-        "ratio": -1.12,
+        "diff": -1.05,
+        "ratio": -2.88,
+        "gap_diff": -0.4,
+        "gap_ratio": -1.12,
         "volume": 74000
     },
     {
@@ -589,8 +719,10 @@
         "name": "欣厚-KY",
         "today_close": 9.75,
         "prev_low": 9.85,
-        "diff": -0.1,
-        "ratio": -1.02,
+        "diff": -0.35,
+        "ratio": -3.47,
+        "gap_diff": -0.1,
+        "gap_ratio": -1.02,
         "volume": 128000
     },
     {
@@ -598,8 +730,10 @@
         "name": "精拓科",
         "today_close": 71.4,
         "prev_low": 71.5,
-        "diff": -0.1,
-        "ratio": -0.14,
+        "diff": -0.2,
+        "ratio": -0.28,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.14,
         "volume": 92000
     },
     {
@@ -607,8 +741,10 @@
         "name": "湯石照明",
         "today_close": 17.15,
         "prev_low": 17.25,
-        "diff": -0.1,
-        "ratio": -0.58,
+        "diff": -0.35,
+        "ratio": -2.0,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.58,
         "volume": 90000
     },
     {
@@ -616,8 +752,10 @@
         "name": "久陽",
         "today_close": 13.1,
         "prev_low": 13.2,
-        "diff": -0.1,
-        "ratio": -0.76,
+        "diff": -0.25,
+        "ratio": -1.87,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.76,
         "volume": 277000
     },
     {
@@ -625,8 +763,10 @@
         "name": "凌網",
         "today_close": 49.2,
         "prev_low": 49.55,
-        "diff": -0.35,
-        "ratio": -0.71,
+        "diff": -0.5,
+        "ratio": -1.01,
+        "gap_diff": -0.35,
+        "gap_ratio": -0.71,
         "volume": 36000
     },
     {
@@ -636,6 +776,8 @@
         "prev_low": 23.0,
         "diff": -0.05,
         "ratio": -0.22,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.22,
         "volume": 66000
     },
     {
@@ -643,8 +785,10 @@
         "name": "笙科",
         "today_close": 21.4,
         "prev_low": 21.6,
-        "diff": -0.2,
-        "ratio": -0.93,
+        "diff": -0.25,
+        "ratio": -1.15,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.93,
         "volume": 199000
     },
     {
@@ -652,8 +796,10 @@
         "name": "太欣",
         "today_close": 10.95,
         "prev_low": 11.0,
-        "diff": -0.05,
-        "ratio": -0.45,
+        "diff": -0.2,
+        "ratio": -1.79,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.45,
         "volume": 409000
     },
     {
@@ -661,8 +807,10 @@
         "name": "建榮",
         "today_close": 114.0,
         "prev_low": 117.0,
-        "diff": -3.0,
-        "ratio": -2.56,
+        "diff": -5.0,
+        "ratio": -4.2,
+        "gap_diff": -3.0,
+        "gap_ratio": -2.56,
         "volume": 8660000
     },
     {
@@ -670,8 +818,10 @@
         "name": "立衛",
         "today_close": 13.7,
         "prev_low": 13.8,
-        "diff": -0.1,
-        "ratio": -0.72,
+        "diff": -0.25,
+        "ratio": -1.79,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.72,
         "volume": 37000
     },
     {
@@ -679,8 +829,10 @@
         "name": "鈺創",
         "today_close": 70.7,
         "prev_low": 71.6,
-        "diff": -0.9,
-        "ratio": -1.26,
+        "diff": -1.9,
+        "ratio": -2.62,
+        "gap_diff": -0.9,
+        "gap_ratio": -1.26,
         "volume": 29196000
     },
     {
@@ -690,6 +842,8 @@
         "prev_low": 11.1,
         "diff": -0.05,
         "ratio": -0.45,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.45,
         "volume": 314000
     },
     {
@@ -697,8 +851,10 @@
         "name": "中光電",
         "today_close": 72.6,
         "prev_low": 73.2,
-        "diff": -0.6,
-        "ratio": -0.82,
+        "diff": -1.8,
+        "ratio": -2.42,
+        "gap_diff": -0.6,
+        "gap_ratio": -0.82,
         "volume": 4328000
     },
     {
@@ -706,8 +862,10 @@
         "name": "能率",
         "today_close": 36.15,
         "prev_low": 36.2,
-        "diff": -0.05,
-        "ratio": -0.14,
+        "diff": -0.55,
+        "ratio": -1.5,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.14,
         "volume": 821000
     },
     {
@@ -715,8 +873,10 @@
         "name": "慕康生醫",
         "today_close": 20.75,
         "prev_low": 21.75,
-        "diff": -1.0,
-        "ratio": -4.6,
+        "diff": -1.1,
+        "ratio": -5.03,
+        "gap_diff": -1.0,
+        "gap_ratio": -4.6,
         "volume": 928000
     },
     {
@@ -724,8 +884,10 @@
         "name": "台半",
         "today_close": 56.4,
         "prev_low": 56.6,
-        "diff": -0.2,
-        "ratio": -0.35,
+        "diff": -0.4,
+        "ratio": -0.7,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.35,
         "volume": 2534000
     },
     {
@@ -733,8 +895,10 @@
         "name": "振發",
         "today_close": 19.35,
         "prev_low": 19.6,
-        "diff": -0.25,
-        "ratio": -1.28,
+        "diff": -0.45,
+        "ratio": -2.27,
+        "gap_diff": -0.25,
+        "gap_ratio": -1.28,
         "volume": 314000
     },
     {
@@ -742,8 +906,10 @@
         "name": "東友",
         "today_close": 19.0,
         "prev_low": 19.1,
-        "diff": -0.1,
-        "ratio": -0.52,
+        "diff": -0.3,
+        "ratio": -1.55,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.52,
         "volume": 76000
     },
     {
@@ -753,6 +919,8 @@
         "prev_low": 14.45,
         "diff": -0.2,
         "ratio": -1.38,
+        "gap_diff": -0.2,
+        "gap_ratio": -1.38,
         "volume": 23000
     },
     {
@@ -760,8 +928,10 @@
         "name": "龍巖",
         "today_close": 45.75,
         "prev_low": 46.15,
-        "diff": -0.4,
-        "ratio": -0.87,
+        "diff": -0.85,
+        "ratio": -1.82,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.87,
         "volume": 807000
     },
     {
@@ -771,6 +941,8 @@
         "prev_low": 27.4,
         "diff": -0.15,
         "ratio": -0.55,
+        "gap_diff": -0.15,
+        "gap_ratio": -0.55,
         "volume": 6000
     },
     {
@@ -778,8 +950,10 @@
         "name": "久舜",
         "today_close": 22.1,
         "prev_low": 22.25,
-        "diff": -0.15,
-        "ratio": -0.67,
+        "diff": -0.2,
+        "ratio": -0.9,
+        "gap_diff": -0.15,
+        "gap_ratio": -0.67,
         "volume": 48000
     },
     {
@@ -787,8 +961,10 @@
         "name": "南仁湖",
         "today_close": 7.63,
         "prev_low": 7.67,
-        "diff": -0.04,
-        "ratio": -0.52,
+        "diff": -0.12,
+        "ratio": -1.55,
+        "gap_diff": -0.04,
+        "gap_ratio": -0.52,
         "volume": 665000
     },
     {
@@ -796,8 +972,10 @@
         "name": "亞元",
         "today_close": 11.75,
         "prev_low": 11.85,
-        "diff": -0.1,
-        "ratio": -0.84,
+        "diff": -0.15,
+        "ratio": -1.26,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.84,
         "volume": 283000
     },
     {
@@ -807,6 +985,8 @@
         "prev_low": 17.05,
         "diff": -0.2,
         "ratio": -1.17,
+        "gap_diff": -0.2,
+        "gap_ratio": -1.17,
         "volume": 115000
     },
     {
@@ -814,8 +994,10 @@
         "name": "上奇",
         "today_close": 43.2,
         "prev_low": 43.25,
-        "diff": -0.05,
-        "ratio": -0.12,
+        "diff": -0.3,
+        "ratio": -0.69,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.12,
         "volume": 41000
     },
     {
@@ -823,8 +1005,10 @@
         "name": "訊達",
         "today_close": 17.1,
         "prev_low": 17.55,
-        "diff": -0.45,
-        "ratio": -2.56,
+        "diff": -0.5,
+        "ratio": -2.84,
+        "gap_diff": -0.45,
+        "gap_ratio": -2.56,
         "volume": 173000
     },
     {
@@ -832,8 +1016,10 @@
         "name": "振曜",
         "today_close": 92.1,
         "prev_low": 98.9,
-        "diff": -6.8,
-        "ratio": -6.88,
+        "diff": -7.8,
+        "ratio": -7.81,
+        "gap_diff": -6.8,
+        "gap_ratio": -6.88,
         "volume": 1622000
     },
     {
@@ -843,6 +1029,8 @@
         "prev_low": 16.95,
         "diff": -0.2,
         "ratio": -1.18,
+        "gap_diff": -0.2,
+        "gap_ratio": -1.18,
         "volume": 28000
     },
     {
@@ -850,8 +1038,10 @@
         "name": "驊宏資",
         "today_close": 32.5,
         "prev_low": 32.85,
-        "diff": -0.35,
-        "ratio": -1.07,
+        "diff": -0.5,
+        "ratio": -1.52,
+        "gap_diff": -0.35,
+        "gap_ratio": -1.07,
         "volume": 366000
     },
     {
@@ -859,8 +1049,10 @@
         "name": "松上",
         "today_close": 19.5,
         "prev_low": 19.55,
-        "diff": -0.05,
-        "ratio": -0.26,
+        "diff": -0.2,
+        "ratio": -1.02,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.26,
         "volume": 319000
     },
     {
@@ -868,8 +1060,10 @@
         "name": "欣技",
         "today_close": 15.3,
         "prev_low": 15.6,
-        "diff": -0.3,
-        "ratio": -1.92,
+        "diff": -0.45,
+        "ratio": -2.86,
+        "gap_diff": -0.3,
+        "gap_ratio": -1.92,
         "volume": 108000
     },
     {
@@ -877,8 +1071,10 @@
         "name": "橘子",
         "today_close": 42.45,
         "prev_low": 42.5,
-        "diff": -0.05,
-        "ratio": -0.12,
+        "diff": -0.4,
+        "ratio": -0.93,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.12,
         "volume": 426000
     },
     {
@@ -886,8 +1082,10 @@
         "name": "詩肯",
         "today_close": 24.45,
         "prev_low": 24.5,
-        "diff": -0.05,
-        "ratio": -0.2,
+        "diff": -0.1,
+        "ratio": -0.41,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.2,
         "volume": 40000
     },
     {
@@ -895,8 +1093,10 @@
         "name": "天品",
         "today_close": 110.5,
         "prev_low": 111.5,
-        "diff": -1.0,
-        "ratio": -0.9,
+        "diff": -5.5,
+        "ratio": -4.74,
+        "gap_diff": -1.0,
+        "gap_ratio": -0.9,
         "volume": 2729000
     },
     {
@@ -904,8 +1104,10 @@
         "name": "海韻電",
         "today_close": 64.8,
         "prev_low": 67.3,
-        "diff": -2.5,
-        "ratio": -3.71,
+        "diff": -2.8,
+        "ratio": -4.14,
+        "gap_diff": -2.5,
+        "gap_ratio": -3.71,
         "volume": 453000
     },
     {
@@ -913,8 +1115,10 @@
         "name": "慶生",
         "today_close": 19.8,
         "prev_low": 19.85,
-        "diff": -0.05,
-        "ratio": -0.25,
+        "diff": -0.2,
+        "ratio": -1.0,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.25,
         "volume": 22000
     },
     {
@@ -924,6 +1128,8 @@
         "prev_low": 23.9,
         "diff": -0.2,
         "ratio": -0.84,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.84,
         "volume": 8000
     },
     {
@@ -931,8 +1137,10 @@
         "name": "系微",
         "today_close": 256.5,
         "prev_low": 267.0,
-        "diff": -10.5,
-        "ratio": -3.93,
+        "diff": -13.0,
+        "ratio": -4.82,
+        "gap_diff": -10.5,
+        "gap_ratio": -3.93,
         "volume": 1933000
     },
     {
@@ -940,8 +1148,10 @@
         "name": "驊訊",
         "today_close": 35.8,
         "prev_low": 36.25,
-        "diff": -0.45,
-        "ratio": -1.24,
+        "diff": -0.75,
+        "ratio": -2.05,
+        "gap_diff": -0.45,
+        "gap_ratio": -1.24,
         "volume": 176000
     },
     {
@@ -949,8 +1159,10 @@
         "name": "易通展",
         "today_close": 10.35,
         "prev_low": 10.55,
-        "diff": -0.2,
-        "ratio": -1.9,
+        "diff": -0.4,
+        "ratio": -3.72,
+        "gap_diff": -0.2,
+        "gap_ratio": -1.9,
         "volume": 289000
     },
     {
@@ -960,6 +1172,8 @@
         "prev_low": 37.6,
         "diff": -0.05,
         "ratio": -0.13,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.13,
         "volume": 10000
     },
     {
@@ -967,8 +1181,10 @@
         "name": "倍微",
         "today_close": 24.4,
         "prev_low": 24.65,
-        "diff": -0.25,
-        "ratio": -1.01,
+        "diff": -0.9,
+        "ratio": -3.56,
+        "gap_diff": -0.25,
+        "gap_ratio": -1.01,
         "volume": 527000
     },
     {
@@ -976,8 +1192,10 @@
         "name": "安鈦克",
         "today_close": 31.6,
         "prev_low": 32.0,
-        "diff": -0.4,
-        "ratio": -1.25,
+        "diff": -0.65,
+        "ratio": -2.02,
+        "gap_diff": -0.4,
+        "gap_ratio": -1.25,
         "volume": 63000
     },
     {
@@ -985,8 +1203,10 @@
         "name": "詠昇",
         "today_close": 28.4,
         "prev_low": 28.5,
-        "diff": -0.1,
-        "ratio": -0.35,
+        "diff": -0.4,
+        "ratio": -1.39,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.35,
         "volume": 71000
     },
     {
@@ -994,8 +1214,10 @@
         "name": "大中",
         "today_close": 157.0,
         "prev_low": 158.0,
-        "diff": -1.0,
-        "ratio": -0.63,
+        "diff": -2.5,
+        "ratio": -1.57,
+        "gap_diff": -1.0,
+        "gap_ratio": -0.63,
         "volume": 807000
     },
     {
@@ -1005,6 +1227,8 @@
         "prev_low": 20.25,
         "diff": -0.55,
         "ratio": -2.72,
+        "gap_diff": -0.55,
+        "gap_ratio": -2.72,
         "volume": 3000
     },
     {
@@ -1014,6 +1238,8 @@
         "prev_low": 54.3,
         "diff": -1.0,
         "ratio": -1.84,
+        "gap_diff": -1.0,
+        "gap_ratio": -1.84,
         "volume": 5000
     },
     {
@@ -1021,8 +1247,10 @@
         "name": "高端疫苗",
         "today_close": 55.5,
         "prev_low": 59.5,
-        "diff": -4.0,
-        "ratio": -6.72,
+        "diff": -5.5,
+        "ratio": -9.02,
+        "gap_diff": -4.0,
+        "gap_ratio": -6.72,
         "volume": 8694000
     },
     {
@@ -1030,8 +1258,10 @@
         "name": "宏觀",
         "today_close": 216.5,
         "prev_low": 218.0,
-        "diff": -1.5,
-        "ratio": -0.69,
+        "diff": -7.0,
+        "ratio": -3.13,
+        "gap_diff": -1.5,
+        "gap_ratio": -0.69,
         "volume": 1005000
     },
     {
@@ -1041,6 +1271,8 @@
         "prev_low": 17.95,
         "diff": -0.05,
         "ratio": -0.28,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.28,
         "volume": 40000
     },
     {
@@ -1050,6 +1282,8 @@
         "prev_low": 69.0,
         "diff": -0.6,
         "ratio": -0.87,
+        "gap_diff": -0.6,
+        "gap_ratio": -0.87,
         "volume": 28000
     },
     {
@@ -1057,8 +1291,10 @@
         "name": "慧智",
         "today_close": 33.55,
         "prev_low": 34.0,
-        "diff": -0.45,
-        "ratio": -1.32,
+        "diff": -0.5,
+        "ratio": -1.47,
+        "gap_diff": -0.45,
+        "gap_ratio": -1.32,
         "volume": 35000
     },
     {
@@ -1066,8 +1302,10 @@
         "name": "萬年清",
         "today_close": 57.9,
         "prev_low": 58.0,
-        "diff": -0.1,
-        "ratio": -0.17,
+        "diff": -0.6,
+        "ratio": -1.03,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.17,
         "volume": 54000
     },
     {
@@ -1075,8 +1313,10 @@
         "name": "醫影",
         "today_close": 71.3,
         "prev_low": 71.4,
-        "diff": -0.1,
-        "ratio": -0.14,
+        "diff": -0.7,
+        "ratio": -0.97,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.14,
         "volume": 78000
     },
     {
@@ -1084,8 +1324,10 @@
         "name": "M31",
         "today_close": 454.0,
         "prev_low": 472.0,
-        "diff": -18.0,
-        "ratio": -3.81,
+        "diff": -19.5,
+        "ratio": -4.12,
+        "gap_diff": -18.0,
+        "gap_ratio": -3.81,
         "volume": 1697000
     },
     {
@@ -1093,8 +1335,10 @@
         "name": "台生材",
         "today_close": 40.5,
         "prev_low": 42.5,
-        "diff": -2.0,
-        "ratio": -4.71,
+        "diff": -2.15,
+        "ratio": -5.04,
+        "gap_diff": -2.0,
+        "gap_ratio": -4.71,
         "volume": 508000
     },
     {
@@ -1104,6 +1348,8 @@
         "prev_low": 90.0,
         "diff": -0.8,
         "ratio": -0.89,
+        "gap_diff": -0.8,
+        "gap_ratio": -0.89,
         "volume": 24000
     },
     {
@@ -1111,8 +1357,10 @@
         "name": "鈺太",
         "today_close": 249.0,
         "prev_low": 249.5,
-        "diff": -0.5,
-        "ratio": -0.2,
+        "diff": -2.0,
+        "ratio": -0.8,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.2,
         "volume": 863000
     },
     {
@@ -1120,8 +1368,10 @@
         "name": "鑫創電子",
         "today_close": 54.4,
         "prev_low": 55.0,
-        "diff": -0.6,
-        "ratio": -1.09,
+        "diff": -0.8,
+        "ratio": -1.45,
+        "gap_diff": -0.6,
+        "gap_ratio": -1.09,
         "volume": 22000
     },
     {
@@ -1131,6 +1381,8 @@
         "prev_low": 169.0,
         "diff": -0.5,
         "ratio": -0.3,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.3,
         "volume": 60000
     },
     {
@@ -1138,8 +1390,10 @@
         "name": "上洋",
         "today_close": 118.0,
         "prev_low": 120.0,
-        "diff": -2.0,
-        "ratio": -1.67,
+        "diff": -3.5,
+        "ratio": -2.88,
+        "gap_diff": -2.0,
+        "gap_ratio": -1.67,
         "volume": 33000
     },
     {
@@ -1147,8 +1401,10 @@
         "name": "91APP*-KY",
         "today_close": 60.9,
         "prev_low": 61.0,
-        "diff": -0.1,
-        "ratio": -0.16,
+        "diff": -0.6,
+        "ratio": -0.98,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.16,
         "volume": 208000
     },
     {
@@ -1156,8 +1412,10 @@
         "name": "智聯服務",
         "today_close": 51.2,
         "prev_low": 51.5,
-        "diff": -0.3,
-        "ratio": -0.58,
+        "diff": -0.7,
+        "ratio": -1.35,
+        "gap_diff": -0.3,
+        "gap_ratio": -0.58,
         "volume": 46000
     },
     {
@@ -1165,8 +1423,10 @@
         "name": "台微醫",
         "today_close": 28.1,
         "prev_low": 28.3,
-        "diff": -0.2,
-        "ratio": -0.71,
+        "diff": -0.3,
+        "ratio": -1.06,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.71,
         "volume": 12000
     },
     {
@@ -1174,8 +1434,10 @@
         "name": "華景電",
         "today_close": 365.0,
         "prev_low": 383.0,
-        "diff": -18.0,
-        "ratio": -4.7,
+        "diff": -35.0,
+        "ratio": -8.75,
+        "gap_diff": -18.0,
+        "gap_ratio": -4.7,
         "volume": 5009000
     },
     {
@@ -1185,6 +1447,8 @@
         "prev_low": 59.0,
         "diff": -0.1,
         "ratio": -0.17,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.17,
         "volume": 183000
     },
     {
@@ -1194,6 +1458,8 @@
         "prev_low": 64.0,
         "diff": -0.2,
         "ratio": -0.31,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.31,
         "volume": 5000
     },
     {
@@ -1201,8 +1467,10 @@
         "name": "國邑*",
         "today_close": 37.5,
         "prev_low": 37.6,
-        "diff": -0.1,
-        "ratio": -0.27,
+        "diff": -0.15,
+        "ratio": -0.4,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.27,
         "volume": 51000
     },
     {
@@ -1212,6 +1480,8 @@
         "prev_low": 34.05,
         "diff": -0.25,
         "ratio": -0.73,
+        "gap_diff": -0.25,
+        "gap_ratio": -0.73,
         "volume": 5000
     },
     {
@@ -1219,8 +1489,10 @@
         "name": "宏碩系統",
         "today_close": 170.0,
         "prev_low": 173.5,
-        "diff": -3.5,
-        "ratio": -2.02,
+        "diff": -8.5,
+        "ratio": -4.76,
+        "gap_diff": -3.5,
+        "gap_ratio": -2.02,
         "volume": 107000
     },
     {
@@ -1228,8 +1500,10 @@
         "name": "家碩",
         "today_close": 203.0,
         "prev_low": 217.0,
-        "diff": -14.0,
-        "ratio": -6.45,
+        "diff": -14.5,
+        "ratio": -6.67,
+        "gap_diff": -14.0,
+        "gap_ratio": -6.45,
         "volume": 145000
     },
     {
@@ -1237,8 +1511,10 @@
         "name": "碩網",
         "today_close": 68.3,
         "prev_low": 69.6,
-        "diff": -1.3,
-        "ratio": -1.87,
+        "diff": -1.7,
+        "ratio": -2.43,
+        "gap_diff": -1.3,
+        "gap_ratio": -1.87,
         "volume": 338000
     },
     {
@@ -1246,8 +1522,10 @@
         "name": "銳澤",
         "today_close": 215.0,
         "prev_low": 223.0,
-        "diff": -8.0,
-        "ratio": -3.59,
+        "diff": -10.5,
+        "ratio": -4.66,
+        "gap_diff": -8.0,
+        "gap_ratio": -3.59,
         "volume": 420000
     },
     {
@@ -1255,8 +1533,10 @@
         "name": "榮田",
         "today_close": 72.6,
         "prev_low": 73.0,
-        "diff": -0.4,
-        "ratio": -0.55,
+        "diff": -1.4,
+        "ratio": -1.89,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.55,
         "volume": 712000
     },
     {
@@ -1264,8 +1544,10 @@
         "name": "博盛半導體",
         "today_close": 111.0,
         "prev_low": 113.0,
-        "diff": -2.0,
-        "ratio": -1.77,
+        "diff": -3.5,
+        "ratio": -3.06,
+        "gap_diff": -2.0,
+        "gap_ratio": -1.77,
         "volume": 388000
     },
     {
@@ -1273,8 +1555,10 @@
         "name": "創泓科技",
         "today_close": 127.5,
         "prev_low": 128.0,
-        "diff": -0.5,
-        "ratio": -0.39,
+        "diff": -1.0,
+        "ratio": -0.78,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.39,
         "volume": 67000
     },
     {
@@ -1282,8 +1566,10 @@
         "name": "東聯互動",
         "today_close": 188.0,
         "prev_low": 190.5,
-        "diff": -2.5,
-        "ratio": -1.31,
+        "diff": -4.0,
+        "ratio": -2.08,
+        "gap_diff": -2.5,
+        "gap_ratio": -1.31,
         "volume": 42000
     },
     {
@@ -1291,8 +1577,10 @@
         "name": "金色三麥",
         "today_close": 109.0,
         "prev_low": 109.5,
-        "diff": -0.5,
-        "ratio": -0.46,
+        "diff": -1.0,
+        "ratio": -0.91,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.46,
         "volume": 18000
     },
     {
@@ -1300,8 +1588,10 @@
         "name": "九暘",
         "today_close": 47.15,
         "prev_low": 47.95,
-        "diff": -0.8,
-        "ratio": -1.67,
+        "diff": -1.45,
+        "ratio": -2.98,
+        "gap_diff": -0.8,
+        "gap_ratio": -1.67,
         "volume": 262000
     },
     {
@@ -1309,8 +1599,10 @@
         "name": "晶采",
         "today_close": 25.35,
         "prev_low": 25.4,
-        "diff": -0.05,
-        "ratio": -0.2,
+        "diff": -0.2,
+        "ratio": -0.78,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.2,
         "volume": 86000
     },
     {
@@ -1318,8 +1610,10 @@
         "name": "福華",
         "today_close": 14.75,
         "prev_low": 14.85,
-        "diff": -0.1,
-        "ratio": -0.67,
+        "diff": -0.2,
+        "ratio": -1.34,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.67,
         "volume": 779000
     },
     {
@@ -1327,8 +1621,10 @@
         "name": "麗升能源",
         "today_close": 32.95,
         "prev_low": 33.5,
-        "diff": -0.55,
-        "ratio": -1.64,
+        "diff": -0.85,
+        "ratio": -2.51,
+        "gap_diff": -0.55,
+        "gap_ratio": -1.64,
         "volume": 97000
     },
     {
@@ -1338,6 +1634,8 @@
         "prev_low": 22.1,
         "diff": -0.1,
         "ratio": -0.45,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.45,
         "volume": 401000
     },
     {
@@ -1345,8 +1643,10 @@
         "name": "傑霖科技",
         "today_close": 59.4,
         "prev_low": 59.8,
-        "diff": -0.4,
-        "ratio": -0.67,
+        "diff": -0.5,
+        "ratio": -0.83,
+        "gap_diff": -0.4,
+        "gap_ratio": -0.67,
         "volume": 55000
     },
     {
@@ -1354,8 +1654,10 @@
         "name": "博大",
         "today_close": 106.0,
         "prev_low": 107.0,
-        "diff": -1.0,
-        "ratio": -0.93,
+        "diff": -2.0,
+        "ratio": -1.85,
+        "gap_diff": -1.0,
+        "gap_ratio": -0.93,
         "volume": 162000
     },
     {
@@ -1363,8 +1665,10 @@
         "name": "天宇",
         "today_close": 23.35,
         "prev_low": 24.0,
-        "diff": -0.65,
-        "ratio": -2.71,
+        "diff": -0.75,
+        "ratio": -3.11,
+        "gap_diff": -0.65,
+        "gap_ratio": -2.71,
         "volume": 238000
     },
     {
@@ -1372,8 +1676,10 @@
         "name": "巨有科技",
         "today_close": 122.0,
         "prev_low": 122.5,
-        "diff": -0.5,
-        "ratio": -0.41,
+        "diff": -2.0,
+        "ratio": -1.61,
+        "gap_diff": -0.5,
+        "gap_ratio": -0.41,
         "volume": 184000
     },
     {
@@ -1383,6 +1689,8 @@
         "prev_low": 63.9,
         "diff": -0.2,
         "ratio": -0.31,
+        "gap_diff": -0.2,
+        "gap_ratio": -0.31,
         "volume": 23000
     },
     {
@@ -1392,6 +1700,8 @@
         "prev_low": 22.3,
         "diff": -0.05,
         "ratio": -0.22,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.22,
         "volume": 98000
     },
     {
@@ -1401,6 +1711,8 @@
         "prev_low": 74.4,
         "diff": -0.1,
         "ratio": -0.13,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.13,
         "volume": 7000
     },
     {
@@ -1408,8 +1720,10 @@
         "name": "紅木-KY",
         "today_close": 24.8,
         "prev_low": 24.85,
-        "diff": -0.05,
-        "ratio": -0.2,
+        "diff": -0.15,
+        "ratio": -0.6,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.2,
         "volume": 22000
     },
     {
@@ -1417,8 +1731,10 @@
         "name": "大地-KY",
         "today_close": 12.35,
         "prev_low": 12.4,
-        "diff": -0.05,
-        "ratio": -0.4,
+        "diff": -0.1,
+        "ratio": -0.8,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.4,
         "volume": 76000
     },
     {
@@ -1428,6 +1744,8 @@
         "prev_low": 6.81,
         "diff": -0.51,
         "ratio": -7.49,
+        "gap_diff": -0.51,
+        "gap_ratio": -7.49,
         "volume": 155000
     },
     {
@@ -1437,6 +1755,8 @@
         "prev_low": 78.7,
         "diff": -2.9,
         "ratio": -3.68,
+        "gap_diff": -2.9,
+        "gap_ratio": -3.68,
         "volume": 21000
     },
     {
@@ -1446,6 +1766,8 @@
         "prev_low": 13.8,
         "diff": -0.2,
         "ratio": -1.45,
+        "gap_diff": -0.2,
+        "gap_ratio": -1.45,
         "volume": 35000
     },
     {
@@ -1455,6 +1777,8 @@
         "prev_low": 25.7,
         "diff": -0.3,
         "ratio": -1.17,
+        "gap_diff": -0.3,
+        "gap_ratio": -1.17,
         "volume": 112000
     },
     {
@@ -1462,8 +1786,10 @@
         "name": "裕國",
         "today_close": 40.1,
         "prev_low": 40.45,
-        "diff": -0.35,
-        "ratio": -0.87,
+        "diff": -0.4,
+        "ratio": -0.99,
+        "gap_diff": -0.35,
+        "gap_ratio": -0.87,
         "volume": 16000
     },
     {
@@ -1471,8 +1797,10 @@
         "name": "北基",
         "today_close": 23.1,
         "prev_low": 23.4,
-        "diff": -0.3,
-        "ratio": -1.28,
+        "diff": -0.35,
+        "ratio": -1.49,
+        "gap_diff": -0.3,
+        "gap_ratio": -1.28,
         "volume": 1407000
     },
     {
@@ -1480,8 +1808,10 @@
         "name": "富堡",
         "today_close": 15.75,
         "prev_low": 15.8,
-        "diff": -0.05,
-        "ratio": -0.32,
+        "diff": -0.15,
+        "ratio": -0.94,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.32,
         "volume": 27000
     },
     {
@@ -1489,8 +1819,10 @@
         "name": "智通*",
         "today_close": 81.0,
         "prev_low": 81.1,
-        "diff": -0.1,
-        "ratio": -0.12,
+        "diff": -1.4,
+        "ratio": -1.7,
+        "gap_diff": -0.1,
+        "gap_ratio": -0.12,
         "volume": 2437000
     },
     {
@@ -1498,8 +1830,10 @@
         "name": "明安",
         "today_close": 61.9,
         "prev_low": 62.9,
-        "diff": -1.0,
-        "ratio": -1.59,
+        "diff": -2.3,
+        "ratio": -3.58,
+        "gap_diff": -1.0,
+        "gap_ratio": -1.59,
         "volume": 790000
     },
     {
@@ -1507,8 +1841,10 @@
         "name": "萬國通",
         "today_close": 10.6,
         "prev_low": 10.65,
-        "diff": -0.05,
-        "ratio": -0.47,
+        "diff": -0.1,
+        "ratio": -0.93,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.47,
         "volume": 100000
     },
     {
@@ -1516,8 +1852,10 @@
         "name": "有益",
         "today_close": 10.35,
         "prev_low": 10.4,
-        "diff": -0.05,
-        "ratio": -0.48,
+        "diff": -0.1,
+        "ratio": -0.96,
+        "gap_diff": -0.05,
+        "gap_ratio": -0.48,
         "volume": 39000
     }
 ]
