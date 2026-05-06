@@ -248,14 +248,14 @@
 
       .stats {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
         margin-bottom: 1.5rem;
       }
 
       .stat-item {
         background: #f8fafc;
-        padding: 1.25rem;
+        padding: 0.75rem;
         border-radius: 0.75rem;
         border: 1px solid var(--border);
         display: flex;
@@ -590,7 +590,7 @@
                   <span id="summary-volume" class="stat-value">--</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-label">成交筆數</span>
+                  <span class="stat-label">成交比數</span>
                   <span id="summary-transactions" class="stat-value">--</span>
                 </div>
               </div>
@@ -800,19 +800,19 @@
           document.getElementById("last-update").textContent =
             `最後更新: ${latest.date}`;
           document.getElementById("summary-index").textContent = 
-            latest.index.toLocaleString();
+            Math.round(latest.index).toLocaleString();
           
           const changes = parseFloat(latest.changes);
           const changesEl = document.getElementById("summary-changes");
-          changesEl.textContent = (changes >= 0 ? "+" : "") + changes.toFixed(2);
+          changesEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
           changesEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
 
           document.getElementById("summary-turnover").textContent =
-            (latest.turnover / 100000000).toFixed(2) + " 億";
+            Math.round(latest.turnover / 100000000) + " 億";
           document.getElementById("summary-volume").textContent =
-            (latest.volume / 1000000).toFixed(2) + " 百萬";
+            Math.round(latest.volume / 1000000) + " 百萬";
           document.getElementById("summary-transactions").textContent =
-            (latest.transactions / 10000).toFixed(2) + " 萬";
+            Math.round(latest.transactions / 10000) + " 萬";
           renderChart(indexData);
         }
       }
