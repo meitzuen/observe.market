@@ -10,37 +10,37 @@ on:
         required: false
         default: ""
 
-# 明確宣告權限，確保 Action 有權寫入內容
+# 明確宣告權限
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # 使用預設 token 並保持持久化，這對 push 回去比較穩定
-          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.11"
+          cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run fetch script
         run: |
-          # Use the input date if provided, otherwise default to today
           DATE_STR="${{ github.event.inputs.date_str }}"
           if [ -z "$DATE_STR" ]; then
             DATE_STR=$(date +'%Y-%m-%d')
           fi
+          echo "Processing data for date: $DATE_STR"
           python src/fetch_and_save.py --date_str="$DATE_STR"
           python src/gap_strategy.py --date_str="$DATE_STR"
           python src/generate_manifest.py
@@ -49,8 +49,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/data/twse/**/*.json
-          git add docs/data/tpex/**/*.json
-          git add docs/data/manifest.json
-          # 檢查是否有變更，避免在沒有資料更新時報錯
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update stock data: $(date +'%Y-%m-%d')" && git push)
+          
+          git add docs/data/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto update stock data: $(date +'%Y-%m-%d')"
+            git push
+          fi
