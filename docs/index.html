@@ -774,7 +774,7 @@
         const allData = [];
         const seenDates = new Set();
 
-        const indexFiles = manifest.daily_index.slice(0, 30).reverse(); // Last 30 days
+        const indexFiles = manifest.daily_index.slice(0, 60).reverse(); // Last 60 days
         
         for (const date of indexFiles) {
           try {
@@ -796,28 +796,48 @@
         indexData = allData;
 
         if (indexData.length > 0) {
-          const latest = indexData[indexData.length - 1];
-          document.getElementById("last-update").textContent =
-            `最後更新: ${latest.date}`;
-          document.getElementById("summary-index").textContent = 
-            Math.round(latest.index).toLocaleString();
-          
-          const changes = parseFloat(latest.changes);
-          const changesEl = document.getElementById("summary-changes");
-          changesEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
-          changesEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
-
-          document.getElementById("summary-turnover").textContent =
-            Math.round(latest.turnover / 100000000) + " 億";
-          document.getElementById("summary-volume").textContent =
-            Math.round(latest.volume / 1000000) + " 百萬";
-          document.getElementById("summary-transactions").textContent =
-            Math.round(latest.transactions / 10000) + " 萬";
+          const selectedDate = document.getElementById("date-picker").value;
+          updateSummary(selectedDate);
           renderChart(indexData);
         }
       }
 
+      function updateSummary(date) {
+        if (!indexData || indexData.length === 0) return;
+        
+        // Helper to convert index date (e.g. 115/05/04) to ISO (2026-05-04)
+        const toISO = (rocDate) => {
+            const parts = rocDate.split('/');
+            const year = parseInt(parts[0]) + 1911;
+            return `${year}-${parts[1]}-${parts[2]}`;
+        };
+
+        // Find the index item for the given date, or default to the latest if not found
+        let summaryData = indexData.find(item => toISO(item.date) === date);
+        if (!summaryData) {
+            summaryData = indexData[indexData.length - 1];
+        }
+
+        document.getElementById("last-update").textContent =
+          `最後更新: ${toISO(summaryData.date)}`;
+        document.getElementById("summary-index").textContent = 
+          Math.round(summaryData.index).toLocaleString();
+        
+        const changes = parseFloat(summaryData.changes);
+        const changesEl = document.getElementById("summary-changes");
+        changesEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
+        changesEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
+
+        document.getElementById("summary-turnover").textContent =
+          Math.round(summaryData.turnover / 100000000) + " 億";
+        document.getElementById("summary-volume").textContent =
+          Math.round(summaryData.volume / 1000000) + " 百萬";
+        document.getElementById("summary-transactions").textContent =
+          Math.round(summaryData.transactions / 10000) + " 萬";
+      }
+
       async function loadStockData(date) {
+        updateSummary(date);
         document.getElementById("stock-list").innerHTML = "";
         document.getElementById("stock-loader").style.display = "flex";
         document.getElementById("gap-list").innerHTML = '<div class="loader" style="height: 100px">載入中...</div>';
