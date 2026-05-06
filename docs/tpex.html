@@ -894,17 +894,17 @@
         // Update sort options based on type
         if (type === "gap_jump") {
             sortSelect.innerHTML = `
-                <option value="diff-desc">漲點 ↓</option>
-                <option value="diff-asc">漲點 ↑</option>
-                <option value="ratio-desc">漲幅 ↓</option>
-                <option value="ratio-asc">漲幅 ↑</option>
+                <option value="gap_diff-desc">漲點 ↓</option>
+                <option value="gap_diff-asc">漲點 ↑</option>
+                <option value="gap_ratio-desc">漲幅 ↓</option>
+                <option value="gap_ratio-asc">漲幅 ↑</option>
             `;
         } else {
             sortSelect.innerHTML = `
-                <option value="diff-asc">跌點 ↓</option>
-                <option value="diff-desc">跌點 ↑</option>
-                <option value="ratio-asc">跌幅 ↓</option>
-                <option value="ratio-desc">跌幅 ↑</option>
+                <option value="gap_diff-asc">跌點 ↓</option>
+                <option value="gap_diff-desc">跌點 ↑</option>
+                <option value="gap_ratio-asc">跌幅 ↓</option>
+                <option value="gap_ratio-desc">跌幅 ↑</option>
             `;
         }
 
