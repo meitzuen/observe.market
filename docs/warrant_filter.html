@@ -143,21 +143,37 @@
 
       .filter-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
         margin-bottom: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .filter-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .filter-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
       }
 
       .filter-group {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        min-width: 0; /* Prevent grid blowout */
       }
 
       .filter-label {
         font-size: 0.875rem;
         font-weight: 600;
         color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .filter-range {
@@ -316,19 +332,11 @@
             </select>
           </div>
           <div class="filter-group">
-            <label class="filter-label">價內外程度 (%)</label>
+            <label class="filter-label">剩餘天數</label>
             <div class="filter-range">
-                <input type="text" id="in_out_left" class="filter-input" value="-20" />
+                <input type="text" id="period_left" class="filter-input" value="90" />
                 <span>~</span>
-                <input type="text" id="in_out_right" class="filter-input" value="20" />
-            </div>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label">實質槓桿</label>
-            <div class="filter-range">
-                <input type="text" id="leverage_left" class="filter-input" placeholder="最小" value="3" />
-                <span>~</span>
-                <input type="text" id="leverage_right" class="filter-input" placeholder="最大" />
+                <input type="text" id="period_right" class="filter-input" placeholder="最大" />
             </div>
           </div>
           <div class="filter-group">
@@ -340,19 +348,35 @@
             </div>
           </div>
           <div class="filter-group">
-            <label class="filter-label">剩餘天數</label>
+            <label class="filter-label">實質槓桿</label>
             <div class="filter-range">
-                <input type="text" id="period_left" class="filter-input" value="90" />
+                <input type="text" id="leverage_left" class="filter-input" placeholder="最小" value="3" />
                 <span>~</span>
-                <input type="text" id="period_right" class="filter-input" placeholder="最大" />
+                <input type="text" id="leverage_right" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">價內外程度 (%)</label>
+            <div class="filter-range">
+                <input type="text" id="in_out_left" class="filter-input" value="-20" />
+                <span>~</span>
+                <input type="text" id="in_out_right" class="filter-input" value="20" />
             </div>
           </div>
           <div class="filter-group">
             <label class="filter-label">流通在外比例 (%)</label>
             <div class="filter-range">
-                <input type="text" id="out_vol_rate_left" class="filter-input" placeholder="最小" value="20" />
+                <input type="text" id="out_vol_rate_left" class="filter-input" placeholder="最小" value="30" />
                 <span>~</span>
-                <input type="text" id="out_vol_rate_right" class="filter-input" placeholder="最大" value="80" />
+                <input type="text" id="out_vol_rate_right" class="filter-input" placeholder="最大" value="70" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">買賣價差比 (%)</label>
+            <div class="filter-range">
+                <input type="text" id="buy_sell_rate_left" class="filter-input" placeholder="最小" value="0"/>
+                <span>~</span>
+                <input type="text" id="buy_sell_rate_right" class="filter-input" placeholder="最大" value="1.5" />
             </div>
           </div>
         </div>
@@ -376,6 +400,7 @@
                 <th onclick="setSort('權證成交價')">成交價 <span id="sort-權證成交價"></span></th>
                 <th onclick="setSort('權證成交量')">成交量 <span id="sort-權證成交量"></span></th>
                 <th onclick="setSort('流通在外比例')">流通在外% <span id="sort-流通在外比例"></span></th>
+                <th onclick="setSort('買賣價差比率')">價差比% <span id="sort-買賣價差比率"></span></th>
                 <th onclick="setSort('最新履約價')">履約價 <span id="sort-最新履約價"></span></th>
                 <th onclick="setSort('剩餘天數')">剩餘天數 <span id="sort-剩餘天數"></span></th>
                 <th onclick="setSort('價內外程度')">價內外 <span id="sort-價內外程度"></span></th>
@@ -409,7 +434,7 @@
 
         const payload = {
           stock_codes: stockCodesInput ? stockCodesInput.split(",").map(s => s.trim()) : [],
-          type: [selectedType],
+          type: selectedType === "0" ? ["1", "2"] : [selectedType],
           in_out: {
             left: document.getElementById("in_out_left").value || "",
             right: document.getElementById("in_out_right").value || ""
@@ -429,6 +454,10 @@
           out_vol_rate: {
             left: document.getElementById("out_vol_rate_left").value || "",
             right: document.getElementById("out_vol_rate_right").value || ""
+          },
+          buy_sell_rate: {
+            left: document.getElementById("buy_sell_rate_left").value || "",
+            right: document.getElementById("buy_sell_rate_right").value || ""
           }
         };
 
@@ -445,7 +474,7 @@
           renderTable();
         } catch (error) {
           console.error("Error:", error);
-          list.innerHTML = `<tr><td colspan="11" style="text-align: center; color: var(--up);">載入失敗，請稍後再試</td></tr>`;
+          list.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--up);">載入失敗，請稍後再試</td></tr>`;
         } finally {
           loader.style.display = "none";
         }
@@ -471,7 +500,7 @@
           let vA = a[sortColumn];
           let vB = b[sortColumn];
           
-          if (["權證成交價", "權證成交量", "流通在外比例", "最新履約價", "剩餘天數", "實質槓桿"].includes(sortColumn)) {
+          if (["權證成交價", "權證成交量", "流通在外比例", "買賣價差比率", "最新履約價", "剩餘天數", "實質槓桿"].includes(sortColumn)) {
               vA = parseFloat(vA) || 0;
               vB = parseFloat(vB) || 0;
           }
@@ -500,6 +529,7 @@
             <td style="font-weight: 700; color: var(--primary);">${w["權證成交價"]}</td>
             <td>${parseInt(w["權證成交量"] || 0).toLocaleString()}</td>
             <td>${w["流通在外比例"]}%</td>
+            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? 'var(--up)' : 'inherit'}">${w["買賣價差比率"]}%</td>
             <td>${w["最新履約價"]}</td>
             <td>${w["剩餘天數"]}</td>
             <td>${w["價內外程度"]}</td>
@@ -509,7 +539,7 @@
         });
 
         if (currentData.length === 0) {
-          list.innerHTML = `<tr><td colspan="11" style="text-align: center; color: var(--text-muted);">無符合條件的權證</td></tr>`;
+          list.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--text-muted);">無符合條件的權證</td></tr>`;
         }
       }
 
