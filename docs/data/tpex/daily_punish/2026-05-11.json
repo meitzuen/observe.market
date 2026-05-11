@@ -1,0 +1,322 @@
+[
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第一次處置",
+        "id": "3228",
+        "name": "金麗科",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第一次處置",
+        "id": "3430",
+        "name": "奇鈦科",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第二次處置",
+        "id": "3581",
+        "name": "博磊",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第一次處置",
+        "id": "3631",
+        "name": "晟楠",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第二次處置",
+        "id": "4971",
+        "name": "IET-KY",
+        "accumulated": 8,
+        "condition": "連續5個營業日",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第二次處置",
+        "id": "6217",
+        "name": "中探針",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-24",
+        "measure": "第一次處置",
+        "id": "6735",
+        "name": "美達科技",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-27",
+        "to": "2026-05-11"
+    },
+    {
+        "publish_date": "2026-04-27",
+        "measure": "第二次處置",
+        "id": "7734",
+        "name": "印能科技",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-28",
+        "to": "2026-05-12"
+    },
+    {
+        "publish_date": "2026-04-28",
+        "measure": "第二次處置",
+        "id": "7751",
+        "name": "竑騰",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-29",
+        "to": "2026-05-13"
+    },
+    {
+        "publish_date": "2026-04-29",
+        "measure": "第一次處置",
+        "id": "4529",
+        "name": "淳紳",
+        "accumulated": 4,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-30",
+        "to": "2026-05-14"
+    },
+    {
+        "publish_date": "2026-04-29",
+        "measure": "第一次處置",
+        "id": "4542",
+        "name": "科嶠",
+        "accumulated": 4,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-04-30",
+        "to": "2026-05-14"
+    },
+    {
+        "publish_date": "2026-04-29",
+        "measure": "第二次處置",
+        "id": "6735",
+        "name": "美達科技",
+        "accumulated": 4,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-04-30",
+        "to": "2026-05-14"
+    },
+    {
+        "publish_date": "2026-04-30",
+        "measure": "第一次處置",
+        "id": "8291",
+        "name": "尚茂",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-04",
+        "to": "2026-05-15"
+    },
+    {
+        "publish_date": "2026-05-04",
+        "measure": "第一次處置",
+        "id": "4951",
+        "name": "精拓科",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-05",
+        "to": "2026-05-18"
+    },
+    {
+        "publish_date": "2026-05-04",
+        "measure": "第一次處置",
+        "id": "6234",
+        "name": "高僑",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-05",
+        "to": "2026-05-18"
+    },
+    {
+        "publish_date": "2026-05-04",
+        "measure": "第一次處置",
+        "id": "9949",
+        "name": "琉園",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-05",
+        "to": "2026-05-18"
+    },
+    {
+        "publish_date": "2026-05-05",
+        "measure": "第一次處置",
+        "id": "8027",
+        "name": "鈦昇",
+        "accumulated": 4,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-06",
+        "to": "2026-05-19"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第二次處置",
+        "id": "3163",
+        "name": "波若威",
+        "accumulated": 10,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第二次處置",
+        "id": "4542",
+        "name": "科嶠",
+        "accumulated": 10,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第二次處置",
+        "id": "4908",
+        "name": "前鼎",
+        "accumulated": 10,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第二次處置",
+        "id": "6683",
+        "name": "雍智科技",
+        "accumulated": 10,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第一次處置",
+        "id": "8064",
+        "name": "東捷",
+        "accumulated": 10,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-06",
+        "measure": "第二次處置",
+        "id": "8291",
+        "name": "尚茂",
+        "accumulated": 10,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-07",
+        "to": "2026-05-20"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "3455",
+        "name": "由田",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "3581",
+        "name": "博磊",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "4951",
+        "name": "精拓科",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "5386",
+        "name": "青雲",
+        "accumulated": 5,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第一次處置",
+        "id": "1595",
+        "name": "川寶",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第二次處置",
+        "id": "4991",
+        "name": "環宇-KY",
+        "accumulated": 8,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第一次處置",
+        "id": "5464",
+        "name": "霖宏",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第二次處置",
+        "id": "6274",
+        "name": "台燿",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第一次處置",
+        "id": "8042",
+        "name": "金山電",
+        "accumulated": 8,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    }
+]
