@@ -1,0 +1,222 @@
+[
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "2426",
+        "name": "鼎元",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第一次處置",
+        "id": "3030",
+        "name": "德律",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-07",
+        "measure": "第二次處置",
+        "id": "6861",
+        "name": "睿生光電",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-08",
+        "to": "2026-05-21"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第二次處置",
+        "id": "3532",
+        "name": "台勝科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-08",
+        "measure": "第二次處置",
+        "id": "6405",
+        "name": "悅城",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-11",
+        "to": "2026-05-22"
+    },
+    {
+        "publish_date": "2026-05-11",
+        "measure": "第二次處置",
+        "id": "3016",
+        "name": "嘉晶",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-12",
+        "to": "2026-05-25"
+    },
+    {
+        "publish_date": "2026-05-11",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-05-12",
+        "to": "2026-05-25"
+    },
+    {
+        "publish_date": "2026-05-12",
+        "measure": "第一次處置",
+        "id": "1809",
+        "name": "中釉",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-13",
+        "to": "2026-05-26"
+    },
+    {
+        "publish_date": "2026-05-12",
+        "measure": "第一次處置",
+        "id": "2059",
+        "name": "川湖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-13",
+        "to": "2026-05-26"
+    },
+    {
+        "publish_date": "2026-05-12",
+        "measure": "第一次處置",
+        "id": "3450",
+        "name": "聯鈞",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-13",
+        "to": "2026-05-26"
+    },
+    {
+        "publish_date": "2026-05-12",
+        "measure": "第二次處置",
+        "id": "3653",
+        "name": "健策",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-13",
+        "to": "2026-05-26"
+    },
+    {
+        "publish_date": "2026-05-13",
+        "measure": "第一次處置",
+        "id": "7769",
+        "name": "鴻勁",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-14",
+        "to": "2026-05-27"
+    },
+    {
+        "publish_date": "2026-05-14",
+        "measure": "第一次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-15",
+        "to": "2026-05-28"
+    },
+    {
+        "publish_date": "2026-05-14",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-05-15",
+        "to": "2026-05-28"
+    },
+    {
+        "publish_date": "2026-05-14",
+        "measure": "第一次處置",
+        "id": "6831",
+        "name": "邁科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-15",
+        "to": "2026-05-28"
+    },
+    {
+        "publish_date": "2026-05-14",
+        "measure": "第一次處置",
+        "id": "8114",
+        "name": "振樺電",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-15",
+        "to": "2026-05-28"
+    },
+    {
+        "publish_date": "2026-05-15",
+        "measure": "第一次處置",
+        "id": "3135",
+        "name": "凌航",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-05-18",
+        "to": "2026-05-29"
+    },
+    {
+        "publish_date": "2026-05-18",
+        "measure": "第一次處置",
+        "id": "6449",
+        "name": "鈺邦",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-19",
+        "to": "2026-06-01"
+    },
+    {
+        "publish_date": "2026-05-19",
+        "measure": "第一次處置",
+        "id": "3008",
+        "name": "大立光",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-20",
+        "to": "2026-06-02"
+    },
+    {
+        "publish_date": "2026-05-19",
+        "measure": "第一次處置",
+        "id": "3665",
+        "name": "貿聯-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-20",
+        "to": "2026-06-02"
+    },
+    {
+        "publish_date": "2026-05-19",
+        "measure": "第一次處置",
+        "id": "6924",
+        "name": "榮惠-KY創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-20",
+        "to": "2026-06-02"
+    },
+    {
+        "publish_date": "2026-05-20",
+        "measure": "人工管制撮合",
+        "id": "6806",
+        "name": "森崴能源",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-05-21",
+        "to": "2026-06-03"
+    }
+]
