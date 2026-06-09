@@ -1,0 +1,58 @@
+[
+    {
+        "date": "115/06/01",
+        "volume": 1615738000,
+        "turnover": 339380979000,
+        "transactions": 1572095,
+        "index": 446.02,
+        "changes": "2.38"
+    },
+    {
+        "date": "115/06/02",
+        "volume": 1720583000,
+        "turnover": 378403435000,
+        "transactions": 1736191,
+        "index": 440.64,
+        "changes": "-5.38"
+    },
+    {
+        "date": "115/06/03",
+        "volume": 1517099000,
+        "turnover": 325651920000,
+        "transactions": 1466352,
+        "index": 446.82,
+        "changes": "6.18"
+    },
+    {
+        "date": "115/06/04",
+        "volume": 1426465000,
+        "turnover": 278293572000,
+        "transactions": 1451768,
+        "index": 440.1,
+        "changes": "-6.72"
+    },
+    {
+        "date": "115/06/05",
+        "volume": 1592999000,
+        "turnover": 299833281000,
+        "transactions": 1491433,
+        "index": 431.07,
+        "changes": "-9.03"
+    },
+    {
+        "date": "115/06/08",
+        "volume": 1221034000,
+        "turnover": 221807242000,
+        "transactions": 1227424,
+        "index": 412.57,
+        "changes": "-18.5"
+    },
+    {
+        "date": "115/06/09",
+        "volume": 1395460000,
+        "turnover": 259621665000,
+        "transactions": 1261588,
+        "index": 424.71,
+        "changes": "12.14"
+    }
+]
