@@ -816,29 +816,13 @@
       }
 
       async function loadIndexData() {
-        const allData = [];
-        const seenDates = new Set();
-
-        const indexFiles = manifest.daily_index.slice(0, 60).reverse(); // Last 60 days
-        
-        for (const date of indexFiles) {
-          try {
-            const response = await fetch(`data/${currentMarket}/daily_index/${date}.json`);
-            const data = await response.json();
-            data.forEach((item) => {
-              if (!seenDates.has(item.date)) {
-                allData.push(item);
-                seenDates.add(item.date);
-              }
-            });
-          } catch (e) {
-            console.error(`Error loading index ${date}:`, e);
-          }
+        try {
+          const response = await fetch(`data/${currentMarket}/index_history.json`);
+          indexData = await response.json();
+        } catch (e) {
+          console.error("Error loading index_history.json:", e);
+          indexData = [];
         }
-
-        // Sort by date
-        allData.sort((a, b) => a.date.localeCompare(b.date));
-        indexData = allData;
 
         if (indexData.length > 0) {
           const selectedDate = document.getElementById("date-picker").value;
@@ -892,24 +876,12 @@
           const response = await fetch(`data/${currentMarket}/daily_price/${date}.json`);
           currentStockData = await response.json();
 
-          const dates = manifest.daily_price;
-          const idx = dates.indexOf(date);
-          let prevData = [];
-          if (idx !== -1 && idx + 1 < dates.length) {
-              const prevDate = dates[idx + 1];
-              try {
-                  const prevResponse = await fetch(`data/${currentMarket}/daily_price/${prevDate}.json`);
-                  prevData = await prevResponse.json();
-              } catch (e) { console.error("Error loading prev day:", e); }
-          }
-          const prevMap = new Map(prevData.map(s => [s.id, s.close]));
-
+          // Use pre-computed change/change_percent from the API data
           currentStockData.forEach((s) => {
-            s.prev_close = prevMap.get(s.id);
-            s.diff = s.prev_close ? parseFloat((s.close - s.prev_close).toFixed(2)) : 0;
-            s.ratio = (s.prev_close && s.prev_close !== 0) 
-                      ? parseFloat(((s.close - s.prev_close) / s.prev_close * 100).toFixed(2)) 
-                      : 0;
+            const hasChange = s.change !== null && s.change !== undefined;
+            s.diff = hasChange ? s.change : 0;
+            s.ratio = hasChange ? (s.change_percent ?? 0) : 0;
+            s.prev_close = hasChange ? s.close - s.change : undefined;
           });
 
           filterStocks();
