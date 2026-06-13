@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gap Observer | 跳空觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+        --accent: #8b5cf6;
+      }
+
+      body {
+        font-family: "Huninn", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+      }
+
+      @media (min-width: 768px) {
+        header { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .header-left::-webkit-scrollbar { display: none; }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      @media (min-width: 768px) { .header-right { justify-content: flex-end; } }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) { h1 span.title-text { display: none; } }
+
+      .nav-bar { display: flex; gap: 0.5rem; }
+      .nav-link {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+        font-size: 0.9375rem;
+        white-space: nowrap;
+      }
+      .nav-link:hover { background-color: #f1f5f9; color: var(--primary); }
+      .nav-link.active { background-color: #dbeafe; color: var(--primary-dark); }
+
+      .date-select {
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        background: white;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .theme-toggle:hover { background: var(--bg); }
+
+      .container {
+        max-width: 1400px;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 768px) { .container { margin: 2rem auto; padding: 0 1.5rem; } }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        margin-bottom: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid var(--primary);
+        padding-left: 0.75rem;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      @media (max-width: 480px) { .controls { grid-template-columns: 1fr; } }
+
+      .filter-group { display: flex; flex-direction: column; gap: 0.4rem; }
+      .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+
+      .filter-range { display: flex; align-items: center; gap: 0.4rem; }
+      .filter-range span { color: var(--text-muted); font-size: 0.8rem; }
+
+      .filter-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: #f8fafc;
+      }
+      .filter-input:focus { border-color: var(--primary); background: white; }
+
+      .type-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .type-tab {
+        padding: 0.5rem 1.25rem;
+        border-radius: 9999px;
+        border: 2px solid var(--border);
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        background: none;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .type-tab.active-jump { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+      .type-tab.active-drop { background: #dcfce7; color: #15803d; border-color: #86efac; }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .market-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+      .btn-apply {
+        padding: 0.6rem 1.5rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+        align-self: flex-end;
+      }
+      .btn-apply:hover { background: var(--primary-dark); }
+
+      .btn-clear {
+        padding: 0.6rem 1rem;
+        background: none;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        align-self: flex-end;
+      }
+      .btn-clear:hover { background: var(--bg); }
+
+      .table-container { overflow-x: auto; }
+
+      table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; }
+
+      th {
+        padding: 0.875rem 0.75rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+      }
+      th:hover { background-color: #f1f5f9; }
+
+      td {
+        padding: 0.875rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+      tr:hover td { background-color: #f8fafc; }
+
+      .price-up { color: var(--up); font-weight: 700; }
+      .price-down { color: var(--down); font-weight: 700; }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+      .badge-primary { background-color: #dbeafe; color: #1e40af; }
+      .badge-up { background-color: #fee2e2; color: #b91c1c; }
+      .badge-down { background-color: #dcfce7; color: #15803d; }
+
+      .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
+
+      .btn-secondary {
+        background: var(--text-muted);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* Dark mode */
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+      [data-theme="dark"] th { background-color: #1e293b; }
+      [data-theme="dark"] tr:hover td { background-color: #263248; }
+      [data-theme="dark"] .filter-input { background-color: #0f172a; color: var(--text); }
+      [data-theme="dark"] .date-select { background-color: #1e293b; color: var(--text); }
+      [data-theme="dark"] .type-tab.active-jump { background: #450a0a; color: #fca5a5; }
+      [data-theme="dark"] .type-tab.active-drop { background: #052e16; color: #86efac; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height:40px;width:auto;" onerror="this.style.display='none';document.getElementById('header-emoji').style.display='inline';" />
+        <span id="header-emoji" style="display:none;font-size:1.5rem;">🚀</span>
+        <h1><span class="title-text">Gap Observer</span></h1>
+        <nav class="nav-bar">
+          <a href="index.html" class="nav-link">上市</a>
+          <a href="tpex.html" class="nav-link">上櫃</a>
+          <a href="gap.html" class="nav-link active">跳空</a>
+          <a href="warrant.html" class="nav-link">權證</a>
+          <a href="warrant_filter.html" class="nav-link">權證篩選</a>
+          <a href="punish.html" class="nav-link">處置股票</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
+      </div>
+      <div class="header-right">
+        <select id="date-picker" class="date-select"></select>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <!-- Type + Market tabs -->
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:1rem;">
+          <div class="type-tabs" style="margin-bottom:0;">
+            <button class="type-tab active-jump" data-type="gap_jump" id="tab-jump">⬆ 跳空上漲</button>
+            <button class="type-tab" data-type="gap_drop" id="tab-drop">⬇ 跳空下跌</button>
+          </div>
+          <div class="market-tabs" style="margin-bottom:0;">
+            <button class="market-tab active" data-market="twse">上市</button>
+            <button class="market-tab" data-market="tpex">上櫃</button>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="controls">
+          <div class="filter-group">
+            <span class="filter-label">收盤價</span>
+            <div class="filter-range">
+              <input type="number" id="close-min" class="filter-input" placeholder="最小" />
+              <span>~</span>
+              <input type="number" id="close-max" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">成交量 (張)</span>
+            <div class="filter-range">
+              <input type="number" id="vol-min" class="filter-input" placeholder="最小" />
+              <span>~</span>
+              <input type="number" id="vol-max" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">跳空點數</span>
+            <div class="filter-range">
+              <input type="number" id="gdiff-min" class="filter-input" placeholder="最小" />
+              <span>~</span>
+              <input type="number" id="gdiff-max" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">跳空幅度 (%)</span>
+            <div class="filter-range">
+              <input type="number" id="gratio-min" class="filter-input" placeholder="最小" />
+              <span>~</span>
+              <input type="number" id="gratio-max" class="filter-input" placeholder="最大" />
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+          <button class="btn-clear" id="btn-clear">清除條件</button>
+          <button class="btn-apply" id="btn-apply">套用篩選</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span id="result-title">跳空上漲 <span id="result-count" class="badge badge-up">0</span></span>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
+                <th onclick="setSort('today_close')">收盤價 <span id="sort-today_close"></span></th>
+                <th id="th-prev">前日高點 <span id="sort-prev"></span></th>
+                <th onclick="setSort('diff')">漲跌 <span id="sort-diff"></span></th>
+                <th onclick="setSort('ratio')">漲幅 <span id="sort-ratio"></span></th>
+                <th onclick="setSort('gap_diff')">跳空點數 <span id="sort-gap_diff"></span></th>
+                <th onclick="setSort('gap_ratio')">跳空幅度 <span id="sort-gap_ratio"></span></th>
+                <th onclick="setSort('volume')">成交量(張) <span id="sort-volume"></span></th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader" style="display:none;">載入中...</div>
+
+        <div id="pagination" style="display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span id="page-info" style="font-size:0.875rem;color:var(--text-muted);font-weight:600;">第 1 / 1 頁</span>
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let manifest = null;
+      let rawData = [];
+      let filteredData = [];
+      let currentMarket = "twse";
+      let currentType = "gap_jump";
+      let sortColumn = "gap_ratio";
+      let sortDirection = "desc";
+      let currentPage = 1;
+      const rowsPerPage = 30;
+
+      // ── init ──────────────────────────────────────────────────────────────
+      async function init() {
+        const resp = await fetch("data/manifest.json");
+        const fullManifest = await resp.json();
+        manifest = fullManifest;
+
+        populateDatePicker();
+
+        // Market tabs
+        document.querySelectorAll(".market-tab").forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".market-tab").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            populateDatePicker();
+          });
+        });
+
+        // Type tabs
+        document.querySelectorAll(".type-tab").forEach(btn => {
+          btn.addEventListener("click", () => {
+            currentType = btn.dataset.type;
+            updateTypeTabs();
+            loadData();
+          });
+        });
+
+        document.getElementById("date-picker").addEventListener("change", loadData);
+        document.getElementById("btn-apply").addEventListener("click", applyFilters);
+        document.getElementById("btn-clear").addEventListener("click", clearFilters);
+
+        // filter inputs: Enter to apply
+        document.querySelectorAll(".filter-input").forEach(el =>
+          el.addEventListener("keydown", e => { if (e.key === "Enter") applyFilters(); })
+        );
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) { currentPage--; renderTable(); }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) { currentPage++; renderTable(); }
+        });
+
+        // Dark mode
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+          const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+        });
+
+        loadData();
+      }
+
+      function populateDatePicker() {
+        const m = manifest[currentMarket];
+        const dates = (m && m[currentType]) || [];
+        const picker = document.getElementById("date-picker");
+        const prev = picker.value;
+        picker.innerHTML = "";
+        dates.forEach(d => {
+          const opt = document.createElement("option");
+          opt.value = d; opt.textContent = d;
+          picker.appendChild(opt);
+        });
+        if (prev && dates.includes(prev)) picker.value = prev;
+        loadData();
+      }
+
+      // ── data loading ──────────────────────────────────────────────────────
+      async function loadData() {
+        const m = manifest[currentMarket];
+        if (!m) return;
+        const dates = m[currentType] || [];
+        const date = document.getElementById("date-picker").value;
+        if (!date || !dates.includes(date)) {
+          rawData = [];
+          filteredData = [];
+          renderTable();
+          return;
+        }
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+
+        try {
+          const resp = await fetch(`data/${currentMarket}/${currentType}/${date}.json`);
+          rawData = await resp.json();
+        } catch (e) {
+          rawData = [];
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
+
+        updateTypeTabs();
+        applyFilters();
+      }
+
+      // ── filters ───────────────────────────────────────────────────────────
+      function applyFilters() {
+        const closeMin = parseFloat(document.getElementById("close-min").value);
+        const closeMax = parseFloat(document.getElementById("close-max").value);
+        const volMin   = (parseFloat(document.getElementById("vol-min").value) || 0) * 1000;
+        const volMax   = (parseFloat(document.getElementById("vol-max").value) || Infinity) * 1000;
+        const gdMin    = parseFloat(document.getElementById("gdiff-min").value);
+        const gdMax    = parseFloat(document.getElementById("gdiff-max").value);
+        const grMin    = parseFloat(document.getElementById("gratio-min").value);
+        const grMax    = parseFloat(document.getElementById("gratio-max").value);
+
+        filteredData = rawData.filter(s => {
+          if (!isNaN(closeMin) && s.today_close < closeMin) return false;
+          if (!isNaN(closeMax) && s.today_close > closeMax) return false;
+          if (s.volume < volMin) return false;
+          if (s.volume > volMax) return false;
+          const absgd = Math.abs(s.gap_diff);
+          const absgr = Math.abs(s.gap_ratio);
+          if (!isNaN(gdMin) && absgd < Math.abs(gdMin)) return false;
+          if (!isNaN(gdMax) && absgd > Math.abs(gdMax)) return false;
+          if (!isNaN(grMin) && absgr < Math.abs(grMin)) return false;
+          if (!isNaN(grMax) && absgr > Math.abs(grMax)) return false;
+          return true;
+        });
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      function clearFilters() {
+        ["close-min","close-max","vol-min","vol-max","gdiff-min","gdiff-max","gratio-min","gratio-max"]
+          .forEach(id => document.getElementById(id).value = "");
+        applyFilters();
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function updateTypeTabs() {
+        const isJump = currentType === "gap_jump";
+
+        document.getElementById("tab-jump").className =
+          "type-tab" + (isJump ? " active-jump" : "");
+        document.getElementById("tab-drop").className =
+          "type-tab" + (!isJump ? " active-drop" : "");
+
+        document.getElementById("th-prev").textContent = isJump ? "前日高點" : "前日低點";
+        document.getElementById("th-prev").onclick = () => setSort(isJump ? "prev_high" : "prev_low");
+
+        const badge = isJump ? "badge-up" : "badge-down";
+        const countEl = document.getElementById("result-count");
+        countEl.className = `badge ${badge}`;
+
+        document.getElementById("result-title").innerHTML =
+          (isJump ? "⬆ 跳空上漲" : "⬇ 跳空下跌") +
+          ` <span id="result-count" class="badge ${badge}">0</span>`;
+      }
+
+      function setSort(col) {
+        sortDirection = sortColumn === col
+          ? (sortDirection === "asc" ? "desc" : "asc")
+          : (col === "id" || col === "name" ? "asc" : "desc");
+        sortColumn = col;
+        renderTable();
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = filteredData.length;
+
+        const isJump = currentType === "gap_jump";
+        const prevKey = isJump ? "prev_high" : "prev_low";
+        const priceClass = isJump ? "price-up" : "price-down";
+
+        // Sort
+        const sorted = [...filteredData].sort((a, b) => {
+          let va = a[sortColumn] ?? (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          let vb = b[sortColumn] ?? (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          if (typeof va === "string") return sortDirection === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        // Sort indicators
+        ["id","name","today_close","diff","ratio","gap_diff","gap_ratio","volume"].forEach(col => {
+          const el = document.getElementById("sort-" + col);
+          if (el) el.textContent = col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+        });
+        // prev column indicator
+        const prevSortEl = document.getElementById("sort-prev");
+        if (prevSortEl) prevSortEl.textContent = sortColumn === prevKey ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+
+        // Pagination
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+        if (pageData.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票</td></tr>`;
+          return;
+        }
+
+        const diffSign = isJump ? 1 : -1;
+
+        pageData.forEach(s => {
+          const tr = document.createElement("tr");
+          const volK = (s.volume / 1000).toLocaleString(undefined, { maximumFractionDigits: 0 });
+          const prevVal = s[prevKey] ?? "-";
+          const diffPrefix = s.diff > 0 ? "+" : "";
+          const gapPrefix  = s.gap_diff > 0 ? "+" : "";
+
+          tr.innerHTML = `
+            <td style="font-weight:500;">${s.id}</td>
+            <td style="font-weight:600;">
+              <a href="warrant.html?search=${s.id}" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--text-muted);">${s.name}</a>
+            </td>
+            <td class="${priceClass}" style="font-size:1rem;">${s.today_close}</td>
+            <td style="color:var(--text-muted);">${prevVal}</td>
+            <td class="${priceClass}">${diffPrefix}${s.diff?.toFixed(2) ?? "-"}</td>
+            <td class="${priceClass}">${diffPrefix}${s.ratio?.toFixed(2) ?? "-"}%</td>
+            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_diff?.toFixed(2) ?? "-"}</td>
+            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_ratio?.toFixed(2) ?? "-"}%</td>
+            <td style="color:var(--text-muted);">${volK} 張</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
