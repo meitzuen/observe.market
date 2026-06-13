@@ -229,7 +229,53 @@
       }
 
       .badge-primary { background-color: #dbeafe; color: #1e40af; }
-      
+
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+      [data-theme="dark"] th { background-color: #1e293b; }
+      [data-theme="dark"] tr:hover td { background-color: #263248; }
+      [data-theme="dark"] .search-box input { background-color: #0f172a; color: var(--text); }
+      [data-theme="dark"] .date-select { background-color: #1e293b; color: var(--text); }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .theme-toggle:hover { background: var(--bg); }
+
+      .type-filter {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .type-btn {
+        padding: 0.35rem 0.9rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        background: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .type-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
       .btn-secondary {
         background: var(--text-muted);
         color: white;
@@ -282,6 +328,7 @@
             <a href="warrant_filter.html" class="nav-link">權證篩選</a>
             <a href="punish.html" class="nav-link">處置股票</a>
         </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
       </div>
       <div class="header-right">
         <select id="date-picker" class="date-select"></select>
@@ -297,6 +344,11 @@
         <div class="search-box">
           <input type="text" id="warrant-search" placeholder="搜尋代號、名稱或標的..." />
         </div>
+        <div class="type-filter">
+          <button class="type-btn active" data-type="all">全部</button>
+          <button class="type-btn" data-type="認購">認購</button>
+          <button class="type-btn" data-type="認售">認售</button>
+        </div>
         <div class="table-container">
           <table>
             <thead>
@@ -308,6 +360,7 @@
                 <th onclick="setSort('權證成交價')">成交價 <span id="sort-權證成交價"></span></th>
                 <th onclick="setSort('權證成交量')">成交量 <span id="sort-權證成交量"></span></th>
                 <th onclick="setSort('流通在外比例')">流通在外% <span id="sort-流通在外比例"></span></th>
+                <th onclick="setSort('買賣價差比率')">價差比% <span id="sort-買賣價差比率"></span></th>
                 <th onclick="setSort('最新履約價')">履約價 <span id="sort-最新履約價"></span></th>
                 <th onclick="setSort('剩餘天數')">剩餘天數 <span id="sort-剩餘天數"></span></th>
                 <th onclick="setSort('價內外程度')">價內外 <span id="sort-價內外程度"></span></th>
@@ -335,6 +388,7 @@
       const rowsPerPage = 20;
       let sortColumn = "權證成交量";
       let sortDirection = "desc";
+      let activeType = "all";
 
       async function init() {
         try {
@@ -382,10 +436,40 @@
               document.getElementById("warrant-search").value = searchParam;
           }
 
+          // Type filter buttons
+          document.querySelectorAll(".type-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+              document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
+              activeType = btn.dataset.type;
+              filterData();
+            });
+          });
+
+          // Dark mode
+          const savedTheme = localStorage.getItem("theme") || "light";
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+          document.getElementById("theme-toggle").addEventListener("click", () => {
+            const current = document.documentElement.getAttribute("data-theme");
+            const next = current === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+          });
+
+          // `/` key focuses search
+          document.addEventListener("keydown", e => {
+            if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
+              e.preventDefault();
+              document.getElementById("warrant-search").focus();
+            }
+          });
+
           if (manifest.daily.length > 0) {
             loadData(manifest.daily[0]);
           }
-        } catch (e) { 
+        } catch (e) {
           console.error("Error in init:", e);
           document.getElementById("loader").textContent = "載入失敗";
         }
@@ -407,10 +491,12 @@
         const q = document.getElementById("warrant-search").value.toLowerCase();
         filteredData = rawData.filter(w => {
           try {
-            return (w["權證代碼"] || "").toLowerCase().includes(q) || 
+            const matchesSearch = (w["權證代碼"] || "").toLowerCase().includes(q) ||
                    (w["權證名稱"] || "").toLowerCase().includes(q) ||
                    (w["標的名稱"] || "").toLowerCase().includes(q) ||
                    (w["標的代碼"] || "").toLowerCase().includes(q);
+            const matchesType = activeType === "all" || (w["認購/認售"] || "").includes(activeType);
+            return matchesSearch && matchesType;
           } catch (e) { return false; }
         });
         currentPage = 1;
@@ -471,6 +557,7 @@
             <td style="font-weight: 700; color: var(--primary);">${w["權證成交價"]}</td>
             <td>${parseInt(w["權證成交量"] || 0).toLocaleString()}</td>
             <td>${w["流通在外比例"]}%</td>
+            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? 'var(--up)' : 'inherit'}">${w["買賣價差比率"] != null ? w["買賣價差比率"] + '%' : '-'}</td>
             <td>${w["最新履約價"]}</td>
             <td>${w["剩餘天數"]}</td>
             <td>${w["價內外程度"]}</td>
