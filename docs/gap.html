@@ -22,7 +22,7 @@
         --border: #e2e8f0;
         --up: #ef4444;
         --down: #22c55e;
-        --accent: #8b5cf6;
+        --accent: #0284c7;
       }
 
       body {
@@ -34,8 +34,8 @@
       }
 
       header {
-        background-color: var(--card-bg);
-        border-bottom: 1px solid var(--border);
+        background-color: #1e3a5f;
+        border-bottom: none;
         padding: 0.75rem 1rem;
         display: flex;
         flex-direction: column;
@@ -43,7 +43,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.18);
       }
 
       @media (min-width: 768px) {
@@ -73,7 +73,7 @@
         font-size: 1.25rem;
         font-weight: 800;
         font-family: "Huninn", "Noto Sans TC", sans-serif;
-        background: linear-gradient(to right, var(--primary), var(--accent));
+        background: linear-gradient(to right, #ffffff, #93c5fd);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: flex;
@@ -87,7 +87,7 @@
       .nav-bar { display: flex; gap: 0.5rem; }
       .nav-link {
         text-decoration: none;
-        color: var(--text-muted);
+        color: rgba(255,255,255,0.72);
         font-weight: 700;
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
@@ -102,24 +102,27 @@
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
         border: 1px solid var(--border);
-        background: white;
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.25);
+        color: #ffffff;
         font-size: 0.875rem;
         font-weight: 500;
         cursor: pointer;
         outline: none;
       }
+      .date-select option { background: #1e3a5f; color: white; }
 
       .theme-toggle {
         background: none;
-        border: 1px solid var(--border);
+        border: 1px solid rgba(255,255,255,0.25);
         border-radius: 0.5rem;
         padding: 0.4rem 0.6rem;
         cursor: pointer;
         font-size: 1rem;
-        color: var(--text-muted);
+        color: rgba(255,255,255,0.8);
         transition: all 0.2s;
       }
-      .theme-toggle:hover { background: var(--bg); }
+      .theme-toggle:hover { background: rgba(255,255,255,0.12); }
 
       .container {
         max-width: 1400px;
@@ -130,7 +133,7 @@
 
       .card {
         background: var(--card-bg);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         border: 1px solid var(--border);
         padding: 1.5rem;
         box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
