@@ -126,6 +126,9 @@
       }
       .theme-toggle:hover { background: rgba(255,255,255,0.12); }
 
+      .stock-link { color: inherit; text-decoration: none; }
+      .stock-link:hover { color: var(--primary); }
+
       .container {
         max-width: 1400px;
         margin: 1.5rem auto;
@@ -863,7 +866,7 @@
           const date = row.date ? row.date.substring(0, 10) : "—";
           tbody.insertAdjacentHTML("beforeend", `
             <tr>
-              <td style="font-weight:600;">${row.stockNo}</td>
+              <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${date}</td>
               <td class="${pctClass(row.preMonthRevenueDiff)}">${pctPrefix(row.preMonthRevenueDiff)}${fmt(row.preMonthRevenueDiff)}%</td>
               <td class="${pctClass(row.preYearMonthRevenueDiff)}">${pctPrefix(row.preYearMonthRevenueDiff)}${fmt(row.preYearMonthRevenueDiff)}%</td>
@@ -915,7 +918,7 @@
           const season = `${row.currentYear} Q${row.currentSeason}`;
           tbody.insertAdjacentHTML("beforeend", `
             <tr>
-              <td style="font-weight:600;">${row.stockNo}</td>
+              <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
               <td class="${pctClass(row.top4SumRoe)}">${pctPrefix(row.top4SumRoe)}${fmt(row.top4SumRoe)}%</td>
               <td class="${pctClass(row.top4SumRoa)}">${pctPrefix(row.top4SumRoa)}${fmt(row.top4SumRoa)}%</td>
@@ -973,7 +976,7 @@
           const season = `${row.year} Q${row.season}`;
           tbody.insertAdjacentHTML("beforeend", `
             <tr>
-              <td style="font-weight:600;">${row.stockNo}</td>
+              <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
               <td class="${pctClass(row.grossProfitMargin)}">${pctPrefix(row.grossProfitMargin)}${fmt(row.grossProfitMargin)}%</td>
               <td class="${pctClass(row.operatingProfitMargin)}">${pctPrefix(row.operatingProfitMargin)}${fmt(row.operatingProfitMargin)}%</td>
@@ -1031,7 +1034,7 @@
           const prevSeason = `${row.prevYear} Q${row.prevSeason}`;
           tbody.insertAdjacentHTML("beforeend", `
             <tr>
-              <td style="font-weight:600;">${row.stockNo}</td>
+              <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
               <td class="${pctClass(row.currentEps)}">${fmt(row.currentEps)}</td>
               <td class="${pctClass(row.prevEps)}" style="font-size:0.875rem;">${fmt(row.prevEps)}</td>
