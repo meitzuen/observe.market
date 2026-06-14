@@ -50,7 +50,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
       }
 
       @media (min-width: 768px) {
@@ -71,7 +71,9 @@
         scrollbar-width: none;
       }
 
-      .header-left::-webkit-scrollbar { display: none; }
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
 
       h1 {
         margin: 0;
@@ -88,14 +90,19 @@
       }
 
       @media (max-width: 480px) {
-        h1 span.title-text { display: none; }
+        h1 span.title-text {
+          display: none;
+        }
       }
 
-      .nav-bar { display: flex; gap: 0.5rem; }
+      .nav-bar {
+        display: flex;
+        gap: 0.5rem;
+      }
 
       .nav-link {
         text-decoration: none;
-        color: rgba(255,255,255,0.72);
+        color: rgba(255, 255, 255, 0.72);
         font-weight: 700;
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
@@ -105,29 +112,36 @@
       }
 
       .nav-link:hover {
-        background-color: rgba(255,255,255,0.12);
+        background-color: rgba(255, 255, 255, 0.12);
         color: #ffffff;
       }
 
       .nav-link.active {
-        background-color: rgba(255,255,255,0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         color: #ffffff;
       }
 
       .theme-toggle {
         background: none;
-        border: 1px solid rgba(255,255,255,0.25);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         border-radius: 0.5rem;
         padding: 0.4rem 0.6rem;
         cursor: pointer;
         font-size: 1rem;
-        color: rgba(255,255,255,0.8);
+        color: rgba(255, 255, 255, 0.8);
         transition: all 0.2s;
       }
-      .theme-toggle:hover { background: rgba(255,255,255,0.12); }
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
 
-      .stock-link { color: inherit; text-decoration: none; }
-      .stock-link:hover { color: var(--primary); }
+      .stock-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .stock-link:hover {
+        color: var(--primary);
+      }
 
       .container {
         max-width: 1400px;
@@ -136,7 +150,10 @@
       }
 
       @media (min-width: 768px) {
-        .container { margin: 2rem auto; padding: 0 1.5rem; }
+        .container {
+          margin: 2rem auto;
+          padding: 0 1.5rem;
+        }
       }
 
       /* Tab navigation */
@@ -150,7 +167,9 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
-      .tab-nav::-webkit-scrollbar { display: none; }
+      .tab-nav::-webkit-scrollbar {
+        display: none;
+      }
 
       .tab-btn {
         background: none;
@@ -167,15 +186,21 @@
         white-space: nowrap;
       }
 
-      .tab-btn:hover { color: var(--primary); }
+      .tab-btn:hover {
+        color: var(--primary);
+      }
 
       .tab-btn.active {
         color: var(--primary);
         border-bottom-color: var(--primary);
       }
 
-      .tab-panel { display: none; }
-      .tab-panel.active { display: block; }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+      }
 
       /* Cards */
       .card {
@@ -183,7 +208,9 @@
         border-radius: 0.5rem;
         border: 1px solid var(--border);
         padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
         margin-bottom: 1.5rem;
       }
 
@@ -247,11 +274,15 @@
       input[type="number"]:focus,
       select.filter-select:focus {
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
       }
 
-      input[type="number"].w-80 { width: 80px; }
-      input[type="number"].w-60 { width: 60px; }
+      input[type="number"].w-80 {
+        width: 80px;
+      }
+      input[type="number"].w-60 {
+        width: 60px;
+      }
 
       .checkbox-group {
         display: flex;
@@ -268,14 +299,18 @@
         user-select: none;
       }
 
-      .checkbox-group:hover { border-color: var(--primary); }
+      .checkbox-group:hover {
+        border-color: var(--primary);
+      }
       .checkbox-group.checked {
         border-color: var(--primary);
         background: #eff6ff;
         color: var(--primary-dark);
       }
 
-      .checkbox-group input[type="checkbox"] { accent-color: var(--primary); }
+      .checkbox-group input[type="checkbox"] {
+        accent-color: var(--primary);
+      }
 
       .btn {
         background: var(--primary);
@@ -290,15 +325,21 @@
         white-space: nowrap;
       }
 
-      .btn:hover { background: var(--primary-dark); }
+      .btn:hover {
+        background: var(--primary-dark);
+      }
 
       .btn-secondary {
         background: var(--text-muted);
       }
-      .btn-secondary:hover { background: #475569; }
+      .btn-secondary:hover {
+        background: #475569;
+      }
 
       /* Table */
-      .table-container { overflow-x: auto; }
+      .table-container {
+        overflow-x: auto;
+      }
 
       table {
         width: 100%;
@@ -321,7 +362,9 @@
         user-select: none;
       }
 
-      th:hover { color: var(--primary); }
+      th:hover {
+        color: var(--primary);
+      }
 
       td {
         padding: 0.875rem 0.75rem;
@@ -330,11 +373,21 @@
         white-space: nowrap;
       }
 
-      tr:hover td { background-color: #f8fafc; }
+      tr:hover td {
+        background-color: #f8fafc;
+      }
 
-      .price-up { color: var(--up); font-weight: 600; }
-      .price-down { color: var(--down); font-weight: 600; }
-      .price-neutral { color: var(--text-muted); }
+      .price-up {
+        color: var(--up);
+        font-weight: 600;
+      }
+      .price-down {
+        color: var(--down);
+        font-weight: 600;
+      }
+      .price-neutral {
+        color: var(--text-muted);
+      }
 
       .loader {
         display: flex;
@@ -356,7 +409,11 @@
         animation: spin 0.7s linear infinite;
       }
 
-      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
       .badge {
         display: inline-block;
@@ -366,7 +423,10 @@
         font-weight: 600;
         margin-left: 0.5rem;
       }
-      .badge-primary { background-color: #dbeafe; color: #1e40af; }
+      .badge-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
 
       .empty-state {
         padding: 3rem;
@@ -375,7 +435,10 @@
         font-style: italic;
       }
 
-      .sort-icon { font-size: 0.75rem; margin-left: 0.25rem; }
+      .sort-icon {
+        font-size: 0.75rem;
+        margin-left: 0.25rem;
+      }
 
       /* Trend badge */
       .trend-up {
@@ -413,20 +476,45 @@
         --text-muted: #94a3b8;
         --border: #334155;
       }
-      [data-theme="dark"] th { background-color: #1e293b; }
-      [data-theme="dark"] .filter-panel { background: #0f172a; }
-      [data-theme="dark"] tr:hover td { background-color: #263248; }
+      [data-theme="dark"] th {
+        background-color: #1e293b;
+      }
+      [data-theme="dark"] .filter-panel {
+        background: #0f172a;
+      }
+      [data-theme="dark"] tr:hover td {
+        background-color: #263248;
+      }
       [data-theme="dark"] input[type="number"],
-      [data-theme="dark"] select.filter-select { background: #0f172a; color: var(--text); border-color: var(--border); }
-      [data-theme="dark"] .checkbox-group { background: #1e293b; }
-      [data-theme="dark"] .checkbox-group.checked { background: #1e3a5f; }
+      [data-theme="dark"] select.filter-select {
+        background: #0f172a;
+        color: var(--text);
+        border-color: var(--border);
+      }
+      [data-theme="dark"] .checkbox-group {
+        background: #1e293b;
+      }
+      [data-theme="dark"] .checkbox-group.checked {
+        background: #1e3a5f;
+      }
     </style>
   </head>
   <body>
     <header>
       <div class="header-left">
-        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem;">📈</span>
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >📈</span
+        >
         <h1><span class="title-text">Market Observer</span></h1>
         <nav class="nav-bar">
           <a href="index.html" class="nav-link">上市</a>
@@ -437,13 +525,17 @@
           <a href="punish.html" class="nav-link">處置股票</a>
           <a href="wantgoo.html" class="nav-link active">基本面</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
       </div>
     </header>
 
     <div class="container">
       <div class="tab-nav">
-        <button class="tab-btn active" data-tab="mom-revenue">月營收成長</button>
+        <button class="tab-btn active" data-tab="mom-revenue">
+          月營收成長
+        </button>
         <button class="tab-btn" data-tab="roe-roa">ROE / ROA</button>
         <button class="tab-btn" data-tab="profit-margin">獲利率三率</button>
         <button class="tab-btn" data-tab="eps-growth">EPS 季增排行</button>
@@ -453,48 +545,105 @@
       <div id="mom-revenue" class="tab-panel active">
         <div class="card">
           <div class="card-title">
-            <span>月營收成長排行 <span id="mom-count" class="badge badge-primary"></span></span>
+            <span
+              >月營收成長排行
+              <span id="mom-count" class="badge badge-primary"></span
+            ></span>
           </div>
 
           <div class="filter-panel">
             <div class="filter-group">
               <span class="filter-label">顯示筆數</span>
-              <input type="number" id="mom-top-n" class="w-80" value="200" min="1" max="500" />
+              <input
+                type="number"
+                id="mom-top-n"
+                class="w-80"
+                value="200"
+                min="1"
+                max="500"
+              />
             </div>
             <div class="filter-group">
               <span class="filter-label">月增率 (%)</span>
               <div class="filter-row">
-                <input type="number" id="mom-month-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="mom-month-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="mom-month-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="mom-month-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
             <div class="filter-group">
               <span class="filter-label">年增率 (%)</span>
               <div class="filter-row">
-                <input type="number" id="mom-year-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="mom-year-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="mom-year-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="mom-year-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <button class="btn" onclick="fetchMomRevenue()">查詢</button>
             </div>
           </div>
 
-          <div id="mom-loader" class="loader" style="display:none;">
-            <div class="spinner"></div>載入中...
+          <div id="mom-loader" class="loader" style="display: none">
+            <div class="spinner"></div>
+            載入中...
           </div>
-          <div id="mom-empty" class="empty-state" style="display:none;">按下「查詢」以載入資料</div>
-          <div class="table-container" id="mom-table-wrap" style="display:none;">
+          <div id="mom-empty" class="empty-state" style="display: none">
+            按下「查詢」以載入資料
+          </div>
+          <div
+            class="table-container"
+            id="mom-table-wrap"
+            style="display: none"
+          >
             <table>
               <thead>
                 <tr>
-                  <th onclick="sortTable('mom', 'stockNo')">代號 <span class="sort-icon" id="mom-sort-stockNo"></span></th>
+                  <th onclick="sortTable('mom', 'stockNo')">
+                    代號 <span class="sort-icon" id="mom-sort-stockNo"></span>
+                  </th>
                   <th>日期</th>
-                  <th onclick="sortTable('mom', 'preMonthRevenueDiff')">月增率 (%) <span class="sort-icon" id="mom-sort-preMonthRevenueDiff"></span></th>
-                  <th onclick="sortTable('mom', 'preYearMonthRevenueDiff')">年增率 (%) <span class="sort-icon" id="mom-sort-preYearMonthRevenueDiff"></span></th>
-                  <th onclick="sortTable('mom', 'preTotalRevenueDiff')">累計年增率 (%) <span class="sort-icon" id="mom-sort-preTotalRevenueDiff"></span></th>
+                  <th onclick="sortTable('mom', 'preMonthRevenueDiff')">
+                    月增率 (%)
+                    <span
+                      class="sort-icon"
+                      id="mom-sort-preMonthRevenueDiff"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('mom', 'preYearMonthRevenueDiff')">
+                    年增率 (%)
+                    <span
+                      class="sort-icon"
+                      id="mom-sort-preYearMonthRevenueDiff"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('mom', 'preTotalRevenueDiff')">
+                    累計年增率 (%)
+                    <span
+                      class="sort-icon"
+                      id="mom-sort-preTotalRevenueDiff"
+                    ></span>
+                  </th>
                 </tr>
               </thead>
               <tbody id="mom-tbody"></tbody>
@@ -507,13 +656,23 @@
       <div id="roe-roa" class="tab-panel">
         <div class="card">
           <div class="card-title">
-            <span>近四季 ROE / ROA 排行 <span id="roeroa-count" class="badge badge-primary"></span></span>
+            <span
+              >近四季 ROE / ROA 排行
+              <span id="roeroa-count" class="badge badge-primary"></span
+            ></span>
           </div>
 
           <div class="filter-panel">
             <div class="filter-group">
               <span class="filter-label">顯示筆數</span>
-              <input type="number" id="roeroa-top-n" class="w-80" value="200" min="1" max="500" />
+              <input
+                type="number"
+                id="roeroa-top-n"
+                class="w-80"
+                value="200"
+                min="1"
+                max="500"
+              />
             </div>
             <div class="filter-group">
               <span class="filter-label">排序依</span>
@@ -525,36 +684,72 @@
             <div class="filter-group">
               <span class="filter-label">ROE (%)</span>
               <div class="filter-row">
-                <input type="number" id="roeroa-roe-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="roeroa-roe-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="roeroa-roe-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="roeroa-roe-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
             <div class="filter-group">
               <span class="filter-label">ROA (%)</span>
               <div class="filter-row">
-                <input type="number" id="roeroa-roa-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="roeroa-roa-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="roeroa-roa-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="roeroa-roa-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <button class="btn" onclick="fetchRoeRoa()">查詢</button>
             </div>
           </div>
 
-          <div id="roeroa-loader" class="loader" style="display:none;">
-            <div class="spinner"></div>載入中...
+          <div id="roeroa-loader" class="loader" style="display: none">
+            <div class="spinner"></div>
+            載入中...
           </div>
-          <div id="roeroa-empty" class="empty-state" style="display:none;">按下「查詢」以載入資料</div>
-          <div class="table-container" id="roeroa-table-wrap" style="display:none;">
+          <div id="roeroa-empty" class="empty-state" style="display: none">
+            按下「查詢」以載入資料
+          </div>
+          <div
+            class="table-container"
+            id="roeroa-table-wrap"
+            style="display: none"
+          >
             <table>
               <thead>
                 <tr>
-                  <th onclick="sortTable('roeroa', 'stockNo')">代號 <span class="sort-icon" id="roeroa-sort-stockNo"></span></th>
+                  <th onclick="sortTable('roeroa', 'stockNo')">
+                    代號
+                    <span class="sort-icon" id="roeroa-sort-stockNo"></span>
+                  </th>
                   <th>年/季</th>
-                  <th onclick="sortTable('roeroa', 'top4SumRoe')">近四季 ROE (%) <span class="sort-icon" id="roeroa-sort-top4SumRoe"></span></th>
-                  <th onclick="sortTable('roeroa', 'top4SumRoa')">近四季 ROA (%) <span class="sort-icon" id="roeroa-sort-top4SumRoa"></span></th>
+                  <th onclick="sortTable('roeroa', 'top4SumRoe')">
+                    近四季 ROE (%)
+                    <span class="sort-icon" id="roeroa-sort-top4SumRoe"></span>
+                  </th>
+                  <th onclick="sortTable('roeroa', 'top4SumRoa')">
+                    近四季 ROA (%)
+                    <span class="sort-icon" id="roeroa-sort-top4SumRoa"></span>
+                  </th>
                 </tr>
               </thead>
               <tbody id="roeroa-tbody"></tbody>
@@ -567,13 +762,23 @@
       <div id="profit-margin" class="tab-panel">
         <div class="card">
           <div class="card-title">
-            <span>獲利率三率排行 <span id="pm-count" class="badge badge-primary"></span></span>
+            <span
+              >獲利率三率排行
+              <span id="pm-count" class="badge badge-primary"></span
+            ></span>
           </div>
 
           <div class="filter-panel">
             <div class="filter-group">
               <span class="filter-label">顯示筆數</span>
-              <input type="number" id="pm-top-n" class="w-80" value="200" min="1" max="500" />
+              <input
+                type="number"
+                id="pm-top-n"
+                class="w-80"
+                value="200"
+                min="1"
+                max="500"
+              />
             </div>
             <div class="filter-group">
               <span class="filter-label">排序依</span>
@@ -584,39 +789,82 @@
                 <option value="net_margin_trend">淨利率趨勢</option>
               </select>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <label class="checkbox-group" id="pm-rising-label">
-                <input type="checkbox" id="pm-three-rates-rising" onchange="toggleCheckboxStyle('pm-rising-label', this)" />
+                <input
+                  type="checkbox"
+                  id="pm-three-rates-rising"
+                  onchange="toggleCheckboxStyle('pm-rising-label', this)"
+                />
                 三率齊揚
               </label>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <label class="checkbox-group" id="pm-profit-label">
-                <input type="checkbox" id="pm-only-profit" onchange="toggleCheckboxStyle('pm-profit-label', this)" />
+                <input
+                  type="checkbox"
+                  id="pm-only-profit"
+                  onchange="toggleCheckboxStyle('pm-profit-label', this)"
+                />
                 僅獲利
               </label>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <button class="btn" onclick="fetchProfitMargin()">查詢</button>
             </div>
           </div>
 
-          <div id="pm-loader" class="loader" style="display:none;">
-            <div class="spinner"></div>載入中...
+          <div id="pm-loader" class="loader" style="display: none">
+            <div class="spinner"></div>
+            載入中...
           </div>
-          <div id="pm-empty" class="empty-state" style="display:none;">按下「查詢」以載入資料</div>
-          <div class="table-container" id="pm-table-wrap" style="display:none;">
+          <div id="pm-empty" class="empty-state" style="display: none">
+            按下「查詢」以載入資料
+          </div>
+          <div class="table-container" id="pm-table-wrap" style="display: none">
             <table>
               <thead>
                 <tr>
-                  <th onclick="sortTable('pm', 'stockNo')">代號 <span class="sort-icon" id="pm-sort-stockNo"></span></th>
+                  <th onclick="sortTable('pm', 'stockNo')">
+                    代號 <span class="sort-icon" id="pm-sort-stockNo"></span>
+                  </th>
                   <th>年/季</th>
-                  <th onclick="sortTable('pm', 'grossProfitMargin')">毛利率 (%) <span class="sort-icon" id="pm-sort-grossProfitMargin"></span></th>
-                  <th onclick="sortTable('pm', 'operatingProfitMargin')">營業利益率 (%) <span class="sort-icon" id="pm-sort-operatingProfitMargin"></span></th>
-                  <th onclick="sortTable('pm', 'netProfitMargin')">淨利率 (%) <span class="sort-icon" id="pm-sort-netProfitMargin"></span></th>
-                  <th onclick="sortTable('pm', 'grossMarginTrend')">毛利率趨勢 <span class="sort-icon" id="pm-sort-grossMarginTrend"></span></th>
-                  <th onclick="sortTable('pm', 'operatingMarginTrend')">營利趨勢 <span class="sort-icon" id="pm-sort-operatingMarginTrend"></span></th>
-                  <th onclick="sortTable('pm', 'netMarginTrend')">淨利趨勢 <span class="sort-icon" id="pm-sort-netMarginTrend"></span></th>
+                  <th onclick="sortTable('pm', 'grossProfitMargin')">
+                    毛利率 (%)
+                    <span
+                      class="sort-icon"
+                      id="pm-sort-grossProfitMargin"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('pm', 'operatingProfitMargin')">
+                    營業利益率 (%)
+                    <span
+                      class="sort-icon"
+                      id="pm-sort-operatingProfitMargin"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('pm', 'netProfitMargin')">
+                    淨利率 (%)
+                    <span class="sort-icon" id="pm-sort-netProfitMargin"></span>
+                  </th>
+                  <th onclick="sortTable('pm', 'grossMarginTrend')">
+                    毛利率趨勢
+                    <span
+                      class="sort-icon"
+                      id="pm-sort-grossMarginTrend"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('pm', 'operatingMarginTrend')">
+                    營利趨勢
+                    <span
+                      class="sort-icon"
+                      id="pm-sort-operatingMarginTrend"
+                    ></span>
+                  </th>
+                  <th onclick="sortTable('pm', 'netMarginTrend')">
+                    淨利趨勢
+                    <span class="sort-icon" id="pm-sort-netMarginTrend"></span>
+                  </th>
                 </tr>
               </thead>
               <tbody id="pm-tbody"></tbody>
@@ -629,13 +877,23 @@
       <div id="eps-growth" class="tab-panel">
         <div class="card">
           <div class="card-title">
-            <span>EPS 季增排行 <span id="eps-count" class="badge badge-primary"></span></span>
+            <span
+              >EPS 季增排行
+              <span id="eps-count" class="badge badge-primary"></span
+            ></span>
           </div>
 
           <div class="filter-panel">
             <div class="filter-group">
               <span class="filter-label">顯示筆數</span>
-              <input type="number" id="eps-top-n" class="w-80" value="200" min="1" max="500" />
+              <input
+                type="number"
+                id="eps-top-n"
+                class="w-80"
+                value="200"
+                min="1"
+                max="500"
+              />
             </div>
             <div class="filter-group">
               <span class="filter-label">排序依</span>
@@ -647,46 +905,97 @@
             <div class="filter-group">
               <span class="filter-label">季增率 (%)</span>
               <div class="filter-row">
-                <input type="number" id="eps-growth-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="eps-growth-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="eps-growth-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="eps-growth-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
             <div class="filter-group">
               <span class="filter-label">當季 EPS</span>
               <div class="filter-row">
-                <input type="number" id="eps-current-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="eps-current-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="eps-current-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="eps-current-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
             <div class="filter-group">
               <span class="filter-label">近四季 EPS</span>
               <div class="filter-row">
-                <input type="number" id="eps-top4-floor" class="w-80" placeholder="下限" />
+                <input
+                  type="number"
+                  id="eps-top4-floor"
+                  class="w-80"
+                  placeholder="下限"
+                />
                 <span style="color: var(--text-muted)">–</span>
-                <input type="number" id="eps-top4-ceil" class="w-80" placeholder="上限" />
+                <input
+                  type="number"
+                  id="eps-top4-ceil"
+                  class="w-80"
+                  placeholder="上限"
+                />
               </div>
             </div>
-            <div class="filter-group" style="align-self: flex-end;">
+            <div class="filter-group" style="align-self: flex-end">
               <button class="btn" onclick="fetchEpsGrowth()">查詢</button>
             </div>
           </div>
 
-          <div id="eps-loader" class="loader" style="display:none;">
-            <div class="spinner"></div>載入中...
+          <div id="eps-loader" class="loader" style="display: none">
+            <div class="spinner"></div>
+            載入中...
           </div>
-          <div id="eps-empty" class="empty-state" style="display:none;">按下「查詢」以載入資料</div>
-          <div class="table-container" id="eps-table-wrap" style="display:none;">
+          <div id="eps-empty" class="empty-state" style="display: none">
+            按下「查詢」以載入資料
+          </div>
+          <div
+            class="table-container"
+            id="eps-table-wrap"
+            style="display: none"
+          >
             <table>
               <thead>
                 <tr>
-                  <th onclick="sortTable('eps', 'stockNo')">代號 <span class="sort-icon" id="eps-sort-stockNo"></span></th>
+                  <th onclick="sortTable('eps', 'stockNo')">
+                    代號 <span class="sort-icon" id="eps-sort-stockNo"></span>
+                  </th>
                   <th>年/季</th>
-                  <th onclick="sortTable('eps', 'currentEps')">當季 EPS <span class="sort-icon" id="eps-sort-currentEps"></span></th>
-                  <th onclick="sortTable('eps', 'prevEps')">上季 EPS <span class="sort-icon" id="eps-sort-prevEps"></span></th>
-                  <th onclick="sortTable('eps', 'top4SumEps')">近四季 EPS <span class="sort-icon" id="eps-sort-top4SumEps"></span></th>
-                  <th onclick="sortTable('eps', 'growthRatio')">季增率 (%) <span class="sort-icon" id="eps-sort-growthRatio"></span></th>
+                  <th onclick="sortTable('eps', 'currentEps')">
+                    當季 EPS
+                    <span class="sort-icon" id="eps-sort-currentEps"></span>
+                  </th>
+                  <th onclick="sortTable('eps', 'prevEps')">
+                    上季 EPS
+                    <span class="sort-icon" id="eps-sort-prevEps"></span>
+                  </th>
+                  <th onclick="sortTable('eps', 'top4SumEps')">
+                    近四季 EPS
+                    <span class="sort-icon" id="eps-sort-top4SumEps"></span>
+                  </th>
+                  <th onclick="sortTable('eps', 'growthRatio')">
+                    季增率 (%)
+                    <span class="sort-icon" id="eps-sort-growthRatio"></span>
+                  </th>
                 </tr>
               </thead>
               <tbody id="eps-tbody"></tbody>
@@ -701,20 +1010,24 @@
 
       // ---- Sort state per table ----
       const sortState = {
-        mom:    { col: null, dir: "desc" },
+        mom: { col: null, dir: "desc" },
         roeroa: { col: null, dir: "desc" },
-        pm:     { col: null, dir: "desc" },
-        eps:    { col: null, dir: "desc" },
+        pm: { col: null, dir: "desc" },
+        eps: { col: null, dir: "desc" },
       };
 
       // Raw data per table
       const tableData = { mom: [], roeroa: [], pm: [], eps: [] };
 
       // ---- Tab switching ----
-      document.querySelectorAll(".tab-btn").forEach(btn => {
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
-          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-          document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-panel")
+            .forEach((p) => p.classList.remove("active"));
           btn.classList.add("active");
           document.getElementById(btn.dataset.tab).classList.add("active");
         });
@@ -730,7 +1043,8 @@
         document.getElementById(`${prefix}-loader`).style.display = "none";
         document.getElementById(`${prefix}-table-wrap`).style.display = "none";
         document.getElementById(`${prefix}-empty`).style.display = "block";
-        document.getElementById(`${prefix}-empty`).textContent = "按下「查詢」以載入資料";
+        document.getElementById(`${prefix}-empty`).textContent =
+          "按下「查詢」以載入資料";
       }
 
       function showLoader(prefix) {
@@ -790,7 +1104,7 @@
 
       function updateSortIcons(prefix, cols) {
         const s = sortState[prefix];
-        cols.forEach(c => {
+        cols.forEach((c) => {
           const el = document.getElementById(`${prefix}-sort-${c}`);
           if (!el) return;
           if (c === s.col) {
@@ -824,13 +1138,18 @@
       async function fetchMomRevenue() {
         showLoader("mom");
         try {
-          const data = await apiFetch("/api/wantgoo/stock/ranking/mom-revenue-growth", {
-            top_n: document.getElementById("mom-top-n").value || 200,
-            pre_month_floor: document.getElementById("mom-month-floor").value,
-            pre_month_ceil: document.getElementById("mom-month-ceil").value,
-            pre_year_month_floor: document.getElementById("mom-year-floor").value,
-            pre_year_month_ceil: document.getElementById("mom-year-ceil").value,
-          });
+          const data = await apiFetch(
+            "/api/wantgoo/stock/ranking/mom-revenue-growth",
+            {
+              top_n: document.getElementById("mom-top-n").value || 200,
+              pre_month_floor: document.getElementById("mom-month-floor").value,
+              pre_month_ceil: document.getElementById("mom-month-ceil").value,
+              pre_year_month_floor:
+                document.getElementById("mom-year-floor").value,
+              pre_year_month_ceil:
+                document.getElementById("mom-year-ceil").value,
+            },
+          );
           tableData.mom = data;
           sortState.mom = { col: "preMonthRevenueDiff", dir: "desc" };
           renderTable("mom");
@@ -849,22 +1168,32 @@
       }
 
       function renderMomTable() {
-        const cols = ["stockNo", "preMonthRevenueDiff", "preYearMonthRevenueDiff", "preTotalRevenueDiff"];
+        const cols = [
+          "stockNo",
+          "preMonthRevenueDiff",
+          "preYearMonthRevenueDiff",
+          "preTotalRevenueDiff",
+        ];
         updateSortIcons("mom", cols);
 
         const s = sortState.mom;
         const data = [...tableData.mom].sort((a, b) => {
           const va = a[s.col] ?? -Infinity;
           const vb = b[s.col] ?? -Infinity;
-          if (typeof va === "string") return s.dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          if (typeof va === "string")
+            return s.dir === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
           return s.dir === "asc" ? va - vb : vb - va;
         });
 
         const tbody = document.getElementById("mom-tbody");
         tbody.innerHTML = "";
-        data.forEach(row => {
+        data.forEach((row) => {
           const date = row.date ? row.date.substring(0, 10) : "—";
-          tbody.insertAdjacentHTML("beforeend", `
+          tbody.insertAdjacentHTML(
+            "beforeend",
+            `
             <tr>
               <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${date}</td>
@@ -872,7 +1201,8 @@
               <td class="${pctClass(row.preYearMonthRevenueDiff)}">${pctPrefix(row.preYearMonthRevenueDiff)}${fmt(row.preYearMonthRevenueDiff)}%</td>
               <td class="${pctClass(row.preTotalRevenueDiff)}">${pctPrefix(row.preTotalRevenueDiff)}${fmt(row.preTotalRevenueDiff)}%</td>
             </tr>
-          `);
+          `,
+          );
         });
       }
 
@@ -908,22 +1238,28 @@
         const data = [...tableData.roeroa].sort((a, b) => {
           const va = a[s.col] ?? -Infinity;
           const vb = b[s.col] ?? -Infinity;
-          if (typeof va === "string") return s.dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          if (typeof va === "string")
+            return s.dir === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
           return s.dir === "asc" ? va - vb : vb - va;
         });
 
         const tbody = document.getElementById("roeroa-tbody");
         tbody.innerHTML = "";
-        data.forEach(row => {
+        data.forEach((row) => {
           const season = `${row.currentYear} Q${row.currentSeason}`;
-          tbody.insertAdjacentHTML("beforeend", `
+          tbody.insertAdjacentHTML(
+            "beforeend",
+            `
             <tr>
               <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
               <td class="${pctClass(row.top4SumRoe)}">${pctPrefix(row.top4SumRoe)}${fmt(row.top4SumRoe)}%</td>
               <td class="${pctClass(row.top4SumRoa)}">${pctPrefix(row.top4SumRoa)}${fmt(row.top4SumRoa)}%</td>
             </tr>
-          `);
+          `,
+          );
         });
       }
 
@@ -943,10 +1279,15 @@
             top_n: document.getElementById("pm-top-n").value || 200,
             sort_by: document.getElementById("pm-sort-by").value,
           };
-          if (document.getElementById("pm-three-rates-rising").checked) params.three_rates_rising = true;
-          if (document.getElementById("pm-only-profit").checked) params.only_profit = true;
+          if (document.getElementById("pm-three-rates-rising").checked)
+            params.three_rates_rising = true;
+          if (document.getElementById("pm-only-profit").checked)
+            params.only_profit = true;
 
-          const data = await apiFetch("/api/wantgoo/stock/ranking/profit-margin", params);
+          const data = await apiFetch(
+            "/api/wantgoo/stock/ranking/profit-margin",
+            params,
+          );
           tableData.pm = data;
           sortState.pm = { col: "grossMarginTrend", dir: "desc" };
           renderTable("pm");
@@ -958,23 +1299,35 @@
       }
 
       function renderPmTable() {
-        const cols = ["stockNo", "grossProfitMargin", "operatingProfitMargin", "netProfitMargin",
-                      "grossMarginTrend", "operatingMarginTrend", "netMarginTrend"];
+        const cols = [
+          "stockNo",
+          "grossProfitMargin",
+          "operatingProfitMargin",
+          "netProfitMargin",
+          "grossMarginTrend",
+          "operatingMarginTrend",
+          "netMarginTrend",
+        ];
         updateSortIcons("pm", cols);
 
         const s = sortState.pm;
         const data = [...tableData.pm].sort((a, b) => {
           const va = a[s.col] ?? -Infinity;
           const vb = b[s.col] ?? -Infinity;
-          if (typeof va === "string") return s.dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          if (typeof va === "string")
+            return s.dir === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
           return s.dir === "asc" ? va - vb : vb - va;
         });
 
         const tbody = document.getElementById("pm-tbody");
         tbody.innerHTML = "";
-        data.forEach(row => {
+        data.forEach((row) => {
           const season = `${row.year} Q${row.season}`;
-          tbody.insertAdjacentHTML("beforeend", `
+          tbody.insertAdjacentHTML(
+            "beforeend",
+            `
             <tr>
               <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
@@ -985,7 +1338,8 @@
               <td>${trendBadge(row.operatingMarginTrend)}</td>
               <td>${trendBadge(row.netMarginTrend)}</td>
             </tr>
-          `);
+          `,
+          );
         });
       }
 
@@ -995,16 +1349,24 @@
       async function fetchEpsGrowth() {
         showLoader("eps");
         try {
-          const data = await apiFetch("/api/wantgoo/stock/ranking/qoq-eps-growth", {
-            top_n: document.getElementById("eps-top-n").value || 200,
-            sort_by: document.getElementById("eps-sort-by").value,
-            growth_ratio_floor: document.getElementById("eps-growth-floor").value,
-            growth_ratio_ceil: document.getElementById("eps-growth-ceil").value,
-            current_eps_floor: document.getElementById("eps-current-floor").value,
-            current_eps_ceil: document.getElementById("eps-current-ceil").value,
-            top4_sum_eps_floor: document.getElementById("eps-top4-floor").value,
-            top4_sum_eps_ceil: document.getElementById("eps-top4-ceil").value,
-          });
+          const data = await apiFetch(
+            "/api/wantgoo/stock/ranking/qoq-eps-growth",
+            {
+              top_n: document.getElementById("eps-top-n").value || 200,
+              sort_by: document.getElementById("eps-sort-by").value,
+              growth_ratio_floor:
+                document.getElementById("eps-growth-floor").value,
+              growth_ratio_ceil:
+                document.getElementById("eps-growth-ceil").value,
+              current_eps_floor:
+                document.getElementById("eps-current-floor").value,
+              current_eps_ceil:
+                document.getElementById("eps-current-ceil").value,
+              top4_sum_eps_floor:
+                document.getElementById("eps-top4-floor").value,
+              top4_sum_eps_ceil: document.getElementById("eps-top4-ceil").value,
+            },
+          );
           tableData.eps = data;
           sortState.eps = { col: "growthRatio", dir: "desc" };
           renderTable("eps");
@@ -1016,23 +1378,34 @@
       }
 
       function renderEpsTable() {
-        const cols = ["stockNo", "currentEps", "prevEps", "top4SumEps", "growthRatio"];
+        const cols = [
+          "stockNo",
+          "currentEps",
+          "prevEps",
+          "top4SumEps",
+          "growthRatio",
+        ];
         updateSortIcons("eps", cols);
 
         const s = sortState.eps;
         const data = [...tableData.eps].sort((a, b) => {
           const va = a[s.col] ?? -Infinity;
           const vb = b[s.col] ?? -Infinity;
-          if (typeof va === "string") return s.dir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          if (typeof va === "string")
+            return s.dir === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
           return s.dir === "asc" ? va - vb : vb - va;
         });
 
         const tbody = document.getElementById("eps-tbody");
         tbody.innerHTML = "";
-        data.forEach(row => {
+        data.forEach((row) => {
           const season = `${row.currentYear} Q${row.currentSeason}`;
           const prevSeason = `${row.prevYear} Q${row.prevSeason}`;
-          tbody.insertAdjacentHTML("beforeend", `
+          tbody.insertAdjacentHTML(
+            "beforeend",
+            `
             <tr>
               <td style="font-weight:600;"><a href="http://cnyes.com/twstock/${row.stockNo}/analysis/performance" target="_blank" class="stock-link">${row.stockNo}</a></td>
               <td style="color:var(--text-muted);font-size:0.875rem;">${season}</td>
@@ -1041,20 +1414,23 @@
               <td class="${pctClass(row.top4SumEps)}">${fmt(row.top4SumEps)}</td>
               <td class="${pctClass(row.growthRatio)}">${pctPrefix(row.growthRatio)}${fmt(row.growthRatio)}%</td>
             </tr>
-          `);
+          `,
+          );
         });
       }
 
       // ---- Dark mode ----
       const savedTheme = localStorage.getItem("theme") || "light";
       document.documentElement.setAttribute("data-theme", savedTheme);
-      document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      document.getElementById("theme-toggle").textContent =
+        savedTheme === "dark" ? "☀️" : "🌙";
       document.getElementById("theme-toggle").addEventListener("click", () => {
         const current = document.documentElement.getAttribute("data-theme");
         const next = current === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
-        document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+        document.getElementById("theme-toggle").textContent =
+          next === "dark" ? "☀️" : "🌙";
       });
     </script>
   </body>

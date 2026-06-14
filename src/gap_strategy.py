@@ -9,7 +9,7 @@ def run_strategy_for_market(market_type, date_str=None):
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_dir = os.path.join(base_dir, "docs", "data")
     market_dir = os.path.join(data_dir, market_type)
-    
+
     manifest_path = os.path.join(data_dir, "manifest.json")
 
     if not os.path.exists(manifest_path):
@@ -26,7 +26,7 @@ def run_strategy_for_market(market_type, date_str=None):
 
     daily_price_dates = sorted(
         [f.replace(".json", "") for f in os.listdir(price_dir) if f.endswith(".json")],
-        reverse=True
+        reverse=True,
     )
 
     if not daily_price_dates:
@@ -54,7 +54,9 @@ def run_strategy_for_market(market_type, date_str=None):
     print(f"Running strategy for {market_type}: {today_date} vs {prev_date}")
 
     # Load data
-    with open(os.path.join(price_dir, f"{today_date}.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(price_dir, f"{today_date}.json"), "r", encoding="utf-8"
+    ) as f:
         today_data = json.load(f)
     with open(os.path.join(price_dir, f"{prev_date}.json"), "r", encoding="utf-8") as f:
         prev_data = json.load(f)
@@ -74,36 +76,54 @@ def run_strategy_for_market(market_type, date_str=None):
 
             if today_close is not None:
                 # Calculate daily diff and ratio (relative to prev_close)
-                daily_diff = round(today_close - prev_close, 2) if prev_close is not None else 0
-                daily_ratio = round(daily_diff / prev_close * 100, 2) if prev_close and prev_close != 0 else 0
-                
+                daily_diff = (
+                    round(today_close - prev_close, 2) if prev_close is not None else 0
+                )
+                daily_ratio = (
+                    round(daily_diff / prev_close * 100, 2)
+                    if prev_close and prev_close != 0
+                    else 0
+                )
+
                 # Jump strategy
                 if prev_high is not None and today_close > prev_high:
-                    jump_results.append({
-                        "id": stock_id,
-                        "name": stock["name"],
-                        "today_close": today_close,
-                        "prev_high": prev_high,
-                        "diff": daily_diff, # Changed to daily change
-                        "ratio": daily_ratio, # Changed to daily change
-                        "gap_diff": round(today_close - prev_high, 2),
-                        "gap_ratio": round((today_close - prev_high) / prev_high * 100, 2) if prev_high != 0 else 0,
-                        "volume": stock.get("volume", 0),
-                    })
-                
+                    jump_results.append(
+                        {
+                            "id": stock_id,
+                            "name": stock["name"],
+                            "today_close": today_close,
+                            "prev_high": prev_high,
+                            "diff": daily_diff,  # Changed to daily change
+                            "ratio": daily_ratio,  # Changed to daily change
+                            "gap_diff": round(today_close - prev_high, 2),
+                            "gap_ratio": (
+                                round((today_close - prev_high) / prev_high * 100, 2)
+                                if prev_high != 0
+                                else 0
+                            ),
+                            "volume": stock.get("volume", 0),
+                        }
+                    )
+
                 # Drop strategy
                 if prev_low is not None and today_close < prev_low:
-                    drop_results.append({
-                        "id": stock_id,
-                        "name": stock["name"],
-                        "today_close": today_close,
-                        "prev_low": prev_low,
-                        "diff": daily_diff, # Changed to daily change
-                        "ratio": daily_ratio, # Changed to daily change
-                        "gap_diff": round(today_close - prev_low, 2),
-                        "gap_ratio": round((today_close - prev_low) / prev_low * 100, 2) if prev_low != 0 else 0,
-                        "volume": stock.get("volume", 0),
-                    })
+                    drop_results.append(
+                        {
+                            "id": stock_id,
+                            "name": stock["name"],
+                            "today_close": today_close,
+                            "prev_low": prev_low,
+                            "diff": daily_diff,  # Changed to daily change
+                            "ratio": daily_ratio,  # Changed to daily change
+                            "gap_diff": round(today_close - prev_low, 2),
+                            "gap_ratio": (
+                                round((today_close - prev_low) / prev_low * 100, 2)
+                                if prev_low != 0
+                                else 0
+                            ),
+                            "volume": stock.get("volume", 0),
+                        }
+                    )
 
     # Save Gap Jump
     jump_dir = os.path.join(market_dir, "gap_jump")
@@ -128,6 +148,6 @@ if __name__ == "__main__":
         help="Date string in YYYY-MM-DD format",
     )
     args = parser.parse_args()
-    
+
     run_strategy_for_market("twse", args.date_str)
     run_strategy_for_market("tpex", args.date_str)

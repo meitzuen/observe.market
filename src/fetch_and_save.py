@@ -139,7 +139,9 @@ def update_punish_history(market: str, new_records: List[Dict]) -> None:
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(existing, f, ensure_ascii=False, indent=4)
-    print(f"Updated punish_history.json for {market}: +{added} new records, {len(existing)} total")
+    print(
+        f"Updated punish_history.json for {market}: +{added} new records, {len(existing)} total"
+    )
 
 
 def apply_retention_dir(directory: str, label: str) -> None:
@@ -207,6 +209,12 @@ if __name__ == "__main__":
     # --- Retention: keep only last 180 days of per-day files ---
     data_root = data_root_path()
     for market in ["twse", "tpex"]:
-        for cat in ["daily_index", "daily_price", "daily_punish", "gap_jump", "gap_drop"]:
+        for cat in [
+            "daily_index",
+            "daily_price",
+            "daily_punish",
+            "gap_jump",
+            "gap_drop",
+        ]:
             apply_retention_dir(os.path.join(data_root, market, cat), f"{market}/{cat}")
     apply_retention_dir(os.path.join(data_root, "warrant"), "warrant")
