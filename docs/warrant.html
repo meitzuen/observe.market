@@ -50,7 +50,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
       }
 
       @media (min-width: 768px) {
@@ -69,7 +69,7 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
-      
+
       .header-left::-webkit-scrollbar {
         display: none;
       }
@@ -125,7 +125,9 @@
         border-radius: 0.5rem;
         border: 1px solid var(--border);
         padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
 
       .card-title {
@@ -203,15 +205,18 @@
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
         border: 1px solid var(--border);
-        background: rgba(255,255,255,0.1);
-        border-color: rgba(255,255,255,0.25);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
         color: #ffffff;
         font-size: 0.875rem;
         font-weight: 500;
         cursor: pointer;
         outline: none;
       }
-      .date-select option { background: #1e3a5f; color: white; }
+      .date-select option {
+        background: #1e3a5f;
+        color: white;
+      }
 
       .loader {
         display: flex;
@@ -231,7 +236,10 @@
         margin-left: 0.5rem;
       }
 
-      .badge-primary { background-color: #dbeafe; color: #1e40af; }
+      .badge-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
 
       [data-theme="dark"] {
         --bg: #0f172a;
@@ -240,21 +248,30 @@
         --text-muted: #94a3b8;
         --border: #334155;
       }
-      [data-theme="dark"] th { background-color: #1e293b; }
-      [data-theme="dark"] tr:hover td { background-color: #263248; }
-      [data-theme="dark"] .search-box input { background-color: #0f172a; color: var(--text); }
+      [data-theme="dark"] th {
+        background-color: #1e293b;
+      }
+      [data-theme="dark"] tr:hover td {
+        background-color: #263248;
+      }
+      [data-theme="dark"] .search-box input {
+        background-color: #0f172a;
+        color: var(--text);
+      }
 
       .theme-toggle {
         background: none;
-        border: 1px solid rgba(255,255,255,0.25);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         border-radius: 0.5rem;
         padding: 0.4rem 0.6rem;
         cursor: pointer;
         font-size: 1rem;
-        color: rgba(255,255,255,0.8);
+        color: rgba(255, 255, 255, 0.8);
         transition: all 0.2s;
       }
-      .theme-toggle:hover { background: rgba(255,255,255,0.12); }
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
 
       .type-filter {
         display: flex;
@@ -296,7 +313,7 @@
 
       .nav-link {
         text-decoration: none;
-        color: rgba(255,255,255,0.72);
+        color: rgba(255, 255, 255, 0.72);
         font-weight: 700;
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
@@ -305,48 +322,77 @@
       }
 
       .nav-link:hover {
-        background-color: rgba(255,255,255,0.12);
+        background-color: rgba(255, 255, 255, 0.12);
         color: #ffffff;
       }
 
       .nav-link.active {
-        background-color: rgba(255,255,255,0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         color: #ffffff;
       }
 
-      [v-cloak] { display: none; }
+      [v-cloak] {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <header>
       <div class="header-left">
-        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem;">📜</span>
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >📜</span
+        >
         <h1><span class="title-text">Warrant Observer</span></h1>
         <nav class="nav-bar">
-            <a href="index.html" class="nav-link">上市</a>
-            <a href="tpex.html" class="nav-link">上櫃</a>
-            <a href="gap.html" class="nav-link">跳空</a>
-            <a href="warrant.html" class="nav-link active">權證</a>
-            <a href="warrant_filter.html" class="nav-link">權證篩選</a>
-            <a href="punish.html" class="nav-link">處置股票</a>
-            <a href="wantgoo.html" class="nav-link">基本面</a>
+          <a href="index.html" class="nav-link">上市</a>
+          <a href="tpex.html" class="nav-link">上櫃</a>
+          <a href="gap.html" class="nav-link">跳空</a>
+          <a href="warrant.html" class="nav-link active">權證</a>
+          <a href="warrant_filter.html" class="nav-link">權證篩選</a>
+          <a href="punish.html" class="nav-link">處置股票</a>
+          <a href="wantgoo.html" class="nav-link">基本面</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
       </div>
       <div class="header-right">
         <select id="date-picker" class="date-select"></select>
-        <div id="last-update" style="font-size: 0.875rem; color: rgba(255,255,255,0.65); font-weight: 500"></div>
+        <div
+          id="last-update"
+          style="
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 500;
+          "
+        ></div>
       </div>
     </header>
 
     <div class="container">
       <div class="card">
         <div class="card-title">
-          <span>權證行情 <span id="warrant-count" class="badge badge-primary"></span></span>
+          <span
+            >權證行情
+            <span id="warrant-count" class="badge badge-primary"></span
+          ></span>
         </div>
         <div class="search-box">
-          <input type="text" id="warrant-search" placeholder="搜尋代號、名稱或標的..." />
+          <input
+            type="text"
+            id="warrant-search"
+            placeholder="搜尋代號、名稱或標的..."
+          />
         </div>
         <div class="type-filter">
           <button class="type-btn active" data-type="all">全部</button>
@@ -357,28 +403,71 @@
           <table>
             <thead>
               <tr id="table-header">
-                <th onclick="setSort('權證代碼')">權證代碼 <span id="sort-權證代碼"></span></th>
-                <th onclick="setSort('權證名稱')">權證名稱 <span id="sort-權證名稱"></span></th>
-                <th onclick="setSort('標的名稱')">標的 <span id="sort-標的名稱"></span></th>
-                <th onclick="setSort('認購/認售')">認購/認售 <span id="sort-認購/認售"></span></th>
-                <th onclick="setSort('權證成交價')">成交價 <span id="sort-權證成交價"></span></th>
-                <th onclick="setSort('權證成交量')">成交量 <span id="sort-權證成交量"></span></th>
-                <th onclick="setSort('流通在外比例')">流通在外% <span id="sort-流通在外比例"></span></th>
-                <th onclick="setSort('買賣價差比率')">價差比% <span id="sort-買賣價差比率"></span></th>
-                <th onclick="setSort('最新履約價')">履約價 <span id="sort-最新履約價"></span></th>
-                <th onclick="setSort('剩餘天數')">剩餘天數 <span id="sort-剩餘天數"></span></th>
-                <th onclick="setSort('價內外程度')">價內外 <span id="sort-價內外程度"></span></th>
-                <th onclick="setSort('實質槓桿')">實質槓桿 <span id="sort-實質槓桿"></span></th>
+                <th onclick="setSort('權證代碼')">
+                  權證代碼 <span id="sort-權證代碼"></span>
+                </th>
+                <th onclick="setSort('權證名稱')">
+                  權證名稱 <span id="sort-權證名稱"></span>
+                </th>
+                <th onclick="setSort('標的名稱')">
+                  標的 <span id="sort-標的名稱"></span>
+                </th>
+                <th onclick="setSort('認購/認售')">
+                  認購/認售 <span id="sort-認購/認售"></span>
+                </th>
+                <th onclick="setSort('權證成交價')">
+                  成交價 <span id="sort-權證成交價"></span>
+                </th>
+                <th onclick="setSort('權證成交量')">
+                  成交量 <span id="sort-權證成交量"></span>
+                </th>
+                <th onclick="setSort('流通在外比例')">
+                  流通在外% <span id="sort-流通在外比例"></span>
+                </th>
+                <th onclick="setSort('買賣價差比率')">
+                  價差比% <span id="sort-買賣價差比率"></span>
+                </th>
+                <th onclick="setSort('最新履約價')">
+                  履約價 <span id="sort-最新履約價"></span>
+                </th>
+                <th onclick="setSort('剩餘天數')">
+                  剩餘天數 <span id="sort-剩餘天數"></span>
+                </th>
+                <th onclick="setSort('價內外程度')">
+                  價內外 <span id="sort-價內外程度"></span>
+                </th>
+                <th onclick="setSort('實質槓桿')">
+                  實質槓桿 <span id="sort-實質槓桿"></span>
+                </th>
               </tr>
             </thead>
             <tbody id="warrant-list"></tbody>
           </table>
         </div>
         <div id="loader" class="loader">載入中...</div>
-        
-        <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+
+        <div
+          id="pagination-controls"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+          "
+        >
           <button id="prev-page" class="btn-secondary">上一頁</button>
-          <span id="page-info" style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600">第 1 / 1 頁</span>
+          <span
+            id="page-info"
+            style="
+              font-size: 0.875rem;
+              color: var(--text-muted);
+              font-weight: 600;
+            "
+            >第 1 / 1 頁</span
+          >
           <button id="next-page" class="btn-secondary">下一頁</button>
         </div>
       </div>
@@ -401,23 +490,26 @@
           manifest = fullManifest.warrant;
 
           if (!manifest || !manifest.daily) {
-            console.error("Warrant manifest not found or daily data missing", fullManifest);
+            console.error(
+              "Warrant manifest not found or daily data missing",
+              fullManifest,
+            );
             document.getElementById("loader").textContent = "暫無權證資料";
             return;
           }
 
           const urlParams = new URLSearchParams(window.location.search);
-          const marketParam = urlParams.get('market');
-          if (marketParam === 'twse') {
-              window.location.href = "index.html";
-              return;
-          } else if (marketParam === 'tpex') {
-              window.location.href = "tpex.html";
-              return;
+          const marketParam = urlParams.get("market");
+          if (marketParam === "twse") {
+            window.location.href = "index.html";
+            return;
+          } else if (marketParam === "tpex") {
+            window.location.href = "tpex.html";
+            return;
           }
 
           const datePicker = document.getElementById("date-picker");
-          manifest.daily.forEach(date => {
+          manifest.daily.forEach((date) => {
             const opt = document.createElement("option");
             opt.value = date;
             opt.textContent = date;
@@ -426,24 +518,32 @@
 
           datePicker.onchange = (e) => loadData(e.target.value);
           document.getElementById("warrant-search").oninput = filterData;
-          
+
           document.getElementById("prev-page").onclick = () => {
-              if (currentPage > 1) { currentPage--; renderTable(); }
+            if (currentPage > 1) {
+              currentPage--;
+              renderTable();
+            }
           };
           document.getElementById("next-page").onclick = () => {
-              const max = Math.ceil(filteredData.length / rowsPerPage);
-              if (currentPage < max) { currentPage++; renderTable(); }
+            const max = Math.ceil(filteredData.length / rowsPerPage);
+            if (currentPage < max) {
+              currentPage++;
+              renderTable();
+            }
           };
 
-          const searchParam = urlParams.get('search');
+          const searchParam = urlParams.get("search");
           if (searchParam) {
-              document.getElementById("warrant-search").value = searchParam;
+            document.getElementById("warrant-search").value = searchParam;
           }
 
           // Type filter buttons
-          document.querySelectorAll(".type-btn").forEach(btn => {
+          document.querySelectorAll(".type-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
-              document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("active"));
+              document
+                .querySelectorAll(".type-btn")
+                .forEach((b) => b.classList.remove("active"));
               btn.classList.add("active");
               activeType = btn.dataset.type;
               filterData();
@@ -453,17 +553,22 @@
           // Dark mode
           const savedTheme = localStorage.getItem("theme") || "light";
           document.documentElement.setAttribute("data-theme", savedTheme);
-          document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
-          document.getElementById("theme-toggle").addEventListener("click", () => {
-            const current = document.documentElement.getAttribute("data-theme");
-            const next = current === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", next);
-            localStorage.setItem("theme", next);
-            document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
-          });
+          document.getElementById("theme-toggle").textContent =
+            savedTheme === "dark" ? "☀️" : "🌙";
+          document
+            .getElementById("theme-toggle")
+            .addEventListener("click", () => {
+              const current =
+                document.documentElement.getAttribute("data-theme");
+              const next = current === "dark" ? "light" : "dark";
+              document.documentElement.setAttribute("data-theme", next);
+              localStorage.setItem("theme", next);
+              document.getElementById("theme-toggle").textContent =
+                next === "dark" ? "☀️" : "🌙";
+            });
 
           // `/` key focuses search
-          document.addEventListener("keydown", e => {
+          document.addEventListener("keydown", (e) => {
             if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
               e.preventDefault();
               document.getElementById("warrant-search").focus();
@@ -485,23 +590,32 @@
         try {
           const resp = await fetch(`data/warrant/${date}.json`);
           rawData = await resp.json();
-          document.getElementById("last-update").textContent = "最後更新: " + date;
+          document.getElementById("last-update").textContent =
+            "最後更新: " + date;
           filterData();
-        } catch (e) { console.error(e); }
-        finally { document.getElementById("loader").style.display = "none"; }
+        } catch (e) {
+          console.error(e);
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
       }
 
       function filterData() {
         const q = document.getElementById("warrant-search").value.toLowerCase();
-        filteredData = rawData.filter(w => {
+        filteredData = rawData.filter((w) => {
           try {
-            const matchesSearch = (w["權證代碼"] || "").toLowerCase().includes(q) ||
-                   (w["權證名稱"] || "").toLowerCase().includes(q) ||
-                   (w["標的名稱"] || "").toLowerCase().includes(q) ||
-                   (w["標的代碼"] || "").toLowerCase().includes(q);
-            const matchesType = activeType === "all" || (w["認購/認售"] || "").includes(activeType);
+            const matchesSearch =
+              (w["權證代碼"] || "").toLowerCase().includes(q) ||
+              (w["權證名稱"] || "").toLowerCase().includes(q) ||
+              (w["標的名稱"] || "").toLowerCase().includes(q) ||
+              (w["標的代碼"] || "").toLowerCase().includes(q);
+            const matchesType =
+              activeType === "all" ||
+              (w["認購/認售"] || "").includes(activeType);
             return matchesSearch && matchesType;
-          } catch (e) { return false; }
+          } catch (e) {
+            return false;
+          }
         });
         currentPage = 1;
         renderTable();
@@ -520,16 +634,26 @@
       function renderTable() {
         const list = document.getElementById("warrant-list");
         list.innerHTML = "";
-        document.getElementById("warrant-count").textContent = filteredData.length;
+        document.getElementById("warrant-count").textContent =
+          filteredData.length;
 
         filteredData.sort((a, b) => {
           let vA = a[sortColumn];
           let vB = b[sortColumn];
-          
+
           // Numeric fields
-          if (["權證成交價", "權證成交量", "流通在外比例", "最新履約價", "剩餘天數", "實質槓桿"].includes(sortColumn)) {
-              vA = parseFloat(vA) || 0;
-              vB = parseFloat(vB) || 0;
+          if (
+            [
+              "權證成交價",
+              "權證成交量",
+              "流通在外比例",
+              "最新履約價",
+              "剩餘天數",
+              "實質槓桿",
+            ].includes(sortColumn)
+          ) {
+            vA = parseFloat(vA) || 0;
+            vB = parseFloat(vB) || 0;
           }
 
           if (vA < vB) return sortDirection === "asc" ? -1 : 1;
@@ -538,15 +662,19 @@
         });
 
         // Update sort indicators
-        document.querySelectorAll("th span").forEach(s => s.textContent = "");
+        document
+          .querySelectorAll("th span")
+          .forEach((s) => (s.textContent = ""));
         const indicator = document.getElementById("sort-" + sortColumn);
-        if (indicator) indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
+        if (indicator)
+          indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
 
         const maxPage = Math.ceil(filteredData.length / rowsPerPage) || 1;
-        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
-        
+        document.getElementById("page-info").textContent =
+          `第 ${currentPage} / ${maxPage} 頁`;
+
         const start = (currentPage - 1) * rowsPerPage;
-        filteredData.slice(start, start + rowsPerPage).forEach(w => {
+        filteredData.slice(start, start + rowsPerPage).forEach((w) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td style="font-weight: 500;">
@@ -561,7 +689,7 @@
             <td style="font-weight: 700; color: var(--primary);">${w["權證成交價"]}</td>
             <td>${parseInt(w["權證成交量"] || 0).toLocaleString()}</td>
             <td>${w["流通在外比例"]}%</td>
-            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? 'var(--up)' : 'inherit'}">${w["買賣價差比率"] != null ? w["買賣價差比率"] + '%' : '-'}</td>
+            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? "var(--up)" : "inherit"}">${w["買賣價差比率"] != null ? w["買賣價差比率"] + "%" : "-"}</td>
             <td>${w["最新履約價"]}</td>
             <td>${w["剩餘天數"]}</td>
             <td>${w["價內外程度"]}</td>

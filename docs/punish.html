@@ -50,7 +50,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
       }
 
       @media (min-width: 768px) {
@@ -69,7 +69,7 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
-      
+
       .header-left::-webkit-scrollbar {
         display: none;
       }
@@ -95,7 +95,7 @@
 
       .nav-link {
         text-decoration: none;
-        color: rgba(255,255,255,0.72);
+        color: rgba(255, 255, 255, 0.72);
         font-weight: 700;
         padding: 0.5rem 1rem;
         border-radius: 0.75rem;
@@ -104,12 +104,12 @@
       }
 
       .nav-link:hover {
-        background-color: rgba(255,255,255,0.12);
+        background-color: rgba(255, 255, 255, 0.12);
         color: #ffffff;
       }
 
       .nav-link.active {
-        background-color: rgba(255,255,255,0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         color: #ffffff;
       }
 
@@ -131,7 +131,9 @@
         border-radius: 0.5rem;
         border: 1px solid var(--border);
         padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
 
       .card-title {
@@ -170,7 +172,8 @@
         color: var(--text-muted);
       }
 
-      .select-input, .date-input {
+      .select-input,
+      .date-input {
         padding: 0.5rem 0.75rem;
         border-radius: 0.5rem;
         border: 1px solid var(--border);
@@ -179,7 +182,8 @@
         outline: none;
       }
 
-      .select-input:focus, .date-input:focus {
+      .select-input:focus,
+      .date-input:focus {
         border-color: var(--primary);
       }
 
@@ -219,7 +223,10 @@
         background-color: #f8fafc;
       }
 
-      .badge-danger { background-color: #fee2e2; color: #991b1b; }
+      .badge-danger {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
       .badge {
         display: inline-block;
         padding: 0.125rem 0.5rem;
@@ -237,7 +244,9 @@
         color: var(--text-muted);
       }
 
-      [v-cloak] { display: none; }
+      [v-cloak] {
+        display: none;
+      }
 
       [data-theme="dark"] {
         --bg: #0f172a;
@@ -246,40 +255,65 @@
         --text-muted: #94a3b8;
         --border: #334155;
       }
-      [data-theme="dark"] th { background-color: #1e293b; }
-      [data-theme="dark"] tr:hover td { background-color: #263248; }
-      [data-theme="dark"] .controls { background: #263248; }
-      [data-theme="dark"] .select-input, [data-theme="dark"] .date-input { background-color: #0f172a; color: var(--text); }
+      [data-theme="dark"] th {
+        background-color: #1e293b;
+      }
+      [data-theme="dark"] tr:hover td {
+        background-color: #263248;
+      }
+      [data-theme="dark"] .controls {
+        background: #263248;
+      }
+      [data-theme="dark"] .select-input,
+      [data-theme="dark"] .date-input {
+        background-color: #0f172a;
+        color: var(--text);
+      }
 
       .theme-toggle {
         background: none;
-        border: 1px solid rgba(255,255,255,0.25);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         border-radius: 0.5rem;
         padding: 0.4rem 0.6rem;
         cursor: pointer;
         font-size: 1rem;
-        color: rgba(255,255,255,0.8);
+        color: rgba(255, 255, 255, 0.8);
         transition: all 0.2s;
       }
-      .theme-toggle:hover { background: rgba(255,255,255,0.12); }
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
     </style>
   </head>
   <body>
     <header>
       <div class="header-left">
-        <img id="header-logo" src="assets/logo.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; document.getElementById('header-emoji').style.display='inline';" />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem;">⚖️</span>
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >⚖️</span
+        >
         <h1><span class="title-text">Market Observer</span></h1>
         <nav class="nav-bar">
-            <a href="index.html" class="nav-link">上市</a>
-            <a href="tpex.html" class="nav-link">上櫃</a>
-            <a href="gap.html" class="nav-link">跳空</a>
-            <a href="warrant.html" class="nav-link">權證</a>
-            <a href="warrant_filter.html" class="nav-link">權證篩選</a>
-            <a href="punish.html" class="nav-link active">處置股票</a>
-            <a href="wantgoo.html" class="nav-link">基本面</a>
+          <a href="index.html" class="nav-link">上市</a>
+          <a href="tpex.html" class="nav-link">上櫃</a>
+          <a href="gap.html" class="nav-link">跳空</a>
+          <a href="warrant.html" class="nav-link">權證</a>
+          <a href="warrant_filter.html" class="nav-link">權證篩選</a>
+          <a href="punish.html" class="nav-link active">處置股票</a>
+          <a href="wantgoo.html" class="nav-link">基本面</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
       </div>
     </header>
 
@@ -305,21 +339,49 @@
             <span class="control-label">結束日期:</span>
             <input type="date" id="end-date" class="date-input" />
           </div>
-          <button id="fetch-btn" class="btn" style="background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 600;">查詢</button>
+          <button
+            id="fetch-btn"
+            class="btn"
+            style="
+              background: var(--primary);
+              color: white;
+              border: none;
+              padding: 0.5rem 1.5rem;
+              border-radius: 0.5rem;
+              cursor: pointer;
+              font-weight: 600;
+            "
+          >
+            查詢
+          </button>
         </div>
 
         <div class="table-container">
           <table id="punish-table">
             <thead>
               <tr>
-                <th onclick="setSort('publish_date')">發布日期 <span id="sort-publish_date"></span></th>
+                <th onclick="setSort('publish_date')">
+                  發布日期 <span id="sort-publish_date"></span>
+                </th>
                 <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
-                <th onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
-                <th onclick="setSort('measure')">處置措施 <span id="sort-measure"></span></th>
-                <th onclick="setSort('accumulated')">次數 <span id="sort-accumulated"></span></th>
-                <th onclick="setSort('from')">起始日 <span id="sort-from"></span></th>
-                <th onclick="setSort('to')">結束日 <span id="sort-to"></span></th>
-                <th onclick="setSort('condition')">處置條件 <span id="sort-condition"></span></th>
+                <th onclick="setSort('name')">
+                  名稱 <span id="sort-name"></span>
+                </th>
+                <th onclick="setSort('measure')">
+                  處置措施 <span id="sort-measure"></span>
+                </th>
+                <th onclick="setSort('accumulated')">
+                  次數 <span id="sort-accumulated"></span>
+                </th>
+                <th onclick="setSort('from')">
+                  起始日 <span id="sort-from"></span>
+                </th>
+                <th onclick="setSort('to')">
+                  結束日 <span id="sort-to"></span>
+                </th>
+                <th onclick="setSort('condition')">
+                  處置條件 <span id="sort-condition"></span>
+                </th>
               </tr>
             </thead>
             <tbody id="punish-list">
@@ -327,7 +389,7 @@
             </tbody>
           </table>
         </div>
-        <div id="loader" class="loader" style="display: none;">載入中...</div>
+        <div id="loader" class="loader" style="display: none">載入中...</div>
       </div>
     </div>
 
@@ -341,35 +403,46 @@
           const today = new Date();
           const thirtyDaysAgo = new Date();
           thirtyDaysAgo.setDate(today.getDate() - 30);
-          
+
           const formatDate = (date) => {
-              const y = date.getFullYear();
-              const m = String(date.getMonth() + 1).padStart(2, '0');
-              const d = String(date.getDate()).padStart(2, '0');
-              return `${y}-${m}-${d}`;
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, "0");
+            const d = String(date.getDate()).padStart(2, "0");
+            return `${y}-${m}-${d}`;
           };
-          
+
           document.getElementById("start-date").value = formatDate(today);
           document.getElementById("end-date").value = formatDate(today);
-          
-          document.getElementById("fetch-btn").addEventListener("click", fetchData);
+
+          document
+            .getElementById("fetch-btn")
+            .addEventListener("click", fetchData);
 
           // Enter key triggers fetch
-          document.querySelectorAll(".date-input, .select-input").forEach(el => {
-            el.addEventListener("keydown", e => { if (e.key === "Enter") fetchData(); });
-          });
+          document
+            .querySelectorAll(".date-input, .select-input")
+            .forEach((el) => {
+              el.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") fetchData();
+              });
+            });
 
           // Dark mode
           const savedTheme = localStorage.getItem("theme") || "light";
           document.documentElement.setAttribute("data-theme", savedTheme);
-          document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
-          document.getElementById("theme-toggle").addEventListener("click", () => {
-            const current = document.documentElement.getAttribute("data-theme");
-            const next = current === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", next);
-            localStorage.setItem("theme", next);
-            document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
-          });
+          document.getElementById("theme-toggle").textContent =
+            savedTheme === "dark" ? "☀️" : "🌙";
+          document
+            .getElementById("theme-toggle")
+            .addEventListener("click", () => {
+              const current =
+                document.documentElement.getAttribute("data-theme");
+              const next = current === "dark" ? "light" : "dark";
+              document.documentElement.setAttribute("data-theme", next);
+              localStorage.setItem("theme", next);
+              document.getElementById("theme-toggle").textContent =
+                next === "dark" ? "☀️" : "🌙";
+            });
 
           // Initial fetch
           fetchData();
@@ -391,25 +464,25 @@
         punishData = [];
 
         try {
-            const url = `https://market.smallplum.xyz/api/strategy/${market}/daily/punishment?start_date=${start}&end_date=${end}`;
-            const resp = await fetch(url);
-            if (!resp.ok) throw new Error("API request failed");
-            punishData = await resp.json();
+          const url = `https://market.smallplum.xyz/api/strategy/${market}/daily/punishment?start_date=${start}&end_date=${end}`;
+          const resp = await fetch(url);
+          if (!resp.ok) throw new Error("API request failed");
+          punishData = await resp.json();
         } catch (e) {
-            console.error(`Error fetching punishment data:`, e);
-            tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--up);">載入失敗: ${e.message}</td></tr>`;
+          console.error(`Error fetching punishment data:`, e);
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--up);">載入失敗: ${e.message}</td></tr>`;
         } finally {
-            loader.style.display = "none";
-            renderTable();
+          loader.style.display = "none";
+          renderTable();
         }
       }
 
       function setSort(col) {
         if (sortColumn === col) {
-            sortDirection = sortDirection === "asc" ? "desc" : "asc";
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
         } else {
-            sortColumn = col;
-            sortDirection = "desc";
+          sortColumn = col;
+          sortDirection = "desc";
         }
         renderTable();
       }
@@ -417,29 +490,32 @@
       function renderTable() {
         const tbody = document.getElementById("punish-list");
         tbody.innerHTML = "";
-        
+
         punishData.sort((a, b) => {
-            let valA = a[sortColumn];
-            let valB = b[sortColumn];
-            
-            if (sortColumn === 'accumulated') {
-                valA = parseInt(valA) || 0;
-                valB = parseInt(valB) || 0;
-            }
-            
-            if (valA < valB) return sortDirection === "asc" ? -1 : 1;
-            if (valA > valB) return sortDirection === "asc" ? 1 : -1;
-            return 0;
+          let valA = a[sortColumn];
+          let valB = b[sortColumn];
+
+          if (sortColumn === "accumulated") {
+            valA = parseInt(valA) || 0;
+            valB = parseInt(valB) || 0;
+          }
+
+          if (valA < valB) return sortDirection === "asc" ? -1 : 1;
+          if (valA > valB) return sortDirection === "asc" ? 1 : -1;
+          return 0;
         });
 
         // Update sort indicators
-        document.querySelectorAll("th span").forEach(s => s.textContent = "");
+        document
+          .querySelectorAll("th span")
+          .forEach((s) => (s.textContent = ""));
         const indicator = document.getElementById("sort-" + sortColumn);
-        if (indicator) indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
+        if (indicator)
+          indicator.textContent = sortDirection === "asc" ? " ↑" : " ↓";
 
-        punishData.forEach(item => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
+        punishData.forEach((item) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
                 <td>${item.publish_date}</td>
                 <td style="font-weight: 500;">${item.id}</td>
                 <td style="font-weight: 600;">${item.name}</td>
@@ -449,11 +525,12 @@
                 <td>${item.to}</td>
                 <td style="font-size: 0.8rem; color: var(--text-muted);">${item.condition}</td>
             `;
-            tbody.appendChild(tr);
+          tbody.appendChild(tr);
         });
-        
+
         if (punishData.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted); font-style: italic;">無處置紀錄</td></tr>';
+          tbody.innerHTML =
+            '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted); font-style: italic;">無處置紀錄</td></tr>';
         }
       }
 

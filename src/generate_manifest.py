@@ -6,14 +6,14 @@ def generate_manifest():
     # Base directory is one level up from this script (in the project root)
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_dir = os.path.join(base_dir, "docs", "data")
-    
+
     manifest = {}
 
     for market in ["twse", "tpex"]:
         market_dir = os.path.join(data_dir, market)
         if not os.path.exists(market_dir):
             continue
-            
+
         manifest[market] = {
             "daily_index": [],
             "daily_price": [],
