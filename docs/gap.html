@@ -124,6 +124,9 @@
       }
       .theme-toggle:hover { background: rgba(255,255,255,0.12); }
 
+      .stock-link { color: inherit; text-decoration: none; }
+      .stock-link:hover { color: var(--primary); }
+
       .container {
         max-width: 1400px;
         margin: 1rem auto;
@@ -658,9 +661,9 @@
           const gapPrefix  = s.gap_diff > 0 ? "+" : "";
 
           tr.innerHTML = `
-            <td style="font-weight:500;">${s.id}</td>
+            <td style="font-weight:500;"><a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.id}</a></td>
             <td style="font-weight:600;">
-              <a href="warrant.html?search=${s.id}" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--text-muted);">${s.name}</a>
+              <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
             </td>
             <td class="${priceClass}" style="font-size:1rem;">${s.today_close}</td>
             <td style="color:var(--text-muted);">${prevVal}</td>
