@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-06-12",
+        "measure": "第一次處置",
+        "id": "6830",
+        "name": "汎銓",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-15",
+        "to": "2026-06-29"
+    },
+    {
+        "publish_date": "2026-06-12",
+        "measure": "第二次處置",
+        "id": "6924",
+        "name": "榮惠-KY創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-15",
+        "to": "2026-06-29"
+    },
+    {
         "publish_date": "2026-06-11",
         "measure": "第二次處置",
         "id": "6890",
