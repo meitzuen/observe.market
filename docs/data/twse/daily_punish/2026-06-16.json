@@ -1,0 +1,242 @@
+[
+    {
+        "publish_date": "2026-06-02",
+        "measure": "第一次處置",
+        "id": "1563",
+        "name": "巧新",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-03",
+        "to": "2026-06-16"
+    },
+    {
+        "publish_date": "2026-06-02",
+        "measure": "第一次處置",
+        "id": "2337",
+        "name": "旺宏",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-03",
+        "to": "2026-06-16"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第一次處置",
+        "id": "1409",
+        "name": "新纖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第二次處置",
+        "id": "1568",
+        "name": "倉佑",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第二次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第二次處置",
+        "id": "3021",
+        "name": "鴻名",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第一次處置",
+        "id": "3346",
+        "name": "麗清",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第一次處置",
+        "id": "3481",
+        "name": "群創",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第二次處置",
+        "id": "6116",
+        "name": "彩晶",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-03",
+        "measure": "第二次處置",
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-04",
+        "to": "2026-06-17"
+    },
+    {
+        "publish_date": "2026-06-04",
+        "measure": "第一次處置",
+        "id": "3535",
+        "name": "晶彩科",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-05",
+        "to": "2026-06-18"
+    },
+    {
+        "publish_date": "2026-06-04",
+        "measure": "第一次處置",
+        "id": "8454",
+        "name": "富邦媒",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-06-05",
+        "to": "2026-06-18"
+    },
+    {
+        "publish_date": "2026-06-05",
+        "measure": "第一次處置",
+        "id": "1718",
+        "name": "中纖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-08",
+        "to": "2026-06-22"
+    },
+    {
+        "publish_date": "2026-06-05",
+        "measure": "第一次處置",
+        "id": "2491",
+        "name": "吉祥全",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-08",
+        "to": "2026-06-22"
+    },
+    {
+        "publish_date": "2026-06-05",
+        "measure": "第一次處置",
+        "id": "3149",
+        "name": "正達",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-06-08",
+        "to": "2026-06-22"
+    },
+    {
+        "publish_date": "2026-06-05",
+        "measure": "第一次處置",
+        "id": "4807",
+        "name": "日成-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-08",
+        "to": "2026-06-22"
+    },
+    {
+        "publish_date": "2026-06-05",
+        "measure": "第一次處置",
+        "id": "6442",
+        "name": "光聖",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-08",
+        "to": "2026-06-22"
+    },
+    {
+        "publish_date": "2026-06-08",
+        "measure": "第一次處置",
+        "id": "6890",
+        "name": "來億-KY",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-06-09",
+        "to": "2026-06-23"
+    },
+    {
+        "publish_date": "2026-06-09",
+        "measure": "第二次處置",
+        "id": "8454",
+        "name": "富邦媒",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-06-10",
+        "to": "2026-06-24"
+    },
+    {
+        "publish_date": "2026-06-11",
+        "measure": "第二次處置",
+        "id": "6890",
+        "name": "來億-KY",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-06-12",
+        "to": "2026-06-26"
+    },
+    {
+        "publish_date": "2026-06-12",
+        "measure": "第一次處置",
+        "id": "6830",
+        "name": "汎銓",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-15",
+        "to": "2026-06-29"
+    },
+    {
+        "publish_date": "2026-06-12",
+        "measure": "第二次處置",
+        "id": "6924",
+        "name": "榮惠-KY創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-15",
+        "to": "2026-06-29"
+    },
+    {
+        "publish_date": "2026-06-15",
+        "measure": "第一次處置",
+        "id": "1714",
+        "name": "和桐",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-16",
+        "to": "2026-06-30"
+    },
+    {
+        "publish_date": "2026-06-15",
+        "measure": "第二次處置",
+        "id": "8021",
+        "name": "尖點",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-06-16",
+        "to": "2026-06-30"
+    }
+]

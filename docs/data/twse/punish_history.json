@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-06-15",
+        "measure": "第一次處置",
+        "id": "1714",
+        "name": "和桐",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-16",
+        "to": "2026-06-30"
+    },
+    {
+        "publish_date": "2026-06-15",
+        "measure": "第二次處置",
+        "id": "8021",
+        "name": "尖點",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-06-16",
+        "to": "2026-06-30"
+    },
+    {
         "publish_date": "2026-06-12",
         "measure": "第一次處置",
         "id": "6830",

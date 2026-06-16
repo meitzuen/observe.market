@@ -686,5 +686,13 @@
         "transactions": 5460270,
         "index": 45396.99,
         "changes": "1227.95"
+    },
+    {
+        "date": "115/06/16",
+        "volume": 12388176269,
+        "turnover": 1262185518120,
+        "transactions": 5868458,
+        "index": 45809.19,
+        "changes": "412.20"
     }
 ]
