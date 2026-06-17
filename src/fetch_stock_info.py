@@ -5,7 +5,7 @@ from config import API_DOMAIN
 
 
 def fetch_stock_info():
-    url = f"{API_DOMAIN}/api/finmind/api/v1/stock/info"
+    url = f"{API_DOMAIN}/api/finmind/stock/info"
     try:
         response = requests.get(url, timeout=30)
         response.raise_for_status()
