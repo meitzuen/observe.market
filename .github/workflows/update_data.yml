@@ -1,8 +1,12 @@
 name: Update Stock Data
 
 on:
+  # Kept as fallback only — GitHub schedule is unreliable (often 15-60min late)
   schedule:
-    - cron: "30 8 * * 1-5"
+    - cron: "30 5 * * 1-5"
+  # Primary trigger: called by an external cron service via HTTP POST to GitHub API
+  repository_dispatch:
+    types: [trigger-stock-update]
   workflow_dispatch:
     inputs:
       date_str:
@@ -36,7 +40,7 @@ jobs:
 
       - name: Run fetch script
         run: |
-          DATE_STR="${{ github.event.inputs.date_str }}"
+          DATE_STR="${{ github.event.inputs.date_str || github.event.client_payload.date_str }}"
           if [ -z "$DATE_STR" ]; then
             DATE_STR=$(date +'%Y-%m-%d')
           fi
