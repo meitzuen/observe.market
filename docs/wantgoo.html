@@ -288,7 +288,7 @@
         display: flex;
         align-items: center;
         gap: 0.375rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.275rem 0.75rem;
         border: 1px solid var(--border);
         border-radius: 0.5rem;
         background: white;
@@ -310,6 +310,11 @@
 
       .checkbox-group input[type="checkbox"] {
         accent-color: var(--primary);
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+        flex-shrink: 0;
+        vertical-align: middle;
       }
 
       .btn {
@@ -791,7 +796,8 @@
                 <option value="net_margin_trend">淨利率趨勢</option>
               </select>
             </div>
-            <div class="filter-group" style="align-self: flex-end">
+            <div class="filter-group">
+              <span class="filter-label">&nbsp;</span>
               <label class="checkbox-group" id="pm-rising-label">
                 <input
                   type="checkbox"
@@ -801,7 +807,8 @@
                 三率齊揚
               </label>
             </div>
-            <div class="filter-group" style="align-self: flex-end">
+            <div class="filter-group">
+              <span class="filter-label">&nbsp;</span>
               <label class="checkbox-group" id="pm-profit-label">
                 <input
                   type="checkbox"
@@ -811,7 +818,8 @@
                 僅獲利
               </label>
             </div>
-            <div class="filter-group" style="align-self: flex-end">
+            <div class="filter-group">
+              <span class="filter-label">&nbsp;</span>
               <button class="btn" onclick="fetchProfitMargin()">查詢</button>
             </div>
           </div>
