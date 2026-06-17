@@ -44,6 +44,7 @@ jobs:
           python src/fetch_and_save.py --date_str="$DATE_STR"
           python src/gap_strategy.py --date_str="$DATE_STR"
           python src/generate_manifest.py
+          python src/fetch_stock_info.py
 
       - name: Commit and Push changes
         run: |
