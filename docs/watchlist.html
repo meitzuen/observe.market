@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自選股 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+        --accent: #0284c7;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+
+      [data-theme="dark"] th {
+        background: #1e3a5f;
+      }
+
+      [data-theme="dark"] tr:hover td {
+        background: #1e293b;
+      }
+
+      [data-theme="dark"] input,
+      [data-theme="dark"] select,
+      [data-theme="dark"] textarea {
+        background: #1e293b;
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1e3a5f;
+        border-bottom: none;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .title-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      .nav-bar {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+      }
+
+      .nav-link {
+        padding: 0.4rem 0.85rem;
+        border-radius: 6px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+
+      .nav-link.active {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        transition: background 0.15s;
+        flex-shrink: 0;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+      }
+
+      .page-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0 0 1.25rem;
+        color: var(--text);
+      }
+
+      /* Watchlist tabs */
+      .tabs-row {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        align-items: flex-end;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 0;
+      }
+
+      .wl-tab {
+        padding: 0.45rem 1.1rem;
+        border-radius: 6px 6px 0 0;
+        border: 1px solid var(--border);
+        border-bottom: none;
+        background: var(--bg);
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s;
+        position: relative;
+        bottom: -2px;
+      }
+
+      .wl-tab:hover {
+        background: var(--card-bg);
+        color: var(--text);
+      }
+
+      .wl-tab.active {
+        background: var(--card-bg);
+        color: var(--primary);
+        font-weight: 700;
+        border-bottom: 2px solid var(--card-bg);
+      }
+
+      .wl-tab-new {
+        color: var(--primary);
+        border-style: dashed;
+        font-size: 1rem;
+        padding: 0.35rem 0.8rem;
+      }
+
+      /* Create panel */
+      .create-panel {
+        display: none;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-top: none;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Watchlist section */
+      .watchlist-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.25rem 0 1rem;
+      }
+
+      .watchlist-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      /* Add stock panel */
+      .add-panel {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+
+      .add-panel h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: var(--text);
+      }
+
+      .add-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+
+      .add-row .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .add-row label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .add-row input,
+      .add-row select {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        transition: border-color 0.15s;
+        outline: none;
+      }
+
+      .add-row input:focus,
+      .add-row select:focus {
+        border-color: var(--primary);
+      }
+
+      .add-row input#stock-note {
+        width: 140px;
+      }
+
+      .btn {
+        padding: 0.5rem 1.1rem;
+        border-radius: 7px;
+        border: none;
+        font-size: 0.9rem;
+        font-family: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, opacity 0.15s;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-danger {
+        background: transparent;
+        color: #ef4444;
+        border: 1px solid #ef4444;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .btn-danger:hover {
+        background: #ef4444;
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* Data table */
+      .table-wrapper {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+
+      th {
+        background: #1e3a5f;
+        color: #fff;
+        padding: 0.75rem 1rem;
+        text-align: right;
+        font-weight: 600;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      th:first-child,
+      th:nth-child(2),
+      th:nth-child(3) {
+        text-align: left;
+      }
+
+      td {
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid var(--border);
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      td:first-child,
+      td:nth-child(2),
+      td:nth-child(3) {
+        text-align: left;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:hover td {
+        background: var(--bg);
+      }
+
+      .stock-link {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .stock-link:hover {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+
+      .sector-badge {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .up { color: var(--up); font-weight: 700; }
+      .down { color: var(--down); font-weight: 700; }
+      .flat { color: var(--text-muted); }
+
+      .text-muted {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted);
+      }
+
+      .empty-state .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .data-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+      }
+
+      .error-msg {
+        color: #ef4444;
+        font-size: 0.85rem;
+        margin-top: 0.4rem;
+      }
+
+      /* Note cell edit */
+      .note-cell {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .btn-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 0.2rem;
+        font-size: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.15s;
+        line-height: 1;
+      }
+
+      tr:hover .btn-icon {
+        opacity: 0.5;
+      }
+
+      tr:hover .btn-icon:hover {
+        opacity: 1;
+      }
+
+      .note-edit-input {
+        padding: 0.2rem 0.5rem;
+        border: 1px solid var(--primary);
+        border-radius: 4px;
+        font-size: 0.82rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        outline: none;
+        width: 90px;
+      }
+
+      /* Sector color palette */
+      .sc-0  { background:#dbeafe; color:#1d4ed8; }
+      .sc-1  { background:#dcfce7; color:#15803d; }
+      .sc-2  { background:#fef3c7; color:#92400e; }
+      .sc-3  { background:#fce7f3; color:#be185d; }
+      .sc-4  { background:#ede9fe; color:#6d28d9; }
+      .sc-5  { background:#ffedd5; color:#c2410c; }
+      .sc-6  { background:#cffafe; color:#0e7490; }
+      .sc-7  { background:#f0fdf4; color:#166534; }
+      .sc-8  { background:#fdf2f8; color:#9d174d; }
+      .sc-9  { background:#fef9c3; color:#854d0e; }
+
+      [data-theme="dark"] .sc-0  { background:#1e3a5f; color:#93c5fd; }
+      [data-theme="dark"] .sc-1  { background:#14532d; color:#86efac; }
+      [data-theme="dark"] .sc-2  { background:#451a03; color:#fcd34d; }
+      [data-theme="dark"] .sc-3  { background:#500724; color:#f9a8d4; }
+      [data-theme="dark"] .sc-4  { background:#2e1065; color:#c4b5fd; }
+      [data-theme="dark"] .sc-5  { background:#431407; color:#fed7aa; }
+      [data-theme="dark"] .sc-6  { background:#083344; color:#67e8f9; }
+      [data-theme="dark"] .sc-7  { background:#052e16; color:#bbf7d0; }
+      [data-theme="dark"] .sc-8  { background:#4a044e; color:#f5d0fe; }
+      [data-theme="dark"] .sc-9  { background:#422006; color:#fef08a; }
+
+      @media (max-width: 767px) {
+        .hide-mobile { display: none; }
+        td, th { padding: 0.6rem 0.6rem; font-size: 0.82rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img src="assets/logo.png" alt="logo" class="logo" />
+        <h1><span class="title-text">Market Observer</span></h1>
+        <nav class="nav-bar">
+          <a href="index.html" class="nav-link">上市</a>
+          <a href="tpex.html" class="nav-link">上櫃</a>
+          <a href="gap.html" class="nav-link">跳空</a>
+          <a href="warrant.html" class="nav-link">權證</a>
+          <a href="warrant_filter.html" class="nav-link">權證篩選</a>
+          <a href="punish.html" class="nav-link">處置股票</a>
+          <a href="wantgoo.html" class="nav-link">基本面</a>
+          <a href="watchlist.html" class="nav-link active">自選股</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <p class="page-title">⭐ 自選股</p>
+
+      <!-- Watchlist tabs -->
+      <div class="tabs-row" id="tabs-container"></div>
+
+      <!-- Create new watchlist panel -->
+      <div class="create-panel" id="create-panel">
+        <input type="text" id="new-list-name" placeholder="新列表名稱"
+          style="padding:0.45rem 0.75rem; border:1px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--bg); outline:none; min-width:180px;" />
+        <button class="btn btn-primary" onclick="createWatchlist()" style="padding:0.45rem 1rem;">建立</button>
+        <button class="btn btn-secondary" onclick="toggleCreatePanel()" style="padding:0.45rem 0.85rem;">取消</button>
+        <div id="create-error" class="error-msg" style="display:none; margin-top:0;"></div>
+      </div>
+
+      <!-- No watchlists state -->
+      <div id="no-list-state" style="display:none; text-align:center; padding:4rem 1rem; color:var(--text-muted);">
+        <div style="font-size:2.5rem; margin-bottom:0.75rem;">📋</div>
+        <div style="font-weight:600; margin-bottom:0.4rem; color:var(--text);">尚未建立自選股列表</div>
+        <div style="font-size:0.85rem;">點擊上方「＋」建立第一個列表</div>
+      </div>
+
+      <!-- Active watchlist section -->
+      <div id="watchlist-section" style="display:none;">
+
+        <!-- Watchlist header -->
+        <div class="watchlist-header">
+          <span class="watchlist-title">📋 <span id="active-list-name"></span></span>
+          <div id="header-manage-btns" style="display:none; gap:0.5rem;">
+            <button class="btn btn-primary" onclick="toggleAddPanel()" id="toggle-add-btn" style="padding:0.35rem 0.85rem; font-size:0.82rem;">＋ 新增個股</button>
+            <button class="btn btn-danger" onclick="deleteWatchlist()" style="padding:0.35rem 0.85rem; font-size:0.82rem;">刪除此列表</button>
+          </div>
+        </div>
+
+        <!-- Add stock panel -->
+        <div class="add-panel" id="add-panel" style="display:none;">
+          <h2>新增個股</h2>
+          <div class="add-row">
+            <div class="field" style="flex:1; min-width:200px;">
+              <label for="stock-ids">股票代號（可多筆，用空格、逗號或換行分隔）</label>
+              <textarea id="stock-ids" placeholder="" rows="1"
+                style="resize:vertical; padding:0.5rem 0.75rem; border:1px solid var(--border); border-radius:7px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--bg); outline:none; width:100%; box-sizing:border-box; transition:border-color 0.15s;"></textarea>
+            </div>
+            <div class="field">
+              <label for="stock-note">標籤（選填）</label>
+              <input type="text" id="stock-note" placeholder="" />
+            </div>
+            <div class="field" style="justify-content: flex-end;">
+              <button class="btn btn-primary" id="add-btn">新增</button>
+            </div>
+          </div>
+          <div id="add-error" class="error-msg" style="display:none;"></div>
+          <div id="add-result" style="display:none; margin-top:0.5rem; font-size:0.85rem;"></div>
+        </div>
+
+        <!-- Data date -->
+        <div class="data-date" id="data-date"></div>
+
+        <!-- Table -->
+        <div class="table-wrapper" id="table-wrapper">
+          <div class="loading" id="loading-msg">載入中…</div>
+          <table id="watchlist-table" style="display:none;">
+            <thead>
+              <tr>
+                <th>代號</th>
+                <th>名稱</th>
+                <th>標籤</th>
+                <th>收盤</th>
+                <th>漲跌</th>
+                <th>漲跌%</th>
+                <th class="hide-mobile">開盤</th>
+                <th class="hide-mobile">最高</th>
+                <th class="hide-mobile">最低</th>
+                <th class="hide-mobile">成交量</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="watchlist-tbody"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" style="display:none;">
+            <div class="icon">⭐</div>
+            <div>此列表尚無個股</div>
+            <div style="font-size:0.85rem; margin-top:0.4rem;">在上方輸入股票代號開始追蹤</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // ── Mode ────────────────────────────────────────────────────────────────
+      const isManage = new URLSearchParams(location.search).get("admin") === "True";
+
+      // ── Theme ───────────────────────────────────────────────────────────────
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+      });
+
+      // ── Config ───────────────────────────────────────────────────────────────
+      const API_BASE = "https://market.smallplum.xyz";
+
+      // ── State ────────────────────────────────────────────────────────────────
+      let allWatchlists = [];
+      let activeListName = null;
+      let priceData = {};
+      let latestDates = {};
+
+      // ── Note color mapping ───────────────────────────────────────────────────
+      const noteColorMap = {};
+      let noteColorIndex = 0;
+
+      function getNoteClass(note) {
+        if (!note) return "sc-0";
+        if (!noteColorMap[note]) {
+          noteColorMap[note] = `sc-${noteColorIndex % 10}`;
+          noteColorIndex++;
+        }
+        return noteColorMap[note];
+      }
+
+      // ── API helpers ──────────────────────────────────────────────────────────
+      async function apiGetWatchlists() {
+        const res = await fetch(`${API_BASE}/api/watchlist/`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      }
+
+      async function apiCreateWatchlist(name) {
+        const res = await fetch(`${API_BASE}/api/watchlist/`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, items: [] }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || `HTTP ${res.status}`);
+        }
+        return res.json();
+      }
+
+      async function apiDeleteWatchlist(name) {
+        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(name)}`, {
+          method: "DELETE",
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      }
+
+      async function apiAddItem(listName, stock_id, note) {
+        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}/items`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ stock_id, note: note || "" }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || `HTTP ${res.status}`);
+        }
+        return res.json();
+      }
+
+      async function apiUpdateItems(listName, items) {
+        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items }),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      }
+
+      async function apiRemoveItem(listName, stock_id) {
+        const res = await fetch(
+          `${API_BASE}/api/watchlist/${encodeURIComponent(listName)}/items/${encodeURIComponent(stock_id)}`,
+          { method: "DELETE" }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      }
+
+      // ── Price data ───────────────────────────────────────────────────────────
+      async function fetchPrices(market, date) {
+        try {
+          const res = await fetch(`data/${market}/daily_price/${date}.json`);
+          if (!res.ok) return {};
+          const arr = await res.json();
+          const map = {};
+          arr.forEach(s => { map[s.id] = s; });
+          return map;
+        } catch { return {}; }
+      }
+
+      async function getLatestDate(market) {
+        const res = await fetch("data/manifest.json");
+        const manifest = await res.json();
+        const dates = manifest[market]?.daily_price || manifest[market]?.daily_index || [];
+        return dates[0] || null;
+      }
+
+      async function loadAllPrices() {
+        for (const m of ["twse", "tpex"]) {
+          if (!latestDates[m]) latestDates[m] = await getLatestDate(m);
+          if (latestDates[m]) priceData[m] = await fetchPrices(m, latestDates[m]);
+        }
+        const dates = [...new Set(Object.values(latestDates).filter(Boolean))];
+        if (dates.length) {
+          document.getElementById("data-date").textContent = `資料日期：${dates.join(" / ")}`;
+        }
+      }
+
+      function findStockData(id) {
+        return priceData.twse?.[id] || priceData.tpex?.[id] || null;
+      }
+
+      function fmtVol(v) {
+        if (!v && v !== 0) return "—";
+        if (v >= 100000000) return (v / 100000000).toFixed(1) + "億";
+        if (v >= 10000) return (v / 10000).toFixed(0) + "萬";
+        return v.toLocaleString();
+      }
+
+      function fmtPrice(v) {
+        if (v == null) return "—";
+        return v.toFixed(2);
+      }
+
+      // ── Render tabs ──────────────────────────────────────────────────────────
+      function renderTabs() {
+        const container = document.getElementById("tabs-container");
+        const tabs = allWatchlists
+          .map(wl => {
+            const isActive = wl.name === activeListName;
+            return `<button class="wl-tab${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name)">${escHtml(wl.name)}</button>`;
+          })
+          .join("");
+        container.innerHTML = tabs + (isManage ? `<button class="wl-tab wl-tab-new" onclick="toggleCreatePanel()">＋</button>` : "");
+      }
+
+      // ── Add panel toggle ─────────────────────────────────────────────────────
+      let addPanelOpen = false;
+
+      function toggleAddPanel() {
+        addPanelOpen = !addPanelOpen;
+        const panel = document.getElementById("add-panel");
+        const btn = document.getElementById("toggle-add-btn");
+        panel.style.display = addPanelOpen ? "block" : "none";
+        btn.textContent = addPanelOpen ? "✕ 關閉" : "＋ 新增個股";
+        if (addPanelOpen) document.getElementById("stock-ids").focus();
+      }
+
+      function closeAddPanel() {
+        addPanelOpen = false;
+        document.getElementById("add-panel").style.display = "none";
+        const btn = document.getElementById("toggle-add-btn");
+        if (btn) btn.textContent = "＋ 新增個股";
+      }
+
+      // ── Create panel ─────────────────────────────────────────────────────────
+      let createPanelOpen = false;
+
+      function toggleCreatePanel() {
+        createPanelOpen = !createPanelOpen;
+        const panel = document.getElementById("create-panel");
+        panel.style.display = createPanelOpen ? "flex" : "none";
+        document.getElementById("create-error").style.display = "none";
+        if (createPanelOpen) document.getElementById("new-list-name").focus();
+      }
+
+      async function createWatchlist() {
+        const input = document.getElementById("new-list-name");
+        const errDiv = document.getElementById("create-error");
+        const name = input.value.trim();
+
+        errDiv.style.display = "none";
+
+        if (!name) {
+          errDiv.textContent = "請輸入列表名稱";
+          errDiv.style.display = "block";
+          return;
+        }
+        if (allWatchlists.some(w => w.name === name)) {
+          errDiv.textContent = "列表名稱已存在";
+          errDiv.style.display = "block";
+          return;
+        }
+
+        try {
+          const created = await apiCreateWatchlist(name);
+          allWatchlists.push({ name: created.name || name, items: created.items || [] });
+          activeListName = created.name || name;
+          input.value = "";
+          createPanelOpen = false;
+          document.getElementById("create-panel").style.display = "none";
+          renderTabs();
+          renderWatchlist();
+        } catch (e) {
+          errDiv.textContent = `建立失敗：${e.message}`;
+          errDiv.style.display = "block";
+        }
+      }
+
+      // ── Switch tab ───────────────────────────────────────────────────────────
+      function switchTab(name) {
+        activeListName = name;
+        closeAddPanel();
+        renderTabs();
+        renderWatchlist();
+      }
+
+      // ── Render watchlist ─────────────────────────────────────────────────────
+      function renderWatchlist() {
+        const section = document.getElementById("watchlist-section");
+        const noListState = document.getElementById("no-list-state");
+
+        if (allWatchlists.length === 0) {
+          section.style.display = "none";
+          noListState.style.display = "block";
+          return;
+        }
+
+        noListState.style.display = "none";
+        section.style.display = "block";
+
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        if (!wl) return;
+
+        document.getElementById("active-list-name").textContent = wl.name;
+
+        const tbody = document.getElementById("watchlist-tbody");
+        const table = document.getElementById("watchlist-table");
+        const emptyState = document.getElementById("empty-state");
+
+        document.getElementById("loading-msg").style.display = "none";
+
+        if (!wl.items || wl.items.length === 0) {
+          table.style.display = "none";
+          emptyState.style.display = "block";
+          return;
+        }
+
+        emptyState.style.display = "none";
+        table.style.display = "table";
+
+        tbody.innerHTML = wl.items.map(item => {
+          const stock = findStockData(item.stock_id) || {};
+          const name = stock.name || item.stock_id;
+          const close = stock.close;
+          const change = stock.change;
+          const changePct = stock.change_percent;
+          const cls = change > 0 ? "up" : change < 0 ? "down" : "flat";
+          const sign = change > 0 ? "+" : "";
+          const note = item.note || "";
+          const noteClass = getNoteClass(note);
+          const noteBadge = note
+            ? `<span class="sector-badge ${noteClass}">${escHtml(note)}</span>`
+            : `<span class="text-muted">—</span>`;
+
+          return `<tr>
+            <td><a href="http://cnyes.com/twstock/${item.stock_id}/analysis/performance" target="_blank" class="stock-link">${escHtml(item.stock_id)}</a></td>
+            <td style="font-weight:600;">${escHtml(name)}</td>
+            <td class="note-cell" data-stock-id="${escAttr(item.stock_id)}">
+              ${noteBadge}
+              ${isManage ? `<button class="btn-icon" title="編輯標籤" onclick="startEditNote(this.closest('td'))">✏️</button>` : ""}
+            </td>
+            <td class="${cls}">${fmtPrice(close)}</td>
+            <td class="${cls}">${change != null ? sign + change.toFixed(2) : "—"}</td>
+            <td class="${cls}">${changePct != null ? sign + changePct.toFixed(2) + "%" : "—"}</td>
+            <td class="hide-mobile">${fmtPrice(stock.open)}</td>
+            <td class="hide-mobile">${fmtPrice(stock.high)}</td>
+            <td class="hide-mobile">${fmtPrice(stock.low)}</td>
+            <td class="hide-mobile text-muted">${fmtVol(stock.volume)}</td>
+            ${isManage ? `<td><button class="btn btn-danger" onclick="removeItem('${escAttr(item.stock_id)}')">移除</button></td>` : "<td></td>"}
+          </tr>`;
+        }).join("");
+      }
+
+      // ── Edit note inline ─────────────────────────────────────────────────────
+      function startEditNote(cell) {
+        const stockId = cell.dataset.stockId;
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        const item = wl?.items.find(i => i.stock_id === stockId);
+        const currentNote = item?.note || "";
+
+        cell.innerHTML = `<input type="text" class="note-edit-input" value="${escAttr(currentNote)}" placeholder="標籤"
+          data-stock-id="${escAttr(stockId)}"
+          onkeydown="handleNoteKey(event)"
+          onblur="saveNote(this)" />`;
+        cell.querySelector("input").select();
+      }
+
+      function handleNoteKey(e) {
+        if (e.key === "Enter") e.target.blur();
+        if (e.key === "Escape") renderWatchlist();
+      }
+
+      async function saveNote(input) {
+        const stockId = input.dataset.stockId;
+        const newNote = input.value.trim();
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        if (!wl) return;
+        const item = wl.items.find(i => i.stock_id === stockId);
+        if (!item) return;
+
+        const oldNote = item.note;
+        if (oldNote === newNote) { renderWatchlist(); return; }
+
+        item.note = newNote;
+        try {
+          await apiUpdateItems(activeListName, wl.items);
+        } catch (e) {
+          item.note = oldNote;
+          console.error("標籤更新失敗：", e.message);
+        }
+        renderWatchlist();
+      }
+
+      // ── Add stocks ───────────────────────────────────────────────────────────
+      async function addStocks() {
+        const idsInput = document.getElementById("stock-ids");
+        const noteInput = document.getElementById("stock-note");
+        const errDiv = document.getElementById("add-error");
+        const resultDiv = document.getElementById("add-result");
+
+        errDiv.style.display = "none";
+        resultDiv.style.display = "none";
+
+        if (!activeListName) {
+          errDiv.textContent = "請先選擇或建立一個自選股列表";
+          errDiv.style.display = "block";
+          return;
+        }
+
+        const raw = idsInput.value.trim();
+        if (!raw) {
+          errDiv.textContent = "請輸入至少一個股票代號";
+          errDiv.style.display = "block";
+          return;
+        }
+
+        const ids = raw.split(/[\s,，、\n]+/).map(s => s.trim()).filter(Boolean);
+        const note = noteInput.value.trim();
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        const added = [], skipped = [], notFound = [], failed = [];
+
+        for (const id of ids) {
+          if (wl.items.some(i => i.stock_id === id)) {
+            skipped.push(id);
+            continue;
+          }
+          const stock = findStockData(id);
+          if (!stock) {
+            notFound.push(id);
+            continue;
+          }
+          try {
+            await apiAddItem(activeListName, id, note);
+            wl.items.push({ stock_id: id, note });
+            added.push(id);
+          } catch (e) {
+            failed.push(id);
+          }
+        }
+
+        if (added.length > 0) {
+          idsInput.value = "";
+          closeAddPanel();
+        }
+
+        const parts = [];
+        if (added.length) parts.push(`<span style="color:var(--down)">✓ 新增 ${added.length} 筆：${added.join(", ")}</span>`);
+        if (skipped.length) parts.push(`<span style="color:var(--text-muted)">已存在略過：${skipped.join(", ")}</span>`);
+        if (notFound.length) parts.push(`<span style="color:#ef4444">找不到代號：${notFound.join(", ")}</span>`);
+        if (failed.length) parts.push(`<span style="color:#ef4444">新增失敗：${failed.join(", ")}</span>`);
+
+        if (parts.length) {
+          resultDiv.innerHTML = parts.join("　");
+          resultDiv.style.display = "block";
+        }
+
+        renderWatchlist();
+      }
+
+      // ── Remove item ──────────────────────────────────────────────────────────
+      async function removeItem(stockId) {
+        try {
+          await apiRemoveItem(activeListName, stockId);
+          const wl = allWatchlists.find(w => w.name === activeListName);
+          if (wl) wl.items = wl.items.filter(i => i.stock_id !== stockId);
+          renderWatchlist();
+        } catch (e) {
+          alert(`移除失敗：${e.message}`);
+        }
+      }
+
+      // ── Delete watchlist ─────────────────────────────────────────────────────
+      async function deleteWatchlist() {
+        if (!activeListName) return;
+        if (!confirm(`確定要刪除「${activeListName}」列表？此操作無法復原。`)) return;
+
+        try {
+          await apiDeleteWatchlist(activeListName);
+          const idx = allWatchlists.findIndex(w => w.name === activeListName);
+          allWatchlists.splice(idx, 1);
+          activeListName = allWatchlists.length > 0
+            ? allWatchlists[Math.max(0, idx - 1)].name
+            : null;
+          renderTabs();
+          renderWatchlist();
+        } catch (e) {
+          alert(`刪除失敗：${e.message}`);
+        }
+      }
+
+      // ── Escape helpers ───────────────────────────────────────────────────────
+      function escHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function escAttr(s) {
+        return String(s).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      }
+
+      // ── Init ─────────────────────────────────────────────────────────────────
+      document.getElementById("add-btn").addEventListener("click", addStocks);
+      document.getElementById("new-list-name").addEventListener("keydown", e => {
+        if (e.key === "Enter") createWatchlist();
+        if (e.key === "Escape") toggleCreatePanel();
+      });
+
+      (async function init() {
+        await loadAllPrices();
+        try {
+          allWatchlists = await apiGetWatchlists();
+          if (allWatchlists.length > 0) activeListName = allWatchlists[0].name;
+        } catch (e) {
+          console.error("無法載入自選股列表：", e.message);
+          allWatchlists = [];
+        }
+        if (isManage) {
+          document.getElementById("header-manage-btns").style.display = "flex";
+        }
+        renderTabs();
+        renderWatchlist();
+      })();
+    </script>
+  </body>
+</html>
