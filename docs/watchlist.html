@@ -183,11 +183,18 @@
       .tabs-row {
         display: flex;
         gap: 0.25rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
         margin-bottom: 0;
         align-items: flex-end;
         border-bottom: 2px solid var(--border);
         padding-bottom: 0;
+      }
+
+      .tabs-row::-webkit-scrollbar {
+        display: none;
       }
 
       .wl-tab {
@@ -359,12 +366,14 @@
         background: var(--card-bg);
         border: 1px solid var(--border);
         border-radius: 12px;
-        overflow: hidden;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         box-shadow: 0 1px 4px rgba(0,0,0,0.05);
       }
 
       table {
         width: 100%;
+        min-width: 720px;
         border-collapse: collapse;
         font-size: 0.9rem;
       }
@@ -380,8 +389,7 @@
       }
 
       th:first-child,
-      th:nth-child(2),
-      th:nth-child(3) {
+      th:nth-child(2) {
         text-align: left;
       }
 
@@ -393,8 +401,7 @@
       }
 
       td:first-child,
-      td:nth-child(2),
-      td:nth-child(3) {
+      td:nth-child(2) {
         text-align: left;
       }
 
@@ -469,6 +476,7 @@
         display: flex;
         align-items: center;
         gap: 0.3rem;
+        text-align: left;
       }
 
       .btn-icon {
@@ -526,7 +534,6 @@
       [data-theme="dark"] .sc-9  { background:#422006; color:#fef08a; }
 
       @media (max-width: 767px) {
-        .hide-mobile { display: none; }
         td, th { padding: 0.6rem 0.6rem; font-size: 0.82rem; }
       }
     </style>
@@ -618,7 +625,6 @@
               <tr>
                 <th>代號</th>
                 <th>名稱</th>
-                <th>標籤</th>
                 <th>收盤</th>
                 <th>漲跌</th>
                 <th>漲跌%</th>
@@ -626,6 +632,7 @@
                 <th class="hide-mobile">最高</th>
                 <th class="hide-mobile">最低</th>
                 <th class="hide-mobile">成交量</th>
+                <th>標籤</th>
                 <th></th>
               </tr>
             </thead>
@@ -916,10 +923,6 @@
           return `<tr>
             <td><a href="http://cnyes.com/twstock/${item.stock_id}/analysis/performance" target="_blank" class="stock-link">${escHtml(item.stock_id)}</a></td>
             <td style="font-weight:600;">${escHtml(name)}</td>
-            <td class="note-cell" data-stock-id="${escAttr(item.stock_id)}">
-              ${noteBadge}
-              ${isManage ? `<button class="btn-icon" title="編輯標籤" onclick="startEditNote(this.closest('td'))">✏️</button>` : ""}
-            </td>
             <td class="${cls}">${fmtPrice(close)}</td>
             <td class="${cls}">${change != null ? sign + change.toFixed(2) : "—"}</td>
             <td class="${cls}">${changePct != null ? sign + changePct.toFixed(2) + "%" : "—"}</td>
@@ -927,6 +930,10 @@
             <td class="hide-mobile">${fmtPrice(stock.high)}</td>
             <td class="hide-mobile">${fmtPrice(stock.low)}</td>
             <td class="hide-mobile text-muted">${fmtVol(stock.volume)}</td>
+            <td class="note-cell" data-stock-id="${escAttr(item.stock_id)}">
+              ${noteBadge}
+              ${isManage ? `<button class="btn-icon" title="編輯標籤" onclick="startEditNote(this.closest('td'))">✏️</button>` : ""}
+            </td>
             ${isManage ? `<td><button class="btn btn-danger" onclick="removeItem('${escAttr(item.stock_id)}')">移除</button></td>` : "<td></td>"}
           </tr>`;
         }).join("");
