@@ -773,7 +773,7 @@
       function fmtVol(v) {
         if (!v && v !== 0) return "—";
         if (v >= 100000000) return (v / 100000000).toFixed(1) + "億";
-        if (v >= 10000) return (v / 10000).toFixed(0) + "萬";
+        if (v >= 10000) return (v / 1000).toFixed(0) + "張";
         return v.toLocaleString();
       }
 
