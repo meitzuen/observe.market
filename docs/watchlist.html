@@ -700,7 +700,7 @@
 
       // ── API helpers ──────────────────────────────────────────────────────────
       async function apiGetWatchlists() {
-        const res = await fetch(`${API_BASE}/api/watchlist`);
+        const res = await fetch(`${API_BASE}/api/watchlist?sort_by=order&order=asc`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
@@ -709,7 +709,7 @@
         const res = await fetch(`${API_BASE}/api/watchlist`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, items: [] }),
+          body: JSON.stringify({ name, order: allWatchlists.length, items: [] }),
         });
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
