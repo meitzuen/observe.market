@@ -1,5 +1,35 @@
 [
     {
+        "publish_date": "2026-06-18",
+        "measure": "第一次處置",
+        "id": "3163",
+        "name": "波若威",
+        "accumulated": 7,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-06-22",
+        "to": "2026-07-03"
+    },
+    {
+        "publish_date": "2026-06-18",
+        "measure": "第一次處置",
+        "id": "3441",
+        "name": "聯一光",
+        "accumulated": 7,
+        "condition": "連續3個營業日及沖銷標準",
+        "from": "2026-06-22",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-18",
+        "measure": "第二次處置",
+        "id": "6488",
+        "name": "環球晶",
+        "accumulated": 7,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-06-22",
+        "to": "2026-07-03"
+    },
+    {
         "publish_date": "2026-06-17",
         "measure": "第一次處置",
         "id": "3285",
