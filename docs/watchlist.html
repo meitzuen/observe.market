@@ -382,16 +382,27 @@
         background: #1e3a5f;
         color: #fff;
         padding: 0.75rem 1rem;
-        text-align: right;
+        text-align: center;
         font-weight: 600;
         font-size: 0.82rem;
         white-space: nowrap;
       }
 
-      th:first-child,
-      th:nth-child(2) {
-        text-align: left;
+      th[data-col] {
+        cursor: pointer;
+        user-select: none;
       }
+
+      th[data-col]:hover {
+        background: #2a4d7f;
+      }
+
+      [data-theme="dark"] th[data-col]:hover {
+        background: #2a4d7f;
+      }
+
+      th.sort-asc::after  { content: ' ▲'; font-size: 0.65rem; }
+      th.sort-desc::after { content: ' ▼'; font-size: 0.65rem; }
 
       td {
         padding: 0.7rem 1rem;
@@ -623,16 +634,16 @@
           <table id="watchlist-table" style="display:none;">
             <thead>
               <tr>
-                <th>代號</th>
-                <th>名稱</th>
-                <th>收盤</th>
-                <th>漲跌</th>
-                <th>漲跌%</th>
-                <th class="hide-mobile">開盤</th>
-                <th class="hide-mobile">最高</th>
-                <th class="hide-mobile">最低</th>
-                <th class="hide-mobile">成交量</th>
-                <th>標籤</th>
+                <th data-col="id"         onclick="setSort('id')">代號</th>
+                <th data-col="name"       onclick="setSort('name')">名稱</th>
+                <th data-col="close"      onclick="setSort('close')">收盤</th>
+                <th data-col="change"     onclick="setSort('change')">漲跌</th>
+                <th data-col="change_pct" onclick="setSort('change_pct')">漲跌%</th>
+                <th class="hide-mobile" data-col="open"   onclick="setSort('open')">開盤</th>
+                <th class="hide-mobile" data-col="high"   onclick="setSort('high')">最高</th>
+                <th class="hide-mobile" data-col="low"    onclick="setSort('low')">最低</th>
+                <th class="hide-mobile" data-col="volume" onclick="setSort('volume')">成交量</th>
+                <th data-col="note" onclick="setSort('note')">標籤</th>
                 <th></th>
               </tr>
             </thead>
@@ -671,6 +682,8 @@
       let activeListName = null;
       let priceData = {};
       let latestDates = {};
+      let sortCol = null;
+      let sortDir = 1;
 
       // ── Note color mapping ───────────────────────────────────────────────────
       const noteColorMap = {};
@@ -787,6 +800,40 @@
       function fmtPrice(v) {
         if (v == null) return "—";
         return v.toFixed(2);
+      }
+
+      // ── Sort helpers ─────────────────────────────────────────────────────────
+      function getSortValue(item, col) {
+        const stock = findStockData(item.stock_id) || {};
+        switch (col) {
+          case 'id':         return item.stock_id;
+          case 'name':       return stock.name || item.stock_id;
+          case 'close':      return stock.close ?? null;
+          case 'change':     return stock.change ?? null;
+          case 'change_pct': return stock.change_percent ?? null;
+          case 'open':       return stock.open ?? null;
+          case 'high':       return stock.high ?? null;
+          case 'low':        return stock.low ?? null;
+          case 'volume':     return stock.volume ?? null;
+          case 'note':       return item.note || '';
+          default:           return null;
+        }
+      }
+
+      function setSort(col) {
+        if (sortCol === col) {
+          sortDir = -sortDir;
+        } else {
+          sortCol = col;
+          sortDir = 1;
+        }
+        document.querySelectorAll('th[data-col]').forEach(th => {
+          th.classList.remove('sort-asc', 'sort-desc');
+          if (th.dataset.col === col) {
+            th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+          }
+        });
+        renderWatchlist();
       }
 
       // ── Render tabs ──────────────────────────────────────────────────────────
@@ -906,7 +953,19 @@
         emptyState.style.display = "none";
         table.style.display = "table";
 
-        tbody.innerHTML = wl.items.map(item => {
+        const displayItems = sortCol
+          ? [...wl.items].sort((a, b) => {
+              const va = getSortValue(a, sortCol);
+              const vb = getSortValue(b, sortCol);
+              if (va == null && vb == null) return 0;
+              if (va == null) return 1;
+              if (vb == null) return -1;
+              if (typeof va === 'string') return sortDir * va.localeCompare(vb, 'zh-TW');
+              return sortDir * (va - vb);
+            })
+          : wl.items;
+
+        tbody.innerHTML = displayItems.map(item => {
           const stock = findStockData(item.stock_id) || {};
           const name = stock.name || item.stock_id;
           const close = stock.close;
