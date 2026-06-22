@@ -700,13 +700,13 @@
 
       // ── API helpers ──────────────────────────────────────────────────────────
       async function apiGetWatchlists() {
-        const res = await fetch(`${API_BASE}/api/watchlist/`);
+        const res = await fetch(`${API_BASE}/api/watchlist`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
 
       async function apiCreateWatchlist(name) {
-        const res = await fetch(`${API_BASE}/api/watchlist/`, {
+        const res = await fetch(`${API_BASE}/api/watchlist`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, items: [] }),
