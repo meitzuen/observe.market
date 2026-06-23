@@ -534,5 +534,13 @@
         "transactions": 7112713,
         "index": 47741.51,
         "changes": "1276.31"
+    },
+    {
+        "date": "115/06/23",
+        "volume": 16649496405,
+        "turnover": 1662638095720,
+        "transactions": 8354294,
+        "index": 47100.65,
+        "changes": "-640.86"
     }
 ]
