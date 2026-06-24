@@ -1,5 +1,85 @@
 [
     {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "1303",
+        "name": "南亞",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "2305",
+        "name": "全友",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "2342",
+        "name": "茂矽",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第二次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "4764",
+        "name": "雙鍵",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "6415",
+        "name": "矽力*-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第二次處置",
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
+        "publish_date": "2026-06-23",
+        "measure": "第一次處置",
+        "id": "8996",
+        "name": "高力",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-24",
+        "to": "2026-07-07"
+    },
+    {
         "publish_date": "2026-06-22",
         "measure": "第二次處置",
         "id": "2243",
