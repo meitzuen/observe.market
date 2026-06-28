@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>自選股 | Market Observer</title>
+    <title>精選類股 | Market Observer</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -122,31 +122,31 @@
         margin: 0;
       }
 
-      .nav-bar {
+            .nav-bar {
         display: flex;
+        align-items: center;
         gap: 0.25rem;
-        flex-wrap: nowrap;
       }
 
       .nav-link {
-        padding: 0.4rem 0.85rem;
-        border-radius: 6px;
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.75);
         text-decoration: none;
-        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.5rem;
         transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
       }
 
       .nav-link:hover {
         background: rgba(255, 255, 255, 0.12);
-        color: #fff;
+        color: #ffffff;
       }
 
       .nav-link.active {
-        background: rgba(255, 255, 255, 0.18);
-        color: #fff;
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
         font-weight: 700;
       }
 
@@ -160,6 +160,9 @@
         cursor: pointer;
         font-family: inherit;
         font-size: inherit;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1.5;
       }
 
       .nav-dropdown-btn::after {
@@ -167,49 +170,51 @@
         display: inline-block;
         border: solid currentColor;
         border-width: 0 1.5px 1.5px 0;
-        padding: 3px;
-        transform: rotate(45deg) translateY(-2px);
-        margin-left: 5px;
-        vertical-align: middle;
+        padding: 2.5px;
+        transform: rotate(45deg) translateY(-1px);
+        margin-left: 4px;
         opacity: 0.75;
         transition: transform 0.2s;
       }
 
       .nav-dropdown:hover .nav-dropdown-btn::after {
-        transform: rotate(-135deg) translateY(2px);
+        transform: rotate(-135deg) translateY(1px);
       }
 
       .nav-dropdown-menu {
         display: none;
         position: fixed;
         background: #1e3a5f;
-        border-radius: 0.75rem;
-        min-width: 6rem;
+        border-radius: 0.5rem;
+        min-width: 7rem;
         z-index: 9999;
         padding: 0.25rem;
         flex-direction: column;
         gap: 0.125rem;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
       .nav-dropdown-item {
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.72);
-        font-weight: 700;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        transition: background 0.15s, color 0.15s;
         white-space: nowrap;
       }
 
       .nav-dropdown-item:hover {
-        background-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.12);
         color: #ffffff;
       }
 
       .nav-dropdown-item.active {
-        background-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.2);
         color: #ffffff;
+        font-weight: 700;
       }
 
       .theme-toggle {
@@ -635,11 +640,11 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">權證</button>
             <div class="nav-dropdown-menu">
-              <a href="warrant.html" class="nav-dropdown-item">權證</a>
-              <a href="warrant_filter.html" class="nav-dropdown-item">權證篩選</a>
+              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
+              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
             </div>
           </div>
-          <a href="watchlist.html" class="nav-link active">自選股</a>
+          <a href="watchlist.html" class="nav-link active">精選類股</a>
         </nav>
       </div>
       <div class="header-right">
@@ -648,7 +653,7 @@
     </header>
 
     <main>
-      <p class="page-title">⭐ 自選股</p>
+      <p class="page-title">⭐ 精選類股</p>
 
       <!-- Watchlist tabs -->
       <div class="tabs-row" id="tabs-container"></div>
@@ -665,7 +670,7 @@
       <!-- No watchlists state -->
       <div id="no-list-state" style="display:none; text-align:center; padding:4rem 1rem; color:var(--text-muted);">
         <div style="font-size:2.5rem; margin-bottom:0.75rem;">📋</div>
-        <div style="font-weight:600; margin-bottom:0.4rem; color:var(--text);">尚未建立自選股列表</div>
+        <div style="font-weight:600; margin-bottom:0.4rem; color:var(--text);">尚未建立精選類股列表</div>
         <div style="font-size:0.85rem;">點擊上方「＋」建立第一個列表</div>
       </div>
 
@@ -1126,7 +1131,7 @@
         resultDiv.style.display = "none";
 
         if (!activeListName) {
-          errDiv.textContent = "請先選擇或建立一個自選股列表";
+          errDiv.textContent = "請先選擇或建立一個精選類股列表";
           errDiv.style.display = "block";
           return;
         }
@@ -1233,7 +1238,7 @@
           allWatchlists = await apiGetWatchlists();
           if (allWatchlists.length > 0) activeListName = allWatchlists[0].name;
         } catch (e) {
-          console.error("無法載入自選股列表：", e.message);
+          console.error("無法載入精選類股列表：", e.message);
           allWatchlists = [];
         }
         if (isManage) {
