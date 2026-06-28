@@ -384,6 +384,68 @@
         color: #ffffff;
       }
 
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      .nav-dropdown-btn::after {
+        content: '';
+        display: inline-block;
+        border: solid currentColor;
+        border-width: 0 1.5px 1.5px 0;
+        padding: 3px;
+        transform: rotate(45deg) translateY(-2px);
+        margin-left: 5px;
+        vertical-align: middle;
+        opacity: 0.75;
+        transition: transform 0.2s;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-btn::after {
+        transform: rotate(-135deg) translateY(2px);
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: fixed;
+        background: #1e3a5f;
+        border-radius: 0.75rem;
+        min-width: 6rem;
+        z-index: 9999;
+        padding: 0.25rem;
+        flex-direction: column;
+        gap: 0.125rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-dropdown-item {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .nav-dropdown-item:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-dropdown-item.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+
       [v-cloak] {
         display: none;
       }
@@ -455,8 +517,13 @@
         >
         <h1><span class="title-text">Market Observer</span></h1>
         <nav class="nav-bar">
-          <a href="index.html" class="nav-link active">上市</a>
-          <a href="tpex.html" class="nav-link">上櫃</a>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn active">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="index.html" class="nav-dropdown-item active">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+            </div>
+          </div>
           <a href="gap.html" class="nav-link">跳空</a>
           <a href="warrant.html" class="nav-link">權證</a>
           <a href="warrant_filter.html" class="nav-link">權證篩選</a>
@@ -1318,5 +1385,21 @@
 
       init();
     </script>
-  </body>
+    <script>
+    (function () {
+      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+        var menu = dd.querySelector('.nav-dropdown-menu');
+        dd.addEventListener('mouseenter', function () {
+          var r = dd.getBoundingClientRect();
+          menu.style.top = r.bottom + 'px';
+          menu.style.left = r.left + 'px';
+          menu.style.display = 'flex';
+        });
+        dd.addEventListener('mouseleave', function () {
+          menu.style.display = 'none';
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
