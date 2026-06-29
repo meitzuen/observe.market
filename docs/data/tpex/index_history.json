@@ -462,5 +462,21 @@
         "transactions": 1210544,
         "index": 439.84,
         "changes": "-2.25"
+    },
+    {
+        "date": "115/06/26",
+        "volume": 1449964000,
+        "turnover": 261836096000,
+        "transactions": 1533628,
+        "index": 415.26,
+        "changes": "-24.58"
+    },
+    {
+        "date": "115/06/29",
+        "volume": 1016640000,
+        "turnover": 175921510000,
+        "transactions": 1024374,
+        "index": 412.93,
+        "changes": "-2.33"
     }
 ]

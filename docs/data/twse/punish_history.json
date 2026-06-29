@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-06-26",
+        "measure": "第一次處置",
+        "id": "6243",
+        "name": "迅杰",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-29",
+        "to": "2026-07-10"
+    },
+    {
         "publish_date": "2026-06-25",
         "measure": "第一次處置",
         "id": "2481",
