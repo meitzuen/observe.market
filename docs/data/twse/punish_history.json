@@ -1,5 +1,55 @@
 [
     {
+        "publish_date": "2026-06-29",
+        "measure": "第一次處置",
+        "id": "1435",
+        "name": "中福",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-30",
+        "to": "2026-07-13"
+    },
+    {
+        "publish_date": "2026-06-29",
+        "measure": "第一次處置",
+        "id": "2233",
+        "name": "宇隆",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-30",
+        "to": "2026-07-13"
+    },
+    {
+        "publish_date": "2026-06-29",
+        "measure": "第一次處置",
+        "id": "2483",
+        "name": "百容",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-30",
+        "to": "2026-07-13"
+    },
+    {
+        "publish_date": "2026-06-29",
+        "measure": "第一次處置",
+        "id": "3450",
+        "name": "聯鈞",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-06-30",
+        "to": "2026-07-13"
+    },
+    {
+        "publish_date": "2026-06-29",
+        "measure": "第一次處置",
+        "id": "6226",
+        "name": "光鼎",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-06-30",
+        "to": "2026-07-13"
+    },
+    {
         "publish_date": "2026-06-26",
         "measure": "第一次處置",
         "id": "6243",
