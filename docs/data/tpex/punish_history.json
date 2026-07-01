@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-06-30",
+        "measure": "第一次處置",
+        "id": "3230",
+        "name": "錦明",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-01",
+        "to": "2026-07-14"
+    },
+    {
         "publish_date": "2026-06-29",
         "measure": "第一次處置",
         "id": "8024",
