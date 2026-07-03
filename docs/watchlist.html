@@ -534,6 +534,99 @@
         white-space: nowrap;
       }
 
+      .sector-badge.truncated {
+        cursor: pointer;
+        text-decoration: underline dotted;
+        text-underline-offset: 2px;
+      }
+      .sector-badge.truncated:hover { opacity: 0.8; }
+
+      @keyframes note-overlay-in {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      @keyframes note-modal-in {
+        from { opacity: 0; transform: scale(0.93) translateY(14px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+
+      .note-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.52);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        animation: note-overlay-in 0.18s ease both;
+      }
+      .note-modal-box {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        max-width: min(500px, 92vw);
+        width: 100%;
+        box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.08);
+      }
+      .note-modal-box.is-open {
+        animation: note-modal-in 0.24s cubic-bezier(.22,.68,0,1.2) both;
+      }
+      .note-modal-accent {
+        height: 5px;
+        width: 100%;
+      }
+      .note-modal-inner {
+        padding: 1.35rem 1.75rem 1.6rem;
+      }
+      .note-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.85rem;
+      }
+      .note-modal-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .note-modal-close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0.25rem 0.4rem;
+        border-radius: 5px;
+        margin: -0.25rem -0.4rem;
+        transition: color 0.15s, background 0.15s;
+        font-family: inherit;
+      }
+      .note-modal-close-btn:hover {
+        color: var(--text);
+        background: var(--border);
+      }
+      .note-modal-stock-wrap {
+        margin-bottom: 0.85rem;
+      }
+      .note-modal-content {
+        background: var(--bg);
+        border-radius: 8px;
+        padding: 0.9rem 1.1rem;
+      }
+      .note-modal-body {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 0.93rem;
+        line-height: 1.85;
+        color: var(--text);
+      }
+
       .up { color: var(--up); font-weight: 700; }
       .down { color: var(--down); font-weight: 700; }
       .flat { color: var(--text-muted); }
@@ -814,6 +907,25 @@
         </div>
       </div>
     </main>
+
+    <!-- Note full-text modal -->
+    <div id="note-modal" class="note-modal-overlay" style="display:none;" onclick="if(event.target===this)closeNoteModal()">
+      <div class="note-modal-box">
+        <div id="note-modal-accent" class="note-modal-accent"></div>
+        <div class="note-modal-inner">
+          <div class="note-modal-header">
+            <span class="note-modal-title">標籤</span>
+            <button class="note-modal-close-btn" onclick="closeNoteModal()" aria-label="關閉">✕</button>
+          </div>
+          <div id="note-modal-stock-wrap" class="note-modal-stock-wrap" style="display:none;">
+            <span id="note-modal-stock-badge" class="sector-badge"></span>
+          </div>
+          <div class="note-modal-content">
+            <div class="note-modal-body" id="note-modal-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
@@ -1351,8 +1463,10 @@
           const sign = change > 0 ? "+" : "";
           const note = item.note || "";
           const noteClass = getNoteClass(note);
+          const isLongNote = note.length > 15;
+          const displayNote = isLongNote ? note.slice(0, 15) + "…" : note;
           const noteBadge = note
-            ? `<span class="sector-badge ${noteClass}">${escHtml(note)}</span>`
+            ? `<span class="sector-badge ${noteClass}${isLongNote ? " truncated" : ""}"${isLongNote ? ` onclick="openNoteModal(this)" data-full-note="${escAttr(note)}" data-color-class="${escAttr(noteClass)}" data-stock-id="${escAttr(item.stock_id)}"` : ""}>${escHtml(displayNote)}</span>`
             : `<span class="text-muted">—</span>`;
           const drag = rowDraggable
             ? ` draggable="true" ondragstart="rowDragStart(event,${i})" ondragover="rowDragOver(event,${i})" ondragleave="rowDragLeave(event)" ondrop="rowDrop(event,${i})" ondragend="rowDragEnd(event)"`
@@ -1518,6 +1632,40 @@
           alert(`刪除失敗：${e.message}`);
         }
       }
+
+      // ── Note modal ───────────────────────────────────────────────────────────
+      function openNoteModal(el) {
+        const colorClass = el.dataset.colorClass || "sc-0";
+        const stockId = el.dataset.stockId || "";
+
+        document.getElementById("note-modal-accent").className = "note-modal-accent " + colorClass;
+
+        const stockWrap = document.getElementById("note-modal-stock-wrap");
+        const stockBadge = document.getElementById("note-modal-stock-badge");
+        if (stockId) {
+          const stock = findStockData(stockId) || {};
+          stockBadge.className = "sector-badge " + colorClass;
+          stockBadge.textContent = stock.name ? `${stockId}　${stock.name}` : stockId;
+          stockWrap.style.display = "block";
+        } else {
+          stockWrap.style.display = "none";
+        }
+
+        document.getElementById("note-modal-text").textContent = el.dataset.fullNote;
+
+        const box = document.querySelector("#note-modal .note-modal-box");
+        box.classList.remove("is-open");
+        document.getElementById("note-modal").style.display = "flex";
+        requestAnimationFrame(() => box.classList.add("is-open"));
+      }
+
+      function closeNoteModal() {
+        document.getElementById("note-modal").style.display = "none";
+      }
+
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeNoteModal();
+      });
 
       // ── Escape helpers ───────────────────────────────────────────────────────
       function escHtml(s) {
