@@ -407,6 +407,59 @@
         width: 140px;
       }
 
+      .toggle-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        cursor: pointer;
+        user-select: none;
+        font-size: 0.85rem;
+        color: var(--text);
+      }
+      .toggle-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+      }
+      .toggle-track {
+        position: relative;
+        width: 2.25rem;
+        height: 1.25rem;
+        border-radius: 999px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        transition: background 0.2s, border-color 0.2s;
+        flex-shrink: 0;
+      }
+      .toggle-input:checked + .toggle-track {
+        background: #ffedd5;
+        border-color: #fdba74;
+      }
+      .toggle-thumb {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 0.85rem;
+        height: 0.85rem;
+        border-radius: 50%;
+        background: #94a3b8;
+        transition: transform 0.2s, background 0.2s;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      }
+      .toggle-input:checked + .toggle-track .toggle-thumb {
+        transform: translateX(1rem);
+        background: #c2410c;
+      }
+      [data-theme="dark"] .toggle-input:checked + .toggle-track {
+        background: #431407;
+        border-color: #9a3412;
+      }
+      [data-theme="dark"] .toggle-input:checked + .toggle-track .toggle-thumb {
+        background: #fb923c;
+      }
+
       .btn {
         padding: 0.5rem 1.1rem;
         border-radius: 7px;
@@ -504,6 +557,10 @@
       td:first-child,
       td:nth-child(2) {
         text-align: left;
+      }
+
+      td:nth-child(2) {
+        position: relative;
       }
 
       tr:last-child td {
@@ -871,16 +928,25 @@
         <div class="add-panel" id="add-panel" style="display:none;">
           <h2>新增個股</h2>
           <div class="add-row">
-            <div class="field" style="flex:1; min-width:200px;">
-              <label for="stock-ids">股票代號（可多筆，用空格、逗號或換行分隔）</label>
-              <textarea id="stock-ids" placeholder="" rows="1"
-                style="resize:vertical; padding:0.5rem 0.75rem; border:1px solid var(--border); border-radius:7px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--bg); outline:none; width:100%; box-sizing:border-box; transition:border-color 0.15s;"></textarea>
+            <div class="field">
+              <label for="stock-id">股票代號</label>
+              <input type="text" id="stock-id" placeholder="ex: 2330" style="width:100px;" />
+            </div>
+            <div class="field" style="flex:1; min-width:160px; max-width:420px;">
+              <label for="stock-note">標籤 <span style="color:#ef4444;">*</span></label>
+              <input type="text" id="stock-note" placeholder="必填" style="width:100%;" />
+            </div>
+            <div class="field" style="margin-left:2rem;">
+              <label for="stock-is-top">產業龍頭</label>
+              <div style="border:1px solid var(--border); border-radius:7px; background:var(--bg); padding:0.5rem 0.75rem; display:flex; align-items:center; height:34px; box-sizing:border-box;">
+                <label class="toggle-wrap" for="stock-is-top">
+                  <input type="checkbox" id="stock-is-top" class="toggle-input" />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                </label>
+              </div>
             </div>
             <div class="field">
-              <label for="stock-note">標籤（選填）</label>
-              <input type="text" id="stock-note" placeholder="" />
-            </div>
-            <div class="field" style="justify-content: flex-end;">
+              <label style="visibility:hidden; font-size:0.8rem; line-height:1.2;">&nbsp;</label>
               <button class="btn btn-primary" id="add-btn">新增</button>
             </div>
           </div>
@@ -1017,11 +1083,11 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
 
-      async function apiAddItem(listName, stock_id, note) {
+      async function apiAddItem(listName, stock_id, note, is_top = false) {
         const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}/items`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ stock_id, note: note || "" }),
+          body: JSON.stringify({ stock_id, note: note || "", is_top }),
         });
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
@@ -1364,12 +1430,17 @@
         const btn = document.getElementById("toggle-add-btn");
         panel.style.display = addPanelOpen ? "block" : "none";
         btn.textContent = addPanelOpen ? "✕ 關閉" : "＋ 新增個股";
-        if (addPanelOpen) document.getElementById("stock-ids").focus();
+        if (addPanelOpen) document.getElementById("stock-id").focus();
       }
 
       function closeAddPanel() {
         addPanelOpen = false;
         document.getElementById("add-panel").style.display = "none";
+        document.getElementById("stock-id").value = "";
+        document.getElementById("stock-note").value = "";
+        document.getElementById("stock-is-top").checked = false;
+        document.getElementById("add-error").style.display = "none";
+        document.getElementById("add-result").style.display = "none";
         const btn = document.getElementById("toggle-add-btn");
         if (btn) btn.textContent = "＋ 新增個股";
       }
@@ -1498,7 +1569,7 @@
 
           return `<tr${drag}>
             <td><a href="http://cnyes.com/twstock/${item.stock_id}/analysis/performance" target="_blank" class="stock-link">${escHtml(item.stock_id)}</a></td>
-            <td style="position:relative; font-weight:600;">${topTag}${escHtml(name)}</td>
+            <td style="font-weight:600;">${topTag}${escHtml(name)}</td>
             <td class="${cls}">${fmtPrice(close)}</td>
             <td class="${cls}">${change != null ? sign + change.toFixed(2) : "—"}</td>
             <td class="${cls}">${changePct != null ? sign + changePct.toFixed(2) + "%" : "—"}</td>
@@ -1562,9 +1633,10 @@
 
       // ── Add stocks ───────────────────────────────────────────────────────────
       async function addStocks() {
-        const idsInput = document.getElementById("stock-ids");
+        const idInput   = document.getElementById("stock-id");
         const noteInput = document.getElementById("stock-note");
-        const errDiv = document.getElementById("add-error");
+        const isTopInput = document.getElementById("stock-is-top");
+        const errDiv    = document.getElementById("add-error");
         const resultDiv = document.getElementById("add-result");
 
         errDiv.style.display = "none";
@@ -1576,51 +1648,45 @@
           return;
         }
 
-        const raw = idsInput.value.trim();
-        if (!raw) {
-          errDiv.textContent = "請輸入至少一個股票代號";
+        const id = idInput.value.trim();
+        if (!id) {
+          errDiv.textContent = "請輸入股票代號";
+          errDiv.style.display = "block";
+          idInput.focus();
+          return;
+        }
+
+        const note = noteInput.value.trim();
+        if (!note) {
+          errDiv.textContent = "標籤為必填";
+          errDiv.style.display = "block";
+          noteInput.focus();
+          return;
+        }
+
+        const isTop = isTopInput.checked;
+        const wl = allWatchlists.find(w => w.name === activeListName);
+
+        if (wl.items.some(i => i.stock_id === id)) {
+          errDiv.textContent = `${id} 已存在於此列表`;
           errDiv.style.display = "block";
           return;
         }
 
-        const ids = raw.split(/[\s,，、\n]+/).map(s => s.trim()).filter(Boolean);
-        const note = noteInput.value.trim();
-        const wl = allWatchlists.find(w => w.name === activeListName);
-        const added = [], skipped = [], notFound = [], failed = [];
-
-        for (const id of ids) {
-          if (wl.items.some(i => i.stock_id === id)) {
-            skipped.push(id);
-            continue;
-          }
-          const stock = findStockData(id);
-          if (!stock) {
-            notFound.push(id);
-            continue;
-          }
-          try {
-            await apiAddItem(activeListName, id, note);
-            wl.items.push({ stock_id: id, note });
-            added.push(id);
-          } catch (e) {
-            failed.push(id);
-          }
+        const stock = findStockData(id);
+        if (!stock) {
+          errDiv.textContent = `找不到股票代號 ${id}`;
+          errDiv.style.display = "block";
+          return;
         }
 
-        if (added.length > 0) {
-          idsInput.value = "";
+        try {
+          await apiAddItem(activeListName, id, note, isTop);
+          wl.items.push({ stock_id: id, note, is_top: isTop });
           closeAddPanel();
-        }
-
-        const parts = [];
-        if (added.length) parts.push(`<span style="color:var(--down)">✓ 新增 ${added.length} 筆：${added.join(", ")}</span>`);
-        if (skipped.length) parts.push(`<span style="color:var(--text-muted)">已存在略過：${skipped.join(", ")}</span>`);
-        if (notFound.length) parts.push(`<span style="color:#ef4444">找不到代號：${notFound.join(", ")}</span>`);
-        if (failed.length) parts.push(`<span style="color:#ef4444">新增失敗：${failed.join(", ")}</span>`);
-
-        if (parts.length) {
-          resultDiv.innerHTML = parts.join("　");
-          resultDiv.style.display = "block";
+        } catch (e) {
+          errDiv.textContent = `新增失敗：${e.message}`;
+          errDiv.style.display = "block";
         }
 
         renderWatchlist();
