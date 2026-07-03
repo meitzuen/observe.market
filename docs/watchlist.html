@@ -308,6 +308,13 @@
         padding: 0.35rem 0.8rem;
       }
 
+      .wl-tab[draggable="true"] { cursor: grab; }
+      .wl-tab.dragging { opacity: 0.4; }
+      .wl-tab.drag-over {
+        border-color: var(--primary);
+        background: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
+      }
+
       /* Create panel */
       .create-panel {
         display: none;
@@ -702,6 +709,13 @@
       <!-- Watchlist tabs -->
       <div class="tabs-row" id="tabs-container"></div>
 
+      <!-- Pending order bar (admin only, shown after drag) -->
+      <div id="order-pending-bar" style="display:none; align-items:center; gap:0.75rem; padding:0.5rem 0.75rem; background:color-mix(in srgb, var(--primary) 8%, var(--card-bg)); border:1px solid color-mix(in srgb, var(--primary) 30%, var(--border)); border-top:none; font-size:0.83rem; color:var(--text-muted);">
+        <span>排序已變更，尚未儲存</span>
+        <button class="btn btn-primary" onclick="saveWatchlistOrder()" style="padding:0.3rem 0.85rem; font-size:0.82rem;" id="save-order-btn">更新排序</button>
+        <button class="btn btn-secondary" onclick="cancelOrderChange()" style="padding:0.3rem 0.7rem; font-size:0.82rem;">取消</button>
+      </div>
+
       <!-- Create new watchlist panel -->
       <div class="create-panel" id="create-panel">
         <input type="text" id="new-list-name" placeholder="新列表名稱"
@@ -885,6 +899,16 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
 
+      async function apiUpdateWatchlistOrders(orders) {
+        const res = await fetch(`${API_BASE}/api/watchlist/orders`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(orders),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      }
+
       // ── Price data ───────────────────────────────────────────────────────────
       let availableDates = [];
 
@@ -986,13 +1010,106 @@
         renderWatchlist();
       }
 
+      // ── Tab drag-and-drop ────────────────────────────────────────────────────
+      let dragSrcIndex = null;
+      let pendingOrderChange = false;
+      let savedWatchlistsOrder = [];
+
+      function showOrderBar() {
+        document.getElementById("order-pending-bar").style.display = "flex";
+      }
+
+      function hideOrderBar() {
+        document.getElementById("order-pending-bar").style.display = "none";
+      }
+
+      async function saveWatchlistOrder() {
+        const btn = document.getElementById("save-order-btn");
+        btn.disabled = true;
+        btn.textContent = "儲存中…";
+        try {
+          const orders = allWatchlists.map((wl, i) => ({
+            _id: wl._id?.$oid ?? wl._id,
+            order: i + 1,
+          }));
+          await apiUpdateWatchlistOrders(orders);
+          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
+          pendingOrderChange = false;
+          hideOrderBar();
+        } catch (err) {
+          console.error('排序更新失敗：', err.message);
+          btn.textContent = "失敗，請重試";
+        } finally {
+          btn.disabled = false;
+          if (pendingOrderChange === false) btn.textContent = "更新排序";
+        }
+      }
+
+      function cancelOrderChange() {
+        if (!pendingOrderChange) return;
+        // Restore saved order
+        const restored = savedWatchlistsOrder
+          .map(id => allWatchlists.find(wl => (wl._id?.$oid ?? wl._id) === id))
+          .filter(Boolean);
+        allWatchlists.splice(0, allWatchlists.length, ...restored);
+        pendingOrderChange = false;
+        hideOrderBar();
+        renderTabs();
+        renderWatchlist();
+      }
+
+      function tabDragStart(e, index) {
+        dragSrcIndex = index;
+        e.dataTransfer.effectAllowed = 'move';
+        e.currentTarget.classList.add('dragging');
+      }
+
+      function tabDragOver(e, index) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        document.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('drag-over'));
+        e.currentTarget.classList.add('drag-over');
+      }
+
+      function tabDragLeave(e) {
+        e.currentTarget.classList.remove('drag-over');
+      }
+
+      function tabDrop(e, index) {
+        e.preventDefault();
+        e.currentTarget.classList.remove('drag-over');
+        if (dragSrcIndex === null || dragSrcIndex === index) return;
+
+        if (!pendingOrderChange) {
+          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
+        }
+
+        const [moved] = allWatchlists.splice(dragSrcIndex, 1);
+        allWatchlists.splice(index, 0, moved);
+        dragSrcIndex = null;
+
+        pendingOrderChange = true;
+        renderTabs();
+        renderWatchlist();
+        showOrderBar();
+      }
+
+      function tabDragEnd(e) {
+        e.currentTarget.classList.remove('dragging');
+        document.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('drag-over'));
+        dragSrcIndex = null;
+      }
+
       // ── Render tabs ──────────────────────────────────────────────────────────
       function renderTabs() {
         const container = document.getElementById("tabs-container");
         const tabs = allWatchlists
-          .map(wl => {
+          .map((wl, index) => {
             const isActive = wl.name === activeListName;
-            return `<button class="wl-tab${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name)">${escHtml(wl.name)}</button>`;
+            const drag = isManage
+              ? ` draggable="true" ondragstart="tabDragStart(event,${index})" ondragover="tabDragOver(event,${index})" ondragleave="tabDragLeave(event)" ondrop="tabDrop(event,${index})" ondragend="tabDragEnd(event)"`
+              : '';
+            return `<button class="wl-tab${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name)"${drag}>${escHtml(wl.name)}</button>`;
           })
           .join("");
         container.innerHTML = tabs + (isManage ? `<button class="wl-tab wl-tab-new" onclick="toggleCreatePanel()">＋</button>` : "");
@@ -1312,6 +1429,7 @@
         try {
           allWatchlists = await apiGetWatchlists();
           if (allWatchlists.length > 0) activeListName = allWatchlists[0].name;
+          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
         } catch (e) {
           console.error("無法載入精選類股列表：", e.message);
           allWatchlists = [];
