@@ -315,6 +315,13 @@
         background: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
       }
 
+      #watchlist-tbody tr[draggable="true"] { cursor: grab; }
+      #watchlist-tbody tr.dragging td { opacity: 0.35; }
+      #watchlist-tbody tr.drag-over td {
+        background: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
+        box-shadow: inset 0 2px 0 var(--primary);
+      }
+
       /* Create panel */
       .create-panel {
         display: none;
@@ -771,6 +778,13 @@
           <select id="date-picker" class="date-picker-select" title="選擇資料日期" style="display:none;"></select>
         </div>
 
+        <!-- Pending items order bar (admin only, shown after row drag) -->
+        <div id="items-order-pending-bar" style="display:none; align-items:center; gap:0.75rem; padding:0.45rem 0.75rem; margin-bottom:0.5rem; background:color-mix(in srgb, var(--primary) 8%, var(--card-bg)); border:1px solid color-mix(in srgb, var(--primary) 30%, var(--border)); border-radius:8px; font-size:0.83rem; color:var(--text-muted);">
+          <span>列表排序已變更，尚未儲存</span>
+          <button class="btn btn-primary" onclick="saveItemsOrder()" style="padding:0.3rem 0.85rem; font-size:0.82rem;" id="save-items-order-btn">更新列表排序</button>
+          <button class="btn btn-secondary" onclick="cancelItemsOrderChange()" style="padding:0.3rem 0.7rem; font-size:0.82rem;">取消</button>
+        </div>
+
         <!-- Table -->
         <div class="table-wrapper" id="table-wrapper">
           <div class="loading" id="loading-msg">載入中…</div>
@@ -882,10 +896,11 @@
       }
 
       async function apiUpdateItems(listName, items) {
+        const wl = allWatchlists.find(w => w.name === listName);
         const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items }),
+          body: JSON.stringify({ items, order: wl?.order ?? 0 }),
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -1008,6 +1023,96 @@
           }
         });
         renderWatchlist();
+      }
+
+      // ── Row drag-and-drop (item order within a watchlist) ───────────────────
+      let rowDragSrcIndex = null;
+      let pendingItemsOrderChange = false;
+      let savedItemsOrder = [];
+
+      function showItemsOrderBar() {
+        document.getElementById("items-order-pending-bar").style.display = "flex";
+      }
+
+      function hideItemsOrderBar() {
+        document.getElementById("items-order-pending-bar").style.display = "none";
+      }
+
+      async function saveItemsOrder() {
+        const btn = document.getElementById("save-items-order-btn");
+        btn.disabled = true;
+        btn.textContent = "儲存中…";
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        if (!wl) return;
+        try {
+          await apiUpdateItems(activeListName, wl.items);
+          savedItemsOrder = wl.items.map(i => i.stock_id);
+          pendingItemsOrderChange = false;
+          hideItemsOrderBar();
+          btn.textContent = "更新列表排序";
+        } catch (err) {
+          console.error("列表排序更新失敗：", err.message);
+          btn.textContent = "失敗，請重試";
+        } finally {
+          btn.disabled = false;
+        }
+      }
+
+      function cancelItemsOrderChange() {
+        if (!pendingItemsOrderChange) return;
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        if (!wl) return;
+        const savedSet = new Set(savedItemsOrder);
+        const restored = savedItemsOrder.map(id => wl.items.find(i => i.stock_id === id)).filter(Boolean);
+        const added = wl.items.filter(i => !savedSet.has(i.stock_id));
+        wl.items = [...restored, ...added];
+        pendingItemsOrderChange = false;
+        hideItemsOrderBar();
+        renderWatchlist();
+      }
+
+      function rowDragStart(e, index) {
+        rowDragSrcIndex = index;
+        e.dataTransfer.effectAllowed = "move";
+        e.currentTarget.classList.add("dragging");
+      }
+
+      function rowDragOver(e, index) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        document.querySelectorAll("#watchlist-tbody tr").forEach(tr => tr.classList.remove("drag-over"));
+        e.currentTarget.classList.add("drag-over");
+      }
+
+      function rowDragLeave(e) {
+        e.currentTarget.classList.remove("drag-over");
+      }
+
+      function rowDrop(e, index) {
+        e.preventDefault();
+        e.currentTarget.classList.remove("drag-over");
+        if (rowDragSrcIndex === null || rowDragSrcIndex === index) return;
+
+        const wl = allWatchlists.find(w => w.name === activeListName);
+        if (!wl) return;
+
+        if (!pendingItemsOrderChange) {
+          savedItemsOrder = wl.items.map(i => i.stock_id);
+        }
+
+        const [moved] = wl.items.splice(rowDragSrcIndex, 1);
+        wl.items.splice(index, 0, moved);
+        rowDragSrcIndex = null;
+
+        pendingItemsOrderChange = true;
+        renderWatchlist();
+        showItemsOrderBar();
+      }
+
+      function rowDragEnd(e) {
+        e.currentTarget.classList.remove("dragging");
+        document.querySelectorAll("#watchlist-tbody tr").forEach(tr => tr.classList.remove("drag-over"));
+        rowDragSrcIndex = null;
       }
 
       // ── Tab drag-and-drop ────────────────────────────────────────────────────
@@ -1182,6 +1287,9 @@
       function switchTab(name) {
         activeListName = name;
         closeAddPanel();
+        pendingItemsOrderChange = false;
+        savedItemsOrder = [];
+        hideItemsOrderBar();
         renderTabs();
         renderWatchlist();
       }
@@ -1232,7 +1340,8 @@
             })
           : wl.items;
 
-        tbody.innerHTML = displayItems.map(item => {
+        const rowDraggable = isManage && !sortCol;
+        tbody.innerHTML = displayItems.map((item, i) => {
           const stock = findStockData(item.stock_id) || {};
           const name = stock.name || item.stock_id;
           const close = stock.close;
@@ -1245,8 +1354,11 @@
           const noteBadge = note
             ? `<span class="sector-badge ${noteClass}">${escHtml(note)}</span>`
             : `<span class="text-muted">—</span>`;
+          const drag = rowDraggable
+            ? ` draggable="true" ondragstart="rowDragStart(event,${i})" ondragover="rowDragOver(event,${i})" ondragleave="rowDragLeave(event)" ondrop="rowDrop(event,${i})" ondragend="rowDragEnd(event)"`
+            : '';
 
-          return `<tr>
+          return `<tr${drag}>
             <td><a href="http://cnyes.com/twstock/${item.stock_id}/analysis/performance" target="_blank" class="stock-link">${escHtml(item.stock_id)}</a></td>
             <td style="font-weight:600;">${escHtml(name)}</td>
             <td class="${cls}">${fmtPrice(close)}</td>
@@ -1298,6 +1410,11 @@
         item.note = newNote;
         try {
           await apiUpdateItems(activeListName, wl.items);
+          if (pendingItemsOrderChange) {
+            savedItemsOrder = wl.items.map(i => i.stock_id);
+            pendingItemsOrderChange = false;
+            hideItemsOrderBar();
+          }
         } catch (e) {
           item.note = oldNote;
           console.error("標籤更新失敗：", e.message);
