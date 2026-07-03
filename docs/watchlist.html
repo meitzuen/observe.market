@@ -540,10 +540,34 @@
         margin-bottom: 0.75rem;
       }
 
+      .data-date-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+      }
+
       .data-date {
         font-size: 0.8rem;
         color: var(--text-muted);
-        margin-bottom: 0.75rem;
+      }
+
+      .date-picker-select {
+        padding: 0.25rem 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        cursor: pointer;
+        outline: none;
+        transition: border-color 0.15s;
+      }
+
+      .date-picker-select:focus {
+        border-color: var(--primary);
       }
 
       .loading {
@@ -727,8 +751,11 @@
           <div id="add-result" style="display:none; margin-top:0.5rem; font-size:0.85rem;"></div>
         </div>
 
-        <!-- Data date -->
-        <div class="data-date" id="data-date"></div>
+        <!-- Data date + date picker -->
+        <div class="data-date-row">
+          <span class="data-date" id="data-date"></span>
+          <select id="date-picker" class="date-picker-select" title="選擇資料日期" style="display:none;"></select>
+        </div>
 
         <!-- Table -->
         <div class="table-wrapper" id="table-wrapper">
@@ -859,6 +886,8 @@
       }
 
       // ── Price data ───────────────────────────────────────────────────────────
+      let availableDates = [];
+
       async function fetchPrices(market, date) {
         try {
           const res = await fetch(`data/${market}/daily_price/${date}.json`);
@@ -870,22 +899,41 @@
         } catch { return {}; }
       }
 
-      async function getLatestDate(market) {
+      async function loadAllPrices(selectedDate) {
         const res = await fetch("data/manifest.json");
         const manifest = await res.json();
-        const dates = manifest[market]?.daily_price || manifest[market]?.daily_index || [];
-        return dates[0] || null;
-      }
 
-      async function loadAllPrices() {
+        // Build union of all available dates across markets, newest first
+        const twseDates = manifest.twse?.daily_price || [];
+        const tpexDates = manifest.tpex?.daily_price || [];
+        availableDates = [...new Set([...twseDates, ...tpexDates])].sort().reverse();
+
+        // Populate picker on first load
+        const picker = document.getElementById("date-picker");
+        if (picker.options.length === 0) {
+          availableDates.forEach(d => {
+            const opt = document.createElement("option");
+            opt.value = d;
+            opt.textContent = d;
+            picker.appendChild(opt);
+          });
+          picker.style.display = "";
+        }
+
+        const date = selectedDate || availableDates[0] || null;
+        if (date) picker.value = date;
+
         for (const m of ["twse", "tpex"]) {
-          if (!latestDates[m]) latestDates[m] = await getLatestDate(m);
-          if (latestDates[m]) priceData[m] = await fetchPrices(m, latestDates[m]);
+          const mDates = manifest[m]?.daily_price || [];
+          // Use requested date if available for this market, else its latest
+          const mDate = mDates.includes(date) ? date : (mDates[0] || null);
+          latestDates[m] = mDate;
+          priceData[m] = mDate ? await fetchPrices(m, mDate) : {};
         }
-        const dates = [...new Set(Object.values(latestDates).filter(Boolean))];
-        if (dates.length) {
-          document.getElementById("data-date").textContent = `資料日期：${dates.join(" / ")}`;
-        }
+
+        const usedDates = [...new Set(Object.values(latestDates).filter(Boolean))];
+        document.getElementById("data-date").textContent =
+          usedDates.length ? `資料日期：${usedDates.join(" / ")}` : "";
       }
 
       function findStockData(id) {
@@ -1250,6 +1298,13 @@
       document.getElementById("new-list-name").addEventListener("keydown", e => {
         if (e.key === "Enter") createWatchlist();
         if (e.key === "Escape") toggleCreatePanel();
+      });
+      document.getElementById("date-picker").addEventListener("change", async function () {
+        document.getElementById("loading-msg").style.display = "block";
+        document.getElementById("watchlist-table").style.display = "none";
+        document.getElementById("empty-state").style.display = "none";
+        await loadAllPrices(this.value);
+        renderWatchlist();
       });
 
       (async function init() {
