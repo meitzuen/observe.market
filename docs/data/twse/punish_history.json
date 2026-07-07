@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-07-06",
+        "measure": "第一次處置",
+        "id": "1515",
+        "name": "力山",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-07",
+        "to": "2026-07-20"
+    },
+    {
+        "publish_date": "2026-07-06",
+        "measure": "第二次處置",
+        "id": "1718",
+        "name": "中纖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-07",
+        "to": "2026-07-20"
+    },
+    {
         "publish_date": "2026-07-03",
         "measure": "第一次處置",
         "id": "1447",
