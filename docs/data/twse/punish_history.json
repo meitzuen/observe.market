@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-07-07",
+        "measure": "第一次處置",
+        "id": "2466",
+        "name": "冠西電",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-08",
+        "to": "2026-07-21"
+    },
+    {
         "publish_date": "2026-07-06",
         "measure": "第一次處置",
         "id": "1515",
