@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-07-08",
+        "measure": "第二次處置",
+        "id": "3055",
+        "name": "蔚華科",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-09",
+        "to": "2026-07-22"
+    },
+    {
+        "publish_date": "2026-07-08",
+        "measure": "第一次處置",
+        "id": "8261",
+        "name": "富鼎",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-07-09",
+        "to": "2026-07-24"
+    },
+    {
         "publish_date": "2026-07-07",
         "measure": "第一次處置",
         "id": "2466",
