@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-07-09",
+        "measure": "第一次處置",
+        "id": "4169",
+        "name": "泰宗",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-10",
+        "to": "2026-07-23"
+    },
+    {
         "publish_date": "2026-07-08",
         "measure": "第二次處置",
         "id": "3055",
