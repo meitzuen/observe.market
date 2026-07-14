@@ -1,0 +1,82 @@
+[
+    {
+        "publish_date": "2026-06-30",
+        "measure": "第一次處置",
+        "id": "3230",
+        "name": "錦明",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-01",
+        "to": "2026-07-14"
+    },
+    {
+        "publish_date": "2026-07-03",
+        "measure": "第二次處置",
+        "id": "3147",
+        "name": "大綜",
+        "accumulated": 3,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-06",
+        "to": "2026-07-17"
+    },
+    {
+        "publish_date": "2026-07-03",
+        "measure": "第二次處置",
+        "id": "3230",
+        "name": "錦明",
+        "accumulated": 3,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-06",
+        "to": "2026-07-17"
+    },
+    {
+        "publish_date": "2026-07-03",
+        "measure": "第一次處置",
+        "id": "6217",
+        "name": "中探針",
+        "accumulated": 3,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-07-06",
+        "to": "2026-07-17"
+    },
+    {
+        "publish_date": "2026-07-07",
+        "measure": "第一次處置",
+        "id": "6617",
+        "name": "共信-KY",
+        "accumulated": 2,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-08",
+        "to": "2026-07-21"
+    },
+    {
+        "publish_date": "2026-07-08",
+        "measure": "第二次處置",
+        "id": "4707",
+        "name": "磐亞",
+        "accumulated": 3,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-07-09",
+        "to": "2026-07-22"
+    },
+    {
+        "publish_date": "2026-07-08",
+        "measure": "第一次處置",
+        "id": "6174",
+        "name": "安碁",
+        "accumulated": 3,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-07-09",
+        "to": "2026-07-22"
+    },
+    {
+        "publish_date": "2026-07-13",
+        "measure": "第二次處置",
+        "id": "8027",
+        "name": "鈦昇",
+        "accumulated": 2,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-07-14",
+        "to": "2026-07-27"
+    }
+]
