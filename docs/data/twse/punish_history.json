@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-07-14",
+        "measure": "第一次處置",
+        "id": "2434",
+        "name": "統懋",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-07-15",
+        "to": "2026-07-28"
+    },
+    {
+        "publish_date": "2026-07-14",
+        "measure": "第一次處置",
+        "id": "6831",
+        "name": "邁科",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-07-15",
+        "to": "2026-07-28"
+    },
+    {
         "publish_date": "2026-07-09",
         "measure": "第一次處置",
         "id": "4169",
