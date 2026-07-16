@@ -1,5 +1,25 @@
 [
     {
+        "publish_date": "2026-07-15",
+        "measure": "第二次處置",
+        "id": "8096",
+        "name": "擎亞",
+        "accumulated": 4,
+        "condition": "連續5個營業日",
+        "from": "2026-07-16",
+        "to": "2026-07-29"
+    },
+    {
+        "publish_date": "2026-07-15",
+        "measure": "第二次處置",
+        "id": "8291",
+        "name": "尚茂",
+        "accumulated": 4,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-16",
+        "to": "2026-07-29"
+    },
+    {
         "publish_date": "2026-07-14",
         "measure": "第二次處置",
         "id": "4542",
