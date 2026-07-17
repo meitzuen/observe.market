@@ -1,5 +1,35 @@
 [
     {
+        "publish_date": "2026-07-16",
+        "measure": "第二次處置",
+        "id": "6173",
+        "name": "信昌電",
+        "accumulated": 3,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-17",
+        "to": "2026-07-30"
+    },
+    {
+        "publish_date": "2026-07-16",
+        "measure": "第一次處置",
+        "id": "6907",
+        "name": "雅特力-KY",
+        "accumulated": 3,
+        "condition": "最近10個營業日內有6個營業日",
+        "from": "2026-07-17",
+        "to": "2026-07-30"
+    },
+    {
+        "publish_date": "2026-07-16",
+        "measure": "第一次處置",
+        "id": "7714",
+        "name": "創泓科技",
+        "accumulated": 3,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-17",
+        "to": "2026-07-30"
+    },
+    {
         "publish_date": "2026-07-15",
         "measure": "第二次處置",
         "id": "8096",
