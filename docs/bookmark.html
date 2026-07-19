@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常用連結 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --accent: #0284c7;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+
+      [data-theme="dark"] input,
+      [data-theme="dark"] select,
+      [data-theme="dark"] textarea {
+        background: #1e293b;
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1e3a5f;
+        border-bottom: none;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, #ffffff, #93c5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.5rem;
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .nav-dropdown-btn::after {
+        content: '';
+        display: inline-block;
+        border: solid currentColor;
+        border-width: 0 1.5px 1.5px 0;
+        padding: 2.5px;
+        transform: rotate(45deg) translateY(-1px);
+        margin-left: 4px;
+        opacity: 0.75;
+        transition: transform 0.2s;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-btn::after {
+        transform: rotate(-135deg) translateY(1px);
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: fixed;
+        background: #1e3a5f;
+        border-radius: 0.5rem;
+        min-width: 7rem;
+        z-index: 9999;
+        padding: 0.25rem;
+        flex-direction: column;
+        gap: 0.125rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-dropdown-item {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-dropdown-item.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        transition: background 0.15s;
+        flex-shrink: 0;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .page-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text);
+      }
+
+      .btn {
+        padding: 0.5rem 1.1rem;
+        border-radius: 7px;
+        border: none;
+        font-size: 0.9rem;
+        font-family: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, opacity 0.15s;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-danger {
+        background: transparent;
+        color: #ef4444;
+        border: 1px solid #ef4444;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .btn-danger:hover {
+        background: #ef4444;
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .btn-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        font-size: 0.85rem;
+        line-height: 1;
+        border-radius: 5px;
+        transition: background 0.15s, opacity 0.15s;
+      }
+
+      .btn-icon:hover {
+        background: var(--bg);
+      }
+
+      /* Add / edit panel */
+      .form-panel {
+        display: none;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-panel h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: var(--text);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+
+      .form-row .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .form-row label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .form-row input {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        transition: border-color 0.15s;
+        outline: none;
+      }
+
+      .form-row input:focus {
+        border-color: var(--primary);
+      }
+
+      .form-row input#bm-name {
+        width: 160px;
+      }
+
+      .form-row input#bm-url {
+        width: 260px;
+      }
+
+      .form-row input#bm-note {
+        width: 160px;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .error-msg {
+        color: #ef4444;
+        font-size: 0.85rem;
+        margin-top: 0.6rem;
+      }
+
+      /* Bookmark grid */
+      .bookmark-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .bookmark-card {
+        position: relative;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.15s, border-color 0.15s;
+      }
+
+      .bookmark-card:hover {
+        border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      .bookmark-name {
+        display: block;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--text);
+        text-decoration: none;
+        margin: 0 0.5rem 0.3rem 0;
+        word-break: break-word;
+      }
+
+      .bookmark-name:hover {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+
+      .bookmark-url {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        word-break: break-all;
+        margin-bottom: 0.5rem;
+      }
+
+      .bookmark-note {
+        font-size: 0.85rem;
+        color: var(--text);
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--bg);
+        border-radius: 8px;
+        padding: 0.5rem 0.7rem;
+      }
+
+      .bookmark-actions {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.6rem;
+        display: flex;
+        gap: 0.25rem;
+        opacity: 0;
+        transition: opacity 0.15s;
+      }
+
+      .bookmark-card:hover .bookmark-actions {
+        opacity: 1;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted);
+      }
+
+      .empty-state .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem">📈</span>
+        <h1><span class="title-text">Market Observer</span></h1>
+        <nav class="nav-bar">
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="index.html" class="nav-dropdown-item">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">策略</button>
+            <div class="nav-dropdown-menu">
+              <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
+              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
+              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">權證</button>
+            <div class="nav-dropdown-menu">
+              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
+              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
+            </div>
+          </div>
+          <a href="watchlist.html" class="nav-link">精選類股</a>
+          <a href="bookmark.html" class="nav-link active">常用連結</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+      <div class="header-right"></div>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <p class="page-title">🔖 常用連結</p>
+        <button class="btn btn-primary" onclick="toggleFormPanel()" id="toggle-form-btn" style="display:none;">＋ 新增連結</button>
+      </div>
+
+      <!-- Add / edit panel -->
+      <div class="form-panel" id="form-panel">
+        <h2 id="form-panel-title">新增連結</h2>
+        <div class="form-row">
+          <div class="field">
+            <label for="bm-name">名稱</label>
+            <input type="text" id="bm-name" placeholder="ex: 股票分價量表" />
+          </div>
+          <div class="field">
+            <label for="bm-url">網址</label>
+            <input type="text" id="bm-url" placeholder="https://..." />
+          </div>
+          <div class="field">
+            <label for="bm-note">備註</label>
+            <input type="text" id="bm-note" placeholder="選填" />
+          </div>
+          <div class="field">
+            <label style="visibility:hidden; font-size:0.8rem; line-height:1.2;">&nbsp;</label>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="form-submit-btn">新增</button>
+              <button class="btn btn-secondary" onclick="closeFormPanel()">取消</button>
+            </div>
+          </div>
+        </div>
+        <div id="form-error" class="error-msg" style="display:none;"></div>
+      </div>
+
+      <div class="loading" id="loading-msg">載入中…</div>
+
+      <div class="bookmark-grid" id="bookmark-grid" style="display:none;"></div>
+
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <div class="icon">🔖</div>
+        <div>尚無常用連結</div>
+        <div style="font-size:0.85rem; margin-top:0.4rem;" id="empty-hint"></div>
+      </div>
+    </main>
+
+    <script>
+      // ── Mode ────────────────────────────────────────────────────────────────
+      const isManage = new URLSearchParams(location.search).get("admin") === "True";
+
+      // ── Theme ───────────────────────────────────────────────────────────────
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+      });
+
+      // ── Config ───────────────────────────────────────────────────────────────
+      const API_BASE = "https://market.smallplum.xyz";
+
+      // ── State ────────────────────────────────────────────────────────────────
+      let bookmarks = [];
+      let editingId = null; // null = create mode, otherwise id being edited
+
+      function bmId(bm) {
+        return bm._id?.$oid ?? bm._id;
+      }
+
+      // ── API helpers ──────────────────────────────────────────────────────────
+      async function apiGetBookmarks() {
+        const res = await fetch(`${API_BASE}/api/bookmark`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      }
+
+      async function apiCreateBookmark(name, url, note) {
+        const res = await fetch(`${API_BASE}/api/bookmark`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, url, note: note || "" }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || `HTTP ${res.status}`);
+        }
+        return res.json();
+      }
+
+      async function apiUpdateBookmark(id, data) {
+        const res = await fetch(`${API_BASE}/api/bookmark/${encodeURIComponent(id)}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || `HTTP ${res.status}`);
+        }
+        return res.json();
+      }
+
+      async function apiDeleteBookmark(id) {
+        const res = await fetch(`${API_BASE}/api/bookmark/${encodeURIComponent(id)}`, {
+          method: "DELETE",
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      }
+
+      // ── Form panel ───────────────────────────────────────────────────────────
+      let formPanelOpen = false;
+
+      function toggleFormPanel() {
+        if (formPanelOpen) {
+          closeFormPanel();
+        } else {
+          openFormPanel();
+        }
+      }
+
+      function openFormPanel(bm) {
+        formPanelOpen = true;
+        editingId = bm ? bmId(bm) : null;
+        document.getElementById("form-panel").style.display = "block";
+        document.getElementById("form-panel-title").textContent = bm ? "編輯連結" : "新增連結";
+        document.getElementById("form-submit-btn").textContent = bm ? "儲存" : "新增";
+        document.getElementById("bm-name").value = bm?.name || "";
+        document.getElementById("bm-url").value = bm?.url || "";
+        document.getElementById("bm-note").value = bm?.note || "";
+        document.getElementById("form-error").style.display = "none";
+        document.getElementById("bm-name").focus();
+        document.getElementById("form-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function closeFormPanel() {
+        formPanelOpen = false;
+        editingId = null;
+        document.getElementById("form-panel").style.display = "none";
+        document.getElementById("bm-name").value = "";
+        document.getElementById("bm-url").value = "";
+        document.getElementById("bm-note").value = "";
+        document.getElementById("form-error").style.display = "none";
+      }
+
+      async function submitForm() {
+        const nameInput = document.getElementById("bm-name");
+        const urlInput = document.getElementById("bm-url");
+        const noteInput = document.getElementById("bm-note");
+        const errDiv = document.getElementById("form-error");
+        errDiv.style.display = "none";
+
+        const name = nameInput.value.trim();
+        const url = urlInput.value.trim();
+        const note = noteInput.value.trim();
+
+        if (!name) {
+          errDiv.textContent = "請輸入連結名稱";
+          errDiv.style.display = "block";
+          nameInput.focus();
+          return;
+        }
+        if (!url) {
+          errDiv.textContent = "請輸入網址";
+          errDiv.style.display = "block";
+          urlInput.focus();
+          return;
+        }
+
+        try {
+          if (editingId) {
+            await apiUpdateBookmark(editingId, { name, url, note });
+            const bm = bookmarks.find(b => bmId(b) === editingId);
+            if (bm) {
+              bm.name = name;
+              bm.url = url;
+              bm.note = note;
+            }
+          } else {
+            const created = await apiCreateBookmark(name, url, note);
+            bookmarks.push(
+              created && created._id
+                ? created
+                : { _id: created?._id, name, url, note }
+            );
+          }
+          closeFormPanel();
+          renderBookmarks();
+        } catch (e) {
+          errDiv.textContent = `${editingId ? "更新" : "新增"}失敗：${e.message}`;
+          errDiv.style.display = "block";
+        }
+      }
+
+      // ── Delete ───────────────────────────────────────────────────────────────
+      async function deleteBookmark(id) {
+        const bm = bookmarks.find(b => bmId(b) === id);
+        if (!bm) return;
+        if (!confirm(`確定要刪除「${bm.name}」？此操作無法復原。`)) return;
+
+        try {
+          await apiDeleteBookmark(id);
+          bookmarks = bookmarks.filter(b => bmId(b) !== id);
+          renderBookmarks();
+        } catch (e) {
+          alert(`刪除失敗：${e.message}`);
+        }
+      }
+
+      // ── Render ───────────────────────────────────────────────────────────────
+      function hostnameOf(url) {
+        try {
+          return new URL(url).hostname;
+        } catch {
+          return url;
+        }
+      }
+
+      function renderBookmarks() {
+        document.getElementById("loading-msg").style.display = "none";
+        const grid = document.getElementById("bookmark-grid");
+        const emptyState = document.getElementById("empty-state");
+
+        if (bookmarks.length === 0) {
+          grid.style.display = "none";
+          emptyState.style.display = "block";
+          document.getElementById("empty-hint").textContent = isManage
+            ? "點擊右上方「＋ 新增連結」開始新增"
+            : "";
+          return;
+        }
+
+        emptyState.style.display = "none";
+        grid.style.display = "grid";
+
+        grid.innerHTML = bookmarks.map(bm => {
+          const id = bmId(bm);
+          const note = bm.note
+            ? `<div class="bookmark-note">${escHtml(bm.note)}</div>`
+            : "";
+          const actions = isManage
+            ? `<div class="bookmark-actions">
+                 <button class="btn-icon" title="編輯" onclick='openFormPanelById(${JSON.stringify(id)})'>✏️</button>
+                 <button class="btn-icon" title="刪除" onclick='deleteBookmark(${JSON.stringify(id)})'>🗑️</button>
+               </div>`
+            : "";
+          return `<div class="bookmark-card">
+            ${actions}
+            <a class="bookmark-name" href="${escAttr(bm.url)}" target="_blank" rel="noopener noreferrer">${escHtml(bm.name)}</a>
+            <div class="bookmark-url">${escHtml(hostnameOf(bm.url))}</div>
+            ${note}
+          </div>`;
+        }).join("");
+      }
+
+      function openFormPanelById(id) {
+        const bm = bookmarks.find(b => bmId(b) === id);
+        if (bm) openFormPanel(bm);
+      }
+
+      // ── Escape helpers ───────────────────────────────────────────────────────
+      function escHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function escAttr(s) {
+        return String(s).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+      }
+
+      // ── Init ─────────────────────────────────────────────────────────────────
+      document.getElementById("form-submit-btn").addEventListener("click", submitForm);
+      ["bm-name", "bm-url", "bm-note"].forEach(id => {
+        document.getElementById(id).addEventListener("keydown", e => {
+          if (e.key === "Enter") submitForm();
+          if (e.key === "Escape") closeFormPanel();
+        });
+      });
+
+      (async function init() {
+        if (isManage) {
+          document.getElementById("toggle-form-btn").style.display = "inline-block";
+        }
+        try {
+          bookmarks = await apiGetBookmarks();
+        } catch (e) {
+          console.error("無法載入常用連結：", e.message);
+          bookmarks = [];
+        }
+        renderBookmarks();
+      })();
+    </script>
+    <script>
+    (function () {
+      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+        var menu = dd.querySelector('.nav-dropdown-menu');
+        dd.addEventListener('mouseenter', function () {
+          var r = dd.getBoundingClientRect();
+          menu.style.top = r.bottom + 'px';
+          menu.style.left = r.left + 'px';
+          menu.style.display = 'flex';
+        });
+        dd.addEventListener('mouseleave', function () {
+          menu.style.display = 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
