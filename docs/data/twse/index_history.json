@@ -670,5 +670,21 @@
         "transactions": 4555871,
         "index": 45624.98,
         "changes": "-6.61"
+    },
+    {
+        "date": "115/07/17",
+        "volume": 18244071063,
+        "turnover": 1333156652944,
+        "transactions": 10258133,
+        "index": 42671.27,
+        "changes": "-2953.71"
+    },
+    {
+        "date": "115/07/20",
+        "volume": 12538408514,
+        "turnover": 1017392854702,
+        "transactions": 5674752,
+        "index": 42449.7,
+        "changes": "-221.57"
     }
 ]
