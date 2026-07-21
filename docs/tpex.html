@@ -528,8 +528,9 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">市場</button>
             <div class="nav-dropdown-menu">
-              <a href="index.html" class="nav-dropdown-item">上市</a>
+              <a href="twse.html" class="nav-dropdown-item">上市</a>
               <a href="tpex.html" class="nav-dropdown-item active">上櫃</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -890,7 +891,7 @@
           const urlParams = new URLSearchParams(window.location.search);
           const marketParam = urlParams.get("market");
           if (marketParam === "twse") {
-            window.location.href = "index.html";
+            window.location.href = "twse.html";
             return;
           } else if (marketParam === "warrant") {
             window.location.href = "premium-warrant.html";

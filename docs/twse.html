@@ -483,10 +483,6 @@
         background-color: #0f172a;
         color: var(--text);
       }
-      [data-theme="dark"] select#market-filter {
-        background-color: #0f172a;
-        color: var(--text);
-      }
 
       .theme-toggle {
         background: none;
@@ -532,9 +528,9 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">市場</button>
             <div class="nav-dropdown-menu">
-              <a href="twse.html" class="nav-dropdown-item">上市</a>
+              <a href="twse.html" class="nav-dropdown-item active">上市</a>
               <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
-              <a href="index.html" class="nav-dropdown-item active">全部</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -577,7 +573,7 @@
         <div class="main-content">
           <div class="card" style="margin-bottom: 1.5rem">
             <div class="card-title">
-              <span>大盤指數趨勢 (上市 / 上櫃)</span>
+              <span>大盤指數趨勢</span>
               <div
                 id="index-date"
                 style="
@@ -616,34 +612,6 @@
                 align-items: center;
               "
             >
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  gap: 0.5rem;
-                  background: #f1f5f9;
-                  padding: 0.4rem 0.75rem;
-                  border-radius: 0.75rem;
-                  font-size: 0.875rem;
-                  border: 1px solid var(--border);
-                "
-              >
-                <span style="color: var(--text-muted); font-weight: 500"
-                  >市場:</span
-                >
-                <select
-                  id="market-filter"
-                  style="
-                    border: 1px solid var(--border);
-                    border-radius: 6px;
-                    padding: 0.2rem;
-                  "
-                >
-                  <option value="all">全部</option>
-                  <option value="twse">上市</option>
-                  <option value="tpex">上櫃</option>
-                </select>
-              </div>
               <div
                 style="
                   display: flex;
@@ -729,9 +697,6 @@
                     <th style="cursor: pointer" onclick="setSort('name')">
                       名稱 <span id="sort-name"></span>
                     </th>
-                    <th style="cursor: pointer" onclick="setSort('market')">
-                      市場 <span id="sort-market"></span>
-                    </th>
                     <th style="cursor: pointer" onclick="setSort('close')">
                       成交價 <span id="sort-close"></span>
                     </th>
@@ -800,7 +765,7 @@
                   class="stat-item"
                   style="border-left: 4px solid var(--primary)"
                 >
-                  <span class="stat-label">上市指數</span>
+                  <span class="stat-label">大盤指數</span>
                   <div
                     style="
                       display: flex;
@@ -808,44 +773,24 @@
                       align-items: flex-end;
                     "
                   >
-                    <span id="summary-index-twse" class="stat-value">--</span>
+                    <span id="summary-index" class="stat-value">--</span>
                     <span
-                      id="summary-changes-twse"
-                      style="font-weight: 700; font-size: 0.875rem"
-                      >--</span
-                    >
-                  </div>
-                </div>
-                <div
-                  class="stat-item"
-                  style="border-left: 4px solid var(--accent)"
-                >
-                  <span class="stat-label">上櫃指數</span>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: flex-end;
-                    "
-                  >
-                    <span id="summary-index-tpex" class="stat-value">--</span>
-                    <span
-                      id="summary-changes-tpex"
+                      id="summary-changes"
                       style="font-weight: 700; font-size: 0.875rem"
                       >--</span
                     >
                   </div>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-label">成交金額(合計)</span>
+                  <span class="stat-label">成交金額</span>
                   <span id="summary-turnover" class="stat-value">--</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-label">成交股數(合計)</span>
+                  <span class="stat-label">成交股數</span>
                   <span id="summary-volume" class="stat-value">--</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-label">成交比數(合計)</span>
+                  <span class="stat-label">成交比數</span>
                   <span id="summary-transactions" class="stat-value">--</span>
                 </div>
               </div>
@@ -888,10 +833,10 @@
                   class="date-select"
                   style="font-size: 0.75rem; padding: 0.25rem 0.5rem"
                 >
-                  <option value="gap_diff-desc">漲點 ↓</option>
-                  <option value="gap_diff-asc">漲點 ↑</option>
-                  <option value="gap_ratio-desc">漲幅 ↓</option>
-                  <option value="gap_ratio-asc">漲幅 ↑</option>
+                  <option value="diff-desc">漲點 ↓</option>
+                  <option value="diff-asc">漲點 ↑</option>
+                  <option value="ratio-desc">漲幅 ↓</option>
+                  <option value="ratio-asc">漲幅 ↑</option>
                 </select>
               </div>
               <div
@@ -922,12 +867,10 @@
     </div>
 
     <script>
-      const MARKETS = ["twse", "tpex"];
-      const MARKET_LABEL = { twse: "上市", tpex: "上櫃" };
-
       let fullManifest = null;
-      let indexDataTwse = [];
-      let indexDataTpex = [];
+      let manifest = null;
+      let currentMarket = "twse";
+      let indexData = [];
       let currentStockData = [];
       let currentGapData = [];
       let currentPunishData = [];
@@ -940,45 +883,26 @@
       let sortColumn = "id";
       let sortDirection = "asc";
 
-      // Helper to convert ROC date (e.g. 115/05/04) to ISO (2026-05-04)
-      function toISO(rocDate) {
-        const parts = rocDate.split("/");
-        const year = parseInt(parts[0]) + 1911;
-        return `${year}-${parts[1]}-${parts[2]}`;
-      }
-
       async function init() {
         try {
           const response = await fetch("data/manifest.json");
           fullManifest = await response.json();
 
-          const twseDates = fullManifest.twse?.daily_price || [];
-          const tpexDates = fullManifest.tpex?.daily_price || [];
-          const unionDates = [...new Set([...twseDates, ...tpexDates])]
-            .sort()
-            .reverse();
-
-          const datePicker = document.getElementById("date-picker");
-          datePicker.innerHTML = "";
-          unionDates.forEach((date) => {
-            const option = document.createElement("option");
-            option.value = date;
-            option.textContent = date;
-            datePicker.appendChild(option);
-          });
-          datePicker.onchange = (e) => loadStockData(e.target.value);
-
-          await loadIndexData();
-          if (unionDates.length > 0) {
-            await loadStockData(datePicker.value);
+          const urlParams = new URLSearchParams(window.location.search);
+          const marketParam = urlParams.get("market");
+          if (marketParam === "tpex") {
+            window.location.href = "tpex.html";
+            return;
+          } else if (marketParam === "warrant") {
+            window.location.href = "premium-warrant.html";
+            return;
           }
+
+          updateMarketData();
 
           document
             .getElementById("stock-search")
             .addEventListener("input", filterStocks);
-          document
-            .getElementById("market-filter")
-            .addEventListener("change", filterStocks);
           document
             .getElementById("price-min")
             .addEventListener("input", filterStocks);
@@ -992,7 +916,6 @@
             .getElementById("clear-filters")
             .addEventListener("click", () => {
               document.getElementById("stock-search").value = "";
-              document.getElementById("market-filter").value = "all";
               document.getElementById("price-min").value = "";
               document.getElementById("price-max").value = "";
               document.getElementById("volume-min").value = "";
@@ -1055,67 +978,88 @@
         }
       }
 
+      async function updateMarketData() {
+        manifest = fullManifest[currentMarket];
+        if (!manifest) return;
+
+        // Populate date picker
+        const datePicker = document.getElementById("date-picker");
+        const savedDate = datePicker.value;
+        datePicker.innerHTML = "";
+        manifest.daily_price.forEach((date, i) => {
+          const option = document.createElement("option");
+          option.value = date;
+          option.textContent = date;
+          datePicker.appendChild(option);
+        });
+
+        // Try to keep the same date if available in the new market
+        if (savedDate && manifest.daily_price.includes(savedDate)) {
+          datePicker.value = savedDate;
+        }
+
+        datePicker.onchange = (e) => loadStockData(e.target.value);
+
+        // Load initial data
+        if (manifest.daily_index.length > 0) {
+          await loadIndexData();
+        }
+        if (manifest.daily_price.length > 0) {
+          await loadStockData(datePicker.value);
+        }
+      }
+
       async function loadIndexData() {
         try {
-          const [twseRes, tpexRes] = await Promise.all([
-            fetch("data/twse/index_history.json"),
-            fetch("data/tpex/index_history.json"),
-          ]);
-          indexDataTwse = twseRes.ok ? await twseRes.json() : [];
-          indexDataTpex = tpexRes.ok ? await tpexRes.json() : [];
+          const response = await fetch(
+            `data/${currentMarket}/index_history.json`,
+          );
+          indexData = await response.json();
         } catch (e) {
           console.error("Error loading index_history.json:", e);
-          indexDataTwse = [];
-          indexDataTpex = [];
+          indexData = [];
         }
 
-        const selectedDate = document.getElementById("date-picker").value;
-        updateSummary(selectedDate);
-        renderChart();
-      }
-
-      function findIndexEntry(arr, date) {
-        if (!arr || arr.length === 0) return null;
-        return arr.find((item) => toISO(item.date) === date) || arr[arr.length - 1];
-      }
-
-      function renderIndexStat(market, entry) {
-        const idxEl = document.getElementById(`summary-index-${market}`);
-        const chgEl = document.getElementById(`summary-changes-${market}`);
-        if (!entry) {
-          idxEl.textContent = "--";
-          chgEl.textContent = "--";
-          return;
+        if (indexData.length > 0) {
+          const selectedDate = document.getElementById("date-picker").value;
+          updateSummary(selectedDate);
+          renderChart(indexData);
         }
-        idxEl.textContent = Math.round(entry.index).toLocaleString();
-        const changes = parseFloat(entry.changes);
-        chgEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
-        chgEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
       }
 
       function updateSummary(date) {
-        const twseEntry = findIndexEntry(indexDataTwse, date);
-        const tpexEntry = findIndexEntry(indexDataTpex, date);
+        if (!indexData || indexData.length === 0) return;
 
-        const lastEntry = twseEntry || tpexEntry;
-        document.getElementById("last-update").textContent = lastEntry
-          ? `最後更新: ${toISO(lastEntry.date)}`
-          : "";
+        // Helper to convert index date (e.g. 115/05/04) to ISO (2026-05-04)
+        const toISO = (rocDate) => {
+          const parts = rocDate.split("/");
+          const year = parseInt(parts[0]) + 1911;
+          return `${year}-${parts[1]}-${parts[2]}`;
+        };
 
-        renderIndexStat("twse", twseEntry);
-        renderIndexStat("tpex", tpexEntry);
+        // Find the index item for the given date, or default to the latest if not found
+        let summaryData = indexData.find((item) => toISO(item.date) === date);
+        if (!summaryData) {
+          summaryData = indexData[indexData.length - 1];
+        }
 
-        const turnover = (twseEntry?.turnover || 0) + (tpexEntry?.turnover || 0);
-        const volume = (twseEntry?.volume || 0) + (tpexEntry?.volume || 0);
-        const transactions =
-          (twseEntry?.transactions || 0) + (tpexEntry?.transactions || 0);
+        document.getElementById("last-update").textContent =
+          `最後更新: ${toISO(summaryData.date)}`;
+        document.getElementById("summary-index").textContent = Math.round(
+          summaryData.index,
+        ).toLocaleString();
+
+        const changes = parseFloat(summaryData.changes);
+        const changesEl = document.getElementById("summary-changes");
+        changesEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
+        changesEl.style.color = changes >= 0 ? "var(--up)" : "var(--down)";
 
         document.getElementById("summary-turnover").textContent =
-          Math.round(turnover / 100000000) + " 億";
+          Math.round(summaryData.turnover / 100000000) + " 億";
         document.getElementById("summary-volume").textContent =
-          Math.round(volume / 1000000) + " 百萬";
+          Math.round(summaryData.volume / 1000000) + " 百萬";
         document.getElementById("summary-transactions").textContent =
-          Math.round(transactions / 10000) + " 萬";
+          Math.round(summaryData.transactions / 10000) + " 萬";
       }
 
       async function loadStockData(date) {
@@ -1128,17 +1072,10 @@
           '<div class="loader" style="height: 100px">載入中...</div>';
 
         try {
-          const results = await Promise.all(
-            MARKETS.map((m) => {
-              const dates = fullManifest[m]?.daily_price || [];
-              if (!dates.includes(date)) return Promise.resolve([]);
-              return fetch(`data/${m}/daily_price/${date}.json`)
-                .then((r) => (r.ok ? r.json() : []))
-                .then((arr) => arr.map((s) => ({ ...s, market: m })))
-                .catch(() => []);
-            }),
+          const response = await fetch(
+            `data/${currentMarket}/daily_price/${date}.json`,
           );
-          currentStockData = results.flat();
+          currentStockData = await response.json();
 
           // Use pre-computed change/change_percent from the API data
           currentStockData.forEach((s) => {
@@ -1150,7 +1087,19 @@
 
           filterStocks();
           await loadGapData(date);
-          await loadPunishData(date);
+
+          if (manifest.daily_punish && manifest.daily_punish.includes(date)) {
+            const punishResponse = await fetch(
+              `data/${currentMarket}/daily_punish/${date}.json`,
+            );
+            currentPunishData = await punishResponse.json();
+            renderPunishList();
+          } else {
+            currentPunishData = [];
+            document.getElementById("punish-list").innerHTML =
+              '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">今日無處置股票</div>';
+            document.getElementById("punish-count").textContent = "0";
+          }
         } catch (error) {
           console.error("Error loading data:", error);
         } finally {
@@ -1179,33 +1128,24 @@
             `;
         }
 
-        const results = await Promise.all(
-          MARKETS.map((m) => {
-            const dates = fullManifest[m]?.[type] || [];
-            if (!dates.includes(date)) return Promise.resolve([]);
-            return fetch(`data/${m}/${type}/${date}.json`)
-              .then((r) => (r.ok ? r.json() : []))
-              .then((arr) => arr.map((s) => ({ ...s, market: m })))
-              .catch(() => []);
-          }),
-        );
-        currentGapData = results.flat();
-        renderGapList();
-      }
-
-      async function loadPunishData(date) {
-        const results = await Promise.all(
-          MARKETS.map((m) => {
-            const dates = fullManifest[m]?.daily_punish || [];
-            if (!dates.includes(date)) return Promise.resolve([]);
-            return fetch(`data/${m}/daily_punish/${date}.json`)
-              .then((r) => (r.ok ? r.json() : []))
-              .then((arr) => arr.map((s) => ({ ...s, market: m })))
-              .catch(() => []);
-          }),
-        );
-        currentPunishData = results.flat();
-        renderPunishList();
+        if (manifest[type] && manifest[type].includes(date)) {
+          try {
+            const gapResponse = await fetch(
+              `data/${currentMarket}/${type}/${date}.json`,
+            );
+            currentGapData = await gapResponse.json();
+            renderGapList();
+          } catch (e) {
+            console.error(`Error loading ${type}:`, e);
+            currentGapData = [];
+            renderGapList();
+          }
+        } else {
+          currentGapData = [];
+          document.getElementById("gap-list").innerHTML =
+            '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無此日期數據</div>';
+          document.getElementById("gap-count").textContent = "0";
+        }
       }
 
       function renderGapList() {
@@ -1246,7 +1186,7 @@
 
           item.innerHTML = `
                     <div>
-                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
                         <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
                     </div>
                     <div style="text-align: right;">
@@ -1277,7 +1217,7 @@
 
           item.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span></div>
                         <span class="tag" style="margin: 0; background: #fee2e2; color: #b91c1c;">${stock.measure}</span>
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
@@ -1328,16 +1268,14 @@
           }
         });
 
-        ["id", "name", "market", "close", "diff", "ratio", "volume"].forEach(
-          (col) => {
-            const span = document.getElementById(`sort-${col}`);
-            if (span) {
-              span.textContent =
-                col === sortColumn ? (sortDirection === "asc" ? "↑" : "↓") : "";
-              span.style.color = col === sortColumn ? "var(--primary)" : "";
-            }
-          },
-        );
+        ["id", "name", "close", "diff", "ratio", "volume"].forEach((col) => {
+          const span = document.getElementById(`sort-${col}`);
+          if (span) {
+            span.textContent =
+              col === sortColumn ? (sortDirection === "asc" ? "↑" : "↓") : "";
+            span.style.color = col === sortColumn ? "var(--primary)" : "";
+          }
+        });
 
         const maxPage = Math.ceil(stocks.length / rowsPerPage) || 1;
         if (currentPage > maxPage) currentPage = maxPage;
@@ -1364,16 +1302,10 @@
           const ratioClass =
             stock.ratio > 0 ? "price-up" : stock.ratio < 0 ? "price-down" : "";
 
-          const marketBadge =
-            stock.market === "twse"
-              ? '<span class="badge badge-primary" style="margin-left: 0;">上市</span>'
-              : '<span class="badge badge-accent" style="margin-left: 0;">上櫃</span>';
-
           const tr = document.createElement("tr");
           tr.innerHTML = `
                     <td style="font-weight: 500;"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.id}</a></td>
                     <td style="font-weight: 600;"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a></td>
-                    <td>${marketBadge}</td>
                     <td style="font-weight: 600;">${stock.close}</td>
                     <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
                     <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
@@ -1387,7 +1319,6 @@
         const query = document
           .getElementById("stock-search")
           .value.toLowerCase();
-        const marketFilter = document.getElementById("market-filter").value;
         const minPrice =
           parseFloat(document.getElementById("price-min").value) || 0;
         const maxPrice =
@@ -1399,41 +1330,22 @@
           const matchesSearch =
             s.id.toLowerCase().includes(query) ||
             s.name.toLowerCase().includes(query);
-          const matchesMarket =
-            marketFilter === "all" || s.market === marketFilter;
           const matchesPrice = s.close >= minPrice && s.close <= maxPrice;
           const matchesVolume = s.volume >= minVolume;
-          return matchesSearch && matchesMarket && matchesPrice && matchesVolume;
+          return matchesSearch && matchesPrice && matchesVolume;
         });
 
         currentPage = 1;
         renderStockTable();
       }
 
-      function renderChart() {
+      function renderChart(data) {
         const ctx = document.getElementById("indexChart").getContext("2d");
 
         if (chart) chart.destroy();
 
-        const dateMap = new Map();
-        indexDataTwse.forEach((d) => dateMap.set(toISO(d.date), d.date));
-        indexDataTpex.forEach((d) => dateMap.set(toISO(d.date), d.date));
-        const isoDates = [...dateMap.keys()].sort();
-        const labels = isoDates.map((iso) => dateMap.get(iso));
-
-        const twseByIso = new Map(
-          indexDataTwse.map((d) => [toISO(d.date), d.index]),
-        );
-        const tpexByIso = new Map(
-          indexDataTpex.map((d) => [toISO(d.date), d.index]),
-        );
-
-        const twseSeries = isoDates.map((iso) =>
-          twseByIso.has(iso) ? twseByIso.get(iso) : null,
-        );
-        const tpexSeries = isoDates.map((iso) =>
-          tpexByIso.has(iso) ? tpexByIso.get(iso) : null,
-        );
+        const labels = data.map((d) => d.date);
+        const prices = data.map((d) => d.index);
 
         chart = new Chart(ctx, {
           type: "line",
@@ -1441,34 +1353,17 @@
             labels: labels,
             datasets: [
               {
-                label: "上市加權指數",
-                data: twseSeries,
+                label: "大盤指數",
+                data: prices,
                 borderColor: "#3b82f6",
                 backgroundColor: "rgba(59, 130, 246, 0.1)",
                 borderWidth: 3,
-                fill: false,
+                fill: true,
                 tension: 0.4,
-                pointRadius: 3,
+                pointRadius: 4,
                 pointBackgroundColor: "#3b82f6",
                 pointBorderColor: "#fff",
                 pointHoverRadius: 6,
-                yAxisID: "y",
-                spanGaps: true,
-              },
-              {
-                label: "上櫃指數",
-                data: tpexSeries,
-                borderColor: "#f97316",
-                backgroundColor: "rgba(249, 115, 22, 0.1)",
-                borderWidth: 3,
-                fill: false,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: "#f97316",
-                pointBorderColor: "#fff",
-                pointHoverRadius: 6,
-                yAxisID: "y1",
-                spanGaps: true,
               },
             ],
           },
@@ -1476,35 +1371,22 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: {
-                display: true,
-                position: "top",
-                labels: { boxWidth: 12, font: { size: 12 } },
-              },
+              legend: { display: false },
               tooltip: {
                 backgroundColor: "rgba(15, 23, 42, 0.9)",
                 padding: 12,
                 titleFont: { size: 14, weight: "bold" },
                 bodyFont: { size: 13 },
+                displayColors: false,
               },
             },
             scales: {
               y: {
                 beginAtZero: false,
-                position: "left",
                 grid: { color: "#f1f5f9" },
                 ticks: {
                   font: { size: 11 },
-                  color: "#3b82f6",
-                },
-              },
-              y1: {
-                beginAtZero: false,
-                position: "right",
-                grid: { display: false },
-                ticks: {
-                  font: { size: 11 },
-                  color: "#f97316",
+                  color: "#64748b",
                 },
               },
               x: {

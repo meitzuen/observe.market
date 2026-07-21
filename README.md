@@ -26,7 +26,8 @@ observe.market/
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
 │   └── generate_manifest.py   # 生成前端讀取所需的資料索引
 ├── docs/                       # GitHub Pages 部署根目錄
-│   ├── index.html              # 上市大盤（TWSE）
+│   ├── index.html              # 上市＋上櫃整合大盤（首頁）
+│   ├── twse.html               # 上市大盤（TWSE）
 │   ├── tpex.html               # 上櫃大盤（TPEx）
 │   ├── gap.html                # 跳空策略觀測站
 │   ├── punish.html             # 處置股票觀測站
