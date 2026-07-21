@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-07-20",
+        "measure": "第一次處置",
+        "id": "4139",
+        "name": "馬光-KY",
+        "accumulated": 1,
+        "condition": "因連續3個營業日達本中心作業要點第四條第一項第一款(./attention.html)",
+        "from": "2026-07-21",
+        "to": "2026-08-03"
+    },
+    {
         "publish_date": "2026-07-17",
         "measure": "第一次處置",
         "id": "8383",
