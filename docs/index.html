@@ -1246,7 +1246,7 @@
 
           item.innerHTML = `
                     <div>
-                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
                         <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
                     </div>
                     <div style="text-align: right;">
@@ -1277,7 +1277,7 @@
 
           item.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</span> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
+                        <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a> <span class="tag">${MARKET_LABEL[stock.market]}</span></div>
                         <span class="tag" style="margin: 0; background: #fee2e2; color: #b91c1c;">${stock.measure}</span>
                     </div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
@@ -1371,7 +1371,7 @@
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
-                    <td style="font-weight: 500;"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.id}</a></td>
+                    <td style="font-weight: 500;"><a href="stock.html?id=${stock.id}" class="stock-link">${stock.id}</a></td>
                     <td style="font-weight: 600;"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a></td>
                     <td>${marketBadge}</td>
                     <td style="font-weight: 600;">${stock.close}</td>
