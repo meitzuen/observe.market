@@ -1570,7 +1570,7 @@
             : '';
 
           return `<tr${drag}>
-            <td><a href="http://cnyes.com/twstock/${item.stock_id}/analysis/performance" target="_blank" class="stock-link">${escHtml(item.stock_id)}</a></td>
+            <td><a href="stock.html?id=${item.stock_id}" class="stock-link">${escHtml(item.stock_id)}</a></td>
             <td style="font-weight:600;">${topTag}${escHtml(name)}</td>
             <td class="${cls}">${fmtPrice(close)}</td>
             <td class="${cls}">${change != null ? sign + change.toFixed(2) : "—"}</td>

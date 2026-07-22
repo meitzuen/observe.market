@@ -46,6 +46,7 @@ jobs:
           fi
           echo "Processing data for date: $DATE_STR"
           python src/fetch_and_save.py --date_str="$DATE_STR"
+          python src/generate_stock_history.py
           python src/gap_strategy.py --date_str="$DATE_STR"
           python src/generate_manifest.py
           python src/fetch_stock_info.py
