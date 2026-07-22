@@ -1,3 +1,4 @@
+import re
 import requests
 import json
 import os
@@ -7,6 +8,32 @@ from typing import Dict, Any, List
 from config import API_DOMAIN, PATH
 
 RETENTION_DAYS = 180
+
+CONDITION_ARTIFACT_RE = re.compile(r"\(\./[^)]*\)\s*$")
+
+
+def to_roc_date(date_str: str) -> str:
+    y, m, d = date_str.split("-")
+    return f"{int(y) - 1911}/{m}/{d}"
+
+
+def filter_index_for_date(rows: List[Dict], date_str: str) -> List[Dict]:
+    """The upstream index endpoint returns a rolling window of the current
+    month instead of a single day, so keep only the row for date_str."""
+    if not rows:
+        return rows
+    roc_date = to_roc_date(date_str)
+    return [row for row in rows if row.get("date") == roc_date]
+
+
+def strip_condition_artifacts(records: List[Dict]) -> List[Dict]:
+    """The upstream punishment endpoint leaves a scraped HTML fragment like
+    "(./attention.html)" appended to the condition text."""
+    for record in records:
+        condition = record.get("condition")
+        if condition:
+            record["condition"] = CONDITION_ARTIFACT_RE.sub("", condition).rstrip()
+    return records
 
 
 def get_daily_index(type: str, date_str: str) -> Dict[str, Any]:
@@ -172,6 +199,8 @@ if __name__ == "__main__":
     # --- TWSE ---
     twse_index = get_daily_index("twse", date_str)
     if twse_index:
+        twse_index = filter_index_for_date(twse_index, date_str)
+    if twse_index:
         save_to_file(twse_index, "twse/daily_index", date_str)
         rebuild_index_history("twse")
 
@@ -182,11 +211,14 @@ if __name__ == "__main__":
 
     twse_punish = get_punish_stock("twse", date_str)
     if twse_punish:
+        twse_punish = strip_condition_artifacts(twse_punish)
         save_to_file(twse_punish, "twse/daily_punish", date_str)
         update_punish_history("twse", twse_punish)
 
     # --- TPEX ---
     tpex_index = get_daily_index("tpex", date_str)
+    if tpex_index:
+        tpex_index = filter_index_for_date(tpex_index, date_str)
     if tpex_index:
         save_to_file(tpex_index, "tpex/daily_index", date_str)
         rebuild_index_history("tpex")
@@ -198,6 +230,7 @@ if __name__ == "__main__":
 
     tpex_punish = get_punish_stock("tpex", date_str)
     if tpex_punish:
+        tpex_punish = strip_condition_artifacts(tpex_punish)
         save_to_file(tpex_punish, "tpex/daily_punish", date_str)
         update_punish_history("tpex", tpex_punish)
 

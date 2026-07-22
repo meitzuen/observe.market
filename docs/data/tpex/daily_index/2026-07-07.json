@@ -1,37 +1,5 @@
 [
     {
-        "date": "115/07/01",
-        "volume": 1369067000,
-        "turnover": 248218714000,
-        "transactions": 1273652,
-        "index": 431.23,
-        "changes": "4.26"
-    },
-    {
-        "date": "115/07/02",
-        "volume": 1340448000,
-        "turnover": 242505188000,
-        "transactions": 1280213,
-        "index": 439.51,
-        "changes": "8.28"
-    },
-    {
-        "date": "115/07/03",
-        "volume": 1497271000,
-        "turnover": 264742268000,
-        "transactions": 1300261,
-        "index": 445.38,
-        "changes": "5.87"
-    },
-    {
-        "date": "115/07/06",
-        "volume": 1520531000,
-        "turnover": 305181097000,
-        "transactions": 1457377,
-        "index": 439.8,
-        "changes": "-5.58"
-    },
-    {
         "date": "115/07/07",
         "volume": 1396579000,
         "turnover": 276471816000,
