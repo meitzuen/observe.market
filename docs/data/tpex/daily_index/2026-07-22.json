@@ -1,0 +1,122 @@
+[
+    {
+        "date": "115/07/01",
+        "volume": 1369067000,
+        "turnover": 248218714000,
+        "transactions": 1273652,
+        "index": 431.23,
+        "changes": "4.26"
+    },
+    {
+        "date": "115/07/02",
+        "volume": 1340448000,
+        "turnover": 242505188000,
+        "transactions": 1280213,
+        "index": 439.51,
+        "changes": "8.28"
+    },
+    {
+        "date": "115/07/03",
+        "volume": 1497271000,
+        "turnover": 264742268000,
+        "transactions": 1300261,
+        "index": 445.38,
+        "changes": "5.87"
+    },
+    {
+        "date": "115/07/06",
+        "volume": 1520531000,
+        "turnover": 305181097000,
+        "transactions": 1457377,
+        "index": 439.8,
+        "changes": "-5.58"
+    },
+    {
+        "date": "115/07/07",
+        "volume": 1396579000,
+        "turnover": 276471816000,
+        "transactions": 1550965,
+        "index": 419.47,
+        "changes": "-20.33"
+    },
+    {
+        "date": "115/07/08",
+        "volume": 1137246000,
+        "turnover": 222044766000,
+        "transactions": 1127622,
+        "index": 421.39,
+        "changes": "1.92"
+    },
+    {
+        "date": "115/07/09",
+        "volume": 1110894000,
+        "turnover": 236279701000,
+        "transactions": 1083491,
+        "index": 424.99,
+        "changes": "3.6"
+    },
+    {
+        "date": "115/07/13",
+        "volume": 1169598000,
+        "turnover": 212848618000,
+        "transactions": 1113794,
+        "index": 419.9,
+        "changes": "-5.09"
+    },
+    {
+        "date": "115/07/14",
+        "volume": 1399930000,
+        "turnover": 289947486000,
+        "transactions": 1436350,
+        "index": 407.41,
+        "changes": "-12.49"
+    },
+    {
+        "date": "115/07/15",
+        "volume": 963385000,
+        "turnover": 204334718000,
+        "transactions": 928076,
+        "index": 416.41,
+        "changes": "9.0"
+    },
+    {
+        "date": "115/07/16",
+        "volume": 1000245000,
+        "turnover": 205330111000,
+        "transactions": 990817,
+        "index": 407.01,
+        "changes": "-9.4"
+    },
+    {
+        "date": "115/07/17",
+        "volume": 1025006000,
+        "turnover": 202743182000,
+        "transactions": 1144544,
+        "index": 378.44,
+        "changes": "-28.57"
+    },
+    {
+        "date": "115/07/20",
+        "volume": 955003000,
+        "turnover": 186286530000,
+        "transactions": 887526,
+        "index": 368.53,
+        "changes": "-9.91"
+    },
+    {
+        "date": "115/07/21",
+        "volume": 815728000,
+        "turnover": 159392322000,
+        "transactions": 773732,
+        "index": 381.96,
+        "changes": "13.43"
+    },
+    {
+        "date": "115/07/22",
+        "volume": 943758000,
+        "turnover": 186054774000,
+        "transactions": 851004,
+        "index": 395.18,
+        "changes": "13.22"
+    }
+]
