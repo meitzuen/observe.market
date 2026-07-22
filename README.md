@@ -13,6 +13,7 @@
 - **基本面排行**：整合 Wantgoo 基本面數據排行。
 - **精選類股**：依類股分類瀏覽精選股票。
 - **權證功能**：精選權證與權證篩選器，協助掌握衍生性商品機會。
+- **個股歷史走勢**：點擊任一股票代號即可查看該股歷史股價走勢圖與近期成交明細。
 - **自動化流程**：利用 GitHub Actions 每天自動更新數據，無須人工干預。
 
 ## 專案結構
@@ -24,7 +25,8 @@ observe.market/
 │   ├── fetch_and_save.py       # 抓取大盤、個股、處置股與跳空數據
 │   ├── fetch_stock_info.py     # 抓取個股基本資料
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
-│   └── generate_manifest.py   # 生成前端讀取所需的資料索引
+│   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
+│   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
 ├── docs/                       # GitHub Pages 部署根目錄
 │   ├── index.html              # 上市＋上櫃整合大盤（首頁）
 │   ├── twse.html               # 上市大盤（TWSE）
@@ -35,11 +37,12 @@ observe.market/
 │   ├── watchlist.html          # 精選類股
 │   ├── premium-warrant.html    # 精選權證
 │   ├── warrant-filter.html     # 權證篩選器
+│   ├── stock.html               # 個股歷史走勢頁面
 │   ├── assets/                 # Logo、Favicon 與樣式資源
 │   └── data/
 │       ├── manifest.json       # 資料索引清單
 │       ├── stock_info.json     # 個股基本資料
-│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop）
+│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, stock_history）
 │       ├── tpex/               # 上櫃數據（同上結構）
 │       └── warrant/            # 權證數據
 └── .github/workflows/          # 定時自動化任務配置
@@ -51,7 +54,8 @@ observe.market/
 2. **個股資料 (`src/fetch_stock_info.py`)**：抓取上市／上櫃個股基本資訊，輸出至 `stock_info.json`。
 3. **跳空策略 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
 4. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
-5. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，部署於 GitHub Pages。
+5. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
+6. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，部署於 GitHub Pages。
 
 ## 本地開發
 
@@ -70,6 +74,9 @@ python src/fetch_stock_info.py
 
 # 執行跳空策略分析
 python src/gap_strategy.py --date_str 2026-04-20
+
+# 彙整個股歷史資料
+python src/generate_stock_history.py
 
 # 更新數據清單
 python src/generate_manifest.py
