@@ -1,0 +1,112 @@
+[
+    {
+        "publish_date": "2026-07-08",
+        "measure": "第一次處置",
+        "id": "8261",
+        "name": "富鼎",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-07-09",
+        "to": "2026-07-24"
+    },
+    {
+        "publish_date": "2026-07-14",
+        "measure": "第一次處置",
+        "id": "2434",
+        "name": "統懋",
+        "accumulated": 2,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-07-15",
+        "to": "2026-07-28"
+    },
+    {
+        "publish_date": "2026-07-14",
+        "measure": "第一次處置",
+        "id": "6831",
+        "name": "邁科",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-07-15",
+        "to": "2026-07-28"
+    },
+    {
+        "publish_date": "2026-07-15",
+        "measure": "第二次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-16",
+        "to": "2026-07-29"
+    },
+    {
+        "publish_date": "2026-07-17",
+        "measure": "第二次處置",
+        "id": "2434",
+        "name": "統懋",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-20",
+        "to": "2026-07-31"
+    },
+    {
+        "publish_date": "2026-07-17",
+        "measure": "第二次處置",
+        "id": "3090",
+        "name": "日電貿",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-20",
+        "to": "2026-07-31"
+    },
+    {
+        "publish_date": "2026-07-20",
+        "measure": "第二次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-21",
+        "to": "2026-08-03"
+    },
+    {
+        "publish_date": "2026-07-21",
+        "measure": "第二次處置",
+        "id": "2483",
+        "name": "百容",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-22",
+        "to": "2026-08-04"
+    },
+    {
+        "publish_date": "2026-07-21",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-22",
+        "to": "2026-08-04"
+    },
+    {
+        "publish_date": "2026-07-22",
+        "measure": "第一次處置",
+        "id": "8028",
+        "name": "昇陽半導體",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-07-23",
+        "to": "2026-08-05"
+    },
+    {
+        "publish_date": "2026-07-23",
+        "measure": "第二次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 1,
+        "condition": "最近三十個營業日已有十二次",
+        "from": "2026-07-24",
+        "to": "2026-08-06"
+    }
+]
