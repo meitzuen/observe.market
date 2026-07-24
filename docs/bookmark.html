@@ -597,7 +597,7 @@
 
       // ── API helpers ──────────────────────────────────────────────────────────
       async function apiGetBookmarks() {
-        const res = await fetch(`${API_BASE}/api/bookmark`);
+        const res = await fetch(`${API_BASE}/api/mktobs/bookmark`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
