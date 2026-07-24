@@ -49,3 +49,6 @@ htmlcov/
 
 # Logs
 *.log
+
+# Generated Mongo import files
+mongo_import/
