@@ -1060,7 +1060,7 @@
 
       // ── API helpers ──────────────────────────────────────────────────────────
       async function apiGetWatchlists() {
-        const res = await fetch(`${API_BASE}/api/watchlist?sort_by=order&order=asc`);
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist?sort_by=order&order=asc`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
