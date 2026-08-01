@@ -483,6 +483,10 @@
         background-color: #0f172a;
         color: var(--text);
       }
+      [data-theme="dark"] select#rows-per-page {
+        background-color: #0f172a;
+        color: var(--text);
+      }
 
       .theme-toggle {
         background: none;
@@ -678,6 +682,36 @@
                   "
                 />
                 <span style="color: var(--text-muted)">張</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                  background: #f1f5f9;
+                  padding: 0.4rem 0.75rem;
+                  border-radius: 0.75rem;
+                  font-size: 0.875rem;
+                  border: 1px solid var(--border);
+                "
+              >
+                <span style="color: var(--text-muted); font-weight: 500"
+                  >每頁筆數:</span
+                >
+                <select
+                  id="rows-per-page"
+                  style="
+                    border: 1px solid var(--border);
+                    border-radius: 6px;
+                    padding: 0.2rem;
+                  "
+                >
+                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30">30</option>
+                </select>
               </div>
               <button
                 id="clear-filters"
@@ -879,7 +913,7 @@
 
       // Pagination & Sorting State
       let currentPage = 1;
-      const rowsPerPage = 20;
+      let rowsPerPage = 10;
       let sortColumn = "id";
       let sortDirection = "asc";
 
@@ -913,12 +947,21 @@
             .getElementById("volume-min")
             .addEventListener("input", filterStocks);
           document
+            .getElementById("rows-per-page")
+            .addEventListener("change", (e) => {
+              rowsPerPage = parseInt(e.target.value, 10);
+              currentPage = 1;
+              renderStockTable();
+            });
+          document
             .getElementById("clear-filters")
             .addEventListener("click", () => {
               document.getElementById("stock-search").value = "";
               document.getElementById("price-min").value = "";
               document.getElementById("price-max").value = "";
               document.getElementById("volume-min").value = "";
+              document.getElementById("rows-per-page").value = "15";
+              rowsPerPage = 15;
               filterStocks();
             });
 
