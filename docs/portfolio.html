@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>持股計算機 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --accent: #0284c7;
+        --up: #ef4444;
+        --down: #22c55e;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+
+      [data-theme="dark"] input,
+      [data-theme="dark"] select {
+        background: #1e293b;
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1e3a5f;
+        border-bottom: none;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, #ffffff, #93c5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.5rem;
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .nav-dropdown-btn::after {
+        content: '';
+        display: inline-block;
+        border: solid currentColor;
+        border-width: 0 1.5px 1.5px 0;
+        padding: 2.5px;
+        transform: rotate(45deg) translateY(-1px);
+        margin-left: 4px;
+        opacity: 0.75;
+        transition: transform 0.2s;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-btn::after {
+        transform: rotate(-135deg) translateY(1px);
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: fixed;
+        background: #1e3a5f;
+        border-radius: 0.5rem;
+        min-width: 7rem;
+        z-index: 9999;
+        padding: 0.25rem;
+        flex-direction: column;
+        gap: 0.125rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-dropdown-item {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        transition: background 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .theme-toggle {
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        transition: background 0.15s;
+        flex-shrink: 0;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      main {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .page-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text);
+      }
+
+      .eval-date-box {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .eval-date-box label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .eval-date-box input[type="date"] {
+        border: none;
+        font-family: inherit;
+        font-size: 0.9rem;
+        color: var(--text);
+        background: transparent;
+        outline: none;
+      }
+
+      .btn {
+        padding: 0.5rem 1.1rem;
+        border-radius: 7px;
+        border: none;
+        font-size: 0.9rem;
+        font-family: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, opacity 0.15s;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .btn-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        font-size: 0.9rem;
+        line-height: 1;
+        border-radius: 5px;
+        transition: background 0.15s, opacity 0.15s;
+      }
+
+      .btn-icon:hover {
+        background: var(--bg);
+      }
+
+      /* Summary cards */
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .summary-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.9rem 1.1rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .summary-card .label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        margin-bottom: 0.3rem;
+      }
+
+      .summary-card .value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      /* Form panel */
+      .form-panel {
+        display: none;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-panel h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 1rem;
+        color: var(--text);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+
+      .form-row .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .form-row label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .form-row input,
+      .form-row select {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        transition: border-color 0.15s;
+        outline: none;
+      }
+
+      .form-row input:focus,
+      .form-row select:focus {
+        border-color: var(--primary);
+      }
+
+      .form-row input#h-stock-id {
+        width: 110px;
+      }
+
+      .form-row input#h-buy-date,
+      .form-row input#h-qty,
+      .form-row input#h-cost {
+        width: 130px;
+      }
+
+      .form-row select#h-unit {
+        width: 70px;
+      }
+
+      .stock-name-hint {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        min-width: 90px;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .error-msg {
+        color: var(--up);
+        font-size: 0.85rem;
+        margin-top: 0.6rem;
+      }
+
+      /* Table */
+      .table-wrap {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow-x: auto;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+        white-space: nowrap;
+      }
+
+      th,
+      td {
+        padding: 0.65rem 0.9rem;
+        text-align: right;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th:first-child,
+      td:first-child {
+        text-align: left;
+      }
+
+      th {
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.8rem;
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:hover {
+        background: color-mix(in srgb, var(--primary) 4%, transparent);
+      }
+
+      .stock-cell .code {
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .stock-cell .name {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        margin-left: 0.35rem;
+      }
+
+      .price-up {
+        color: var(--up);
+      }
+
+      .price-down {
+        color: var(--down);
+      }
+
+      .price-neutral {
+        color: var(--text-muted);
+      }
+
+      .no-data-tag {
+        color: var(--text-muted);
+        font-size: 0.78rem;
+        font-style: italic;
+      }
+
+      .row-actions {
+        display: flex;
+        gap: 0.25rem;
+        justify-content: flex-end;
+      }
+
+      tfoot td {
+        font-weight: 700;
+        border-top: 2px solid var(--border);
+        border-bottom: none;
+        background: var(--bg);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted);
+      }
+
+      .empty-state .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .hint-text {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem">📈</span>
+        <h1><span class="title-text">Market Observer</span></h1>
+        <nav class="nav-bar">
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="twse.html" class="nav-dropdown-item">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">策略</button>
+            <div class="nav-dropdown-menu">
+              <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
+              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
+              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">權證</button>
+            <div class="nav-dropdown-menu">
+              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
+              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
+            </div>
+          </div>
+          <a href="watchlist.html" class="nav-link">精選類股</a>
+          <a href="bookmark.html" class="nav-link">常用連結</a>
+          <a href="portfolio.html" class="nav-link active">持股試算</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-header">
+        <p class="page-title">🧮 持股計算機</p>
+        <div class="eval-date-box">
+          <label for="eval-date">計算基準日</label>
+          <input type="date" id="eval-date" />
+        </div>
+      </div>
+
+      <div class="summary-grid" id="summary-grid" style="display:none;">
+        <div class="summary-card">
+          <div class="label">總成本</div>
+          <div class="value" id="sum-cost">—</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">總市值</div>
+          <div class="value" id="sum-value">—</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">總損益</div>
+          <div class="value" id="sum-pl">—</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">報酬率</div>
+          <div class="value" id="sum-pct">—</div>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <span></span>
+        <button class="btn btn-primary" id="toggle-form-btn">＋ 新增持股</button>
+      </div>
+
+      <div class="form-panel" id="form-panel">
+        <h2 id="form-panel-title">新增持股</h2>
+        <div class="form-row">
+          <div class="field">
+            <label for="h-stock-id">股票代號</label>
+            <input type="text" id="h-stock-id" placeholder="ex: 2330" list="stock-datalist" autocomplete="off" />
+            <datalist id="stock-datalist"></datalist>
+          </div>
+          <div class="field">
+            <span class="stock-name-hint" id="h-stock-name">&nbsp;</span>
+          </div>
+          <div class="field">
+            <label for="h-buy-date">買入日期</label>
+            <input type="date" id="h-buy-date" />
+          </div>
+          <div class="field">
+            <label for="h-qty">數量</label>
+            <input type="number" id="h-qty" placeholder="例如 1" min="0" step="any" />
+          </div>
+          <div class="field">
+            <label for="h-unit">單位</label>
+            <select id="h-unit">
+              <option value="lot">張</option>
+              <option value="share">股</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="h-cost">買入均價</label>
+            <input type="number" id="h-cost" placeholder="每股價格" min="0" step="any" />
+          </div>
+          <div class="field">
+            <label style="visibility:hidden;">&nbsp;</label>
+            <button class="btn btn-secondary" id="h-autofill-btn" type="button">帶入買入日收盤價</button>
+          </div>
+          <div class="field">
+            <label style="visibility:hidden;">&nbsp;</label>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="form-submit-btn">新增</button>
+              <button class="btn btn-secondary" id="form-cancel-btn">取消</button>
+            </div>
+          </div>
+        </div>
+        <div class="hint-text">1 張 = 1,000 股；若當日無資料（例如假日）會自動取最近一個交易日的收盤價。</div>
+        <div id="form-error" class="error-msg" style="display:none;"></div>
+      </div>
+
+      <div class="loading" id="loading-msg" style="text-align:center; padding:2rem; color:var(--text-muted);">載入中…</div>
+
+      <div class="table-wrap" id="table-wrap" style="display:none;">
+        <table>
+          <thead>
+            <tr>
+              <th>股票</th>
+              <th>買入日期</th>
+              <th>持有數量</th>
+              <th>買入均價</th>
+              <th>成本</th>
+              <th id="th-eval-price">基準日市價</th>
+              <th>市值</th>
+              <th>損益</th>
+              <th>報酬率</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="holdings-tbody"></tbody>
+        </table>
+      </div>
+
+      <div id="empty-state" class="empty-state" style="display:none;">
+        <div class="icon">🧮</div>
+        <div>尚無持股紀錄</div>
+        <div style="font-size:0.85rem; margin-top:0.4rem;">點擊上方「＋ 新增持股」開始記錄</div>
+      </div>
+    </main>
+
+    <script>
+      // ── Theme ───────────────────────────────────────────────────────────────
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+      });
+
+      // ── Storage keys ────────────────────────────────────────────────────────
+      const STORAGE_KEY = "portfolio_holdings";
+      const EVAL_DATE_KEY = "portfolio_eval_date";
+
+      // ── State ───────────────────────────────────────────────────────────────
+      let holdings = [];
+      let stockInfo = {};
+      const historyCache = {}; // stockId -> [{date, close}, ...] sorted ascending
+      let editingId = null;
+
+      function todayStr() {
+        return new Date().toISOString().slice(0, 10);
+      }
+
+      function loadHoldings() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          holdings = raw ? JSON.parse(raw) : [];
+        } catch {
+          holdings = [];
+        }
+      }
+
+      function saveHoldings() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(holdings));
+      }
+
+      function uid() {
+        return `h_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      }
+
+      // ── Data loading ────────────────────────────────────────────────────────
+      async function loadStockInfo() {
+        try {
+          const res = await fetch("data/stock_info.json");
+          stockInfo = await res.json();
+        } catch (e) {
+          console.error("無法載入 stock_info.json：", e);
+          stockInfo = {};
+        }
+        const datalist = document.getElementById("stock-datalist");
+        datalist.innerHTML = Object.entries(stockInfo)
+          .map(([id, info]) => `<option value="${id}">${escHtml(info.name || "")}</option>`)
+          .join("");
+      }
+
+      async function getHistory(stockId) {
+        if (historyCache[stockId] !== undefined) return historyCache[stockId];
+        const info = stockInfo[stockId];
+        const market = info?.type === "tpex" ? "tpex" : "twse";
+        try {
+          const res = await fetch(`data/${market}/stock_history/${stockId}.json`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          historyCache[stockId] = data;
+          return data;
+        } catch (e) {
+          historyCache[stockId] = null;
+          return null;
+        }
+      }
+
+      // Find close price on or before targetDate (yyyy-mm-dd). Returns {date, close} or null.
+      function findPriceOnOrBefore(history, targetDate) {
+        if (!history || history.length === 0) return null;
+        let best = null;
+        for (const row of history) {
+          if (row.date <= targetDate) {
+            if (!best || row.date > best.date) best = row;
+          }
+        }
+        return best ? { date: best.date, close: best.close } : null;
+      }
+
+      // ── Formatting ──────────────────────────────────────────────────────────
+      function fmtMoney(v) {
+        if (v == null || Number.isNaN(v)) return "—";
+        return v.toLocaleString("zh-TW", { maximumFractionDigits: 0 });
+      }
+
+      function fmtPrice(v) {
+        if (v == null || Number.isNaN(v)) return "—";
+        return v.toLocaleString("zh-TW", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function fmtPct(v) {
+        if (v == null || Number.isNaN(v)) return "—";
+        const sign = v > 0 ? "+" : "";
+        return `${sign}${v.toFixed(2)}%`;
+      }
+
+      function plClass(v) {
+        if (v == null || Number.isNaN(v) || v === 0) return "price-neutral";
+        return v > 0 ? "price-up" : "price-down";
+      }
+
+      function fmtQty(shares, unit) {
+        if (unit === "lot") {
+          const lots = shares / 1000;
+          return `${lots.toLocaleString("zh-TW", { maximumFractionDigits: 3 })} 張`;
+        }
+        return `${shares.toLocaleString("zh-TW")} 股`;
+      }
+
+      function escHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+
+      // ── Form panel ──────────────────────────────────────────────────────────
+      let formPanelOpen = false;
+
+      function toggleFormPanel() {
+        formPanelOpen ? closeFormPanel() : openFormPanel();
+      }
+
+      function openFormPanel(h) {
+        formPanelOpen = true;
+        editingId = h ? h.id : null;
+        document.getElementById("form-panel").style.display = "block";
+        document.getElementById("form-panel-title").textContent = h ? "編輯持股" : "新增持股";
+        document.getElementById("form-submit-btn").textContent = h ? "儲存" : "新增";
+        document.getElementById("h-stock-id").value = h ? h.stockId : "";
+        document.getElementById("h-buy-date").value = h ? h.buyDate : todayStr();
+        document.getElementById("h-unit").value = h ? h.unit : "lot";
+        document.getElementById("h-qty").value = h
+          ? (h.unit === "lot" ? h.shares / 1000 : h.shares)
+          : "";
+        document.getElementById("h-cost").value = h ? h.costPrice : "";
+        document.getElementById("form-error").style.display = "none";
+        updateStockNameHint();
+        document.getElementById("h-stock-id").focus();
+        document.getElementById("form-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function closeFormPanel() {
+        formPanelOpen = false;
+        editingId = null;
+        document.getElementById("form-panel").style.display = "none";
+        document.getElementById("h-stock-id").value = "";
+        document.getElementById("h-buy-date").value = "";
+        document.getElementById("h-qty").value = "";
+        document.getElementById("h-cost").value = "";
+        document.getElementById("h-stock-name").textContent = " ";
+        document.getElementById("form-error").style.display = "none";
+      }
+
+      function updateStockNameHint() {
+        const id = document.getElementById("h-stock-id").value.trim();
+        const info = stockInfo[id];
+        const hint = document.getElementById("h-stock-name");
+        hint.textContent = info ? `${info.name}（${info.type === "tpex" ? "上櫃" : "上市"}）` : " ";
+      }
+
+      async function autofillCostPrice() {
+        const id = document.getElementById("h-stock-id").value.trim();
+        const buyDate = document.getElementById("h-buy-date").value;
+        const errDiv = document.getElementById("form-error");
+        errDiv.style.display = "none";
+        if (!id || !stockInfo[id]) {
+          errDiv.textContent = "請先輸入有效的股票代號";
+          errDiv.style.display = "block";
+          return;
+        }
+        if (!buyDate) {
+          errDiv.textContent = "請先選擇買入日期";
+          errDiv.style.display = "block";
+          return;
+        }
+        const history = await getHistory(id);
+        const found = findPriceOnOrBefore(history, buyDate);
+        if (!found) {
+          errDiv.textContent = "查無該股票在買入日之前的收盤價資料，請手動輸入";
+          errDiv.style.display = "block";
+          return;
+        }
+        document.getElementById("h-cost").value = found.close;
+      }
+
+      function showFormError(msg) {
+        const errDiv = document.getElementById("form-error");
+        errDiv.textContent = msg;
+        errDiv.style.display = "block";
+      }
+
+      function submitForm() {
+        const id = document.getElementById("h-stock-id").value.trim();
+        const buyDate = document.getElementById("h-buy-date").value;
+        const unit = document.getElementById("h-unit").value;
+        const qtyRaw = parseFloat(document.getElementById("h-qty").value);
+        const costPrice = parseFloat(document.getElementById("h-cost").value);
+
+        if (!id) return showFormError("請輸入股票代號");
+        if (!stockInfo[id]) return showFormError("查無此股票代號，請確認輸入是否正確");
+        if (!buyDate) return showFormError("請選擇買入日期");
+        if (!qtyRaw || qtyRaw <= 0) return showFormError("請輸入有效的持有數量");
+        if (!costPrice || costPrice <= 0) return showFormError("請輸入有效的買入均價");
+
+        const shares = unit === "lot" ? qtyRaw * 1000 : qtyRaw;
+
+        if (editingId) {
+          const h = holdings.find((x) => x.id === editingId);
+          if (h) {
+            h.stockId = id;
+            h.buyDate = buyDate;
+            h.unit = unit;
+            h.shares = shares;
+            h.costPrice = costPrice;
+          }
+        } else {
+          holdings.push({
+            id: uid(),
+            stockId: id,
+            buyDate,
+            unit,
+            shares,
+            costPrice,
+          });
+        }
+
+        saveHoldings();
+        closeFormPanel();
+        renderHoldings();
+      }
+
+      function deleteHolding(id) {
+        const h = holdings.find((x) => x.id === id);
+        if (!h) return;
+        const name = stockInfo[h.stockId]?.name || h.stockId;
+        if (!confirm(`確定要刪除「${h.stockId} ${name}」這筆持股紀錄？此操作無法復原。`)) return;
+        holdings = holdings.filter((x) => x.id !== id);
+        saveHoldings();
+        renderHoldings();
+      }
+
+      // ── Render ──────────────────────────────────────────────────────────────
+      async function renderHoldings() {
+        document.getElementById("loading-msg").style.display = "none";
+        const tableWrap = document.getElementById("table-wrap");
+        const emptyState = document.getElementById("empty-state");
+        const summaryGrid = document.getElementById("summary-grid");
+
+        if (holdings.length === 0) {
+          tableWrap.style.display = "none";
+          summaryGrid.style.display = "none";
+          emptyState.style.display = "block";
+          return;
+        }
+
+        emptyState.style.display = "none";
+        tableWrap.style.display = "block";
+        summaryGrid.style.display = "grid";
+
+        const evalDate = document.getElementById("eval-date").value || todayStr();
+        document.getElementById("th-eval-price").textContent = `${evalDate} 市價`;
+
+        const rows = await Promise.all(
+          holdings.map(async (h) => {
+            const info = stockInfo[h.stockId];
+            const history = await getHistory(h.stockId);
+            const found = findPriceOnOrBefore(history, evalDate);
+            const cost = h.shares * h.costPrice;
+            const marketValue = found ? h.shares * found.close : null;
+            const pl = marketValue != null ? marketValue - cost : null;
+            const plPct = marketValue != null && cost > 0 ? (pl / cost) * 100 : null;
+            return { h, info, found, cost, marketValue, pl, plPct };
+          }),
+        );
+
+        const tbody = document.getElementById("holdings-tbody");
+        tbody.innerHTML = rows
+          .map(({ h, info, found, cost, marketValue, pl, plPct }) => {
+            const name = info ? info.name : "";
+            const priceCell = found
+              ? `${fmtPrice(found.close)}${found.date !== evalDate ? `<div class="no-data-tag">${found.date}</div>` : ""}`
+              : `<span class="no-data-tag">無資料</span>`;
+            return `<tr>
+              <td class="stock-cell"><span class="code">${escHtml(h.stockId)}</span><span class="name">${escHtml(name)}</span></td>
+              <td>${escHtml(h.buyDate)}</td>
+              <td>${fmtQty(h.shares, h.unit)}</td>
+              <td>${fmtPrice(h.costPrice)}</td>
+              <td>${fmtMoney(cost)}</td>
+              <td>${priceCell}</td>
+              <td>${fmtMoney(marketValue)}</td>
+              <td class="${plClass(pl)}">${pl == null ? "—" : (pl > 0 ? "+" : "") + fmtMoney(pl)}</td>
+              <td class="${plClass(plPct)}">${fmtPct(plPct)}</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn-icon" title="編輯" onclick='openHoldingEditor(${JSON.stringify(h.id)})'>✏️</button>
+                  <button class="btn-icon" title="刪除" onclick='deleteHolding(${JSON.stringify(h.id)})'>🗑️</button>
+                </div>
+              </td>
+            </tr>`;
+          })
+          .join("");
+
+        const totalCost = rows.reduce((s, r) => s + r.cost, 0);
+        const totalValue = rows.reduce((s, r) => s + (r.marketValue ?? 0), 0);
+        const hasAllPrices = rows.every((r) => r.marketValue != null);
+        const totalPl = hasAllPrices ? totalValue - totalCost : null;
+        const totalPct = hasAllPrices && totalCost > 0 ? (totalPl / totalCost) * 100 : null;
+
+        document.getElementById("sum-cost").textContent = fmtMoney(totalCost);
+        document.getElementById("sum-value").textContent = hasAllPrices ? fmtMoney(totalValue) : `${fmtMoney(totalValue)}+`;
+        const sumPlEl = document.getElementById("sum-pl");
+        sumPlEl.textContent = totalPl == null ? "部分無資料" : (totalPl > 0 ? "+" : "") + fmtMoney(totalPl);
+        sumPlEl.className = "value " + plClass(totalPl);
+        const sumPctEl = document.getElementById("sum-pct");
+        sumPctEl.textContent = fmtPct(totalPct);
+        sumPctEl.className = "value " + plClass(totalPct);
+      }
+
+      function openHoldingEditor(id) {
+        const h = holdings.find((x) => x.id === id);
+        if (h) openFormPanel(h);
+      }
+
+      // ── Init ────────────────────────────────────────────────────────────────
+      document.getElementById("toggle-form-btn").addEventListener("click", toggleFormPanel);
+      document.getElementById("form-cancel-btn").addEventListener("click", closeFormPanel);
+      document.getElementById("form-submit-btn").addEventListener("click", submitForm);
+      document.getElementById("h-autofill-btn").addEventListener("click", autofillCostPrice);
+      document.getElementById("h-stock-id").addEventListener("input", updateStockNameHint);
+      ["h-stock-id", "h-buy-date", "h-qty", "h-cost"].forEach((id) => {
+        document.getElementById(id).addEventListener("keydown", (e) => {
+          if (e.key === "Enter") submitForm();
+          if (e.key === "Escape") closeFormPanel();
+        });
+      });
+
+      const evalDateInput = document.getElementById("eval-date");
+      evalDateInput.value = localStorage.getItem(EVAL_DATE_KEY) || todayStr();
+      evalDateInput.addEventListener("change", () => {
+        localStorage.setItem(EVAL_DATE_KEY, evalDateInput.value);
+        renderHoldings();
+      });
+
+      (async function init() {
+        loadHoldings();
+        await loadStockInfo();
+        renderHoldings();
+      })();
+    </script>
+    <script>
+    (function () {
+      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+        var menu = dd.querySelector('.nav-dropdown-menu');
+        dd.addEventListener('mouseenter', function () {
+          var r = dd.getBoundingClientRect();
+          menu.style.top = r.bottom + 'px';
+          menu.style.left = r.left + 'px';
+          menu.style.display = 'flex';
+        });
+        dd.addEventListener('mouseleave', function () {
+          menu.style.display = 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
