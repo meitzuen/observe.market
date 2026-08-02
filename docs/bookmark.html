@@ -603,7 +603,7 @@
       }
 
       async function apiCreateBookmark(name, url, note) {
-        const res = await fetch(`${API_BASE}/api/bookmark`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/bookmark`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, url, note: note || "" }),
@@ -616,7 +616,7 @@
       }
 
       async function apiUpdateBookmark(id, data) {
-        const res = await fetch(`${API_BASE}/api/bookmark/${encodeURIComponent(id)}`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/bookmark/${encodeURIComponent(id)}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -629,7 +629,7 @@
       }
 
       async function apiDeleteBookmark(id) {
-        const res = await fetch(`${API_BASE}/api/bookmark/${encodeURIComponent(id)}`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/bookmark/${encodeURIComponent(id)}`, {
           method: "DELETE",
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
