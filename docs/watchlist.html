@@ -1066,7 +1066,7 @@
       }
 
       async function apiCreateWatchlist(name) {
-        const res = await fetch(`${API_BASE}/api/watchlist`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, order: allWatchlists.length, items: [] }),
@@ -1079,14 +1079,14 @@
       }
 
       async function apiDeleteWatchlist(name) {
-        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(name)}`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(name)}`, {
           method: "DELETE",
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
 
       async function apiAddItem(listName, stock_id, note, is_top = false) {
-        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}/items`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ stock_id, note: note || "", is_top }),
@@ -1100,7 +1100,7 @@
 
       async function apiUpdateItems(listName, items) {
         const wl = allWatchlists.find(w => w.name === listName);
-        const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(listName)}`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items, order: wl?.order ?? 0 }),
@@ -1111,14 +1111,14 @@
 
       async function apiRemoveItem(listName, stock_id) {
         const res = await fetch(
-          `${API_BASE}/api/watchlist/${encodeURIComponent(listName)}/items/${encodeURIComponent(stock_id)}`,
+          `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items/${encodeURIComponent(stock_id)}`,
           { method: "DELETE" }
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
 
       async function apiUpdateWatchlistOrders(orders) {
-        const res = await fetch(`${API_BASE}/api/watchlist/orders`, {
+        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/orders`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(orders),
