@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gap Observer | 跳空觀測站</title>
+    <title>Volatility Observer | 區間波動率</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -105,7 +105,7 @@
         }
       }
 
-            .nav-bar {
+      .nav-bar {
         display: flex;
         align-items: center;
         gap: 0.25rem;
@@ -200,23 +200,6 @@
         font-weight: 700;
       }
 
-      .date-select {
-        padding: 0.5rem 1rem;
-        border-radius: 0.75rem;
-        border: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.25);
-        color: #ffffff;
-        font-size: 0.875rem;
-        font-weight: 500;
-        cursor: pointer;
-        outline: none;
-      }
-      .date-select option {
-        background: #1e3a5f;
-        color: white;
-      }
-
       .theme-toggle {
         background: none;
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -274,80 +257,10 @@
         padding-left: 0.75rem;
       }
 
-      .controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-      @media (max-width: 480px) {
-        .controls {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-      .filter-label {
+      .hint {
         font-size: 0.8rem;
-        font-weight: 600;
         color: var(--text-muted);
-      }
-
-      .filter-range {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-      .filter-range span {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-      }
-
-      .filter-input {
-        flex: 1;
-        min-width: 0;
-        padding: 0.5rem 0.6rem;
-        border: 1px solid var(--border);
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
-        background: #f8fafc;
-      }
-      .filter-input:focus {
-        border-color: var(--primary);
-        background: white;
-      }
-
-      .type-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-      .type-tab {
-        padding: 0.5rem 1.25rem;
-        border-radius: 9999px;
-        border: 2px solid var(--border);
-        font-size: 0.9rem;
-        font-weight: 700;
-        cursor: pointer;
-        background: none;
-        color: var(--text-muted);
-        transition: all 0.2s;
-      }
-      .type-tab.active-jump {
-        background: #fee2e2;
-        color: #b91c1c;
-        border-color: #fca5a5;
-      }
-      .type-tab.active-drop {
-        background: #dcfce7;
-        color: #15803d;
-        border-color: #86efac;
+        margin: -0.75rem 0 1.25rem;
       }
 
       .market-tabs {
@@ -372,6 +285,47 @@
         border-color: var(--primary);
       }
 
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 1rem;
+        align-items: end;
+        margin-bottom: 1rem;
+      }
+      @media (max-width: 640px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .filter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .filter-input {
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: #f8fafc;
+        color: var(--text);
+        font-family: inherit;
+      }
+      .filter-input:focus {
+        border-color: var(--primary);
+        background: white;
+      }
+
       .btn-apply {
         padding: 0.6rem 1.5rem;
         background: var(--primary);
@@ -382,26 +336,37 @@
         font-weight: 700;
         cursor: pointer;
         transition: background 0.2s;
-        align-self: flex-end;
+        white-space: nowrap;
       }
       .btn-apply:hover {
         background: var(--primary-dark);
       }
-
-      .btn-clear {
-        padding: 0.6rem 1rem;
-        background: none;
-        color: var(--text-muted);
-        border: 1px solid var(--border);
-        border-radius: 0.75rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        align-self: flex-end;
+      .btn-apply:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
       }
-      .btn-clear:hover {
-        background: var(--bg);
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+      }
+      .checkbox-row input {
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+      }
+      .checkbox-row label {
+        cursor: pointer;
+      }
+
+      .range-summary {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
       }
 
       .table-container {
@@ -461,13 +426,18 @@
         background-color: #dbeafe;
         color: #1e40af;
       }
-      .badge-up {
-        background-color: #fee2e2;
-        color: #b91c1c;
+      .badge-market-twse {
+        background-color: #dbeafe;
+        color: #1e40af;
       }
-      .badge-down {
-        background-color: #dcfce7;
-        color: #15803d;
+      .badge-market-tpex {
+        background-color: #ede9fe;
+        color: #6d28d9;
+      }
+
+      .rank-cell {
+        font-weight: 700;
+        color: var(--text-muted);
       }
 
       .loader {
@@ -489,6 +459,21 @@
         font-size: 0.875rem;
         font-weight: 600;
       }
+      .btn-secondary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .page-size-select {
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background: #f8fafc;
+        color: var(--text);
+        font-size: 0.85rem;
+        cursor: pointer;
+        font-family: inherit;
+      }
 
       /* Dark mode */
       [data-theme="dark"] {
@@ -508,17 +493,125 @@
         background-color: #0f172a;
         color: var(--text);
       }
-      [data-theme="dark"] .date-select {
-        background-color: #1e293b;
+      [data-theme="dark"] .page-size-select {
+        background-color: #0f172a;
         color: var(--text);
       }
-      [data-theme="dark"] .type-tab.active-jump {
-        background: #450a0a;
-        color: #fca5a5;
+      [data-theme="dark"] .badge-market-twse {
+        background: #1e3a5f;
+        color: #93c5fd;
       }
-      [data-theme="dark"] .type-tab.active-drop {
-        background: #052e16;
-        color: #86efac;
+      [data-theme="dark"] .badge-market-tpex {
+        background: #3b2a5f;
+        color: #c4b5fd;
+      }
+
+      .help-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        flex-shrink: 0;
+        transition: all 0.2s;
+      }
+      .help-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal-box {
+        background: var(--card-bg);
+        color: var(--text);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        max-width: 640px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        background: var(--card-bg);
+      }
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 0.25rem;
+      }
+      .modal-close:hover {
+        color: var(--text);
+      }
+      .modal-body {
+        padding: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+      .modal-body h3 {
+        font-size: 0.95rem;
+        margin: 1.25rem 0 0.5rem;
+        color: var(--primary-dark);
+      }
+      .modal-body h3:first-child {
+        margin-top: 0;
+      }
+      [data-theme="dark"] .modal-body h3 {
+        color: #93c5fd;
+      }
+      .modal-body p {
+        margin: 0.4rem 0;
+      }
+      .modal-body ul, .modal-body ol {
+        margin: 0.4rem 0;
+        padding-left: 1.25rem;
+      }
+      .modal-body li {
+        margin: 0.3rem 0;
+      }
+      .modal-body code {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        padding: 0.05rem 0.35rem;
+        font-size: 0.82rem;
       }
     </style>
   </head>
@@ -536,9 +629,9 @@
           "
         />
         <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >🚀</span
+          >📊</span
         >
-        <h1><span class="title-text">Gap Observer</span></h1>
+        <h1><span class="title-text">Volatility Observer</span></h1>
         <nav class="nav-bar">
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">市場</button>
@@ -551,10 +644,10 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">策略</button>
             <div class="nav-dropdown-menu">
-              <a href="gap.html" class="nav-dropdown-item active">跳空</a>
+              <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
               <a href="punish.html" class="nav-dropdown-item">處置股票</a>
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
-              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
+              <a href="volatility.html" class="nav-dropdown-item active">區間波動率</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -572,163 +665,93 @@
           🌙
         </button>
       </div>
-      <div class="header-right">
-        <select id="date-picker" class="date-select"></select>
-      </div>
+      <div class="header-right"></div>
     </header>
 
     <div class="container">
       <div class="card">
-        <!-- Type + Market tabs -->
-        <div
-          style="
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-          "
-        >
-          <div class="type-tabs" style="margin-bottom: 0">
-            <button
-              class="type-tab active-jump"
-              data-type="gap_jump"
-              id="tab-jump"
-            >
-              ⬆ 跳空上漲
-            </button>
-            <button class="type-tab" data-type="gap_drop" id="tab-drop">
-              ⬇ 跳空下跌
-            </button>
-          </div>
-          <div class="market-tabs" style="margin-bottom: 0">
-            <button class="market-tab active" data-market="twse">上市</button>
-            <button class="market-tab" data-market="tpex">上櫃</button>
-          </div>
+        <div class="card-title">
+          <span style="display:flex;align-items:center;"
+            >📊 區間波動率設定
+            <button id="help-btn" class="help-btn" title="說明：這頁怎麼算出來的">?</button></span
+          >
         </div>
 
-        <!-- Filters -->
+        <div class="market-tabs">
+          <button class="market-tab active" data-market="twse">上市</button>
+          <button class="market-tab" data-market="tpex">上櫃</button>
+          <button class="market-tab" data-market="all">全部</button>
+        </div>
+
         <div class="controls">
           <div class="filter-group">
-            <span class="filter-label">收盤價</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="close-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="close-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+            <span class="filter-label">起始日期</span>
+            <input type="date" id="date-from" class="filter-input" />
           </div>
           <div class="filter-group">
-            <span class="filter-label">成交量 (張)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="vol-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="vol-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+            <span class="filter-label">結束日期</span>
+            <input type="date" id="date-to" class="filter-input" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">跳空點數</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="gdiff-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="gdiff-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">跳空幅度 (%)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="gratio-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="gratio-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
-          </div>
+          <button class="btn-apply" id="btn-calc">計算波動率</button>
         </div>
-        <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
-          <button class="btn-clear" id="btn-clear">清除條件</button>
-          <button class="btn-apply" id="btn-apply">套用篩選</button>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="full-coverage" checked />
+          <label for="full-coverage"
+            >只計算區間內每個交易日都有成交的股票（避免中途下市／停牌股票因資料不全而失真）</label
+          >
         </div>
+
+        <div class="hint" id="range-hint">載入資料中…</div>
       </div>
 
       <div class="card">
         <div class="card-title">
-          <span id="result-title"
-            >跳空上漲
-            <span id="result-count" class="badge badge-up">0</span></span
+          <span
+            >波動率排行（由穩定到劇烈）
+            <span id="result-count" class="badge badge-primary">0</span></span
           >
+          <select id="page-size" class="page-size-select">
+            <option value="30">每頁 30 筆</option>
+            <option value="50" selected>每頁 50 筆</option>
+            <option value="100">每頁 100 筆</option>
+          </select>
         </div>
+        <div class="range-summary" id="result-summary"></div>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
+                <th>排名</th>
                 <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
                 <th onclick="setSort('name')">
                   名稱 <span id="sort-name"></span>
                 </th>
-                <th onclick="setSort('today_close')">
-                  收盤價 <span id="sort-today_close"></span>
+                <th id="th-market" onclick="setSort('market')" style="display:none">
+                  市場 <span id="sort-market"></span>
                 </th>
-                <th id="th-prev">前日高點 <span id="sort-prev"></span></th>
-                <th onclick="setSort('diff')">
-                  漲跌 <span id="sort-diff"></span>
+                <th onclick="setSort('nDays')">
+                  交易天數 <span id="sort-nDays"></span>
                 </th>
-                <th onclick="setSort('ratio')">
-                  漲幅 <span id="sort-ratio"></span>
+                <th onclick="setSort('dailyStd')">
+                  日波動率 <span id="sort-dailyStd"></span>
                 </th>
-                <th onclick="setSort('gap_diff')">
-                  跳空點數 <span id="sort-gap_diff"></span>
+                <th onclick="setSort('annualStd')">
+                  年化波動率 <span id="sort-annualStd"></span>
                 </th>
-                <th onclick="setSort('gap_ratio')">
-                  跳空幅度 <span id="sort-gap_ratio"></span>
+                <th onclick="setSort('periodReturn')">
+                  期間漲跌 <span id="sort-periodReturn"></span>
                 </th>
-                <th onclick="setSort('volume')">
-                  成交量(張) <span id="sort-volume"></span>
+                <th onclick="setSort('meanPrice')">
+                  均價 <span id="sort-meanPrice"></span>
                 </th>
               </tr>
             </thead>
             <tbody id="result-list"></tbody>
           </table>
         </div>
-        <div id="loader" class="loader" style="display: none">載入中...</div>
+        <div id="loader" class="loader" style="display: none">計算中…</div>
 
         <div
           id="pagination"
@@ -757,26 +780,84 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="help-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>📊 區間波動率是怎麼算出來的？</h2>
+          <button class="modal-close" id="help-close" title="關閉">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h3>1. 資料來源</h3>
+          <p>
+            不是每檔股票各抓一個檔案，而是抓區間內「每一天」的全市場快照：<br />
+            <code>data/{market}/daily_price/{date}.json</code>，每個檔案包含當天上市或上櫃「所有股票」的收盤價等資料。
+            這樣抓取次數等於「選定區間的交易日數」，跟股票檔數無關，比逐檔股票抓歷史檔快很多。
+          </p>
+
+          <h3>2. 決定要抓哪些日期</h3>
+          <p>
+            先讀取 <code>data/manifest.json</code> 取得每個市場實際有資料的日期清單，再用你在 calendar 選的起訖日期去過濾這份清單。
+            所以就算選到假日或非交易日，也只是自然被濾掉，不需要額外校正。
+          </p>
+
+          <h3>3. 聚合每檔股票的收盤價序列</h3>
+          <p>
+            把區間內每天的快照抓回來後，依「市場_股票代號」分組，把每天的收盤價依序放進同一檔股票的陣列裡。
+          </p>
+
+          <h3>4. 計算波動率</h3>
+          <ul>
+            <li>日報酬率：<code>r = (今日收盤 − 昨日收盤) / 昨日收盤</code></li>
+            <li>日波動率 = 這些日報酬率的標準差</li>
+            <li>年化波動率 = 日波動率 × √252</li>
+            <li>期間漲跌 = (區間最後一天收盤 − 第一天收盤) / 第一天收盤</li>
+            <li>均價 = 收盤價的算術平均</li>
+          </ul>
+
+          <h3>5. 資料完整性過濾</h3>
+          <p>
+            勾選「只計算區間內每個交易日都有成交的股票」時，只保留區間內每一天都有出現的股票；不勾選則放寬到至少 2 天資料即可計算。
+            這是因為中途下市或長期停牌的股票，只用剩下那一小段資料算出來的標準差會異常偏小，看起來「很穩定」其實只是資料不全造成的假象，勾選這個選項可以避免被誤導。
+          </p>
+
+          <h3>6. 排序與分頁</h3>
+          <p>
+            所有股票算完後預設依「日波動率」由小到大排序（最穩定的排最前面），點表頭可切換其他欄位排序；分頁只是把結果依你選的每頁筆數切片顯示，不會重新抓資料。
+          </p>
+        </div>
+      </div>
+    </div>
+
     <script>
       let manifest = null;
-      let rawData = [];
-      let filteredData = [];
       let currentMarket = "twse";
-      let currentType = "gap_jump";
-      let sortColumn = "gap_ratio";
-      let sortDirection = "desc";
+      let results = [];
+      let sortColumn = "dailyStd";
+      let sortDirection = "asc";
       let currentPage = 1;
-      const rowsPerPage = 30;
+      let rowsPerPage = 50;
+
+      const MARKETS = ["twse", "tpex"];
 
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
         const resp = await fetch("data/manifest.json");
-        const fullManifest = await resp.json();
-        manifest = fullManifest;
+        manifest = await resp.json();
 
-        populateDatePicker();
+        const allDates = MARKETS.flatMap((m) => manifest[m].daily_price);
+        const minDate = allDates.reduce((a, b) => (b < a ? b : a));
+        const maxDate = allDates.reduce((a, b) => (b > a ? b : a));
 
-        // Market tabs
+        const fromEl = document.getElementById("date-from");
+        const toEl = document.getElementById("date-to");
+        fromEl.min = toEl.min = minDate;
+        fromEl.max = toEl.max = maxDate;
+        fromEl.value = minDate;
+        toEl.value = maxDate;
+
+        document.getElementById("range-hint").textContent =
+          `資料範圍：${minDate} ～ ${maxDate}（超出範圍的日期會自動忽略）`;
+
         document.querySelectorAll(".market-tab").forEach((btn) => {
           btn.addEventListener("click", () => {
             document
@@ -784,35 +865,24 @@
               .forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             currentMarket = btn.dataset.market;
-            populateDatePicker();
-          });
-        });
-
-        // Type tabs
-        document.querySelectorAll(".type-tab").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            currentType = btn.dataset.type;
-            updateTypeTabs();
-            loadData();
+            document.getElementById("th-market").style.display =
+              currentMarket === "all" ? "" : "none";
+            calculate();
           });
         });
 
         document
-          .getElementById("date-picker")
-          .addEventListener("change", loadData);
+          .getElementById("btn-calc")
+          .addEventListener("click", calculate);
         document
-          .getElementById("btn-apply")
-          .addEventListener("click", applyFilters);
-        document
-          .getElementById("btn-clear")
-          .addEventListener("click", clearFilters);
+          .getElementById("full-coverage")
+          .addEventListener("change", calculate);
 
-        // filter inputs: Enter to apply
-        document.querySelectorAll(".filter-input").forEach((el) =>
-          el.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") applyFilters();
-          }),
-        );
+        document.getElementById("page-size").addEventListener("change", (e) => {
+          rowsPerPage = parseInt(e.target.value, 10);
+          currentPage = 1;
+          renderTable();
+        });
 
         document.getElementById("prev-page").addEventListener("click", () => {
           if (currentPage > 1) {
@@ -821,7 +891,7 @@
           }
         });
         document.getElementById("next-page").addEventListener("click", () => {
-          if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) {
+          if (currentPage < Math.ceil(results.length / rowsPerPage)) {
             currentPage++;
             renderTable();
           }
@@ -845,135 +915,142 @@
               next === "dark" ? "☀️" : "🌙";
           });
 
-        loadData();
-      }
-
-      function populateDatePicker() {
-        const m = manifest[currentMarket];
-        const dates = (m && m[currentType]) || [];
-        const picker = document.getElementById("date-picker");
-        const prev = picker.value;
-        picker.innerHTML = "";
-        dates.forEach((d) => {
-          const opt = document.createElement("option");
-          opt.value = d;
-          opt.textContent = d;
-          picker.appendChild(opt);
+        // Help modal
+        const helpModal = document.getElementById("help-modal");
+        document.getElementById("help-btn").addEventListener("click", () => {
+          helpModal.classList.add("open");
         });
-        if (prev && dates.includes(prev)) picker.value = prev;
-        loadData();
+        document.getElementById("help-close").addEventListener("click", () => {
+          helpModal.classList.remove("open");
+        });
+        helpModal.addEventListener("click", (e) => {
+          if (e.target === helpModal) helpModal.classList.remove("open");
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") helpModal.classList.remove("open");
+        });
+
+        calculate();
       }
 
-      // ── data loading ──────────────────────────────────────────────────────
-      async function loadData() {
-        const m = manifest[currentMarket];
-        if (!m) return;
-        const dates = m[currentType] || [];
-        const date = document.getElementById("date-picker").value;
-        if (!date || !dates.includes(date)) {
-          rawData = [];
-          filteredData = [];
-          renderTable();
-          return;
+      // ── calculation ───────────────────────────────────────────────────────
+      async function calculate() {
+        let from = document.getElementById("date-from").value;
+        let to = document.getElementById("date-to").value;
+        if (!from || !to) return;
+        if (from > to) {
+          [from, to] = [to, from];
+          document.getElementById("date-from").value = from;
+          document.getElementById("date-to").value = to;
         }
+
+        const markets = currentMarket === "all" ? MARKETS : [currentMarket];
+        const fullCoverageOnly = document.getElementById("full-coverage").checked;
 
         document.getElementById("loader").style.display = "flex";
         document.getElementById("result-list").innerHTML = "";
+        document.getElementById("btn-calc").disabled = true;
+
+        // stats[market_id] = { market, id, name, closes: [{date, close}] }
+        const stats = new Map();
+        const marketDateCounts = {};
 
         try {
-          const resp = await fetch(
-            `data/${currentMarket}/${currentType}/${date}.json`,
-          );
-          rawData = await resp.json();
-        } catch (e) {
-          rawData = [];
+          for (const market of markets) {
+            const dates = manifest[market].daily_price.filter(
+              (d) => d >= from && d <= to,
+            );
+            marketDateCounts[market] = dates.length;
+
+            await Promise.all(
+              dates.map(async (date) => {
+                let rows;
+                try {
+                  const resp = await fetch(
+                    `data/${market}/daily_price/${date}.json`,
+                  );
+                  if (!resp.ok) return;
+                  rows = await resp.json();
+                } catch (e) {
+                  return;
+                }
+                for (const r of rows) {
+                  if (r.close == null || r.close <= 0) continue;
+                  const key = `${market}_${r.id}`;
+                  let entry = stats.get(key);
+                  if (!entry) {
+                    entry = { market, id: r.id, name: r.name, closes: [] };
+                    stats.set(key, entry);
+                  }
+                  entry.closes.push({ date, close: r.close });
+                }
+              }),
+            );
+          }
         } finally {
           document.getElementById("loader").style.display = "none";
+          document.getElementById("btn-calc").disabled = false;
         }
 
-        updateTypeTabs();
-        applyFilters();
-      }
+        const totalDates = markets.reduce(
+          (sum, m) => sum + marketDateCounts[m],
+          0,
+        );
 
-      // ── filters ───────────────────────────────────────────────────────────
-      function applyFilters() {
-        const closeMin = parseFloat(document.getElementById("close-min").value);
-        const closeMax = parseFloat(document.getElementById("close-max").value);
-        const volMin =
-          (parseFloat(document.getElementById("vol-min").value) || 0) * 1000;
-        const volMax =
-          (parseFloat(document.getElementById("vol-max").value) || Infinity) *
-          1000;
-        const gdMin = parseFloat(document.getElementById("gdiff-min").value);
-        const gdMax = parseFloat(document.getElementById("gdiff-max").value);
-        const grMin = parseFloat(document.getElementById("gratio-min").value);
-        const grMax = parseFloat(document.getElementById("gratio-max").value);
+        results = [];
+        for (const entry of stats.values()) {
+          entry.closes.sort((a, b) => (a.date < b.date ? -1 : 1));
+          const nDays = entry.closes.length;
+          const totalForMarket = marketDateCounts[entry.market];
+          if (nDays < 2) continue;
+          if (fullCoverageOnly && nDays !== totalForMarket) continue;
 
-        filteredData = rawData.filter((s) => {
-          if (!isNaN(closeMin) && s.today_close < closeMin) return false;
-          if (!isNaN(closeMax) && s.today_close > closeMax) return false;
-          if (s.volume < volMin) return false;
-          if (s.volume > volMax) return false;
-          const absgd = Math.abs(s.gap_diff);
-          const absgr = Math.abs(s.gap_ratio);
-          if (!isNaN(gdMin) && absgd < Math.abs(gdMin)) return false;
-          if (!isNaN(gdMax) && absgd > Math.abs(gdMax)) return false;
-          if (!isNaN(grMin) && absgr < Math.abs(grMin)) return false;
-          if (!isNaN(grMax) && absgr > Math.abs(grMax)) return false;
-          return true;
-        });
+          const closes = entry.closes.map((c) => c.close);
+          const returns = [];
+          for (let i = 1; i < closes.length; i++) {
+            returns.push((closes[i] - closes[i - 1]) / closes[i - 1]);
+          }
+          const meanReturn =
+            returns.reduce((a, b) => a + b, 0) / returns.length;
+          const variance =
+            returns.reduce((a, b) => a + (b - meanReturn) ** 2, 0) /
+            returns.length;
+          const dailyStd = Math.sqrt(variance);
+          const meanPrice =
+            closes.reduce((a, b) => a + b, 0) / closes.length;
+          const periodReturn =
+            ((closes[closes.length - 1] - closes[0]) / closes[0]) * 100;
+
+          results.push({
+            market: entry.market,
+            id: entry.id,
+            name: entry.name,
+            nDays,
+            totalDays: totalForMarket,
+            dailyStd: dailyStd * 100,
+            annualStd: dailyStd * Math.sqrt(252) * 100,
+            periodReturn,
+            meanPrice,
+          });
+        }
+
+        document.getElementById("result-summary").textContent =
+          `區間 ${from} ～ ${to}，共 ${totalDates} 個交易日 · 符合條件個股 ${results.length} 檔`;
 
         currentPage = 1;
         renderTable();
       }
 
-      function clearFilters() {
-        [
-          "close-min",
-          "close-max",
-          "vol-min",
-          "vol-max",
-          "gdiff-min",
-          "gdiff-max",
-          "gratio-min",
-          "gratio-max",
-        ].forEach((id) => (document.getElementById(id).value = ""));
-        applyFilters();
-      }
-
       // ── render ────────────────────────────────────────────────────────────
-      function updateTypeTabs() {
-        const isJump = currentType === "gap_jump";
-
-        document.getElementById("tab-jump").className =
-          "type-tab" + (isJump ? " active-jump" : "");
-        document.getElementById("tab-drop").className =
-          "type-tab" + (!isJump ? " active-drop" : "");
-
-        document.getElementById("th-prev").textContent = isJump
-          ? "前日高點"
-          : "前日低點";
-        document.getElementById("th-prev").onclick = () =>
-          setSort(isJump ? "prev_high" : "prev_low");
-
-        const badge = isJump ? "badge-up" : "badge-down";
-        const countEl = document.getElementById("result-count");
-        countEl.className = `badge ${badge}`;
-
-        document.getElementById("result-title").innerHTML =
-          (isJump ? "⬆ 跳空上漲" : "⬇ 跳空下跌") +
-          ` <span id="result-count" class="badge ${badge}">0</span>`;
-      }
-
       function setSort(col) {
         sortDirection =
           sortColumn === col
             ? sortDirection === "asc"
               ? "desc"
               : "asc"
-            : col === "id" || col === "name"
+            : col === "id" || col === "name" || col === "market"
               ? "asc"
-              : "desc";
+              : "asc";
         sortColumn = col;
         renderTable();
       }
@@ -983,20 +1060,11 @@
         tbody.innerHTML = "";
 
         const countEl = document.getElementById("result-count");
-        if (countEl) countEl.textContent = filteredData.length;
+        if (countEl) countEl.textContent = results.length;
 
-        const isJump = currentType === "gap_jump";
-        const prevKey = isJump ? "prev_high" : "prev_low";
-        const priceClass = isJump ? "price-up" : "price-down";
-
-        // Sort
-        const sorted = [...filteredData].sort((a, b) => {
-          let va =
-            a[sortColumn] ??
-            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
-          let vb =
-            b[sortColumn] ??
-            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+        const sorted = [...results].sort((a, b) => {
+          let va = a[sortColumn];
+          let vb = b[sortColumn];
           if (typeof va === "string")
             return sortDirection === "asc"
               ? va.localeCompare(vb)
@@ -1004,33 +1072,22 @@
           return sortDirection === "asc" ? va - vb : vb - va;
         });
 
-        // Sort indicators
         [
           "id",
           "name",
-          "today_close",
-          "diff",
-          "ratio",
-          "gap_diff",
-          "gap_ratio",
-          "volume",
+          "market",
+          "nDays",
+          "dailyStd",
+          "annualStd",
+          "periodReturn",
+          "meanPrice",
         ].forEach((col) => {
           const el = document.getElementById("sort-" + col);
           if (el)
             el.textContent =
               col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
         });
-        // prev column indicator
-        const prevSortEl = document.getElementById("sort-prev");
-        if (prevSortEl)
-          prevSortEl.textContent =
-            sortColumn === prevKey
-              ? sortDirection === "asc"
-                ? " ↑"
-                : " ↓"
-              : "";
 
-        // Pagination
         const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
         if (currentPage > maxPage) currentPage = maxPage;
         document.getElementById("page-info").textContent =
@@ -1043,34 +1100,40 @@
           currentPage * rowsPerPage,
         );
 
+        const colspan = currentMarket === "all" ? 8 : 7;
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="${colspan}" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票，請調整區間或篩選條件</td></tr>`;
           return;
         }
 
-        const diffSign = isJump ? 1 : -1;
+        const startRank = (currentPage - 1) * rowsPerPage;
 
-        pageData.forEach((s) => {
+        pageData.forEach((s, idx) => {
           const tr = document.createElement("tr");
-          const volK = (s.volume / 1000).toLocaleString(undefined, {
-            maximumFractionDigits: 0,
-          });
-          const prevVal = s[prevKey] ?? "-";
-          const diffPrefix = s.diff > 0 ? "+" : "";
-          const gapPrefix = s.gap_diff > 0 ? "+" : "";
+          const marketBadge =
+            currentMarket === "all"
+              ? `<td><span class="badge badge-market-${s.market}">${s.market === "twse" ? "上市" : "上櫃"}</span></td>`
+              : "";
+          const retClass =
+            s.periodReturn > 0
+              ? "price-up"
+              : s.periodReturn < 0
+                ? "price-down"
+                : "";
+          const retPrefix = s.periodReturn > 0 ? "+" : "";
 
           tr.innerHTML = `
+            <td class="rank-cell">${startRank + idx + 1}</td>
             <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
             <td style="font-weight:600;">
               <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
             </td>
-            <td class="${priceClass}" style="font-size:1rem;">${s.today_close}</td>
-            <td style="color:var(--text-muted);">${prevVal}</td>
-            <td class="${priceClass}">${diffPrefix}${s.diff?.toFixed(2) ?? "-"}</td>
-            <td class="${priceClass}">${diffPrefix}${s.ratio?.toFixed(2) ?? "-"}%</td>
-            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_diff?.toFixed(2) ?? "-"}</td>
-            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_ratio?.toFixed(2) ?? "-"}%</td>
-            <td style="color:var(--text-muted);">${volK} 張</td>
+            ${marketBadge}
+            <td style="color:var(--text-muted);">${s.nDays} / ${s.totalDays}</td>
+            <td style="font-weight:700;">${s.dailyStd.toFixed(3)}%</td>
+            <td>${s.annualStd.toFixed(2)}%</td>
+            <td class="${retClass}">${retPrefix}${s.periodReturn.toFixed(2)}%</td>
+            <td>${s.meanPrice.toFixed(2)}</td>
           `;
           tbody.appendChild(tr);
         });
