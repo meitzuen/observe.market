@@ -1,0 +1,172 @@
+[
+    {
+        "publish_date": "2026-07-20",
+        "measure": "第二次處置",
+        "id": "2492",
+        "name": "華新科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-21",
+        "to": "2026-08-03"
+    },
+    {
+        "publish_date": "2026-07-21",
+        "measure": "第二次處置",
+        "id": "2483",
+        "name": "百容",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-22",
+        "to": "2026-08-04"
+    },
+    {
+        "publish_date": "2026-07-21",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-22",
+        "to": "2026-08-04"
+    },
+    {
+        "publish_date": "2026-07-22",
+        "measure": "第一次處置",
+        "id": "8028",
+        "name": "昇陽半導體",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-07-23",
+        "to": "2026-08-05"
+    },
+    {
+        "publish_date": "2026-07-23",
+        "measure": "第二次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 2,
+        "condition": "最近三十個營業日已有十二次",
+        "from": "2026-07-24",
+        "to": "2026-08-06"
+    },
+    {
+        "publish_date": "2026-07-24",
+        "measure": "第二次處置",
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-27",
+        "to": "2026-08-07"
+    },
+    {
+        "publish_date": "2026-07-24",
+        "measure": "第二次處置",
+        "id": "8033",
+        "name": "雷虎",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-07-27",
+        "to": "2026-08-07"
+    },
+    {
+        "publish_date": "2026-07-27",
+        "measure": "第一次處置",
+        "id": "6969",
+        "name": "成信實業*-創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-28",
+        "to": "2026-08-10"
+    },
+    {
+        "publish_date": "2026-07-29",
+        "measure": "第二次處置",
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-30",
+        "to": "2026-08-12"
+    },
+    {
+        "publish_date": "2026-07-30",
+        "measure": "第二次處置",
+        "id": "1515",
+        "name": "力山",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-31",
+        "to": "2026-08-13"
+    },
+    {
+        "publish_date": "2026-07-30",
+        "measure": "第二次處置",
+        "id": "3055",
+        "name": "蔚華科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-31",
+        "to": "2026-08-13"
+    },
+    {
+        "publish_date": "2026-07-30",
+        "measure": "第二次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-07-31",
+        "to": "2026-08-13"
+    },
+    {
+        "publish_date": "2026-07-30",
+        "measure": "第二次處置",
+        "id": "3532",
+        "name": "台勝科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-07-31",
+        "to": "2026-08-13"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "4169",
+        "name": "泰宗",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "6531",
+        "name": "愛普*",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "8046",
+        "name": "南電",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-08-03",
+        "to": "2026-08-18"
+    }
+]

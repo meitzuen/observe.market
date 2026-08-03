@@ -1,5 +1,45 @@
 [
     {
+        "publish_date": "2026-07-31",
+        "measure": "第二次處置",
+        "id": "3026",
+        "name": "禾伸堂",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "4169",
+        "name": "泰宗",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "6531",
+        "name": "愛普*",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-03",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-07-31",
+        "measure": "第一次處置",
+        "id": "8046",
+        "name": "南電",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-08-03",
+        "to": "2026-08-18"
+    },
+    {
         "publish_date": "2026-07-30",
         "measure": "第二次處置",
         "id": "1515",
