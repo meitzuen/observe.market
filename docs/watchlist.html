@@ -131,7 +131,7 @@
         }
       }
 
-            .nav-bar {
+      .nav-bar {
         display: flex;
         align-items: center;
         gap: 0.25rem;
@@ -144,7 +144,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.5rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -175,7 +177,7 @@
       }
 
       .nav-dropdown-btn::after {
-        content: '';
+        content: "";
         display: inline-block;
         border: solid currentColor;
         border-width: 0 1.5px 1.5px 0;
@@ -211,7 +213,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.375rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -284,7 +288,9 @@
         font-weight: 500;
         cursor: pointer;
         font-family: inherit;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         position: relative;
         bottom: -2px;
       }
@@ -308,15 +314,23 @@
         padding: 0.35rem 0.8rem;
       }
 
-      .wl-tab[draggable="true"] { cursor: grab; }
-      .wl-tab.dragging { opacity: 0.4; }
+      .wl-tab[draggable="true"] {
+        cursor: grab;
+      }
+      .wl-tab.dragging {
+        opacity: 0.4;
+      }
       .wl-tab.drag-over {
         border-color: var(--primary);
         background: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
       }
 
-      #watchlist-tbody tr[draggable="true"] { cursor: grab; }
-      #watchlist-tbody tr.dragging td { opacity: 0.35; }
+      #watchlist-tbody tr[draggable="true"] {
+        cursor: grab;
+      }
+      #watchlist-tbody tr.dragging td {
+        opacity: 0.35;
+      }
       #watchlist-tbody tr.drag-over td {
         background: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
         box-shadow: inset 0 2px 0 var(--primary);
@@ -356,7 +370,7 @@
         border-radius: 12px;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1rem;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
       }
 
       .add-panel h2 {
@@ -430,7 +444,9 @@
         border-radius: 999px;
         background: var(--border);
         border: 1px solid var(--border);
-        transition: background 0.2s, border-color 0.2s;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
         flex-shrink: 0;
       }
       .toggle-input:checked + .toggle-track {
@@ -445,8 +461,10 @@
         height: 0.85rem;
         border-radius: 50%;
         background: #94a3b8;
-        transition: transform 0.2s, background 0.2s;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        transition:
+          transform 0.2s,
+          background 0.2s;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
       }
       .toggle-input:checked + .toggle-track .toggle-thumb {
         transform: translateX(1rem);
@@ -468,7 +486,9 @@
         font-family: inherit;
         font-weight: 600;
         cursor: pointer;
-        transition: background 0.15s, opacity 0.15s;
+        transition:
+          background 0.15s,
+          opacity 0.15s;
       }
 
       .btn-primary {
@@ -511,7 +531,7 @@
         border-radius: 12px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
       }
 
       table {
@@ -544,8 +564,14 @@
         background: #2a4d7f;
       }
 
-      th.sort-asc::after  { content: ' ▲'; font-size: 0.65rem; }
-      th.sort-desc::after { content: ' ▼'; font-size: 0.65rem; }
+      th.sort-asc::after {
+        content: " ▲";
+        font-size: 0.65rem;
+      }
+      th.sort-desc::after {
+        content: " ▼";
+        font-size: 0.65rem;
+      }
 
       td {
         padding: 0.7rem 1rem;
@@ -619,21 +645,33 @@
         text-decoration: underline dotted;
         text-underline-offset: 2px;
       }
-      .sector-badge.truncated:hover { opacity: 0.8; }
+      .sector-badge.truncated:hover {
+        opacity: 0.8;
+      }
 
       @keyframes note-overlay-in {
-        from { opacity: 0; }
-        to   { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
       @keyframes note-modal-in {
-        from { opacity: 0; transform: scale(0.93) translateY(14px); }
-        to   { opacity: 1; transform: scale(1) translateY(0); }
+        from {
+          opacity: 0;
+          transform: scale(0.93) translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
       }
 
       .note-modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.52);
+        background: rgba(0, 0, 0, 0.52);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
         display: flex;
@@ -649,10 +687,12 @@
         overflow: hidden;
         max-width: min(500px, 92vw);
         width: 100%;
-        box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.08);
+        box-shadow:
+          0 24px 64px rgba(0, 0, 0, 0.22),
+          0 4px 16px rgba(0, 0, 0, 0.08);
       }
       .note-modal-box.is-open {
-        animation: note-modal-in 0.24s cubic-bezier(.22,.68,0,1.2) both;
+        animation: note-modal-in 0.24s cubic-bezier(0.22, 0.68, 0, 1.2) both;
       }
       .note-modal-accent {
         height: 5px;
@@ -684,7 +724,9 @@
         padding: 0.25rem 0.4rem;
         border-radius: 5px;
         margin: -0.25rem -0.4rem;
-        transition: color 0.15s, background 0.15s;
+        transition:
+          color 0.15s,
+          background 0.15s;
         font-family: inherit;
       }
       .note-modal-close-btn:hover {
@@ -707,9 +749,17 @@
         color: var(--text);
       }
 
-      .up { color: var(--up); font-weight: 700; }
-      .down { color: var(--down); font-weight: 700; }
-      .flat { color: var(--text-muted); }
+      .up {
+        color: var(--up);
+        font-weight: 700;
+      }
+      .down {
+        color: var(--down);
+        font-weight: 700;
+      }
+      .flat {
+        color: var(--text-muted);
+      }
 
       .text-muted {
         color: var(--text-muted);
@@ -809,30 +859,94 @@
       }
 
       /* Sector color palette */
-      .sc-0  { background:#dbeafe; color:#1d4ed8; }
-      .sc-1  { background:#dcfce7; color:#15803d; }
-      .sc-2  { background:#fef3c7; color:#92400e; }
-      .sc-3  { background:#fce7f3; color:#be185d; }
-      .sc-4  { background:#ede9fe; color:#6d28d9; }
-      .sc-5  { background:#ffedd5; color:#c2410c; }
-      .sc-6  { background:#cffafe; color:#0e7490; }
-      .sc-7  { background:#f0fdf4; color:#166534; }
-      .sc-8  { background:#fdf2f8; color:#9d174d; }
-      .sc-9  { background:#fef9c3; color:#854d0e; }
+      .sc-0 {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .sc-1 {
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .sc-2 {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .sc-3 {
+        background: #fce7f3;
+        color: #be185d;
+      }
+      .sc-4 {
+        background: #ede9fe;
+        color: #6d28d9;
+      }
+      .sc-5 {
+        background: #ffedd5;
+        color: #c2410c;
+      }
+      .sc-6 {
+        background: #cffafe;
+        color: #0e7490;
+      }
+      .sc-7 {
+        background: #f0fdf4;
+        color: #166534;
+      }
+      .sc-8 {
+        background: #fdf2f8;
+        color: #9d174d;
+      }
+      .sc-9 {
+        background: #fef9c3;
+        color: #854d0e;
+      }
 
-      [data-theme="dark"] .sc-0  { background:#1e3a5f; color:#93c5fd; }
-      [data-theme="dark"] .sc-1  { background:#14532d; color:#86efac; }
-      [data-theme="dark"] .sc-2  { background:#451a03; color:#fcd34d; }
-      [data-theme="dark"] .sc-3  { background:#500724; color:#f9a8d4; }
-      [data-theme="dark"] .sc-4  { background:#2e1065; color:#c4b5fd; }
-      [data-theme="dark"] .sc-5  { background:#431407; color:#fed7aa; }
-      [data-theme="dark"] .sc-6  { background:#083344; color:#67e8f9; }
-      [data-theme="dark"] .sc-7  { background:#052e16; color:#bbf7d0; }
-      [data-theme="dark"] .sc-8  { background:#4a044e; color:#f5d0fe; }
-      [data-theme="dark"] .sc-9  { background:#422006; color:#fef08a; }
+      [data-theme="dark"] .sc-0 {
+        background: #1e3a5f;
+        color: #93c5fd;
+      }
+      [data-theme="dark"] .sc-1 {
+        background: #14532d;
+        color: #86efac;
+      }
+      [data-theme="dark"] .sc-2 {
+        background: #451a03;
+        color: #fcd34d;
+      }
+      [data-theme="dark"] .sc-3 {
+        background: #500724;
+        color: #f9a8d4;
+      }
+      [data-theme="dark"] .sc-4 {
+        background: #2e1065;
+        color: #c4b5fd;
+      }
+      [data-theme="dark"] .sc-5 {
+        background: #431407;
+        color: #fed7aa;
+      }
+      [data-theme="dark"] .sc-6 {
+        background: #083344;
+        color: #67e8f9;
+      }
+      [data-theme="dark"] .sc-7 {
+        background: #052e16;
+        color: #bbf7d0;
+      }
+      [data-theme="dark"] .sc-8 {
+        background: #4a044e;
+        color: #f5d0fe;
+      }
+      [data-theme="dark"] .sc-9 {
+        background: #422006;
+        color: #fef08a;
+      }
 
       @media (max-width: 767px) {
-        td, th { padding: 0.6rem 0.6rem; font-size: 0.82rem; }
+        td,
+        th {
+          padding: 0.6rem 0.6rem;
+          font-size: 0.82rem;
+        }
       }
     </style>
   </head>
@@ -849,7 +963,9 @@
             document.getElementById('header-emoji').style.display = 'inline';
           "
         />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem">📈</span>
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >📈</span
+        >
         <h1><span class="title-text">Market Observer</span></h1>
         <nav class="nav-bar">
           <div class="nav-dropdown">
@@ -872,8 +988,12 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">權證</button>
             <div class="nav-dropdown-menu">
-              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
-              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
             </div>
           </div>
           <a href="watchlist.html" class="nav-link active">精選類股</a>
@@ -894,123 +1014,316 @@
       <div class="tabs-row" id="tabs-container"></div>
 
       <!-- Pending order bar (admin only, shown after drag) -->
-      <div id="order-pending-bar" style="display:none; align-items:center; gap:0.75rem; padding:0.5rem 0.75rem; background:color-mix(in srgb, var(--primary) 8%, var(--card-bg)); border:1px solid color-mix(in srgb, var(--primary) 30%, var(--border)); border-top:none; font-size:0.83rem; color:var(--text-muted);">
+      <div
+        id="order-pending-bar"
+        style="
+          display: none;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.5rem 0.75rem;
+          background: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
+          border: 1px solid
+            color-mix(in srgb, var(--primary) 30%, var(--border));
+          border-top: none;
+          font-size: 0.83rem;
+          color: var(--text-muted);
+        "
+      >
         <span>排序已變更，尚未儲存</span>
-        <button class="btn btn-primary" onclick="saveWatchlistOrder()" style="padding:0.3rem 0.85rem; font-size:0.82rem;" id="save-order-btn">更新排序</button>
-        <button class="btn btn-secondary" onclick="cancelOrderChange()" style="padding:0.3rem 0.7rem; font-size:0.82rem;">取消</button>
+        <button
+          class="btn btn-primary"
+          onclick="saveWatchlistOrder()"
+          style="padding: 0.3rem 0.85rem; font-size: 0.82rem"
+          id="save-order-btn"
+        >
+          更新排序
+        </button>
+        <button
+          class="btn btn-secondary"
+          onclick="cancelOrderChange()"
+          style="padding: 0.3rem 0.7rem; font-size: 0.82rem"
+        >
+          取消
+        </button>
       </div>
 
       <!-- Create new watchlist panel -->
       <div class="create-panel" id="create-panel">
-        <input type="text" id="new-list-name" placeholder="新列表名稱"
-          style="padding:0.45rem 0.75rem; border:1px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--bg); outline:none; min-width:180px;" />
-        <button class="btn btn-primary" onclick="createWatchlist()" style="padding:0.45rem 1rem;">建立</button>
-        <button class="btn btn-secondary" onclick="toggleCreatePanel()" style="padding:0.45rem 0.85rem;">取消</button>
-        <div id="create-error" class="error-msg" style="display:none; margin-top:0;"></div>
+        <input
+          type="text"
+          id="new-list-name"
+          placeholder="新列表名稱"
+          style="
+            padding: 0.45rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--bg);
+            outline: none;
+            min-width: 180px;
+          "
+        />
+        <button
+          class="btn btn-primary"
+          onclick="createWatchlist()"
+          style="padding: 0.45rem 1rem"
+        >
+          建立
+        </button>
+        <button
+          class="btn btn-secondary"
+          onclick="toggleCreatePanel()"
+          style="padding: 0.45rem 0.85rem"
+        >
+          取消
+        </button>
+        <div
+          id="create-error"
+          class="error-msg"
+          style="display: none; margin-top: 0"
+        ></div>
       </div>
 
       <!-- No watchlists state -->
-      <div id="no-list-state" style="display:none; text-align:center; padding:4rem 1rem; color:var(--text-muted);">
-        <div style="font-size:2.5rem; margin-bottom:0.75rem;">📋</div>
-        <div style="font-weight:600; margin-bottom:0.4rem; color:var(--text);">尚未建立精選類股列表</div>
-        <div style="font-size:0.85rem;">點擊上方「＋」建立第一個列表</div>
+      <div
+        id="no-list-state"
+        style="
+          display: none;
+          text-align: center;
+          padding: 4rem 1rem;
+          color: var(--text-muted);
+        "
+      >
+        <div style="font-size: 2.5rem; margin-bottom: 0.75rem">📋</div>
+        <div
+          style="font-weight: 600; margin-bottom: 0.4rem; color: var(--text)"
+        >
+          尚未建立精選類股列表
+        </div>
+        <div style="font-size: 0.85rem">點擊上方「＋」建立第一個列表</div>
       </div>
 
       <!-- Active watchlist section -->
-      <div id="watchlist-section" style="display:none;">
-
+      <div id="watchlist-section" style="display: none">
         <!-- Watchlist header -->
         <div class="watchlist-header">
-          <span class="watchlist-title">📋 <span id="active-list-name"></span></span>
-          <div id="header-manage-btns" style="display:none; gap:0.5rem;">
-            <button class="btn btn-primary" onclick="toggleAddPanel()" id="toggle-add-btn" style="padding:0.35rem 0.85rem; font-size:0.82rem;">＋ 新增個股</button>
-            <button class="btn btn-danger" onclick="deleteWatchlist()" style="padding:0.35rem 0.85rem; font-size:0.82rem;">刪除此列表</button>
+          <span class="watchlist-title"
+            >📋 <span id="active-list-name"></span
+          ></span>
+          <div id="header-manage-btns" style="display: none; gap: 0.5rem">
+            <button
+              class="btn btn-primary"
+              onclick="toggleAddPanel()"
+              id="toggle-add-btn"
+              style="padding: 0.35rem 0.85rem; font-size: 0.82rem"
+            >
+              ＋ 新增個股
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="deleteWatchlist()"
+              style="padding: 0.35rem 0.85rem; font-size: 0.82rem"
+            >
+              刪除此列表
+            </button>
           </div>
         </div>
 
         <!-- Add stock panel -->
-        <div class="add-panel" id="add-panel" style="display:none;">
+        <div class="add-panel" id="add-panel" style="display: none">
           <h2>新增個股</h2>
           <div class="add-row">
             <div class="field">
               <label for="stock-id">股票代號</label>
-              <input type="text" id="stock-id" placeholder="ex: 2330" style="width:100px;" />
+              <input
+                type="text"
+                id="stock-id"
+                placeholder="ex: 2330"
+                style="width: 100px"
+              />
             </div>
-            <div class="field" style="flex:1; min-width:160px; max-width:420px;">
-              <label for="stock-note">標籤 <span style="color:#ef4444;">*</span></label>
-              <input type="text" id="stock-note" placeholder="必填" style="width:100%;" />
+            <div
+              class="field"
+              style="flex: 1; min-width: 160px; max-width: 420px"
+            >
+              <label for="stock-note"
+                >標籤 <span style="color: #ef4444">*</span></label
+              >
+              <input
+                type="text"
+                id="stock-note"
+                placeholder="必填"
+                style="width: 100%"
+              />
             </div>
-            <div class="field" style="margin-left:2rem;">
+            <div class="field" style="margin-left: 2rem">
               <label for="stock-is-top">產業龍頭</label>
-              <div style="border:1px solid var(--border); border-radius:7px; background:var(--bg); padding:0.5rem 0.75rem; display:flex; align-items:center; height:34px; box-sizing:border-box;">
+              <div
+                style="
+                  border: 1px solid var(--border);
+                  border-radius: 7px;
+                  background: var(--bg);
+                  padding: 0.5rem 0.75rem;
+                  display: flex;
+                  align-items: center;
+                  height: 34px;
+                  box-sizing: border-box;
+                "
+              >
                 <label class="toggle-wrap" for="stock-is-top">
-                  <input type="checkbox" id="stock-is-top" class="toggle-input" />
-                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                  <input
+                    type="checkbox"
+                    id="stock-is-top"
+                    class="toggle-input"
+                  />
+                  <span class="toggle-track"
+                    ><span class="toggle-thumb"></span
+                  ></span>
                 </label>
               </div>
             </div>
             <div class="field">
-              <label style="visibility:hidden; font-size:0.8rem; line-height:1.2;">&nbsp;</label>
+              <label
+                style="visibility: hidden; font-size: 0.8rem; line-height: 1.2"
+                >&nbsp;</label
+              >
               <button class="btn btn-primary" id="add-btn">新增</button>
             </div>
           </div>
-          <div id="add-error" class="error-msg" style="display:none;"></div>
-          <div id="add-result" style="display:none; margin-top:0.5rem; font-size:0.85rem;"></div>
+          <div id="add-error" class="error-msg" style="display: none"></div>
+          <div
+            id="add-result"
+            style="display: none; margin-top: 0.5rem; font-size: 0.85rem"
+          ></div>
         </div>
 
         <!-- Data date + date picker -->
         <div class="data-date-row">
           <span class="data-date" id="data-date"></span>
-          <select id="date-picker" class="date-picker-select" title="選擇資料日期" style="display:none;"></select>
+          <select
+            id="date-picker"
+            class="date-picker-select"
+            title="選擇資料日期"
+            style="display: none"
+          ></select>
         </div>
 
         <!-- Pending items order bar (admin only, shown after row drag) -->
-        <div id="items-order-pending-bar" style="display:none; align-items:center; gap:0.75rem; padding:0.45rem 0.75rem; margin-bottom:0.5rem; background:color-mix(in srgb, var(--primary) 8%, var(--card-bg)); border:1px solid color-mix(in srgb, var(--primary) 30%, var(--border)); border-radius:8px; font-size:0.83rem; color:var(--text-muted);">
+        <div
+          id="items-order-pending-bar"
+          style="
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.45rem 0.75rem;
+            margin-bottom: 0.5rem;
+            background: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
+            border: 1px solid
+              color-mix(in srgb, var(--primary) 30%, var(--border));
+            border-radius: 8px;
+            font-size: 0.83rem;
+            color: var(--text-muted);
+          "
+        >
           <span>列表排序已變更，尚未儲存</span>
-          <button class="btn btn-primary" onclick="saveItemsOrder()" style="padding:0.3rem 0.85rem; font-size:0.82rem;" id="save-items-order-btn">更新列表排序</button>
-          <button class="btn btn-secondary" onclick="cancelItemsOrderChange()" style="padding:0.3rem 0.7rem; font-size:0.82rem;">取消</button>
+          <button
+            class="btn btn-primary"
+            onclick="saveItemsOrder()"
+            style="padding: 0.3rem 0.85rem; font-size: 0.82rem"
+            id="save-items-order-btn"
+          >
+            更新列表排序
+          </button>
+          <button
+            class="btn btn-secondary"
+            onclick="cancelItemsOrderChange()"
+            style="padding: 0.3rem 0.7rem; font-size: 0.82rem"
+          >
+            取消
+          </button>
         </div>
 
         <!-- Table -->
         <div class="table-wrapper" id="table-wrapper">
           <div class="loading" id="loading-msg">載入中…</div>
-          <table id="watchlist-table" style="display:none;">
+          <table id="watchlist-table" style="display: none">
             <thead>
               <tr>
-                <th data-col="id"         onclick="setSort('id')">代號</th>
-                <th data-col="name"       onclick="setSort('name')">名稱</th>
-                <th data-col="close"      onclick="setSort('close')">收盤</th>
-                <th data-col="change"     onclick="setSort('change')">漲跌</th>
-                <th data-col="change_pct" onclick="setSort('change_pct')">漲跌%</th>
-                <th class="hide-mobile" data-col="open"   onclick="setSort('open')">開盤</th>
-                <th class="hide-mobile" data-col="high"   onclick="setSort('high')">最高</th>
-                <th class="hide-mobile" data-col="low"    onclick="setSort('low')">最低</th>
-                <th class="hide-mobile" data-col="volume" onclick="setSort('volume')">成交量</th>
+                <th data-col="id" onclick="setSort('id')">代號</th>
+                <th data-col="name" onclick="setSort('name')">名稱</th>
+                <th data-col="close" onclick="setSort('close')">收盤</th>
+                <th data-col="change" onclick="setSort('change')">漲跌</th>
+                <th data-col="change_pct" onclick="setSort('change_pct')">
+                  漲跌%
+                </th>
+                <th
+                  class="hide-mobile"
+                  data-col="open"
+                  onclick="setSort('open')"
+                >
+                  開盤
+                </th>
+                <th
+                  class="hide-mobile"
+                  data-col="high"
+                  onclick="setSort('high')"
+                >
+                  最高
+                </th>
+                <th class="hide-mobile" data-col="low" onclick="setSort('low')">
+                  最低
+                </th>
+                <th
+                  class="hide-mobile"
+                  data-col="volume"
+                  onclick="setSort('volume')"
+                >
+                  成交量
+                </th>
                 <th data-col="note" onclick="setSort('note')">標籤</th>
                 <th></th>
               </tr>
             </thead>
             <tbody id="watchlist-tbody"></tbody>
           </table>
-          <div id="empty-state" class="empty-state" style="display:none;">
+          <div id="empty-state" class="empty-state" style="display: none">
             <div class="icon">⭐</div>
             <div>此列表尚無個股</div>
-            <div style="font-size:0.85rem; margin-top:0.4rem;">在上方輸入股票代號開始追蹤</div>
+            <div style="font-size: 0.85rem; margin-top: 0.4rem">
+              在上方輸入股票代號開始追蹤
+            </div>
           </div>
         </div>
       </div>
     </main>
 
     <!-- Note full-text modal -->
-    <div id="note-modal" class="note-modal-overlay" style="display:none;" onclick="if(event.target===this)closeNoteModal()">
+    <div
+      id="note-modal"
+      class="note-modal-overlay"
+      style="display: none"
+      onclick="if (event.target === this) closeNoteModal();"
+    >
       <div class="note-modal-box">
         <div id="note-modal-accent" class="note-modal-accent"></div>
         <div class="note-modal-inner">
           <div class="note-modal-header">
             <span class="note-modal-title">標籤</span>
-            <button class="note-modal-close-btn" onclick="closeNoteModal()" aria-label="關閉">✕</button>
+            <button
+              class="note-modal-close-btn"
+              onclick="closeNoteModal()"
+              aria-label="關閉"
+            >
+              ✕
+            </button>
           </div>
-          <div id="note-modal-stock-wrap" class="note-modal-stock-wrap" style="display:none;">
+          <div
+            id="note-modal-stock-wrap"
+            class="note-modal-stock-wrap"
+            style="display: none"
+          >
             <span id="note-modal-stock-badge" class="sector-badge"></span>
           </div>
           <div class="note-modal-content">
@@ -1022,18 +1335,21 @@
 
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
-      const isManage = new URLSearchParams(location.search).get("admin") === "True";
+      const isManage =
+        new URLSearchParams(location.search).get("admin") === "True";
 
       // ── Theme ───────────────────────────────────────────────────────────────
       const savedTheme = localStorage.getItem("theme") || "light";
       document.documentElement.setAttribute("data-theme", savedTheme);
-      document.getElementById("theme-toggle").textContent = savedTheme === "dark" ? "☀️" : "🌙";
+      document.getElementById("theme-toggle").textContent =
+        savedTheme === "dark" ? "☀️" : "🌙";
       document.getElementById("theme-toggle").addEventListener("click", () => {
         const cur = document.documentElement.getAttribute("data-theme");
         const next = cur === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
-        document.getElementById("theme-toggle").textContent = next === "dark" ? "☀️" : "🌙";
+        document.getElementById("theme-toggle").textContent =
+          next === "dark" ? "☀️" : "🌙";
       });
 
       // ── Config ───────────────────────────────────────────────────────────────
@@ -1062,7 +1378,9 @@
 
       // ── API helpers ──────────────────────────────────────────────────────────
       async function apiGetWatchlists() {
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist?sort_by=order&order=asc`);
+        const res = await fetch(
+          `${API_BASE}/api/mktobs/watchlist?sort_by=order&order=asc`,
+        );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
@@ -1071,7 +1389,11 @@
         const res = await fetch(`${API_BASE}/api/mktobs/watchlist`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, order: allWatchlists.length, items: [] }),
+          body: JSON.stringify({
+            name,
+            order: allWatchlists.length,
+            items: [],
+          }),
         });
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
@@ -1081,18 +1403,24 @@
       }
 
       async function apiDeleteWatchlist(name) {
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(name)}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(name)}`,
+          {
+            method: "DELETE",
+          },
+        );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
 
       async function apiAddItem(listName, stock_id, note, is_top = false) {
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ stock_id, note: note || "", is_top }),
-        });
+        const res = await fetch(
+          `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`,
+          {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ stock_id, note: note || "", is_top }),
+          },
+        );
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
           throw new Error(err.detail || `HTTP ${res.status}`);
@@ -1101,12 +1429,15 @@
       }
 
       async function apiUpdateItems(listName, items) {
-        const wl = allWatchlists.find(w => w.name === listName);
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items, order: wl?.order ?? 0 }),
-        });
+        const wl = allWatchlists.find((w) => w.name === listName);
+        const res = await fetch(
+          `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items, order: wl?.order ?? 0 }),
+          },
+        );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       }
@@ -1114,7 +1445,7 @@
       async function apiRemoveItem(listName, stock_id) {
         const res = await fetch(
           `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items/${encodeURIComponent(stock_id)}`,
-          { method: "DELETE" }
+          { method: "DELETE" },
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
       }
@@ -1138,9 +1469,13 @@
           if (!res.ok) return {};
           const arr = await res.json();
           const map = {};
-          arr.forEach(s => { map[s.id] = s; });
+          arr.forEach((s) => {
+            map[s.id] = s;
+          });
           return map;
-        } catch { return {}; }
+        } catch {
+          return {};
+        }
       }
 
       async function loadAllPrices(selectedDate) {
@@ -1150,12 +1485,14 @@
         // Build union of all available dates across markets, newest first
         const twseDates = manifest.twse?.daily_price || [];
         const tpexDates = manifest.tpex?.daily_price || [];
-        availableDates = [...new Set([...twseDates, ...tpexDates])].sort().reverse();
+        availableDates = [...new Set([...twseDates, ...tpexDates])]
+          .sort()
+          .reverse();
 
         // Populate picker on first load
         const picker = document.getElementById("date-picker");
         if (picker.options.length === 0) {
-          availableDates.forEach(d => {
+          availableDates.forEach((d) => {
             const opt = document.createElement("option");
             opt.value = d;
             opt.textContent = d;
@@ -1170,14 +1507,17 @@
         for (const m of ["twse", "tpex"]) {
           const mDates = manifest[m]?.daily_price || [];
           // Use requested date if available for this market, else its latest
-          const mDate = mDates.includes(date) ? date : (mDates[0] || null);
+          const mDate = mDates.includes(date) ? date : mDates[0] || null;
           latestDates[m] = mDate;
           priceData[m] = mDate ? await fetchPrices(m, mDate) : {};
         }
 
-        const usedDates = [...new Set(Object.values(latestDates).filter(Boolean))];
-        document.getElementById("data-date").textContent =
-          usedDates.length ? `資料日期：${usedDates.join(" / ")}` : "";
+        const usedDates = [
+          ...new Set(Object.values(latestDates).filter(Boolean)),
+        ];
+        document.getElementById("data-date").textContent = usedDates.length
+          ? `資料日期：${usedDates.join(" / ")}`
+          : "";
       }
 
       function findStockData(id) {
@@ -1200,17 +1540,28 @@
       function getSortValue(item, col) {
         const stock = findStockData(item.stock_id) || {};
         switch (col) {
-          case 'id':         return item.stock_id;
-          case 'name':       return stock.name || item.stock_id;
-          case 'close':      return stock.close ?? null;
-          case 'change':     return stock.change ?? null;
-          case 'change_pct': return stock.change_percent ?? null;
-          case 'open':       return stock.open ?? null;
-          case 'high':       return stock.high ?? null;
-          case 'low':        return stock.low ?? null;
-          case 'volume':     return stock.volume ?? null;
-          case 'note':       return item.note || '';
-          default:           return null;
+          case "id":
+            return item.stock_id;
+          case "name":
+            return stock.name || item.stock_id;
+          case "close":
+            return stock.close ?? null;
+          case "change":
+            return stock.change ?? null;
+          case "change_pct":
+            return stock.change_percent ?? null;
+          case "open":
+            return stock.open ?? null;
+          case "high":
+            return stock.high ?? null;
+          case "low":
+            return stock.low ?? null;
+          case "volume":
+            return stock.volume ?? null;
+          case "note":
+            return item.note || "";
+          default:
+            return null;
         }
       }
 
@@ -1221,10 +1572,10 @@
           sortCol = col;
           sortDir = 1;
         }
-        document.querySelectorAll('th[data-col]').forEach(th => {
-          th.classList.remove('sort-asc', 'sort-desc');
+        document.querySelectorAll("th[data-col]").forEach((th) => {
+          th.classList.remove("sort-asc", "sort-desc");
           if (th.dataset.col === col) {
-            th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+            th.classList.add(sortDir === 1 ? "sort-asc" : "sort-desc");
           }
         });
         renderWatchlist();
@@ -1236,22 +1587,24 @@
       let savedItemsOrder = [];
 
       function showItemsOrderBar() {
-        document.getElementById("items-order-pending-bar").style.display = "flex";
+        document.getElementById("items-order-pending-bar").style.display =
+          "flex";
       }
 
       function hideItemsOrderBar() {
-        document.getElementById("items-order-pending-bar").style.display = "none";
+        document.getElementById("items-order-pending-bar").style.display =
+          "none";
       }
 
       async function saveItemsOrder() {
         const btn = document.getElementById("save-items-order-btn");
         btn.disabled = true;
         btn.textContent = "儲存中…";
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
         if (!wl) return;
         try {
           await apiUpdateItems(activeListName, wl.items);
-          savedItemsOrder = wl.items.map(i => i.stock_id);
+          savedItemsOrder = wl.items.map((i) => i.stock_id);
           pendingItemsOrderChange = false;
           hideItemsOrderBar();
           btn.textContent = "更新列表排序";
@@ -1265,11 +1618,13 @@
 
       function cancelItemsOrderChange() {
         if (!pendingItemsOrderChange) return;
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
         if (!wl) return;
         const savedSet = new Set(savedItemsOrder);
-        const restored = savedItemsOrder.map(id => wl.items.find(i => i.stock_id === id)).filter(Boolean);
-        const added = wl.items.filter(i => !savedSet.has(i.stock_id));
+        const restored = savedItemsOrder
+          .map((id) => wl.items.find((i) => i.stock_id === id))
+          .filter(Boolean);
+        const added = wl.items.filter((i) => !savedSet.has(i.stock_id));
         wl.items = [...restored, ...added];
         pendingItemsOrderChange = false;
         hideItemsOrderBar();
@@ -1285,7 +1640,9 @@
       function rowDragOver(e, index) {
         e.preventDefault();
         e.dataTransfer.dropEffect = "move";
-        document.querySelectorAll("#watchlist-tbody tr").forEach(tr => tr.classList.remove("drag-over"));
+        document
+          .querySelectorAll("#watchlist-tbody tr")
+          .forEach((tr) => tr.classList.remove("drag-over"));
         e.currentTarget.classList.add("drag-over");
       }
 
@@ -1298,11 +1655,11 @@
         e.currentTarget.classList.remove("drag-over");
         if (rowDragSrcIndex === null || rowDragSrcIndex === index) return;
 
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
         if (!wl) return;
 
         if (!pendingItemsOrderChange) {
-          savedItemsOrder = wl.items.map(i => i.stock_id);
+          savedItemsOrder = wl.items.map((i) => i.stock_id);
         }
 
         const [moved] = wl.items.splice(rowDragSrcIndex, 1);
@@ -1316,7 +1673,9 @@
 
       function rowDragEnd(e) {
         e.currentTarget.classList.remove("dragging");
-        document.querySelectorAll("#watchlist-tbody tr").forEach(tr => tr.classList.remove("drag-over"));
+        document
+          .querySelectorAll("#watchlist-tbody tr")
+          .forEach((tr) => tr.classList.remove("drag-over"));
         rowDragSrcIndex = null;
       }
 
@@ -1343,11 +1702,13 @@
             order: i + 1,
           }));
           await apiUpdateWatchlistOrders(orders);
-          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
+          savedWatchlistsOrder = allWatchlists.map(
+            (wl) => wl._id?.$oid ?? wl._id,
+          );
           pendingOrderChange = false;
           hideOrderBar();
         } catch (err) {
-          console.error('排序更新失敗：', err.message);
+          console.error("排序更新失敗：", err.message);
           btn.textContent = "失敗，請重試";
         } finally {
           btn.disabled = false;
@@ -1359,7 +1720,9 @@
         if (!pendingOrderChange) return;
         // Restore saved order
         const restored = savedWatchlistsOrder
-          .map(id => allWatchlists.find(wl => (wl._id?.$oid ?? wl._id) === id))
+          .map((id) =>
+            allWatchlists.find((wl) => (wl._id?.$oid ?? wl._id) === id),
+          )
           .filter(Boolean);
         allWatchlists.splice(0, allWatchlists.length, ...restored);
         pendingOrderChange = false;
@@ -1370,28 +1733,32 @@
 
       function tabDragStart(e, index) {
         dragSrcIndex = index;
-        e.dataTransfer.effectAllowed = 'move';
-        e.currentTarget.classList.add('dragging');
+        e.dataTransfer.effectAllowed = "move";
+        e.currentTarget.classList.add("dragging");
       }
 
       function tabDragOver(e, index) {
         e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        document.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('drag-over'));
-        e.currentTarget.classList.add('drag-over');
+        e.dataTransfer.dropEffect = "move";
+        document
+          .querySelectorAll(".wl-tab")
+          .forEach((t) => t.classList.remove("drag-over"));
+        e.currentTarget.classList.add("drag-over");
       }
 
       function tabDragLeave(e) {
-        e.currentTarget.classList.remove('drag-over');
+        e.currentTarget.classList.remove("drag-over");
       }
 
       function tabDrop(e, index) {
         e.preventDefault();
-        e.currentTarget.classList.remove('drag-over');
+        e.currentTarget.classList.remove("drag-over");
         if (dragSrcIndex === null || dragSrcIndex === index) return;
 
         if (!pendingOrderChange) {
-          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
+          savedWatchlistsOrder = allWatchlists.map(
+            (wl) => wl._id?.$oid ?? wl._id,
+          );
         }
 
         const [moved] = allWatchlists.splice(dragSrcIndex, 1);
@@ -1405,8 +1772,10 @@
       }
 
       function tabDragEnd(e) {
-        e.currentTarget.classList.remove('dragging');
-        document.querySelectorAll('.wl-tab').forEach(t => t.classList.remove('drag-over'));
+        e.currentTarget.classList.remove("dragging");
+        document
+          .querySelectorAll(".wl-tab")
+          .forEach((t) => t.classList.remove("drag-over"));
         dragSrcIndex = null;
       }
 
@@ -1418,11 +1787,15 @@
             const isActive = wl.name === activeListName;
             const drag = isManage
               ? ` draggable="true" ondragstart="tabDragStart(event,${index})" ondragover="tabDragOver(event,${index})" ondragleave="tabDragLeave(event)" ondrop="tabDrop(event,${index})" ondragend="tabDragEnd(event)"`
-              : '';
+              : "";
             return `<button class="wl-tab${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name)"${drag}>${escHtml(wl.name)}</button>`;
           })
           .join("");
-        container.innerHTML = tabs + (isManage ? `<button class="wl-tab wl-tab-new" onclick="toggleCreatePanel()">＋</button>` : "");
+        container.innerHTML =
+          tabs +
+          (isManage
+            ? `<button class="wl-tab wl-tab-new" onclick="toggleCreatePanel()">＋</button>`
+            : "");
       }
 
       // ── Add panel toggle ─────────────────────────────────────────────────────
@@ -1472,7 +1845,7 @@
           errDiv.style.display = "block";
           return;
         }
-        if (allWatchlists.some(w => w.name === name)) {
+        if (allWatchlists.some((w) => w.name === name)) {
           errDiv.textContent = "列表名稱已存在";
           errDiv.style.display = "block";
           return;
@@ -1480,7 +1853,10 @@
 
         try {
           const created = await apiCreateWatchlist(name);
-          allWatchlists.push({ name: created.name || name, items: created.items || [] });
+          allWatchlists.push({
+            name: created.name || name,
+            items: created.items || [],
+          });
           activeListName = created.name || name;
           input.value = "";
           createPanelOpen = false;
@@ -1518,7 +1894,7 @@
         noListState.style.display = "none";
         section.style.display = "block";
 
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
         if (!wl) return;
 
         document.getElementById("active-list-name").textContent = wl.name;
@@ -1545,33 +1921,37 @@
               if (va == null && vb == null) return 0;
               if (va == null) return 1;
               if (vb == null) return -1;
-              if (typeof va === 'string') return sortDir * va.localeCompare(vb, 'zh-TW');
+              if (typeof va === "string")
+                return sortDir * va.localeCompare(vb, "zh-TW");
               return sortDir * (va - vb);
             })
           : wl.items;
 
         const rowDraggable = isManage && !sortCol;
-        tbody.innerHTML = displayItems.map((item, i) => {
-          const stock = findStockData(item.stock_id) || {};
-          const name = stock.name || item.stock_id;
-          const close = stock.close;
-          const change = stock.change;
-          const changePct = stock.change_percent;
-          const cls = change > 0 ? "up" : change < 0 ? "down" : "flat";
-          const sign = change > 0 ? "+" : "";
-          const topTag = item.is_top ? `<span class="top-tag">產業龍頭</span>` : "";
-          const note = item.note || "";
-          const noteClass = getNoteClass(note);
-          const isLongNote = note.length > 15;
-          const displayNote = isLongNote ? note.slice(0, 15) + "…" : note;
-          const noteBadge = note
-            ? `<span class="sector-badge ${noteClass}${isLongNote ? " truncated" : ""}"${isLongNote ? ` onclick="openNoteModal(this)" data-full-note="${escAttr(note)}" data-color-class="${escAttr(noteClass)}" data-stock-id="${escAttr(item.stock_id)}"` : ""}>${escHtml(displayNote)}</span>`
-            : `<span class="text-muted">—</span>`;
-          const drag = rowDraggable
-            ? ` draggable="true" ondragstart="rowDragStart(event,${i})" ondragover="rowDragOver(event,${i})" ondragleave="rowDragLeave(event)" ondrop="rowDrop(event,${i})" ondragend="rowDragEnd(event)"`
-            : '';
+        tbody.innerHTML = displayItems
+          .map((item, i) => {
+            const stock = findStockData(item.stock_id) || {};
+            const name = stock.name || item.stock_id;
+            const close = stock.close;
+            const change = stock.change;
+            const changePct = stock.change_percent;
+            const cls = change > 0 ? "up" : change < 0 ? "down" : "flat";
+            const sign = change > 0 ? "+" : "";
+            const topTag = item.is_top
+              ? `<span class="top-tag">產業龍頭</span>`
+              : "";
+            const note = item.note || "";
+            const noteClass = getNoteClass(note);
+            const isLongNote = note.length > 15;
+            const displayNote = isLongNote ? note.slice(0, 15) + "…" : note;
+            const noteBadge = note
+              ? `<span class="sector-badge ${noteClass}${isLongNote ? " truncated" : ""}"${isLongNote ? ` onclick="openNoteModal(this)" data-full-note="${escAttr(note)}" data-color-class="${escAttr(noteClass)}" data-stock-id="${escAttr(item.stock_id)}"` : ""}>${escHtml(displayNote)}</span>`
+              : `<span class="text-muted">—</span>`;
+            const drag = rowDraggable
+              ? ` draggable="true" ondragstart="rowDragStart(event,${i})" ondragover="rowDragOver(event,${i})" ondragleave="rowDragLeave(event)" ondrop="rowDrop(event,${i})" ondragend="rowDragEnd(event)"`
+              : "";
 
-          return `<tr${drag}>
+            return `<tr${drag}>
             <td><a href="stock.html?id=${item.stock_id}" class="stock-link">${escHtml(item.stock_id)}</a></td>
             <td style="font-weight:600;">${topTag}${escHtml(name)}</td>
             <td class="${cls}">${fmtPrice(close)}</td>
@@ -1587,14 +1967,15 @@
             </td>
             ${isManage ? `<td><button class="btn btn-danger" onclick="removeItem('${escAttr(item.stock_id)}')">移除</button></td>` : "<td></td>"}
           </tr>`;
-        }).join("");
+          })
+          .join("");
       }
 
       // ── Edit note inline ─────────────────────────────────────────────────────
       function startEditNote(cell) {
         const stockId = cell.dataset.stockId;
-        const wl = allWatchlists.find(w => w.name === activeListName);
-        const item = wl?.items.find(i => i.stock_id === stockId);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
+        const item = wl?.items.find((i) => i.stock_id === stockId);
         const currentNote = item?.note || "";
 
         cell.innerHTML = `<input type="text" class="note-edit-input" value="${escAttr(currentNote)}" placeholder="標籤"
@@ -1612,19 +1993,22 @@
       async function saveNote(input) {
         const stockId = input.dataset.stockId;
         const newNote = input.value.trim();
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
         if (!wl) return;
-        const item = wl.items.find(i => i.stock_id === stockId);
+        const item = wl.items.find((i) => i.stock_id === stockId);
         if (!item) return;
 
         const oldNote = item.note;
-        if (oldNote === newNote) { renderWatchlist(); return; }
+        if (oldNote === newNote) {
+          renderWatchlist();
+          return;
+        }
 
         item.note = newNote;
         try {
           await apiUpdateItems(activeListName, wl.items);
           if (pendingItemsOrderChange) {
-            savedItemsOrder = wl.items.map(i => i.stock_id);
+            savedItemsOrder = wl.items.map((i) => i.stock_id);
             pendingItemsOrderChange = false;
             hideItemsOrderBar();
           }
@@ -1637,10 +2021,10 @@
 
       // ── Add stocks ───────────────────────────────────────────────────────────
       async function addStocks() {
-        const idInput   = document.getElementById("stock-id");
+        const idInput = document.getElementById("stock-id");
         const noteInput = document.getElementById("stock-note");
         const isTopInput = document.getElementById("stock-is-top");
-        const errDiv    = document.getElementById("add-error");
+        const errDiv = document.getElementById("add-error");
         const resultDiv = document.getElementById("add-result");
 
         errDiv.style.display = "none";
@@ -1669,9 +2053,9 @@
         }
 
         const isTop = isTopInput.checked;
-        const wl = allWatchlists.find(w => w.name === activeListName);
+        const wl = allWatchlists.find((w) => w.name === activeListName);
 
-        if (wl.items.some(i => i.stock_id === id)) {
+        if (wl.items.some((i) => i.stock_id === id)) {
           errDiv.textContent = `${id} 已存在於此列表`;
           errDiv.style.display = "block";
           return;
@@ -1700,8 +2084,8 @@
       async function removeItem(stockId) {
         try {
           await apiRemoveItem(activeListName, stockId);
-          const wl = allWatchlists.find(w => w.name === activeListName);
-          if (wl) wl.items = wl.items.filter(i => i.stock_id !== stockId);
+          const wl = allWatchlists.find((w) => w.name === activeListName);
+          if (wl) wl.items = wl.items.filter((i) => i.stock_id !== stockId);
           renderWatchlist();
         } catch (e) {
           alert(`移除失敗：${e.message}`);
@@ -1711,15 +2095,17 @@
       // ── Delete watchlist ─────────────────────────────────────────────────────
       async function deleteWatchlist() {
         if (!activeListName) return;
-        if (!confirm(`確定要刪除「${activeListName}」列表？此操作無法復原。`)) return;
+        if (!confirm(`確定要刪除「${activeListName}」列表？此操作無法復原。`))
+          return;
 
         try {
           await apiDeleteWatchlist(activeListName);
-          const idx = allWatchlists.findIndex(w => w.name === activeListName);
+          const idx = allWatchlists.findIndex((w) => w.name === activeListName);
           allWatchlists.splice(idx, 1);
-          activeListName = allWatchlists.length > 0
-            ? allWatchlists[Math.max(0, idx - 1)].name
-            : null;
+          activeListName =
+            allWatchlists.length > 0
+              ? allWatchlists[Math.max(0, idx - 1)].name
+              : null;
           renderTabs();
           renderWatchlist();
         } catch (e) {
@@ -1732,20 +2118,24 @@
         const colorClass = el.dataset.colorClass || "sc-0";
         const stockId = el.dataset.stockId || "";
 
-        document.getElementById("note-modal-accent").className = "note-modal-accent " + colorClass;
+        document.getElementById("note-modal-accent").className =
+          "note-modal-accent " + colorClass;
 
         const stockWrap = document.getElementById("note-modal-stock-wrap");
         const stockBadge = document.getElementById("note-modal-stock-badge");
         if (stockId) {
           const stock = findStockData(stockId) || {};
           stockBadge.className = "sector-badge " + colorClass;
-          stockBadge.textContent = stock.name ? `${stockId}　${stock.name}` : stockId;
+          stockBadge.textContent = stock.name
+            ? `${stockId}　${stock.name}`
+            : stockId;
           stockWrap.style.display = "block";
         } else {
           stockWrap.style.display = "none";
         }
 
-        document.getElementById("note-modal-text").textContent = el.dataset.fullNote;
+        document.getElementById("note-modal-text").textContent =
+          el.dataset.fullNote;
 
         const box = document.querySelector("#note-modal .note-modal-box");
         box.classList.remove("is-open");
@@ -1757,13 +2147,16 @@
         document.getElementById("note-modal").style.display = "none";
       }
 
-      document.addEventListener("keydown", e => {
+      document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeNoteModal();
       });
 
       // ── Escape helpers ───────────────────────────────────────────────────────
       function escHtml(s) {
-        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
       }
       function escAttr(s) {
         return String(s).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
@@ -1771,24 +2164,30 @@
 
       // ── Init ─────────────────────────────────────────────────────────────────
       document.getElementById("add-btn").addEventListener("click", addStocks);
-      document.getElementById("new-list-name").addEventListener("keydown", e => {
-        if (e.key === "Enter") createWatchlist();
-        if (e.key === "Escape") toggleCreatePanel();
-      });
-      document.getElementById("date-picker").addEventListener("change", async function () {
-        document.getElementById("loading-msg").style.display = "block";
-        document.getElementById("watchlist-table").style.display = "none";
-        document.getElementById("empty-state").style.display = "none";
-        await loadAllPrices(this.value);
-        renderWatchlist();
-      });
+      document
+        .getElementById("new-list-name")
+        .addEventListener("keydown", (e) => {
+          if (e.key === "Enter") createWatchlist();
+          if (e.key === "Escape") toggleCreatePanel();
+        });
+      document
+        .getElementById("date-picker")
+        .addEventListener("change", async function () {
+          document.getElementById("loading-msg").style.display = "block";
+          document.getElementById("watchlist-table").style.display = "none";
+          document.getElementById("empty-state").style.display = "none";
+          await loadAllPrices(this.value);
+          renderWatchlist();
+        });
 
       (async function init() {
         await loadAllPrices();
         try {
           allWatchlists = await apiGetWatchlists();
           if (allWatchlists.length > 0) activeListName = allWatchlists[0].name;
-          savedWatchlistsOrder = allWatchlists.map(wl => wl._id?.$oid ?? wl._id);
+          savedWatchlistsOrder = allWatchlists.map(
+            (wl) => wl._id?.$oid ?? wl._id,
+          );
         } catch (e) {
           console.error("無法載入精選類股列表：", e.message);
           allWatchlists = [];
@@ -1801,20 +2200,20 @@
       })();
     </script>
     <script>
-    (function () {
-      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
-        var menu = dd.querySelector('.nav-dropdown-menu');
-        dd.addEventListener('mouseenter', function () {
-          var r = dd.getBoundingClientRect();
-          menu.style.top = r.bottom + 'px';
-          menu.style.left = r.left + 'px';
-          menu.style.display = 'flex';
+      (function () {
+        document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
+          var menu = dd.querySelector(".nav-dropdown-menu");
+          dd.addEventListener("mouseenter", function () {
+            var r = dd.getBoundingClientRect();
+            menu.style.top = r.bottom + "px";
+            menu.style.left = r.left + "px";
+            menu.style.display = "flex";
+          });
+          dd.addEventListener("mouseleave", function () {
+            menu.style.display = "none";
+          });
         });
-        dd.addEventListener('mouseleave', function () {
-          menu.style.display = 'none';
-        });
-      });
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>

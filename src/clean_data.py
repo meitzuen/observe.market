@@ -17,7 +17,9 @@ import json
 import os
 import re
 
-DATA_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs", "data")
+DATA_ROOT = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs", "data"
+)
 
 CONDITION_ARTIFACT_RE = re.compile(r"\(\./[^)]*\)\s*$")
 
@@ -67,7 +69,9 @@ def clean_daily_index(market: str) -> None:
         with open(path, "w", encoding="utf-8") as f:
             json.dump([record], f, ensure_ascii=False, indent=4)
         rewritten += 1
-    print(f"[{market}] daily_index: rewrote {rewritten} files to a single record, deleted {deleted} with no matching trading data")
+    print(
+        f"[{market}] daily_index: rewrote {rewritten} files to a single record, deleted {deleted} with no matching trading data"
+    )
 
 
 def clean_condition_text(records) -> int:
@@ -107,7 +111,9 @@ def clean_daily_punish(market: str) -> None:
                 json.dump(records, f, ensure_ascii=False, indent=4)
             total_fixed += fixed
 
-    print(f"[{market}] daily_punish: stripped HTML artifact from {total_fixed} condition fields")
+    print(
+        f"[{market}] daily_punish: stripped HTML artifact from {total_fixed} condition fields"
+    )
 
 
 if __name__ == "__main__":
