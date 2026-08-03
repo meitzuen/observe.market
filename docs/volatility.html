@@ -118,7 +118,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.5rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -149,7 +151,7 @@
       }
 
       .nav-dropdown-btn::after {
-        content: '';
+        content: "";
         display: inline-block;
         border: solid currentColor;
         border-width: 0 1.5px 1.5px 0;
@@ -185,7 +187,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.375rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -599,7 +603,8 @@
       .modal-body p {
         margin: 0.4rem 0;
       }
-      .modal-body ul, .modal-body ol {
+      .modal-body ul,
+      .modal-body ol {
         margin: 0.4rem 0;
         padding-left: 1.25rem;
       }
@@ -647,14 +652,20 @@
               <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
               <a href="punish.html" class="nav-dropdown-item">處置股票</a>
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
-              <a href="volatility.html" class="nav-dropdown-item active">區間波動率</a>
+              <a href="volatility.html" class="nav-dropdown-item active"
+                >區間波動率</a
+              >
             </div>
           </div>
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">權證</button>
             <div class="nav-dropdown-menu">
-              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
-              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
             </div>
           </div>
           <a href="watchlist.html" class="nav-link">精選類股</a>
@@ -671,9 +682,15 @@
     <div class="container">
       <div class="card">
         <div class="card-title">
-          <span style="display:flex;align-items:center;"
+          <span style="display: flex; align-items: center"
             >📊 區間波動率設定
-            <button id="help-btn" class="help-btn" title="說明：這頁怎麼算出來的">?</button></span
+            <button
+              id="help-btn"
+              class="help-btn"
+              title="說明：這頁怎麼算出來的"
+            >
+              ?
+            </button></span
           >
         </div>
 
@@ -728,7 +745,11 @@
                 <th onclick="setSort('name')">
                   名稱 <span id="sort-name"></span>
                 </th>
-                <th id="th-market" onclick="setSort('market')" style="display:none">
+                <th
+                  id="th-market"
+                  onclick="setSort('market')"
+                  style="display: none"
+                >
                   市場 <span id="sort-market"></span>
                 </th>
                 <th onclick="setSort('nDays')">
@@ -784,19 +805,25 @@
       <div class="modal-box">
         <div class="modal-header">
           <h2>📊 區間波動率是怎麼算出來的？</h2>
-          <button class="modal-close" id="help-close" title="關閉">&times;</button>
+          <button class="modal-close" id="help-close" title="關閉">
+            &times;
+          </button>
         </div>
         <div class="modal-body">
           <h3>1. 資料來源</h3>
           <p>
             不是每檔股票各抓一個檔案，而是抓區間內「每一天」的全市場快照：<br />
-            <code>data/{market}/daily_price/{date}.json</code>，每個檔案包含當天上市或上櫃「所有股票」的收盤價等資料。
+            <code>data/{market}/daily_price/{date}.json</code
+            >，每個檔案包含當天上市或上櫃「所有股票」的收盤價等資料。
             這樣抓取次數等於「選定區間的交易日數」，跟股票檔數無關，比逐檔股票抓歷史檔快很多。
           </p>
 
           <h3>2. 決定要抓哪些日期</h3>
           <p>
-            先讀取 <code>data/manifest.json</code> 取得每個市場實際有資料的日期清單，再用你在 calendar 選的起訖日期去過濾這份清單。
+            先讀取
+            <code>data/manifest.json</code>
+            取得每個市場實際有資料的日期清單，再用你在 calendar
+            選的起訖日期去過濾這份清單。
             所以就算選到假日或非交易日，也只是自然被濾掉，不需要額外校正。
           </p>
 
@@ -816,7 +843,8 @@
 
           <h3>5. 資料完整性過濾</h3>
           <p>
-            勾選「只計算區間內每個交易日都有成交的股票」時，只保留區間內每一天都有出現的股票；不勾選則放寬到至少 2 天資料即可計算。
+            勾選「只計算區間內每個交易日都有成交的股票」時，只保留區間內每一天都有出現的股票；不勾選則放寬到至少
+            2 天資料即可計算。
             這是因為中途下市或長期停牌的股票，只用剩下那一小段資料算出來的標準差會異常偏小，看起來「很穩定」其實只是資料不全造成的假象，勾選這個選項可以避免被誤導。
           </p>
 
@@ -945,7 +973,8 @@
         }
 
         const markets = currentMarket === "all" ? MARKETS : [currentMarket];
-        const fullCoverageOnly = document.getElementById("full-coverage").checked;
+        const fullCoverageOnly =
+          document.getElementById("full-coverage").checked;
 
         document.getElementById("loader").style.display = "flex";
         document.getElementById("result-list").innerHTML = "";
@@ -1016,8 +1045,7 @@
             returns.reduce((a, b) => a + (b - meanReturn) ** 2, 0) /
             returns.length;
           const dailyStd = Math.sqrt(variance);
-          const meanPrice =
-            closes.reduce((a, b) => a + b, 0) / closes.length;
+          const meanPrice = closes.reduce((a, b) => a + b, 0) / closes.length;
           const periodReturn =
             ((closes[closes.length - 1] - closes[0]) / closes[0]) * 100;
 
@@ -1142,20 +1170,20 @@
       init();
     </script>
     <script>
-    (function () {
-      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
-        var menu = dd.querySelector('.nav-dropdown-menu');
-        dd.addEventListener('mouseenter', function () {
-          var r = dd.getBoundingClientRect();
-          menu.style.top = r.bottom + 'px';
-          menu.style.left = r.left + 'px';
-          menu.style.display = 'flex';
+      (function () {
+        document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
+          var menu = dd.querySelector(".nav-dropdown-menu");
+          dd.addEventListener("mouseenter", function () {
+            var r = dd.getBoundingClientRect();
+            menu.style.top = r.bottom + "px";
+            menu.style.left = r.left + "px";
+            menu.style.display = "flex";
+          });
+          dd.addEventListener("mouseleave", function () {
+            menu.style.display = "none";
+          });
         });
-        dd.addEventListener('mouseleave', function () {
-          menu.style.display = 'none';
-        });
-      });
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>

@@ -95,7 +95,7 @@
         }
       }
 
-            .nav-bar {
+      .nav-bar {
         display: flex;
         align-items: center;
         gap: 0.25rem;
@@ -108,7 +108,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.5rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -139,7 +141,7 @@
       }
 
       .nav-dropdown-btn::after {
-        content: '';
+        content: "";
         display: inline-block;
         border: solid currentColor;
         border-width: 0 1.5px 1.5px 0;
@@ -175,7 +177,9 @@
         font-size: 0.9rem;
         padding: 0.4rem 0.85rem;
         border-radius: 0.375rem;
-        transition: background 0.15s, color 0.15s;
+        transition:
+          background 0.15s,
+          color 0.15s;
         white-space: nowrap;
       }
 
@@ -611,8 +615,12 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">權證</button>
             <div class="nav-dropdown-menu">
-              <a href="premium-warrant.html" class="nav-dropdown-item">精選權證</a>
-              <a href="warrant-filter.html" class="nav-dropdown-item">權證篩選</a>
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
             </div>
           </div>
           <a href="watchlist.html" class="nav-link">精選類股</a>
@@ -1113,7 +1121,9 @@
       let stockInfo = {};
       fetch("data/stock_info.json")
         .then((r) => r.json())
-        .then((d) => { stockInfo = d; })
+        .then((d) => {
+          stockInfo = d;
+        })
         .catch(() => {});
 
       function stockName(id) {
@@ -1551,20 +1561,20 @@
       });
     </script>
     <script>
-    (function () {
-      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
-        var menu = dd.querySelector('.nav-dropdown-menu');
-        dd.addEventListener('mouseenter', function () {
-          var r = dd.getBoundingClientRect();
-          menu.style.top = r.bottom + 'px';
-          menu.style.left = r.left + 'px';
-          menu.style.display = 'flex';
+      (function () {
+        document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
+          var menu = dd.querySelector(".nav-dropdown-menu");
+          dd.addEventListener("mouseenter", function () {
+            var r = dd.getBoundingClientRect();
+            menu.style.top = r.bottom + "px";
+            menu.style.left = r.left + "px";
+            menu.style.display = "flex";
+          });
+          dd.addEventListener("mouseleave", function () {
+            menu.style.display = "none";
+          });
         });
-        dd.addEventListener('mouseleave', function () {
-          menu.style.display = 'none';
-        });
-      });
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
