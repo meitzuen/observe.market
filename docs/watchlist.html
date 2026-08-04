@@ -259,69 +259,179 @@
         color: var(--text);
       }
 
-      /* Watchlist tabs */
-      .tabs-row {
-        display: flex;
-        gap: 0.25rem;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        margin-bottom: 0;
-        align-items: flex-end;
-        border-bottom: 2px solid var(--border);
-        padding-bottom: 0;
-      }
-
-      .tabs-row::-webkit-scrollbar {
-        display: none;
-      }
-
-      .wl-tab {
-        padding: 0.45rem 1.1rem;
-        border-radius: 6px 6px 0 0;
-        border: 1px solid var(--border);
-        border-bottom: none;
-        background: var(--bg);
-        color: var(--text-muted);
-        font-size: 0.88rem;
-        font-weight: 500;
-        cursor: pointer;
-        font-family: inherit;
-        transition:
-          background 0.15s,
-          color 0.15s;
+      /* Watchlist selector (searchable dropdown) */
+      .wl-selector {
         position: relative;
-        bottom: -2px;
+        display: inline-block;
+        margin-bottom: 1rem;
       }
 
-      .wl-tab:hover {
+      .wl-selector-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
         background: var(--card-bg);
         color: var(--text);
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        min-width: 220px;
+        max-width: 90vw;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.15s;
       }
 
-      .wl-tab.active {
+      .wl-selector-trigger:hover {
+        border-color: var(--primary);
+      }
+
+      .wl-selector-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
+        text-align: left;
+      }
+
+      .wl-selector-caret {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        transition: transform 0.15s;
+      }
+
+      .wl-selector.open .wl-selector-caret {
+        transform: rotate(180deg);
+      }
+
+      .wl-dropdown {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        z-index: 200;
+        width: min(340px, 90vw);
         background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        box-shadow:
+          0 12px 32px rgba(0, 0, 0, 0.18),
+          0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .wl-dropdown-search-row {
+        padding: 0.6rem 0.6rem 0.4rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .wl-search-input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.45rem 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 0.88rem;
+        font-family: inherit;
+        color: var(--text);
+        background: var(--bg);
+        outline: none;
+      }
+
+      .wl-search-input:focus {
+        border-color: var(--primary);
+      }
+
+      .wl-dropdown-list {
+        max-height: min(360px, 55vh);
+        overflow-y: auto;
+        padding: 0.3rem;
+      }
+
+      .wl-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 0.65rem;
+        border: none;
+        border-radius: 6px;
+        background: none;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.88rem;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.12s;
+      }
+
+      .wl-dropdown-item:hover {
+        background: var(--bg);
+      }
+
+      .wl-dropdown-item.active {
+        background: color-mix(in srgb, var(--primary) 14%, var(--card-bg));
         color: var(--primary);
         font-weight: 700;
-        border-bottom: 2px solid var(--card-bg);
       }
 
-      .wl-tab-new {
+      .wl-dropdown-item-name {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .wl-dropdown-item-check {
+        font-size: 0.8rem;
         color: var(--primary);
-        border-style: dashed;
-        font-size: 1rem;
-        padding: 0.35rem 0.8rem;
+        visibility: hidden;
       }
 
-      .wl-tab[draggable="true"] {
+      .wl-dropdown-item.active .wl-dropdown-item-check {
+        visibility: visible;
+      }
+
+      .wl-dropdown-item[draggable="true"] {
         cursor: grab;
       }
-      .wl-tab.dragging {
+      .wl-dropdown-item.dragging {
         opacity: 0.4;
       }
-      .wl-tab.drag-over {
-        border-color: var(--primary);
+      .wl-dropdown-item.drag-over {
+        box-shadow: inset 0 2px 0 var(--primary);
+      }
+
+      .wl-dropdown-empty {
+        padding: 1rem 0.75rem;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .wl-dropdown-footer {
+        padding: 0.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .wl-dropdown-new-btn {
+        width: 100%;
+        padding: 0.45rem 0.7rem;
+        border: 1px dashed var(--primary);
+        border-radius: 6px;
+        background: none;
+        color: var(--primary);
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.12s;
+      }
+
+      .wl-dropdown-new-btn:hover {
         background: color-mix(in srgb, var(--primary) 10%, var(--card-bg));
       }
 
@@ -344,9 +454,9 @@
         flex-wrap: wrap;
         background: var(--card-bg);
         border: 1px solid var(--border);
-        border-top: none;
+        border-radius: 10px;
         padding: 0.75rem 1rem;
-        margin-bottom: 1rem;
+        margin: 0.75rem 0 1rem;
       }
 
       /* Watchlist section */
@@ -1010,8 +1120,45 @@
     <main>
       <p class="page-title">⭐ 精選類股</p>
 
-      <!-- Watchlist tabs -->
-      <div class="tabs-row" id="tabs-container"></div>
+      <!-- Watchlist selector -->
+      <div class="wl-selector" id="wl-selector">
+        <button
+          type="button"
+          class="wl-selector-trigger"
+          id="wl-selector-trigger"
+          onclick="toggleListDropdown()"
+        >
+          <span class="wl-selector-label" id="wl-selector-label"
+            >請選擇列表</span
+          >
+          <span class="wl-selector-caret">▾</span>
+        </button>
+        <div class="wl-dropdown" id="wl-dropdown" style="display: none">
+          <div class="wl-dropdown-search-row">
+            <input
+              type="text"
+              id="wl-search-input"
+              class="wl-search-input"
+              placeholder="🔍 搜尋清單…"
+              oninput="renderListSelector()"
+            />
+          </div>
+          <div class="wl-dropdown-list" id="wl-dropdown-list"></div>
+          <div
+            class="wl-dropdown-footer"
+            id="wl-dropdown-footer"
+            style="display: none"
+          >
+            <button
+              type="button"
+              class="wl-dropdown-new-btn"
+              onclick="toggleCreatePanel(); toggleListDropdown(false);"
+            >
+              ＋ 新增列表
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- Pending order bar (admin only, shown after drag) -->
       <div
@@ -1024,7 +1171,8 @@
           background: color-mix(in srgb, var(--primary) 8%, var(--card-bg));
           border: 1px solid
             color-mix(in srgb, var(--primary) 30%, var(--border));
-          border-top: none;
+          border-radius: 8px;
+          margin-bottom: 0.75rem;
           font-size: 0.83rem;
           color: var(--text-muted);
         "
@@ -1727,7 +1875,7 @@
         allWatchlists.splice(0, allWatchlists.length, ...restored);
         pendingOrderChange = false;
         hideOrderBar();
-        renderTabs();
+        renderListSelector();
         renderWatchlist();
       }
 
@@ -1741,7 +1889,7 @@
         e.preventDefault();
         e.dataTransfer.dropEffect = "move";
         document
-          .querySelectorAll(".wl-tab")
+          .querySelectorAll(".wl-dropdown-item")
           .forEach((t) => t.classList.remove("drag-over"));
         e.currentTarget.classList.add("drag-over");
       }
@@ -1766,7 +1914,7 @@
         dragSrcIndex = null;
 
         pendingOrderChange = true;
-        renderTabs();
+        renderListSelector();
         renderWatchlist();
         showOrderBar();
       }
@@ -1774,28 +1922,81 @@
       function tabDragEnd(e) {
         e.currentTarget.classList.remove("dragging");
         document
-          .querySelectorAll(".wl-tab")
+          .querySelectorAll(".wl-dropdown-item")
           .forEach((t) => t.classList.remove("drag-over"));
         dragSrcIndex = null;
       }
 
-      // ── Render tabs ──────────────────────────────────────────────────────────
-      function renderTabs() {
-        const container = document.getElementById("tabs-container");
-        const tabs = allWatchlists
-          .map((wl, index) => {
+      // ── Watchlist selector (searchable dropdown) ────────────────────────────
+      let listDropdownOpen = false;
+
+      function toggleListDropdown(force) {
+        listDropdownOpen = typeof force === "boolean" ? force : !listDropdownOpen;
+        document.getElementById("wl-dropdown").style.display = listDropdownOpen
+          ? "block"
+          : "none";
+        document
+          .getElementById("wl-selector")
+          .classList.toggle("open", listDropdownOpen);
+        if (listDropdownOpen) {
+          const search = document.getElementById("wl-search-input");
+          search.value = "";
+          renderListSelector();
+          search.focus();
+        }
+      }
+
+      document.addEventListener("click", (e) => {
+        const selector = document.getElementById("wl-selector");
+        if (listDropdownOpen && selector && !selector.contains(e.target)) {
+          toggleListDropdown(false);
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && listDropdownOpen) toggleListDropdown(false);
+      });
+
+      function renderListSelector() {
+        const wrap = document.getElementById("wl-selector");
+        if (allWatchlists.length === 0 && !isManage) {
+          wrap.style.display = "none";
+          return;
+        }
+        wrap.style.display = "";
+
+        document.getElementById("wl-selector-label").textContent =
+          activeListName || "尚無列表";
+        document.getElementById("wl-dropdown-footer").style.display = isManage
+          ? "block"
+          : "none";
+
+        const searchInput = document.getElementById("wl-search-input");
+        const query = (searchInput?.value || "").trim().toLowerCase();
+        const filtered = query
+          ? allWatchlists.filter((wl) => wl.name.toLowerCase().includes(query))
+          : allWatchlists;
+
+        const listEl = document.getElementById("wl-dropdown-list");
+        if (filtered.length === 0) {
+          listEl.innerHTML = `<div class="wl-dropdown-empty">找不到符合「${escHtml(searchInput?.value || "")}」的列表</div>`;
+          return;
+        }
+
+        const draggableEnabled = isManage && !query;
+        listEl.innerHTML = filtered
+          .map((wl) => {
+            const index = allWatchlists.indexOf(wl);
             const isActive = wl.name === activeListName;
-            const drag = isManage
+            const drag = draggableEnabled
               ? ` draggable="true" ondragstart="tabDragStart(event,${index})" ondragover="tabDragOver(event,${index})" ondragleave="tabDragLeave(event)" ondrop="tabDrop(event,${index})" ondragend="tabDragEnd(event)"`
               : "";
-            return `<button class="wl-tab${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name)"${drag}>${escHtml(wl.name)}</button>`;
+            return `<button type="button" class="wl-dropdown-item${isActive ? " active" : ""}" data-name="${escAttr(wl.name)}" onclick="switchTab(this.dataset.name); toggleListDropdown(false);"${drag}>
+              <span class="wl-dropdown-item-check">✓</span>
+              <span class="wl-dropdown-item-name">${escHtml(wl.name)}</span>
+            </button>`;
           })
           .join("");
-        container.innerHTML =
-          tabs +
-          (isManage
-            ? `<button class="wl-tab wl-tab-new" onclick="toggleCreatePanel()">＋</button>`
-            : "");
       }
 
       // ── Add panel toggle ─────────────────────────────────────────────────────
@@ -1861,7 +2062,7 @@
           input.value = "";
           createPanelOpen = false;
           document.getElementById("create-panel").style.display = "none";
-          renderTabs();
+          renderListSelector();
           renderWatchlist();
         } catch (e) {
           errDiv.textContent = `建立失敗：${e.message}`;
@@ -1876,7 +2077,7 @@
         pendingItemsOrderChange = false;
         savedItemsOrder = [];
         hideItemsOrderBar();
-        renderTabs();
+        renderListSelector();
         renderWatchlist();
       }
 
@@ -2106,7 +2307,7 @@
             allWatchlists.length > 0
               ? allWatchlists[Math.max(0, idx - 1)].name
               : null;
-          renderTabs();
+          renderListSelector();
           renderWatchlist();
         } catch (e) {
           alert(`刪除失敗：${e.message}`);
@@ -2195,7 +2396,7 @@
         if (isManage) {
           document.getElementById("header-manage-btns").style.display = "flex";
         }
-        renderTabs();
+        renderListSelector();
         renderWatchlist();
       })();
     </script>
