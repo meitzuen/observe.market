@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gap Observer | 跳空觀測站</title>
+    <title>VCP Screener | VCP 選股</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -278,11 +278,53 @@
         padding-left: 0.75rem;
       }
 
+      .about-text {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+      .about-text strong {
+        color: var(--text);
+      }
+      .about-text ol {
+        margin: 0.5rem 0 0;
+        padding-left: 1.25rem;
+      }
+      .about-text li {
+        margin-bottom: 0.25rem;
+      }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .market-tab.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
       .controls {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         margin-bottom: 1.25rem;
+      }
+      @media (max-width: 768px) {
+        .controls {
+          grid-template-columns: 1fr 1fr;
+        }
       }
       @media (max-width: 480px) {
         .controls {
@@ -327,53 +369,19 @@
         background: white;
       }
 
-      .type-tabs {
+      .filter-checkbox {
         display: flex;
+        align-items: center;
         gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-      .type-tab {
-        padding: 0.5rem 1.25rem;
-        border-radius: 9999px;
-        border: 2px solid var(--border);
-        font-size: 0.9rem;
-        font-weight: 700;
-        cursor: pointer;
-        background: none;
-        color: var(--text-muted);
-        transition: all 0.2s;
-      }
-      .type-tab.active-jump {
-        background: #fee2e2;
-        color: #b91c1c;
-        border-color: #fca5a5;
-      }
-      .type-tab.active-drop {
-        background: #dcfce7;
-        color: #15803d;
-        border-color: #86efac;
-      }
-
-      .market-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-      .market-tab {
-        padding: 0.4rem 1rem;
-        border-radius: 9999px;
-        border: 1px solid var(--border);
         font-size: 0.875rem;
-        font-weight: 600;
+        color: var(--text);
         cursor: pointer;
-        background: none;
-        color: var(--text-muted);
-        transition: all 0.2s;
+        padding-top: 0.4rem;
       }
-      .market-tab.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
+      .filter-checkbox input {
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
       }
 
       .btn-apply {
@@ -453,6 +461,59 @@
         font-weight: 700;
       }
 
+      .contraction-chips {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+      }
+      .contraction-chip {
+        background: #eef2ff;
+        color: #4338ca;
+        border-radius: 0.375rem;
+        padding: 0.1rem 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      [data-theme="dark"] .contraction-chip {
+        background: #312e81;
+        color: #c7d2fe;
+      }
+
+      .score-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .score-high {
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .score-mid {
+        background: #fef9c3;
+        color: #a16207;
+      }
+      .score-low {
+        background: #f1f5f9;
+        color: #64748b;
+      }
+      [data-theme="dark"] .score-high {
+        background: #052e16;
+        color: #86efac;
+      }
+      [data-theme="dark"] .score-mid {
+        background: #422006;
+        color: #fde047;
+      }
+      [data-theme="dark"] .score-low {
+        background: #1e293b;
+        color: #94a3b8;
+      }
+
       .badge {
         display: inline-block;
         padding: 0.125rem 0.5rem;
@@ -465,13 +526,28 @@
         background-color: #dbeafe;
         color: #1e40af;
       }
-      .badge-up {
-        background-color: #fee2e2;
-        color: #b91c1c;
+
+      .tag-ma {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
       }
-      .badge-down {
-        background-color: #dcfce7;
+      .tag-ma-above {
+        background: #dcfce7;
         color: #15803d;
+      }
+      .tag-ma-below {
+        background: #f1f5f9;
+        color: #64748b;
+      }
+      [data-theme="dark"] .tag-ma-above {
+        background: #052e16;
+        color: #86efac;
+      }
+      [data-theme="dark"] .tag-ma-below {
+        background: #1e293b;
+        color: #94a3b8;
       }
 
       .loader {
@@ -516,14 +592,6 @@
         background-color: #1e293b;
         color: var(--text);
       }
-      [data-theme="dark"] .type-tab.active-jump {
-        background: #450a0a;
-        color: #fca5a5;
-      }
-      [data-theme="dark"] .type-tab.active-drop {
-        background: #052e16;
-        color: #86efac;
-      }
     </style>
   </head>
   <body>
@@ -540,9 +608,9 @@
           "
         />
         <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >🚀</span
+          >📐</span
         >
-        <h1><span class="title-text">Gap Observer</span></h1>
+        <h1><span class="title-text">VCP Screener</span></h1>
         <nav class="nav-bar">
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">市場</button>
@@ -555,11 +623,11 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">策略</button>
             <div class="nav-dropdown-menu">
-              <a href="gap.html" class="nav-dropdown-item active">跳空</a>
+              <a href="gap.html" class="nav-dropdown-item">跳空</a>
               <a href="punish.html" class="nav-dropdown-item">處置股票</a>
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
               <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
-              <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
+              <a href="vcp.html" class="nav-dropdown-item active">VCP選股</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -588,7 +656,30 @@
 
     <div class="container">
       <div class="card">
-        <!-- Type + Market tabs -->
+        <div class="card-title"><span>📐 什麼是 VCP？</span></div>
+        <div class="about-text">
+          <strong>VCP（Volatility Contraction Pattern，波動收縮型態）</strong>
+          是 Mark Minervini 提出的選股法，尋找股價在上升趨勢中，經歷一系列
+          <strong>一次比一次更小的拉回（收縮）</strong
+          >，同時成交量逐漸萎縮、股價貼近前波高點整理的個股 —
+          這類股票在突破整理區時，往往伴隨量能放大，成為潛在的強勢股。
+          本頁使用近期日線資料自動掃描，計算每檔股票的：
+          <ol>
+            <li><strong>收縮次數</strong>：股價高低點間偵測到的拉回次數</li>
+            <li><strong>收縮幅度是否遞減</strong>：每次拉回是否比前一次更小</li>
+            <li><strong>量縮比</strong>：近期拉回量能 / 初期拉回量能</li>
+            <li>
+              <strong>距樞紐點距離</strong
+              >：目前股價距離前波高點（潛在壓力/突破點）的百分比
+            </li>
+            <li><strong>站上 50 日均線</strong>：確認股價維持在中期均線之上</li>
+          </ol>
+          並綜合成 0~100 的<strong>型態分數</strong>，分數越高代表越貼近典型 VCP
+          型態，僅供研究參考，不構成投資建議。
+        </div>
+      </div>
+
+      <div class="card">
         <div
           style="
             display: flex;
@@ -598,18 +689,6 @@
             margin-bottom: 1rem;
           "
         >
-          <div class="type-tabs" style="margin-bottom: 0">
-            <button
-              class="type-tab active-jump"
-              data-type="gap_jump"
-              id="tab-jump"
-            >
-              ⬆ 跳空上漲
-            </button>
-            <button class="type-tab" data-type="gap_drop" id="tab-drop">
-              ⬇ 跳空下跌
-            </button>
-          </div>
           <div class="market-tabs" style="margin-bottom: 0">
             <button class="market-tab active" data-market="twse">上市</button>
             <button class="market-tab" data-market="tpex">上櫃</button>
@@ -618,6 +697,24 @@
 
         <!-- Filters -->
         <div class="controls">
+          <div class="filter-group">
+            <span class="filter-label">型態分數</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="score-min"
+                class="filter-input"
+                placeholder="最小 (0-100)"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="score-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
           <div class="filter-group">
             <span class="filter-label">收盤價</span>
             <div class="filter-range">
@@ -655,40 +752,39 @@
             </div>
           </div>
           <div class="filter-group">
-            <span class="filter-label">跳空點數</span>
+            <span class="filter-label">最少收縮次數</span>
+            <input
+              type="number"
+              id="contractions-min"
+              class="filter-input"
+              placeholder="例如 2"
+              min="2"
+            />
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">距樞紐點 (%)</span>
             <div class="filter-range">
               <input
                 type="number"
-                id="gdiff-min"
+                id="pivot-min"
                 class="filter-input"
                 placeholder="最小"
               />
               <span>~</span>
               <input
                 type="number"
-                id="gdiff-max"
+                id="pivot-max"
                 class="filter-input"
                 placeholder="最大"
               />
             </div>
           </div>
           <div class="filter-group">
-            <span class="filter-label">跳空幅度 (%)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="gratio-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="gratio-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+            <span class="filter-label">條件</span>
+            <label class="filter-checkbox">
+              <input type="checkbox" id="ma50-only" />
+              僅顯示站上 50 日均線
+            </label>
           </div>
         </div>
         <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
@@ -699,9 +795,9 @@
 
       <div class="card">
         <div class="card-title">
-          <span id="result-title"
-            >跳空上漲
-            <span id="result-count" class="badge badge-up">0</span></span
+          <span
+            >📐 VCP 候選股
+            <span id="result-count" class="badge badge-primary">0</span></span
           >
         </div>
 
@@ -709,25 +805,31 @@
           <table>
             <thead>
               <tr>
+                <th onclick="setSort('score')">
+                  分數 <span id="sort-score"></span>
+                </th>
                 <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
                 <th onclick="setSort('name')">
                   名稱 <span id="sort-name"></span>
                 </th>
-                <th onclick="setSort('today_close')">
-                  收盤價 <span id="sort-today_close"></span>
+                <th onclick="setSort('close')">
+                  收盤價 <span id="sort-close"></span>
                 </th>
-                <th id="th-prev">前日高點 <span id="sort-prev"></span></th>
-                <th onclick="setSort('diff')">
-                  漲跌 <span id="sort-diff"></span>
+                <th onclick="setSort('pivot_price')">
+                  樞紐點 <span id="sort-pivot_price"></span>
                 </th>
-                <th onclick="setSort('ratio')">
-                  漲幅 <span id="sort-ratio"></span>
+                <th onclick="setSort('distance_to_pivot')">
+                  距樞紐點 <span id="sort-distance_to_pivot"></span>
                 </th>
-                <th onclick="setSort('gap_diff')">
-                  跳空點數 <span id="sort-gap_diff"></span>
+                <th onclick="setSort('num_contractions')">
+                  收縮次數 <span id="sort-num_contractions"></span>
                 </th>
-                <th onclick="setSort('gap_ratio')">
-                  跳空幅度 <span id="sort-gap_ratio"></span>
+                <th>收縮幅度序列</th>
+                <th onclick="setSort('volume_ratio')">
+                  量縮比 <span id="sort-volume_ratio"></span>
+                </th>
+                <th onclick="setSort('above_ma50')">
+                  MA50 <span id="sort-above_ma50"></span>
                 </th>
                 <th onclick="setSort('volume')">
                   成交量(張) <span id="sort-volume"></span>
@@ -771,8 +873,7 @@
       let rawData = [];
       let filteredData = [];
       let currentMarket = "twse";
-      let currentType = "gap_jump";
-      let sortColumn = "gap_ratio";
+      let sortColumn = "score";
       let sortDirection = "desc";
       let currentPage = 1;
       const rowsPerPage = 30;
@@ -780,12 +881,10 @@
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
         const resp = await fetch("data/manifest.json");
-        const fullManifest = await resp.json();
-        manifest = fullManifest;
+        manifest = await resp.json();
 
         populateDatePicker();
 
-        // Market tabs
         document.querySelectorAll(".market-tab").forEach((btn) => {
           btn.addEventListener("click", () => {
             document
@@ -794,15 +893,6 @@
             btn.classList.add("active");
             currentMarket = btn.dataset.market;
             populateDatePicker();
-          });
-        });
-
-        // Type tabs
-        document.querySelectorAll(".type-tab").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            currentType = btn.dataset.type;
-            updateTypeTabs();
-            loadData();
           });
         });
 
@@ -816,12 +906,14 @@
           .getElementById("btn-clear")
           .addEventListener("click", clearFilters);
 
-        // filter inputs: Enter to apply
         document.querySelectorAll(".filter-input").forEach((el) =>
           el.addEventListener("keydown", (e) => {
             if (e.key === "Enter") applyFilters();
           }),
         );
+        document
+          .getElementById("ma50-only")
+          .addEventListener("change", applyFilters);
 
         document.getElementById("prev-page").addEventListener("click", () => {
           if (currentPage > 1) {
@@ -859,7 +951,7 @@
 
       function populateDatePicker() {
         const m = manifest[currentMarket];
-        const dates = (m && m[currentType]) || [];
+        const dates = (m && m.vcp) || [];
         const picker = document.getElementById("date-picker");
         const prev = picker.value;
         picker.innerHTML = "";
@@ -877,7 +969,7 @@
       async function loadData() {
         const m = manifest[currentMarket];
         if (!m) return;
-        const dates = m[currentType] || [];
+        const dates = m.vcp || [];
         const date = document.getElementById("date-picker").value;
         if (!date || !dates.includes(date)) {
           rawData = [];
@@ -890,9 +982,7 @@
         document.getElementById("result-list").innerHTML = "";
 
         try {
-          const resp = await fetch(
-            `data/${currentMarket}/${currentType}/${date}.json`,
-          );
+          const resp = await fetch(`data/${currentMarket}/vcp/${date}.json`);
           rawData = await resp.json();
         } catch (e) {
           rawData = [];
@@ -900,12 +990,13 @@
           document.getElementById("loader").style.display = "none";
         }
 
-        updateTypeTabs();
         applyFilters();
       }
 
       // ── filters ───────────────────────────────────────────────────────────
       function applyFilters() {
+        const scoreMin = parseFloat(document.getElementById("score-min").value);
+        const scoreMax = parseFloat(document.getElementById("score-max").value);
         const closeMin = parseFloat(document.getElementById("close-min").value);
         const closeMax = parseFloat(document.getElementById("close-max").value);
         const volMin =
@@ -913,22 +1004,23 @@
         const volMax =
           (parseFloat(document.getElementById("vol-max").value) || Infinity) *
           1000;
-        const gdMin = parseFloat(document.getElementById("gdiff-min").value);
-        const gdMax = parseFloat(document.getElementById("gdiff-max").value);
-        const grMin = parseFloat(document.getElementById("gratio-min").value);
-        const grMax = parseFloat(document.getElementById("gratio-max").value);
+        const contractionsMin =
+          parseInt(document.getElementById("contractions-min").value, 10) || 0;
+        const pivotMin = parseFloat(document.getElementById("pivot-min").value);
+        const pivotMax = parseFloat(document.getElementById("pivot-max").value);
+        const ma50Only = document.getElementById("ma50-only").checked;
 
         filteredData = rawData.filter((s) => {
-          if (!isNaN(closeMin) && s.today_close < closeMin) return false;
-          if (!isNaN(closeMax) && s.today_close > closeMax) return false;
+          if (!isNaN(scoreMin) && s.score < scoreMin) return false;
+          if (!isNaN(scoreMax) && s.score > scoreMax) return false;
+          if (!isNaN(closeMin) && s.close < closeMin) return false;
+          if (!isNaN(closeMax) && s.close > closeMax) return false;
           if (s.volume < volMin) return false;
           if (s.volume > volMax) return false;
-          const absgd = Math.abs(s.gap_diff);
-          const absgr = Math.abs(s.gap_ratio);
-          if (!isNaN(gdMin) && absgd < Math.abs(gdMin)) return false;
-          if (!isNaN(gdMax) && absgd > Math.abs(gdMax)) return false;
-          if (!isNaN(grMin) && absgr < Math.abs(grMin)) return false;
-          if (!isNaN(grMax) && absgr > Math.abs(grMax)) return false;
+          if (s.num_contractions < contractionsMin) return false;
+          if (!isNaN(pivotMin) && s.distance_to_pivot < pivotMin) return false;
+          if (!isNaN(pivotMax) && s.distance_to_pivot > pivotMax) return false;
+          if (ma50Only && !s.above_ma50) return false;
           return true;
         });
 
@@ -938,42 +1030,21 @@
 
       function clearFilters() {
         [
+          "score-min",
+          "score-max",
           "close-min",
           "close-max",
           "vol-min",
           "vol-max",
-          "gdiff-min",
-          "gdiff-max",
-          "gratio-min",
-          "gratio-max",
+          "contractions-min",
+          "pivot-min",
+          "pivot-max",
         ].forEach((id) => (document.getElementById(id).value = ""));
+        document.getElementById("ma50-only").checked = false;
         applyFilters();
       }
 
       // ── render ────────────────────────────────────────────────────────────
-      function updateTypeTabs() {
-        const isJump = currentType === "gap_jump";
-
-        document.getElementById("tab-jump").className =
-          "type-tab" + (isJump ? " active-jump" : "");
-        document.getElementById("tab-drop").className =
-          "type-tab" + (!isJump ? " active-drop" : "");
-
-        document.getElementById("th-prev").textContent = isJump
-          ? "前日高點"
-          : "前日低點";
-        document.getElementById("th-prev").onclick = () =>
-          setSort(isJump ? "prev_high" : "prev_low");
-
-        const badge = isJump ? "badge-up" : "badge-down";
-        const countEl = document.getElementById("result-count");
-        countEl.className = `badge ${badge}`;
-
-        document.getElementById("result-title").innerHTML =
-          (isJump ? "⬆ 跳空上漲" : "⬇ 跳空下跌") +
-          ` <span id="result-count" class="badge ${badge}">0</span>`;
-      }
-
       function setSort(col) {
         sortDirection =
           sortColumn === col
@@ -987,6 +1058,12 @@
         renderTable();
       }
 
+      function scoreClass(score) {
+        if (score >= 75) return "score-high";
+        if (score >= 50) return "score-mid";
+        return "score-low";
+      }
+
       function renderTable() {
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
@@ -994,18 +1071,20 @@
         const countEl = document.getElementById("result-count");
         if (countEl) countEl.textContent = filteredData.length;
 
-        const isJump = currentType === "gap_jump";
-        const prevKey = isJump ? "prev_high" : "prev_low";
-        const priceClass = isJump ? "price-up" : "price-down";
-
         // Sort
         const sorted = [...filteredData].sort((a, b) => {
-          let va =
-            a[sortColumn] ??
-            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
-          let vb =
-            b[sortColumn] ??
-            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          let va = a[sortColumn];
+          let vb = b[sortColumn];
+          if (typeof va === "boolean") {
+            va = va ? 1 : 0;
+            vb = vb ? 1 : 0;
+          }
+          va =
+            va ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : -Infinity);
+          vb =
+            vb ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : -Infinity);
           if (typeof va === "string")
             return sortDirection === "asc"
               ? va.localeCompare(vb)
@@ -1015,13 +1094,15 @@
 
         // Sort indicators
         [
+          "score",
           "id",
           "name",
-          "today_close",
-          "diff",
-          "ratio",
-          "gap_diff",
-          "gap_ratio",
+          "close",
+          "pivot_price",
+          "distance_to_pivot",
+          "num_contractions",
+          "volume_ratio",
+          "above_ma50",
           "volume",
         ].forEach((col) => {
           const el = document.getElementById("sort-" + col);
@@ -1029,15 +1110,6 @@
             el.textContent =
               col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
         });
-        // prev column indicator
-        const prevSortEl = document.getElementById("sort-prev");
-        if (prevSortEl)
-          prevSortEl.textContent =
-            sortColumn === prevKey
-              ? sortDirection === "asc"
-                ? " ↑"
-                : " ↓"
-              : "";
 
         // Pagination
         const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
@@ -1053,32 +1125,45 @@
         );
 
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="11" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票</td></tr>`;
           return;
         }
-
-        const diffSign = isJump ? 1 : -1;
 
         pageData.forEach((s) => {
           const tr = document.createElement("tr");
           const volK = (s.volume / 1000).toLocaleString(undefined, {
             maximumFractionDigits: 0,
           });
-          const prevVal = s[prevKey] ?? "-";
-          const diffPrefix = s.diff > 0 ? "+" : "";
-          const gapPrefix = s.gap_diff > 0 ? "+" : "";
+          const distClass =
+            s.distance_to_pivot < 0
+              ? "price-up"
+              : s.distance_to_pivot <= 5
+                ? "price-up"
+                : "";
+          const chips = (s.contractions || [])
+            .map((c) => `<span class="contraction-chip">${c}%</span>`)
+            .join("");
+          const maTag = s.above_ma50
+            ? '<span class="tag-ma tag-ma-above">站上</span>'
+            : '<span class="tag-ma tag-ma-below">站下</span>';
+          const volRatioText =
+            s.volume_ratio !== null && s.volume_ratio !== undefined
+              ? s.volume_ratio.toFixed(2)
+              : "-";
 
           tr.innerHTML = `
+            <td><span class="score-badge ${scoreClass(s.score)}">${s.score.toFixed(1)}</span></td>
             <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
             <td style="font-weight:600;">
               <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
             </td>
-            <td class="${priceClass}" style="font-size:1rem;">${s.today_close}</td>
-            <td style="color:var(--text-muted);">${prevVal}</td>
-            <td class="${priceClass}">${diffPrefix}${s.diff?.toFixed(2) ?? "-"}</td>
-            <td class="${priceClass}">${diffPrefix}${s.ratio?.toFixed(2) ?? "-"}%</td>
-            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_diff?.toFixed(2) ?? "-"}</td>
-            <td class="${priceClass}" style="font-weight:800;">${gapPrefix}${s.gap_ratio?.toFixed(2) ?? "-"}%</td>
+            <td style="font-size:1rem;">${s.close}</td>
+            <td style="color:var(--text-muted);">${s.pivot_price}</td>
+            <td class="${distClass}">${s.distance_to_pivot ?? "-"}%</td>
+            <td>${s.num_contractions}</td>
+            <td><div class="contraction-chips">${chips}</div></td>
+            <td>${volRatioText}</td>
+            <td>${maTag}</td>
             <td style="color:var(--text-muted);">${volK} 張</td>
           `;
           tbody.appendChild(tr);

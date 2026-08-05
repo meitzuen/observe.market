@@ -20,6 +20,7 @@ def generate_manifest():
             "gap_jump": [],
             "gap_drop": [],
             "daily_punish": [],
+            "vcp": [],
         }
 
         for category in manifest[market].keys():
