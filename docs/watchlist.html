@@ -1093,6 +1093,7 @@
               <a href="punish.html" class="nav-dropdown-item">處置股票</a>
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
               <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
+              <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -1152,7 +1153,10 @@
             <button
               type="button"
               class="wl-dropdown-new-btn"
-              onclick="toggleCreatePanel(); toggleListDropdown(false);"
+              onclick="
+                toggleCreatePanel();
+                toggleListDropdown(false);
+              "
             >
               ＋ 新增列表
             </button>
@@ -1931,7 +1935,8 @@
       let listDropdownOpen = false;
 
       function toggleListDropdown(force) {
-        listDropdownOpen = typeof force === "boolean" ? force : !listDropdownOpen;
+        listDropdownOpen =
+          typeof force === "boolean" ? force : !listDropdownOpen;
         document.getElementById("wl-dropdown").style.display = listDropdownOpen
           ? "block"
           : "none";

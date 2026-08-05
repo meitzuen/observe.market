@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCP Screener | VCP 選股</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+        --accent: #0284c7;
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1e3a5f;
+        border-bottom: none;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      @media (min-width: 768px) {
+        .header-right {
+          justify-content: flex-end;
+        }
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, #ffffff, #93c5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.5rem;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .nav-dropdown-btn::after {
+        content: "";
+        display: inline-block;
+        border: solid currentColor;
+        border-width: 0 1.5px 1.5px 0;
+        padding: 2.5px;
+        transform: rotate(45deg) translateY(-1px);
+        margin-left: 4px;
+        opacity: 0.75;
+        transition: transform 0.2s;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-btn::after {
+        transform: rotate(-135deg) translateY(1px);
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: fixed;
+        background: #1e3a5f;
+        border-radius: 0.5rem;
+        min-width: 7rem;
+        z-index: 9999;
+        padding: 0.25rem;
+        flex-direction: column;
+        gap: 0.125rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-dropdown-item {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-dropdown-item.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .date-select {
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        outline: none;
+      }
+      .date-select option {
+        background: #1e3a5f;
+        color: white;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.2s;
+      }
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .stock-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .stock-link:hover {
+        color: var(--primary);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 768px) {
+        .container {
+          margin: 2rem auto;
+          padding: 0 1.5rem;
+        }
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin-bottom: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid var(--primary);
+        padding-left: 0.75rem;
+      }
+
+      .about-text {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+      .about-text strong {
+        color: var(--text);
+      }
+      .about-text ol {
+        margin: 0.5rem 0 0;
+        padding-left: 1.25rem;
+      }
+      .about-text li {
+        margin-bottom: 0.25rem;
+      }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+      .market-tab.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      @media (max-width: 768px) {
+        .controls {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .filter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .filter-range {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .filter-range span {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .filter-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: #f8fafc;
+      }
+      .filter-input:focus {
+        border-color: var(--primary);
+        background: white;
+      }
+
+      .filter-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text);
+        cursor: pointer;
+        padding-top: 0.4rem;
+      }
+      .filter-checkbox input {
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+      }
+
+      .btn-apply {
+        padding: 0.6rem 1.5rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+        align-self: flex-end;
+      }
+      .btn-apply:hover {
+        background: var(--primary-dark);
+      }
+
+      .btn-clear {
+        padding: 0.6rem 1rem;
+        background: none;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        align-self: flex-end;
+      }
+      .btn-clear:hover {
+        background: var(--bg);
+      }
+
+      .table-container {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
+      }
+
+      th {
+        padding: 0.875rem 0.75rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+      }
+      th:hover {
+        background-color: #f1f5f9;
+      }
+
+      td {
+        padding: 0.875rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+      tr:hover td {
+        background-color: #f8fafc;
+      }
+
+      .price-up {
+        color: var(--up);
+        font-weight: 700;
+      }
+      .price-down {
+        color: var(--down);
+        font-weight: 700;
+      }
+
+      .contraction-chips {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+      }
+      .contraction-chip {
+        background: #eef2ff;
+        color: #4338ca;
+        border-radius: 0.375rem;
+        padding: 0.1rem 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      [data-theme="dark"] .contraction-chip {
+        background: #312e81;
+        color: #c7d2fe;
+      }
+
+      .score-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .score-high {
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .score-mid {
+        background: #fef9c3;
+        color: #a16207;
+      }
+      .score-low {
+        background: #f1f5f9;
+        color: #64748b;
+      }
+      [data-theme="dark"] .score-high {
+        background: #052e16;
+        color: #86efac;
+      }
+      [data-theme="dark"] .score-mid {
+        background: #422006;
+        color: #fde047;
+      }
+      [data-theme="dark"] .score-low {
+        background: #1e293b;
+        color: #94a3b8;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+      .badge-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+
+      .tag-ma {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+      }
+      .tag-ma-above {
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .tag-ma-below {
+        background: #f1f5f9;
+        color: #64748b;
+      }
+      [data-theme="dark"] .tag-ma-above {
+        background: #052e16;
+        color: #86efac;
+      }
+      [data-theme="dark"] .tag-ma-below {
+        background: #1e293b;
+        color: #94a3b8;
+      }
+
+      .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
+
+      .btn-secondary {
+        background: var(--text-muted);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* Dark mode */
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+      [data-theme="dark"] th {
+        background-color: #1e293b;
+      }
+      [data-theme="dark"] tr:hover td {
+        background-color: #263248;
+      }
+      [data-theme="dark"] .filter-input {
+        background-color: #0f172a;
+        color: var(--text);
+      }
+      [data-theme="dark"] .date-select {
+        background-color: #1e293b;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >📐</span
+        >
+        <h1><span class="title-text">VCP Screener</span></h1>
+        <nav class="nav-bar">
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="twse.html" class="nav-dropdown-item">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn active">策略</button>
+            <div class="nav-dropdown-menu">
+              <a href="gap.html" class="nav-dropdown-item">跳空</a>
+              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
+              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
+              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
+              <a href="vcp.html" class="nav-dropdown-item active">VCP選股</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">權證</button>
+            <div class="nav-dropdown-menu">
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
+            </div>
+          </div>
+          <a href="watchlist.html" class="nav-link">精選類股</a>
+          <a href="bookmark.html" class="nav-link">常用連結</a>
+          <a href="portfolio.html" class="nav-link">持股試算</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+      <div class="header-right">
+        <select id="date-picker" class="date-select"></select>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-title"><span>📐 什麼是 VCP？</span></div>
+        <div class="about-text">
+          <strong>VCP（Volatility Contraction Pattern，波動收縮型態）</strong>
+          是 Mark Minervini 提出的選股法，尋找股價在上升趨勢中，經歷一系列
+          <strong>一次比一次更小的拉回（收縮）</strong
+          >，同時成交量逐漸萎縮、股價貼近前波高點整理的個股 —
+          這類股票在突破整理區時，往往伴隨量能放大，成為潛在的強勢股。
+          本頁使用近期日線資料自動掃描，計算每檔股票的：
+          <ol>
+            <li><strong>收縮次數</strong>：股價高低點間偵測到的拉回次數</li>
+            <li><strong>收縮幅度是否遞減</strong>：每次拉回是否比前一次更小</li>
+            <li><strong>量縮比</strong>：近期拉回量能 / 初期拉回量能</li>
+            <li>
+              <strong>距樞紐點距離</strong
+              >：目前股價距離前波高點（潛在壓力/突破點）的百分比
+            </li>
+            <li><strong>站上 50 日均線</strong>：確認股價維持在中期均線之上</li>
+          </ol>
+          並綜合成 0~100 的<strong>型態分數</strong>，分數越高代表越貼近典型 VCP
+          型態，僅供研究參考，不構成投資建議。
+        </div>
+      </div>
+
+      <div class="card">
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+          "
+        >
+          <div class="market-tabs" style="margin-bottom: 0">
+            <button class="market-tab active" data-market="twse">上市</button>
+            <button class="market-tab" data-market="tpex">上櫃</button>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="controls">
+          <div class="filter-group">
+            <span class="filter-label">型態分數</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="score-min"
+                class="filter-input"
+                placeholder="最小 (0-100)"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="score-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">收盤價</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="close-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="close-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">成交量 (張)</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="vol-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="vol-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">最少收縮次數</span>
+            <input
+              type="number"
+              id="contractions-min"
+              class="filter-input"
+              placeholder="例如 2"
+              min="2"
+            />
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">距樞紐點 (%)</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="pivot-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="pivot-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">條件</span>
+            <label class="filter-checkbox">
+              <input type="checkbox" id="ma50-only" />
+              僅顯示站上 50 日均線
+            </label>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
+          <button class="btn-clear" id="btn-clear">清除條件</button>
+          <button class="btn-apply" id="btn-apply">套用篩選</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span
+            >📐 VCP 候選股
+            <span id="result-count" class="badge badge-primary">0</span></span
+          >
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th onclick="setSort('score')">
+                  分數 <span id="sort-score"></span>
+                </th>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">
+                  名稱 <span id="sort-name"></span>
+                </th>
+                <th onclick="setSort('close')">
+                  收盤價 <span id="sort-close"></span>
+                </th>
+                <th onclick="setSort('pivot_price')">
+                  樞紐點 <span id="sort-pivot_price"></span>
+                </th>
+                <th onclick="setSort('distance_to_pivot')">
+                  距樞紐點 <span id="sort-distance_to_pivot"></span>
+                </th>
+                <th onclick="setSort('num_contractions')">
+                  收縮次數 <span id="sort-num_contractions"></span>
+                </th>
+                <th>收縮幅度序列</th>
+                <th onclick="setSort('volume_ratio')">
+                  量縮比 <span id="sort-volume_ratio"></span>
+                </th>
+                <th onclick="setSort('above_ma50')">
+                  MA50 <span id="sort-above_ma50"></span>
+                </th>
+                <th onclick="setSort('volume')">
+                  成交量(張) <span id="sort-volume"></span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader" style="display: none">載入中...</div>
+
+        <div
+          id="pagination"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+          "
+        >
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span
+            id="page-info"
+            style="
+              font-size: 0.875rem;
+              color: var(--text-muted);
+              font-weight: 600;
+            "
+            >第 1 / 1 頁</span
+          >
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let manifest = null;
+      let rawData = [];
+      let filteredData = [];
+      let currentMarket = "twse";
+      let sortColumn = "score";
+      let sortDirection = "desc";
+      let currentPage = 1;
+      const rowsPerPage = 30;
+
+      // ── init ──────────────────────────────────────────────────────────────
+      async function init() {
+        const resp = await fetch("data/manifest.json");
+        manifest = await resp.json();
+
+        populateDatePicker();
+
+        document.querySelectorAll(".market-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            populateDatePicker();
+          });
+        });
+
+        document
+          .getElementById("date-picker")
+          .addEventListener("change", loadData);
+        document
+          .getElementById("btn-apply")
+          .addEventListener("click", applyFilters);
+        document
+          .getElementById("btn-clear")
+          .addEventListener("click", clearFilters);
+
+        document.querySelectorAll(".filter-input").forEach((el) =>
+          el.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") applyFilters();
+          }),
+        );
+        document
+          .getElementById("ma50-only")
+          .addEventListener("change", applyFilters);
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+          }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) {
+            currentPage++;
+            renderTable();
+          }
+        });
+
+        // Dark mode
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.getElementById("theme-toggle").textContent =
+          savedTheme === "dark" ? "☀️" : "🌙";
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", () => {
+            const next =
+              document.documentElement.getAttribute("data-theme") === "dark"
+                ? "light"
+                : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            document.getElementById("theme-toggle").textContent =
+              next === "dark" ? "☀️" : "🌙";
+          });
+
+        loadData();
+      }
+
+      function populateDatePicker() {
+        const m = manifest[currentMarket];
+        const dates = (m && m.vcp) || [];
+        const picker = document.getElementById("date-picker");
+        const prev = picker.value;
+        picker.innerHTML = "";
+        dates.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          picker.appendChild(opt);
+        });
+        if (prev && dates.includes(prev)) picker.value = prev;
+        loadData();
+      }
+
+      // ── data loading ──────────────────────────────────────────────────────
+      async function loadData() {
+        const m = manifest[currentMarket];
+        if (!m) return;
+        const dates = m.vcp || [];
+        const date = document.getElementById("date-picker").value;
+        if (!date || !dates.includes(date)) {
+          rawData = [];
+          filteredData = [];
+          renderTable();
+          return;
+        }
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+
+        try {
+          const resp = await fetch(`data/${currentMarket}/vcp/${date}.json`);
+          rawData = await resp.json();
+        } catch (e) {
+          rawData = [];
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
+
+        applyFilters();
+      }
+
+      // ── filters ───────────────────────────────────────────────────────────
+      function applyFilters() {
+        const scoreMin = parseFloat(document.getElementById("score-min").value);
+        const scoreMax = parseFloat(document.getElementById("score-max").value);
+        const closeMin = parseFloat(document.getElementById("close-min").value);
+        const closeMax = parseFloat(document.getElementById("close-max").value);
+        const volMin =
+          (parseFloat(document.getElementById("vol-min").value) || 0) * 1000;
+        const volMax =
+          (parseFloat(document.getElementById("vol-max").value) || Infinity) *
+          1000;
+        const contractionsMin =
+          parseInt(document.getElementById("contractions-min").value, 10) || 0;
+        const pivotMin = parseFloat(document.getElementById("pivot-min").value);
+        const pivotMax = parseFloat(document.getElementById("pivot-max").value);
+        const ma50Only = document.getElementById("ma50-only").checked;
+
+        filteredData = rawData.filter((s) => {
+          if (!isNaN(scoreMin) && s.score < scoreMin) return false;
+          if (!isNaN(scoreMax) && s.score > scoreMax) return false;
+          if (!isNaN(closeMin) && s.close < closeMin) return false;
+          if (!isNaN(closeMax) && s.close > closeMax) return false;
+          if (s.volume < volMin) return false;
+          if (s.volume > volMax) return false;
+          if (s.num_contractions < contractionsMin) return false;
+          if (!isNaN(pivotMin) && s.distance_to_pivot < pivotMin) return false;
+          if (!isNaN(pivotMax) && s.distance_to_pivot > pivotMax) return false;
+          if (ma50Only && !s.above_ma50) return false;
+          return true;
+        });
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      function clearFilters() {
+        [
+          "score-min",
+          "score-max",
+          "close-min",
+          "close-max",
+          "vol-min",
+          "vol-max",
+          "contractions-min",
+          "pivot-min",
+          "pivot-max",
+        ].forEach((id) => (document.getElementById(id).value = ""));
+        document.getElementById("ma50-only").checked = false;
+        applyFilters();
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function setSort(col) {
+        sortDirection =
+          sortColumn === col
+            ? sortDirection === "asc"
+              ? "desc"
+              : "asc"
+            : col === "id" || col === "name"
+              ? "asc"
+              : "desc";
+        sortColumn = col;
+        renderTable();
+      }
+
+      function scoreClass(score) {
+        if (score >= 75) return "score-high";
+        if (score >= 50) return "score-mid";
+        return "score-low";
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = filteredData.length;
+
+        // Sort
+        const sorted = [...filteredData].sort((a, b) => {
+          let va = a[sortColumn];
+          let vb = b[sortColumn];
+          if (typeof va === "boolean") {
+            va = va ? 1 : 0;
+            vb = vb ? 1 : 0;
+          }
+          va =
+            va ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : -Infinity);
+          vb =
+            vb ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : -Infinity);
+          if (typeof va === "string")
+            return sortDirection === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        // Sort indicators
+        [
+          "score",
+          "id",
+          "name",
+          "close",
+          "pivot_price",
+          "distance_to_pivot",
+          "num_contractions",
+          "volume_ratio",
+          "above_ma50",
+          "volume",
+        ].forEach((col) => {
+          const el = document.getElementById("sort-" + col);
+          if (el)
+            el.textContent =
+              col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+        });
+
+        // Pagination
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent =
+          `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice(
+          (currentPage - 1) * rowsPerPage,
+          currentPage * rowsPerPage,
+        );
+
+        if (pageData.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="11" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票</td></tr>`;
+          return;
+        }
+
+        pageData.forEach((s) => {
+          const tr = document.createElement("tr");
+          const volK = (s.volume / 1000).toLocaleString(undefined, {
+            maximumFractionDigits: 0,
+          });
+          const distClass =
+            s.distance_to_pivot < 0
+              ? "price-up"
+              : s.distance_to_pivot <= 5
+                ? "price-up"
+                : "";
+          const chips = (s.contractions || [])
+            .map((c) => `<span class="contraction-chip">${c}%</span>`)
+            .join("");
+          const maTag = s.above_ma50
+            ? '<span class="tag-ma tag-ma-above">站上</span>'
+            : '<span class="tag-ma tag-ma-below">站下</span>';
+          const volRatioText =
+            s.volume_ratio !== null && s.volume_ratio !== undefined
+              ? s.volume_ratio.toFixed(2)
+              : "-";
+
+          tr.innerHTML = `
+            <td><span class="score-badge ${scoreClass(s.score)}">${s.score.toFixed(1)}</span></td>
+            <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
+            <td style="font-weight:600;">
+              <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
+            </td>
+            <td style="font-size:1rem;">${s.close}</td>
+            <td style="color:var(--text-muted);">${s.pivot_price}</td>
+            <td class="${distClass}">${s.distance_to_pivot ?? "-"}%</td>
+            <td>${s.num_contractions}</td>
+            <td><div class="contraction-chips">${chips}</div></td>
+            <td>${volRatioText}</td>
+            <td>${maTag}</td>
+            <td style="color:var(--text-muted);">${volK} 張</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+    <script>
+      (function () {
+        document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
+          var menu = dd.querySelector(".nav-dropdown-menu");
+          dd.addEventListener("mouseenter", function () {
+            var r = dd.getBoundingClientRect();
+            menu.style.top = r.bottom + "px";
+            menu.style.left = r.left + "px";
+            menu.style.display = "flex";
+          });
+          dd.addEventListener("mouseleave", function () {
+            menu.style.display = "none";
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
