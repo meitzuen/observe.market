@@ -575,6 +575,19 @@
       [data-theme="dark"] .checkbox-group.checked {
         background: #1e3a5f;
       }
+
+      @media (max-width: 640px) {
+        .nav-link,
+        .nav-dropdown-btn,
+        .nav-dropdown-item {
+          padding: 0.65rem 0.9rem;
+          font-size: 0.95rem;
+        }
+
+        .theme-toggle {
+          padding: 0.55rem 0.75rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1563,18 +1576,35 @@
     </script>
     <script>
       (function () {
-        document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
-          var menu = dd.querySelector(".nav-dropdown-menu");
-          dd.addEventListener("mouseenter", function () {
-            var r = dd.getBoundingClientRect();
-            menu.style.top = r.bottom + "px";
-            menu.style.left = r.left + "px";
-            menu.style.display = "flex";
+        // Click-to-toggle (not hover) so this works identically with
+        // mouse, trackpad, and touch. Menus use position:fixed, so the
+        // top/left offset still has to be computed in JS on open.
+        var dropdowns = document.querySelectorAll(".nav-dropdown");
+
+        function closeAllMenus() {
+          dropdowns.forEach(function (dd) {
+            dd.querySelector(".nav-dropdown-menu").style.display = "none";
           });
-          dd.addEventListener("mouseleave", function () {
-            menu.style.display = "none";
+        }
+
+        dropdowns.forEach(function (dd) {
+          var btn = dd.querySelector(".nav-dropdown-btn");
+          var menu = dd.querySelector(".nav-dropdown-menu");
+
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = menu.style.display === "flex";
+            closeAllMenus();
+            if (!isOpen) {
+              var r = dd.getBoundingClientRect();
+              menu.style.top = r.bottom + "px";
+              menu.style.left = r.left + "px";
+              menu.style.display = "flex";
+            }
           });
         });
+
+        document.addEventListener("click", closeAllMenus);
       })();
     </script>
   </body>
