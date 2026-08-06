@@ -14,12 +14,11 @@
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .btn:hover {
         background: var(--hud-hover-bg);
@@ -222,7 +221,9 @@
 
         renderStock(id, stockInfo, market, history);
         NerdGrid.initThemeToggle();
-        NerdGrid.onThemeChange(() => { if (chart) renderPriceChart(history); });
+        NerdGrid.onThemeChange(() => {
+          if (chart) renderPriceChart(history);
+        });
         NerdGrid.initNavDropdowns();
       }
 
@@ -441,6 +442,5 @@
 
       init();
     </script>
-    
   </body>
 </html>

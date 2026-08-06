@@ -251,37 +251,13 @@
               <div id="market-summary" class="stats">
                 <div class="stat-item">
                   <span class="stat-label">上市指數</span>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: flex-end;
-                    "
-                  >
-                    <span id="summary-index-twse" class="stat-value">--</span>
-                    <span
-                      id="summary-changes-twse"
-                      style="font-weight: 500; font-size: 0.75rem"
-                      >--</span
-                    >
-                  </div>
+                  <span id="summary-index-twse" class="stat-value">--</span>
+                  <span id="summary-changes-twse" class="stat-change">--</span>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">上櫃指數</span>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: flex-end;
-                    "
-                  >
-                    <span id="summary-index-tpex" class="stat-value">--</span>
-                    <span
-                      id="summary-changes-tpex"
-                      style="font-weight: 500; font-size: 0.75rem"
-                      >--</span
-                    >
-                  </div>
+                  <span id="summary-index-tpex" class="stat-value">--</span>
+                  <span id="summary-changes-tpex" class="stat-change">--</span>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">成交金額(合計)</span>
@@ -367,6 +343,7 @@
             </div>
           </div>
         </div>
+        跳空策略
       </div>
     </div>
 
@@ -545,12 +522,22 @@
         if (!entry) {
           idxEl.textContent = "--";
           chgEl.textContent = "--";
+          chgEl.className = "stat-change";
           return;
         }
         idxEl.textContent = Math.round(entry.index).toLocaleString();
         const changes = parseFloat(entry.changes);
-        chgEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
-        chgEl.style.color = changes >= 0 ? "var(--hud-up)" : "var(--hud-down)";
+        const prevIndex = entry.index - changes;
+        const percent = prevIndex ? (changes / prevIndex) * 100 : 0;
+        const isUp = changes >= 0;
+        chgEl.textContent =
+          (isUp ? "▲ " : "▼ ") +
+          Math.abs(Math.round(changes)) +
+          "  (" +
+          Math.abs(percent).toFixed(2) +
+          "%" +
+          ")";
+        chgEl.className = "stat-change " + (isUp ? "price-up" : "price-down");
       }
 
       function updateSummary(date) {

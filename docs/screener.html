@@ -13,12 +13,11 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .hint {
         font-size: 0.8rem;
@@ -54,7 +53,8 @@
       }
 
       .market-tab.active {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
         border-color: var(--hud-text-1);
       }
@@ -68,11 +68,10 @@
       }
 
       @media (max-width: 640px) {
-
         .controls {
           grid-template-columns: 1fr;
         }
-}
+      }
 
       .filter-group {
         display: flex;
@@ -106,9 +105,10 @@
 
       .btn-apply {
         padding: 0.6rem 1.5rem;
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
-        
+
         border-radius: 2px;
         font-size: 0.875rem;
         font-weight: 700;
@@ -156,12 +156,14 @@
       }
 
       .badge-market-twse {
-        background: transparent; border: 1px solid rgba(30, 64, 175, 0.35);
+        background: transparent;
+        border: 1px solid rgba(30, 64, 175, 0.35);
         color: rgba(30, 64, 175, 0.9);
       }
 
       .badge-market-tpex {
-        background: transparent; border: 1px solid rgba(109, 40, 217, 0.35);
+        background: transparent;
+        border: 1px solid rgba(109, 40, 217, 0.35);
         color: rgba(109, 40, 217, 0.9);
       }
 
@@ -205,7 +207,8 @@
       }
 
       .help-btn:hover {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         border-color: var(--hud-text-1);
         color: var(--hud-text-1);
       }
@@ -234,7 +237,6 @@
         width: 100%;
         max-height: 85vh;
         overflow-y: auto;
-        
       }
 
       .modal-header {
@@ -357,7 +359,9 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">選股</button>
             <div class="nav-dropdown-menu">
-              <a href="screener.html" class="nav-dropdown-item active">股票篩選器</a>
+              <a href="screener.html" class="nav-dropdown-item active"
+                >股票篩選器</a
+              >
               <a href="watchlist.html" class="nav-dropdown-item">精選類股</a>
             </div>
           </div>
@@ -511,19 +515,19 @@
           <h3>4. 四種排行怎麼算</h3>
           <ul>
             <li>
-              <b>期間漲跌%</b> =
-              (區間最後一天收盤 − 第一天收盤) / 第一天收盤 × 100%
+              <b>期間漲跌%</b> = (區間最後一天收盤 − 第一天收盤) / 第一天收盤 ×
+              100%
             </li>
             <li><b>漲幅排行</b>：依期間漲跌%由高到低排序</li>
-            <li><b>跌幅排行</b>：依期間漲跌%由低到高排序（跌最多的在最前面）</li>
             <li>
-              <b>成交量排行</b>：把區間內每天的成交量加總（換算為「張」＝股數
-              ÷ 1000），由大到小排序；同時列出日均量
+              <b>跌幅排行</b>：依期間漲跌%由低到高排序（跌最多的在最前面）
             </li>
             <li>
-              <b>連續上漲天數排行</b
-              >：從區間最後一天往回算，只要「今日收盤
-              &gt;
+              <b>成交量排行</b>：把區間內每天的成交量加總（換算為「張」＝股數 ÷
+              1000），由大到小排序；同時列出日均量
+            </li>
+            <li>
+              <b>連續上漲天數排行</b>：從區間最後一天往回算，只要「今日收盤 &gt;
               昨日收盤」就算連續一天，一遇到收盤價沒有上漲（持平或下跌）就中斷。這個天數只在你選定的區間內計算，區間以外的資料不會被用來延伸連續天數。
             </li>
           </ul>
@@ -647,8 +651,8 @@
             renderTable();
           }
         });
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+        NerdGrid.initThemeToggle();
+        NerdGrid.initNavDropdowns();
 
         // Help modal
         const helpModal = document.getElementById("help-modal");
@@ -855,8 +859,7 @@
               label: "期間成交量(張)",
               sortable: true,
               style: "font-weight:700;",
-              cell: (r) =>
-                Math.round(r.totalVolume / 1000).toLocaleString(),
+              cell: (r) => Math.round(r.totalVolume / 1000).toLocaleString(),
             },
             {
               key: "avgVolume",
@@ -984,6 +987,5 @@
 
       init();
     </script>
-    
   </body>
 </html>

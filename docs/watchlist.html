@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-.logo {
+      .logo {
         width: 36px;
         height: 36px;
         border-radius: 2px;
@@ -21,11 +21,10 @@
       }
 
       @media (max-width: 480px) {
-
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       main {
         max-width: 1200px;
@@ -62,7 +61,7 @@
         cursor: pointer;
         min-width: 220px;
         max-width: 90vw;
-        
+
         transition: border-color 0.15s;
       }
 
@@ -97,7 +96,7 @@
         background: var(--hud-bg-raised);
         border: 1px solid var(--hud-border-2);
         border-radius: 2px;
-        
+
         overflow: hidden;
       }
 
@@ -152,7 +151,11 @@
       }
 
       .wl-dropdown-item.active {
-        background: color-mix(in srgb, var(--hud-text-1) 14%, var(--hud-card-bg));
+        background: color-mix(
+          in srgb,
+          var(--hud-text-1) 14%,
+          var(--hud-card-bg)
+        );
         color: var(--hud-text-1);
         font-weight: 700;
       }
@@ -183,7 +186,6 @@
       }
 
       .wl-dropdown-item.drag-over {
-        
       }
 
       .wl-dropdown-empty {
@@ -213,7 +215,11 @@
       }
 
       .wl-dropdown-new-btn:hover {
-        background: color-mix(in srgb, var(--hud-text-1) 10%, var(--hud-card-bg));
+        background: color-mix(
+          in srgb,
+          var(--hud-text-1) 10%,
+          var(--hud-card-bg)
+        );
       }
 
       #watchlist-tbody tr[draggable="true"] {
@@ -225,8 +231,11 @@
       }
 
       #watchlist-tbody tr.drag-over td {
-        background: color-mix(in srgb, var(--hud-text-1) 8%, var(--hud-card-bg));
-        
+        background: color-mix(
+          in srgb,
+          var(--hud-text-1) 8%,
+          var(--hud-card-bg)
+        );
       }
 
       /* Create panel */
@@ -263,7 +272,6 @@
         border-radius: 2px;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1rem;
-        
       }
 
       .add-panel h2 {
@@ -346,7 +354,8 @@
       }
 
       .toggle-input:checked + .toggle-track {
-        background: transparent; border: 1px solid rgba(253, 186, 116, 0.35);
+        background: transparent;
+        border: 1px solid rgba(253, 186, 116, 0.35);
         border-color: rgba(253, 186, 116, 0.9);
       }
 
@@ -361,7 +370,6 @@
         transition:
           transform 0.2s,
           background 0.2s;
-        
       }
 
       .toggle-input:checked + .toggle-track .toggle-thumb {
@@ -370,7 +378,8 @@
       }
 
       .btn-primary {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
       }
 
@@ -387,7 +396,8 @@
       }
 
       .btn-danger:hover {
-        background: transparent; border: 1px solid rgba(239, 68, 68, 0.35);
+        background: transparent;
+        border: 1px solid rgba(239, 68, 68, 0.35);
         color: rgba(239, 68, 68, 0.9);
       }
 
@@ -403,7 +413,6 @@
         border-radius: 2px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        
       }
 
       th[data-col] {
@@ -455,7 +464,8 @@
         font-weight: 700;
         padding: 0.06rem 0.32rem;
         border-radius: 2px;
-        background: transparent; border: 1px solid rgba(194, 65, 12, 0.35);
+        background: transparent;
+        border: 1px solid rgba(194, 65, 12, 0.35);
         color: rgba(194, 65, 12, 0.9);
         border-right: 1px solid rgba(253, 186, 116, 0.4);
         border-bottom: 1px solid rgba(253, 186, 116, 0.4);
@@ -515,7 +525,6 @@
         overflow: hidden;
         max-width: min(500px, 92vw);
         width: 100%;
-        
       }
 
       .note-modal-box.is-open {
@@ -698,52 +707,62 @@
 
       /* Sector color palette */
       .sc-0 {
-        background: transparent; border: 1px solid rgba(29, 78, 216, 0.35);
+        background: transparent;
+        border: 1px solid rgba(29, 78, 216, 0.35);
         color: rgba(29, 78, 216, 0.9);
       }
 
       .sc-1 {
-        background: transparent; border: 1px solid rgba(21, 128, 61, 0.35);
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
         color: rgba(21, 128, 61, 0.9);
       }
 
       .sc-2 {
-        background: transparent; border: 1px solid rgba(146, 64, 14, 0.35);
+        background: transparent;
+        border: 1px solid rgba(146, 64, 14, 0.35);
         color: rgba(146, 64, 14, 0.9);
       }
 
       .sc-3 {
-        background: transparent; border: 1px solid rgba(190, 24, 93, 0.35);
+        background: transparent;
+        border: 1px solid rgba(190, 24, 93, 0.35);
         color: rgba(190, 24, 93, 0.9);
       }
 
       .sc-4 {
-        background: transparent; border: 1px solid rgba(109, 40, 217, 0.35);
+        background: transparent;
+        border: 1px solid rgba(109, 40, 217, 0.35);
         color: rgba(109, 40, 217, 0.9);
       }
 
       .sc-5 {
-        background: transparent; border: 1px solid rgba(194, 65, 12, 0.35);
+        background: transparent;
+        border: 1px solid rgba(194, 65, 12, 0.35);
         color: rgba(194, 65, 12, 0.9);
       }
 
       .sc-6 {
-        background: transparent; border: 1px solid rgba(14, 116, 144, 0.35);
+        background: transparent;
+        border: 1px solid rgba(14, 116, 144, 0.35);
         color: rgba(14, 116, 144, 0.9);
       }
 
       .sc-7 {
-        background: transparent; border: 1px solid rgba(22, 101, 52, 0.35);
+        background: transparent;
+        border: 1px solid rgba(22, 101, 52, 0.35);
         color: rgba(22, 101, 52, 0.9);
       }
 
       .sc-8 {
-        background: transparent; border: 1px solid rgba(157, 23, 77, 0.35);
+        background: transparent;
+        border: 1px solid rgba(157, 23, 77, 0.35);
         color: rgba(157, 23, 77, 0.9);
       }
 
       .sc-9 {
-        background: transparent; border: 1px solid rgba(133, 77, 14, 0.35);
+        background: transparent;
+        border: 1px solid rgba(133, 77, 14, 0.35);
         color: rgba(133, 77, 14, 0.9);
       }
     </style>
@@ -799,7 +818,9 @@
             <button class="nav-link nav-dropdown-btn active">選股</button>
             <div class="nav-dropdown-menu">
               <a href="screener.html" class="nav-dropdown-item">股票篩選器</a>
-              <a href="watchlist.html" class="nav-dropdown-item active">精選類股</a>
+              <a href="watchlist.html" class="nav-dropdown-item active"
+                >精選類股</a
+              >
             </div>
           </div>
           <div class="nav-dropdown">
@@ -871,7 +892,11 @@
           align-items: center;
           gap: 0.75rem;
           padding: 0.5rem 0.75rem;
-          background: color-mix(in srgb, var(--hud-text-1) 8%, var(--hud-card-bg));
+          background: color-mix(
+            in srgb,
+            var(--hud-text-1) 8%,
+            var(--hud-card-bg)
+          );
           border: 1px solid
             color-mix(in srgb, var(--hud-text-1) 30%, var(--hud-border-2));
           border-radius: 2px;
@@ -949,7 +974,11 @@
       >
         <div style="font-size: 2.5rem; margin-bottom: 0.75rem">📋</div>
         <div
-          style="font-weight: 600; margin-bottom: 0.4rem; color: var(--hud-text-1)"
+          style="
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--hud-text-1);
+          "
         >
           尚未建立精選類股列表
         </div>
@@ -1070,7 +1099,11 @@
             gap: 0.75rem;
             padding: 0.45rem 0.75rem;
             margin-bottom: 0.5rem;
-            background: color-mix(in srgb, var(--hud-text-1) 8%, var(--hud-card-bg));
+            background: color-mix(
+              in srgb,
+              var(--hud-text-1) 8%,
+              var(--hud-card-bg)
+            );
             border: 1px solid
               color-mix(in srgb, var(--hud-text-1) 30%, var(--hud-border-2));
             border-radius: 2px;
@@ -1189,8 +1222,8 @@
       // ── Mode ────────────────────────────────────────────────────────────────
       const isManage =
         new URLSearchParams(location.search).get("admin") === "True";
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNavDropdowns();
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -2093,6 +2126,5 @@
         renderWatchlist();
       })();
     </script>
-    
   </body>
 </html>

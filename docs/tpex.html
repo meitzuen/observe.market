@@ -14,15 +14,13 @@
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .card:hover {
-        
       }
 
       .btn:hover {
@@ -384,20 +382,8 @@
                   style="border-left: 4px solid var(--hud-text-1)"
                 >
                   <span class="stat-label">大盤指數</span>
-                  <div
-                    style="
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: flex-end;
-                    "
-                  >
-                    <span id="summary-index" class="stat-value">--</span>
-                    <span
-                      id="summary-changes"
-                      style="font-weight: 700; font-size: 0.875rem"
-                      >--</span
-                    >
-                  </div>
+                  <span id="summary-index" class="stat-value">--</span>
+                  <span id="summary-changes" class="stat-change">--</span>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">成交金額</span>
@@ -673,9 +659,19 @@
         ).toLocaleString();
 
         const changes = parseFloat(summaryData.changes);
+        const prevIndex = summaryData.index - changes;
+        const percent = prevIndex ? (changes / prevIndex) * 100 : 0;
+        const isUp = changes >= 0;
         const changesEl = document.getElementById("summary-changes");
-        changesEl.textContent = (changes >= 0 ? "+" : "") + Math.round(changes);
-        changesEl.style.color = changes >= 0 ? "var(--hud-up)" : "var(--hud-down)";
+        changesEl.textContent =
+          (isUp ? "▲ " : "▼ ") +
+          Math.abs(Math.round(changes)) +
+          "  (" +
+          Math.abs(percent).toFixed(2) +
+          "%" +
+          ")";
+        changesEl.className =
+          "stat-change " + (isUp ? "price-up" : "price-down");
 
         document.getElementById("summary-turnover").textContent =
           Math.round(summaryData.turnover / 100000000) + " 億";
@@ -1040,6 +1036,5 @@
 
       init();
     </script>
-    
   </body>
 </html>
