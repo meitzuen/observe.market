@@ -544,6 +544,14 @@ select {
   color: var(--hud-text-1);
 }
 
+.stat-change {
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: var(--hud-font);
+  letter-spacing: 0.02em;
+  color: var(--hud-text-3);
+}
+
 /* -------------------------------------------------------------------- */
 /* Badges / tags                                                          */
 /* -------------------------------------------------------------------- */

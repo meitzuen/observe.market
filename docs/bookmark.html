@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-.logo {
+      .logo {
         width: 36px;
         height: 36px;
         border-radius: 2px;
@@ -21,11 +21,10 @@
       }
 
       @media (max-width: 480px) {
-
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       main {
         max-width: 1200px;
@@ -89,7 +88,8 @@
       }
 
       .btn-primary {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
       }
 
@@ -106,7 +106,8 @@
       }
 
       .btn-danger:hover {
-        background: transparent; border: 1px solid rgba(239, 68, 68, 0.35);
+        background: transparent;
+        border: 1px solid rgba(239, 68, 68, 0.35);
         color: rgba(239, 68, 68, 0.9);
       }
 
@@ -140,7 +141,6 @@
         border-radius: 2px;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1.25rem;
-        
       }
 
       .form-panel h2 {
@@ -382,7 +382,9 @@
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn active">個人</button>
             <div class="nav-dropdown-menu">
-              <a href="bookmark.html" class="nav-dropdown-item active">常用連結</a>
+              <a href="bookmark.html" class="nav-dropdown-item active"
+                >常用連結</a
+              >
               <a href="portfolio.html" class="nav-dropdown-item">持股試算</a>
             </div>
           </div>
@@ -464,8 +466,8 @@
       // ── Mode ────────────────────────────────────────────────────────────────
       const isManage =
         new URLSearchParams(location.search).get("admin") === "True";
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNavDropdowns();
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -728,6 +730,5 @@
         renderBookmarks();
       })();
     </script>
-    
   </body>
 </html>

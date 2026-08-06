@@ -13,12 +13,11 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .hint {
         font-size: 0.8rem;
@@ -45,7 +44,8 @@
       }
 
       .market-tab.active {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
         border-color: var(--hud-text-1);
       }
@@ -59,11 +59,10 @@
       }
 
       @media (max-width: 640px) {
-
         .controls {
           grid-template-columns: 1fr;
         }
-}
+      }
 
       .filter-group {
         display: flex;
@@ -97,9 +96,10 @@
 
       .btn-apply {
         padding: 0.6rem 1.5rem;
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
-        
+
         border-radius: 2px;
         font-size: 0.875rem;
         font-weight: 700;
@@ -147,12 +147,14 @@
       }
 
       .badge-market-twse {
-        background: transparent; border: 1px solid rgba(30, 64, 175, 0.35);
+        background: transparent;
+        border: 1px solid rgba(30, 64, 175, 0.35);
         color: rgba(30, 64, 175, 0.9);
       }
 
       .badge-market-tpex {
-        background: transparent; border: 1px solid rgba(109, 40, 217, 0.35);
+        background: transparent;
+        border: 1px solid rgba(109, 40, 217, 0.35);
         color: rgba(109, 40, 217, 0.9);
       }
 
@@ -196,7 +198,8 @@
       }
 
       .help-btn:hover {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         border-color: var(--hud-text-1);
         color: var(--hud-text-1);
       }
@@ -225,7 +228,6 @@
         width: 100%;
         max-height: 85vh;
         overflow-y: auto;
-        
       }
 
       .modal-header {
@@ -615,8 +617,8 @@
             renderTable();
           }
         });
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+        NerdGrid.initThemeToggle();
+        NerdGrid.initNavDropdowns();
 
         // Help modal
         const helpModal = document.getElementById("help-modal");
@@ -844,6 +846,5 @@
 
       init();
     </script>
-    
   </body>
 </html>

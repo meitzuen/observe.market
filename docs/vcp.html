@@ -13,12 +13,11 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .about-text {
         font-size: 0.875rem;
@@ -57,7 +56,8 @@
       }
 
       .market-tab.active {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
         border-color: var(--hud-text-1);
       }
@@ -70,18 +70,16 @@
       }
 
       @media (max-width: 768px) {
-
         .controls {
           grid-template-columns: 1fr 1fr;
         }
-}
+      }
 
       @media (max-width: 480px) {
-
         .controls {
           grid-template-columns: 1fr;
         }
-}
+      }
 
       .filter-group {
         display: flex;
@@ -141,9 +139,10 @@
 
       .btn-apply {
         padding: 0.6rem 1.5rem;
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
-        
+
         border-radius: 2px;
         font-size: 0.875rem;
         font-weight: 700;
@@ -184,7 +183,8 @@
       }
 
       .contraction-chip {
-        background: transparent; border: 1px solid rgba(67, 56, 202, 0.35);
+        background: transparent;
+        border: 1px solid rgba(67, 56, 202, 0.35);
         color: rgba(67, 56, 202, 0.9);
         border-radius: 2px;
         padding: 0.1rem 0.4rem;
@@ -204,17 +204,20 @@
       }
 
       .score-high {
-        background: transparent; border: 1px solid rgba(21, 128, 61, 0.35);
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
         color: rgba(21, 128, 61, 0.9);
       }
 
       .score-mid {
-        background: transparent; border: 1px solid rgba(161, 98, 7, 0.35);
+        background: transparent;
+        border: 1px solid rgba(161, 98, 7, 0.35);
         color: rgba(161, 98, 7, 0.9);
       }
 
       .score-low {
-        background: transparent; border: 1px solid rgba(100, 116, 139, 0.35);
+        background: transparent;
+        border: 1px solid rgba(100, 116, 139, 0.35);
         color: rgba(100, 116, 139, 0.9);
       }
 
@@ -226,12 +229,14 @@
       }
 
       .tag-ma-above {
-        background: transparent; border: 1px solid rgba(21, 128, 61, 0.35);
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
         color: rgba(21, 128, 61, 0.9);
       }
 
       .tag-ma-below {
-        background: transparent; border: 1px solid rgba(100, 116, 139, 0.35);
+        background: transparent;
+        border: 1px solid rgba(100, 116, 139, 0.35);
         color: rgba(100, 116, 139, 0.9);
       }
     </style>
@@ -581,8 +586,8 @@
             renderTable();
           }
         });
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+        NerdGrid.initThemeToggle();
+        NerdGrid.initNavDropdowns();
 
         loadData();
       }
@@ -810,6 +815,5 @@
 
       init();
     </script>
-    
   </body>
 </html>

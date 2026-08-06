@@ -13,12 +13,11 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       .filter-grid {
         display: grid;
@@ -28,18 +27,16 @@
       }
 
       @media (min-width: 640px) {
-
         .filter-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-}
+      }
 
       @media (min-width: 1200px) {
-
         .filter-grid {
           grid-template-columns: repeat(4, 1fr);
         }
-}
+      }
 
       .filter-group {
         display: flex;
@@ -83,7 +80,8 @@
       }
 
       .btn-primary {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
       }
 
@@ -514,8 +512,8 @@
           if (e.key === "Enter") fetchFilteredWarrants();
         });
       });
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNavDropdowns();
 
       // Save/restore filter values in localStorage
       const filterIds = [
@@ -547,6 +545,5 @@
       // Initial fetch
       fetchFilteredWarrants();
     </script>
-    
   </body>
 </html>

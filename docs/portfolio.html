@@ -13,12 +13,11 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <style>
-@media (max-width: 480px) {
-
+      @media (max-width: 480px) {
         h1 span.title-text {
           display: none;
         }
-}
+      }
 
       main {
         max-width: 1300px;
@@ -69,7 +68,8 @@
       }
 
       .btn-primary {
-        background: transparent; border: 1px solid var(--hud-border-1);
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
         color: var(--hud-text-1);
       }
 
@@ -112,7 +112,6 @@
         border: 1px solid var(--hud-border-2);
         border-radius: 2px;
         padding: 0.9rem 1.1rem;
-        
       }
 
       .summary-card .label {
@@ -135,7 +134,6 @@
         border-radius: 2px;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1.25rem;
-        
       }
 
       .form-panel h2 {
@@ -219,7 +217,6 @@
         border: 1px solid var(--hud-border-2);
         border-radius: 2px;
         overflow-x: auto;
-        
       }
 
       th:first-child,
@@ -345,7 +342,9 @@
             <button class="nav-link nav-dropdown-btn active">個人</button>
             <div class="nav-dropdown-menu">
               <a href="bookmark.html" class="nav-dropdown-item">常用連結</a>
-              <a href="portfolio.html" class="nav-dropdown-item active">持股試算</a>
+              <a href="portfolio.html" class="nav-dropdown-item active"
+                >持股試算</a
+              >
             </div>
           </div>
         </nav>
@@ -500,8 +499,8 @@
 
     <script src="assets/nerd-grid.js"></script>
     <script>
-          NerdGrid.initThemeToggle();
-          NerdGrid.initNavDropdowns();
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNavDropdowns();
 
       // ── Storage keys ────────────────────────────────────────────────────────
       const STORAGE_KEY = "portfolio_holdings";
@@ -895,6 +894,5 @@
         renderHoldings();
       })();
     </script>
-    
   </body>
 </html>
