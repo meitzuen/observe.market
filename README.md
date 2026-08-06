@@ -9,7 +9,7 @@
 - **數據視覺化**：整合 Chart.js 展示大盤趨勢，提供即時漲跌狀態與成交資訊。
 - **進階篩選功能**：支援搜尋、價格區間過濾及成交量篩選，快速鎖定目標個股。
 - **處置股追蹤**：自動同步最新的處置股票資訊，掌握市場風險。
-- **跳空策略分析**：內建 Gap Jump／Gap Drop 策略，自動篩選當日強弱勢個股。
+- **跳空漲跌分析**：內建 Gap Jump／Gap Drop 策略，自動篩選當日強弱勢個股。
 - **基本面排行**：整合 Wantgoo 基本面數據排行。
 - **精選類股**：依類股分類瀏覽精選股票。
 - **權證功能**：精選權證與權證篩選器，協助掌握衍生性商品機會。
@@ -31,7 +31,7 @@ observe.market/
 │   ├── index.html              # 上市＋上櫃整合大盤（首頁）
 │   ├── twse.html               # 上市大盤（TWSE）
 │   ├── tpex.html               # 上櫃大盤（TPEx）
-│   ├── gap.html                # 跳空策略觀測站
+│   ├── gap.html                # 跳空漲跌觀測站
 │   ├── punish.html             # 處置股票觀測站
 │   ├── wantgoo.html            # 基本面排行
 │   ├── watchlist.html          # 精選類股
@@ -52,7 +52,7 @@ observe.market/
 
 1. **數據抓取 (`src/fetch_and_save.py`)**：抓取大盤指數、個股行情、處置股名單與跳空數據，分別儲存至 `twse/` 與 `tpex/`。
 2. **個股資料 (`src/fetch_stock_info.py`)**：抓取上市／上櫃個股基本資訊，輸出至 `stock_info.json`。
-3. **跳空策略 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
+3. **跳空漲跌 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
 4. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
 5. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
 6. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，部署於 GitHub Pages。
@@ -72,7 +72,7 @@ python src/fetch_and_save.py --date_str 2026-04-20
 # 抓取個股基本資料
 python src/fetch_stock_info.py
 
-# 執行跳空策略分析
+# 執行跳空漲跌分析
 python src/gap_strategy.py --date_str 2026-04-20
 
 # 彙整個股歷史資料
