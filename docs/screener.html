@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volatility Observer | 區間波動率</title>
+    <title>Stock Screener | 股票篩選器</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -267,10 +267,18 @@
         margin: -0.75rem 0 1.25rem;
       }
 
+      .section-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
       .market-tabs {
         display: flex;
         gap: 0.5rem;
         margin-bottom: 1.25rem;
+        flex-wrap: wrap;
       }
       .market-tab {
         padding: 0.4rem 1rem;
@@ -282,6 +290,7 @@
         background: none;
         color: var(--text-muted);
         transition: all 0.2s;
+        white-space: nowrap;
       }
       .market-tab.active {
         background: var(--primary);
@@ -647,9 +656,9 @@
           "
         />
         <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📊</span
+          >🔍</span
         >
-        <h1><span class="title-text">Volatility Observer</span></h1>
+        <h1><span class="title-text">Stock Screener</span></h1>
         <nav class="nav-bar">
           <div class="nav-dropdown">
             <button class="nav-link nav-dropdown-btn">市場</button>
@@ -665,11 +674,11 @@
               <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
               <a href="punish.html" class="nav-dropdown-item">處置股票</a>
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
-              <a href="volatility.html" class="nav-dropdown-item active"
-                >區間波動率</a
-              >
+              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
               <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
-              <a href="screener.html" class="nav-dropdown-item">股票篩選器</a>
+              <a href="screener.html" class="nav-dropdown-item active"
+                >股票篩選器</a
+              >
             </div>
           </div>
           <div class="nav-dropdown">
@@ -698,7 +707,7 @@
       <div class="card">
         <div class="card-title">
           <span style="display: flex; align-items: center"
-            >📊 區間波動率設定
+            >🔍 篩選設定
             <button
               id="help-btn"
               class="help-btn"
@@ -709,6 +718,7 @@
           >
         </div>
 
+        <div class="section-label">市場</div>
         <div class="market-tabs">
           <button class="market-tab active" data-market="twse">上市</button>
           <button class="market-tab" data-market="tpex">上櫃</button>
@@ -724,7 +734,7 @@
             <span class="filter-label">結束日期</span>
             <input type="date" id="date-to" class="filter-input" />
           </div>
-          <button class="btn-apply" id="btn-calc">計算波動率</button>
+          <button class="btn-apply" id="btn-calc">套用區間</button>
         </div>
 
         <div class="checkbox-row">
@@ -735,12 +745,22 @@
         </div>
 
         <div class="hint" id="range-hint">載入資料中…</div>
+
+        <div class="section-label">排行類型</div>
+        <div class="market-tabs" id="rank-tabs">
+          <button class="market-tab active" data-rank="gain">漲幅排行</button>
+          <button class="market-tab" data-rank="loss">跌幅排行</button>
+          <button class="market-tab" data-rank="volume">成交量排行</button>
+          <button class="market-tab" data-rank="streak">
+            連續上漲天數排行
+          </button>
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">
-          <span
-            >波動率排行（由穩定到劇烈）
+          <span id="result-title"
+            >漲幅排行
             <span id="result-count" class="badge badge-primary">0</span></span
           >
           <select id="page-size" class="page-size-select">
@@ -753,37 +773,7 @@
 
         <div class="table-container">
           <table>
-            <thead>
-              <tr>
-                <th>排名</th>
-                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
-                <th onclick="setSort('name')">
-                  名稱 <span id="sort-name"></span>
-                </th>
-                <th
-                  id="th-market"
-                  onclick="setSort('market')"
-                  style="display: none"
-                >
-                  市場 <span id="sort-market"></span>
-                </th>
-                <th onclick="setSort('nDays')">
-                  交易天數 <span id="sort-nDays"></span>
-                </th>
-                <th onclick="setSort('dailyStd')">
-                  日波動率 <span id="sort-dailyStd"></span>
-                </th>
-                <th onclick="setSort('annualStd')">
-                  年化波動率 <span id="sort-annualStd"></span>
-                </th>
-                <th onclick="setSort('periodReturn')">
-                  期間漲跌 <span id="sort-periodReturn"></span>
-                </th>
-                <th onclick="setSort('meanPrice')">
-                  均價 <span id="sort-meanPrice"></span>
-                </th>
-              </tr>
-            </thead>
+            <thead id="table-head"></thead>
             <tbody id="result-list"></tbody>
           </table>
         </div>
@@ -819,7 +809,7 @@
     <div class="modal-overlay" id="help-modal">
       <div class="modal-box">
         <div class="modal-header">
-          <h2>📊 區間波動率是怎麼算出來的？</h2>
+          <h2>🔍 股票篩選器是怎麼算出來的？</h2>
           <button class="modal-close" id="help-close" title="關閉">
             &times;
           </button>
@@ -827,45 +817,54 @@
         <div class="modal-body">
           <h3>1. 資料來源</h3>
           <p>
-            不是每檔股票各抓一個檔案，而是抓區間內「每一天」的全市場快照：<br />
+            跟區間波動率頁相同，抓的是區間內「每一天」的全市場快照：<br />
             <code>data/{market}/daily_price/{date}.json</code
-            >，每個檔案包含當天上市或上櫃「所有股票」的收盤價等資料。
-            這樣抓取次數等於「選定區間的交易日數」，跟股票檔數無關，比逐檔股票抓歷史檔快很多。
+            >，每個檔案包含當天上市或上櫃所有股票的開高低收、成交量等資料。
+            抓取次數等於選定區間的交易日數，跟股票檔數無關。
           </p>
 
           <h3>2. 決定要抓哪些日期</h3>
           <p>
-            先讀取
-            <code>data/manifest.json</code>
-            取得每個市場實際有資料的日期清單，再用你在 calendar
-            選的起訖日期去過濾這份清單。
-            所以就算選到假日或非交易日，也只是自然被濾掉，不需要額外校正。
+            先讀取 <code>data/manifest.json</code>
+            取得每個市場實際有資料的日期清單，再用你選的起訖日期過濾。預設會帶入最近
+            10 個交易日，你也可以自行調整成任意區間。
           </p>
 
-          <h3>3. 聚合每檔股票的收盤價序列</h3>
+          <h3>3. 聚合每檔股票的資料</h3>
           <p>
-            把區間內每天的快照抓回來後，依「市場_股票代號」分組，把每天的收盤價依序放進同一檔股票的陣列裡。
+            把區間內每天的快照抓回來後，依「市場_股票代號」分組，把每天的收盤價與成交量依日期順序放進同一檔股票的陣列裡。
           </p>
 
-          <h3>4. 計算波動率</h3>
+          <h3>4. 四種排行怎麼算</h3>
           <ul>
-            <li>日報酬率：<code>r = (今日收盤 − 昨日收盤) / 昨日收盤</code></li>
-            <li>日波動率 = 這些日報酬率的標準差</li>
-            <li>年化波動率 = 日波動率 × √252</li>
-            <li>期間漲跌 = (區間最後一天收盤 − 第一天收盤) / 第一天收盤</li>
-            <li>均價 = 收盤價的算術平均</li>
+            <li>
+              <b>期間漲跌%</b> =
+              (區間最後一天收盤 − 第一天收盤) / 第一天收盤 × 100%
+            </li>
+            <li><b>漲幅排行</b>：依期間漲跌%由高到低排序</li>
+            <li><b>跌幅排行</b>：依期間漲跌%由低到高排序（跌最多的在最前面）</li>
+            <li>
+              <b>成交量排行</b>：把區間內每天的成交量加總（換算為「張」＝股數
+              ÷ 1000），由大到小排序；同時列出日均量
+            </li>
+            <li>
+              <b>連續上漲天數排行</b
+              >：從區間最後一天往回算，只要「今日收盤
+              &gt;
+              昨日收盤」就算連續一天，一遇到收盤價沒有上漲（持平或下跌）就中斷。這個天數只在你選定的區間內計算，區間以外的資料不會被用來延伸連續天數。
+            </li>
           </ul>
 
           <h3>5. 資料完整性過濾</h3>
           <p>
             勾選「只計算區間內每個交易日都有成交的股票」時，只保留區間內每一天都有出現的股票；不勾選則放寬到至少
             2 天資料即可計算。
-            這是因為中途下市或長期停牌的股票，只用剩下那一小段資料算出來的標準差會異常偏小，看起來「很穩定」其實只是資料不全造成的假象，勾選這個選項可以避免被誤導。
+            這是因為中途下市或長期停牌的股票，只用剩下那一小段資料算出來的指標會失真，勾選這個選項可以避免被誤導。
           </p>
 
-          <h3>6. 排序與分頁</h3>
+          <h3>6. 切換排行類型不會重抓資料</h3>
           <p>
-            所有股票算完後預設依「日波動率」由小到大排序（最穩定的排最前面），點表頭可切換其他欄位排序；分頁只是把結果依你選的每頁筆數切片顯示，不會重新抓資料。
+            四種排行用的都是同一批已抓回來的資料，只是換一種排序方式跟顯示欄位，所以切換「排行類型」分頁籤是瞬間完成的；只有更換市場、日期區間，或勾選框狀態改變時才會重新抓資料。點表頭一樣可以自訂排序欄位。
           </p>
         </div>
       </div>
@@ -874,13 +873,28 @@
     <script>
       let manifest = null;
       let currentMarket = "twse";
+      let rankType = "gain";
       let results = [];
-      let sortColumn = "dailyStd";
-      let sortDirection = "asc";
+      let sortColumn = "periodReturn";
+      let sortDirection = "desc";
       let currentPage = 1;
       let rowsPerPage = 50;
 
       const MARKETS = ["twse", "tpex"];
+
+      const RANK_TITLES = {
+        gain: "漲幅排行",
+        loss: "跌幅排行",
+        volume: "成交量排行",
+        streak: "連續上漲天數排行",
+      };
+
+      const RANK_DEFAULT_SORT = {
+        gain: { column: "periodReturn", direction: "desc" },
+        loss: { column: "periodReturn", direction: "asc" },
+        volume: { column: "totalVolume", direction: "desc" },
+        streak: { column: "streak", direction: "desc" },
+      };
 
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
@@ -895,22 +909,42 @@
         const toEl = document.getElementById("date-to");
         fromEl.min = toEl.min = minDate;
         fromEl.max = toEl.max = maxDate;
-        fromEl.value = minDate;
-        toEl.value = maxDate;
+
+        // Default to the most recent 10 trading days of the current market
+        // so gain/loss/volume/streak rankings are meaningful out of the box.
+        const marketDates = [...manifest[currentMarket].daily_price].sort();
+        const defaultSpan = marketDates.slice(-10);
+        fromEl.value = defaultSpan[0] || minDate;
+        toEl.value = defaultSpan[defaultSpan.length - 1] || maxDate;
 
         document.getElementById("range-hint").textContent =
-          `資料範圍：${minDate} ～ ${maxDate}（超出範圍的日期會自動忽略）`;
+          `資料範圍：${minDate} ～ ${maxDate}（超出範圍的日期會自動忽略，預設帶入最近 10 個交易日）`;
 
-        document.querySelectorAll(".market-tab").forEach((btn) => {
+        document.querySelectorAll(".market-tab[data-market]").forEach((btn) => {
           btn.addEventListener("click", () => {
             document
-              .querySelectorAll(".market-tab")
+              .querySelectorAll(".market-tab[data-market]")
               .forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             currentMarket = btn.dataset.market;
-            document.getElementById("th-market").style.display =
-              currentMarket === "all" ? "" : "none";
             calculate();
+          });
+        });
+
+        document.querySelectorAll(".market-tab[data-rank]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab[data-rank]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            rankType = btn.dataset.rank;
+            const def = RANK_DEFAULT_SORT[rankType];
+            sortColumn = def.column;
+            sortDirection = def.direction;
+            document.getElementById("result-title").firstChild.textContent =
+              RANK_TITLES[rankType] + " ";
+            currentPage = 1;
+            renderTable();
           });
         });
 
@@ -995,7 +1029,7 @@
         document.getElementById("result-list").innerHTML = "";
         document.getElementById("btn-calc").disabled = true;
 
-        // stats[market_id] = { market, id, name, closes: [{date, close}] }
+        // stats[market_id] = { market, id, name, rows: [{date, close, volume}] }
         const stats = new Map();
         const marketDateCounts = {};
 
@@ -1023,10 +1057,14 @@
                   const key = `${market}_${r.id}`;
                   let entry = stats.get(key);
                   if (!entry) {
-                    entry = { market, id: r.id, name: r.name, closes: [] };
+                    entry = { market, id: r.id, name: r.name, rows: [] };
                     stats.set(key, entry);
                   }
-                  entry.closes.push({ date, close: r.close });
+                  entry.rows.push({
+                    date,
+                    close: r.close,
+                    volume: r.volume || 0,
+                  });
                 }
               }),
             );
@@ -1043,26 +1081,27 @@
 
         results = [];
         for (const entry of stats.values()) {
-          entry.closes.sort((a, b) => (a.date < b.date ? -1 : 1));
-          const nDays = entry.closes.length;
+          entry.rows.sort((a, b) => (a.date < b.date ? -1 : 1));
+          const nDays = entry.rows.length;
           const totalForMarket = marketDateCounts[entry.market];
           if (nDays < 2) continue;
           if (fullCoverageOnly && nDays !== totalForMarket) continue;
 
-          const closes = entry.closes.map((c) => c.close);
-          const returns = [];
-          for (let i = 1; i < closes.length; i++) {
-            returns.push((closes[i] - closes[i - 1]) / closes[i - 1]);
+          const closes = entry.rows.map((r) => r.close);
+          const volumes = entry.rows.map((r) => r.volume);
+
+          const firstClose = closes[0];
+          const lastClose = closes[closes.length - 1];
+          const periodReturn = ((lastClose - firstClose) / firstClose) * 100;
+
+          const totalVolume = volumes.reduce((a, b) => a + b, 0);
+          const avgVolume = totalVolume / volumes.length;
+
+          let streak = 0;
+          for (let i = closes.length - 1; i >= 1; i--) {
+            if (closes[i] > closes[i - 1]) streak++;
+            else break;
           }
-          const meanReturn =
-            returns.reduce((a, b) => a + b, 0) / returns.length;
-          const variance =
-            returns.reduce((a, b) => a + (b - meanReturn) ** 2, 0) /
-            returns.length;
-          const dailyStd = Math.sqrt(variance);
-          const meanPrice = closes.reduce((a, b) => a + b, 0) / closes.length;
-          const periodReturn =
-            ((closes[closes.length - 1] - closes[0]) / closes[0]) * 100;
 
           results.push({
             market: entry.market,
@@ -1070,10 +1109,12 @@
             name: entry.name,
             nDays,
             totalDays: totalForMarket,
-            dailyStd: dailyStd * 100,
-            annualStd: dailyStd * Math.sqrt(252) * 100,
+            firstClose,
+            lastClose,
             periodReturn,
-            meanPrice,
+            totalVolume,
+            avgVolume,
+            streak,
           });
         }
 
@@ -1084,6 +1125,120 @@
         renderTable();
       }
 
+      // ── columns ───────────────────────────────────────────────────────────
+      function retSpan(v) {
+        const cls = v > 0 ? "price-up" : v < 0 ? "price-down" : "";
+        const prefix = v > 0 ? "+" : "";
+        return `<span class="${cls}">${prefix}${v.toFixed(2)}%</span>`;
+      }
+
+      function getColumns() {
+        const showMarket = currentMarket === "all";
+        const cols = [
+          {
+            key: "id",
+            label: "代號",
+            sortable: true,
+            cell: (r) =>
+              `<a href="stock.html?id=${r.id}" class="stock-link">${r.id}</a>`,
+          },
+          {
+            key: "name",
+            label: "名稱",
+            sortable: true,
+            style: "font-weight:600;",
+            cell: (r) =>
+              `<a href="http://cnyes.com/twstock/${r.id}/analysis/performance" target="_blank" class="stock-link">${r.name}</a>`,
+          },
+        ];
+        if (showMarket) {
+          cols.push({
+            key: "market",
+            label: "市場",
+            sortable: true,
+            cell: (r) =>
+              `<span class="badge badge-market-${r.market}">${r.market === "twse" ? "上市" : "上櫃"}</span>`,
+          });
+        }
+        cols.push({
+          key: "nDays",
+          label: "交易天數",
+          sortable: true,
+          style: "color:var(--text-muted);",
+          cell: (r) => `${r.nDays} / ${r.totalDays}`,
+        });
+
+        if (rankType === "gain" || rankType === "loss") {
+          cols.push(
+            {
+              key: "firstClose",
+              label: "起始收盤",
+              sortable: true,
+              cell: (r) => r.firstClose.toFixed(2),
+            },
+            {
+              key: "lastClose",
+              label: "結束收盤",
+              sortable: true,
+              cell: (r) => r.lastClose.toFixed(2),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        } else if (rankType === "volume") {
+          cols.push(
+            {
+              key: "totalVolume",
+              label: "期間成交量(張)",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) =>
+                Math.round(r.totalVolume / 1000).toLocaleString(),
+            },
+            {
+              key: "avgVolume",
+              label: "日均量(張)",
+              sortable: true,
+              cell: (r) => Math.round(r.avgVolume / 1000).toLocaleString(),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        } else if (rankType === "streak") {
+          cols.push(
+            {
+              key: "streak",
+              label: "連續上漲天數",
+              sortable: true,
+              style: "font-weight:700;color:var(--up);",
+              cell: (r) => `${r.streak} 天`,
+            },
+            {
+              key: "lastClose",
+              label: "目前收盤",
+              sortable: true,
+              cell: (r) => r.lastClose.toFixed(2),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        }
+        return cols;
+      }
+
       // ── render ────────────────────────────────────────────────────────────
       function setSort(col) {
         sortDirection =
@@ -1091,14 +1246,25 @@
             ? sortDirection === "asc"
               ? "desc"
               : "asc"
-            : col === "id" || col === "name" || col === "market"
-              ? "asc"
-              : "asc";
+            : "asc";
         sortColumn = col;
         renderTable();
       }
+      window.setSort = setSort;
 
       function renderTable() {
+        const columns = getColumns();
+
+        // header
+        const thead = document.getElementById("table-head");
+        const headCells = columns
+          .map(
+            (c) =>
+              `<th onclick="setSort('${c.key}')">${c.label} <span id="sort-${c.key}"></span></th>`,
+          )
+          .join("");
+        thead.innerHTML = `<tr><th>排名</th>${headCells}</tr>`;
+
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
 
@@ -1108,27 +1274,22 @@
         const sorted = [...results].sort((a, b) => {
           let va = a[sortColumn];
           let vb = b[sortColumn];
-          if (typeof va === "string")
-            return sortDirection === "asc"
-              ? va.localeCompare(vb)
-              : vb.localeCompare(va);
+          if (typeof va === "string") {
+            const cmp = va.localeCompare(vb);
+            return sortDirection === "asc" ? cmp : -cmp;
+          }
           return sortDirection === "asc" ? va - vb : vb - va;
         });
 
-        [
-          "id",
-          "name",
-          "market",
-          "nDays",
-          "dailyStd",
-          "annualStd",
-          "periodReturn",
-          "meanPrice",
-        ].forEach((col) => {
-          const el = document.getElementById("sort-" + col);
+        columns.forEach((c) => {
+          const el = document.getElementById("sort-" + c.key);
           if (el)
             el.textContent =
-              col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+              c.key === sortColumn
+                ? sortDirection === "asc"
+                  ? " ↑"
+                  : " ↓"
+                : "";
         });
 
         const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
@@ -1143,41 +1304,22 @@
           currentPage * rowsPerPage,
         );
 
-        const colspan = currentMarket === "all" ? 8 : 7;
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="${colspan}" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票，請調整區間或篩選條件</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="${columns.length + 1}" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票，請調整區間或篩選條件</td></tr>`;
           return;
         }
 
         const startRank = (currentPage - 1) * rowsPerPage;
 
-        pageData.forEach((s, idx) => {
+        pageData.forEach((r, idx) => {
           const tr = document.createElement("tr");
-          const marketBadge =
-            currentMarket === "all"
-              ? `<td><span class="badge badge-market-${s.market}">${s.market === "twse" ? "上市" : "上櫃"}</span></td>`
-              : "";
-          const retClass =
-            s.periodReturn > 0
-              ? "price-up"
-              : s.periodReturn < 0
-                ? "price-down"
-                : "";
-          const retPrefix = s.periodReturn > 0 ? "+" : "";
-
-          tr.innerHTML = `
-            <td class="rank-cell">${startRank + idx + 1}</td>
-            <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
-            <td style="font-weight:600;">
-              <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
-            </td>
-            ${marketBadge}
-            <td style="color:var(--text-muted);">${s.nDays} / ${s.totalDays}</td>
-            <td style="font-weight:700;">${s.dailyStd.toFixed(3)}%</td>
-            <td>${s.annualStd.toFixed(2)}%</td>
-            <td class="${retClass}">${retPrefix}${s.periodReturn.toFixed(2)}%</td>
-            <td>${s.meanPrice.toFixed(2)}</td>
-          `;
+          const cells = columns
+            .map(
+              (c) =>
+                `<td${c.style ? ` style="${c.style}"` : ""}>${c.cell(r)}</td>`,
+            )
+            .join("");
+          tr.innerHTML = `<td class="rank-cell">${startRank + idx + 1}</td>${cells}`;
           tbody.appendChild(tr);
         });
       }
