@@ -1,0 +1,671 @@
+/* ==========================================================================
+   Nerd Grid (Wireframe HUD) — shared design system
+   Dark = pure-black cyan wireframe HUD (default)
+   Light = paper-white deep-blue wireframe HUD ([data-theme="light"])
+   See /Nerd Grid.md for the source design brief.
+   ========================================================================== */
+
+:root {
+  /* dark (default) */
+  --hud-bg: #000000;
+  --hud-bg-raised: #050708;
+  --hud-card-bg: transparent;  /* pure wireframe: no fill, per design brief */
+
+  --hud-border-1: rgba(0, 180, 255, 0.18);   /* primary panel border */
+  --hud-border-2: rgba(0, 180, 255, 0.12);   /* secondary panel border */
+  --hud-border-3: rgba(0, 180, 255, 0.08);   /* hairline / row divider */
+
+  --hud-grid-h: rgba(0, 180, 255, 0.08);
+  --hud-grid-v: rgba(0, 180, 255, 0.05);
+
+  --hud-text-1: rgba(0, 190, 255, 0.9);      /* headline numbers */
+  --hud-text-2: rgba(0, 190, 255, 0.7);      /* primary data */
+  --hud-text-3: rgba(0, 190, 255, 0.5);      /* labels / secondary */
+  --hud-text-4: rgba(0, 190, 255, 0.35);     /* tertiary / muted */
+
+  /* TW market convention: red = up, green = down (opposite of US/EU) */
+  --hud-up: rgba(255, 80, 80, 0.85);
+  --hud-up-dim: rgba(255, 80, 80, 0.5);
+  --hud-down: rgba(0, 220, 180, 0.85);
+  --hud-down-dim: rgba(0, 220, 180, 0.5);
+
+  --hud-danger-border: rgba(255, 80, 80, 0.35);
+  --hud-danger-text: rgba(255, 120, 120, 0.85);
+
+  --hud-hover-bg: rgba(0, 180, 255, 0.05);
+  --hud-active-bg: rgba(0, 180, 255, 0.1);
+
+  --hud-radius: 2px;
+  --hud-font: "JetBrains Mono", "Noto Sans TC", ui-monospace, monospace;
+}
+
+[data-theme="light"] {
+  /* toned page bg + solid white card surface, so wireframe panels actually
+     separate from the page instead of dissolving into it (pure #fff-on-#fff
+     wireframe reads as "barely there" once you remove the black backdrop) */
+  --hud-bg: #e7ecf2;
+  --hud-bg-raised: #ffffff;
+  --hud-card-bg: #ffffff;
+
+  --hud-border-1: rgba(0, 60, 130, 0.55);
+  --hud-border-2: rgba(0, 60, 130, 0.32);
+  --hud-border-3: rgba(0, 60, 130, 0.18);
+
+  --hud-grid-h: rgba(0, 60, 130, 0.16);
+  --hud-grid-v: rgba(0, 60, 130, 0.09);
+
+  --hud-text-1: rgba(0, 35, 85, 1);
+  --hud-text-2: rgba(0, 45, 100, 0.95);
+  --hud-text-3: rgba(0, 50, 110, 0.75);
+  --hud-text-4: rgba(0, 50, 110, 0.55);
+
+  /* TW market convention: red = up, green = down (opposite of US/EU) */
+  --hud-up: rgba(195, 30, 30, 1);
+  --hud-up-dim: rgba(195, 30, 30, 0.6);
+  --hud-down: rgba(0, 120, 100, 1);
+  --hud-down-dim: rgba(0, 120, 100, 0.6);
+
+  --hud-danger-border: rgba(195, 30, 30, 0.5);
+  --hud-danger-text: rgba(170, 20, 20, 1);
+
+  --hud-hover-bg: rgba(0, 60, 130, 0.07);
+  --hud-active-bg: rgba(0, 60, 130, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hud-border-1) transparent;
+}
+
+body {
+  font-family: var(--hud-font);
+  background-color: var(--hud-bg);
+  color: var(--hud-text-2);
+  margin: 0;
+  line-height: 1.6;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hud-border-1);
+}
+
+/* -------------------------------------------------------------------- */
+/* Header / nav                                                          */
+/* -------------------------------------------------------------------- */
+
+header {
+  background-color: var(--hud-bg);
+  border-bottom: 1px solid var(--hud-border-1);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.85rem 2rem;
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.header-left::-webkit-scrollbar {
+  display: none;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .header-right {
+    justify-content: flex-end;
+  }
+}
+
+h1 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: var(--hud-font);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--hud-text-2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  h1 span.title-text {
+    display: none;
+  }
+}
+
+#header-logo {
+  filter: grayscale(1) brightness(1.6);
+  opacity: 0.85;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--hud-text-3);
+  font-family: var(--hud-font);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: var(--hud-radius);
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background: var(--hud-hover-bg);
+  color: var(--hud-text-1);
+}
+
+.nav-link.active {
+  border-color: var(--hud-border-1);
+  color: var(--hud-text-1);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-btn {
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.nav-dropdown-btn::after {
+  content: "";
+  display: inline-block;
+  border: solid currentColor;
+  border-width: 0 1px 1px 0;
+  padding: 2.5px;
+  transform: rotate(45deg) translateY(-1px);
+  margin-left: 5px;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+
+.nav-dropdown:hover .nav-dropdown-btn::after {
+  transform: rotate(-135deg) translateY(1px);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: fixed;
+  background: var(--hud-bg-raised);
+  border: 1px solid var(--hud-border-1);
+  border-radius: var(--hud-radius);
+  min-width: 7rem;
+  z-index: 9999;
+  padding: 0.25rem;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.nav-dropdown-item {
+  text-decoration: none;
+  color: var(--hud-text-3);
+  font-family: var(--hud-font);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--hud-radius);
+  transition:
+    background 0.15s,
+    color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--hud-hover-bg);
+  color: var(--hud-text-1);
+}
+
+.nav-dropdown-item.active {
+  background: var(--hud-active-bg);
+  color: var(--hud-text-1);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--hud-border-1);
+  border-radius: var(--hud-radius);
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--hud-text-3);
+  transition: all 0.15s;
+}
+.theme-toggle:hover {
+  background: var(--hud-hover-bg);
+  color: var(--hud-text-1);
+}
+
+.date-select {
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border-1);
+  background: transparent;
+  color: var(--hud-text-2);
+  font-family: var(--hud-font);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  outline: none;
+}
+.date-select option {
+  background: var(--hud-bg-raised);
+  color: var(--hud-text-2);
+}
+.date-select:focus {
+  border-color: var(--hud-text-2);
+}
+
+/* -------------------------------------------------------------------- */
+/* Layout                                                                 */
+/* -------------------------------------------------------------------- */
+
+.container {
+  max-width: 1400px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2.5fr 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/* Card / panel — wireframe only, no fill                                */
+/* -------------------------------------------------------------------- */
+
+.card {
+  background: var(--hud-card-bg);
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border-1);
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: var(--hud-font);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--hud-text-3);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--hud-border-3);
+}
+
+.card-title::before {
+  content: "// ";
+  color: var(--hud-text-4);
+}
+
+/* Sidebar HUD panels (市場摘要 / 跳空上漲 / 處置股票…) share one centered
+   title treatment instead of each drifting left/space-between differently. */
+.card-title-center {
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* -------------------------------------------------------------------- */
+/* Table                                                                  */
+/* -------------------------------------------------------------------- */
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+th {
+  padding: 0.7rem 0.6rem;
+  background: transparent;
+  border-bottom: 1px solid var(--hud-border-2);
+  font-weight: 500;
+  font-family: var(--hud-font);
+  color: var(--hud-text-3);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+td {
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid var(--hud-border-3);
+  font-size: 0.8rem;
+  font-family: var(--hud-font);
+  color: var(--hud-text-2);
+}
+
+tr:hover td {
+  background-color: var(--hud-hover-bg);
+}
+
+.price-up {
+  color: var(--hud-up);
+  font-weight: 500;
+}
+.price-down {
+  color: var(--hud-down);
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------- */
+/* Inputs / filters                                                       */
+/* -------------------------------------------------------------------- */
+
+.search-box {
+  margin-bottom: 1.1rem;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--hud-border-2);
+  border-radius: var(--hud-radius);
+  font-family: var(--hud-font);
+  font-size: 0.8rem;
+  color: var(--hud-text-1);
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(--hud-card-bg);
+  transition: border-color 0.15s;
+}
+.search-box input::placeholder {
+  color: var(--hud-text-4);
+}
+.search-box input:focus {
+  border-color: var(--hud-text-2);
+}
+
+.filter-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.7rem;
+  font-family: var(--hud-font);
+  background: var(--hud-card-bg);
+  border: 1px solid var(--hud-border-2);
+  border-radius: var(--hud-radius);
+  color: var(--hud-text-3);
+}
+
+.filter-pill input,
+.filter-pill select {
+  width: 64px;
+  border: 1px solid var(--hud-border-2);
+  border-radius: var(--hud-radius);
+  padding: 0.15rem 0.35rem;
+  background: transparent;
+  color: var(--hud-text-1);
+  font-family: var(--hud-font);
+  font-size: 0.7rem;
+}
+.filter-pill input::placeholder {
+  color: var(--hud-text-4);
+}
+
+input[type="number"],
+select {
+  background-color: transparent;
+  color: var(--hud-text-2);
+  font-family: var(--hud-font);
+}
+
+/* -------------------------------------------------------------------- */
+/* Loader                                                                 */
+/* -------------------------------------------------------------------- */
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-family: var(--hud-font);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--hud-text-4);
+}
+
+/* -------------------------------------------------------------------- */
+/* Stats                                                                  */
+/* -------------------------------------------------------------------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0;
+}
+
+.stat-item {
+  background: var(--hud-bg);
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border-2);
+  border-left: 2px solid var(--hud-border-1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: var(--hud-text-3);
+  font-family: var(--hud-font);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-family: var(--hud-font);
+  color: var(--hud-text-1);
+}
+
+/* -------------------------------------------------------------------- */
+/* Badges / tags                                                          */
+/* -------------------------------------------------------------------- */
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border-2);
+  font-size: 0.65rem;
+  font-family: var(--hud-font);
+  color: var(--hud-text-3);
+  margin-left: 0.5rem;
+}
+
+.badge-primary,
+.badge-accent {
+  border-color: var(--hud-border-1);
+  color: var(--hud-text-2);
+}
+.badge-danger {
+  border-color: var(--hud-danger-border);
+  color: var(--hud-danger-text);
+}
+
+.tag {
+  font-size: 0.62rem;
+  font-family: var(--hud-font);
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--hud-radius);
+  border: 1px solid var(--hud-border-2);
+  background: transparent;
+  color: var(--hud-text-3);
+  margin-right: 0.3rem;
+}
+.tag-danger {
+  border-color: var(--hud-danger-border);
+  color: var(--hud-danger-text);
+}
+
+/* -------------------------------------------------------------------- */
+/* Sidebar lists                                                          */
+/* -------------------------------------------------------------------- */
+
+.sidebar-section {
+  margin-bottom: 1rem;
+}
+
+.list-item {
+  padding: 0.6rem 0.1rem;
+  border-bottom: 1px solid var(--hud-border-3);
+  transition: background-color 0.15s;
+  font-family: var(--hud-font);
+}
+
+.list-item:hover {
+  background-color: var(--hud-hover-bg);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* -------------------------------------------------------------------- */
+/* Buttons                                                                */
+/* -------------------------------------------------------------------- */
+
+.btn {
+  background: transparent;
+  color: var(--hud-text-2);
+  border: 1px solid var(--hud-border-1);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--hud-radius);
+  cursor: pointer;
+  font-family: var(--hud-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--hud-hover-bg);
+  color: var(--hud-text-1);
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  border-color: var(--hud-border-2);
+  color: var(--hud-text-3);
+}
+
+/* -------------------------------------------------------------------- */
+/* Links                                                                  */
+/* -------------------------------------------------------------------- */
+
+.stock-link {
+  color: inherit;
+  text-decoration: none;
+}
+.stock-link:hover {
+  color: var(--hud-text-1);
+}
+
+/* -------------------------------------------------------------------- */
+/* Responsive touch targets                                               */
+/* -------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .nav-link,
+  .nav-dropdown-btn,
+  .nav-dropdown-item {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .theme-toggle {
+    padding: 0.55rem 0.75rem;
+  }
+}
