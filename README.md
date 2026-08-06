@@ -4,16 +4,20 @@
 
 ## 專案特色
 
-- **現代化 UI 設計**：採用簡潔美觀的儀表板介面，支援 **jf-openhuninn (粉圓體)** 字體，統一導覽列跨頁共用。
+- **現代化 UI 設計**：採用簡潔美觀的儀表板介面，支援 **jf-openhuninn (粉圓體)** 字體，統一導覽列跨頁共用。導覽列依「市場」「策略」「權證」「選股」「個人」分類，方便快速切換頁面。
 - **上市／上櫃雙市場**：分別追蹤 TWSE 上市與 TPEx 上櫃個股，資料結構一致。
 - **數據視覺化**：整合 Chart.js 展示大盤趨勢，提供即時漲跌狀態與成交資訊。
 - **進階篩選功能**：支援搜尋、價格區間過濾及成交量篩選，快速鎖定目標個股。
+- **股票篩選器**：選取任意日期區間，計算漲幅排行／跌幅排行／成交量排行／連續上漲天數排行。
 - **處置股追蹤**：自動同步最新的處置股票資訊，掌握市場風險。
 - **跳空漲跌分析**：內建 Gap Jump／Gap Drop 策略，自動篩選當日強弱勢個股。
 - **基本面排行**：整合 Wantgoo 基本面數據排行。
+- **區間波動率**：計算指定區間內個股日／年化波動率與期間漲跌，找出穩定或劇烈震盪的標的。
+- **VCP 選股**：依 Mark Minervini 的 VCP（Volatility Contraction Pattern）邏輯篩選收縮型態個股。
 - **精選類股**：依類股分類瀏覽精選股票。
 - **權證功能**：精選權證與權證篩選器，協助掌握衍生性商品機會。
 - **個股歷史走勢**：點擊任一股票代號即可查看該股歷史股價走勢圖與近期成交明細。
+- **常用連結與持股試算**：整理個人常用外部連結，並提供簡易持股損益試算。
 - **自動化流程**：利用 GitHub Actions 每天自動更新數據，無須人工干預。
 
 ## 專案結構
@@ -25,6 +29,7 @@ observe.market/
 │   ├── fetch_and_save.py       # 抓取大盤、個股、處置股與跳空數據
 │   ├── fetch_stock_info.py     # 抓取個股基本資料
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
+│   ├── vcp_strategy.py         # VCP（收縮型態）策略分析
 │   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
 │   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
 ├── docs/                       # GitHub Pages 部署根目錄
@@ -34,15 +39,20 @@ observe.market/
 │   ├── gap.html                # 跳空漲跌觀測站
 │   ├── punish.html             # 處置股票觀測站
 │   ├── wantgoo.html            # 基本面排行
+│   ├── volatility.html         # 區間波動率排行
+│   ├── vcp.html                # VCP 選股
+│   ├── screener.html           # 股票篩選器（漲幅／跌幅／成交量／連續上漲天數排行）
 │   ├── watchlist.html          # 精選類股
 │   ├── premium-warrant.html    # 精選權證
 │   ├── warrant-filter.html     # 權證篩選器
 │   ├── stock.html               # 個股歷史走勢頁面
+│   ├── bookmark.html            # 常用連結
+│   ├── portfolio.html           # 持股試算
 │   ├── assets/                 # Logo、Favicon 與樣式資源
 │   └── data/
 │       ├── manifest.json       # 資料索引清單
 │       ├── stock_info.json     # 個股基本資料
-│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, stock_history）
+│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, stock_history）
 │       ├── tpex/               # 上櫃數據（同上結構）
 │       └── warrant/            # 權證數據
 └── .github/workflows/          # 定時自動化任務配置
@@ -53,9 +63,10 @@ observe.market/
 1. **數據抓取 (`src/fetch_and_save.py`)**：抓取大盤指數、個股行情、處置股名單與跳空數據，分別儲存至 `twse/` 與 `tpex/`。
 2. **個股資料 (`src/fetch_stock_info.py`)**：抓取上市／上櫃個股基本資訊，輸出至 `stock_info.json`。
 3. **跳空漲跌 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
-4. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
-5. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
-6. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，部署於 GitHub Pages。
+4. **VCP 策略 (`src/vcp_strategy.py`)**：以 zigzag 抓取價格波段、計算收縮型態分數，輸出至 `vcp/{date}.json`，供 `vcp.html` 選股。
+5. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
+6. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
+7. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
 
 ## 本地開發
 
@@ -74,6 +85,9 @@ python src/fetch_stock_info.py
 
 # 執行跳空漲跌分析
 python src/gap_strategy.py --date_str 2026-04-20
+
+# 執行 VCP 策略分析
+python src/vcp_strategy.py --date_str 2026-04-20
 
 # 彙整個股歷史資料
 python src/generate_stock_history.py
