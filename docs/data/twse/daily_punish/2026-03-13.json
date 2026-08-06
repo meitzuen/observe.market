@@ -1,0 +1,292 @@
+[
+    {
+        "publish_date": "2026-02-26",
+        "measure": "第一次處置",
+        "id": "2455",
+        "name": "全新",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-03-02",
+        "to": "2026-03-13"
+    },
+    {
+        "publish_date": "2026-02-26",
+        "measure": "第二次處置",
+        "id": "2489",
+        "name": "瑞軒",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-02",
+        "to": "2026-03-13"
+    },
+    {
+        "publish_date": "2026-02-26",
+        "measure": "第二次處置",
+        "id": "6426",
+        "name": "統新",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-02",
+        "to": "2026-03-13"
+    },
+    {
+        "publish_date": "2026-02-26",
+        "measure": "第二次處置",
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-02",
+        "to": "2026-03-13"
+    },
+    {
+        "publish_date": "2026-02-26",
+        "measure": "第二次處置",
+        "id": "8046",
+        "name": "南電",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-02",
+        "to": "2026-03-13"
+    },
+    {
+        "publish_date": "2026-03-02",
+        "measure": "第一次處置",
+        "id": "2360",
+        "name": "致茂",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-03",
+        "to": "2026-03-16"
+    },
+    {
+        "publish_date": "2026-03-02",
+        "measure": "第一次處置",
+        "id": "3037",
+        "name": "欣興",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-03",
+        "to": "2026-03-16"
+    },
+    {
+        "publish_date": "2026-03-02",
+        "measure": "第一次處置",
+        "id": "4927",
+        "name": "泰鼎-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-03",
+        "to": "2026-03-16"
+    },
+    {
+        "publish_date": "2026-03-02",
+        "measure": "第一次處置",
+        "id": "6861",
+        "name": "睿生光電",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-03",
+        "to": "2026-03-16"
+    },
+    {
+        "publish_date": "2026-03-03",
+        "measure": "第二次處置",
+        "id": "1802",
+        "name": "台玻",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-04",
+        "to": "2026-03-17"
+    },
+    {
+        "publish_date": "2026-03-03",
+        "measure": "第一次處置",
+        "id": "2338",
+        "name": "光罩",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-04",
+        "to": "2026-03-17"
+    },
+    {
+        "publish_date": "2026-03-03",
+        "measure": "第一次處置",
+        "id": "3092",
+        "name": "鴻碩",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-04",
+        "to": "2026-03-17"
+    },
+    {
+        "publish_date": "2026-03-03",
+        "measure": "第一次處置",
+        "id": "3576",
+        "name": "聯合再生",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-04",
+        "to": "2026-03-17"
+    },
+    {
+        "publish_date": "2026-03-04",
+        "measure": "人工管制撮合",
+        "id": "1589",
+        "name": "永冠-KY",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-05",
+        "to": "2026-03-18"
+    },
+    {
+        "publish_date": "2026-03-04",
+        "measure": "第一次處置",
+        "id": "2367",
+        "name": "燿華",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-03-05",
+        "to": "2026-03-18"
+    },
+    {
+        "publish_date": "2026-03-04",
+        "measure": "第一次處置",
+        "id": "2467",
+        "name": "志聖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-05",
+        "to": "2026-03-18"
+    },
+    {
+        "publish_date": "2026-03-04",
+        "measure": "第二次處置",
+        "id": "2489",
+        "name": "瑞軒",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-05",
+        "to": "2026-03-18"
+    },
+    {
+        "publish_date": "2026-03-04",
+        "measure": "第一次處置",
+        "id": "6830",
+        "name": "汎銓",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-05",
+        "to": "2026-03-18"
+    },
+    {
+        "publish_date": "2026-03-05",
+        "measure": "第一次處置",
+        "id": "6141",
+        "name": "柏承",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-06",
+        "to": "2026-03-19"
+    },
+    {
+        "publish_date": "2026-03-05",
+        "measure": "第二次處置",
+        "id": "6861",
+        "name": "睿生光電",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-06",
+        "to": "2026-03-19"
+    },
+    {
+        "publish_date": "2026-03-05",
+        "measure": "第二次處置",
+        "id": "8033",
+        "name": "雷虎",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-03-06",
+        "to": "2026-03-19"
+    },
+    {
+        "publish_date": "2026-03-06",
+        "measure": "第一次處置",
+        "id": "6230",
+        "name": "尼得科超眾",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-03-09",
+        "to": "2026-03-20"
+    },
+    {
+        "publish_date": "2026-03-06",
+        "measure": "第二次處置",
+        "id": "6442",
+        "name": "光聖",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-03-09",
+        "to": "2026-03-20"
+    },
+    {
+        "publish_date": "2026-03-09",
+        "measure": "人工管制撮合",
+        "id": "1589",
+        "name": "永冠-KY",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-10",
+        "to": "2026-03-23"
+    },
+    {
+        "publish_date": "2026-03-09",
+        "measure": "第一次處置",
+        "id": "2616",
+        "name": "山隆",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-10",
+        "to": "2026-03-23"
+    },
+    {
+        "publish_date": "2026-03-09",
+        "measure": "第二次處置",
+        "id": "6830",
+        "name": "汎銓",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-03-10",
+        "to": "2026-03-23"
+    },
+    {
+        "publish_date": "2026-03-12",
+        "measure": "第一次處置",
+        "id": "3054",
+        "name": "立萬利",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-03-13",
+        "to": "2026-03-26"
+    },
+    {
+        "publish_date": "2026-03-12",
+        "measure": "第一次處置",
+        "id": "5521",
+        "name": "工信",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-13",
+        "to": "2026-03-26"
+    },
+    {
+        "publish_date": "2026-03-12",
+        "measure": "第一次處置",
+        "id": "6715",
+        "name": "嘉基",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-03-13",
+        "to": "2026-03-26"
+    }
+]

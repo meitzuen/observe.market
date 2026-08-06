@@ -1,0 +1,82 @@
+[
+    {
+        "publish_date": "2025-12-15",
+        "measure": "第二次處置",
+        "id": "8110",
+        "name": "華東",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2025-12-16",
+        "to": "2026-01-02"
+    },
+    {
+        "publish_date": "2025-12-17",
+        "measure": "第一次處置",
+        "id": "3229",
+        "name": "晟鈦",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2025-12-18",
+        "to": "2026-01-02"
+    },
+    {
+        "publish_date": "2025-12-17",
+        "measure": "第一次處置",
+        "id": "5521",
+        "name": "工信",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2025-12-18",
+        "to": "2026-01-02"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "1528",
+        "name": "恩德",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "2413",
+        "name": "環科",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-01-02",
+        "to": "2026-01-19"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "3092",
+        "name": "鴻碩",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "3701",
+        "name": "大眾控",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "6205",
+        "name": "詮欣",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    }
+]

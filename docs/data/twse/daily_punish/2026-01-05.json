@@ -1,0 +1,52 @@
+[
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "1528",
+        "name": "恩德",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "2413",
+        "name": "環科",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-01-02",
+        "to": "2026-01-19"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "3092",
+        "name": "鴻碩",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "3701",
+        "name": "大眾控",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    },
+    {
+        "publish_date": "2025-12-31",
+        "measure": "第一次處置",
+        "id": "6205",
+        "name": "詮欣",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-01-02",
+        "to": "2026-01-15"
+    }
+]
