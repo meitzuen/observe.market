@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List
 from config import API_DOMAIN, PATH
 
-RETENTION_DAYS = 180
+RETENTION_DAYS = 730
 
 CONDITION_ARTIFACT_RE = re.compile(r"\(\./[^)]*\)\s*$")
 
