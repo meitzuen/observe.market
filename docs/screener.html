@@ -1,0 +1,1363 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Screener | 股票篩選器</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-dark: #2563eb;
+        --bg: #f1f5f9;
+        --card-bg: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --up: #ef4444;
+        --down: #22c55e;
+        --accent: #0284c7;
+      }
+
+      body {
+        font-family:
+          "Huninn",
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #1e3a5f;
+        border-bottom: none;
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+
+      @media (min-width: 768px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 1rem 2rem;
+        }
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .header-left::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      @media (min-width: 768px) {
+        .header-right {
+          justify-content: flex-end;
+        }
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        background: linear-gradient(to right, #ffffff, #93c5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.5rem;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .nav-dropdown {
+        position: relative;
+      }
+
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        display: inline-flex;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .nav-dropdown-btn::after {
+        content: "";
+        display: inline-block;
+        border: solid currentColor;
+        border-width: 0 1.5px 1.5px 0;
+        padding: 2.5px;
+        transform: rotate(45deg) translateY(-1px);
+        margin-left: 4px;
+        opacity: 0.75;
+        transition: transform 0.2s;
+      }
+
+      .nav-dropdown:hover .nav-dropdown-btn::after {
+        transform: rotate(-135deg) translateY(1px);
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: fixed;
+        background: #1e3a5f;
+        border-radius: 0.5rem;
+        min-width: 7rem;
+        z-index: 9999;
+        padding: 0.25rem;
+        flex-direction: column;
+        gap: 0.125rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-dropdown-item {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 0.375rem;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      .nav-dropdown-item.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.2s;
+      }
+      .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .stock-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .stock-link:hover {
+        color: var(--primary);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 768px) {
+        .container {
+          margin: 2rem auto;
+          padding: 0 1.5rem;
+        }
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin-bottom: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 4px solid var(--primary);
+        padding-left: 0.75rem;
+      }
+
+      .hint {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin: -0.75rem 0 1.25rem;
+      }
+
+      .section-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--text-muted);
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .market-tab.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 1rem;
+        align-items: end;
+        margin-bottom: 1rem;
+      }
+      @media (max-width: 640px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .filter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .filter-input {
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: #f8fafc;
+        color: var(--text);
+        font-family: inherit;
+      }
+      .filter-input:focus {
+        border-color: var(--primary);
+        background: white;
+      }
+
+      .btn-apply {
+        padding: 0.6rem 1.5rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+      .btn-apply:hover {
+        background: var(--primary-dark);
+      }
+      .btn-apply:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 1.25rem;
+      }
+      .checkbox-row input {
+        width: 1rem;
+        height: 1rem;
+        cursor: pointer;
+      }
+      .checkbox-row label {
+        cursor: pointer;
+      }
+
+      .range-summary {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .table-container {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
+      }
+
+      th {
+        padding: 0.875rem 0.75rem;
+        background-color: #f8fafc;
+        border-bottom: 2px solid var(--border);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+      }
+      th:hover {
+        background-color: #f1f5f9;
+      }
+
+      td {
+        padding: 0.875rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+      tr:hover td {
+        background-color: #f8fafc;
+      }
+
+      .price-up {
+        color: var(--up);
+        font-weight: 700;
+      }
+      .price-down {
+        color: var(--down);
+        font-weight: 700;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.125rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+      .badge-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+      .badge-market-twse {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+      .badge-market-tpex {
+        background-color: #ede9fe;
+        color: #6d28d9;
+      }
+
+      .rank-cell {
+        font-weight: 700;
+        color: var(--text-muted);
+      }
+
+      .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-style: italic;
+        color: var(--text-muted);
+      }
+
+      .btn-secondary {
+        background: var(--text-muted);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .btn-secondary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .page-size-select {
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border);
+        background: #f8fafc;
+        color: var(--text);
+        font-size: 0.85rem;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      /* Dark mode */
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+      }
+      [data-theme="dark"] th {
+        background-color: #1e293b;
+      }
+      [data-theme="dark"] tr:hover td {
+        background-color: #263248;
+      }
+      [data-theme="dark"] .filter-input {
+        background-color: #0f172a;
+        color: var(--text);
+      }
+      [data-theme="dark"] .page-size-select {
+        background-color: #0f172a;
+        color: var(--text);
+      }
+      [data-theme="dark"] .badge-market-twse {
+        background: #1e3a5f;
+        color: #93c5fd;
+      }
+      [data-theme="dark"] .badge-market-tpex {
+        background: #3b2a5f;
+        color: #c4b5fd;
+      }
+
+      .help-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        flex-shrink: 0;
+        transition: all 0.2s;
+      }
+      .help-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+      }
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal-box {
+        background: var(--card-bg);
+        color: var(--text);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        max-width: 640px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.25rem;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        background: var(--card-bg);
+      }
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 0.25rem;
+      }
+      .modal-close:hover {
+        color: var(--text);
+      }
+      .modal-body {
+        padding: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+      .modal-body h3 {
+        font-size: 0.95rem;
+        margin: 1.25rem 0 0.5rem;
+        color: var(--primary-dark);
+      }
+      .modal-body h3:first-child {
+        margin-top: 0;
+      }
+      [data-theme="dark"] .modal-body h3 {
+        color: #93c5fd;
+      }
+      .modal-body p {
+        margin: 0.4rem 0;
+      }
+      .modal-body ul,
+      .modal-body ol {
+        margin: 0.4rem 0;
+        padding-left: 1.25rem;
+      }
+      .modal-body li {
+        margin: 0.3rem 0;
+      }
+      .modal-body code {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        padding: 0.05rem 0.35rem;
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 640px) {
+        .nav-link,
+        .nav-dropdown-btn,
+        .nav-dropdown-item {
+          padding: 0.65rem 0.9rem;
+          font-size: 0.95rem;
+        }
+
+        .theme-toggle {
+          padding: 0.55rem 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >🔍</span
+        >
+        <h1><span class="title-text">Stock Screener</span></h1>
+        <nav class="nav-bar">
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="twse.html" class="nav-dropdown-item">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn active">策略</button>
+            <div class="nav-dropdown-menu">
+              <a href="gap.html" class="nav-dropdown-item">跳空策略</a>
+              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
+              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
+              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
+              <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
+              <a href="screener.html" class="nav-dropdown-item active"
+                >股票篩選器</a
+              >
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">權證</button>
+            <div class="nav-dropdown-menu">
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
+            </div>
+          </div>
+          <a href="watchlist.html" class="nav-link">精選類股</a>
+          <a href="bookmark.html" class="nav-link">常用連結</a>
+          <a href="portfolio.html" class="nav-link">持股試算</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+      <div class="header-right"></div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-title">
+          <span style="display: flex; align-items: center"
+            >🔍 篩選設定
+            <button
+              id="help-btn"
+              class="help-btn"
+              title="說明：這頁怎麼算出來的"
+            >
+              ?
+            </button></span
+          >
+        </div>
+
+        <div class="section-label">市場</div>
+        <div class="market-tabs">
+          <button class="market-tab active" data-market="twse">上市</button>
+          <button class="market-tab" data-market="tpex">上櫃</button>
+          <button class="market-tab" data-market="all">全部</button>
+        </div>
+
+        <div class="controls">
+          <div class="filter-group">
+            <span class="filter-label">起始日期</span>
+            <input type="date" id="date-from" class="filter-input" />
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">結束日期</span>
+            <input type="date" id="date-to" class="filter-input" />
+          </div>
+          <button class="btn-apply" id="btn-calc">套用區間</button>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="full-coverage" checked />
+          <label for="full-coverage"
+            >只計算區間內每個交易日都有成交的股票（避免中途下市／停牌股票因資料不全而失真）</label
+          >
+        </div>
+
+        <div class="hint" id="range-hint">載入資料中…</div>
+
+        <div class="section-label">排行類型</div>
+        <div class="market-tabs" id="rank-tabs">
+          <button class="market-tab active" data-rank="gain">漲幅排行</button>
+          <button class="market-tab" data-rank="loss">跌幅排行</button>
+          <button class="market-tab" data-rank="volume">成交量排行</button>
+          <button class="market-tab" data-rank="streak">
+            連續上漲天數排行
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span id="result-title"
+            >漲幅排行
+            <span id="result-count" class="badge badge-primary">0</span></span
+          >
+          <select id="page-size" class="page-size-select">
+            <option value="30">每頁 30 筆</option>
+            <option value="50" selected>每頁 50 筆</option>
+            <option value="100">每頁 100 筆</option>
+          </select>
+        </div>
+        <div class="range-summary" id="result-summary"></div>
+
+        <div class="table-container">
+          <table>
+            <thead id="table-head"></thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader" style="display: none">計算中…</div>
+
+        <div
+          id="pagination"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+          "
+        >
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span
+            id="page-info"
+            style="
+              font-size: 0.875rem;
+              color: var(--text-muted);
+              font-weight: 600;
+            "
+            >第 1 / 1 頁</span
+          >
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="help-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>🔍 股票篩選器是怎麼算出來的？</h2>
+          <button class="modal-close" id="help-close" title="關閉">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>1. 資料來源</h3>
+          <p>
+            跟區間波動率頁相同，抓的是區間內「每一天」的全市場快照：<br />
+            <code>data/{market}/daily_price/{date}.json</code
+            >，每個檔案包含當天上市或上櫃所有股票的開高低收、成交量等資料。
+            抓取次數等於選定區間的交易日數，跟股票檔數無關。
+          </p>
+
+          <h3>2. 決定要抓哪些日期</h3>
+          <p>
+            先讀取 <code>data/manifest.json</code>
+            取得每個市場實際有資料的日期清單，再用你選的起訖日期過濾。預設會帶入最近
+            10 個交易日，你也可以自行調整成任意區間。
+          </p>
+
+          <h3>3. 聚合每檔股票的資料</h3>
+          <p>
+            把區間內每天的快照抓回來後，依「市場_股票代號」分組，把每天的收盤價與成交量依日期順序放進同一檔股票的陣列裡。
+          </p>
+
+          <h3>4. 四種排行怎麼算</h3>
+          <ul>
+            <li>
+              <b>期間漲跌%</b> =
+              (區間最後一天收盤 − 第一天收盤) / 第一天收盤 × 100%
+            </li>
+            <li><b>漲幅排行</b>：依期間漲跌%由高到低排序</li>
+            <li><b>跌幅排行</b>：依期間漲跌%由低到高排序（跌最多的在最前面）</li>
+            <li>
+              <b>成交量排行</b>：把區間內每天的成交量加總（換算為「張」＝股數
+              ÷ 1000），由大到小排序；同時列出日均量
+            </li>
+            <li>
+              <b>連續上漲天數排行</b
+              >：從區間最後一天往回算，只要「今日收盤
+              &gt;
+              昨日收盤」就算連續一天，一遇到收盤價沒有上漲（持平或下跌）就中斷。這個天數只在你選定的區間內計算，區間以外的資料不會被用來延伸連續天數。
+            </li>
+          </ul>
+
+          <h3>5. 資料完整性過濾</h3>
+          <p>
+            勾選「只計算區間內每個交易日都有成交的股票」時，只保留區間內每一天都有出現的股票；不勾選則放寬到至少
+            2 天資料即可計算。
+            這是因為中途下市或長期停牌的股票，只用剩下那一小段資料算出來的指標會失真，勾選這個選項可以避免被誤導。
+          </p>
+
+          <h3>6. 切換排行類型不會重抓資料</h3>
+          <p>
+            四種排行用的都是同一批已抓回來的資料，只是換一種排序方式跟顯示欄位，所以切換「排行類型」分頁籤是瞬間完成的；只有更換市場、日期區間，或勾選框狀態改變時才會重新抓資料。點表頭一樣可以自訂排序欄位。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let manifest = null;
+      let currentMarket = "twse";
+      let rankType = "gain";
+      let results = [];
+      let sortColumn = "periodReturn";
+      let sortDirection = "desc";
+      let currentPage = 1;
+      let rowsPerPage = 50;
+
+      const MARKETS = ["twse", "tpex"];
+
+      const RANK_TITLES = {
+        gain: "漲幅排行",
+        loss: "跌幅排行",
+        volume: "成交量排行",
+        streak: "連續上漲天數排行",
+      };
+
+      const RANK_DEFAULT_SORT = {
+        gain: { column: "periodReturn", direction: "desc" },
+        loss: { column: "periodReturn", direction: "asc" },
+        volume: { column: "totalVolume", direction: "desc" },
+        streak: { column: "streak", direction: "desc" },
+      };
+
+      // ── init ──────────────────────────────────────────────────────────────
+      async function init() {
+        const resp = await fetch("data/manifest.json");
+        manifest = await resp.json();
+
+        const allDates = MARKETS.flatMap((m) => manifest[m].daily_price);
+        const minDate = allDates.reduce((a, b) => (b < a ? b : a));
+        const maxDate = allDates.reduce((a, b) => (b > a ? b : a));
+
+        const fromEl = document.getElementById("date-from");
+        const toEl = document.getElementById("date-to");
+        fromEl.min = toEl.min = minDate;
+        fromEl.max = toEl.max = maxDate;
+
+        // Default to the most recent 10 trading days of the current market
+        // so gain/loss/volume/streak rankings are meaningful out of the box.
+        const marketDates = [...manifest[currentMarket].daily_price].sort();
+        const defaultSpan = marketDates.slice(-10);
+        fromEl.value = defaultSpan[0] || minDate;
+        toEl.value = defaultSpan[defaultSpan.length - 1] || maxDate;
+
+        document.getElementById("range-hint").textContent =
+          `資料範圍：${minDate} ～ ${maxDate}（超出範圍的日期會自動忽略，預設帶入最近 10 個交易日）`;
+
+        document.querySelectorAll(".market-tab[data-market]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab[data-market]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            calculate();
+          });
+        });
+
+        document.querySelectorAll(".market-tab[data-rank]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab[data-rank]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            rankType = btn.dataset.rank;
+            const def = RANK_DEFAULT_SORT[rankType];
+            sortColumn = def.column;
+            sortDirection = def.direction;
+            document.getElementById("result-title").firstChild.textContent =
+              RANK_TITLES[rankType] + " ";
+            currentPage = 1;
+            renderTable();
+          });
+        });
+
+        document
+          .getElementById("btn-calc")
+          .addEventListener("click", calculate);
+        document
+          .getElementById("full-coverage")
+          .addEventListener("change", calculate);
+
+        document.getElementById("page-size").addEventListener("change", (e) => {
+          rowsPerPage = parseInt(e.target.value, 10);
+          currentPage = 1;
+          renderTable();
+        });
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+          }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(results.length / rowsPerPage)) {
+            currentPage++;
+            renderTable();
+          }
+        });
+
+        // Dark mode
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.getElementById("theme-toggle").textContent =
+          savedTheme === "dark" ? "☀️" : "🌙";
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", () => {
+            const next =
+              document.documentElement.getAttribute("data-theme") === "dark"
+                ? "light"
+                : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            document.getElementById("theme-toggle").textContent =
+              next === "dark" ? "☀️" : "🌙";
+          });
+
+        // Help modal
+        const helpModal = document.getElementById("help-modal");
+        document.getElementById("help-btn").addEventListener("click", () => {
+          helpModal.classList.add("open");
+        });
+        document.getElementById("help-close").addEventListener("click", () => {
+          helpModal.classList.remove("open");
+        });
+        helpModal.addEventListener("click", (e) => {
+          if (e.target === helpModal) helpModal.classList.remove("open");
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") helpModal.classList.remove("open");
+        });
+
+        calculate();
+      }
+
+      // ── calculation ───────────────────────────────────────────────────────
+      async function calculate() {
+        let from = document.getElementById("date-from").value;
+        let to = document.getElementById("date-to").value;
+        if (!from || !to) return;
+        if (from > to) {
+          [from, to] = [to, from];
+          document.getElementById("date-from").value = from;
+          document.getElementById("date-to").value = to;
+        }
+
+        const markets = currentMarket === "all" ? MARKETS : [currentMarket];
+        const fullCoverageOnly =
+          document.getElementById("full-coverage").checked;
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+        document.getElementById("btn-calc").disabled = true;
+
+        // stats[market_id] = { market, id, name, rows: [{date, close, volume}] }
+        const stats = new Map();
+        const marketDateCounts = {};
+
+        try {
+          for (const market of markets) {
+            const dates = manifest[market].daily_price.filter(
+              (d) => d >= from && d <= to,
+            );
+            marketDateCounts[market] = dates.length;
+
+            await Promise.all(
+              dates.map(async (date) => {
+                let rows;
+                try {
+                  const resp = await fetch(
+                    `data/${market}/daily_price/${date}.json`,
+                  );
+                  if (!resp.ok) return;
+                  rows = await resp.json();
+                } catch (e) {
+                  return;
+                }
+                for (const r of rows) {
+                  if (r.close == null || r.close <= 0) continue;
+                  const key = `${market}_${r.id}`;
+                  let entry = stats.get(key);
+                  if (!entry) {
+                    entry = { market, id: r.id, name: r.name, rows: [] };
+                    stats.set(key, entry);
+                  }
+                  entry.rows.push({
+                    date,
+                    close: r.close,
+                    volume: r.volume || 0,
+                  });
+                }
+              }),
+            );
+          }
+        } finally {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("btn-calc").disabled = false;
+        }
+
+        const totalDates = markets.reduce(
+          (sum, m) => sum + marketDateCounts[m],
+          0,
+        );
+
+        results = [];
+        for (const entry of stats.values()) {
+          entry.rows.sort((a, b) => (a.date < b.date ? -1 : 1));
+          const nDays = entry.rows.length;
+          const totalForMarket = marketDateCounts[entry.market];
+          if (nDays < 2) continue;
+          if (fullCoverageOnly && nDays !== totalForMarket) continue;
+
+          const closes = entry.rows.map((r) => r.close);
+          const volumes = entry.rows.map((r) => r.volume);
+
+          const firstClose = closes[0];
+          const lastClose = closes[closes.length - 1];
+          const periodReturn = ((lastClose - firstClose) / firstClose) * 100;
+
+          const totalVolume = volumes.reduce((a, b) => a + b, 0);
+          const avgVolume = totalVolume / volumes.length;
+
+          let streak = 0;
+          for (let i = closes.length - 1; i >= 1; i--) {
+            if (closes[i] > closes[i - 1]) streak++;
+            else break;
+          }
+
+          results.push({
+            market: entry.market,
+            id: entry.id,
+            name: entry.name,
+            nDays,
+            totalDays: totalForMarket,
+            firstClose,
+            lastClose,
+            periodReturn,
+            totalVolume,
+            avgVolume,
+            streak,
+          });
+        }
+
+        document.getElementById("result-summary").textContent =
+          `區間 ${from} ～ ${to}，共 ${totalDates} 個交易日 · 符合條件個股 ${results.length} 檔`;
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      // ── columns ───────────────────────────────────────────────────────────
+      function retSpan(v) {
+        const cls = v > 0 ? "price-up" : v < 0 ? "price-down" : "";
+        const prefix = v > 0 ? "+" : "";
+        return `<span class="${cls}">${prefix}${v.toFixed(2)}%</span>`;
+      }
+
+      function getColumns() {
+        const showMarket = currentMarket === "all";
+        const cols = [
+          {
+            key: "id",
+            label: "代號",
+            sortable: true,
+            cell: (r) =>
+              `<a href="stock.html?id=${r.id}" class="stock-link">${r.id}</a>`,
+          },
+          {
+            key: "name",
+            label: "名稱",
+            sortable: true,
+            style: "font-weight:600;",
+            cell: (r) =>
+              `<a href="http://cnyes.com/twstock/${r.id}/analysis/performance" target="_blank" class="stock-link">${r.name}</a>`,
+          },
+        ];
+        if (showMarket) {
+          cols.push({
+            key: "market",
+            label: "市場",
+            sortable: true,
+            cell: (r) =>
+              `<span class="badge badge-market-${r.market}">${r.market === "twse" ? "上市" : "上櫃"}</span>`,
+          });
+        }
+        cols.push({
+          key: "nDays",
+          label: "交易天數",
+          sortable: true,
+          style: "color:var(--text-muted);",
+          cell: (r) => `${r.nDays} / ${r.totalDays}`,
+        });
+
+        if (rankType === "gain" || rankType === "loss") {
+          cols.push(
+            {
+              key: "firstClose",
+              label: "起始收盤",
+              sortable: true,
+              cell: (r) => r.firstClose.toFixed(2),
+            },
+            {
+              key: "lastClose",
+              label: "結束收盤",
+              sortable: true,
+              cell: (r) => r.lastClose.toFixed(2),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        } else if (rankType === "volume") {
+          cols.push(
+            {
+              key: "totalVolume",
+              label: "期間成交量(張)",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) =>
+                Math.round(r.totalVolume / 1000).toLocaleString(),
+            },
+            {
+              key: "avgVolume",
+              label: "日均量(張)",
+              sortable: true,
+              cell: (r) => Math.round(r.avgVolume / 1000).toLocaleString(),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        } else if (rankType === "streak") {
+          cols.push(
+            {
+              key: "streak",
+              label: "連續上漲天數",
+              sortable: true,
+              style: "font-weight:700;color:var(--up);",
+              cell: (r) => `${r.streak} 天`,
+            },
+            {
+              key: "lastClose",
+              label: "目前收盤",
+              sortable: true,
+              cell: (r) => r.lastClose.toFixed(2),
+            },
+            {
+              key: "periodReturn",
+              label: "期間漲跌%",
+              sortable: true,
+              cell: (r) => retSpan(r.periodReturn),
+            },
+          );
+        }
+        return cols;
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function setSort(col) {
+        sortDirection =
+          sortColumn === col
+            ? sortDirection === "asc"
+              ? "desc"
+              : "asc"
+            : "asc";
+        sortColumn = col;
+        renderTable();
+      }
+      window.setSort = setSort;
+
+      function renderTable() {
+        const columns = getColumns();
+
+        // header
+        const thead = document.getElementById("table-head");
+        const headCells = columns
+          .map(
+            (c) =>
+              `<th onclick="setSort('${c.key}')">${c.label} <span id="sort-${c.key}"></span></th>`,
+          )
+          .join("");
+        thead.innerHTML = `<tr><th>排名</th>${headCells}</tr>`;
+
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = results.length;
+
+        const sorted = [...results].sort((a, b) => {
+          let va = a[sortColumn];
+          let vb = b[sortColumn];
+          if (typeof va === "string") {
+            const cmp = va.localeCompare(vb);
+            return sortDirection === "asc" ? cmp : -cmp;
+          }
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        columns.forEach((c) => {
+          const el = document.getElementById("sort-" + c.key);
+          if (el)
+            el.textContent =
+              c.key === sortColumn
+                ? sortDirection === "asc"
+                  ? " ↑"
+                  : " ↓"
+                : "";
+        });
+
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent =
+          `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice(
+          (currentPage - 1) * rowsPerPage,
+          currentPage * rowsPerPage,
+        );
+
+        if (pageData.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="${columns.length + 1}" style="text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;">無符合條件的股票，請調整區間或篩選條件</td></tr>`;
+          return;
+        }
+
+        const startRank = (currentPage - 1) * rowsPerPage;
+
+        pageData.forEach((r, idx) => {
+          const tr = document.createElement("tr");
+          const cells = columns
+            .map(
+              (c) =>
+                `<td${c.style ? ` style="${c.style}"` : ""}>${c.cell(r)}</td>`,
+            )
+            .join("");
+          tr.innerHTML = `<td class="rank-cell">${startRank + idx + 1}</td>${cells}`;
+          tbody.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+    <script>
+      (function () {
+        // Click-to-toggle (not hover) so this works identically with
+        // mouse, trackpad, and touch. Menus use position:fixed, so the
+        // top/left offset still has to be computed in JS on open.
+        var dropdowns = document.querySelectorAll(".nav-dropdown");
+
+        function closeAllMenus() {
+          dropdowns.forEach(function (dd) {
+            dd.querySelector(".nav-dropdown-menu").style.display = "none";
+          });
+        }
+
+        dropdowns.forEach(function (dd) {
+          var btn = dd.querySelector(".nav-dropdown-btn");
+          var menu = dd.querySelector(".nav-dropdown-menu");
+
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = menu.style.display === "flex";
+            closeAllMenus();
+            if (!isOpen) {
+              var r = dd.getBoundingClientRect();
+              menu.style.top = r.bottom + "px";
+              menu.style.left = r.left + "px";
+              menu.style.display = "flex";
+            }
+          });
+        });
+
+        document.addEventListener("click", closeAllMenus);
+      })();
+    </script>
+  </body>
+</html>
