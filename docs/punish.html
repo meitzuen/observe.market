@@ -43,8 +43,14 @@
         border-radius: 2px;
         border: 1px solid var(--hud-border-2);
         background: var(--hud-card-bg);
+        color: var(--hud-text-1);
         font-size: 0.875rem;
         outline: none;
+        color-scheme: dark;
+      }
+
+      [data-theme="light"] .date-input {
+        color-scheme: light;
       }
 
       .select-input:focus,
@@ -153,21 +159,7 @@
             <span class="control-label">結束日期:</span>
             <input type="date" id="end-date" class="date-input" />
           </div>
-          <button
-            id="fetch-btn"
-            class="btn"
-            style="
-              background: var(--hud-text-1);
-              color: var(--hud-text-1);
-              border: none;
-              padding: 0.5rem 1.5rem;
-              border-radius: 2px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-          >
-            查詢
-          </button>
+          <button id="fetch-btn" class="btn">查詢</button>
         </div>
 
         <div class="table-container">

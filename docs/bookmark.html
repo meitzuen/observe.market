@@ -26,12 +26,6 @@
         }
       }
 
-      main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1.5rem 1rem;
-      }
-
       .page-header {
         display: flex;
         justify-content: space-between;
@@ -238,9 +232,10 @@
         flex-shrink: 0;
         width: 2.75rem;
         height: 2.75rem;
-        border-radius: 2px;
-        background: var(--bm-accent-tint);
-        color: var(--bm-accent);
+        border-radius: var(--hud-radius);
+        border: 1px solid var(--hud-border-1);
+        background: var(--hud-card-bg);
+        color: var(--hud-text-1);
         font-weight: 700;
         font-size: 1.05rem;
         display: flex;
@@ -396,7 +391,7 @@
       <div class="header-right"></div>
     </header>
 
-    <main>
+    <main class="container">
       <div class="page-header">
         <div>
           <p class="page-eyebrow">Bookmarks</p>
