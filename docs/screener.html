@@ -172,6 +172,18 @@
         color: var(--hud-text-3);
       }
 
+      .badge-newhigh {
+        background: transparent;
+        border: 1px solid var(--hud-up);
+        color: var(--hud-up);
+      }
+
+      .badge-secondhigh {
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
+        color: var(--hud-text-1);
+      }
+
       .btn-secondary:disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -431,6 +443,7 @@
           <button class="market-tab" data-rank="streak">
             連續上漲天數排行
           </button>
+          <button class="market-tab" data-rank="high">創新高/次高</button>
         </div>
       </div>
 
@@ -512,7 +525,7 @@
             把區間內每天的快照抓回來後，依「市場_股票代號」分組，把每天的收盤價與成交量依日期順序放進同一檔股票的陣列裡。
           </p>
 
-          <h3>4. 四種排行怎麼算</h3>
+          <h3>4. 五種排行怎麼算</h3>
           <ul>
             <li>
               <b>期間漲跌%</b> = (區間最後一天收盤 − 第一天收盤) / 第一天收盤 ×
@@ -529,6 +542,12 @@
             <li>
               <b>連續上漲天數排行</b>：從區間最後一天往回算，只要「今日收盤 &gt;
               昨日收盤」就算連續一天，一遇到收盤價沒有上漲（持平或下跌）就中斷。這個天數只在你選定的區間內計算，區間以外的資料不會被用來延伸連續天數。
+            </li>
+            <li>
+              <b>創新高/次高</b>：把區間內每一天的最高價由大到小排序、去重，看「區間最後一天」的最高價排第幾名——排第 1
+              名代表當天觸及區間內新高，列為 🔥新高；排第 2
+              名代表當天觸及區間內僅次於最高點的價位，列為 ⭐次高；其餘股票不會出現在名單裡。切到這個分頁籤時會自動把日期區間帶到資料庫最早～最新的全部範圍（目前等於「今年以來」），你也可以自行改成任意區間，藉此檢查「近
+              N 天內的新高/次高」。表格另外列出「距前高%」：新高股顯示這次比前一次區間高點高出多少%；次高股顯示目前離區間最高點還差多少%。
             </li>
           </ul>
 
@@ -565,6 +584,7 @@
         loss: "跌幅排行",
         volume: "成交量排行",
         streak: "連續上漲天數排行",
+        high: "創新高/次高",
       };
 
       const RANK_DEFAULT_SORT = {
@@ -572,7 +592,17 @@
         loss: { column: "periodReturn", direction: "asc" },
         volume: { column: "totalVolume", direction: "desc" },
         streak: { column: "streak", direction: "desc" },
+        high: { column: "rank", direction: "asc" },
       };
+
+      // Only rows touching the top-2 highs of the selected range are shown
+      // for the "high" rank type; every other rank type shows everything
+      // that passed the coverage filter in calculate().
+      function getDisplayResults() {
+        return rankType === "high"
+          ? results.filter((r) => r.rank === 1 || r.rank === 2)
+          : results;
+      }
 
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
@@ -615,6 +645,7 @@
               .querySelectorAll(".market-tab[data-rank]")
               .forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
+            const prevRankType = rankType;
             rankType = btn.dataset.rank;
             const def = RANK_DEFAULT_SORT[rankType];
             sortColumn = def.column;
@@ -622,7 +653,26 @@
             document.getElementById("result-title").firstChild.textContent =
               RANK_TITLES[rankType] + " ";
             currentPage = 1;
-            renderTable();
+
+            // Breakout detection only makes sense over a wide window, so the
+            // first time the tab is switched to it, expand the date range to
+            // everything the manifest has (today's data starts at the
+            // beginning of the year, so this doubles as "year to date") and
+            // refetch. Re-clicking the tab afterwards just re-renders.
+            if (rankType === "high" && prevRankType !== "high") {
+              const marketList =
+                currentMarket === "all" ? MARKETS : [currentMarket];
+              const rangeDates = marketList.flatMap(
+                (m) => manifest[m].daily_price,
+              );
+              const fromEl = document.getElementById("date-from");
+              const toEl = document.getElementById("date-to");
+              fromEl.value = rangeDates.reduce((a, b) => (b < a ? b : a));
+              toEl.value = rangeDates.reduce((a, b) => (b > a ? b : a));
+              calculate();
+            } else {
+              renderTable();
+            }
           });
         });
 
@@ -646,7 +696,10 @@
           }
         });
         document.getElementById("next-page").addEventListener("click", () => {
-          if (currentPage < Math.ceil(results.length / rowsPerPage)) {
+          if (
+            currentPage <
+            Math.ceil(getDisplayResults().length / rowsPerPage)
+          ) {
             currentPage++;
             renderTable();
           }
@@ -725,6 +778,7 @@
                   entry.rows.push({
                     date,
                     close: r.close,
+                    high: r.high != null ? r.high : r.close,
                     volume: r.volume || 0,
                   });
                 }
@@ -765,6 +819,22 @@
             else break;
           }
 
+          // Dense-rank the last day's high against every high seen in the
+          // range: rank 1 = today made a new range high, rank 2 = today is
+          // the second-highest point of the range.
+          const highs = entry.rows.map((r) => r.high);
+          const lastHigh = highs[highs.length - 1];
+          const highsDesc = [...new Set(highs)].sort((a, b) => b - a);
+          const rank = highsDesc.indexOf(lastHigh) + 1;
+          const rangeMax = highsDesc[0];
+          const rangeSecond = highsDesc.length > 1 ? highsDesc[1] : null;
+          const diffPct =
+            rank === 1
+              ? rangeSecond != null
+                ? ((lastHigh - rangeSecond) / rangeSecond) * 100
+                : 0
+              : ((lastHigh - rangeMax) / rangeMax) * 100;
+
           results.push({
             market: entry.market,
             id: entry.id,
@@ -777,6 +847,11 @@
             totalVolume,
             avgVolume,
             streak,
+            rank,
+            lastHigh,
+            rangeMax,
+            rangeSecond,
+            diffPct,
           });
         }
 
@@ -896,6 +971,51 @@
               cell: (r) => retSpan(r.periodReturn),
             },
           );
+        } else if (rankType === "high") {
+          cols.push(
+            {
+              key: "rank",
+              label: "狀態",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) =>
+                r.rank === 1
+                  ? '<span class="badge badge-newhigh">🔥新高</span>'
+                  : '<span class="badge badge-secondhigh">⭐次高</span>',
+            },
+            {
+              key: "lastHigh",
+              label: "當日最高",
+              sortable: true,
+              cell: (r) => r.lastHigh.toFixed(2),
+            },
+            {
+              key: "rangeMax",
+              label: "區間最高",
+              sortable: true,
+              cell: (r) => r.rangeMax.toFixed(2),
+            },
+            {
+              key: "rangeSecond",
+              label: "區間次高",
+              sortable: true,
+              cell: (r) =>
+                r.rangeSecond != null ? r.rangeSecond.toFixed(2) : "-",
+            },
+            {
+              key: "diffPct",
+              label: "距前高%",
+              sortable: true,
+              style: "font-weight:700;",
+              cell: (r) => retSpan(r.diffPct),
+            },
+            {
+              key: "lastClose",
+              label: "收盤",
+              sortable: true,
+              cell: (r) => r.lastClose.toFixed(2),
+            },
+          );
         }
         return cols;
       }
@@ -929,10 +1049,12 @@
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
 
-        const countEl = document.getElementById("result-count");
-        if (countEl) countEl.textContent = results.length;
+        const displayResults = getDisplayResults();
 
-        const sorted = [...results].sort((a, b) => {
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = displayResults.length;
+
+        const sorted = [...displayResults].sort((a, b) => {
           let va = a[sortColumn];
           let vb = b[sortColumn];
           if (typeof va === "string") {
