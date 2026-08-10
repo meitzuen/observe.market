@@ -1,5 +1,55 @@
 [
     {
+        "publish_date": "2026-08-07",
+        "measure": "第一次處置",
+        "id": "2059",
+        "name": "川湖",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-10",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-08-07",
+        "measure": "第一次處置",
+        "id": "2455",
+        "name": "全新",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-10",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-08-07",
+        "measure": "第一次處置",
+        "id": "3037",
+        "name": "欣興",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-10",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-08-07",
+        "measure": "第二次處置",
+        "id": "3189",
+        "name": "景碩",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-10",
+        "to": "2026-08-14"
+    },
+    {
+        "publish_date": "2026-08-07",
+        "measure": "第一次處置",
+        "id": "3653",
+        "name": "健策",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-10",
+        "to": "2026-08-14"
+    },
+    {
         "publish_date": "2026-07-31",
         "measure": "第二次處置",
         "id": "3026",
