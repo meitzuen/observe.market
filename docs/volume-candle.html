@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volume Candle Observer | 爆量長紅黑K觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <style>
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      @media (max-width: 480px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .filter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--hud-text-3);
+      }
+
+      .filter-range {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .filter-range span {
+        color: var(--hud-text-3);
+        font-size: 0.8rem;
+      }
+
+      .filter-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--hud-border-2);
+        border-radius: 2px;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: var(--hud-bg);
+      }
+
+      .filter-input:focus {
+        border-color: var(--hud-text-1);
+        background: var(--hud-card-bg);
+      }
+
+      .type-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .type-tab {
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+        border: 2px solid var(--hud-border-2);
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        background: none;
+        color: var(--hud-text-3);
+        transition: all 0.2s;
+      }
+
+      .type-tab.active-red {
+        background: transparent;
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        color: rgba(185, 28, 28, 0.9);
+        border-color: rgba(252, 165, 165, 0.4);
+      }
+
+      .type-tab.active-black {
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
+        color: rgba(21, 128, 61, 0.9);
+        border-color: rgba(134, 239, 172, 0.4);
+      }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 2px;
+        border: 1px solid var(--hud-border-2);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--hud-text-3);
+        transition: all 0.2s;
+      }
+
+      .market-tab.active {
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
+        color: var(--hud-text-1);
+        border-color: var(--hud-text-1);
+      }
+
+      .btn-apply {
+        padding: 0.6rem 1.5rem;
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
+        color: var(--hud-text-1);
+
+        border-radius: 2px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+        align-self: flex-end;
+      }
+
+      .btn-apply:hover {
+        background: var(--hud-hover-bg);
+      }
+
+      .btn-clear {
+        padding: 0.6rem 1rem;
+        background: none;
+        color: var(--hud-text-3);
+        border: 1px solid var(--hud-border-2);
+        border-radius: 2px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        align-self: flex-end;
+      }
+
+      .btn-clear:hover {
+        background: var(--hud-bg);
+      }
+
+      th:hover {
+        background-color: var(--hud-card-bg);
+      }
+
+      .badge-up {
+        background: transparent;
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        color: rgba(185, 28, 28, 0.9);
+      }
+
+      .badge-down {
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
+        color: rgba(21, 128, 61, 0.9);
+      }
+
+      .note-box {
+        font-size: 0.8rem;
+        color: var(--hud-text-3);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >🚀</span
+        >
+        <h1><span class="title-text">Volume Candle Observer</span></h1>
+        <nav class="nav-bar">
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">市場</button>
+            <div class="nav-dropdown-menu">
+              <a href="twse.html" class="nav-dropdown-item">上市</a>
+              <a href="tpex.html" class="nav-dropdown-item">上櫃</a>
+              <a href="index.html" class="nav-dropdown-item">全部</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn active">策略</button>
+            <div class="nav-dropdown-menu">
+              <a href="gap.html" class="nav-dropdown-item">跳空</a>
+              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
+              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
+              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
+              <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
+              <a href="volume-candle.html" class="nav-dropdown-item active"
+                >爆量長紅黑K</a
+              >
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">權證</button>
+            <div class="nav-dropdown-menu">
+              <a href="premium-warrant.html" class="nav-dropdown-item"
+                >精選權證</a
+              >
+              <a href="warrant-filter.html" class="nav-dropdown-item"
+                >權證篩選</a
+              >
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">選股</button>
+            <div class="nav-dropdown-menu">
+              <a href="screener.html" class="nav-dropdown-item">股票篩選器</a>
+              <a href="watchlist.html" class="nav-dropdown-item">精選類股</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-btn">個人</button>
+            <div class="nav-dropdown-menu">
+              <a href="bookmark.html" class="nav-dropdown-item">常用連結</a>
+              <a href="portfolio.html" class="nav-dropdown-item">持股試算</a>
+            </div>
+          </div>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+      <div class="header-right">
+        <select id="date-picker" class="date-select"></select>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <!-- Type + Market tabs -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+          "
+        >
+          <div class="type-tabs" style="margin-bottom: 0">
+            <button
+              class="type-tab active-red"
+              data-type="vol_candle_red"
+              id="tab-red"
+            >
+              🔴 爆量長紅K
+            </button>
+            <button class="type-tab" data-type="vol_candle_black" id="tab-black">
+              ⚫ 爆量長黑K
+            </button>
+          </div>
+          <div class="market-tabs" style="margin-bottom: 0">
+            <button class="market-tab active" data-market="twse">上市</button>
+            <button class="market-tab" data-market="tpex">上櫃</button>
+          </div>
+        </div>
+
+        <div class="note-box">
+          篩選邏輯：當日成交量 ≥ 前5個交易日均量的 2 倍（爆量），且
+          |漲跌幅| ≥ 4%、實體（收盤-開盤）占當日振幅 ≥ 60%（長紅／長黑K，排除長影線假訊號），並過濾成交量低於
+          500 張的個股。
+        </div>
+
+        <!-- Filters -->
+        <div class="controls">
+          <div class="filter-group">
+            <span class="filter-label">收盤價</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="close-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="close-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">成交量 (張)</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="vol-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="vol-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">量比 (倍)</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="ratio-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="ratio-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">漲跌幅 (%)</span>
+            <div class="filter-range">
+              <input
+                type="number"
+                id="chg-min"
+                class="filter-input"
+                placeholder="最小"
+              />
+              <span>~</span>
+              <input
+                type="number"
+                id="chg-max"
+                class="filter-input"
+                placeholder="最大"
+              />
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
+          <button class="btn-clear" id="btn-clear">清除條件</button>
+          <button class="btn-apply" id="btn-apply">套用篩選</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span id="result-title"
+            >爆量長紅K
+            <span id="result-count" class="badge badge-up">0</span></span
+          >
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">
+                  名稱 <span id="sort-name"></span>
+                </th>
+                <th onclick="setSort('close')">
+                  收盤價 <span id="sort-close"></span>
+                </th>
+                <th onclick="setSort('change_percent')">
+                  漲跌幅 <span id="sort-change_percent"></span>
+                </th>
+                <th onclick="setSort('volume')">
+                  成交量(張) <span id="sort-volume"></span>
+                </th>
+                <th onclick="setSort('avg_volume')">
+                  5日均量(張) <span id="sort-avg_volume"></span>
+                </th>
+                <th onclick="setSort('vol_ratio')">
+                  量比 <span id="sort-vol_ratio"></span>
+                </th>
+                <th onclick="setSort('body_ratio')">
+                  實體比 <span id="sort-body_ratio"></span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader" style="display: none">載入中...</div>
+
+        <div
+          id="pagination"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--hud-border-2);
+          "
+        >
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span
+            id="page-info"
+            style="
+              font-size: 0.875rem;
+              color: var(--hud-text-3);
+              font-weight: 600;
+            "
+            >第 1 / 1 頁</span
+          >
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/nerd-grid.js"></script>
+    <script>
+      let manifest = null;
+      let rawData = [];
+      let filteredData = [];
+      let currentMarket = "twse";
+      let currentType = "vol_candle_red";
+      let sortColumn = "vol_ratio";
+      let sortDirection = "desc";
+      let currentPage = 1;
+      const rowsPerPage = 30;
+
+      // ── init ──────────────────────────────────────────────────────────────
+      async function init() {
+        const resp = await fetch("data/manifest.json");
+        const fullManifest = await resp.json();
+        manifest = fullManifest;
+
+        populateDatePicker();
+
+        // Market tabs
+        document.querySelectorAll(".market-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            populateDatePicker();
+          });
+        });
+
+        // Type tabs
+        document.querySelectorAll(".type-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            currentType = btn.dataset.type;
+            updateTypeTabs();
+            loadData();
+          });
+        });
+
+        document
+          .getElementById("date-picker")
+          .addEventListener("change", loadData);
+        document
+          .getElementById("btn-apply")
+          .addEventListener("click", applyFilters);
+        document
+          .getElementById("btn-clear")
+          .addEventListener("click", clearFilters);
+
+        // filter inputs: Enter to apply
+        document.querySelectorAll(".filter-input").forEach((el) =>
+          el.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") applyFilters();
+          }),
+        );
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+          }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) {
+            currentPage++;
+            renderTable();
+          }
+        });
+        NerdGrid.initThemeToggle();
+        NerdGrid.initNavDropdowns();
+
+        loadData();
+      }
+
+      function populateDatePicker() {
+        const m = manifest[currentMarket];
+        const dates = (m && m[currentType]) || [];
+        const picker = document.getElementById("date-picker");
+        const prev = picker.value;
+        picker.innerHTML = "";
+        dates.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          picker.appendChild(opt);
+        });
+        if (prev && dates.includes(prev)) picker.value = prev;
+        loadData();
+      }
+
+      // ── data loading ──────────────────────────────────────────────────────
+      async function loadData() {
+        const m = manifest[currentMarket];
+        if (!m) return;
+        const dates = m[currentType] || [];
+        const date = document.getElementById("date-picker").value;
+        if (!date || !dates.includes(date)) {
+          rawData = [];
+          filteredData = [];
+          renderTable();
+          return;
+        }
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+
+        try {
+          const resp = await fetch(
+            `data/${currentMarket}/${currentType}/${date}.json`,
+          );
+          rawData = await resp.json();
+        } catch (e) {
+          rawData = [];
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
+
+        updateTypeTabs();
+        applyFilters();
+      }
+
+      // ── filters ───────────────────────────────────────────────────────────
+      function applyFilters() {
+        const closeMin = parseFloat(document.getElementById("close-min").value);
+        const closeMax = parseFloat(document.getElementById("close-max").value);
+        const volMin =
+          (parseFloat(document.getElementById("vol-min").value) || 0) * 1000;
+        const volMax =
+          (parseFloat(document.getElementById("vol-max").value) || Infinity) *
+          1000;
+        const ratioMin = parseFloat(document.getElementById("ratio-min").value);
+        const ratioMax = parseFloat(document.getElementById("ratio-max").value);
+        const chgMin = parseFloat(document.getElementById("chg-min").value);
+        const chgMax = parseFloat(document.getElementById("chg-max").value);
+
+        filteredData = rawData.filter((s) => {
+          if (!isNaN(closeMin) && s.close < closeMin) return false;
+          if (!isNaN(closeMax) && s.close > closeMax) return false;
+          if (s.volume < volMin) return false;
+          if (s.volume > volMax) return false;
+          if (!isNaN(ratioMin) && s.vol_ratio < ratioMin) return false;
+          if (!isNaN(ratioMax) && s.vol_ratio > ratioMax) return false;
+          const absChg = Math.abs(s.change_percent);
+          if (!isNaN(chgMin) && absChg < Math.abs(chgMin)) return false;
+          if (!isNaN(chgMax) && absChg > Math.abs(chgMax)) return false;
+          return true;
+        });
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      function clearFilters() {
+        [
+          "close-min",
+          "close-max",
+          "vol-min",
+          "vol-max",
+          "ratio-min",
+          "ratio-max",
+          "chg-min",
+          "chg-max",
+        ].forEach((id) => (document.getElementById(id).value = ""));
+        applyFilters();
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function updateTypeTabs() {
+        const isRed = currentType === "vol_candle_red";
+
+        document.getElementById("tab-red").className =
+          "type-tab" + (isRed ? " active-red" : "");
+        document.getElementById("tab-black").className =
+          "type-tab" + (!isRed ? " active-black" : "");
+
+        const badge = isRed ? "badge-up" : "badge-down";
+        document.getElementById("result-title").innerHTML =
+          (isRed ? "🔴 爆量長紅K" : "⚫ 爆量長黑K") +
+          ` <span id="result-count" class="badge ${badge}">0</span>`;
+      }
+
+      function setSort(col) {
+        sortDirection =
+          sortColumn === col
+            ? sortDirection === "asc"
+              ? "desc"
+              : "asc"
+            : col === "id" || col === "name"
+              ? "asc"
+              : "desc";
+        sortColumn = col;
+        renderTable();
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = filteredData.length;
+
+        const isRed = currentType === "vol_candle_red";
+        const priceClass = isRed ? "price-up" : "price-down";
+
+        // Sort
+        const sorted = [...filteredData].sort((a, b) => {
+          let va =
+            a[sortColumn] ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          let vb =
+            b[sortColumn] ??
+            (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          if (typeof va === "string")
+            return sortDirection === "asc"
+              ? va.localeCompare(vb)
+              : vb.localeCompare(va);
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        // Sort indicators
+        [
+          "id",
+          "name",
+          "close",
+          "change_percent",
+          "volume",
+          "avg_volume",
+          "vol_ratio",
+          "body_ratio",
+        ].forEach((col) => {
+          const el = document.getElementById("sort-" + col);
+          if (el)
+            el.textContent =
+              col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+        });
+
+        // Pagination
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent =
+          `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice(
+          (currentPage - 1) * rowsPerPage,
+          currentPage * rowsPerPage,
+        );
+
+        if (pageData.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--hud-text-3);font-style:italic;">無符合條件的股票</td></tr>`;
+          return;
+        }
+
+        pageData.forEach((s) => {
+          const tr = document.createElement("tr");
+          const volK = (s.volume / 1000).toLocaleString(undefined, {
+            maximumFractionDigits: 0,
+          });
+          const avgVolK = (s.avg_volume / 1000).toLocaleString(undefined, {
+            maximumFractionDigits: 0,
+          });
+          const chgPrefix = s.change_percent > 0 ? "+" : "";
+
+          tr.innerHTML = `
+            <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
+            <td style="font-weight:600;">
+              <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
+            </td>
+            <td class="${priceClass}" style="font-size:1rem;">${s.close}</td>
+            <td class="${priceClass}" style="font-weight:800;">${chgPrefix}${s.change_percent?.toFixed(2) ?? "-"}%</td>
+            <td style="color:var(--hud-text-3);">${volK} 張</td>
+            <td style="color:var(--hud-text-3);">${avgVolK} 張</td>
+            <td class="${priceClass}" style="font-weight:800;">${s.vol_ratio?.toFixed(2) ?? "-"}x</td>
+            <td style="color:var(--hud-text-3);">${s.body_ratio?.toFixed(2) ?? "-"}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
