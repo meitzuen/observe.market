@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4927",
+        "name": "泰鼎-KY",
+        "close": 45.5,
+        "open": 53.5,
+        "high": 53.8,
+        "low": 44.8,
+        "diff": -4.05,
+        "change_percent": -8.17,
+        "volume": 56354990,
+        "avg_volume": 6307909,
+        "vol_ratio": 8.93,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "6426",
+        "name": "統新",
+        "close": 158.5,
+        "open": 171.5,
+        "high": 171.5,
+        "low": 154.5,
+        "diff": -13.0,
+        "change_percent": -7.58,
+        "volume": 6788263,
+        "avg_volume": 1023649,
+        "vol_ratio": 6.63,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "4164",
+        "name": "承業醫",
+        "close": 31.1,
+        "open": 32.85,
+        "high": 33.45,
+        "low": 30.9,
+        "diff": -2.05,
+        "change_percent": -6.18,
+        "volume": 3126448,
+        "avg_volume": 1302884,
+        "vol_ratio": 2.4,
+        "body_ratio": 0.69
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6189",
+        "name": "豐藝",
+        "close": 52.8,
+        "open": 54.2,
+        "high": 54.8,
+        "low": 52.8,
+        "diff": -3.4,
+        "change_percent": -6.05,
+        "volume": 5122839,
+        "avg_volume": 1752666,
+        "vol_ratio": 2.92,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "3533",
+        "name": "嘉澤",
+        "close": 2400.0,
+        "open": 2555.0,
+        "high": 2555.0,
+        "low": 2380.0,
+        "diff": -170.0,
+        "change_percent": -6.61,
+        "volume": 2460931,
+        "avg_volume": 1154723,
+        "vol_ratio": 2.13,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "8104",
+        "name": "錸寶",
+        "close": 42.75,
+        "open": 46.1,
+        "high": 47.8,
+        "low": 42.75,
+        "diff": -1.85,
+        "change_percent": -4.15,
+        "volume": 17657002,
+        "avg_volume": 8469318,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "1444",
+        "name": "力麗",
+        "close": 7.16,
+        "open": 7.83,
+        "high": 7.9,
+        "low": 7.03,
+        "diff": -0.32,
+        "change_percent": -4.28,
+        "volume": 11261018,
+        "avg_volume": 5460778,
+        "vol_ratio": 2.06,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "2466",
+        "name": "冠西電",
+        "close": 45.0,
+        "open": 46.65,
+        "high": 46.65,
+        "low": 44.7,
+        "diff": -2.05,
+        "change_percent": -4.36,
+        "volume": 657819,
+        "avg_volume": 319973,
+        "vol_ratio": 2.06,
+        "body_ratio": 0.85
+    }
+]

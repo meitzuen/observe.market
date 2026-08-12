@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4979",
+        "name": "華星光",
+        "close": 395.0,
+        "open": 427.0,
+        "high": 445.5,
+        "low": 392.5,
+        "diff": -32.0,
+        "change_percent": -7.49,
+        "volume": 25754000,
+        "avg_volume": 3586400,
+        "vol_ratio": 7.18,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "5443",
+        "name": "均豪",
+        "close": 101.0,
+        "open": 109.0,
+        "high": 113.0,
+        "low": 101.0,
+        "diff": -5.0,
+        "change_percent": -4.72,
+        "volume": 20465000,
+        "avg_volume": 6179400,
+        "vol_ratio": 3.31,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "4534",
+        "name": "慶騰",
+        "close": 28.05,
+        "open": 29.7,
+        "high": 29.7,
+        "low": 27.8,
+        "diff": -2.0,
+        "change_percent": -6.66,
+        "volume": 2421000,
+        "avg_volume": 1053200,
+        "vol_ratio": 2.3,
+        "body_ratio": 0.87
+    }
+]

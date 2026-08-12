@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3501",
+        "name": "維熹",
+        "close": 42.9,
+        "open": 44.3,
+        "high": 44.3,
+        "low": 42.45,
+        "diff": -1.85,
+        "change_percent": -4.13,
+        "volume": 919736,
+        "avg_volume": 329646,
+        "vol_ratio": 2.79,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "6589",
+        "name": "台康生技",
+        "close": 41.35,
+        "open": 42.95,
+        "high": 42.95,
+        "low": 41.0,
+        "diff": -2.25,
+        "change_percent": -5.16,
+        "volume": 1865007,
+        "avg_volume": 742484,
+        "vol_ratio": 2.51,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "7750",
+        "name": "新代",
+        "close": 2765.0,
+        "open": 2950.0,
+        "high": 3050.0,
+        "low": 2765.0,
+        "diff": -305.0,
+        "change_percent": -9.93,
+        "volume": 1114810,
+        "avg_volume": 522253,
+        "vol_ratio": 2.13,
+        "body_ratio": 0.65
+    }
+]

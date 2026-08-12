@@ -1,0 +1,72 @@
+[
+    {
+        "id": "8358",
+        "name": "金居",
+        "close": 245.5,
+        "open": 276.0,
+        "high": 280.0,
+        "low": 245.0,
+        "diff": -23.5,
+        "change_percent": -8.74,
+        "volume": 25477000,
+        "avg_volume": 3043600,
+        "vol_ratio": 8.37,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "1815",
+        "name": "富喬",
+        "close": 102.0,
+        "open": 117.0,
+        "high": 117.0,
+        "low": 100.5,
+        "diff": -9.5,
+        "change_percent": -8.52,
+        "volume": 70783000,
+        "avg_volume": 10957800,
+        "vol_ratio": 6.46,
+        "body_ratio": 0.91
+    },
+    {
+        "id": "8059",
+        "name": "凱碩",
+        "close": 21.2,
+        "open": 21.8,
+        "high": 21.85,
+        "low": 21.05,
+        "diff": 1.3,
+        "change_percent": 6.53,
+        "volume": 3212000,
+        "avg_volume": 510800,
+        "vol_ratio": 6.29,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "7718",
+        "name": "友鋮",
+        "close": 49.6,
+        "open": 55.5,
+        "high": 56.3,
+        "low": 49.55,
+        "diff": -5.4,
+        "change_percent": -9.82,
+        "volume": 596000,
+        "avg_volume": 182200,
+        "vol_ratio": 3.27,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "4768",
+        "name": "晶呈科技",
+        "close": 487.0,
+        "open": 539.0,
+        "high": 553.0,
+        "low": 479.5,
+        "diff": -43.0,
+        "change_percent": -8.11,
+        "volume": 2942000,
+        "avg_volume": 1207400,
+        "vol_ratio": 2.44,
+        "body_ratio": 0.71
+    }
+]

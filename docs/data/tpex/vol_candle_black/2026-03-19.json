@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6716",
+        "name": "應廣",
+        "close": 80.2,
+        "open": 89.0,
+        "high": 89.0,
+        "low": 80.2,
+        "diff": -8.9,
+        "change_percent": -9.99,
+        "volume": 2212000,
+        "avg_volume": 518200,
+        "vol_ratio": 4.27,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "5498",
+        "name": "凱崴",
+        "close": 62.8,
+        "open": 67.2,
+        "high": 67.9,
+        "low": 62.8,
+        "diff": -4.4,
+        "change_percent": -6.55,
+        "volume": 31214000,
+        "avg_volume": 12795800,
+        "vol_ratio": 2.44,
+        "body_ratio": 0.86
+    },
+    {
+        "id": "6233",
+        "name": "旺玖",
+        "close": 29.05,
+        "open": 30.95,
+        "high": 31.0,
+        "low": 28.75,
+        "diff": -1.4,
+        "change_percent": -4.6,
+        "volume": 3447000,
+        "avg_volume": 1424800,
+        "vol_ratio": 2.42,
+        "body_ratio": 0.84
+    }
+]

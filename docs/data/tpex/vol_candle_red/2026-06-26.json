@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 24.0,
+        "open": 22.0,
+        "high": 24.0,
+        "low": 21.9,
+        "diff": 2.15,
+        "change_percent": 9.84,
+        "volume": 7620000,
+        "avg_volume": 1374000,
+        "vol_ratio": 5.55,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "8182",
+        "name": "加高",
+        "close": 53.6,
+        "open": 48.05,
+        "high": 53.6,
+        "low": 48.05,
+        "diff": 4.85,
+        "change_percent": 9.95,
+        "volume": 10208000,
+        "avg_volume": 2742000,
+        "vol_ratio": 3.72,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "4707",
+        "name": "磐亞",
+        "close": 27.55,
+        "open": 26.0,
+        "high": 28.0,
+        "low": 25.65,
+        "diff": 2.05,
+        "change_percent": 8.04,
+        "volume": 17440000,
+        "avg_volume": 5711200,
+        "vol_ratio": 3.05,
+        "body_ratio": 0.66
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8182",
+        "name": "加高",
+        "close": 28.2,
+        "open": 30.0,
+        "high": 30.5,
+        "low": 28.15,
+        "diff": -1.65,
+        "change_percent": -5.53,
+        "volume": 1818000,
+        "avg_volume": 319600,
+        "vol_ratio": 5.69,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "1785",
+        "name": "光洋科",
+        "close": 91.3,
+        "open": 96.8,
+        "high": 98.5,
+        "low": 90.0,
+        "diff": -5.1,
+        "change_percent": -5.29,
+        "volume": 77445000,
+        "avg_volume": 36923400,
+        "vol_ratio": 2.1,
+        "body_ratio": 0.65
+    }
+]

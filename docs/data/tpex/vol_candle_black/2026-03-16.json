@@ -1,0 +1,30 @@
+[
+    {
+        "id": "5475",
+        "name": "德宏",
+        "close": 202.0,
+        "open": 218.0,
+        "high": 218.0,
+        "low": 202.0,
+        "diff": -22.0,
+        "change_percent": -9.82,
+        "volume": 7029000,
+        "avg_volume": 2002800,
+        "vol_ratio": 3.51,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7728",
+        "name": "光焱科技",
+        "close": 710.0,
+        "open": 820.0,
+        "high": 847.0,
+        "low": 705.0,
+        "diff": -60.0,
+        "change_percent": -7.79,
+        "volume": 937000,
+        "avg_volume": 274800,
+        "vol_ratio": 3.41,
+        "body_ratio": 0.77
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3552",
+        "name": "同致",
+        "close": 57.7,
+        "open": 52.5,
+        "high": 57.7,
+        "low": 52.3,
+        "diff": 5.2,
+        "change_percent": 9.9,
+        "volume": 1941000,
+        "avg_volume": 244400,
+        "vol_ratio": 7.94,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "3205",
+        "name": "佰研",
+        "close": 62.5,
+        "open": 56.3,
+        "high": 62.5,
+        "low": 55.9,
+        "diff": 5.6,
+        "change_percent": 9.84,
+        "volume": 2997000,
+        "avg_volume": 1105000,
+        "vol_ratio": 2.71,
+        "body_ratio": 0.94
+    }
+]

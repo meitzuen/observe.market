@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6219",
+        "name": "富旺",
+        "close": 17.4,
+        "open": 18.75,
+        "high": 18.75,
+        "low": 17.0,
+        "diff": -1.35,
+        "change_percent": -7.2,
+        "volume": 1918000,
+        "avg_volume": 401400,
+        "vol_ratio": 4.78,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "6588",
+        "name": "東典光電",
+        "close": 49.95,
+        "open": 56.0,
+        "high": 57.2,
+        "low": 49.5,
+        "diff": -2.55,
+        "change_percent": -4.86,
+        "volume": 2834000,
+        "avg_volume": 797800,
+        "vol_ratio": 3.55,
+        "body_ratio": 0.79
+    }
+]

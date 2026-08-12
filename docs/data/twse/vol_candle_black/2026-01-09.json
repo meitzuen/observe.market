@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8033",
+        "name": "雷虎",
+        "close": 151.0,
+        "open": 161.5,
+        "high": 166.0,
+        "low": 151.0,
+        "diff": -7.5,
+        "change_percent": -4.73,
+        "volume": 36995826,
+        "avg_volume": 7295603,
+        "vol_ratio": 5.07,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "2337",
+        "name": "旺宏",
+        "close": 58.3,
+        "open": 63.3,
+        "high": 64.0,
+        "low": 57.0,
+        "diff": -5.0,
+        "change_percent": -7.9,
+        "volume": 737787038,
+        "avg_volume": 315870132,
+        "vol_ratio": 2.34,
+        "body_ratio": 0.71
+    }
+]

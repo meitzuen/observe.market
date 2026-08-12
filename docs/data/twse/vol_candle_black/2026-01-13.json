@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2753",
+        "name": "八方雲集",
+        "close": 184.5,
+        "open": 192.0,
+        "high": 192.0,
+        "low": 183.0,
+        "diff": -8.0,
+        "change_percent": -4.16,
+        "volume": 1636380,
+        "avg_volume": 195341,
+        "vol_ratio": 8.38,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "2379",
+        "name": "瑞昱",
+        "close": 576.0,
+        "open": 592.0,
+        "high": 592.0,
+        "low": 567.0,
+        "diff": 37.0,
+        "change_percent": 6.86,
+        "volume": 16568587,
+        "avg_volume": 3201131,
+        "vol_ratio": 5.18,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "5515",
+        "name": "建國",
+        "close": 35.25,
+        "open": 36.75,
+        "high": 36.8,
+        "low": 35.25,
+        "diff": -3.9,
+        "change_percent": -9.96,
+        "volume": 4279973,
+        "avg_volume": 1190166,
+        "vol_ratio": 3.6,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "4977",
+        "name": "眾達-KY",
+        "close": 119.5,
+        "open": 125.0,
+        "high": 125.0,
+        "low": 118.0,
+        "diff": -11.5,
+        "change_percent": -8.78,
+        "volume": 9013140,
+        "avg_volume": 3399545,
+        "vol_ratio": 2.65,
+        "body_ratio": 0.79
+    }
+]

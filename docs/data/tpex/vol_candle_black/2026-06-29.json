@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6174",
+        "name": "安碁",
+        "close": 48.8,
+        "open": 57.5,
+        "high": 58.4,
+        "low": 48.8,
+        "diff": -5.4,
+        "change_percent": -9.96,
+        "volume": 7597000,
+        "avg_volume": 2083200,
+        "vol_ratio": 3.65,
+        "body_ratio": 0.91
+    },
+    {
+        "id": "8182",
+        "name": "加高",
+        "close": 48.25,
+        "open": 54.6,
+        "high": 55.1,
+        "low": 48.25,
+        "diff": -5.35,
+        "change_percent": -9.98,
+        "volume": 14081000,
+        "avg_volume": 4184600,
+        "vol_ratio": 3.36,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "5328",
+        "name": "華容",
+        "close": 64.7,
+        "open": 71.2,
+        "high": 74.3,
+        "low": 63.5,
+        "diff": -5.5,
+        "change_percent": -7.83,
+        "volume": 78143000,
+        "avg_volume": 33864200,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 22.2,
+        "open": 25.0,
+        "high": 25.05,
+        "low": 22.1,
+        "diff": -1.8,
+        "change_percent": -7.5,
+        "volume": 5808000,
+        "avg_volume": 2865250,
+        "vol_ratio": 2.03,
+        "body_ratio": 0.95
+    }
+]

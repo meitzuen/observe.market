@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2457",
+        "name": "飛宏",
+        "close": 30.6,
+        "open": 34.1,
+        "high": 34.35,
+        "low": 30.6,
+        "diff": -1.65,
+        "change_percent": -5.12,
+        "volume": 52736620,
+        "avg_volume": 9298366,
+        "vol_ratio": 5.67,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "8499",
+        "name": "鼎炫-KY",
+        "close": 293.0,
+        "open": 310.0,
+        "high": 310.0,
+        "low": 290.5,
+        "diff": -21.0,
+        "change_percent": -6.69,
+        "volume": 594121,
+        "avg_volume": 131634,
+        "vol_ratio": 4.51,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "3231",
+        "name": "緯創",
+        "close": 138.5,
+        "open": 143.0,
+        "high": 143.5,
+        "low": 138.0,
+        "diff": -6.5,
+        "change_percent": -4.48,
+        "volume": 118082750,
+        "avg_volume": 34986121,
+        "vol_ratio": 3.38,
+        "body_ratio": 0.82
+    }
+]

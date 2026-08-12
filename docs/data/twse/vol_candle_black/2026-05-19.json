@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6902",
+        "name": "GOGOLOOK",
+        "close": 127.0,
+        "open": 134.0,
+        "high": 134.0,
+        "low": 127.0,
+        "diff": 5.0,
+        "change_percent": 4.1,
+        "volume": 1417772,
+        "avg_volume": 198759,
+        "vol_ratio": 7.13,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6658",
+        "name": "聯策",
+        "close": 183.0,
+        "open": 203.0,
+        "high": 207.0,
+        "low": 183.0,
+        "diff": -20.0,
+        "change_percent": -9.85,
+        "volume": 3916840,
+        "avg_volume": 764112,
+        "vol_ratio": 5.13,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "3004",
+        "name": "豐達科",
+        "close": 124.5,
+        "open": 131.0,
+        "high": 133.0,
+        "low": 124.0,
+        "diff": -8.5,
+        "change_percent": -6.39,
+        "volume": 2062565,
+        "avg_volume": 715536,
+        "vol_ratio": 2.88,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "8374",
+        "name": "羅昇",
+        "close": 102.0,
+        "open": 110.0,
+        "high": 110.0,
+        "low": 102.0,
+        "diff": -11.0,
+        "change_percent": -9.73,
+        "volume": 8446308,
+        "avg_volume": 4030145,
+        "vol_ratio": 2.1,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3030",
+        "name": "德律",
+        "close": 361.0,
+        "open": 386.5,
+        "high": 386.5,
+        "low": 348.5,
+        "diff": -26.0,
+        "change_percent": -6.72,
+        "volume": 2622513,
+        "avg_volume": 1307556,
+        "vol_ratio": 2.01,
+        "body_ratio": 0.67
+    }
+]

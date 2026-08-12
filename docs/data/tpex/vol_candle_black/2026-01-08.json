@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4768",
+        "name": "晶呈科技",
+        "close": 409.0,
+        "open": 453.0,
+        "high": 469.5,
+        "low": 402.5,
+        "diff": -20.5,
+        "change_percent": -4.77,
+        "volume": 4819000,
+        "avg_volume": 934250,
+        "vol_ratio": 5.16,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "6275",
+        "name": "元山",
+        "close": 49.8,
+        "open": 52.9,
+        "high": 53.0,
+        "low": 49.35,
+        "diff": -3.3,
+        "change_percent": -6.21,
+        "volume": 1571000,
+        "avg_volume": 611750,
+        "vol_ratio": 2.57,
+        "body_ratio": 0.85
+    }
+]

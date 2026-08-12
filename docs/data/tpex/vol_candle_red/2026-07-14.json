@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6829",
+        "name": "千附精密",
+        "close": 256.5,
+        "open": 229.5,
+        "high": 256.5,
+        "low": 227.5,
+        "diff": 23.0,
+        "change_percent": 9.85,
+        "volume": 7751000,
+        "avg_volume": 1526000,
+        "vol_ratio": 5.08,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "6130",
+        "name": "上亞科技",
+        "close": 28.6,
+        "open": 26.0,
+        "high": 28.6,
+        "low": 25.7,
+        "diff": 2.6,
+        "change_percent": 10.0,
+        "volume": 2131000,
+        "avg_volume": 450800,
+        "vol_ratio": 4.73,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "3430",
+        "name": "奇鈦科",
+        "close": 130.0,
+        "open": 124.0,
+        "high": 130.5,
+        "low": 120.5,
+        "diff": 9.5,
+        "change_percent": 7.88,
+        "volume": 1150000,
+        "avg_volume": 361500,
+        "vol_ratio": 3.18,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "4513",
+        "name": "福裕",
+        "close": 20.35,
+        "open": 18.5,
+        "high": 20.35,
+        "low": 17.9,
+        "diff": 1.85,
+        "change_percent": 10.0,
+        "volume": 4810000,
+        "avg_volume": 1847000,
+        "vol_ratio": 2.6,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "5483",
+        "name": "中美晶",
+        "close": 253.0,
+        "open": 232.5,
+        "high": 253.0,
+        "low": 230.5,
+        "diff": 21.5,
+        "change_percent": 9.29,
+        "volume": 83352000,
+        "avg_volume": 32930400,
+        "vol_ratio": 2.53,
+        "body_ratio": 0.91
+    }
+]

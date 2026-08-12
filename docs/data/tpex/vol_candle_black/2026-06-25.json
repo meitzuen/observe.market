@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5251",
+        "name": "天鉞電",
+        "close": 31.65,
+        "open": 34.5,
+        "high": 36.35,
+        "low": 31.65,
+        "diff": -2.85,
+        "change_percent": -8.26,
+        "volume": 3135000,
+        "avg_volume": 347000,
+        "vol_ratio": 9.03,
+        "body_ratio": 0.61
+    },
+    {
+        "id": "3122",
+        "name": "笙泉",
+        "close": 32.6,
+        "open": 35.1,
+        "high": 35.1,
+        "low": 32.55,
+        "diff": -2.3,
+        "change_percent": -6.59,
+        "volume": 969000,
+        "avg_volume": 372000,
+        "vol_ratio": 2.6,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "6462",
+        "name": "神盾",
+        "close": 124.5,
+        "open": 134.0,
+        "high": 135.0,
+        "low": 123.5,
+        "diff": -9.5,
+        "change_percent": -7.09,
+        "volume": 5684000,
+        "avg_volume": 2585200,
+        "vol_ratio": 2.2,
+        "body_ratio": 0.83
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6578",
+        "name": "達邦蛋白",
+        "close": 18.25,
+        "open": 16.6,
+        "high": 18.25,
+        "low": 16.6,
+        "diff": 1.65,
+        "change_percent": 9.94,
+        "volume": 1175000,
+        "avg_volume": 40600,
+        "vol_ratio": 28.94,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3484",
+        "name": "崧騰",
+        "close": 51.2,
+        "open": 50.0,
+        "high": 51.5,
+        "low": 49.6,
+        "diff": 4.3,
+        "change_percent": 9.17,
+        "volume": 1834000,
+        "avg_volume": 254200,
+        "vol_ratio": 7.21,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "3234",
+        "name": "光環",
+        "close": 113.0,
+        "open": 104.0,
+        "high": 114.0,
+        "low": 103.0,
+        "diff": 9.0,
+        "change_percent": 8.65,
+        "volume": 2260000,
+        "avg_volume": 959800,
+        "vol_ratio": 2.35,
+        "body_ratio": 0.82
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2250",
+        "name": "IKKA-KY",
+        "close": 71.5,
+        "open": 76.2,
+        "high": 76.7,
+        "low": 71.3,
+        "diff": -3.9,
+        "change_percent": -5.17,
+        "volume": 1850370,
+        "avg_volume": 412250,
+        "vol_ratio": 4.49,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "4576",
+        "name": "大銀微系統",
+        "close": 222.5,
+        "open": 237.0,
+        "high": 237.5,
+        "low": 222.0,
+        "diff": -12.5,
+        "change_percent": -5.32,
+        "volume": 4195366,
+        "avg_volume": 1622214,
+        "vol_ratio": 2.59,
+        "body_ratio": 0.94
+    }
+]

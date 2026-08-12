@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6189",
+        "name": "豐藝",
+        "close": 48.2,
+        "open": 45.0,
+        "high": 48.2,
+        "low": 45.0,
+        "diff": 4.35,
+        "change_percent": 9.92,
+        "volume": 4986649,
+        "avg_volume": 489247,
+        "vol_ratio": 10.19,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2353",
+        "name": "宏碁",
+        "close": 27.2,
+        "open": 26.0,
+        "high": 27.6,
+        "low": 25.95,
+        "diff": 2.1,
+        "change_percent": 8.37,
+        "volume": 215472014,
+        "avg_volume": 29770108,
+        "vol_ratio": 7.24,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "1454",
+        "name": "台富",
+        "close": 15.85,
+        "open": 14.75,
+        "high": 15.85,
+        "low": 14.75,
+        "diff": 1.4,
+        "change_percent": 9.69,
+        "volume": 1379460,
+        "avg_volume": 221462,
+        "vol_ratio": 6.23,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7799",
+        "name": "禾榮科",
+        "close": 477.0,
+        "open": 432.5,
+        "high": 477.0,
+        "low": 423.0,
+        "diff": 43.0,
+        "change_percent": 9.91,
+        "volume": 1468723,
+        "avg_volume": 440882,
+        "vol_ratio": 3.33,
+        "body_ratio": 0.82
+    }
+]

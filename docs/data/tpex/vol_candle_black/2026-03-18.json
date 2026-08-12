@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6588",
+        "name": "東典光電",
+        "close": 90.8,
+        "open": 101.5,
+        "high": 104.5,
+        "low": 89.4,
+        "diff": -4.3,
+        "change_percent": -4.52,
+        "volume": 5180000,
+        "avg_volume": 558200,
+        "vol_ratio": 9.28,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "5508",
+        "name": "永信建",
+        "close": 54.2,
+        "open": 57.0,
+        "high": 57.3,
+        "low": 54.1,
+        "diff": -2.8,
+        "change_percent": -4.91,
+        "volume": 1390000,
+        "avg_volume": 502600,
+        "vol_ratio": 2.77,
+        "body_ratio": 0.88
+    }
+]

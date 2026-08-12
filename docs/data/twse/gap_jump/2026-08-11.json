@@ -8,7 +8,7 @@
         "ratio": 0.63,
         "gap_diff": 0.15,
         "gap_ratio": 0.05,
-        "volume": 9000
+        "volume": 21582
     },
     {
         "id": "1210",
@@ -19,7 +19,7 @@
         "ratio": 1.32,
         "gap_diff": 0.6,
         "gap_ratio": 1.13,
-        "volume": 2750000
+        "volume": 2779799
     },
     {
         "id": "1213",
@@ -30,7 +30,7 @@
         "ratio": 0.65,
         "gap_diff": 0.05,
         "gap_ratio": 0.65,
-        "volume": 27000
+        "volume": 27185
     },
     {
         "id": "1216",
@@ -41,7 +41,7 @@
         "ratio": 0.53,
         "gap_diff": 0.2,
         "gap_ratio": 0.26,
-        "volume": 12294000
+        "volume": 12354914
     },
     {
         "id": "1229",
@@ -52,7 +52,7 @@
         "ratio": 2.95,
         "gap_diff": 1.05,
         "gap_ratio": 2.57,
-        "volume": 3401000
+        "volume": 3520070
     },
     {
         "id": "1256",
@@ -63,7 +63,7 @@
         "ratio": 0.84,
         "gap_diff": 0.5,
         "gap_ratio": 0.28,
-        "volume": 57000
+        "volume": 60544
     },
     {
         "id": "1319",
@@ -74,7 +74,7 @@
         "ratio": 1.55,
         "gap_diff": 1.2,
         "gap_ratio": 1.55,
-        "volume": 3291000
+        "volume": 3323777
     },
     {
         "id": "1419",
@@ -85,7 +85,7 @@
         "ratio": 0.62,
         "gap_diff": 0.4,
         "gap_ratio": 0.62,
-        "volume": 63000
+        "volume": 63391
     },
     {
         "id": "1423",
@@ -96,7 +96,7 @@
         "ratio": 0.42,
         "gap_diff": 0.15,
         "gap_ratio": 0.42,
-        "volume": 11000
+        "volume": 12345
     },
     {
         "id": "1437",
@@ -107,7 +107,7 @@
         "ratio": 0.33,
         "gap_diff": 0.1,
         "gap_ratio": 0.33,
-        "volume": 96000
+        "volume": 96796
     },
     {
         "id": "1440",
@@ -118,7 +118,7 @@
         "ratio": 1.48,
         "gap_diff": 0.15,
         "gap_ratio": 1.11,
-        "volume": 3420000
+        "volume": 3440353
     },
     {
         "id": "1463",
@@ -129,7 +129,7 @@
         "ratio": 0.28,
         "gap_diff": 0.05,
         "gap_ratio": 0.28,
-        "volume": 43000
+        "volume": 43563
     },
     {
         "id": "1472",
@@ -140,7 +140,7 @@
         "ratio": 0.11,
         "gap_diff": 0.1,
         "gap_ratio": 0.11,
-        "volume": 12000
+        "volume": 12022
     },
     {
         "id": "1473",
@@ -151,7 +151,7 @@
         "ratio": 1.25,
         "gap_diff": 0.2,
         "gap_ratio": 1.0,
-        "volume": 61000
+        "volume": 61867
     },
     {
         "id": "1516",
@@ -162,7 +162,7 @@
         "ratio": 5.12,
         "gap_diff": 0.75,
         "gap_ratio": 5.12,
-        "volume": 45000
+        "volume": 45980
     },
     {
         "id": "1517",
@@ -173,7 +173,7 @@
         "ratio": 4.24,
         "gap_diff": 0.4,
         "gap_ratio": 3.36,
-        "volume": 3025000
+        "volume": 3039002
     },
     {
         "id": "1519",
@@ -184,7 +184,7 @@
         "ratio": 4.77,
         "gap_diff": 28.0,
         "gap_ratio": 4.15,
-        "volume": 1851000
+        "volume": 1993348
     },
     {
         "id": "1530",
@@ -195,7 +195,7 @@
         "ratio": 6.08,
         "gap_diff": 0.85,
         "gap_ratio": 3.04,
-        "volume": 94000
+        "volume": 95687
     },
     {
         "id": "1532",
@@ -206,7 +206,7 @@
         "ratio": 0.46,
         "gap_diff": 0.1,
         "gap_ratio": 0.46,
-        "volume": 272000
+        "volume": 272930
     },
     {
         "id": "1539",
@@ -217,7 +217,7 @@
         "ratio": 0.31,
         "gap_diff": 0.05,
         "gap_ratio": 0.31,
-        "volume": 181000
+        "volume": 182417
     },
     {
         "id": "1558",
@@ -228,7 +228,7 @@
         "ratio": 0.85,
         "gap_diff": 0.8,
         "gap_ratio": 0.85,
-        "volume": 140000
+        "volume": 143501
     },
     {
         "id": "1563",
@@ -239,7 +239,7 @@
         "ratio": 9.91,
         "gap_diff": 3.3,
         "gap_ratio": 5.61,
-        "volume": 4008000
+        "volume": 4033953
     },
     {
         "id": "1582",
@@ -250,7 +250,7 @@
         "ratio": 1.35,
         "gap_diff": 0.8,
         "gap_ratio": 1.07,
-        "volume": 878000
+        "volume": 891010
     },
     {
         "id": "1598",
@@ -261,7 +261,7 @@
         "ratio": 1.23,
         "gap_diff": 0.15,
         "gap_ratio": 0.73,
-        "volume": 360000
+        "volume": 363241
     },
     {
         "id": "1603",
@@ -272,7 +272,7 @@
         "ratio": 0.51,
         "gap_diff": 0.1,
         "gap_ratio": 0.34,
-        "volume": 192000
+        "volume": 194090
     },
     {
         "id": "1605",
@@ -283,7 +283,7 @@
         "ratio": 0.79,
         "gap_diff": 0.3,
         "gap_ratio": 0.79,
-        "volume": 49907000
+        "volume": 50213216
     },
     {
         "id": "1608",
@@ -294,7 +294,7 @@
         "ratio": 1.96,
         "gap_diff": 0.3,
         "gap_ratio": 0.83,
-        "volume": 8077000
+        "volume": 8146839
     },
     {
         "id": "1612",
@@ -305,7 +305,7 @@
         "ratio": 3.19,
         "gap_diff": 0.3,
         "gap_ratio": 0.89,
-        "volume": 2265000
+        "volume": 2281138
     },
     {
         "id": "1614",
@@ -316,7 +316,7 @@
         "ratio": 0.32,
         "gap_diff": 0.1,
         "gap_ratio": 0.32,
-        "volume": 16000
+        "volume": 16145
     },
     {
         "id": "1710",
@@ -327,7 +327,7 @@
         "ratio": 3.1,
         "gap_diff": 0.35,
         "gap_ratio": 2.4,
-        "volume": 6125000
+        "volume": 6154488
     },
     {
         "id": "1713",
@@ -338,7 +338,7 @@
         "ratio": 2.05,
         "gap_diff": 0.8,
         "gap_ratio": 1.81,
-        "volume": 218000
+        "volume": 219847
     },
     {
         "id": "1717",
@@ -349,7 +349,7 @@
         "ratio": 2.71,
         "gap_diff": 1.4,
         "gap_ratio": 1.99,
-        "volume": 17915000
+        "volume": 18128262
     },
     {
         "id": "1736",
@@ -360,7 +360,7 @@
         "ratio": 3.94,
         "gap_diff": 4.0,
         "gap_ratio": 2.84,
-        "volume": 1284000
+        "volume": 1310499
     },
     {
         "id": "1752",
@@ -371,7 +371,7 @@
         "ratio": 0.63,
         "gap_diff": 0.1,
         "gap_ratio": 0.31,
-        "volume": 49000
+        "volume": 49631
     },
     {
         "id": "1789",
@@ -382,7 +382,7 @@
         "ratio": 0.8,
         "gap_diff": 0.1,
         "gap_ratio": 0.53,
-        "volume": 363000
+        "volume": 366053
     },
     {
         "id": "1809",
@@ -393,7 +393,7 @@
         "ratio": 2.32,
         "gap_diff": 0.95,
         "gap_ratio": 2.32,
-        "volume": 7840000
+        "volume": 7888700
     },
     {
         "id": "1817",
@@ -404,7 +404,7 @@
         "ratio": 0.39,
         "gap_diff": 0.15,
         "gap_ratio": 0.39,
-        "volume": 24000
+        "volume": 24382
     },
     {
         "id": "1904",
@@ -415,7 +415,7 @@
         "ratio": 1.24,
         "gap_diff": 0.25,
         "gap_ratio": 1.03,
-        "volume": 4481000
+        "volume": 4551447
     },
     {
         "id": "2002",
@@ -426,7 +426,7 @@
         "ratio": 0.51,
         "gap_diff": 0.1,
         "gap_ratio": 0.51,
-        "volume": 82586000
+        "volume": 83235700
     },
     {
         "id": "2029",
@@ -437,7 +437,7 @@
         "ratio": 0.47,
         "gap_diff": 0.1,
         "gap_ratio": 0.47,
-        "volume": 400000
+        "volume": 402554
     },
     {
         "id": "2030",
@@ -448,7 +448,7 @@
         "ratio": 3.42,
         "gap_diff": 0.7,
         "gap_ratio": 3.42,
-        "volume": 8675000
+        "volume": 8714886
     },
     {
         "id": "2033",
@@ -459,7 +459,7 @@
         "ratio": 9.89,
         "gap_diff": 1.85,
         "gap_ratio": 9.89,
-        "volume": 2968000
+        "volume": 2977506
     },
     {
         "id": "2034",
@@ -470,7 +470,7 @@
         "ratio": 0.49,
         "gap_diff": 0.1,
         "gap_ratio": 0.49,
-        "volume": 2177000
+        "volume": 2190329
     },
     {
         "id": "2059",
@@ -481,7 +481,7 @@
         "ratio": 3.44,
         "gap_diff": 95.0,
         "gap_ratio": 0.78,
-        "volume": 420000
+        "volume": 478258
     },
     {
         "id": "2102",
@@ -492,7 +492,7 @@
         "ratio": 0.8,
         "gap_diff": 0.05,
         "gap_ratio": 0.27,
-        "volume": 233000
+        "volume": 234377
     },
     {
         "id": "2103",
@@ -503,7 +503,7 @@
         "ratio": 4.18,
         "gap_diff": 1.15,
         "gap_ratio": 4.18,
-        "volume": 38139000
+        "volume": 38321753
     },
     {
         "id": "2105",
@@ -514,7 +514,7 @@
         "ratio": 0.32,
         "gap_diff": 0.05,
         "gap_ratio": 0.16,
-        "volume": 3825000
+        "volume": 3850897
     },
     {
         "id": "2106",
@@ -525,7 +525,7 @@
         "ratio": 3.0,
         "gap_diff": 0.5,
         "gap_ratio": 2.72,
-        "volume": 1642000
+        "volume": 1667192
     },
     {
         "id": "2109",
@@ -536,7 +536,7 @@
         "ratio": 0.34,
         "gap_diff": 0.05,
         "gap_ratio": 0.34,
-        "volume": 84000
+        "volume": 84944
     },
     {
         "id": "2115",
@@ -547,7 +547,7 @@
         "ratio": 0.66,
         "gap_diff": 0.15,
         "gap_ratio": 0.66,
-        "volume": 96000
+        "volume": 98922
     },
     {
         "id": "2201",
@@ -558,7 +558,7 @@
         "ratio": 0.73,
         "gap_diff": 0.15,
         "gap_ratio": 0.54,
-        "volume": 1298000
+        "volume": 1310544
     },
     {
         "id": "2211",
@@ -569,7 +569,7 @@
         "ratio": 0.57,
         "gap_diff": 0.3,
         "gap_ratio": 0.34,
-        "volume": 481000
+        "volume": 488458
     },
     {
         "id": "2231",
@@ -580,7 +580,7 @@
         "ratio": 4.04,
         "gap_diff": 3.7,
         "gap_ratio": 3.73,
-        "volume": 430000
+        "volume": 438317
     },
     {
         "id": "2241",
@@ -591,7 +591,7 @@
         "ratio": 2.3,
         "gap_diff": 0.25,
         "gap_ratio": 0.76,
-        "volume": 336000
+        "volume": 337354
     },
     {
         "id": "2258",
@@ -602,7 +602,7 @@
         "ratio": 3.15,
         "gap_diff": 0.7,
         "gap_ratio": 2.3,
-        "volume": 543000
+        "volume": 545961
     },
     {
         "id": "2302",
@@ -613,7 +613,7 @@
         "ratio": 8.35,
         "gap_diff": 1.55,
         "gap_ratio": 3.48,
-        "volume": 8303000
+        "volume": 8410646
     },
     {
         "id": "2316",
@@ -624,7 +624,7 @@
         "ratio": 5.2,
         "gap_diff": 5.5,
         "gap_ratio": 3.3,
-        "volume": 3318000
+        "volume": 3375318
     },
     {
         "id": "2327",
@@ -635,7 +635,7 @@
         "ratio": 7.68,
         "gap_diff": 39.0,
         "gap_ratio": 6.75,
-        "volume": 79413000
+        "volume": 81650622
     },
     {
         "id": "2353",
@@ -646,7 +646,7 @@
         "ratio": 0.16,
         "gap_diff": 0.05,
         "gap_ratio": 0.16,
-        "volume": 12422000
+        "volume": 12528592
     },
     {
         "id": "2355",
@@ -657,7 +657,7 @@
         "ratio": 1.07,
         "gap_diff": 0.4,
         "gap_ratio": 0.95,
-        "volume": 2427000
+        "volume": 2446162
     },
     {
         "id": "2357",
@@ -668,7 +668,7 @@
         "ratio": 2.57,
         "gap_diff": 17.0,
         "gap_ratio": 2.07,
-        "volume": 2917000
+        "volume": 3062368
     },
     {
         "id": "2363",
@@ -679,7 +679,7 @@
         "ratio": 5.56,
         "gap_diff": 2.2,
         "gap_ratio": 4.01,
-        "volume": 9237000
+        "volume": 9332065
     },
     {
         "id": "2375",
@@ -690,7 +690,7 @@
         "ratio": 3.63,
         "gap_diff": 4.0,
         "gap_ratio": 3.21,
-        "volume": 12692000
+        "volume": 12803891
     },
     {
         "id": "2379",
@@ -701,7 +701,7 @@
         "ratio": 1.85,
         "gap_diff": 8.0,
         "gap_ratio": 1.05,
-        "volume": 2277000
+        "volume": 2362237
     },
     {
         "id": "2380",
@@ -712,7 +712,7 @@
         "ratio": 1.05,
         "gap_diff": 0.2,
         "gap_ratio": 1.05,
-        "volume": 10000
+        "volume": 16230
     },
     {
         "id": "2382",
@@ -723,7 +723,7 @@
         "ratio": 0.64,
         "gap_diff": 2.0,
         "gap_ratio": 0.64,
-        "volume": 15513000
+        "volume": 15798104
     },
     {
         "id": "2383",
@@ -734,7 +734,7 @@
         "ratio": 4.63,
         "gap_diff": 25.0,
         "gap_ratio": 0.45,
-        "volume": 2610000
+        "volume": 2826640
     },
     {
         "id": "2385",
@@ -745,7 +745,7 @@
         "ratio": 1.46,
         "gap_diff": 1.0,
         "gap_ratio": 0.97,
-        "volume": 3296000
+        "volume": 3324574
     },
     {
         "id": "2392",
@@ -756,7 +756,7 @@
         "ratio": 4.35,
         "gap_diff": 1.3,
         "gap_ratio": 3.39,
-        "volume": 4017000
+        "volume": 4060833
     },
     {
         "id": "2393",
@@ -767,7 +767,7 @@
         "ratio": 2.88,
         "gap_diff": 0.8,
         "gap_ratio": 1.26,
-        "volume": 3079000
+        "volume": 3108269
     },
     {
         "id": "2420",
@@ -778,7 +778,7 @@
         "ratio": 1.06,
         "gap_diff": 0.3,
         "gap_ratio": 0.53,
-        "volume": 739000
+        "volume": 745776
     },
     {
         "id": "2432",
@@ -789,7 +789,7 @@
         "ratio": 0.35,
         "gap_diff": 0.1,
         "gap_ratio": 0.35,
-        "volume": 25000
+        "volume": 26084
     },
     {
         "id": "2438",
@@ -800,7 +800,7 @@
         "ratio": 10.0,
         "gap_diff": 1.25,
         "gap_ratio": 6.94,
-        "volume": 272000
+        "volume": 276598
     },
     {
         "id": "2454",
@@ -811,7 +811,7 @@
         "ratio": 1.52,
         "gap_diff": 25.0,
         "gap_ratio": 0.63,
-        "volume": 7047000
+        "volume": 7709240
     },
     {
         "id": "2462",
@@ -822,7 +822,7 @@
         "ratio": 0.77,
         "gap_diff": 0.05,
         "gap_ratio": 0.26,
-        "volume": 166000
+        "volume": 171466
     },
     {
         "id": "2464",
@@ -833,7 +833,7 @@
         "ratio": 4.17,
         "gap_diff": 1.5,
         "gap_ratio": 0.81,
-        "volume": 26320000
+        "volume": 26698078
     },
     {
         "id": "2471",
@@ -844,7 +844,7 @@
         "ratio": 1.21,
         "gap_diff": 0.5,
         "gap_ratio": 1.01,
-        "volume": 150000
+        "volume": 153390
     },
     {
         "id": "2472",
@@ -855,7 +855,7 @@
         "ratio": 1.66,
         "gap_diff": 3.0,
         "gap_ratio": 1.24,
-        "volume": 6023000
+        "volume": 6116074
     },
     {
         "id": "2474",
@@ -866,7 +866,7 @@
         "ratio": 2.49,
         "gap_diff": 1.0,
         "gap_ratio": 0.49,
-        "volume": 6620000
+        "volume": 6757977
     },
     {
         "id": "2488",
@@ -877,7 +877,7 @@
         "ratio": 1.31,
         "gap_diff": 0.6,
         "gap_ratio": 1.21,
-        "volume": 190000
+        "volume": 191560
     },
     {
         "id": "2492",
@@ -888,7 +888,7 @@
         "ratio": 9.87,
         "gap_diff": 27.0,
         "gap_ratio": 9.87,
-        "volume": 53558000
+        "volume": 54246797
     },
     {
         "id": "2493",
@@ -899,7 +899,7 @@
         "ratio": 9.86,
         "gap_diff": 8.0,
         "gap_ratio": 3.46,
-        "volume": 5870000
+        "volume": 5973829
     },
     {
         "id": "2501",
@@ -910,7 +910,7 @@
         "ratio": 1.13,
         "gap_diff": 0.25,
         "gap_ratio": 1.13,
-        "volume": 1971000
+        "volume": 1981167
     },
     {
         "id": "2524",
@@ -921,7 +921,7 @@
         "ratio": 1.02,
         "gap_diff": 0.2,
         "gap_ratio": 0.58,
-        "volume": 65000
+        "volume": 65462
     },
     {
         "id": "2536",
@@ -932,7 +932,7 @@
         "ratio": 3.2,
         "gap_diff": 0.65,
         "gap_ratio": 3.2,
-        "volume": 2903000
+        "volume": 2923030
     },
     {
         "id": "2542",
@@ -943,7 +943,7 @@
         "ratio": 0.45,
         "gap_diff": 0.1,
         "gap_ratio": 0.22,
-        "volume": 5467000
+        "volume": 5528238
     },
     {
         "id": "2545",
@@ -954,7 +954,7 @@
         "ratio": 2.26,
         "gap_diff": 0.75,
         "gap_ratio": 2.26,
-        "volume": 398000
+        "volume": 410146
     },
     {
         "id": "2546",
@@ -965,7 +965,7 @@
         "ratio": 3.89,
         "gap_diff": 3.6,
         "gap_ratio": 3.89,
-        "volume": 933000
+        "volume": 957722
     },
     {
         "id": "2603",
@@ -976,7 +976,7 @@
         "ratio": 1.87,
         "gap_diff": 3.0,
         "gap_ratio": 1.4,
-        "volume": 12030000
+        "volume": 12489819
     },
     {
         "id": "2609",
@@ -987,7 +987,7 @@
         "ratio": 0.78,
         "gap_diff": 0.2,
         "gap_ratio": 0.39,
-        "volume": 22569000
+        "volume": 22775772
     },
     {
         "id": "2634",
@@ -998,7 +998,7 @@
         "ratio": 2.95,
         "gap_diff": 0.8,
         "gap_ratio": 1.29,
-        "volume": 30866000
+        "volume": 31059532
     },
     {
         "id": "2636",
@@ -1009,7 +1009,7 @@
         "ratio": 3.5,
         "gap_diff": 2.3,
         "gap_ratio": 3.5,
-        "volume": 836000
+        "volume": 855015
     },
     {
         "id": "2642",
@@ -1020,7 +1020,7 @@
         "ratio": 0.49,
         "gap_diff": 0.1,
         "gap_ratio": 0.49,
-        "volume": 18000
+        "volume": 20339
     },
     {
         "id": "2855",
@@ -1031,7 +1031,7 @@
         "ratio": 0.76,
         "gap_diff": 0.1,
         "gap_ratio": 0.22,
-        "volume": 2988000
+        "volume": 3011667
     },
     {
         "id": "2890",
@@ -1042,7 +1042,7 @@
         "ratio": 0.39,
         "gap_diff": 0.05,
         "gap_ratio": 0.13,
-        "volume": 23560000
+        "volume": 23661078
     },
     {
         "id": "2891",
@@ -1053,7 +1053,7 @@
         "ratio": 0.45,
         "gap_diff": 0.3,
         "gap_ratio": 0.45,
-        "volume": 28506000
+        "volume": 28839763
     },
     {
         "id": "2915",
@@ -1064,7 +1064,7 @@
         "ratio": 0.37,
         "gap_diff": 0.2,
         "gap_ratio": 0.37,
-        "volume": 2178000
+        "volume": 2197124
     },
     {
         "id": "2929",
@@ -1075,7 +1075,7 @@
         "ratio": 8.56,
         "gap_diff": 0.44,
         "gap_ratio": 7.97,
-        "volume": 1738000
+        "volume": 1749775
     },
     {
         "id": "3003",
@@ -1086,7 +1086,7 @@
         "ratio": 2.62,
         "gap_diff": 1.8,
         "gap_ratio": 2.62,
-        "volume": 4840000
+        "volume": 4887907
     },
     {
         "id": "3010",
@@ -1097,7 +1097,7 @@
         "ratio": 2.04,
         "gap_diff": 1.0,
         "gap_ratio": 0.81,
-        "volume": 698000
+        "volume": 715295
     },
     {
         "id": "3019",
@@ -1108,7 +1108,7 @@
         "ratio": 2.6,
         "gap_diff": 3.0,
         "gap_ratio": 2.22,
-        "volume": 4414000
+        "volume": 4464971
     },
     {
         "id": "3023",
@@ -1119,7 +1119,7 @@
         "ratio": 1.27,
         "gap_diff": 3.5,
         "gap_ratio": 1.11,
-        "volume": 1197000
+        "volume": 1217915
     },
     {
         "id": "3024",
@@ -1130,7 +1130,7 @@
         "ratio": 0.76,
         "gap_diff": 0.1,
         "gap_ratio": 0.76,
-        "volume": 932000
+        "volume": 933759
     },
     {
         "id": "3026",
@@ -1141,7 +1141,7 @@
         "ratio": 9.86,
         "gap_diff": 58.0,
         "gap_ratio": 9.86,
-        "volume": 22427000
+        "volume": 22693182
     },
     {
         "id": "3028",
@@ -1152,7 +1152,7 @@
         "ratio": 2.77,
         "gap_diff": 1.0,
         "gap_ratio": 1.44,
-        "volume": 2241000
+        "volume": 2265499
     },
     {
         "id": "3033",
@@ -1163,7 +1163,7 @@
         "ratio": 2.13,
         "gap_diff": 0.55,
         "gap_ratio": 1.1,
-        "volume": 8517000
+        "volume": 8595689
     },
     {
         "id": "3044",
@@ -1174,7 +1174,7 @@
         "ratio": 9.96,
         "gap_diff": 31.0,
         "gap_ratio": 7.55,
-        "volume": 8476000
+        "volume": 8896410
     },
     {
         "id": "3046",
@@ -1185,7 +1185,7 @@
         "ratio": 2.03,
         "gap_diff": 0.3,
         "gap_ratio": 0.5,
-        "volume": 1531000
+        "volume": 1552426
     },
     {
         "id": "3050",
@@ -1196,7 +1196,7 @@
         "ratio": 1.76,
         "gap_diff": 0.2,
         "gap_ratio": 1.76,
-        "volume": 557000
+        "volume": 558148
     },
     {
         "id": "3052",
@@ -1207,7 +1207,7 @@
         "ratio": 0.93,
         "gap_diff": 0.05,
         "gap_ratio": 0.47,
-        "volume": 403000
+        "volume": 406249
     },
     {
         "id": "3057",
@@ -1218,7 +1218,7 @@
         "ratio": 6.69,
         "gap_diff": 0.9,
         "gap_ratio": 5.68,
-        "volume": 350000
+        "volume": 357396
     },
     {
         "id": "3058",
@@ -1229,7 +1229,7 @@
         "ratio": 0.61,
         "gap_diff": 0.03,
         "gap_ratio": 0.37,
-        "volume": 291000
+        "volume": 294584
     },
     {
         "id": "3090",
@@ -1240,7 +1240,7 @@
         "ratio": 8.39,
         "gap_diff": 9.0,
         "gap_ratio": 5.44,
-        "volume": 32058000
+        "volume": 32414204
     },
     {
         "id": "3150",
@@ -1251,7 +1251,7 @@
         "ratio": 0.28,
         "gap_diff": 0.05,
         "gap_ratio": 0.28,
-        "volume": 53000
+        "volume": 53080
     },
     {
         "id": "3229",
@@ -1262,7 +1262,7 @@
         "ratio": 0.2,
         "gap_diff": 0.1,
         "gap_ratio": 0.2,
-        "volume": 1479000
+        "volume": 1496262
     },
     {
         "id": "3257",
@@ -1273,7 +1273,7 @@
         "ratio": 0.78,
         "gap_diff": 0.2,
         "gap_ratio": 0.39,
-        "volume": 181000
+        "volume": 182282
     },
     {
         "id": "3346",
@@ -1284,7 +1284,7 @@
         "ratio": 0.72,
         "gap_diff": 0.1,
         "gap_ratio": 0.48,
-        "volume": 210000
+        "volume": 211772
     },
     {
         "id": "3356",
@@ -1295,7 +1295,7 @@
         "ratio": 1.74,
         "gap_diff": 0.9,
         "gap_ratio": 1.56,
-        "volume": 349000
+        "volume": 356664
     },
     {
         "id": "3443",
@@ -1306,7 +1306,7 @@
         "ratio": 9.38,
         "gap_diff": 140.0,
         "gap_ratio": 2.91,
-        "volume": 3164000
+        "volume": 3469647
     },
     {
         "id": "3515",
@@ -1317,7 +1317,7 @@
         "ratio": 0.23,
         "gap_diff": 0.5,
         "gap_ratio": 0.23,
-        "volume": 1509000
+        "volume": 1531079
     },
     {
         "id": "3528",
@@ -1328,7 +1328,7 @@
         "ratio": 1.0,
         "gap_diff": 0.8,
         "gap_ratio": 0.89,
-        "volume": 358000
+        "volume": 360327
     },
     {
         "id": "3605",
@@ -1339,7 +1339,7 @@
         "ratio": 1.83,
         "gap_diff": 0.5,
         "gap_ratio": 0.45,
-        "volume": 15498000
+        "volume": 15655243
     },
     {
         "id": "3622",
@@ -1350,7 +1350,7 @@
         "ratio": 1.1,
         "gap_diff": 0.3,
         "gap_ratio": 0.55,
-        "volume": 214000
+        "volume": 215303
     },
     {
         "id": "3652",
@@ -1361,7 +1361,7 @@
         "ratio": 1.91,
         "gap_diff": 0.1,
         "gap_ratio": 0.27,
-        "volume": 5552000
+        "volume": 5557303
     },
     {
         "id": "3712",
@@ -1372,7 +1372,7 @@
         "ratio": 5.91,
         "gap_diff": 1.25,
         "gap_ratio": 5.91,
-        "volume": 1295000
+        "volume": 1318276
     },
     {
         "id": "4104",
@@ -1383,7 +1383,7 @@
         "ratio": 0.42,
         "gap_diff": 0.1,
         "gap_ratio": 0.14,
-        "volume": 227000
+        "volume": 236489
     },
     {
         "id": "4137",
@@ -1394,7 +1394,7 @@
         "ratio": 0.1,
         "gap_diff": 0.1,
         "gap_ratio": 0.1,
-        "volume": 156000
+        "volume": 156714
     },
     {
         "id": "4148",
@@ -1405,7 +1405,7 @@
         "ratio": 6.04,
         "gap_diff": 1.85,
         "gap_ratio": 6.04,
-        "volume": 164000
+        "volume": 166245
     },
     {
         "id": "4426",
@@ -1416,7 +1416,7 @@
         "ratio": 0.38,
         "gap_diff": 0.02,
         "gap_ratio": 0.25,
-        "volume": 151000
+        "volume": 155500
     },
     {
         "id": "4441",
@@ -1427,7 +1427,7 @@
         "ratio": 1.26,
         "gap_diff": 1.5,
         "gap_ratio": 0.75,
-        "volume": 216000
+        "volume": 221632
     },
     {
         "id": "4557",
@@ -1438,7 +1438,7 @@
         "ratio": 1.32,
         "gap_diff": 0.2,
         "gap_ratio": 0.4,
-        "volume": 109000
+        "volume": 110103
     },
     {
         "id": "4590",
@@ -1449,7 +1449,7 @@
         "ratio": 8.06,
         "gap_diff": 6.1,
         "gap_ratio": 7.29,
-        "volume": 1293000
+        "volume": 1308189
     },
     {
         "id": "4736",
@@ -1460,7 +1460,7 @@
         "ratio": 0.77,
         "gap_diff": 0.5,
         "gap_ratio": 0.38,
-        "volume": 286000
+        "volume": 292168
     },
     {
         "id": "4737",
@@ -1471,7 +1471,7 @@
         "ratio": 1.44,
         "gap_diff": 0.7,
         "gap_ratio": 1.25,
-        "volume": 57000
+        "volume": 57833
     },
     {
         "id": "4746",
@@ -1482,7 +1482,7 @@
         "ratio": 1.1,
         "gap_diff": 0.2,
         "gap_ratio": 0.36,
-        "volume": 538000
+        "volume": 545672
     },
     {
         "id": "4763",
@@ -1493,7 +1493,7 @@
         "ratio": 3.2,
         "gap_diff": 1.3,
         "gap_ratio": 2.58,
-        "volume": 15082000
+        "volume": 15188059
     },
     {
         "id": "4764",
@@ -1504,7 +1504,7 @@
         "ratio": 3.66,
         "gap_diff": 1.5,
         "gap_ratio": 0.63,
-        "volume": 1505000
+        "volume": 1523858
     },
     {
         "id": "4766",
@@ -1515,7 +1515,7 @@
         "ratio": 1.33,
         "gap_diff": 4.5,
         "gap_ratio": 1.33,
-        "volume": 237000
+        "volume": 246091
     },
     {
         "id": "4906",
@@ -1526,7 +1526,7 @@
         "ratio": 1.12,
         "gap_diff": 0.1,
         "gap_ratio": 0.28,
-        "volume": 5299000
+        "volume": 5331250
     },
     {
         "id": "4949",
@@ -1537,7 +1537,7 @@
         "ratio": 2.62,
         "gap_diff": 1.5,
         "gap_ratio": 2.06,
-        "volume": 1036000
+        "volume": 1047911
     },
     {
         "id": "4958",
@@ -1548,7 +1548,7 @@
         "ratio": 4.14,
         "gap_diff": 1.5,
         "gap_ratio": 0.31,
-        "volume": 32888000
+        "volume": 33414356
     },
     {
         "id": "4977",
@@ -1559,7 +1559,7 @@
         "ratio": 1.38,
         "gap_diff": 1.5,
         "gap_ratio": 1.03,
-        "volume": 5185000
+        "volume": 5239211
     },
     {
         "id": "5007",
@@ -1570,7 +1570,7 @@
         "ratio": 0.53,
         "gap_diff": 0.3,
         "gap_ratio": 0.53,
-        "volume": 167000
+        "volume": 167495
     },
     {
         "id": "5283",
@@ -1581,7 +1581,7 @@
         "ratio": 0.56,
         "gap_diff": 0.2,
         "gap_ratio": 0.37,
-        "volume": 68000
+        "volume": 71319
     },
     {
         "id": "5306",
@@ -1592,7 +1592,7 @@
         "ratio": 2.68,
         "gap_diff": 1.0,
         "gap_ratio": 1.01,
-        "volume": 420000
+        "volume": 432654
     },
     {
         "id": "5607",
@@ -1603,7 +1603,7 @@
         "ratio": 1.72,
         "gap_diff": 0.5,
         "gap_ratio": 1.01,
-        "volume": 639000
+        "volume": 646375
     },
     {
         "id": "5871",
@@ -1614,7 +1614,7 @@
         "ratio": 5.96,
         "gap_diff": 5.5,
         "gap_ratio": 5.0,
-        "volume": 12106000
+        "volume": 12261082
     },
     {
         "id": "5907",
@@ -1625,7 +1625,7 @@
         "ratio": 1.02,
         "gap_diff": 0.01,
         "gap_ratio": 0.2,
-        "volume": 145000
+        "volume": 145081
     },
     {
         "id": "6108",
@@ -1636,7 +1636,7 @@
         "ratio": 4.55,
         "gap_diff": 0.55,
         "gap_ratio": 2.89,
-        "volume": 2024000
+        "volume": 2236936
     },
     {
         "id": "6152",
@@ -1647,7 +1647,7 @@
         "ratio": 3.14,
         "gap_diff": 0.45,
         "gap_ratio": 3.14,
-        "volume": 6223000
+        "volume": 6239712
     },
     {
         "id": "6183",
@@ -1658,7 +1658,7 @@
         "ratio": 0.65,
         "gap_diff": 0.5,
         "gap_ratio": 0.54,
-        "volume": 33000
+        "volume": 34559
     },
     {
         "id": "6192",
@@ -1669,7 +1669,7 @@
         "ratio": 4.31,
         "gap_diff": 2.5,
         "gap_ratio": 2.11,
-        "volume": 814000
+        "volume": 824363
     },
     {
         "id": "6213",
@@ -1680,7 +1680,7 @@
         "ratio": 5.73,
         "gap_diff": 24.5,
         "gap_ratio": 5.73,
-        "volume": 16256000
+        "volume": 16717332
     },
     {
         "id": "6216",
@@ -1691,7 +1691,7 @@
         "ratio": 2.74,
         "gap_diff": 0.3,
         "gap_ratio": 1.35,
-        "volume": 232000
+        "volume": 233430
     },
     {
         "id": "6224",
@@ -1702,7 +1702,7 @@
         "ratio": 6.79,
         "gap_diff": 3.0,
         "gap_ratio": 5.28,
-        "volume": 854000
+        "volume": 864139
     },
     {
         "id": "6225",
@@ -1713,7 +1713,7 @@
         "ratio": 9.93,
         "gap_diff": 1.95,
         "gap_ratio": 6.84,
-        "volume": 104000
+        "volume": 110889
     },
     {
         "id": "6446",
@@ -1724,7 +1724,7 @@
         "ratio": 9.77,
         "gap_diff": 100.0,
         "gap_ratio": 7.35,
-        "volume": 5251000
+        "volume": 5613829
     },
     {
         "id": "6456",
@@ -1735,7 +1735,7 @@
         "ratio": 4.44,
         "gap_diff": 3.0,
         "gap_ratio": 4.44,
-        "volume": 10681000
+        "volume": 10741164
     },
     {
         "id": "6477",
@@ -1746,7 +1746,7 @@
         "ratio": 2.95,
         "gap_diff": 0.2,
         "gap_ratio": 0.58,
-        "volume": 2067000
+        "volume": 2080487
     },
     {
         "id": "6505",
@@ -1757,7 +1757,7 @@
         "ratio": 3.04,
         "gap_diff": 0.4,
         "gap_ratio": 0.57,
-        "volume": 24567000
+        "volume": 24721513
     },
     {
         "id": "6541",
@@ -1768,7 +1768,7 @@
         "ratio": 1.03,
         "gap_diff": 0.1,
         "gap_ratio": 0.26,
-        "volume": 189000
+        "volume": 191326
     },
     {
         "id": "6605",
@@ -1779,7 +1779,7 @@
         "ratio": 3.75,
         "gap_diff": 5.0,
         "gap_ratio": 3.75,
-        "volume": 805000
+        "volume": 820426
     },
     {
         "id": "6606",
@@ -1790,7 +1790,7 @@
         "ratio": 2.65,
         "gap_diff": 0.7,
         "gap_ratio": 2.65,
-        "volume": 258000
+        "volume": 261090
     },
     {
         "id": "6668",
@@ -1801,7 +1801,7 @@
         "ratio": 1.28,
         "gap_diff": 0.2,
         "gap_ratio": 0.56,
-        "volume": 336000
+        "volume": 339982
     },
     {
         "id": "6672",
@@ -1812,7 +1812,7 @@
         "ratio": 2.19,
         "gap_diff": 5.5,
         "gap_ratio": 2.19,
-        "volume": 6860000
+        "volume": 6965524
     },
     {
         "id": "6743",
@@ -1823,7 +1823,7 @@
         "ratio": 8.29,
         "gap_diff": 2.15,
         "gap_ratio": 8.29,
-        "volume": 830000
+        "volume": 836867
     },
     {
         "id": "6771",
@@ -1834,7 +1834,7 @@
         "ratio": 1.32,
         "gap_diff": 0.4,
         "gap_ratio": 1.05,
-        "volume": 26000
+        "volume": 26100
     },
     {
         "id": "6796",
@@ -1845,7 +1845,7 @@
         "ratio": 0.33,
         "gap_diff": 0.2,
         "gap_ratio": 0.33,
-        "volume": 109000
+        "volume": 111163
     },
     {
         "id": "6834",
@@ -1856,7 +1856,7 @@
         "ratio": 9.73,
         "gap_diff": 9.4,
         "gap_ratio": 9.73,
-        "volume": 10764000
+        "volume": 10844948
     },
     {
         "id": "6906",
@@ -1867,7 +1867,7 @@
         "ratio": 2.11,
         "gap_diff": 0.1,
         "gap_ratio": 0.14,
-        "volume": 69000
+        "volume": 69565
     },
     {
         "id": "6924",
@@ -1878,7 +1878,7 @@
         "ratio": 9.63,
         "gap_diff": 9.0,
         "gap_ratio": 8.14,
-        "volume": 44000
+        "volume": 44653
     },
     {
         "id": "6931",
@@ -1889,7 +1889,7 @@
         "ratio": 2.33,
         "gap_diff": 0.9,
         "gap_ratio": 2.33,
-        "volume": 75000
+        "volume": 76634
     },
     {
         "id": "6933",
@@ -1900,7 +1900,7 @@
         "ratio": 4.16,
         "gap_diff": 7.5,
         "gap_ratio": 4.16,
-        "volume": 1551000
+        "volume": 1571634
     },
     {
         "id": "6934",
@@ -1911,7 +1911,7 @@
         "ratio": 0.69,
         "gap_diff": 0.2,
         "gap_ratio": 0.28,
-        "volume": 43000
+        "volume": 43142
     },
     {
         "id": "6936",
@@ -1922,7 +1922,7 @@
         "ratio": 0.16,
         "gap_diff": 0.05,
         "gap_ratio": 0.16,
-        "volume": 20000
+        "volume": 20243
     },
     {
         "id": "6937",
@@ -1933,7 +1933,7 @@
         "ratio": 6.1,
         "gap_diff": 16.5,
         "gap_ratio": 6.1,
-        "volume": 1027000
+        "volume": 1052296
     },
     {
         "id": "6949",
@@ -1944,7 +1944,7 @@
         "ratio": 7.59,
         "gap_diff": 68.0,
         "gap_ratio": 7.14,
-        "volume": 255000
+        "volume": 267698
     },
     {
         "id": "7689",
@@ -1955,7 +1955,7 @@
         "ratio": 0.87,
         "gap_diff": 1.0,
         "gap_ratio": 0.58,
-        "volume": 130000
+        "volume": 133918
     },
     {
         "id": "7711",
@@ -1966,7 +1966,7 @@
         "ratio": 0.49,
         "gap_diff": 2.0,
         "gap_ratio": 0.49,
-        "volume": 2102000
+        "volume": 2192742
     },
     {
         "id": "7721",
@@ -1977,7 +1977,7 @@
         "ratio": 0.48,
         "gap_diff": 0.2,
         "gap_ratio": 0.32,
-        "volume": 42000
+        "volume": 42200
     },
     {
         "id": "7730",
@@ -1988,7 +1988,7 @@
         "ratio": 4.49,
         "gap_diff": 1.0,
         "gap_ratio": 0.62,
-        "volume": 88000
+        "volume": 88221
     },
     {
         "id": "7788",
@@ -1999,7 +1999,7 @@
         "ratio": 1.71,
         "gap_diff": 0.5,
         "gap_ratio": 0.21,
-        "volume": 1694000
+        "volume": 1727883
     },
     {
         "id": "7803",
@@ -2010,7 +2010,7 @@
         "ratio": 0.25,
         "gap_diff": 0.05,
         "gap_ratio": 0.25,
-        "volume": 12000
+        "volume": 12202
     },
     {
         "id": "7827",
@@ -2021,7 +2021,7 @@
         "ratio": 0.62,
         "gap_diff": 0.5,
         "gap_ratio": 0.31,
-        "volume": 150000
+        "volume": 151772
     },
     {
         "id": "8021",
@@ -2032,7 +2032,7 @@
         "ratio": 1.04,
         "gap_diff": 4.5,
         "gap_ratio": 1.04,
-        "volume": 1291000
+        "volume": 1335242
     },
     {
         "id": "8033",
@@ -2043,7 +2043,7 @@
         "ratio": 9.88,
         "gap_diff": 6.5,
         "gap_ratio": 3.56,
-        "volume": 8653000
+        "volume": 8820185
     },
     {
         "id": "8112",
@@ -2054,7 +2054,7 @@
         "ratio": 8.23,
         "gap_diff": 7.0,
         "gap_ratio": 7.53,
-        "volume": 71776000
+        "volume": 72928524
     },
     {
         "id": "8150",
@@ -2065,7 +2065,7 @@
         "ratio": 6.57,
         "gap_diff": 4.8,
         "gap_ratio": 5.1,
-        "volume": 99877000
+        "volume": 100567458
     },
     {
         "id": "8163",
@@ -2076,7 +2076,7 @@
         "ratio": 0.79,
         "gap_diff": 0.15,
         "gap_ratio": 0.47,
-        "volume": 865000
+        "volume": 870359
     },
     {
         "id": "8213",
@@ -2087,7 +2087,7 @@
         "ratio": 6.03,
         "gap_diff": 1.8,
         "gap_ratio": 5.85,
-        "volume": 1257000
+        "volume": 1273217
     },
     {
         "id": "8222",
@@ -2098,7 +2098,7 @@
         "ratio": 1.71,
         "gap_diff": 0.65,
         "gap_ratio": 1.71,
-        "volume": 910000
+        "volume": 919394
     },
     {
         "id": "8261",
@@ -2109,7 +2109,7 @@
         "ratio": 2.79,
         "gap_diff": 2.5,
         "gap_ratio": 1.38,
-        "volume": 7414000
+        "volume": 7517842
     },
     {
         "id": "8443",
@@ -2120,7 +2120,7 @@
         "ratio": 0.88,
         "gap_diff": 0.05,
         "gap_ratio": 0.44,
-        "volume": 47000
+        "volume": 48826
     },
     {
         "id": "8464",
@@ -2131,7 +2131,7 @@
         "ratio": 5.01,
         "gap_diff": 12.0,
         "gap_ratio": 3.11,
-        "volume": 869000
+        "volume": 883379
     },
     {
         "id": "8481",
@@ -2153,7 +2153,7 @@
         "ratio": 5.05,
         "gap_diff": 3.2,
         "gap_ratio": 4.46,
-        "volume": 1895000
+        "volume": 1910729
     },
     {
         "id": "9905",
@@ -2164,7 +2164,7 @@
         "ratio": 0.94,
         "gap_diff": 0.15,
         "gap_ratio": 0.7,
-        "volume": 235000
+        "volume": 237070
     },
     {
         "id": "9906",
@@ -2175,7 +2175,7 @@
         "ratio": 1.62,
         "gap_diff": 0.6,
         "gap_ratio": 1.49,
-        "volume": 50000
+        "volume": 52304
     },
     {
         "id": "9910",
@@ -2186,7 +2186,7 @@
         "ratio": 1.57,
         "gap_diff": 1.0,
         "gap_ratio": 1.42,
-        "volume": 1794000
+        "volume": 1816830
     },
     {
         "id": "9914",
@@ -2197,7 +2197,7 @@
         "ratio": 9.65,
         "gap_diff": 6.2,
         "gap_ratio": 7.04,
-        "volume": 12181000
+        "volume": 12298090
     },
     {
         "id": "9921",
@@ -2208,7 +2208,7 @@
         "ratio": 9.85,
         "gap_diff": 10.0,
         "gap_ratio": 9.85,
-        "volume": 9608000
+        "volume": 9753903
     },
     {
         "id": "9927",
@@ -2219,7 +2219,7 @@
         "ratio": 0.58,
         "gap_diff": 0.1,
         "gap_ratio": 0.14,
-        "volume": 109000
+        "volume": 113479
     },
     {
         "id": "9933",
@@ -2230,7 +2230,7 @@
         "ratio": 1.05,
         "gap_diff": 0.3,
         "gap_ratio": 0.78,
-        "volume": 1565000
+        "volume": 1579464
     },
     {
         "id": "9938",
@@ -2241,7 +2241,7 @@
         "ratio": 1.19,
         "gap_diff": 0.35,
         "gap_ratio": 0.83,
-        "volume": 1239000
+        "volume": 1245456
     },
     {
         "id": "9943",
@@ -2252,7 +2252,7 @@
         "ratio": 0.58,
         "gap_diff": 0.3,
         "gap_ratio": 0.58,
-        "volume": 54000
+        "volume": 57638
     },
     {
         "id": "9955",
@@ -2263,6 +2263,6 @@
         "ratio": 2.24,
         "gap_diff": 0.35,
         "gap_ratio": 1.41,
-        "volume": 462000
+        "volume": 480342
     }
 ]

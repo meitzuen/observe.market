@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1413",
+        "name": "宏洲",
+        "close": 11.0,
+        "open": 10.0,
+        "high": 11.3,
+        "low": 10.0,
+        "diff": 0.7,
+        "change_percent": 6.8,
+        "volume": 1026254,
+        "avg_volume": 102924,
+        "vol_ratio": 9.97,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "2850",
+        "name": "新產",
+        "close": 158.0,
+        "open": 152.5,
+        "high": 160.0,
+        "low": 151.5,
+        "diff": 10.5,
+        "change_percent": 7.12,
+        "volume": 1208189,
+        "avg_volume": 185445,
+        "vol_ratio": 6.52,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "4976",
+        "name": "佳凌",
+        "close": 33.9,
+        "open": 31.1,
+        "high": 33.9,
+        "low": 30.95,
+        "diff": 3.05,
+        "change_percent": 9.89,
+        "volume": 2790401,
+        "avg_volume": 593496,
+        "vol_ratio": 4.7,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "6863",
+        "name": "永道-KY",
+        "close": 125.5,
+        "open": 117.5,
+        "high": 126.0,
+        "low": 117.5,
+        "diff": 8.0,
+        "change_percent": 6.81,
+        "volume": 840661,
+        "avg_volume": 308337,
+        "vol_ratio": 2.73,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "6142",
+        "name": "友勁",
+        "close": 10.45,
+        "open": 9.87,
+        "high": 10.6,
+        "low": 9.67,
+        "diff": 0.72,
+        "change_percent": 7.4,
+        "volume": 2823282,
+        "avg_volume": 1162133,
+        "vol_ratio": 2.43,
+        "body_ratio": 0.62
+    }
+]

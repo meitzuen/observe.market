@@ -1,0 +1,58 @@
+[
+    {
+        "id": "4971",
+        "name": "IET-KY",
+        "close": 711.0,
+        "open": 815.0,
+        "high": 833.0,
+        "low": 711.0,
+        "diff": -78.0,
+        "change_percent": -9.89,
+        "volume": 3171000,
+        "avg_volume": 265800,
+        "vol_ratio": 11.93,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "6829",
+        "name": "千附精密",
+        "close": 225.0,
+        "open": 249.0,
+        "high": 250.0,
+        "low": 221.0,
+        "diff": -20.5,
+        "change_percent": -8.35,
+        "volume": 3081000,
+        "avg_volume": 690000,
+        "vol_ratio": 4.47,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "6134",
+        "name": "萬旭",
+        "close": 38.15,
+        "open": 41.55,
+        "high": 41.8,
+        "low": 36.6,
+        "diff": -1.65,
+        "change_percent": -4.15,
+        "volume": 8280000,
+        "avg_volume": 3021000,
+        "vol_ratio": 2.74,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "3693",
+        "name": "營邦",
+        "close": 598.0,
+        "open": 655.0,
+        "high": 656.0,
+        "low": 593.0,
+        "diff": -34.0,
+        "change_percent": -5.38,
+        "volume": 3155000,
+        "avg_volume": 1409800,
+        "vol_ratio": 2.24,
+        "body_ratio": 0.9
+    }
+]

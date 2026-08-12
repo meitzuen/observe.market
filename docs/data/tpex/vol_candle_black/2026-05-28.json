@@ -1,0 +1,72 @@
+[
+    {
+        "id": "5902",
+        "name": "德記",
+        "close": 35.0,
+        "open": 36.55,
+        "high": 36.55,
+        "low": 34.0,
+        "diff": -1.8,
+        "change_percent": -4.89,
+        "volume": 568000,
+        "avg_volume": 105800,
+        "vol_ratio": 5.37,
+        "body_ratio": 0.61
+    },
+    {
+        "id": "6220",
+        "name": "岳豐",
+        "close": 33.05,
+        "open": 35.0,
+        "high": 35.0,
+        "low": 32.6,
+        "diff": -1.85,
+        "change_percent": -5.3,
+        "volume": 2245000,
+        "avg_volume": 664800,
+        "vol_ratio": 3.38,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "6218",
+        "name": "豪勉",
+        "close": 39.5,
+        "open": 42.5,
+        "high": 43.9,
+        "low": 39.5,
+        "diff": -3.7,
+        "change_percent": -8.56,
+        "volume": 6793000,
+        "avg_volume": 2015200,
+        "vol_ratio": 3.37,
+        "body_ratio": 0.68
+    },
+    {
+        "id": "3310",
+        "name": "佳穎",
+        "close": 72.6,
+        "open": 76.6,
+        "high": 78.0,
+        "low": 72.6,
+        "diff": -4.0,
+        "change_percent": -5.22,
+        "volume": 1084000,
+        "avg_volume": 378800,
+        "vol_ratio": 2.86,
+        "body_ratio": 0.74
+    },
+    {
+        "id": "6727",
+        "name": "亞泰金屬",
+        "close": 578.0,
+        "open": 630.0,
+        "high": 645.0,
+        "low": 570.0,
+        "diff": -51.0,
+        "change_percent": -8.11,
+        "volume": 4571000,
+        "avg_volume": 1614800,
+        "vol_ratio": 2.83,
+        "body_ratio": 0.69
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3303",
+        "name": "岱稜",
+        "close": 55.0,
+        "open": 52.4,
+        "high": 55.5,
+        "low": 52.2,
+        "diff": 4.5,
+        "change_percent": 8.91,
+        "volume": 1212000,
+        "avg_volume": 505000,
+        "vol_ratio": 2.4,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "3141",
+        "name": "晶宏",
+        "close": 65.8,
+        "open": 63.0,
+        "high": 65.8,
+        "low": 63.0,
+        "diff": 5.9,
+        "change_percent": 9.85,
+        "volume": 1126000,
+        "avg_volume": 560400,
+        "vol_ratio": 2.01,
+        "body_ratio": 1.0
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4556",
+        "name": "旭然",
+        "close": 79.2,
+        "open": 90.3,
+        "high": 90.3,
+        "low": 79.1,
+        "diff": -6.3,
+        "change_percent": -7.37,
+        "volume": 1689000,
+        "avg_volume": 131400,
+        "vol_ratio": 12.85,
+        "body_ratio": 0.99
+    },
+    {
+        "id": "6620",
+        "name": "漢達",
+        "close": 87.9,
+        "open": 98.3,
+        "high": 99.6,
+        "low": 87.7,
+        "diff": -8.4,
+        "change_percent": -8.72,
+        "volume": 5161000,
+        "avg_volume": 847400,
+        "vol_ratio": 6.09,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "6584",
+        "name": "南俊國際",
+        "close": 425.5,
+        "open": 448.0,
+        "high": 448.0,
+        "low": 420.0,
+        "diff": 18.0,
+        "change_percent": 4.42,
+        "volume": 840000,
+        "avg_volume": 395800,
+        "vol_ratio": 2.12,
+        "body_ratio": 0.8
+    }
+]

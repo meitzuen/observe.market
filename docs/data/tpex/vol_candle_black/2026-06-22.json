@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4113",
+        "name": "聯上",
+        "close": 16.4,
+        "open": 17.4,
+        "high": 17.5,
+        "low": 16.3,
+        "diff": -0.95,
+        "change_percent": -5.48,
+        "volume": 1028000,
+        "avg_volume": 412800,
+        "vol_ratio": 2.49,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "6208",
+        "name": "日揚",
+        "close": 106.0,
+        "open": 108.5,
+        "high": 108.5,
+        "low": 105.0,
+        "diff": 7.0,
+        "change_percent": 7.07,
+        "volume": 4952000,
+        "avg_volume": 2441200,
+        "vol_ratio": 2.03,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 100.0,
+        "open": 104.0,
+        "high": 104.0,
+        "low": 99.2,
+        "diff": -4.5,
+        "change_percent": -4.31,
+        "volume": 563000,
+        "avg_volume": 280750,
+        "vol_ratio": 2.01,
+        "body_ratio": 0.83
+    }
+]

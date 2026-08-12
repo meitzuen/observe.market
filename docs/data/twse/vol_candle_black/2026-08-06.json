@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2233",
+        "name": "宇隆",
+        "close": 204.0,
+        "open": 211.5,
+        "high": 213.5,
+        "low": 202.0,
+        "diff": -20.0,
+        "change_percent": -8.93,
+        "volume": 3180382,
+        "avg_volume": 1252063,
+        "vol_ratio": 2.54,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "2434",
+        "name": "統懋",
+        "close": 56.9,
+        "open": 61.8,
+        "high": 62.0,
+        "low": 54.4,
+        "diff": -3.2,
+        "change_percent": -5.32,
+        "volume": 1600937,
+        "avg_volume": 663166,
+        "vol_ratio": 2.41,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "2072",
+        "name": "世紀風電",
+        "close": 152.0,
+        "open": 156.0,
+        "high": 156.5,
+        "low": 150.0,
+        "diff": -9.0,
+        "change_percent": -5.59,
+        "volume": 1285188,
+        "avg_volume": 545044,
+        "vol_ratio": 2.36,
+        "body_ratio": 0.62
+    }
+]

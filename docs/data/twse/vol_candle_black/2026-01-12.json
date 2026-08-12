@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3041",
+        "name": "揚智",
+        "close": 26.45,
+        "open": 27.2,
+        "high": 27.2,
+        "low": 26.05,
+        "diff": 1.7,
+        "change_percent": 6.87,
+        "volume": 5792608,
+        "avg_volume": 1238444,
+        "vol_ratio": 4.68,
+        "body_ratio": 0.65
+    }
+]

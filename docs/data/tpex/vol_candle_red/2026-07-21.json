@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3276",
+        "name": "宇環",
+        "close": 18.3,
+        "open": 17.35,
+        "high": 18.35,
+        "low": 16.85,
+        "diff": 1.35,
+        "change_percent": 7.96,
+        "volume": 1875000,
+        "avg_volume": 302750,
+        "vol_ratio": 6.19,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "3230",
+        "name": "錦明",
+        "close": 47.25,
+        "open": 40.0,
+        "high": 47.3,
+        "low": 40.0,
+        "diff": 4.25,
+        "change_percent": 9.88,
+        "volume": 3603000,
+        "avg_volume": 768200,
+        "vol_ratio": 4.69,
+        "body_ratio": 0.99
+    },
+    {
+        "id": "3147",
+        "name": "大綜",
+        "close": 228.5,
+        "open": 210.5,
+        "high": 228.5,
+        "low": 210.5,
+        "diff": 20.5,
+        "change_percent": 9.86,
+        "volume": 989000,
+        "avg_volume": 283200,
+        "vol_ratio": 3.49,
+        "body_ratio": 1.0
+    }
+]

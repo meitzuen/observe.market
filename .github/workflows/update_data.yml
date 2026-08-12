@@ -49,6 +49,7 @@ jobs:
           python src/generate_stock_history.py
           python src/gap_strategy.py --date_str="$DATE_STR"
           python src/vcp_strategy.py --date_str="$DATE_STR"
+          python src/volume_candle_strategy.py --date_str="$DATE_STR"
           python src/generate_manifest.py
           python src/fetch_stock_info.py
 

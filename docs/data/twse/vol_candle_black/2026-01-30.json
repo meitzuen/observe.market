@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2009",
+        "name": "第一銅",
+        "close": 50.1,
+        "open": 55.6,
+        "high": 56.8,
+        "low": 50.0,
+        "diff": -4.8,
+        "change_percent": -8.74,
+        "volume": 46404951,
+        "avg_volume": 16422751,
+        "vol_ratio": 2.83,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "8033",
+        "name": "雷虎",
+        "close": 145.5,
+        "open": 156.0,
+        "high": 156.5,
+        "low": 143.5,
+        "diff": -9.5,
+        "change_percent": -6.13,
+        "volume": 10972834,
+        "avg_volume": 5100471,
+        "vol_ratio": 2.15,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "6706",
+        "name": "惠特",
+        "close": 117.5,
+        "open": 128.0,
+        "high": 128.5,
+        "low": 115.5,
+        "diff": -9.5,
+        "change_percent": -7.48,
+        "volume": 10404950,
+        "avg_volume": 4976334,
+        "vol_ratio": 2.09,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "6753",
+        "name": "龍德造船",
+        "close": 145.5,
+        "open": 152.5,
+        "high": 153.5,
+        "low": 145.0,
+        "diff": -12.0,
+        "change_percent": -7.62,
+        "volume": 7374969,
+        "avg_volume": 3683344,
+        "vol_ratio": 2.0,
+        "body_ratio": 0.82
+    }
+]

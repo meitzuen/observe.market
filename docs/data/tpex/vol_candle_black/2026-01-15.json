@@ -1,0 +1,44 @@
+[
+    {
+        "id": "7715",
+        "name": "裕山",
+        "close": 38.1,
+        "open": 44.0,
+        "high": 44.0,
+        "low": 37.7,
+        "diff": -1.9,
+        "change_percent": -4.75,
+        "volume": 4186000,
+        "avg_volume": 318600,
+        "vol_ratio": 13.14,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "8289",
+        "name": "泰藝",
+        "close": 26.25,
+        "open": 27.5,
+        "high": 27.5,
+        "low": 25.6,
+        "diff": 1.25,
+        "change_percent": 5.0,
+        "volume": 3562000,
+        "avg_volume": 445600,
+        "vol_ratio": 7.99,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "3152",
+        "name": "璟德",
+        "close": 170.0,
+        "open": 181.5,
+        "high": 181.5,
+        "low": 166.0,
+        "diff": -13.0,
+        "change_percent": -7.1,
+        "volume": 5411000,
+        "avg_volume": 2300600,
+        "vol_ratio": 2.35,
+        "body_ratio": 0.74
+    }
+]

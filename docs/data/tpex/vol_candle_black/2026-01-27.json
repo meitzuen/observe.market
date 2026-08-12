@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3230",
+        "name": "錦明",
+        "close": 31.05,
+        "open": 34.8,
+        "high": 34.8,
+        "low": 31.05,
+        "diff": -3.45,
+        "change_percent": -10.0,
+        "volume": 1565000,
+        "avg_volume": 213800,
+        "vol_ratio": 7.32,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3564",
+        "name": "其陽",
+        "close": 51.7,
+        "open": 56.8,
+        "high": 56.9,
+        "low": 51.5,
+        "diff": -2.9,
+        "change_percent": -5.31,
+        "volume": 1611000,
+        "avg_volume": 325000,
+        "vol_ratio": 4.96,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 15.15,
+        "open": 15.95,
+        "high": 15.95,
+        "low": 15.0,
+        "diff": -0.7,
+        "change_percent": -4.42,
+        "volume": 705000,
+        "avg_volume": 181000,
+        "vol_ratio": 3.9,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "6190",
+        "name": "萬泰科",
+        "close": 52.5,
+        "open": 59.1,
+        "high": 59.5,
+        "low": 51.8,
+        "diff": -4.4,
+        "change_percent": -7.73,
+        "volume": 37320000,
+        "avg_volume": 13493000,
+        "vol_ratio": 2.77,
+        "body_ratio": 0.86
+    },
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 18.5,
+        "open": 19.3,
+        "high": 19.3,
+        "low": 18.3,
+        "diff": -0.9,
+        "change_percent": -4.64,
+        "volume": 868000,
+        "avg_volume": 349600,
+        "vol_ratio": 2.48,
+        "body_ratio": 0.8
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6166",
+        "name": "凌華",
+        "close": 159.5,
+        "open": 145.0,
+        "high": 159.5,
+        "low": 144.0,
+        "diff": 14.5,
+        "change_percent": 10.0,
+        "volume": 7006594,
+        "avg_volume": 1696566,
+        "vol_ratio": 4.13,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "6579",
+        "name": "研揚",
+        "close": 183.5,
+        "open": 170.0,
+        "high": 183.5,
+        "low": 165.0,
+        "diff": 16.5,
+        "change_percent": 9.88,
+        "volume": 2422586,
+        "avg_volume": 661384,
+        "vol_ratio": 3.66,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "1229",
+        "name": "聯華",
+        "close": 42.5,
+        "open": 41.3,
+        "high": 42.7,
+        "low": 40.85,
+        "diff": 2.3,
+        "change_percent": 5.72,
+        "volume": 9105810,
+        "avg_volume": 2929709,
+        "vol_ratio": 3.11,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "2025",
+        "name": "千興",
+        "close": 12.2,
+        "open": 11.55,
+        "high": 12.3,
+        "low": 11.55,
+        "diff": 0.65,
+        "change_percent": 5.63,
+        "volume": 716801,
+        "avg_volume": 241038,
+        "vol_ratio": 2.97,
+        "body_ratio": 0.87
+    }
+]

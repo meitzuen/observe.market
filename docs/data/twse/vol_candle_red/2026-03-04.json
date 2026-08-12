@@ -1,0 +1,58 @@
+[
+    {
+        "id": "9931",
+        "name": "欣高",
+        "close": 38.85,
+        "open": 35.6,
+        "high": 38.85,
+        "low": 35.6,
+        "diff": 3.5,
+        "change_percent": 9.9,
+        "volume": 902549,
+        "avg_volume": 27688,
+        "vol_ratio": 32.6,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "9918",
+        "name": "欣天然",
+        "close": 46.25,
+        "open": 43.6,
+        "high": 46.25,
+        "low": 43.6,
+        "diff": 4.2,
+        "change_percent": 9.99,
+        "volume": 1561564,
+        "avg_volume": 52521,
+        "vol_ratio": 29.73,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "1582",
+        "name": "信錦",
+        "close": 81.4,
+        "open": 75.5,
+        "high": 83.8,
+        "low": 75.5,
+        "diff": 4.8,
+        "change_percent": 6.27,
+        "volume": 16751944,
+        "avg_volume": 2695113,
+        "vol_ratio": 6.22,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "6831",
+        "name": "邁科",
+        "close": 323.5,
+        "open": 290.0,
+        "high": 329.0,
+        "low": 289.0,
+        "diff": 24.0,
+        "change_percent": 8.01,
+        "volume": 3814032,
+        "avg_volume": 1492841,
+        "vol_ratio": 2.55,
+        "body_ratio": 0.84
+    }
+]

@@ -678,5 +678,29 @@
         "transactions": 875358,
         "index": 391.37,
         "changes": "7.62"
+    },
+    {
+        "date": "115/08/07",
+        "volume": 818224000,
+        "turnover": 206043637000,
+        "transactions": 924146,
+        "index": 384.19,
+        "changes": "-7.18"
+    },
+    {
+        "date": "115/08/10",
+        "volume": 871512000,
+        "turnover": 188766082000,
+        "transactions": 920975,
+        "index": 391.61,
+        "changes": "7.42"
+    },
+    {
+        "date": "115/08/11",
+        "volume": 853989000,
+        "turnover": 183880347000,
+        "transactions": 915282,
+        "index": 391.68,
+        "changes": "0.07"
     }
 ]

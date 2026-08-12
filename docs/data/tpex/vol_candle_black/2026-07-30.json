@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6733",
+        "name": "博晟生醫",
+        "close": 26.2,
+        "open": 29.4,
+        "high": 29.8,
+        "low": 26.15,
+        "diff": -2.7,
+        "change_percent": -9.34,
+        "volume": 971000,
+        "avg_volume": 150000,
+        "vol_ratio": 6.47,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "3362",
+        "name": "先進光",
+        "close": 156.5,
+        "open": 173.5,
+        "high": 182.0,
+        "low": 156.5,
+        "diff": -17.0,
+        "change_percent": -9.8,
+        "volume": 24627000,
+        "avg_volume": 11821200,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.67
+    }
+]

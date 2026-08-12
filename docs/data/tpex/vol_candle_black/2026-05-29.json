@@ -1,0 +1,44 @@
+[
+    {
+        "id": "8291",
+        "name": "尚茂",
+        "close": 120.0,
+        "open": 133.0,
+        "high": 133.0,
+        "low": 120.0,
+        "diff": -13.0,
+        "change_percent": -9.77,
+        "volume": 850000,
+        "avg_volume": 153400,
+        "vol_ratio": 5.54,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "8069",
+        "name": "元太",
+        "close": 220.0,
+        "open": 240.0,
+        "high": 243.0,
+        "low": 220.0,
+        "diff": -13.0,
+        "change_percent": -5.58,
+        "volume": 26265000,
+        "avg_volume": 5317600,
+        "vol_ratio": 4.94,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "6187",
+        "name": "萬潤",
+        "close": 1120.0,
+        "open": 1225.0,
+        "high": 1285.0,
+        "low": 1120.0,
+        "diff": -120.0,
+        "change_percent": -9.68,
+        "volume": 7224000,
+        "avg_volume": 2849400,
+        "vol_ratio": 2.54,
+        "body_ratio": 0.64
+    }
+]

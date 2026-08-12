@@ -1,0 +1,58 @@
+[
+    {
+        "id": "3622",
+        "name": "洋華",
+        "close": 58.4,
+        "open": 60.2,
+        "high": 60.3,
+        "low": 58.2,
+        "diff": -3.3,
+        "change_percent": -5.35,
+        "volume": 1499650,
+        "avg_volume": 389667,
+        "vol_ratio": 3.85,
+        "body_ratio": 0.86
+    },
+    {
+        "id": "7780",
+        "name": "大研生醫*",
+        "close": 24.4,
+        "open": 25.85,
+        "high": 25.85,
+        "low": 24.05,
+        "diff": -1.45,
+        "change_percent": -5.61,
+        "volume": 11588838,
+        "avg_volume": 5284290,
+        "vol_ratio": 2.19,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "6919",
+        "name": "康霈*",
+        "close": 149.5,
+        "open": 162.5,
+        "high": 164.0,
+        "low": 147.0,
+        "diff": -13.5,
+        "change_percent": -8.28,
+        "volume": 15725458,
+        "avg_volume": 7324446,
+        "vol_ratio": 2.15,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "1326",
+        "name": "台化",
+        "close": 40.75,
+        "open": 44.15,
+        "high": 44.15,
+        "low": 39.75,
+        "diff": -2.2,
+        "change_percent": -5.12,
+        "volume": 66071599,
+        "avg_volume": 32326689,
+        "vol_ratio": 2.04,
+        "body_ratio": 0.77
+    }
+]

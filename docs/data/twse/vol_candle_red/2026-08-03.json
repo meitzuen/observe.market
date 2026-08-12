@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3090",
+        "name": "日電貿",
+        "close": 137.5,
+        "open": 133.0,
+        "high": 137.5,
+        "low": 130.0,
+        "diff": 12.5,
+        "change_percent": 10.0,
+        "volume": 10211230,
+        "avg_volume": 2030017,
+        "vol_ratio": 5.03,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "3229",
+        "name": "晟鈦",
+        "close": 47.45,
+        "open": 43.75,
+        "high": 47.45,
+        "low": 43.75,
+        "diff": 4.3,
+        "change_percent": 9.97,
+        "volume": 1985020,
+        "avg_volume": 525452,
+        "vol_ratio": 3.78,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "5471",
+        "name": "松翰",
+        "close": 54.5,
+        "open": 51.0,
+        "high": 55.8,
+        "low": 50.9,
+        "diff": 3.1,
+        "change_percent": 6.03,
+        "volume": 6112030,
+        "avg_volume": 2101045,
+        "vol_ratio": 2.91,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "6831",
+        "name": "邁科",
+        "close": 565.0,
+        "open": 524.0,
+        "high": 577.0,
+        "low": 524.0,
+        "diff": 40.0,
+        "change_percent": 7.62,
+        "volume": 1858112,
+        "avg_volume": 690572,
+        "vol_ratio": 2.69,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "2006",
+        "name": "東和鋼鐵",
+        "close": 80.4,
+        "open": 74.6,
+        "high": 81.4,
+        "low": 74.1,
+        "diff": 5.8,
+        "change_percent": 7.77,
+        "volume": 7923857,
+        "avg_volume": 3781271,
+        "vol_ratio": 2.1,
+        "body_ratio": 0.79
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6640",
+        "name": "均華",
+        "close": 945.0,
+        "open": 1055.0,
+        "high": 1105.0,
+        "low": 941.0,
+        "diff": -60.0,
+        "change_percent": -5.97,
+        "volume": 640000,
+        "avg_volume": 114800,
+        "vol_ratio": 5.57,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "3709",
+        "name": "鑫聯大投控",
+        "close": 71.6,
+        "open": 73.4,
+        "high": 73.9,
+        "low": 71.6,
+        "diff": -7.9,
+        "change_percent": -9.94,
+        "volume": 3239000,
+        "avg_volume": 926000,
+        "vol_ratio": 3.5,
+        "body_ratio": 0.78
+    },
+    {
+        "id": "8421",
+        "name": "旭源",
+        "close": 13.5,
+        "open": 13.8,
+        "high": 13.95,
+        "low": 13.5,
+        "diff": -0.85,
+        "change_percent": -5.92,
+        "volume": 672000,
+        "avg_volume": 303750,
+        "vol_ratio": 2.21,
+        "body_ratio": 0.67
+    }
+]

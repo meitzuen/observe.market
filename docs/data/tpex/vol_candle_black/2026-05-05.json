@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6246",
+        "name": "臺龍",
+        "close": 17.05,
+        "open": 18.2,
+        "high": 18.75,
+        "low": 17.05,
+        "diff": -0.95,
+        "change_percent": -5.28,
+        "volume": 999000,
+        "avg_volume": 239000,
+        "vol_ratio": 4.18,
+        "body_ratio": 0.68
+    },
+    {
+        "id": "4510",
+        "name": "高鋒",
+        "close": 48.4,
+        "open": 51.0,
+        "high": 51.9,
+        "low": 48.4,
+        "diff": -3.3,
+        "change_percent": -6.38,
+        "volume": 12950000,
+        "avg_volume": 6172400,
+        "vol_ratio": 2.1,
+        "body_ratio": 0.74
+    },
+    {
+        "id": "6146",
+        "name": "耕興",
+        "close": 225.5,
+        "open": 232.5,
+        "high": 235.0,
+        "low": 224.0,
+        "diff": -13.0,
+        "change_percent": -5.45,
+        "volume": 1124000,
+        "avg_volume": 539600,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.64
+    }
+]

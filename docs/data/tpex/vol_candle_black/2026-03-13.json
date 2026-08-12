@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6419",
+        "name": "京晨科",
+        "close": 80.2,
+        "open": 89.7,
+        "high": 89.8,
+        "low": 80.0,
+        "diff": -5.9,
+        "change_percent": -6.85,
+        "volume": 1103000,
+        "avg_volume": 96200,
+        "vol_ratio": 11.47,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "6219",
+        "name": "富旺",
+        "close": 14.8,
+        "open": 15.45,
+        "high": 15.45,
+        "low": 14.8,
+        "diff": -1.6,
+        "change_percent": -9.76,
+        "volume": 1559000,
+        "avg_volume": 511600,
+        "vol_ratio": 3.05,
+        "body_ratio": 1.0
+    }
+]

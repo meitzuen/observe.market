@@ -1,0 +1,72 @@
+[
+    {
+        "id": "5288",
+        "name": "豐祥-KY",
+        "close": 197.0,
+        "open": 189.0,
+        "high": 200.0,
+        "low": 189.0,
+        "diff": 10.5,
+        "change_percent": 5.63,
+        "volume": 607279,
+        "avg_volume": 202797,
+        "vol_ratio": 2.99,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "2615",
+        "name": "萬海",
+        "close": 85.2,
+        "open": 81.8,
+        "high": 85.8,
+        "low": 81.6,
+        "diff": 4.7,
+        "change_percent": 5.84,
+        "volume": 26087248,
+        "avg_volume": 8929800,
+        "vol_ratio": 2.92,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "1736",
+        "name": "喬山",
+        "close": 141.5,
+        "open": 132.5,
+        "high": 142.5,
+        "low": 132.5,
+        "diff": 6.5,
+        "change_percent": 4.81,
+        "volume": 1556540,
+        "avg_volume": 622528,
+        "vol_ratio": 2.5,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6414",
+        "name": "樺漢",
+        "close": 445.5,
+        "open": 405.5,
+        "high": 445.5,
+        "low": 403.5,
+        "diff": 40.5,
+        "change_percent": 10.0,
+        "volume": 5176748,
+        "avg_volume": 2289710,
+        "vol_ratio": 2.26,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "3338",
+        "name": "泰碩",
+        "close": 69.1,
+        "open": 66.2,
+        "high": 69.1,
+        "low": 65.7,
+        "diff": 6.2,
+        "change_percent": 9.86,
+        "volume": 1087978,
+        "avg_volume": 525825,
+        "vol_ratio": 2.07,
+        "body_ratio": 0.85
+    }
+]

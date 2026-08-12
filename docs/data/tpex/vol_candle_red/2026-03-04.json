@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4533",
+        "name": "協易機",
+        "close": 37.75,
+        "open": 36.3,
+        "high": 38.7,
+        "low": 36.3,
+        "diff": 2.55,
+        "change_percent": 7.24,
+        "volume": 42915000,
+        "avg_volume": 6825800,
+        "vol_ratio": 6.29,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "close": 15.55,
+        "open": 14.4,
+        "high": 15.55,
+        "low": 14.25,
+        "diff": 1.4,
+        "change_percent": 9.89,
+        "volume": 541000,
+        "avg_volume": 100400,
+        "vol_ratio": 5.39,
+        "body_ratio": 0.88
+    }
+]

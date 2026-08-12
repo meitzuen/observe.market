@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6515",
+        "name": "穎崴",
+        "close": 9120.0,
+        "open": 10000.0,
+        "high": 10100.0,
+        "low": 8935.0,
+        "diff": -675.0,
+        "change_percent": -6.89,
+        "volume": 1108573,
+        "avg_volume": 452603,
+        "vol_ratio": 2.45,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "2929",
+        "name": "淘帝-KY",
+        "close": 6.0,
+        "open": 6.55,
+        "high": 6.62,
+        "low": 6.0,
+        "diff": -0.65,
+        "change_percent": -9.77,
+        "volume": 2505655,
+        "avg_volume": 1080012,
+        "vol_ratio": 2.32,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "2474",
+        "name": "可成",
+        "close": 190.5,
+        "open": 212.0,
+        "high": 212.5,
+        "low": 190.0,
+        "diff": -18.0,
+        "change_percent": -8.63,
+        "volume": 24693521,
+        "avg_volume": 10681346,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "6213",
+        "name": "聯茂",
+        "close": 261.0,
+        "open": 285.0,
+        "high": 297.0,
+        "low": 258.0,
+        "diff": -15.5,
+        "change_percent": -5.61,
+        "volume": 32386135,
+        "avg_volume": 15435316,
+        "vol_ratio": 2.1,
+        "body_ratio": 0.62
+    }
+]

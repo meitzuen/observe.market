@@ -1,0 +1,30 @@
+[
+    {
+        "id": "5465",
+        "name": "富驊",
+        "close": 30.3,
+        "open": 31.75,
+        "high": 31.85,
+        "low": 30.3,
+        "diff": -1.45,
+        "change_percent": -4.57,
+        "volume": 1159000,
+        "avg_volume": 431200,
+        "vol_ratio": 2.69,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "5481",
+        "name": "新華",
+        "close": 22.9,
+        "open": 24.1,
+        "high": 24.1,
+        "low": 22.7,
+        "diff": -1.4,
+        "change_percent": -5.76,
+        "volume": 1321000,
+        "avg_volume": 503200,
+        "vol_ratio": 2.63,
+        "body_ratio": 0.86
+    }
+]

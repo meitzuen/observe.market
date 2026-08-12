@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6217",
+        "name": "中探針",
+        "close": 292.0,
+        "open": 322.0,
+        "high": 327.0,
+        "low": 291.5,
+        "diff": -13.0,
+        "change_percent": -4.26,
+        "volume": 11191000,
+        "avg_volume": 1202600,
+        "vol_ratio": 9.31,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 127.0,
+        "open": 146.5,
+        "high": 146.5,
+        "low": 123.0,
+        "diff": -6.5,
+        "change_percent": -4.87,
+        "volume": 2199000,
+        "avg_volume": 321400,
+        "vol_ratio": 6.84,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "6150",
+        "name": "撼訊",
+        "close": 72.1,
+        "open": 83.6,
+        "high": 83.6,
+        "low": 72.0,
+        "diff": -3.9,
+        "change_percent": -5.13,
+        "volume": 6679000,
+        "avg_volume": 1352000,
+        "vol_ratio": 4.94,
+        "body_ratio": 0.99
+    },
+    {
+        "id": "6925",
+        "name": "意藍",
+        "close": 72.2,
+        "open": 75.4,
+        "high": 75.5,
+        "low": 71.0,
+        "diff": 3.2,
+        "change_percent": 4.64,
+        "volume": 989000,
+        "avg_volume": 275400,
+        "vol_ratio": 3.59,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "3339",
+        "name": "泰谷",
+        "close": 51.2,
+        "open": 53.3,
+        "high": 53.3,
+        "low": 51.0,
+        "diff": 2.7,
+        "change_percent": 5.57,
+        "volume": 9619000,
+        "avg_volume": 2805600,
+        "vol_ratio": 3.43,
+        "body_ratio": 0.91
+    }
+]

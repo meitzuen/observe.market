@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4908",
+        "name": "前鼎",
+        "close": 157.0,
+        "open": 169.0,
+        "high": 173.0,
+        "low": 157.0,
+        "diff": -8.5,
+        "change_percent": -5.14,
+        "volume": 5301000,
+        "avg_volume": 1337000,
+        "vol_ratio": 3.96,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "6530",
+        "name": "創威",
+        "close": 77.3,
+        "open": 80.5,
+        "high": 81.0,
+        "low": 76.0,
+        "diff": -4.8,
+        "change_percent": -5.85,
+        "volume": 1581000,
+        "avg_volume": 646200,
+        "vol_ratio": 2.45,
+        "body_ratio": 0.64
+    }
+]

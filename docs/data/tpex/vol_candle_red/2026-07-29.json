@@ -1,0 +1,58 @@
+[
+    {
+        "id": "3441",
+        "name": "聯一光",
+        "close": 84.8,
+        "open": 77.5,
+        "high": 84.9,
+        "low": 75.0,
+        "diff": 7.6,
+        "change_percent": 9.84,
+        "volume": 58554000,
+        "avg_volume": 10093600,
+        "vol_ratio": 5.8,
+        "body_ratio": 0.74
+    },
+    {
+        "id": "5299",
+        "name": "杰力",
+        "close": 96.1,
+        "open": 91.7,
+        "high": 96.1,
+        "low": 89.8,
+        "diff": 8.7,
+        "change_percent": 9.95,
+        "volume": 1685000,
+        "avg_volume": 328600,
+        "vol_ratio": 5.13,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "3630",
+        "name": "新鉅科",
+        "close": 27.2,
+        "open": 25.4,
+        "high": 27.6,
+        "low": 25.2,
+        "diff": 1.8,
+        "change_percent": 7.09,
+        "volume": 3917000,
+        "avg_volume": 1011600,
+        "vol_ratio": 3.87,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "3362",
+        "name": "先進光",
+        "close": 173.5,
+        "open": 159.5,
+        "high": 173.5,
+        "low": 158.0,
+        "diff": 15.5,
+        "change_percent": 9.81,
+        "volume": 22991000,
+        "avg_volume": 7557000,
+        "vol_ratio": 3.04,
+        "body_ratio": 0.9
+    }
+]

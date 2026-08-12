@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1466",
+        "name": "聚隆",
+        "close": 16.65,
+        "open": 15.3,
+        "high": 16.65,
+        "low": 14.85,
+        "diff": 1.5,
+        "change_percent": 9.9,
+        "volume": 2425836,
+        "avg_volume": 513822,
+        "vol_ratio": 4.72,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "2731",
+        "name": "雄獅",
+        "close": 184.0,
+        "open": 176.0,
+        "high": 184.0,
+        "low": 173.5,
+        "diff": 8.0,
+        "change_percent": 4.55,
+        "volume": 3059556,
+        "avg_volume": 827627,
+        "vol_ratio": 3.7,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "6885",
+        "name": "全福生技",
+        "close": 29.3,
+        "open": 28.5,
+        "high": 29.3,
+        "low": 28.5,
+        "diff": 2.65,
+        "change_percent": 9.94,
+        "volume": 859085,
+        "avg_volume": 266568,
+        "vol_ratio": 3.22,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3550",
+        "name": "聯穎",
+        "close": 18.75,
+        "open": 17.05,
+        "high": 18.75,
+        "low": 16.1,
+        "diff": 1.7,
+        "change_percent": 9.97,
+        "volume": 14598921,
+        "avg_volume": 7065230,
+        "vol_ratio": 2.07,
+        "body_ratio": 0.64
+    }
+]

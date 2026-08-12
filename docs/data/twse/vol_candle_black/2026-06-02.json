@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6757",
+        "name": "台灣虎航",
+        "close": 56.4,
+        "open": 59.1,
+        "high": 59.1,
+        "low": 55.5,
+        "diff": -2.5,
+        "change_percent": -4.24,
+        "volume": 5951466,
+        "avg_volume": 1961665,
+        "vol_ratio": 3.03,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "6831",
+        "name": "邁科",
+        "close": 686.0,
+        "open": 755.0,
+        "high": 755.0,
+        "low": 686.0,
+        "diff": -76.0,
+        "change_percent": -9.97,
+        "volume": 3416371,
+        "avg_volume": 1384748,
+        "vol_ratio": 2.47,
+        "body_ratio": 1.0
+    }
+]

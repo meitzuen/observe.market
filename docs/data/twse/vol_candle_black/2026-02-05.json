@@ -1,0 +1,58 @@
+[
+    {
+        "id": "3055",
+        "name": "蔚華科",
+        "close": 65.0,
+        "open": 71.0,
+        "high": 71.2,
+        "low": 64.5,
+        "diff": -6.5,
+        "change_percent": -9.09,
+        "volume": 2178520,
+        "avg_volume": 686808,
+        "vol_ratio": 3.17,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "2355",
+        "name": "敬鵬",
+        "close": 40.1,
+        "open": 44.15,
+        "high": 44.5,
+        "low": 39.7,
+        "diff": -3.65,
+        "change_percent": -8.34,
+        "volume": 49106657,
+        "avg_volume": 21835214,
+        "vol_ratio": 2.25,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 9.03,
+        "open": 9.45,
+        "high": 9.45,
+        "low": 9.02,
+        "diff": -0.46,
+        "change_percent": -4.85,
+        "volume": 996541,
+        "avg_volume": 465156,
+        "vol_ratio": 2.14,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "5269",
+        "name": "祥碩",
+        "close": 1255.0,
+        "open": 1300.0,
+        "high": 1320.0,
+        "low": 1255.0,
+        "diff": -80.0,
+        "change_percent": -5.99,
+        "volume": 1918397,
+        "avg_volume": 911573,
+        "vol_ratio": 2.1,
+        "body_ratio": 0.69
+    }
+]

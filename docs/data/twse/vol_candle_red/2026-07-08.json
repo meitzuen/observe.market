@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2465",
+        "name": "麗臺",
+        "close": 81.4,
+        "open": 74.0,
+        "high": 81.4,
+        "low": 73.1,
+        "diff": 7.4,
+        "change_percent": 10.0,
+        "volume": 2538224,
+        "avg_volume": 593270,
+        "vol_ratio": 4.28,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "3617",
+        "name": "碩天",
+        "close": 238.0,
+        "open": 230.0,
+        "high": 238.0,
+        "low": 230.0,
+        "diff": 21.5,
+        "change_percent": 9.93,
+        "volume": 1948813,
+        "avg_volume": 549048,
+        "vol_ratio": 3.55,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2601",
+        "name": "益航",
+        "close": 7.55,
+        "open": 7.0,
+        "high": 7.55,
+        "low": 6.95,
+        "diff": 0.68,
+        "change_percent": 9.9,
+        "volume": 26882744,
+        "avg_volume": 8332908,
+        "vol_ratio": 3.23,
+        "body_ratio": 0.92
+    },
+    {
+        "id": "6142",
+        "name": "友勁",
+        "close": 10.25,
+        "open": 9.37,
+        "high": 10.25,
+        "low": 9.23,
+        "diff": 0.93,
+        "change_percent": 9.98,
+        "volume": 3575059,
+        "avg_volume": 1145136,
+        "vol_ratio": 3.12,
+        "body_ratio": 0.86
+    }
+]

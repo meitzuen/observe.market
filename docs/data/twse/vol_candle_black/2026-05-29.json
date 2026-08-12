@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6831",
+        "name": "邁科",
+        "close": 742.0,
+        "open": 808.0,
+        "high": 809.0,
+        "low": 717.0,
+        "diff": -48.0,
+        "change_percent": -6.08,
+        "volume": 2188736,
+        "avg_volume": 501379,
+        "vol_ratio": 4.37,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "6550",
+        "name": "北極星藥業-KY",
+        "close": 13.5,
+        "open": 14.05,
+        "high": 14.2,
+        "low": 13.5,
+        "diff": -0.7,
+        "change_percent": -4.93,
+        "volume": 8254253,
+        "avg_volume": 3417472,
+        "vol_ratio": 2.42,
+        "body_ratio": 0.79
+    }
+]

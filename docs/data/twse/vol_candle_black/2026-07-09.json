@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6715",
+        "name": "嘉基",
+        "close": 391.5,
+        "open": 435.5,
+        "high": 445.0,
+        "low": 391.5,
+        "diff": -43.5,
+        "change_percent": -10.0,
+        "volume": 1356098,
+        "avg_volume": 168752,
+        "vol_ratio": 8.04,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "2913",
+        "name": "農林",
+        "close": 11.75,
+        "open": 12.1,
+        "high": 12.2,
+        "low": 11.65,
+        "diff": 0.65,
+        "change_percent": 5.86,
+        "volume": 23838603,
+        "avg_volume": 3185599,
+        "vol_ratio": 7.48,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "4739",
+        "name": "康普",
+        "close": 99.0,
+        "open": 106.0,
+        "high": 108.0,
+        "low": 99.0,
+        "diff": -11.0,
+        "change_percent": -10.0,
+        "volume": 8082672,
+        "avg_volume": 2283172,
+        "vol_ratio": 3.54,
+        "body_ratio": 0.78
+    },
+    {
+        "id": "3010",
+        "name": "華立",
+        "close": 117.5,
+        "open": 121.0,
+        "high": 122.0,
+        "low": 117.0,
+        "diff": -5.0,
+        "change_percent": -4.08,
+        "volume": 2129530,
+        "avg_volume": 703246,
+        "vol_ratio": 3.03,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "1618",
+        "name": "合機",
+        "close": 38.8,
+        "open": 39.8,
+        "high": 39.8,
+        "low": 38.2,
+        "diff": -1.7,
+        "change_percent": -4.2,
+        "volume": 2375703,
+        "avg_volume": 826175,
+        "vol_ratio": 2.88,
+        "body_ratio": 0.63
+    }
+]

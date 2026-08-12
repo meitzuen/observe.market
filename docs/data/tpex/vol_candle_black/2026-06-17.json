@@ -1,0 +1,16 @@
+[
+    {
+        "id": "4416",
+        "name": "三圓",
+        "close": 9.33,
+        "open": 10.25,
+        "high": 10.25,
+        "low": 9.27,
+        "diff": -0.97,
+        "change_percent": -9.42,
+        "volume": 1890000,
+        "avg_volume": 226200,
+        "vol_ratio": 8.36,
+        "body_ratio": 0.94
+    }
+]

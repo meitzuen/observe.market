@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-08-11",
+        "measure": "第一次處置",
+        "id": "6426",
+        "name": "統新",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-08-12",
+        "to": "2026-08-18"
+    },
+    {
         "publish_date": "2026-08-10",
         "measure": "第一次處置",
         "id": "2491",

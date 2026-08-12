@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2537",
+        "name": "聯上發",
+        "close": 10.85,
+        "open": 11.6,
+        "high": 11.6,
+        "low": 10.85,
+        "diff": -0.75,
+        "change_percent": -6.47,
+        "volume": 4688868,
+        "avg_volume": 1994681,
+        "vol_ratio": 2.35,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "1310",
+        "name": "台苯",
+        "close": 8.82,
+        "open": 9.19,
+        "high": 9.19,
+        "low": 8.71,
+        "diff": -0.38,
+        "change_percent": -4.13,
+        "volume": 6903042,
+        "avg_volume": 2959300,
+        "vol_ratio": 2.33,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "6177",
+        "name": "達麗",
+        "close": 49.85,
+        "open": 52.9,
+        "high": 52.9,
+        "low": 49.5,
+        "diff": -2.75,
+        "change_percent": -5.23,
+        "volume": 4023255,
+        "avg_volume": 1807567,
+        "vol_ratio": 2.23,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6691",
+        "name": "洋基工程",
+        "close": 593.0,
+        "open": 635.0,
+        "high": 640.0,
+        "low": 590.0,
+        "diff": -31.0,
+        "change_percent": -4.97,
+        "volume": 3361232,
+        "avg_volume": 1584481,
+        "vol_ratio": 2.12,
+        "body_ratio": 0.84
+    }
+]

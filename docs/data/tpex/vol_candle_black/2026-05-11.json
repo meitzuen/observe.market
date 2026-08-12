@@ -1,0 +1,30 @@
+[
+    {
+        "id": "7751",
+        "name": "竑騰",
+        "close": 1750.0,
+        "open": 2000.0,
+        "high": 2015.0,
+        "low": 1750.0,
+        "diff": -190.0,
+        "change_percent": -9.79,
+        "volume": 533000,
+        "avg_volume": 178200,
+        "vol_ratio": 2.99,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "3339",
+        "name": "泰谷",
+        "close": 54.0,
+        "open": 56.8,
+        "high": 57.0,
+        "low": 53.0,
+        "diff": -4.8,
+        "change_percent": -8.16,
+        "volume": 4848000,
+        "avg_volume": 2423000,
+        "vol_ratio": 2.0,
+        "body_ratio": 0.7
+    }
+]

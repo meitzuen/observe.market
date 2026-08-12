@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3455",
+        "name": "由田",
+        "close": 293.0,
+        "open": 306.0,
+        "high": 306.5,
+        "low": 291.5,
+        "diff": -17.0,
+        "change_percent": -5.48,
+        "volume": 3907000,
+        "avg_volume": 493600,
+        "vol_ratio": 7.92,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "6569",
+        "name": "醫揚",
+        "close": 93.1,
+        "open": 98.6,
+        "high": 99.8,
+        "low": 91.9,
+        "diff": -5.5,
+        "change_percent": -5.58,
+        "volume": 522000,
+        "avg_volume": 146000,
+        "vol_ratio": 3.58,
+        "body_ratio": 0.7
+    }
+]

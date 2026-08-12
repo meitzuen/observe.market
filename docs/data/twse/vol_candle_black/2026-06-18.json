@@ -1,0 +1,58 @@
+[
+    {
+        "id": "3528",
+        "name": "安馳",
+        "close": 110.5,
+        "open": 118.0,
+        "high": 118.0,
+        "low": 110.5,
+        "diff": -12.0,
+        "change_percent": -9.8,
+        "volume": 3310922,
+        "avg_volume": 935822,
+        "vol_ratio": 3.54,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7769",
+        "name": "鴻勁",
+        "close": 6975.0,
+        "open": 7330.0,
+        "high": 7410.0,
+        "low": 6950.0,
+        "diff": -355.0,
+        "change_percent": -4.84,
+        "volume": 1446331,
+        "avg_volume": 590020,
+        "vol_ratio": 2.45,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "7740",
+        "name": "熙特爾-創",
+        "close": 156.0,
+        "open": 163.0,
+        "high": 163.0,
+        "low": 153.0,
+        "diff": -7.0,
+        "change_percent": -4.29,
+        "volume": 635924,
+        "avg_volume": 289121,
+        "vol_ratio": 2.2,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "2605",
+        "name": "新興",
+        "close": 31.0,
+        "open": 32.65,
+        "high": 32.65,
+        "low": 30.85,
+        "diff": -1.45,
+        "change_percent": -4.47,
+        "volume": 13595519,
+        "avg_volume": 6629191,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.92
+    }
+]

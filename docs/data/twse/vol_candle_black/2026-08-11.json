@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3055",
+        "name": "蔚華科",
+        "close": 106.5,
+        "open": 120.0,
+        "high": 121.0,
+        "low": 103.0,
+        "diff": -7.0,
+        "change_percent": -6.17,
+        "volume": 3564088,
+        "avg_volume": 594312,
+        "vol_ratio": 6.0,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "4551",
+        "name": "智伸科",
+        "close": 157.0,
+        "open": 171.0,
+        "high": 171.0,
+        "low": 157.0,
+        "diff": -17.0,
+        "change_percent": -9.77,
+        "volume": 2810382,
+        "avg_volume": 872416,
+        "vol_ratio": 3.22,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7740",
+        "name": "熙特爾-創",
+        "close": 159.5,
+        "open": 166.0,
+        "high": 166.0,
+        "low": 159.5,
+        "diff": -17.5,
+        "change_percent": -9.89,
+        "volume": 797718,
+        "avg_volume": 350752,
+        "vol_ratio": 2.27,
+        "body_ratio": 1.0
+    }
+]

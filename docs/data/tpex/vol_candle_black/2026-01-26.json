@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3306",
+        "name": "鼎天",
+        "close": 51.8,
+        "open": 55.0,
+        "high": 56.1,
+        "low": 51.2,
+        "diff": -2.4,
+        "change_percent": -4.43,
+        "volume": 2400000,
+        "avg_volume": 404800,
+        "vol_ratio": 5.93,
+        "body_ratio": 0.65
+    }
+]

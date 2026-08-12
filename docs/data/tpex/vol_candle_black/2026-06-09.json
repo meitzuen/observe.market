@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8027",
+        "name": "鈦昇",
+        "close": 248.5,
+        "open": 269.5,
+        "high": 276.0,
+        "low": 246.5,
+        "diff": -15.5,
+        "change_percent": -5.87,
+        "volume": 11450000,
+        "avg_volume": 1473000,
+        "vol_ratio": 7.77,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "3675",
+        "name": "德微",
+        "close": 311.5,
+        "open": 346.0,
+        "high": 346.0,
+        "low": 311.5,
+        "diff": -34.5,
+        "change_percent": -9.97,
+        "volume": 3061000,
+        "avg_volume": 797800,
+        "vol_ratio": 3.84,
+        "body_ratio": 1.0
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1342",
+        "name": "八貫",
+        "close": 96.9,
+        "open": 103.5,
+        "high": 104.0,
+        "low": 96.9,
+        "diff": -5.6,
+        "change_percent": -5.46,
+        "volume": 2351833,
+        "avg_volume": 362426,
+        "vol_ratio": 6.49,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "6166",
+        "name": "凌華",
+        "close": 113.0,
+        "open": 132.5,
+        "high": 132.5,
+        "low": 113.0,
+        "diff": -12.5,
+        "change_percent": -9.96,
+        "volume": 15766986,
+        "avg_volume": 7764289,
+        "vol_ratio": 2.03,
+        "body_ratio": 1.0
+    }
+]

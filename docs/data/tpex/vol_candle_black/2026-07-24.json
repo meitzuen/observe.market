@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6163",
+        "name": "華電網",
+        "close": 41.0,
+        "open": 44.75,
+        "high": 44.75,
+        "low": 41.0,
+        "diff": -4.55,
+        "change_percent": -9.99,
+        "volume": 4766000,
+        "avg_volume": 2144000,
+        "vol_ratio": 2.22,
+        "body_ratio": 1.0
+    }
+]

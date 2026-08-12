@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5312",
+        "name": "寶島科",
+        "close": 100.0,
+        "open": 91.8,
+        "high": 100.0,
+        "low": 91.8,
+        "diff": 8.4,
+        "change_percent": 9.17,
+        "volume": 933000,
+        "avg_volume": 59400,
+        "vol_ratio": 15.71,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6577",
+        "name": "勁豐",
+        "close": 85.9,
+        "open": 78.5,
+        "high": 85.9,
+        "low": 78.3,
+        "diff": 7.8,
+        "change_percent": 9.99,
+        "volume": 612000,
+        "avg_volume": 42600,
+        "vol_ratio": 14.37,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "4442",
+        "name": "竣邦-KY",
+        "close": 56.4,
+        "open": 51.5,
+        "high": 56.4,
+        "low": 51.2,
+        "diff": 5.1,
+        "change_percent": 9.94,
+        "volume": 748000,
+        "avg_volume": 81600,
+        "vol_ratio": 9.17,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "4979",
+        "name": "華星光",
+        "close": 407.5,
+        "open": 376.5,
+        "high": 416.5,
+        "low": 375.5,
+        "diff": 28.5,
+        "change_percent": 7.52,
+        "volume": 13333000,
+        "avg_volume": 6160600,
+        "vol_ratio": 2.16,
+        "body_ratio": 0.76
+    }
+]

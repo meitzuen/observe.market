@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4744",
+        "name": "皇將",
+        "close": 30.4,
+        "open": 32.5,
+        "high": 32.6,
+        "low": 30.4,
+        "diff": -3.35,
+        "change_percent": -9.93,
+        "volume": 2383000,
+        "avg_volume": 539400,
+        "vol_ratio": 4.42,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "7734",
+        "name": "印能科技",
+        "close": 2780.0,
+        "open": 3250.0,
+        "high": 3290.0,
+        "low": 2775.0,
+        "diff": -300.0,
+        "change_percent": -9.74,
+        "volume": 560000,
+        "avg_volume": 238000,
+        "vol_ratio": 2.35,
+        "body_ratio": 0.91
+    },
+    {
+        "id": "5439",
+        "name": "高技",
+        "close": 327.0,
+        "open": 356.0,
+        "high": 360.0,
+        "low": 324.5,
+        "diff": -19.0,
+        "change_percent": -5.49,
+        "volume": 5650000,
+        "avg_volume": 2482800,
+        "vol_ratio": 2.28,
+        "body_ratio": 0.82
+    }
+]

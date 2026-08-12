@@ -1,0 +1,16 @@
+[
+    {
+        "id": "8021",
+        "name": "尖點",
+        "close": 380.5,
+        "open": 401.5,
+        "high": 409.5,
+        "low": 380.0,
+        "diff": -29.0,
+        "change_percent": -7.08,
+        "volume": 10124724,
+        "avg_volume": 1483028,
+        "vol_ratio": 6.83,
+        "body_ratio": 0.71
+    }
+]

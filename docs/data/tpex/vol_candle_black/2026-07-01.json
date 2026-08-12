@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3152",
+        "name": "璟德",
+        "close": 292.5,
+        "open": 328.0,
+        "high": 328.0,
+        "low": 292.5,
+        "diff": -32.0,
+        "change_percent": -9.86,
+        "volume": 1355000,
+        "avg_volume": 425000,
+        "vol_ratio": 3.19,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "1815",
+        "name": "富喬",
+        "close": 104.0,
+        "open": 115.5,
+        "high": 118.5,
+        "low": 103.5,
+        "diff": -7.0,
+        "change_percent": -6.31,
+        "volume": 93641000,
+        "avg_volume": 36884400,
+        "vol_ratio": 2.54,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "3357",
+        "name": "臺慶科",
+        "close": 305.5,
+        "open": 325.0,
+        "high": 331.5,
+        "low": 300.0,
+        "diff": -13.5,
+        "change_percent": -4.23,
+        "volume": 9875000,
+        "avg_volume": 4149250,
+        "vol_ratio": 2.38,
+        "body_ratio": 0.62
+    }
+]

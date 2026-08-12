@@ -1,0 +1,72 @@
+[
+    {
+        "id": "2356",
+        "name": "英業達",
+        "close": 48.0,
+        "open": 54.5,
+        "high": 55.0,
+        "low": 47.8,
+        "diff": -3.2,
+        "change_percent": -6.25,
+        "volume": 187442404,
+        "avg_volume": 60263426,
+        "vol_ratio": 3.11,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "1609",
+        "name": "大亞",
+        "close": 42.95,
+        "open": 49.6,
+        "high": 50.0,
+        "low": 42.9,
+        "diff": -4.35,
+        "change_percent": -9.2,
+        "volume": 84577072,
+        "avg_volume": 27841527,
+        "vol_ratio": 3.04,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "8404",
+        "name": "百和興業-KY",
+        "close": 23.5,
+        "open": 24.8,
+        "high": 24.8,
+        "low": 23.4,
+        "diff": -1.2,
+        "change_percent": -4.86,
+        "volume": 1907525,
+        "avg_volume": 692738,
+        "vol_ratio": 2.75,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "6770",
+        "name": "力積電",
+        "close": 58.5,
+        "open": 64.8,
+        "high": 64.8,
+        "low": 58.2,
+        "diff": -5.1,
+        "change_percent": -8.02,
+        "volume": 335348044,
+        "avg_volume": 123058021,
+        "vol_ratio": 2.73,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "3049",
+        "name": "精金",
+        "close": 10.0,
+        "open": 12.15,
+        "high": 12.2,
+        "low": 10.0,
+        "diff": -1.1,
+        "change_percent": -9.91,
+        "volume": 46935399,
+        "avg_volume": 18238999,
+        "vol_ratio": 2.57,
+        "body_ratio": 0.98
+    }
+]

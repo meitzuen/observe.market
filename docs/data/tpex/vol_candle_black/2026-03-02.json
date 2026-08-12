@@ -1,0 +1,30 @@
+[
+    {
+        "id": "7712",
+        "name": "博盛半導體",
+        "close": 104.5,
+        "open": 113.5,
+        "high": 116.5,
+        "low": 103.5,
+        "diff": -4.5,
+        "change_percent": -4.13,
+        "volume": 2713000,
+        "avg_volume": 404400,
+        "vol_ratio": 6.71,
+        "body_ratio": 0.69
+    },
+    {
+        "id": "3555",
+        "name": "博士旺",
+        "close": 127.5,
+        "open": 133.0,
+        "high": 135.5,
+        "low": 127.5,
+        "diff": -14.0,
+        "change_percent": -9.89,
+        "volume": 787000,
+        "avg_volume": 324800,
+        "vol_ratio": 2.42,
+        "body_ratio": 0.69
+    }
+]

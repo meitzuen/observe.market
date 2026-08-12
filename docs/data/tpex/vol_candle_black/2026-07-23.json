@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5426",
+        "name": "振發",
+        "close": 26.9,
+        "open": 29.55,
+        "high": 29.55,
+        "low": 26.85,
+        "diff": -1.85,
+        "change_percent": -6.43,
+        "volume": 2966000,
+        "avg_volume": 683000,
+        "vol_ratio": 4.34,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "6617",
+        "name": "共信-KY",
+        "close": 89.7,
+        "open": 98.8,
+        "high": 100.0,
+        "low": 89.0,
+        "diff": -9.1,
+        "change_percent": -9.21,
+        "volume": 957000,
+        "avg_volume": 363200,
+        "vol_ratio": 2.63,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "6259",
+        "name": "百徽",
+        "close": 34.75,
+        "open": 37.4,
+        "high": 38.6,
+        "low": 34.65,
+        "diff": -1.65,
+        "change_percent": -4.53,
+        "volume": 4111000,
+        "avg_volume": 1654400,
+        "vol_ratio": 2.48,
+        "body_ratio": 0.67
+    }
+]

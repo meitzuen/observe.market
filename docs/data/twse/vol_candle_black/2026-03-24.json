@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6830",
+        "name": "汎銓",
+        "close": 410.5,
+        "open": 484.0,
+        "high": 501.0,
+        "low": 410.5,
+        "diff": -45.5,
+        "change_percent": -9.98,
+        "volume": 7123848,
+        "avg_volume": 510372,
+        "vol_ratio": 13.96,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "2025",
+        "name": "千興",
+        "close": 11.95,
+        "open": 13.45,
+        "high": 13.45,
+        "low": 11.5,
+        "diff": -0.8,
+        "change_percent": -6.27,
+        "volume": 1263109,
+        "avg_volume": 468357,
+        "vol_ratio": 2.7,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "2489",
+        "name": "瑞軒",
+        "close": 31.5,
+        "open": 36.45,
+        "high": 36.8,
+        "low": 31.35,
+        "diff": -3.3,
+        "change_percent": -9.48,
+        "volume": 92688893,
+        "avg_volume": 45278219,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.91
+    }
+]

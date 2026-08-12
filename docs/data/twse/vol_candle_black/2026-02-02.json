@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6579",
+        "name": "研揚",
+        "close": 122.0,
+        "open": 126.5,
+        "high": 126.5,
+        "low": 120.5,
+        "diff": -5.5,
+        "change_percent": -4.31,
+        "volume": 1045485,
+        "avg_volume": 330388,
+        "vol_ratio": 3.16,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "2104",
+        "name": "國際中橡",
+        "close": 10.95,
+        "open": 11.85,
+        "high": 11.85,
+        "low": 10.85,
+        "diff": -1.0,
+        "change_percent": -8.37,
+        "volume": 10475895,
+        "avg_volume": 4717066,
+        "vol_ratio": 2.22,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "3138",
+        "name": "耀登",
+        "close": 164.0,
+        "open": 181.5,
+        "high": 182.0,
+        "low": 162.0,
+        "diff": -14.0,
+        "change_percent": -7.87,
+        "volume": 4568725,
+        "avg_volume": 2058883,
+        "vol_ratio": 2.22,
+        "body_ratio": 0.88
+    }
+]

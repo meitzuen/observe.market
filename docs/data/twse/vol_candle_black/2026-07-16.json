@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2103",
+        "name": "台橡",
+        "close": 24.55,
+        "open": 27.6,
+        "high": 27.6,
+        "low": 24.3,
+        "diff": -1.05,
+        "change_percent": -4.1,
+        "volume": 20009859,
+        "avg_volume": 9034834,
+        "vol_ratio": 2.21,
+        "body_ratio": 0.92
+    },
+    {
+        "id": "2851",
+        "name": "中再保",
+        "close": 36.9,
+        "open": 37.95,
+        "high": 37.95,
+        "low": 36.85,
+        "diff": -1.6,
+        "change_percent": -4.16,
+        "volume": 3411869,
+        "avg_volume": 1616625,
+        "vol_ratio": 2.11,
+        "body_ratio": 0.95
+    }
+]

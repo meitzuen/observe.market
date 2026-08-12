@@ -1,0 +1,44 @@
+[
+    {
+        "id": "8107",
+        "name": "大億金茂",
+        "close": 15.8,
+        "open": 16.45,
+        "high": 16.45,
+        "low": 15.55,
+        "diff": -0.75,
+        "change_percent": -4.53,
+        "volume": 888000,
+        "avg_volume": 355400,
+        "vol_ratio": 2.5,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "6425",
+        "name": "易發",
+        "close": 72.8,
+        "open": 77.5,
+        "high": 77.6,
+        "low": 70.2,
+        "diff": -5.1,
+        "change_percent": -6.55,
+        "volume": 1889000,
+        "avg_volume": 803600,
+        "vol_ratio": 2.35,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "3339",
+        "name": "泰谷",
+        "close": 29.75,
+        "open": 32.5,
+        "high": 32.55,
+        "low": 29.45,
+        "diff": -1.25,
+        "change_percent": -4.03,
+        "volume": 2346000,
+        "avg_volume": 1102400,
+        "vol_ratio": 2.13,
+        "body_ratio": 0.89
+    }
+]

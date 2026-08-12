@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1301",
+        "name": "台塑",
+        "close": 47.35,
+        "open": 53.4,
+        "high": 54.8,
+        "low": 46.1,
+        "diff": -2.85,
+        "change_percent": -5.68,
+        "volume": 151865647,
+        "avg_volume": 46911995,
+        "vol_ratio": 3.24,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "9902",
+        "name": "台火",
+        "close": 15.05,
+        "open": 15.35,
+        "high": 15.4,
+        "low": 15.0,
+        "diff": -0.8,
+        "change_percent": -5.05,
+        "volume": 543237,
+        "avg_volume": 226706,
+        "vol_ratio": 2.4,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "1735",
+        "name": "日勝化",
+        "close": 19.2,
+        "open": 22.85,
+        "high": 22.85,
+        "low": 18.75,
+        "diff": -1.6,
+        "change_percent": -7.69,
+        "volume": 3441359,
+        "avg_volume": 1478162,
+        "vol_ratio": 2.33,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "3592",
+        "name": "瑞鼎",
+        "close": 210.5,
+        "open": 215.5,
+        "high": 216.0,
+        "low": 208.5,
+        "diff": -15.5,
+        "change_percent": -6.86,
+        "volume": 1080702,
+        "avg_volume": 519075,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "7786",
+        "name": "東方風能",
+        "close": 144.0,
+        "open": 150.0,
+        "high": 150.0,
+        "low": 143.5,
+        "diff": -10.0,
+        "change_percent": -6.49,
+        "volume": 531182,
+        "avg_volume": 262862,
+        "vol_ratio": 2.02,
+        "body_ratio": 0.92
+    }
+]

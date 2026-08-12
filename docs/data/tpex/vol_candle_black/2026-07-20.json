@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3297",
+        "name": "杭特",
+        "close": 29.15,
+        "open": 33.0,
+        "high": 33.9,
+        "low": 29.15,
+        "diff": -3.2,
+        "change_percent": -9.89,
+        "volume": 1445000,
+        "avg_volume": 191400,
+        "vol_ratio": 7.55,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "8111",
+        "name": "立碁",
+        "close": 44.25,
+        "open": 50.3,
+        "high": 50.5,
+        "low": 44.1,
+        "diff": -4.7,
+        "change_percent": -9.6,
+        "volume": 3252000,
+        "avg_volume": 1164000,
+        "vol_ratio": 2.79,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "8155",
+        "name": "博智",
+        "close": 282.0,
+        "open": 302.0,
+        "high": 302.0,
+        "low": 274.5,
+        "diff": -20.0,
+        "change_percent": -6.62,
+        "volume": 1952000,
+        "avg_volume": 953600,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.73
+    }
+]

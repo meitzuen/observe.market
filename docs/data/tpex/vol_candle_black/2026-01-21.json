@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5351",
+        "name": "鈺創",
+        "close": 62.5,
+        "open": 70.1,
+        "high": 70.8,
+        "low": 62.1,
+        "diff": -6.5,
+        "change_percent": -9.42,
+        "volume": 32740000,
+        "avg_volume": 7499400,
+        "vol_ratio": 4.37,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "6823",
+        "name": "濾能",
+        "close": 66.6,
+        "open": 71.0,
+        "high": 72.2,
+        "low": 66.6,
+        "diff": -7.3,
+        "change_percent": -9.88,
+        "volume": 1121000,
+        "avg_volume": 327800,
+        "vol_ratio": 3.42,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "3260",
+        "name": "威剛",
+        "close": 271.5,
+        "open": 298.0,
+        "high": 298.0,
+        "low": 270.0,
+        "diff": -26.5,
+        "change_percent": -8.89,
+        "volume": 5020000,
+        "avg_volume": 2213600,
+        "vol_ratio": 2.27,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "3264",
+        "name": "欣銓",
+        "close": 148.5,
+        "open": 164.0,
+        "high": 168.0,
+        "low": 148.5,
+        "diff": -16.5,
+        "change_percent": -10.0,
+        "volume": 31136000,
+        "avg_volume": 14379800,
+        "vol_ratio": 2.17,
+        "body_ratio": 0.79
+    }
+]

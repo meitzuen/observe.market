@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1608",
+        "name": "華榮",
+        "close": 32.85,
+        "open": 34.3,
+        "high": 34.4,
+        "low": 32.75,
+        "diff": -1.55,
+        "change_percent": -4.51,
+        "volume": 9818725,
+        "avg_volume": 3479807,
+        "vol_ratio": 2.82,
+        "body_ratio": 0.88
+    }
+]

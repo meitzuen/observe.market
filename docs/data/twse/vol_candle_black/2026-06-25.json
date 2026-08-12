@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2233",
+        "name": "宇隆",
+        "close": 230.5,
+        "open": 241.5,
+        "high": 246.5,
+        "low": 230.5,
+        "diff": -25.5,
+        "change_percent": -9.96,
+        "volume": 6909297,
+        "avg_volume": 1233929,
+        "vol_ratio": 5.6,
+        "body_ratio": 0.69
+    },
+    {
+        "id": "6541",
+        "name": "泰福-KY",
+        "close": 40.75,
+        "open": 42.55,
+        "high": 42.55,
+        "low": 40.75,
+        "diff": -4.5,
+        "change_percent": -9.94,
+        "volume": 1875295,
+        "avg_volume": 612029,
+        "vol_ratio": 3.06,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3588",
+        "name": "通嘉",
+        "close": 72.0,
+        "open": 79.9,
+        "high": 80.0,
+        "low": 71.0,
+        "diff": -3.9,
+        "change_percent": -5.14,
+        "volume": 5264650,
+        "avg_volume": 2431697,
+        "vol_ratio": 2.17,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "2312",
+        "name": "金寶",
+        "close": 36.4,
+        "open": 38.5,
+        "high": 38.55,
+        "low": 36.25,
+        "diff": -1.6,
+        "change_percent": -4.21,
+        "volume": 114832487,
+        "avg_volume": 53978825,
+        "vol_ratio": 2.13,
+        "body_ratio": 0.91
+    }
+]

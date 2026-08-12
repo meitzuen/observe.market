@@ -1,0 +1,72 @@
+[
+    {
+        "id": "4583",
+        "name": "台灣精銳",
+        "close": 450.5,
+        "open": 493.0,
+        "high": 493.0,
+        "low": 438.5,
+        "diff": -36.5,
+        "change_percent": -7.49,
+        "volume": 1183259,
+        "avg_volume": 90506,
+        "vol_ratio": 13.07,
+        "body_ratio": 0.78
+    },
+    {
+        "id": "3504",
+        "name": "揚明光",
+        "close": 62.3,
+        "open": 70.7,
+        "high": 75.4,
+        "low": 62.1,
+        "diff": -6.3,
+        "change_percent": -9.18,
+        "volume": 10775275,
+        "avg_volume": 3069178,
+        "vol_ratio": 3.51,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "2382",
+        "name": "廣達",
+        "close": 279.0,
+        "open": 288.0,
+        "high": 288.0,
+        "low": 279.0,
+        "diff": -30.5,
+        "change_percent": -9.85,
+        "volume": 58851779,
+        "avg_volume": 20554871,
+        "vol_ratio": 2.86,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 20.3,
+        "open": 23.7,
+        "high": 24.5,
+        "low": 20.3,
+        "diff": -2.25,
+        "change_percent": -9.98,
+        "volume": 40652847,
+        "avg_volume": 16578236,
+        "vol_ratio": 2.45,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "3035",
+        "name": "智原",
+        "close": 150.5,
+        "open": 160.0,
+        "high": 165.0,
+        "low": 150.5,
+        "diff": -16.5,
+        "change_percent": -9.88,
+        "volume": 11081627,
+        "avg_volume": 4787588,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.66
+    }
+]

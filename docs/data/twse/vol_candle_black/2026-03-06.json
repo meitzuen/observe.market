@@ -1,0 +1,16 @@
+[
+    {
+        "id": "2408",
+        "name": "南亞科",
+        "close": 233.0,
+        "open": 259.0,
+        "high": 262.0,
+        "low": 232.5,
+        "diff": -24.5,
+        "change_percent": -9.51,
+        "volume": 161663082,
+        "avg_volume": 67566722,
+        "vol_ratio": 2.39,
+        "body_ratio": 0.88
+    }
+]

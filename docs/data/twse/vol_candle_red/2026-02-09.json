@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2515",
+        "name": "中工",
+        "close": 14.95,
+        "open": 14.0,
+        "high": 14.95,
+        "low": 13.5,
+        "diff": 1.05,
+        "change_percent": 7.55,
+        "volume": 27918101,
+        "avg_volume": 6458620,
+        "vol_ratio": 4.32,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "4739",
+        "name": "康普",
+        "close": 69.1,
+        "open": 67.1,
+        "high": 69.1,
+        "low": 66.9,
+        "diff": 6.2,
+        "change_percent": 9.86,
+        "volume": 2671387,
+        "avg_volume": 1021631,
+        "vol_ratio": 2.61,
+        "body_ratio": 0.91
+    }
+]

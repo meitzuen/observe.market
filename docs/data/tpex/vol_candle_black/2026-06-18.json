@@ -1,0 +1,44 @@
+[
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 104.5,
+        "open": 112.0,
+        "high": 114.0,
+        "low": 102.5,
+        "diff": -9.0,
+        "change_percent": -7.93,
+        "volume": 831000,
+        "avg_volume": 99250,
+        "vol_ratio": 8.37,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "4741",
+        "name": "泓瀚",
+        "close": 64.6,
+        "open": 71.5,
+        "high": 71.7,
+        "low": 64.6,
+        "diff": -7.1,
+        "change_percent": -9.9,
+        "volume": 4093000,
+        "avg_volume": 1505200,
+        "vol_ratio": 2.72,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "8277",
+        "name": "商丞",
+        "close": 9.55,
+        "open": 10.6,
+        "high": 10.7,
+        "low": 9.55,
+        "diff": -0.8,
+        "change_percent": -7.73,
+        "volume": 851000,
+        "avg_volume": 323000,
+        "vol_ratio": 2.63,
+        "body_ratio": 0.91
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "8299",
+        "name": "群聯",
+        "close": 1990.0,
+        "open": 2275.0,
+        "high": 2275.0,
+        "low": 1935.0,
+        "diff": -155.0,
+        "change_percent": -7.23,
+        "volume": 18172000,
+        "avg_volume": 7559200,
+        "vol_ratio": 2.4,
+        "body_ratio": 0.84
+    }
+]

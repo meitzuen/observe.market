@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8171",
+        "name": "天宇",
+        "close": 20.95,
+        "open": 22.3,
+        "high": 22.35,
+        "low": 20.7,
+        "diff": -2.0,
+        "change_percent": -8.71,
+        "volume": 1466000,
+        "avg_volume": 206600,
+        "vol_ratio": 7.1,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "4744",
+        "name": "皇將",
+        "close": 27.45,
+        "open": 28.05,
+        "high": 28.3,
+        "low": 27.4,
+        "diff": -2.95,
+        "change_percent": -9.7,
+        "volume": 2346000,
+        "avg_volume": 972400,
+        "vol_ratio": 2.41,
+        "body_ratio": 0.67
+    }
+]

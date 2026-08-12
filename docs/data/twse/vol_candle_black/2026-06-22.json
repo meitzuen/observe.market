@@ -1,0 +1,72 @@
+[
+    {
+        "id": "2332",
+        "name": "友訊",
+        "close": 18.95,
+        "open": 20.8,
+        "high": 20.8,
+        "low": 18.35,
+        "diff": -1.1,
+        "change_percent": -5.49,
+        "volume": 62717537,
+        "avg_volume": 12937100,
+        "vol_ratio": 4.85,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "3535",
+        "name": "晶彩科",
+        "close": 128.5,
+        "open": 133.0,
+        "high": 134.0,
+        "low": 128.0,
+        "diff": -5.5,
+        "change_percent": -4.1,
+        "volume": 3692494,
+        "avg_volume": 899153,
+        "vol_ratio": 4.11,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "1568",
+        "name": "倉佑",
+        "close": 43.3,
+        "open": 46.05,
+        "high": 46.75,
+        "low": 43.0,
+        "diff": -2.75,
+        "change_percent": -5.97,
+        "volume": 3678405,
+        "avg_volume": 1177141,
+        "vol_ratio": 3.12,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "2530",
+        "name": "華建",
+        "close": 19.0,
+        "open": 20.0,
+        "high": 20.0,
+        "low": 18.8,
+        "diff": -1.0,
+        "change_percent": -5.0,
+        "volume": 1618786,
+        "avg_volume": 622445,
+        "vol_ratio": 2.6,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "6177",
+        "name": "達麗",
+        "close": 45.9,
+        "open": 48.0,
+        "high": 48.0,
+        "low": 45.6,
+        "diff": -4.5,
+        "change_percent": -8.93,
+        "volume": 7130141,
+        "avg_volume": 3283770,
+        "vol_ratio": 2.17,
+        "body_ratio": 0.88
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "4976",
+        "name": "佳凌",
+        "close": 37.7,
+        "open": 34.6,
+        "high": 37.7,
+        "low": 34.55,
+        "diff": 3.4,
+        "change_percent": 9.91,
+        "volume": 13072274,
+        "avg_volume": 3330124,
+        "vol_ratio": 3.93,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "2923",
+        "name": "鼎固-KY",
+        "close": 41.0,
+        "open": 37.65,
+        "high": 41.35,
+        "low": 35.9,
+        "diff": 3.35,
+        "change_percent": 8.9,
+        "volume": 1062388,
+        "avg_volume": 275018,
+        "vol_ratio": 3.86,
+        "body_ratio": 0.61
+    },
+    {
+        "id": "3504",
+        "name": "揚明光",
+        "close": 68.6,
+        "open": 63.0,
+        "high": 68.6,
+        "low": 62.4,
+        "diff": 6.2,
+        "change_percent": 9.94,
+        "volume": 6588070,
+        "avg_volume": 1888644,
+        "vol_ratio": 3.49,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "2025",
+        "name": "千興",
+        "close": 12.45,
+        "open": 11.9,
+        "high": 12.45,
+        "low": 11.8,
+        "diff": 0.7,
+        "change_percent": 5.96,
+        "volume": 1123355,
+        "avg_volume": 395136,
+        "vol_ratio": 2.84,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "8454",
+        "name": "富邦媒",
+        "close": 250.5,
+        "open": 242.5,
+        "high": 250.5,
+        "low": 238.5,
+        "diff": 12.0,
+        "change_percent": 5.03,
+        "volume": 1583662,
+        "avg_volume": 732146,
+        "vol_ratio": 2.16,
+        "body_ratio": 0.67
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2515",
+        "name": "中工",
+        "close": 13.6,
+        "open": 15.4,
+        "high": 15.4,
+        "low": 13.25,
+        "diff": -0.9,
+        "change_percent": -6.21,
+        "volume": 55831633,
+        "avg_volume": 8482547,
+        "vol_ratio": 6.58,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "6153",
+        "name": "嘉聯益",
+        "close": 16.9,
+        "open": 20.1,
+        "high": 20.15,
+        "low": 16.8,
+        "diff": -1.65,
+        "change_percent": -8.89,
+        "volume": 32515451,
+        "avg_volume": 6183412,
+        "vol_ratio": 5.26,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "4976",
+        "name": "佳凌",
+        "close": 32.75,
+        "open": 35.0,
+        "high": 35.0,
+        "low": 32.75,
+        "diff": -2.35,
+        "change_percent": -6.7,
+        "volume": 5038261,
+        "avg_volume": 1701623,
+        "vol_ratio": 2.96,
+        "body_ratio": 1.0
+    }
+]

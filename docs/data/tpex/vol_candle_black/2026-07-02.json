@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4542",
+        "name": "科嶠",
+        "close": 470.5,
+        "open": 543.0,
+        "high": 543.0,
+        "low": 462.0,
+        "diff": -23.5,
+        "change_percent": -4.76,
+        "volume": 5271000,
+        "avg_volume": 636600,
+        "vol_ratio": 8.28,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6292",
+        "name": "迅德",
+        "close": 62.6,
+        "open": 65.5,
+        "high": 66.0,
+        "low": 62.6,
+        "diff": -4.1,
+        "change_percent": -6.15,
+        "volume": 1053000,
+        "avg_volume": 504800,
+        "vol_ratio": 2.09,
+        "body_ratio": 0.85
+    }
+]

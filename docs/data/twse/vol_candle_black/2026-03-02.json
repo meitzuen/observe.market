@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4915",
+        "name": "致伸",
+        "close": 77.0,
+        "open": 80.1,
+        "high": 80.2,
+        "low": 76.7,
+        "diff": -4.8,
+        "change_percent": -5.87,
+        "volume": 11502840,
+        "avg_volume": 2374498,
+        "vol_ratio": 4.84,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "6257",
+        "name": "矽格",
+        "close": 137.0,
+        "open": 143.0,
+        "high": 146.5,
+        "low": 137.0,
+        "diff": -13.5,
+        "change_percent": -8.97,
+        "volume": 30960385,
+        "avg_volume": 10331206,
+        "vol_ratio": 3.0,
+        "body_ratio": 0.63
+    }
+]

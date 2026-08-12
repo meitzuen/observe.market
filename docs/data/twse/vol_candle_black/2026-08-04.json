@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6768",
+        "name": "志強-KY",
+        "close": 64.9,
+        "open": 68.5,
+        "high": 68.7,
+        "low": 64.6,
+        "diff": -4.1,
+        "change_percent": -5.94,
+        "volume": 3701081,
+        "avg_volume": 360297,
+        "vol_ratio": 10.27,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "3711",
+        "name": "日月光投控",
+        "close": 585.0,
+        "open": 606.0,
+        "high": 606.0,
+        "low": 573.0,
+        "diff": -25.0,
+        "change_percent": -4.1,
+        "volume": 52231565,
+        "avg_volume": 21505822,
+        "vol_ratio": 2.43,
+        "body_ratio": 0.64
+    }
+]

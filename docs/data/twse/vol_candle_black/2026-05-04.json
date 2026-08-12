@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4989",
+        "name": "榮科",
+        "close": 103.0,
+        "open": 119.0,
+        "high": 121.0,
+        "low": 102.0,
+        "diff": -10.0,
+        "change_percent": -8.85,
+        "volume": 24815138,
+        "avg_volume": 3996804,
+        "vol_ratio": 6.21,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "2467",
+        "name": "志聖",
+        "close": 580.0,
+        "open": 643.0,
+        "high": 649.0,
+        "low": 571.0,
+        "diff": -29.0,
+        "change_percent": -4.76,
+        "volume": 7693643,
+        "avg_volume": 2700842,
+        "vol_ratio": 2.85,
+        "body_ratio": 0.81
+    }
+]

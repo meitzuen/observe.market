@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8087",
+        "name": "麗升能源",
+        "close": 34.3,
+        "open": 40.6,
+        "high": 40.6,
+        "low": 34.3,
+        "diff": -2.65,
+        "change_percent": -7.17,
+        "volume": 641000,
+        "avg_volume": 85800,
+        "vol_ratio": 7.47,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2230",
+        "name": "泰茂",
+        "close": 38.7,
+        "open": 43.5,
+        "high": 43.5,
+        "low": 38.7,
+        "diff": -4.3,
+        "change_percent": -10.0,
+        "volume": 4317000,
+        "avg_volume": 1504800,
+        "vol_ratio": 2.87,
+        "body_ratio": 1.0
+    }
+]

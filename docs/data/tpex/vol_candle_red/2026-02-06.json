@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3615",
+        "name": "安可",
+        "close": 29.35,
+        "open": 27.45,
+        "high": 29.35,
+        "low": 27.0,
+        "diff": 2.65,
+        "change_percent": 9.93,
+        "volume": 14055000,
+        "avg_volume": 2886200,
+        "vol_ratio": 4.87,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "4744",
+        "name": "皇將",
+        "close": 31.95,
+        "open": 30.05,
+        "high": 32.0,
+        "low": 29.2,
+        "diff": 1.95,
+        "change_percent": 6.5,
+        "volume": 923000,
+        "avg_volume": 218400,
+        "vol_ratio": 4.23,
+        "body_ratio": 0.68
+    }
+]

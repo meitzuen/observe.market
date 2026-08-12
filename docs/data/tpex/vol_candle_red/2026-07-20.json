@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 18.75,
+        "open": 17.75,
+        "high": 18.75,
+        "low": 17.25,
+        "diff": 1.7,
+        "change_percent": 9.97,
+        "volume": 4609000,
+        "avg_volume": 517800,
+        "vol_ratio": 8.9,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "3288",
+        "name": "點晶",
+        "close": 29.3,
+        "open": 27.3,
+        "high": 29.3,
+        "low": 26.65,
+        "diff": 2.65,
+        "change_percent": 9.94,
+        "volume": 590000,
+        "avg_volume": 118600,
+        "vol_ratio": 4.97,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "6643",
+        "name": "M31",
+        "close": 430.5,
+        "open": 392.0,
+        "high": 430.5,
+        "low": 390.0,
+        "diff": 39.0,
+        "change_percent": 9.96,
+        "volume": 1337000,
+        "avg_volume": 364000,
+        "vol_ratio": 3.67,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "3577",
+        "name": "泓格",
+        "close": 143.0,
+        "open": 132.0,
+        "high": 143.0,
+        "low": 132.0,
+        "diff": 13.0,
+        "change_percent": 10.0,
+        "volume": 2092000,
+        "avg_volume": 951000,
+        "vol_ratio": 2.2,
+        "body_ratio": 1.0
+    }
+]

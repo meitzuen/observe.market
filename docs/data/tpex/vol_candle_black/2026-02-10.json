@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3390",
+        "name": "旭軟",
+        "close": 23.75,
+        "open": 24.3,
+        "high": 24.4,
+        "low": 23.5,
+        "diff": 1.55,
+        "change_percent": 6.98,
+        "volume": 3105000,
+        "avg_volume": 144400,
+        "vol_ratio": 21.5,
+        "body_ratio": 0.61
+    },
+    {
+        "id": "8935",
+        "name": "邦泰",
+        "close": 22.25,
+        "open": 24.9,
+        "high": 24.9,
+        "low": 22.2,
+        "diff": -0.95,
+        "change_percent": -4.09,
+        "volume": 4925000,
+        "avg_volume": 1319400,
+        "vol_ratio": 3.73,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "4903",
+        "name": "聯光通",
+        "close": 40.2,
+        "open": 44.25,
+        "high": 44.55,
+        "low": 40.2,
+        "diff": -2.25,
+        "change_percent": -5.3,
+        "volume": 10772000,
+        "avg_volume": 3125200,
+        "vol_ratio": 3.45,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "5302",
+        "name": "太欣",
+        "close": 11.55,
+        "open": 12.3,
+        "high": 12.6,
+        "low": 11.55,
+        "diff": -0.55,
+        "change_percent": -4.55,
+        "volume": 1948000,
+        "avg_volume": 569600,
+        "vol_ratio": 3.42,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "8064",
+        "name": "東捷",
+        "close": 46.85,
+        "open": 48.9,
+        "high": 49.65,
+        "low": 46.75,
+        "diff": -5.05,
+        "change_percent": -9.73,
+        "volume": 7272000,
+        "avg_volume": 3071200,
+        "vol_ratio": 2.37,
+        "body_ratio": 0.71
+    }
+]

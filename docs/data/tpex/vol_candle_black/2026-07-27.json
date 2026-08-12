@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6577",
+        "name": "勁豐",
+        "close": 89.5,
+        "open": 96.0,
+        "high": 96.8,
+        "low": 86.6,
+        "diff": -4.9,
+        "change_percent": -5.19,
+        "volume": 2602000,
+        "avg_volume": 541600,
+        "vol_ratio": 4.8,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "4707",
+        "name": "磐亞",
+        "close": 31.8,
+        "open": 34.6,
+        "high": 35.8,
+        "low": 31.8,
+        "diff": -3.5,
+        "change_percent": -9.92,
+        "volume": 9731000,
+        "avg_volume": 3158000,
+        "vol_ratio": 3.08,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "5312",
+        "name": "寶島科",
+        "close": 91.4,
+        "open": 98.4,
+        "high": 98.4,
+        "low": 91.0,
+        "diff": -9.1,
+        "change_percent": -9.05,
+        "volume": 744000,
+        "avg_volume": 340200,
+        "vol_ratio": 2.19,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "6461",
+        "name": "益得",
+        "close": 15.85,
+        "open": 16.6,
+        "high": 16.6,
+        "low": 15.75,
+        "diff": -1.55,
+        "change_percent": -8.91,
+        "volume": 833000,
+        "avg_volume": 381600,
+        "vol_ratio": 2.18,
+        "body_ratio": 0.88
+    }
+]

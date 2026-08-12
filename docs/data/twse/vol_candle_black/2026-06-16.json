@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2375",
+        "name": "凱美",
+        "close": 181.5,
+        "open": 197.0,
+        "high": 202.5,
+        "low": 178.0,
+        "diff": -8.0,
+        "change_percent": -4.22,
+        "volume": 40151634,
+        "avg_volume": 8155649,
+        "vol_ratio": 4.92,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "2472",
+        "name": "立隆電",
+        "close": 347.5,
+        "open": 386.0,
+        "high": 386.0,
+        "low": 347.5,
+        "diff": -38.5,
+        "change_percent": -9.97,
+        "volume": 18051341,
+        "avg_volume": 5571621,
+        "vol_ratio": 3.24,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "4919",
+        "name": "新唐",
+        "close": 183.0,
+        "open": 200.0,
+        "high": 205.5,
+        "low": 181.5,
+        "diff": -10.0,
+        "change_percent": -5.18,
+        "volume": 30047626,
+        "avg_volume": 14997782,
+        "vol_ratio": 2.0,
+        "body_ratio": 0.71
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "5475",
+        "name": "德宏",
+        "close": 112.0,
+        "open": 116.5,
+        "high": 116.5,
+        "low": 110.0,
+        "diff": 5.5,
+        "change_percent": 5.16,
+        "volume": 2161000,
+        "avg_volume": 763400,
+        "vol_ratio": 2.83,
+        "body_ratio": 0.69
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1603",
+        "name": "華電",
+        "close": 34.45,
+        "open": 35.7,
+        "high": 35.7,
+        "low": 34.35,
+        "diff": -2.55,
+        "change_percent": -6.89,
+        "volume": 3245959,
+        "avg_volume": 547040,
+        "vol_ratio": 5.93,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "2323",
+        "name": "中環",
+        "close": 10.5,
+        "open": 11.0,
+        "high": 11.05,
+        "low": 10.4,
+        "diff": -0.9,
+        "change_percent": -7.89,
+        "volume": 24504086,
+        "avg_volume": 9245633,
+        "vol_ratio": 2.65,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "7769",
+        "name": "鴻勁",
+        "close": 3950.0,
+        "open": 4365.0,
+        "high": 4420.0,
+        "low": 3895.0,
+        "diff": -375.0,
+        "change_percent": -8.67,
+        "volume": 2901505,
+        "avg_volume": 1098874,
+        "vol_ratio": 2.64,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "6409",
+        "name": "旭隼",
+        "close": 766.0,
+        "open": 793.0,
+        "high": 793.0,
+        "low": 761.0,
+        "diff": -44.0,
+        "change_percent": -5.43,
+        "volume": 1381293,
+        "avg_volume": 615596,
+        "vol_ratio": 2.24,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "2612",
+        "name": "中航",
+        "close": 57.3,
+        "open": 60.1,
+        "high": 60.1,
+        "low": 56.7,
+        "diff": -2.8,
+        "change_percent": -4.66,
+        "volume": 2626877,
+        "avg_volume": 1216431,
+        "vol_ratio": 2.16,
+        "body_ratio": 0.82
+    }
+]

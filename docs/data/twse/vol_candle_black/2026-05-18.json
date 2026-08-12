@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1536",
+        "name": "和大",
+        "close": 48.15,
+        "open": 51.0,
+        "high": 51.0,
+        "low": 48.1,
+        "diff": -3.25,
+        "change_percent": -6.32,
+        "volume": 6391910,
+        "avg_volume": 2489807,
+        "vol_ratio": 2.57,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "2258",
+        "name": "鴻華先進-創",
+        "close": 26.15,
+        "open": 27.1,
+        "high": 27.2,
+        "low": 25.8,
+        "diff": -1.25,
+        "change_percent": -4.56,
+        "volume": 1839852,
+        "avg_volume": 857329,
+        "vol_ratio": 2.15,
+        "body_ratio": 0.68
+    }
+]

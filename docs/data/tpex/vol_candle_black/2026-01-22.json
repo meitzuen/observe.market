@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6823",
+        "name": "濾能",
+        "close": 61.2,
+        "open": 65.0,
+        "high": 65.0,
+        "low": 61.0,
+        "diff": -5.4,
+        "change_percent": -8.11,
+        "volume": 1486000,
+        "avg_volume": 443400,
+        "vol_ratio": 3.35,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "5263",
+        "name": "智崴",
+        "close": 118.5,
+        "open": 124.5,
+        "high": 124.5,
+        "low": 115.0,
+        "diff": -6.5,
+        "change_percent": -5.2,
+        "volume": 2297000,
+        "avg_volume": 880250,
+        "vol_ratio": 2.61,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "8074",
+        "name": "鉅橡",
+        "close": 67.0,
+        "open": 76.8,
+        "high": 76.8,
+        "low": 67.0,
+        "diff": -5.0,
+        "change_percent": -6.94,
+        "volume": 25190000,
+        "avg_volume": 12537000,
+        "vol_ratio": 2.01,
+        "body_ratio": 1.0
+    }
+]

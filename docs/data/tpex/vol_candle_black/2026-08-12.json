@@ -1,0 +1,30 @@
+[
+    {
+        "id": "5904",
+        "name": "寶雅*",
+        "close": 82.5,
+        "open": 90.6,
+        "high": 92.3,
+        "low": 82.5,
+        "diff": -4.6,
+        "change_percent": -5.28,
+        "volume": 84375000,
+        "avg_volume": 12687000,
+        "vol_ratio": 6.65,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "4716",
+        "name": "大立",
+        "close": 17.4,
+        "open": 18.9,
+        "high": 19.25,
+        "low": 17.3,
+        "diff": -1.5,
+        "change_percent": -7.94,
+        "volume": 6156000,
+        "avg_volume": 1255400,
+        "vol_ratio": 4.9,
+        "body_ratio": 0.77
+    }
+]

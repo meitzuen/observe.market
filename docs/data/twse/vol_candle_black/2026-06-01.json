@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1521",
+        "name": "大億",
+        "close": 28.35,
+        "open": 29.8,
+        "high": 29.8,
+        "low": 27.8,
+        "diff": -1.25,
+        "change_percent": -4.22,
+        "volume": 600982,
+        "avg_volume": 145481,
+        "vol_ratio": 4.13,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "1319",
+        "name": "東陽",
+        "close": 87.5,
+        "open": 91.1,
+        "high": 92.6,
+        "low": 86.9,
+        "diff": -7.6,
+        "change_percent": -7.99,
+        "volume": 18936391,
+        "avg_volume": 4640191,
+        "vol_ratio": 4.08,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "2528",
+        "name": "皇普",
+        "close": 20.15,
+        "open": 21.1,
+        "high": 21.1,
+        "low": 20.0,
+        "diff": -0.95,
+        "change_percent": -4.5,
+        "volume": 2261206,
+        "avg_volume": 1044124,
+        "vol_ratio": 2.17,
+        "body_ratio": 0.86
+    }
+]

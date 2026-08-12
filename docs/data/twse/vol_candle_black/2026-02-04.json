@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3380",
+        "name": "明泰",
+        "close": 32.45,
+        "open": 33.75,
+        "high": 34.0,
+        "low": 32.2,
+        "diff": -2.25,
+        "change_percent": -6.48,
+        "volume": 7376689,
+        "avg_volume": 3566998,
+        "vol_ratio": 2.07,
+        "body_ratio": 0.72
+    }
+]

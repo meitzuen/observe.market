@@ -1,0 +1,16 @@
+[
+    {
+        "id": "2303",
+        "name": "聯電",
+        "close": 130.0,
+        "open": 141.0,
+        "high": 141.0,
+        "low": 130.0,
+        "diff": -14.0,
+        "change_percent": -9.72,
+        "volume": 297589744,
+        "avg_volume": 121397655,
+        "vol_ratio": 2.45,
+        "body_ratio": 1.0
+    }
+]

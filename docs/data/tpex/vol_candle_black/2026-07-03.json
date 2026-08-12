@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6138",
+        "name": "茂達",
+        "close": 400.0,
+        "open": 428.0,
+        "high": 441.0,
+        "low": 399.0,
+        "diff": -18.5,
+        "change_percent": -4.42,
+        "volume": 8520000,
+        "avg_volume": 3271800,
+        "vol_ratio": 2.6,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "3529",
+        "name": "力旺",
+        "close": 2770.0,
+        "open": 3000.0,
+        "high": 3085.0,
+        "low": 2765.0,
+        "diff": -205.0,
+        "change_percent": -6.89,
+        "volume": 1017000,
+        "avg_volume": 438600,
+        "vol_ratio": 2.32,
+        "body_ratio": 0.72
+    }
+]

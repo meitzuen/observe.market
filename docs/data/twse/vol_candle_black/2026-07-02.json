@@ -1,0 +1,58 @@
+[
+    {
+        "id": "3167",
+        "name": "大量",
+        "close": 798.0,
+        "open": 845.0,
+        "high": 859.0,
+        "low": 789.0,
+        "diff": -44.0,
+        "change_percent": -5.23,
+        "volume": 3330618,
+        "avg_volume": 430192,
+        "vol_ratio": 7.74,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "2530",
+        "name": "華建",
+        "close": 18.95,
+        "open": 20.2,
+        "high": 20.2,
+        "low": 18.6,
+        "diff": -1.25,
+        "change_percent": -6.19,
+        "volume": 3471074,
+        "avg_volume": 1092458,
+        "vol_ratio": 3.18,
+        "body_ratio": 0.78
+    },
+    {
+        "id": "6994",
+        "name": "富威電力",
+        "close": 40.95,
+        "open": 43.3,
+        "high": 43.3,
+        "low": 40.5,
+        "diff": -2.4,
+        "change_percent": -5.54,
+        "volume": 3226991,
+        "avg_volume": 1141295,
+        "vol_ratio": 2.83,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "3030",
+        "name": "德律",
+        "close": 319.0,
+        "open": 325.5,
+        "high": 328.5,
+        "low": 318.5,
+        "diff": -34.5,
+        "change_percent": -9.76,
+        "volume": 8553227,
+        "avg_volume": 3128569,
+        "vol_ratio": 2.73,
+        "body_ratio": 0.65
+    }
+]

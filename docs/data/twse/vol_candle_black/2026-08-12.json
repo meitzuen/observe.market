@@ -1,0 +1,72 @@
+[
+    {
+        "id": "5388",
+        "name": "中磊",
+        "close": 82.4,
+        "open": 88.7,
+        "high": 88.7,
+        "low": 82.0,
+        "diff": -8.7,
+        "change_percent": -9.55,
+        "volume": 19410824,
+        "avg_volume": 4280222,
+        "vol_ratio": 4.54,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "8033",
+        "name": "雷虎",
+        "close": 173.0,
+        "open": 185.0,
+        "high": 185.0,
+        "low": 172.5,
+        "diff": -16.0,
+        "change_percent": -8.47,
+        "volume": 13435330,
+        "avg_volume": 3548011,
+        "vol_ratio": 3.79,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "4582",
+        "name": "聚恆-創",
+        "close": 25.35,
+        "open": 26.8,
+        "high": 26.8,
+        "low": 25.15,
+        "diff": -1.85,
+        "change_percent": -6.8,
+        "volume": 875337,
+        "avg_volume": 267894,
+        "vol_ratio": 3.27,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "9958",
+        "name": "世紀鋼",
+        "close": 107.0,
+        "open": 109.0,
+        "high": 109.0,
+        "low": 106.0,
+        "diff": -6.5,
+        "change_percent": -5.73,
+        "volume": 4177436,
+        "avg_volume": 1978609,
+        "vol_ratio": 2.11,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "4949",
+        "name": "有成精密",
+        "close": 70.0,
+        "open": 72.7,
+        "high": 73.7,
+        "low": 69.6,
+        "diff": -4.4,
+        "change_percent": -5.91,
+        "volume": 1168830,
+        "avg_volume": 562770,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.66
+    }
+]

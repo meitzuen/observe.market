@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2882",
+        "name": "國泰金",
+        "close": 101.5,
+        "open": 105.0,
+        "high": 105.5,
+        "low": 100.5,
+        "diff": -4.5,
+        "change_percent": -4.25,
+        "volume": 68446464,
+        "avg_volume": 33015582,
+        "vol_ratio": 2.07,
+        "body_ratio": 0.7
+    },
+    {
+        "id": "2484",
+        "name": "希華",
+        "close": 69.2,
+        "open": 76.8,
+        "high": 77.2,
+        "low": 69.2,
+        "diff": -7.6,
+        "change_percent": -9.9,
+        "volume": 63268906,
+        "avg_volume": 31519371,
+        "vol_ratio": 2.01,
+        "body_ratio": 0.95
+    }
+]

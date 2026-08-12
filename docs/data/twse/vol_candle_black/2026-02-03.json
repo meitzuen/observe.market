@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3049",
+        "name": "精金",
+        "close": 9.53,
+        "open": 10.95,
+        "high": 11.15,
+        "low": 9.49,
+        "diff": -0.67,
+        "change_percent": -6.57,
+        "volume": 25094751,
+        "avg_volume": 12194903,
+        "vol_ratio": 2.06,
+        "body_ratio": 0.86
+    }
+]

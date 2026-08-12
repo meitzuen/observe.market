@@ -1,0 +1,44 @@
+[
+    {
+        "id": "6919",
+        "name": "康霈*",
+        "close": 141.5,
+        "open": 151.0,
+        "high": 152.0,
+        "low": 141.5,
+        "diff": -9.5,
+        "change_percent": -6.29,
+        "volume": 10435374,
+        "avg_volume": 3015680,
+        "vol_ratio": 3.46,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "3665",
+        "name": "貿聯-KY",
+        "close": 1430.0,
+        "open": 1585.0,
+        "high": 1595.0,
+        "low": 1420.0,
+        "diff": -145.0,
+        "change_percent": -9.21,
+        "volume": 7886165,
+        "avg_volume": 3037378,
+        "vol_ratio": 2.6,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "2383",
+        "name": "台光電",
+        "close": 1580.0,
+        "open": 1720.0,
+        "high": 1720.0,
+        "low": 1530.0,
+        "diff": -115.0,
+        "change_percent": -6.78,
+        "volume": 10456647,
+        "avg_volume": 4051220,
+        "vol_ratio": 2.58,
+        "body_ratio": 0.74
+    }
+]

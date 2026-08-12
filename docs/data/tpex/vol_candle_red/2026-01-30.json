@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5245",
+        "name": "智晶",
+        "close": 30.85,
+        "open": 28.45,
+        "high": 30.85,
+        "low": 28.45,
+        "diff": 2.8,
+        "change_percent": 9.98,
+        "volume": 1713000,
+        "avg_volume": 131400,
+        "vol_ratio": 13.04,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "5386",
+        "name": "青雲",
+        "close": 94.6,
+        "open": 85.1,
+        "high": 94.6,
+        "low": 85.1,
+        "diff": 8.6,
+        "change_percent": 10.0,
+        "volume": 5972000,
+        "avg_volume": 914800,
+        "vol_ratio": 6.53,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7728",
+        "name": "光焱科技",
+        "close": 675.0,
+        "open": 621.0,
+        "high": 687.0,
+        "low": 621.0,
+        "diff": 50.0,
+        "change_percent": 8.0,
+        "volume": 665000,
+        "avg_volume": 327800,
+        "vol_ratio": 2.03,
+        "body_ratio": 0.82
+    }
+]

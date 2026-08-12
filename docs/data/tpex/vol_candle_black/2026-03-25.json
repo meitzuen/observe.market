@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3685",
+        "name": "元創精密",
+        "close": 28.3,
+        "open": 30.5,
+        "high": 31.2,
+        "low": 28.25,
+        "diff": -1.9,
+        "change_percent": -6.29,
+        "volume": 560000,
+        "avg_volume": 231800,
+        "vol_ratio": 2.42,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "3221",
+        "name": "台嘉碩",
+        "close": 35.0,
+        "open": 39.9,
+        "high": 39.9,
+        "low": 35.0,
+        "diff": -1.95,
+        "change_percent": -5.28,
+        "volume": 17363000,
+        "avg_volume": 8078800,
+        "vol_ratio": 2.15,
+        "body_ratio": 1.0
+    }
+]

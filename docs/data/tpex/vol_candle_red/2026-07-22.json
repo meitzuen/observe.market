@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5490",
+        "name": "同亨",
+        "close": 33.45,
+        "open": 32.0,
+        "high": 34.15,
+        "low": 31.75,
+        "diff": 1.8,
+        "change_percent": 5.69,
+        "volume": 3630000,
+        "avg_volume": 899600,
+        "vol_ratio": 4.04,
+        "body_ratio": 0.6
+    },
+    {
+        "id": "3693",
+        "name": "營邦",
+        "close": 519.0,
+        "open": 481.5,
+        "high": 519.0,
+        "low": 480.5,
+        "diff": 47.0,
+        "change_percent": 9.96,
+        "volume": 1109000,
+        "avg_volume": 505600,
+        "vol_ratio": 2.19,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "6219",
+        "name": "富旺",
+        "close": 14.25,
+        "open": 13.5,
+        "high": 14.35,
+        "low": 13.5,
+        "diff": 0.9,
+        "change_percent": 6.74,
+        "volume": 713000,
+        "avg_volume": 331000,
+        "vol_ratio": 2.15,
+        "body_ratio": 0.88
+    }
+]

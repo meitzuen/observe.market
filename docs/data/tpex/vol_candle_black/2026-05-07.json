@@ -1,0 +1,44 @@
+[
+    {
+        "id": "5410",
+        "name": "國眾",
+        "close": 36.5,
+        "open": 38.25,
+        "high": 38.25,
+        "low": 36.5,
+        "diff": 1.7,
+        "change_percent": 4.89,
+        "volume": 4409000,
+        "avg_volume": 631000,
+        "vol_ratio": 6.99,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6156",
+        "name": "松上",
+        "close": 19.6,
+        "open": 20.4,
+        "high": 20.4,
+        "low": 19.4,
+        "diff": -1.4,
+        "change_percent": -6.67,
+        "volume": 1608000,
+        "avg_volume": 453800,
+        "vol_ratio": 3.54,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "3689",
+        "name": "湧德",
+        "close": 128.0,
+        "open": 135.0,
+        "high": 135.0,
+        "low": 128.0,
+        "diff": -14.0,
+        "change_percent": -9.86,
+        "volume": 15569000,
+        "avg_volume": 5359600,
+        "vol_ratio": 2.9,
+        "body_ratio": 1.0
+    }
+]

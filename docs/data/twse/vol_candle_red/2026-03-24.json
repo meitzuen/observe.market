@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2727",
+        "name": "王品",
+        "close": 233.0,
+        "open": 227.0,
+        "high": 233.0,
+        "low": 225.0,
+        "diff": 10.0,
+        "change_percent": 4.48,
+        "volume": 1576429,
+        "avg_volume": 264572,
+        "vol_ratio": 5.96,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "2482",
+        "name": "連宇",
+        "close": 17.2,
+        "open": 15.75,
+        "high": 17.2,
+        "low": 15.55,
+        "diff": 1.55,
+        "change_percent": 9.9,
+        "volume": 756253,
+        "avg_volume": 146934,
+        "vol_ratio": 5.15,
+        "body_ratio": 0.88
+    }
+]

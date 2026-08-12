@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6535",
+        "name": "順藥",
+        "close": 142.5,
+        "open": 161.0,
+        "high": 161.0,
+        "low": 142.0,
+        "diff": -9.5,
+        "change_percent": -6.25,
+        "volume": 834000,
+        "avg_volume": 273400,
+        "vol_ratio": 3.05,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "5512",
+        "name": "力麒",
+        "close": 7.03,
+        "open": 7.34,
+        "high": 7.34,
+        "low": 7.02,
+        "diff": -0.32,
+        "change_percent": -4.35,
+        "volume": 3822000,
+        "avg_volume": 1651200,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.97
+    }
+]

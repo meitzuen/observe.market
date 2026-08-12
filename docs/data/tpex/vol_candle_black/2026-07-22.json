@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3230",
+        "name": "錦明",
+        "close": 42.55,
+        "open": 46.75,
+        "high": 47.2,
+        "low": 42.55,
+        "diff": -4.7,
+        "change_percent": -9.95,
+        "volume": 4377000,
+        "avg_volume": 1270400,
+        "vol_ratio": 3.45,
+        "body_ratio": 0.9
+    }
+]

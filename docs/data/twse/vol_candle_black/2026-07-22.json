@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1718",
+        "name": "中纖",
+        "close": 12.35,
+        "open": 13.5,
+        "high": 13.95,
+        "low": 12.35,
+        "diff": -0.85,
+        "change_percent": -6.44,
+        "volume": 102414990,
+        "avg_volume": 9955737,
+        "vol_ratio": 10.29,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "1515",
+        "name": "力山",
+        "close": 38.3,
+        "open": 42.0,
+        "high": 42.95,
+        "low": 38.3,
+        "diff": -4.25,
+        "change_percent": -9.99,
+        "volume": 8119860,
+        "avg_volume": 2678792,
+        "vol_ratio": 3.03,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "5515",
+        "name": "建國",
+        "close": 41.9,
+        "open": 44.6,
+        "high": 45.25,
+        "low": 41.55,
+        "diff": -2.35,
+        "change_percent": -5.31,
+        "volume": 1624468,
+        "avg_volume": 593552,
+        "vol_ratio": 2.74,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "2634",
+        "name": "漢翔",
+        "close": 64.4,
+        "open": 73.0,
+        "high": 75.3,
+        "low": 64.4,
+        "diff": -7.1,
+        "change_percent": -9.93,
+        "volume": 153710865,
+        "avg_volume": 65655949,
+        "vol_ratio": 2.34,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "6719",
+        "name": "力智",
+        "close": 246.5,
+        "open": 256.0,
+        "high": 257.0,
+        "low": 242.0,
+        "diff": 12.0,
+        "change_percent": 5.12,
+        "volume": 3357731,
+        "avg_volume": 1485852,
+        "vol_ratio": 2.26,
+        "body_ratio": 0.63
+    }
+]

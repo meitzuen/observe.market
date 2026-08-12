@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6182",
+        "name": "合晶",
+        "close": 93.0,
+        "open": 101.5,
+        "high": 102.5,
+        "low": 91.2,
+        "diff": -8.0,
+        "change_percent": -7.92,
+        "volume": 59515000,
+        "avg_volume": 6116800,
+        "vol_ratio": 9.73,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "close": 22.55,
+        "open": 25.3,
+        "high": 25.85,
+        "low": 22.35,
+        "diff": -1.4,
+        "change_percent": -5.85,
+        "volume": 2269000,
+        "avg_volume": 757800,
+        "vol_ratio": 2.99,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "6584",
+        "name": "南俊國際",
+        "close": 522.0,
+        "open": 570.0,
+        "high": 570.0,
+        "low": 515.0,
+        "diff": -28.0,
+        "change_percent": -5.09,
+        "volume": 1993000,
+        "avg_volume": 703200,
+        "vol_ratio": 2.83,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "6241",
+        "name": "鑫永洋",
+        "close": 14.6,
+        "open": 15.5,
+        "high": 15.55,
+        "low": 14.3,
+        "diff": -1.25,
+        "change_percent": -7.89,
+        "volume": 749000,
+        "avg_volume": 337200,
+        "vol_ratio": 2.22,
+        "body_ratio": 0.72
+    }
+]

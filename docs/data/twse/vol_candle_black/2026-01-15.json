@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1514",
+        "name": "亞力",
+        "close": 104.0,
+        "open": 110.5,
+        "high": 112.0,
+        "low": 104.0,
+        "diff": -4.5,
+        "change_percent": -4.15,
+        "volume": 21596028,
+        "avg_volume": 4343174,
+        "vol_ratio": 4.97,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "2028",
+        "name": "威致",
+        "close": 19.1,
+        "open": 20.9,
+        "high": 20.9,
+        "low": 19.0,
+        "diff": -0.8,
+        "change_percent": -4.02,
+        "volume": 1149881,
+        "avg_volume": 329450,
+        "vol_ratio": 3.49,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "1504",
+        "name": "東元",
+        "close": 85.8,
+        "open": 92.0,
+        "high": 92.0,
+        "low": 85.2,
+        "diff": -4.7,
+        "change_percent": -5.19,
+        "volume": 71464193,
+        "avg_volume": 22431223,
+        "vol_ratio": 3.19,
+        "body_ratio": 0.91
+    }
+]

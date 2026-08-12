@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6405",
+        "name": "悅城",
+        "close": 62.5,
+        "open": 69.5,
+        "high": 70.7,
+        "low": 62.4,
+        "diff": -6.8,
+        "change_percent": -9.81,
+        "volume": 4026813,
+        "avg_volume": 1253295,
+        "vol_ratio": 3.21,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "3576",
+        "name": "聯合再生",
+        "close": 21.0,
+        "open": 21.75,
+        "high": 21.75,
+        "low": 20.7,
+        "diff": 1.2,
+        "change_percent": 6.06,
+        "volume": 85552255,
+        "avg_volume": 38721481,
+        "vol_ratio": 2.21,
+        "body_ratio": 0.71
+    }
+]

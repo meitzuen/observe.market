@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5475",
+        "name": "德宏",
+        "close": 124.5,
+        "open": 147.0,
+        "high": 147.0,
+        "low": 124.5,
+        "diff": -9.5,
+        "change_percent": -7.09,
+        "volume": 9832000,
+        "avg_volume": 2299800,
+        "vol_ratio": 4.28,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3131",
+        "name": "弘塑",
+        "close": 2345.0,
+        "open": 2670.0,
+        "high": 2670.0,
+        "low": 2345.0,
+        "diff": -195.0,
+        "change_percent": -7.68,
+        "volume": 1232000,
+        "avg_volume": 442250,
+        "vol_ratio": 2.79,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6488",
+        "name": "環球晶",
+        "close": 872.0,
+        "open": 993.0,
+        "high": 996.0,
+        "low": 868.0,
+        "diff": -80.0,
+        "change_percent": -8.4,
+        "volume": 25132000,
+        "avg_volume": 11240200,
+        "vol_ratio": 2.24,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "1815",
+        "name": "富喬",
+        "close": 83.9,
+        "open": 88.0,
+        "high": 88.1,
+        "low": 83.2,
+        "diff": 3.8,
+        "change_percent": 4.74,
+        "volume": 35267000,
+        "avg_volume": 16602400,
+        "vol_ratio": 2.12,
+        "body_ratio": 0.84
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2486",
+        "name": "一詮",
+        "close": 143.0,
+        "open": 156.0,
+        "high": 157.0,
+        "low": 142.0,
+        "diff": -14.5,
+        "change_percent": -9.21,
+        "volume": 26727378,
+        "avg_volume": 6580288,
+        "vol_ratio": 4.06,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "1432",
+        "name": "大魯閣",
+        "close": 18.5,
+        "open": 19.4,
+        "high": 19.45,
+        "low": 18.2,
+        "diff": -0.85,
+        "change_percent": -4.39,
+        "volume": 1388606,
+        "avg_volume": 461891,
+        "vol_ratio": 3.01,
+        "body_ratio": 0.72
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3297",
+        "name": "杭特",
+        "close": 32.35,
+        "open": 29.3,
+        "high": 32.35,
+        "low": 29.1,
+        "diff": 2.9,
+        "change_percent": 9.85,
+        "volume": 702000,
+        "avg_volume": 62400,
+        "vol_ratio": 11.25,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "4171",
+        "name": "瑞基",
+        "close": 18.4,
+        "open": 16.6,
+        "high": 18.4,
+        "low": 16.55,
+        "diff": 1.65,
+        "change_percent": 9.85,
+        "volume": 517000,
+        "avg_volume": 69200,
+        "vol_ratio": 7.47,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 17.05,
+        "open": 15.3,
+        "high": 17.05,
+        "low": 15.05,
+        "diff": 1.55,
+        "change_percent": 10.0,
+        "volume": 1353000,
+        "avg_volume": 292400,
+        "vol_ratio": 4.63,
+        "body_ratio": 0.88
+    }
+]

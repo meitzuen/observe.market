@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6579",
+        "name": "研揚",
+        "close": 179.0,
+        "open": 173.5,
+        "high": 180.5,
+        "low": 173.5,
+        "diff": 14.5,
+        "change_percent": 8.81,
+        "volume": 5136763,
+        "avg_volume": 352461,
+        "vol_ratio": 14.57,
+        "body_ratio": 0.79
+    },
+    {
+        "id": "1476",
+        "name": "儒鴻",
+        "close": 340.5,
+        "open": 329.0,
+        "high": 341.5,
+        "low": 328.5,
+        "diff": 17.5,
+        "change_percent": 5.42,
+        "volume": 3354423,
+        "avg_volume": 1146550,
+        "vol_ratio": 2.93,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "6919",
+        "name": "康霈*",
+        "close": 110.0,
+        "open": 102.5,
+        "high": 110.0,
+        "low": 101.5,
+        "diff": 10.0,
+        "change_percent": 10.0,
+        "volume": 10933457,
+        "avg_volume": 3789403,
+        "vol_ratio": 2.89,
+        "body_ratio": 0.88
+    },
+    {
+        "id": "8016",
+        "name": "矽創",
+        "close": 352.0,
+        "open": 332.0,
+        "high": 365.0,
+        "low": 332.0,
+        "diff": 20.0,
+        "change_percent": 6.02,
+        "volume": 7633149,
+        "avg_volume": 3035556,
+        "vol_ratio": 2.51,
+        "body_ratio": 0.61
+    }
+]

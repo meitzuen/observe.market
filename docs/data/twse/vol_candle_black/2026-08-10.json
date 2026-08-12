@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3532",
+        "name": "台勝科",
+        "close": 283.0,
+        "open": 310.0,
+        "high": 312.5,
+        "low": 281.5,
+        "diff": -29.5,
+        "change_percent": -9.44,
+        "volume": 8467248,
+        "avg_volume": 994475,
+        "vol_ratio": 8.51,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "3167",
+        "name": "大量",
+        "close": 655.0,
+        "open": 714.0,
+        "high": 736.0,
+        "low": 655.0,
+        "diff": -36.0,
+        "change_percent": -5.21,
+        "volume": 4318212,
+        "avg_volume": 594944,
+        "vol_ratio": 7.26,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "2610",
+        "name": "華航",
+        "close": 20.45,
+        "open": 21.4,
+        "high": 21.4,
+        "low": 20.3,
+        "diff": -2.05,
+        "change_percent": -9.11,
+        "volume": 126311168,
+        "avg_volume": 31895133,
+        "vol_ratio": 3.96,
+        "body_ratio": 0.86
+    },
+    {
+        "id": "6901",
+        "name": "鑽石投資",
+        "close": 16.3,
+        "open": 17.0,
+        "high": 17.0,
+        "low": 16.2,
+        "diff": -1.65,
+        "change_percent": -9.19,
+        "volume": 7060030,
+        "avg_volume": 1864862,
+        "vol_ratio": 3.79,
+        "body_ratio": 0.87
+    },
+    {
+        "id": "8039",
+        "name": "台虹",
+        "close": 226.0,
+        "open": 250.0,
+        "high": 254.0,
+        "low": 224.5,
+        "diff": -11.5,
+        "change_percent": -4.84,
+        "volume": 44723032,
+        "avg_volume": 18692753,
+        "vol_ratio": 2.39,
+        "body_ratio": 0.81
+    }
+]

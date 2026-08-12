@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8085",
+        "name": "福華",
+        "close": 14.7,
+        "open": 17.5,
+        "high": 17.5,
+        "low": 14.5,
+        "diff": -1.4,
+        "change_percent": -8.7,
+        "volume": 5099000,
+        "avg_volume": 721000,
+        "vol_ratio": 7.07,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "close": 21.6,
+        "open": 23.4,
+        "high": 23.45,
+        "low": 21.6,
+        "diff": -2.35,
+        "change_percent": -9.81,
+        "volume": 2048000,
+        "avg_volume": 1015200,
+        "vol_ratio": 2.02,
+        "body_ratio": 0.97
+    }
+]

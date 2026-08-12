@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2352",
+        "name": "佳世達",
+        "close": 26.85,
+        "open": 29.2,
+        "high": 29.3,
+        "low": 26.75,
+        "diff": -1.35,
+        "change_percent": -4.79,
+        "volume": 30728249,
+        "avg_volume": 6763319,
+        "vol_ratio": 4.54,
+        "body_ratio": 0.92
+    },
+    {
+        "id": "2453",
+        "name": "凌群",
+        "close": 59.4,
+        "open": 64.5,
+        "high": 64.7,
+        "low": 59.0,
+        "diff": -3.8,
+        "change_percent": -6.01,
+        "volume": 8587626,
+        "avg_volume": 2223566,
+        "vol_ratio": 3.86,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "7749",
+        "name": "意騰-KY",
+        "close": 420.5,
+        "open": 448.0,
+        "high": 457.0,
+        "low": 418.0,
+        "diff": -23.5,
+        "change_percent": -5.29,
+        "volume": 635415,
+        "avg_volume": 176981,
+        "vol_ratio": 3.59,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "2438",
+        "name": "翔耀",
+        "close": 22.9,
+        "open": 24.0,
+        "high": 24.1,
+        "low": 22.7,
+        "diff": -1.2,
+        "change_percent": -4.98,
+        "volume": 686083,
+        "avg_volume": 229604,
+        "vol_ratio": 2.99,
+        "body_ratio": 0.79
+    }
+]

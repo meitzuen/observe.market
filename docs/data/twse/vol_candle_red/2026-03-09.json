@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1762",
+        "name": "中化生",
+        "close": 29.55,
+        "open": 27.95,
+        "high": 29.55,
+        "low": 27.5,
+        "diff": 2.65,
+        "change_percent": 9.85,
+        "volume": 1994226,
+        "avg_volume": 91370,
+        "vol_ratio": 21.83,
+        "body_ratio": 0.78
+    },
+    {
+        "id": "2426",
+        "name": "鼎元",
+        "close": 25.05,
+        "open": 22.0,
+        "high": 25.05,
+        "low": 22.0,
+        "diff": 2.25,
+        "change_percent": 9.87,
+        "volume": 40257263,
+        "avg_volume": 4172913,
+        "vol_ratio": 9.65,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "9908",
+        "name": "大台北",
+        "close": 34.5,
+        "open": 33.3,
+        "high": 35.1,
+        "low": 33.3,
+        "diff": 2.55,
+        "change_percent": 7.98,
+        "volume": 19358223,
+        "avg_volume": 3166661,
+        "vol_ratio": 6.11,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "6715",
+        "name": "嘉基",
+        "close": 233.5,
+        "open": 195.5,
+        "high": 233.5,
+        "low": 195.5,
+        "diff": 21.0,
+        "change_percent": 9.88,
+        "volume": 6241804,
+        "avg_volume": 1516753,
+        "vol_ratio": 4.12,
+        "body_ratio": 1.0
+    }
+]

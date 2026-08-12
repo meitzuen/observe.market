@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4770",
+        "name": "上品",
+        "close": 234.5,
+        "open": 251.0,
+        "high": 252.0,
+        "low": 232.5,
+        "diff": -23.5,
+        "change_percent": -9.11,
+        "volume": 3319930,
+        "avg_volume": 918431,
+        "vol_ratio": 3.61,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "1414",
+        "name": "東和",
+        "close": 18.65,
+        "open": 19.4,
+        "high": 19.4,
+        "low": 18.65,
+        "diff": -0.85,
+        "change_percent": -4.36,
+        "volume": 892035,
+        "avg_volume": 251644,
+        "vol_ratio": 3.54,
+        "body_ratio": 1.0
+    }
+]

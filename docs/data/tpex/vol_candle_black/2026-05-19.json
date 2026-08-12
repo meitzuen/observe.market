@@ -1,0 +1,30 @@
+[
+    {
+        "id": "5457",
+        "name": "宣德",
+        "close": 28.1,
+        "open": 29.85,
+        "high": 29.85,
+        "low": 27.75,
+        "diff": -1.9,
+        "change_percent": -6.33,
+        "volume": 2747000,
+        "avg_volume": 960200,
+        "vol_ratio": 2.86,
+        "body_ratio": 0.83
+    },
+    {
+        "id": "5211",
+        "name": "蒙恬",
+        "close": 18.0,
+        "open": 19.55,
+        "high": 19.6,
+        "low": 17.9,
+        "diff": -1.5,
+        "change_percent": -7.69,
+        "volume": 532000,
+        "avg_volume": 211400,
+        "vol_ratio": 2.52,
+        "body_ratio": 0.91
+    }
+]
