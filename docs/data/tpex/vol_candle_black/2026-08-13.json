@@ -1,0 +1,58 @@
+[
+    {
+        "id": "7792",
+        "name": "安葆",
+        "close": 242.5,
+        "open": 255.5,
+        "high": 255.5,
+        "low": 241.5,
+        "diff": 10.0,
+        "change_percent": 4.3,
+        "volume": 2388000,
+        "avg_volume": 216800,
+        "vol_ratio": 11.01,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "4556",
+        "name": "旭然",
+        "close": 90.9,
+        "open": 100.0,
+        "high": 101.0,
+        "low": 90.9,
+        "diff": -10.1,
+        "change_percent": -10.0,
+        "volume": 1222000,
+        "avg_volume": 171800,
+        "vol_ratio": 7.11,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "3217",
+        "name": "優群",
+        "close": 142.0,
+        "open": 147.5,
+        "high": 148.0,
+        "low": 141.5,
+        "diff": -6.0,
+        "change_percent": -4.05,
+        "volume": 1761000,
+        "avg_volume": 635200,
+        "vol_ratio": 2.77,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "3218",
+        "name": "大學光",
+        "close": 136.5,
+        "open": 139.5,
+        "high": 139.5,
+        "low": 135.5,
+        "diff": -6.0,
+        "change_percent": -4.21,
+        "volume": 659000,
+        "avg_volume": 299000,
+        "vol_ratio": 2.2,
+        "body_ratio": 0.75
+    }
+]

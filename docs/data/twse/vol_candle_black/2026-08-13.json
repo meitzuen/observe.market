@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3533",
+        "name": "嘉澤",
+        "close": 1810.0,
+        "open": 1940.0,
+        "high": 1945.0,
+        "low": 1810.0,
+        "diff": -200.0,
+        "change_percent": -9.95,
+        "volume": 4525415,
+        "avg_volume": 1103371,
+        "vol_ratio": 4.1,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "2105",
+        "name": "正新",
+        "close": 30.7,
+        "open": 31.7,
+        "high": 31.75,
+        "low": 30.5,
+        "diff": -1.4,
+        "change_percent": -4.36,
+        "volume": 18491836,
+        "avg_volume": 4867657,
+        "vol_ratio": 3.8,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "2415",
+        "name": "錩新",
+        "close": 29.6,
+        "open": 30.0,
+        "high": 30.1,
+        "low": 29.55,
+        "diff": -1.7,
+        "change_percent": -5.43,
+        "volume": 589872,
+        "avg_volume": 202119,
+        "vol_ratio": 2.92,
+        "body_ratio": 0.73
+    },
+    {
+        "id": "6515",
+        "name": "穎崴",
+        "close": 6745.0,
+        "open": 7285.0,
+        "high": 7295.0,
+        "low": 6660.0,
+        "diff": -425.0,
+        "change_percent": -5.93,
+        "volume": 794682,
+        "avg_volume": 339243,
+        "vol_ratio": 2.34,
+        "body_ratio": 0.85
+    },
+    {
+        "id": "6919",
+        "name": "康霈*",
+        "close": 104.0,
+        "open": 109.0,
+        "high": 109.0,
+        "low": 103.0,
+        "diff": -6.5,
+        "change_percent": -5.88,
+        "volume": 8620998,
+        "avg_volume": 4154467,
+        "vol_ratio": 2.08,
+        "body_ratio": 0.83
+    }
+]
