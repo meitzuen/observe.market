@@ -1,0 +1,30 @@
+[
+    {
+        "id": "6499",
+        "name": "益安",
+        "close": 61.1,
+        "open": 65.6,
+        "high": 65.6,
+        "low": 60.8,
+        "diff": -5.7,
+        "change_percent": -8.53,
+        "volume": 603000,
+        "avg_volume": 261000,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "6274",
+        "name": "台燿",
+        "close": 1600.0,
+        "open": 1695.0,
+        "high": 1695.0,
+        "low": 1575.0,
+        "diff": -75.0,
+        "change_percent": -4.48,
+        "volume": 6204000,
+        "avg_volume": 2737800,
+        "vol_ratio": 2.27,
+        "body_ratio": 0.79
+    }
+]
