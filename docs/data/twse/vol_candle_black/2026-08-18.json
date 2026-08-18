@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3189",
+        "name": "景碩",
+        "close": 865.0,
+        "open": 917.0,
+        "high": 937.0,
+        "low": 861.0,
+        "diff": -40.0,
+        "change_percent": -4.42,
+        "volume": 26179000,
+        "avg_volume": 3787904,
+        "vol_ratio": 6.91,
+        "body_ratio": 0.68
+    },
+    {
+        "id": "6451",
+        "name": "訊芯-KY",
+        "close": 421.0,
+        "open": 470.5,
+        "high": 474.5,
+        "low": 419.5,
+        "diff": -37.5,
+        "change_percent": -8.18,
+        "volume": 6282000,
+        "avg_volume": 1793385,
+        "vol_ratio": 3.5,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6550",
+        "name": "北極星藥業-KY",
+        "close": 10.3,
+        "open": 10.8,
+        "high": 10.8,
+        "low": 10.15,
+        "diff": -0.5,
+        "change_percent": -4.63,
+        "volume": 2476000,
+        "avg_volume": 711743,
+        "vol_ratio": 3.48,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "6541",
+        "name": "泰福-KY",
+        "close": 35.5,
+        "open": 37.3,
+        "high": 37.3,
+        "low": 35.5,
+        "diff": -1.8,
+        "change_percent": -4.83,
+        "volume": 693000,
+        "avg_volume": 255616,
+        "vol_ratio": 2.71,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2323",
+        "name": "中環",
+        "close": 11.1,
+        "open": 11.6,
+        "high": 11.8,
+        "low": 11.0,
+        "diff": -0.6,
+        "change_percent": -5.13,
+        "volume": 15372000,
+        "avg_volume": 6893208,
+        "vol_ratio": 2.23,
+        "body_ratio": 0.62
+    }
+]
