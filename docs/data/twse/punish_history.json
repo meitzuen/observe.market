@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-08-19",
+        "measure": "人工管制撮合",
+        "id": "6225",
+        "name": "天瀚",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-08-20",
+        "to": "2026-08-26"
+    },
+    {
         "publish_date": "2026-08-17",
         "measure": "第一次處置",
         "id": "7795",
