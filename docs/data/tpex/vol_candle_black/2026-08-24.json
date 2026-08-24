@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1815",
+        "name": "富喬",
+        "close": 107.5,
+        "open": 113.0,
+        "high": 115.5,
+        "low": 107.0,
+        "diff": -4.5,
+        "change_percent": -4.02,
+        "volume": 66929000,
+        "avg_volume": 29749200,
+        "vol_ratio": 2.25,
+        "body_ratio": 0.65
+    },
+    {
+        "id": "4971",
+        "name": "IET-KY",
+        "close": 530.0,
+        "open": 575.0,
+        "high": 581.0,
+        "low": 530.0,
+        "diff": -58.0,
+        "change_percent": -9.86,
+        "volume": 3327000,
+        "avg_volume": 1551200,
+        "vol_ratio": 2.14,
+        "body_ratio": 0.88
+    }
+]

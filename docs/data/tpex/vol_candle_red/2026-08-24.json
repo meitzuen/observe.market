@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6290",
+        "name": "良維",
+        "close": 229.0,
+        "open": 217.0,
+        "high": 232.5,
+        "low": 216.5,
+        "diff": 17.5,
+        "change_percent": 8.27,
+        "volume": 8522000,
+        "avg_volume": 1986600,
+        "vol_ratio": 4.29,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "3444",
+        "name": "利機",
+        "close": 87.7,
+        "open": 80.2,
+        "high": 87.7,
+        "low": 80.0,
+        "diff": 7.9,
+        "change_percent": 9.9,
+        "volume": 1045000,
+        "avg_volume": 247000,
+        "vol_ratio": 4.23,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "6712",
+        "name": "長聖",
+        "close": 162.0,
+        "open": 155.0,
+        "high": 166.5,
+        "low": 155.0,
+        "diff": 10.5,
+        "change_percent": 6.93,
+        "volume": 1093000,
+        "avg_volume": 261200,
+        "vol_ratio": 4.18,
+        "body_ratio": 0.61
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 63.3,
+        "open": 59.4,
+        "high": 63.3,
+        "low": 58.5,
+        "diff": 5.7,
+        "change_percent": 9.9,
+        "volume": 1174000,
+        "avg_volume": 485400,
+        "vol_ratio": 2.42,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "3219",
+        "name": "倚強科",
+        "close": 76.8,
+        "open": 71.7,
+        "high": 78.5,
+        "low": 71.6,
+        "diff": 5.2,
+        "change_percent": 7.26,
+        "volume": 674000,
+        "avg_volume": 290000,
+        "vol_ratio": 2.32,
+        "body_ratio": 0.74
+    }
+]

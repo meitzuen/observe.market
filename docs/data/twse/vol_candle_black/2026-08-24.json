@@ -1,0 +1,58 @@
+[
+    {
+        "id": "4807",
+        "name": "日成-KY",
+        "close": 27.8,
+        "open": 30.45,
+        "high": 30.45,
+        "low": 27.8,
+        "diff": -3.05,
+        "change_percent": -9.89,
+        "volume": 845000,
+        "avg_volume": 111141,
+        "vol_ratio": 7.6,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2613",
+        "name": "中櫃",
+        "close": 23.9,
+        "open": 25.7,
+        "high": 25.95,
+        "low": 23.75,
+        "diff": -1.0,
+        "change_percent": -4.02,
+        "volume": 10206000,
+        "avg_volume": 1562762,
+        "vol_ratio": 6.53,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "6550",
+        "name": "北極星藥業-KY",
+        "close": 11.6,
+        "open": 12.95,
+        "high": 13.0,
+        "low": 11.4,
+        "diff": -0.65,
+        "change_percent": -5.31,
+        "volume": 6029000,
+        "avg_volume": 1424103,
+        "vol_ratio": 4.23,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "3543",
+        "name": "州巧",
+        "close": 41.4,
+        "open": 44.4,
+        "high": 44.7,
+        "low": 39.7,
+        "diff": -2.6,
+        "change_percent": -5.91,
+        "volume": 5450000,
+        "avg_volume": 1946294,
+        "vol_ratio": 2.8,
+        "body_ratio": 0.6
+    }
+]
