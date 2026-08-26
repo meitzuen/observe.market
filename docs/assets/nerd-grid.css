@@ -676,4 +676,20 @@ select {
   .theme-toggle {
     padding: 0.55rem 0.75rem;
   }
+
+  /* .header-left's overflow-x:auto works for wide screens, but on a phone
+     it hides the tail of the nav bar (later dropdowns, theme toggle) behind
+     a silent horizontal scroll with no visible scrollbar — those items are
+     effectively invisible. Wrap the nav onto its own full-width row instead
+     so every dropdown stays on-screen without needing a hidden swipe. */
+  .header-left {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .nav-bar {
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    order: 3;
+  }
 }
