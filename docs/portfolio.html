@@ -887,6 +887,15 @@
         loadHoldings();
         await loadStockInfo();
         renderHoldings();
+
+        // Deep link from a stock detail page: portfolio.html?add=2330
+        const addId = new URLSearchParams(location.search).get("add");
+        if (addId && stockInfo[addId]) {
+          openFormPanel();
+          document.getElementById("h-stock-id").value = addId;
+          updateStockNameHint();
+          await autofillCostPrice();
+        }
       })();
     </script>
   </body>
