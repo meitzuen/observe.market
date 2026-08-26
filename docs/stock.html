@@ -65,6 +65,81 @@
         color: var(--hud-text-1);
         font-weight: 600;
       }
+
+      .period-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .period-tab {
+        padding: 0.35rem 0.9rem;
+        border-radius: 2px;
+        border: 1px solid var(--hud-border-2);
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--hud-text-3);
+        font-family: var(--hud-font);
+        transition: all 0.2s;
+      }
+
+      .period-tab.active {
+        background: transparent;
+        border-color: var(--hud-text-1);
+        color: var(--hud-text-1);
+      }
+
+      .period-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.1rem;
+      }
+
+      @media (max-width: 480px) {
+        .period-controls {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .filter-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--hud-text-3);
+      }
+
+      .filter-input {
+        min-width: 0;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid var(--hud-border-2);
+        border-radius: 2px;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background: var(--hud-bg);
+        color: var(--hud-text-1);
+        font-family: inherit;
+      }
+
+      .filter-input:focus {
+        border-color: var(--hud-text-1);
+        background: var(--hud-card-bg);
+      }
+
+      .period-hint {
+        font-size: 0.8rem;
+        color: var(--hud-text-3);
+        margin-top: 0.75rem;
+      }
     </style>
   </head>
   <body>
@@ -148,6 +223,7 @@
       let candleSeries = null;
       let volumeSeries = null;
       let chartResizeObserver = null;
+      let historyData = [];
 
       function backHref(market) {
         return market === "tpex" ? "tpex.html" : "twse.html";
@@ -220,7 +296,9 @@
           return;
         }
 
+        historyData = history;
         renderStock(id, stockInfo, market, history);
+        initPeriodFilter(history);
         NerdGrid.initThemeToggle();
         NerdGrid.onThemeChange(() => {
           if (chart) renderPriceChart(history);
@@ -317,6 +395,33 @@
 
           <div class="card">
             <div class="card-title">
+              <span>區間漲跌幅</span>
+            </div>
+            <div class="period-tabs" id="period-tabs">
+              <button class="period-tab" data-period="1w">1週</button>
+              <button class="period-tab" data-period="1m">1個月</button>
+              <button class="period-tab" data-period="3m">3個月</button>
+              <button class="period-tab" data-period="6m">6個月</button>
+              <button class="period-tab" data-period="1y">1年</button>
+              <button class="period-tab" data-period="ytd">今年以來</button>
+              <button class="period-tab" data-period="all">全部</button>
+            </div>
+            <div class="period-controls">
+              <div class="filter-group">
+                <span class="filter-label">起始日期</span>
+                <input type="date" id="period-from" class="filter-input" />
+              </div>
+              <div class="filter-group">
+                <span class="filter-label">結束日期</span>
+                <input type="date" id="period-to" class="filter-input" />
+              </div>
+            </div>
+            <div class="stats" id="period-stats"></div>
+            <div class="period-hint" id="period-hint"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
               <span>歷史股價走勢</span>
             </div>
             <div id="priceChart" style="height: 360px; position: relative"></div>
@@ -347,6 +452,184 @@
         `;
 
         renderPriceChart(history);
+      }
+
+      function parseISODate(s) {
+        const [y, m, d] = s.split("-").map(Number);
+        return new Date(y, m - 1, d);
+      }
+
+      function toISODate(d) {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return `${y}-${m}-${day}`;
+      }
+
+      // Trading days only exist on some dates, so a requested range is
+      // clamped to the nearest data points inside [fromStr, toStr].
+      function findPeriodBounds(history, fromStr, toStr) {
+        const startEntry = history.find((p) => p.date >= fromStr && p.date <= toStr);
+        let endEntry = null;
+        for (let i = history.length - 1; i >= 0; i--) {
+          if (history[i].date <= toStr && history[i].date >= fromStr) {
+            endEntry = history[i];
+            break;
+          }
+        }
+        if (!startEntry || !endEntry) return null;
+        return { startEntry, endEntry };
+      }
+
+      function initPeriodFilter(history) {
+        if (!history || history.length === 0) return;
+
+        const first = history[0];
+        const last = history[history.length - 1];
+        const fromEl = document.getElementById("period-from");
+        const toEl = document.getElementById("period-to");
+
+        fromEl.min = toEl.min = first.date;
+        fromEl.max = toEl.max = last.date;
+
+        document.querySelectorAll(".period-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".period-tab")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            applyPeriodPreset(btn.dataset.period);
+          });
+        });
+
+        fromEl.addEventListener("change", () => {
+          document
+            .querySelectorAll(".period-tab")
+            .forEach((b) => b.classList.remove("active"));
+          updatePeriodStats();
+        });
+        toEl.addEventListener("change", () => {
+          document
+            .querySelectorAll(".period-tab")
+            .forEach((b) => b.classList.remove("active"));
+          updatePeriodStats();
+        });
+
+        // Default view: most recent month.
+        const defaultTab = document.querySelector('.period-tab[data-period="1m"]');
+        if (defaultTab) defaultTab.classList.add("active");
+        applyPeriodPreset("1m");
+      }
+
+      function applyPeriodPreset(period) {
+        if (!historyData.length) return;
+        const first = historyData[0];
+        const last = historyData[historyData.length - 1];
+        const endDate = parseISODate(last.date);
+        const minDate = parseISODate(first.date);
+        let startDate;
+
+        switch (period) {
+          case "1w":
+            startDate = new Date(endDate);
+            startDate.setDate(startDate.getDate() - 7);
+            break;
+          case "1m":
+            startDate = new Date(endDate);
+            startDate.setMonth(startDate.getMonth() - 1);
+            break;
+          case "3m":
+            startDate = new Date(endDate);
+            startDate.setMonth(startDate.getMonth() - 3);
+            break;
+          case "6m":
+            startDate = new Date(endDate);
+            startDate.setMonth(startDate.getMonth() - 6);
+            break;
+          case "1y":
+            startDate = new Date(endDate);
+            startDate.setFullYear(startDate.getFullYear() - 1);
+            break;
+          case "ytd":
+            startDate = new Date(endDate.getFullYear(), 0, 1);
+            break;
+          case "all":
+          default:
+            startDate = minDate;
+        }
+
+        if (startDate < minDate) startDate = minDate;
+
+        document.getElementById("period-from").value = toISODate(startDate);
+        document.getElementById("period-to").value = last.date;
+        updatePeriodStats();
+      }
+
+      function updatePeriodStats() {
+        const fromStr = document.getElementById("period-from").value;
+        const toStr = document.getElementById("period-to").value;
+        const statsEl = document.getElementById("period-stats");
+        const hintEl = document.getElementById("period-hint");
+
+        if (!fromStr || !toStr) {
+          statsEl.innerHTML = "";
+          hintEl.textContent = "請選擇起始與結束日期";
+          return;
+        }
+        if (fromStr > toStr) {
+          statsEl.innerHTML = "";
+          hintEl.textContent = "起始日期不可晚於結束日期";
+          return;
+        }
+
+        const bounds = findPeriodBounds(historyData, fromStr, toStr);
+        if (!bounds) {
+          statsEl.innerHTML = "";
+          hintEl.textContent = "此區間內查無交易資料，請調整日期";
+          return;
+        }
+
+        const { startEntry, endEntry } = bounds;
+        const diff = endEntry.close - startEntry.close;
+        const ratio = startEntry.close ? (diff / startEntry.close) * 100 : null;
+        const diffClass = diff > 0 ? "price-up" : diff < 0 ? "price-down" : "";
+        const diffPrefix = diff > 0 ? "+" : "";
+        const ratioText =
+          ratio === null
+            ? "n/a"
+            : `${ratio >= 0 ? "+" : ""}${ratio.toFixed(2)}%`;
+
+        const within = historyData.filter(
+          (p) => p.date >= startEntry.date && p.date <= endEntry.date,
+        );
+        const highs = within.map((p) => p.high).filter((v) => v != null);
+        const lows = within.map((p) => p.low).filter((v) => v != null);
+        const periodHigh = highs.length ? Math.max(...highs) : null;
+        const periodLow = lows.length ? Math.min(...lows) : null;
+
+        statsEl.innerHTML = `
+          <div class="stat-item">
+            <span class="stat-label">起始 ${startEntry.date}</span>
+            <span class="stat-value" style="font-size: 1rem;">${startEntry.close ?? "n/a"}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">結束 ${endEntry.date}</span>
+            <span class="stat-value" style="font-size: 1rem;">${endEntry.close ?? "n/a"}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">漲跌</span>
+            <span class="stat-value ${diffClass}">${diffPrefix}${diff.toFixed(2)}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">漲跌幅</span>
+            <span class="stat-value ${diffClass}">${ratioText}</span>
+          </div>
+        `;
+
+        hintEl.textContent =
+          `區間內共 ${within.length} 個交易日` +
+          (periodHigh != null ? ` · 期間最高 ${periodHigh}` : "") +
+          (periodLow != null ? ` · 期間最低 ${periodLow}` : "");
       }
 
       function renderPriceChart(data) {
