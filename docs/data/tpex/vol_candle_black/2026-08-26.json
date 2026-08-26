@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4129",
+        "name": "聯合",
+        "close": 82.7,
+        "open": 86.2,
+        "high": 86.4,
+        "low": 82.5,
+        "diff": -4.3,
+        "change_percent": -4.94,
+        "volume": 2688000,
+        "avg_volume": 145200,
+        "vol_ratio": 18.51,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6223",
+        "name": "旺矽",
+        "close": 5040.0,
+        "open": 5480.0,
+        "high": 5590.0,
+        "low": 5040.0,
+        "diff": -560.0,
+        "change_percent": -10.0,
+        "volume": 1549000,
+        "avg_volume": 704800,
+        "vol_ratio": 2.2,
+        "body_ratio": 0.8
+    }
+]
