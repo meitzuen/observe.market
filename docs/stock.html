@@ -140,6 +140,115 @@
         color: var(--hud-text-3);
         margin-top: 0.75rem;
       }
+
+      .concept-tags {
+        margin-top: 0.85rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        align-items: center;
+      }
+
+      .concept-tags-more {
+        background: none;
+        border: 1px solid var(--hud-border-2);
+        border-radius: var(--hud-radius);
+        color: var(--hud-text-3);
+        font-family: var(--hud-font);
+        font-size: 0.62rem;
+        padding: 0.05rem 0.4rem;
+        cursor: pointer;
+      }
+      .concept-tags-more:hover {
+        color: var(--hud-text-1);
+        border-color: var(--hud-border-1);
+      }
+
+      .watchlist-picker-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .watchlist-picker {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.4rem);
+        left: 0;
+        min-width: 12rem;
+        background: var(--hud-bg-raised);
+        border: 1px solid var(--hud-border-1);
+        border-radius: var(--hud-radius);
+        padding: 0.35rem;
+        box-sizing: border-box;
+        z-index: 50;
+        flex-direction: column;
+        gap: 0.15rem;
+        /* JS caps this to exactly ~10 rows once items render; this is just
+           a safety net so a long list never blows out past the viewport. */
+        max-height: 70vh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: var(--hud-border-1) transparent;
+      }
+
+      .watchlist-picker::-webkit-scrollbar {
+        width: 6px;
+      }
+      .watchlist-picker::-webkit-scrollbar-thumb {
+        background: var(--hud-border-1);
+        border-radius: 3px;
+      }
+      .watchlist-picker::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .watchlist-picker.open {
+        display: flex;
+      }
+
+      .watchlist-picker-item {
+        display: block;
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        border-radius: var(--hud-radius);
+        color: var(--hud-text-2);
+        font-family: var(--hud-font);
+        font-size: 0.75rem;
+        padding: 0.45rem 0.6rem;
+        cursor: pointer;
+      }
+      .watchlist-picker-item:hover:not(:disabled) {
+        background: var(--hud-hover-bg);
+        color: var(--hud-text-1);
+      }
+      .watchlist-picker-item:disabled {
+        color: var(--hud-text-4);
+        cursor: default;
+      }
+
+      .watchlist-picker-empty {
+        padding: 0.6rem 0.7rem;
+        font-size: 0.75rem;
+        color: var(--hud-text-3);
+        line-height: 1.6;
+      }
+      .watchlist-picker-empty a {
+        color: var(--hud-text-1);
+        font-weight: 600;
+      }
+
+      .chart-legend {
+        display: flex;
+        gap: 0.9rem;
+        font-size: 0.65rem;
+        letter-spacing: 0;
+        text-transform: none;
+        font-weight: 400;
+        font-family: var(--hud-font);
+      }
     </style>
   </head>
   <body>
@@ -224,9 +333,23 @@
       let volumeSeries = null;
       let chartResizeObserver = null;
       let historyData = [];
+      let indexHistory = [];
+      let indexLabel = "";
+
+      const API_BASE = "https://market.smallplum.xyz";
+      let watchlistsCache = null;
 
       function backHref(market) {
         return market === "tpex" ? "tpex.html" : "twse.html";
+      }
+
+      // Index history dates are ROC calendar ("115/08/13") — convert to ISO
+      // so they line up with the stock's own date strings.
+      function rocToISO(rocStr) {
+        const m = /^(\d+)\/(\d{1,2})\/(\d{1,2})$/.exec(rocStr || "");
+        if (!m) return null;
+        const year = Number(m[1]) + 1911;
+        return `${year}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`;
       }
 
       function showEmptyState(title, message, backHref) {
@@ -273,6 +396,7 @@
         }
 
         const market = stockInfo.type === "tpex" ? "tpex" : "twse";
+        document.title = `${stockInfo.name} (${id}) | Market Observer`;
 
         let history = [];
         try {
@@ -297,8 +421,18 @@
         }
 
         historyData = history;
-        renderStock(id, stockInfo, market, history);
+
+        // Concept tags, 處置 status, and the market index are all "nice to
+        // have" context — never let one failing block the core page render.
+        const [concepts, punishRecords] = await Promise.all([
+          loadConceptTags(id),
+          loadPunishRecords(id, market),
+        ]);
+        await loadIndexHistory(market);
+
+        renderStock(id, stockInfo, market, history, concepts, punishRecords);
         initPeriodFilter(history);
+        initWatchlistPicker(id);
         NerdGrid.initThemeToggle();
         NerdGrid.onThemeChange(() => {
           if (chart) renderPriceChart(history);
@@ -306,10 +440,82 @@
         NerdGrid.initNavDropdowns();
       }
 
-      function renderStock(id, stockInfo, market, history) {
+      async function loadConceptTags(id) {
+        try {
+          const res = await fetch("data/concept/stock_concepts.json");
+          if (!res.ok) return [];
+          const concepts = await res.json();
+          return concepts
+            .filter((c) => c.items?.some((it) => it.stock_id === id))
+            .map((c) => c.name);
+        } catch (e) {
+          console.error("Error loading stock_concepts.json:", e);
+          return [];
+        }
+      }
+
+      async function loadPunishRecords(id, market) {
+        try {
+          const res = await fetch(`data/${market}/punish_history.json`);
+          if (!res.ok) return [];
+          const all = await res.json();
+          return all
+            .filter((p) => p.id === id)
+            .sort((a, b) => (a.from < b.from ? 1 : a.from > b.from ? -1 : 0));
+        } catch (e) {
+          console.error("Error loading punish_history.json:", e);
+          return [];
+        }
+      }
+
+      async function loadIndexHistory(market) {
+        indexLabel = market === "tpex" ? "櫃買指數" : "加權指數";
+        try {
+          const res = await fetch(`data/${market}/index_history.json`);
+          if (!res.ok) {
+            indexHistory = [];
+            return;
+          }
+          const raw = await res.json();
+          indexHistory = raw
+            .map((r) => ({ date: rocToISO(r.date), close: r.index }))
+            .filter((r) => r.date && r.close != null)
+            .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+        } catch (e) {
+          console.error("Error loading index_history.json:", e);
+          indexHistory = [];
+        }
+      }
+
+      function renderStock(id, stockInfo, market, history, concepts, punishRecords) {
         const marketTag = market === "tpex" ? "上櫃" : "上市";
         const latest = history[history.length - 1];
         const prev = history.length > 1 ? history[history.length - 2] : null;
+
+        const activePunish = (punishRecords || []).find(
+          (p) => p.from <= latest.date && latest.date <= p.to,
+        );
+        const punishBadge = activePunish
+          ? `<span class="tag tag-danger" title="${activePunish.measure}（${activePunish.from} ~ ${activePunish.to}）">⚠ 處置中</span>`
+          : punishRecords && punishRecords.length
+            ? `<span class="tag" title="最近一次：${punishRecords[0].measure}（${punishRecords[0].from} ~ ${punishRecords[0].to}）">曾處置</span>`
+            : "";
+
+        const conceptTagsHtml = concepts && concepts.length
+          ? `<div class="concept-tags" id="concept-tags">
+              ${concepts
+                .map(
+                  (c, i) =>
+                    `<span class="tag"${i >= 10 ? ' style="display:none;" data-extra="1"' : ""}>${c}</span>`,
+                )
+                .join("")}
+              ${
+                concepts.length > 10
+                  ? `<button class="concept-tags-more" id="concept-tags-toggle">+${concepts.length - 10} 更多</button>`
+                  : ""
+              }
+            </div>`
+          : "";
 
         const diff = prev ? latest.close - prev.close : null;
         const ratio = prev && prev.close ? (diff / prev.close) * 100 : null;
@@ -358,6 +564,7 @@
             <div class="stock-header">
               <h2>${stockInfo.name} (${id})</h2>
               <span class="badge ${market === "tpex" ? "badge-accent" : "badge-primary"}">${marketTag}</span>
+              ${punishBadge}
             </div>
             <div class="stats">
               <div class="stat-item" style="border-left: 4px solid var(--hud-text-1);">
@@ -377,7 +584,13 @@
                 <span class="stat-value" style="font-size: 1rem;">${latest.date}</span>
               </div>
             </div>
+            ${conceptTagsHtml}
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+              <div class="watchlist-picker-wrap">
+                <button class="btn" id="btn-add-watchlist">＋ 加入自選股</button>
+                <div class="watchlist-picker" id="watchlist-picker"></div>
+              </div>
+              <a href="portfolio.html?add=${id}" class="btn">＋ 加入持股試算</a>
               <a
                 href="http://cnyes.com/twstock/${id}/analysis/performance"
                 target="_blank"
@@ -423,6 +636,11 @@
           <div class="card">
             <div class="card-title">
               <span>歷史股價走勢</span>
+              <span class="chart-legend">
+                <span id="ma5-legend">— MA5</span>
+                <span id="ma20-legend">— MA20</span>
+                <span id="ma60-legend">— MA60</span>
+              </span>
             </div>
             <div id="priceChart" style="height: 360px; position: relative"></div>
           </div>
@@ -452,6 +670,16 @@
         `;
 
         renderPriceChart(history);
+
+        const tagsToggle = document.getElementById("concept-tags-toggle");
+        if (tagsToggle) {
+          tagsToggle.addEventListener("click", () => {
+            document
+              .querySelectorAll('#concept-tags [data-extra="1"]')
+              .forEach((el) => (el.style.display = ""));
+            tagsToggle.style.display = "none";
+          });
+        }
       }
 
       function parseISODate(s) {
@@ -607,6 +835,27 @@
         const periodHigh = highs.length ? Math.max(...highs) : null;
         const periodLow = lows.length ? Math.min(...lows) : null;
 
+        // Same-period index return, for relative-strength context.
+        const indexBounds = findPeriodBounds(indexHistory, fromStr, toStr);
+        let indexRatioText = "n/a";
+        let indexDiffClass = "";
+        let relativeText = "n/a";
+        let relativeClass = "";
+        if (indexBounds && indexBounds.startEntry.close) {
+          const indexDiff =
+            indexBounds.endEntry.close - indexBounds.startEntry.close;
+          const indexRatio = (indexDiff / indexBounds.startEntry.close) * 100;
+          indexDiffClass =
+            indexDiff > 0 ? "price-up" : indexDiff < 0 ? "price-down" : "";
+          indexRatioText = `${indexRatio >= 0 ? "+" : ""}${indexRatio.toFixed(2)}%`;
+          if (ratio !== null) {
+            const relative = ratio - indexRatio;
+            relativeClass =
+              relative > 0 ? "price-up" : relative < 0 ? "price-down" : "";
+            relativeText = `${relative >= 0 ? "+" : ""}${relative.toFixed(2)}%`;
+          }
+        }
+
         statsEl.innerHTML = `
           <div class="stat-item">
             <span class="stat-label">起始 ${startEntry.date}</span>
@@ -624,12 +873,127 @@
             <span class="stat-label">漲跌幅</span>
             <span class="stat-value ${diffClass}">${ratioText}</span>
           </div>
+          <div class="stat-item">
+            <span class="stat-label">${indexLabel}同期漲跌幅</span>
+            <span class="stat-value ${indexDiffClass}">${indexRatioText}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">相對大盤</span>
+            <span class="stat-value ${relativeClass}">${relativeText}</span>
+          </div>
         `;
 
         hintEl.textContent =
           `區間內共 ${within.length} 個交易日` +
           (periodHigh != null ? ` · 期間最高 ${periodHigh}` : "") +
           (periodLow != null ? ` · 期間最低 ${periodLow}` : "");
+      }
+
+      function initWatchlistPicker(id) {
+        const btn = document.getElementById("btn-add-watchlist");
+        const picker = document.getElementById("watchlist-picker");
+        if (!btn || !picker) return;
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isOpen = picker.classList.contains("open");
+          picker.classList.remove("open");
+          if (!isOpen) openWatchlistPicker(id, picker);
+        });
+
+        document.addEventListener("click", () => {
+          picker.classList.remove("open");
+        });
+        picker.addEventListener("click", (e) => e.stopPropagation());
+      }
+
+      const WATCHLIST_PICKER_VISIBLE_ROWS = 10;
+
+      async function openWatchlistPicker(id, picker) {
+        picker.classList.add("open");
+        picker.style.maxHeight = ""; // reset any cap from a previous open
+        picker.innerHTML = `<div class="watchlist-picker-empty">載入中…</div>`;
+
+        try {
+          if (!watchlistsCache) {
+            const res = await fetch(
+              `${API_BASE}/api/mktobs/watchlist?sort_by=order&order=asc`,
+            );
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            watchlistsCache = await res.json();
+          }
+        } catch (e) {
+          console.error("Error loading watchlists:", e);
+          picker.innerHTML = `<div class="watchlist-picker-empty">載入自選股清單失敗，請稍後再試</div>`;
+          return;
+        }
+
+        if (!watchlistsCache || watchlistsCache.length === 0) {
+          picker.innerHTML = `<div class="watchlist-picker-empty">尚無自選股清單<br /><a href="watchlist.html">前往建立 →</a></div>`;
+          return;
+        }
+
+        picker.innerHTML = watchlistsCache
+          .map((wl) => {
+            const already = (wl.items || []).some((it) => it.stock_id === id);
+            return `<button class="watchlist-picker-item" data-list="${wl.name}" ${already ? "disabled" : ""}>${wl.name}${already ? " ✓ 已在清單中" : ""}</button>`;
+          })
+          .join("");
+
+        const itemEls = picker.querySelectorAll(".watchlist-picker-item");
+        itemEls.forEach((itemBtn) => {
+          itemBtn.addEventListener("click", () =>
+            addToWatchlist(id, itemBtn.dataset.list, itemBtn),
+          );
+        });
+
+        // Show exactly ~10 rows and let the rest scroll inside the picker
+        // instead of pushing the whole page's layout around.
+        if (itemEls.length > WATCHLIST_PICKER_VISIBLE_ROWS) {
+          const itemHeight = itemEls[0].getBoundingClientRect().height;
+          const pickerStyle = getComputedStyle(picker);
+          const gap = parseFloat(pickerStyle.rowGap) || 0;
+          const paddingV =
+            parseFloat(pickerStyle.paddingTop) +
+            parseFloat(pickerStyle.paddingBottom);
+          const rows = WATCHLIST_PICKER_VISIBLE_ROWS;
+          picker.style.maxHeight = `${itemHeight * rows + gap * (rows - 1) + paddingV}px`;
+        }
+      }
+
+      async function addToWatchlist(id, listName, itemBtn) {
+        itemBtn.disabled = true;
+        itemBtn.textContent = "加入中…";
+        try {
+          const res = await fetch(
+            `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`,
+            {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ stock_id: id, note: "", is_top: false }),
+            },
+          );
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          itemBtn.textContent = `${listName} ✓ 已加入`;
+          watchlistsCache = null; // stale — refetch next time the picker opens
+        } catch (e) {
+          console.error("Error adding to watchlist:", e);
+          itemBtn.textContent = "加入失敗，請重試";
+          itemBtn.disabled = false;
+        }
+      }
+
+      function computeMA(data, period) {
+        const result = [];
+        let windowSum = 0;
+        for (let i = 0; i < data.length; i++) {
+          windowSum += data[i].close ?? 0;
+          if (i >= period) windowSum -= data[i - period].close ?? 0;
+          if (i >= period - 1) {
+            result.push({ time: data[i].date, value: windowSum / period });
+          }
+        }
+        return result;
       }
 
       function renderPriceChart(data) {
@@ -713,6 +1077,34 @@
             color: d.close >= d.open ? upColor : downColor,
           })),
         );
+
+        // Deliberately not reusing c.seriesA/c.tick here — both land in the
+        // same cyan hue as the axis text, making MA5 and MA60 hard to tell
+        // apart at a glance. These three are chosen to stay distinct from
+        // each other and from up/down candle colors, in both themes.
+        const MA_PALETTE = {
+          dark: { ma5: "rgba(255, 190, 60, 0.9)", ma20: c.seriesB, ma60: "rgba(190, 130, 255, 0.85)" },
+          light: { ma5: "rgba(200, 120, 0, 0.95)", ma20: c.seriesB, ma60: "rgba(120, 70, 200, 0.9)" },
+        };
+        const maColors = MA_PALETTE[NerdGrid.currentTheme()];
+        [
+          ["ma5", 5],
+          ["ma20", 20],
+          ["ma60", 60],
+        ].forEach(([key, period]) => {
+          if (data.length >= period) {
+            const series = chart.addLineSeries({
+              color: maColors[key],
+              lineWidth: 1,
+              priceLineVisible: false,
+              lastValueVisible: false,
+              crosshairMarkerVisible: false,
+            });
+            series.setData(computeMA(data, period));
+          }
+          const legendEl = document.getElementById(`${key}-legend`);
+          if (legendEl) legendEl.style.color = maColors[key];
+        });
 
         chart.timeScale().fitContent();
 
