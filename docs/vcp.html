@@ -19,22 +19,124 @@
         }
       }
 
-      .about-text {
-        font-size: 0.875rem;
+      .help-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 2px;
+        border: 1px solid var(--hud-border-2);
+        background: var(--hud-bg);
         color: var(--hud-text-3);
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        flex-shrink: 0;
+        transition: all 0.2s;
       }
 
-      .about-text strong {
+      .help-btn:hover {
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
+        border-color: var(--hud-text-1);
         color: var(--hud-text-1);
       }
 
-      .about-text ol {
-        margin: 0.5rem 0 0;
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      .modal-overlay.open {
+        display: flex;
+      }
+
+      .modal-box {
+        background: var(--hud-bg-raised);
+        color: var(--hud-text-1);
+        border-radius: 2px;
+        border: 1px solid var(--hud-border-2);
+        max-width: 640px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.25rem;
+        border-bottom: 1px solid var(--hud-border-2);
+        position: sticky;
+        top: 0;
+        background: var(--hud-card-bg);
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-family: "Huninn", "Noto Sans TC", sans-serif;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--hud-text-3);
+        padding: 0.25rem;
+      }
+
+      .modal-close:hover {
+        color: var(--hud-text-1);
+      }
+
+      .modal-body {
+        padding: 1.25rem;
+        font-size: 0.875rem;
+        line-height: 1.75;
+      }
+
+      .modal-body h3 {
+        font-size: 0.95rem;
+        margin: 1.25rem 0 0.5rem;
+        color: var(--hud-text-1);
+      }
+
+      .modal-body h3:first-child {
+        margin-top: 0;
+      }
+
+      .modal-body p {
+        margin: 0.4rem 0;
+      }
+
+      .modal-body ul,
+      .modal-body ol {
+        margin: 0.4rem 0;
         padding-left: 1.25rem;
       }
 
-      .about-text li {
-        margin-bottom: 0.25rem;
+      .modal-body li {
+        margin: 0.3rem 0;
+      }
+
+      .modal-body code {
+        background: var(--hud-bg);
+        border: 1px solid var(--hud-border-2);
+        border-radius: 2px;
+        padding: 0.05rem 0.35rem;
+        font-size: 0.82rem;
       }
 
       .market-tabs {
@@ -275,6 +377,7 @@
               <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
               <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
               <a href="vcp.html" class="nav-dropdown-item active">VCP選股</a>
+              <a href="volume-candle.html" class="nav-dropdown-item">爆量長紅黑K</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -314,30 +417,19 @@
 
     <div class="container">
       <div class="card">
-        <div class="card-title"><span>📐 什麼是 VCP？</span></div>
-        <div class="about-text">
-          <strong>VCP（Volatility Contraction Pattern，波動收縮型態）</strong>
-          是 Mark Minervini 提出的選股法，尋找股價在上升趨勢中，經歷一系列
-          <strong>一次比一次更小的拉回（收縮）</strong
-          >，同時成交量逐漸萎縮、股價貼近前波高點整理的個股 —
-          這類股票在突破整理區時，往往伴隨量能放大，成為潛在的強勢股。
-          本頁使用近期日線資料自動掃描，計算每檔股票的：
-          <ol>
-            <li><strong>收縮次數</strong>：股價高低點間偵測到的拉回次數</li>
-            <li><strong>收縮幅度是否遞減</strong>：每次拉回是否比前一次更小</li>
-            <li><strong>量縮比</strong>：近期拉回量能 / 初期拉回量能</li>
-            <li>
-              <strong>距樞紐點距離</strong
-              >：目前股價距離前波高點（潛在壓力/突破點）的百分比
-            </li>
-            <li><strong>站上 50 日均線</strong>：確認股價維持在中期均線之上</li>
-          </ol>
-          並綜合成 0~100 的<strong>型態分數</strong>，分數越高代表越貼近典型 VCP
-          型態，僅供研究參考，不構成投資建議。
+        <div class="card-title">
+          <span style="display: flex; align-items: center"
+            >📐 VCP 選股設定
+            <button
+              id="help-btn"
+              class="help-btn"
+              title="說明：這頁怎麼算出來的"
+            >
+              ?
+            </button></span
+          >
         </div>
-      </div>
 
-      <div class="card">
         <div
           style="
             display: flex;
@@ -526,6 +618,85 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="help-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>📐 VCP 型態分數是怎麼算出來的？</h2>
+          <button class="modal-close" id="help-close" title="關閉">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>0. 什麼是 VCP</h3>
+          <p>
+            <strong>VCP（Volatility Contraction Pattern，波動收縮型態）</strong>
+            是 Mark Minervini 提出的選股法，尋找股價在上升趨勢中，經歷一系列
+            <strong>一次比一次更小的拉回（收縮）</strong
+            >，同時成交量逐漸萎縮、股價貼近前波高點整理的個股 —
+            這類股票在突破整理區時，往往伴隨量能放大，成為潛在的強勢股。僅供研究參考，不構成投資建議。
+          </p>
+
+          <h3>1. 資料來源</h3>
+          <p>
+            使用每檔股票的日線歷史
+            <code>data/{market}/stock_history/{id}.json</code
+            >，取最近約 130 個交易日（大約半年）分析；股票清單則來自當天的
+            <code>data/{market}/daily_price/{date}.json</code>。
+            算好的結果寫成 <code>data/{market}/vcp/{date}.json</code>，前端直接讀這份結果做排序/篩選，不需要重新計算。
+          </p>
+
+          <h3>2. 找出關鍵轉折點（Zigzag）</h3>
+          <p>
+            用「百分比反轉」的 zigzag 演算法在日 K 的高低點間找轉折：價格要比目前的高/低點反向移動超過
+            <strong>4%</strong>，才會被記錄成一個新的轉折點（波段高點 H 或波段低點
+            L），藉此濾掉小雜訊，只保留真正有意義的轉折。
+          </p>
+
+          <h3>3. 從轉折點抓出「拉回段」</h3>
+          <p>
+            把每個「波段高點 → 接下來的波段低點」視為一次拉回（收縮），拉回幅度
+            = <code>(高點 − 低點) / 高點</code>。只取最近
+            <strong>5 段</strong>拉回，且至少要偵測到
+            <strong>2 段</strong>完整拉回才會繼續分析，不然視為資料不足，直接排除。
+          </p>
+
+          <h3>4. 計算 0～100 的型態分數</h3>
+          <p>把以下 6 個訊號加權合計，分數越高代表越貼近典型 VCP 型態：</p>
+          <ul>
+            <li><strong>收縮次數</strong>（最多 20 分）：偵測到的拉回段數，最多算到 5 段</li>
+            <li>
+              <strong>收縮幅度是否遞減</strong>（最多 25 分）：每段拉回是否比前一段更淺（容許
+              10% 誤差），越多段符合分數越高
+            </li>
+            <li>
+              <strong>最後一段拉回夠緊</strong>（最多 20 分）：最新一次拉回幅度 ≤8%
+              接近滿分，≥25% 則不加分
+            </li>
+            <li>
+              <strong>量縮比</strong>（最多 15 分）：最近一段拉回附近的均量 ÷
+              第一段拉回附近的均量，比值越小（代表量能萎縮）分數越高
+            </li>
+            <li>
+              <strong>距樞紐點距離</strong>（最多 10 分）：目前收盤價距離最近波段高點（潛在壓力/突破點）的百分比，越接近甚至已突破分數越高
+            </li>
+            <li><strong>站上 50 日均線</strong>（10 分）：收盤價高於 50 日均線即加滿分</li>
+          </ul>
+
+          <h3>5. 篩選門檻</h3>
+          <p>
+            歷史資料筆數需 ≥30 天才會分析；型態分數
+            <strong>低於 30 分</strong>的股票不會出現在結果裡；每個市場最多保留分數最高的
+            <strong>300 檔</strong>。
+          </p>
+
+          <h3>6. 排序與篩選（前端）</h3>
+          <p>
+            結果預設依「型態分數」由高到低排序，點表頭可切換其他欄位排序；頁面上的分數／收盤價／成交量／距樞紐點／站上均線等篩選條件都是在瀏覽器端即時套用，不會重新抓資料。
+          </p>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/nerd-grid.js"></script>
     <script>
       let manifest = null;
@@ -588,6 +759,21 @@
         });
         NerdGrid.initThemeToggle();
         NerdGrid.initNavDropdowns();
+
+        // Help modal
+        const helpModal = document.getElementById("help-modal");
+        document.getElementById("help-btn").addEventListener("click", () => {
+          helpModal.classList.add("open");
+        });
+        document.getElementById("help-close").addEventListener("click", () => {
+          helpModal.classList.remove("open");
+        });
+        helpModal.addEventListener("click", (e) => {
+          if (e.target === helpModal) helpModal.classList.remove("open");
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") helpModal.classList.remove("open");
+        });
 
         loadData();
       }
