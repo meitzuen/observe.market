@@ -355,31 +355,60 @@ h1 {
 }
 
 .card-title {
-  font-size: 0.7rem;
-  font-weight: 500;
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 550;
   font-family: var(--hud-font);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 1.1rem;
+  letter-spacing: 0.05em;
+  margin: 0 0 1.2rem;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  color: var(--hud-text-3);
-  padding-bottom: 0.6rem;
+  row-gap: 0.4rem;
+  column-gap: 0.5rem;
+  color: var(--hud-text-1);
+  text-align: center;
+  padding: 0.15rem 0 1.1rem;
   border-bottom: 1px solid var(--hud-border-3);
 }
 
+/* Decorative "//" mark, floated in the top-left corner independent of the
+   centered title text — a small accent rather than an inline text prefix. */
 .card-title::before {
-  content: "// ";
-  color: var(--hud-text-4);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 0.75rem;
+  height: 0.8rem;
+  background-image: linear-gradient(
+    90deg,
+    var(--hud-text-1) 0 28%,
+    transparent 28% 46%,
+    var(--hud-text-1) 46% 74%,
+    transparent 74% 100%
+  );
+  transform: skewX(-18deg);
 }
 
-/* Sidebar HUD panels (市場摘要 / 跳空上漲 / 處置股票…) share one centered
-   title treatment instead of each drifting left/space-between differently. */
-.card-title-center {
-  justify-content: center;
-  gap: 0.5rem;
+/* Small flared tab sitting on top of the bottom border, centered under the
+   title text. */
+.card-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+  width: 2.3rem;
+  height: 5px;
+  background: var(--hud-text-1);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
 }
+
+/* Centering is now the default for every .card-title — .card-title-center
+   is a no-op left in place so existing markup that still carries the class
+   isn't broken. */
 
 /* -------------------------------------------------------------------- */
 /* Table                                                                  */
