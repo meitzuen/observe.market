@@ -20,12 +20,7 @@
       }
 
       .page-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 0.35rem;
       }
 
       .page-title {
@@ -35,174 +30,344 @@
         color: var(--hud-text-1);
       }
 
-      .btn-primary {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
+      .page-subtitle {
+        font-size: 0.85rem;
+        color: var(--hud-text-3);
+        margin: 0 0 1.25rem;
       }
 
-      .btn-primary:hover {
-        background: var(--hud-hover-bg);
+      .calc-grid {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 1.25rem;
+        align-items: start;
       }
 
-      .btn-secondary:hover {
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
+      @media (max-width: 900px) {
+        .calc-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
-      /* Form panel */
-      .form-panel {
+      .card-panel {
         background: var(--hud-card-bg);
         border: 1px solid var(--hud-border-2);
         border-radius: 2px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1.25rem;
+        padding: 1.25rem 1.4rem;
       }
 
-      .form-panel h2 {
+      .card-panel h2 {
         font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 1rem;
+        font-weight: 700;
+        margin: 0 0 1.1rem;
         color: var(--hud-text-1);
       }
 
-      .form-row {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        align-items: flex-end;
+      .field-block {
         margin-bottom: 1rem;
       }
 
-      .form-row:last-of-type {
+      .field-block:last-child {
         margin-bottom: 0;
       }
 
-      .form-row .field {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-
-      .form-row label {
+      .field-label {
+        display: block;
         font-size: 0.8rem;
+        font-weight: 600;
         color: var(--hud-text-3);
-        font-weight: 500;
+        margin-bottom: 0.4rem;
       }
 
-      .form-row input,
-      .form-row select {
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        transition: border-color 0.15s;
-        outline: none;
-      }
-
-      .form-row input:focus,
-      .form-row select:focus {
-        border-color: var(--hud-text-1);
-      }
-
-      .form-row input#dt-stock-id {
-        width: 110px;
-      }
-
-      .form-row input#dt-buy-price,
-      .form-row input#dt-sell-price,
-      .form-row input#dt-qty,
-      .form-row input#dt-fee-discount,
-      .form-row input#dt-min-fee {
-        width: 120px;
-      }
-
-      .form-row select#dt-unit {
-        width: 70px;
-      }
-
-      .stock-name-hint {
-        font-size: 0.82rem;
-        color: var(--hud-text-3);
-        min-width: 90px;
-      }
-
-      .checkbox-field {
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .checkbox-field input[type="checkbox"] {
-        width: 16px;
-        height: 16px;
-        accent-color: var(--hud-text-1);
-        cursor: pointer;
-      }
-
-      .checkbox-field label {
-        font-size: 0.85rem;
-        color: var(--hud-text-1);
-        font-weight: 500;
-        cursor: pointer;
-      }
-
-      .form-actions {
+      /* Tab groups (交易類型 / 交易方向) */
+      .tab-group {
         display: flex;
         gap: 0.5rem;
       }
 
+      .tab-btn {
+        flex: 1;
+        padding: 0.55rem 0.5rem;
+        border-radius: 3px;
+        border: 1px solid var(--hud-border-2);
+        background: var(--hud-bg);
+        color: var(--hud-text-3);
+        font-weight: 600;
+        font-size: 0.82rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s;
+      }
+
+      .tab-btn:hover {
+        border-color: var(--hud-border-1);
+        color: var(--hud-text-1);
+      }
+
+      .tab-btn.type-active {
+        background: var(--hud-text-1);
+        border-color: var(--hud-text-1);
+        color: var(--hud-bg);
+      }
+
+      .tab-btn.dir-long.dir-active {
+        background: var(--hud-up);
+        border-color: var(--hud-up);
+        color: #fff;
+      }
+
+      .tab-btn.dir-short.dir-active {
+        background: var(--hud-down);
+        border-color: var(--hud-down);
+        color: #fff;
+      }
+
+      /* Price / qty inputs with suffix */
+      .input-with-suffix {
+        display: flex;
+        border: 1px solid var(--hud-border-2);
+        border-radius: 3px;
+        overflow: hidden;
+        background: var(--hud-bg);
+        transition: border-color 0.15s;
+      }
+
+      .input-with-suffix:focus-within {
+        border-color: var(--hud-text-1);
+      }
+
+      .input-with-suffix input {
+        flex: 1;
+        min-width: 0;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: var(--hud-text-1);
+      }
+
+      .input-with-suffix .suffix {
+        display: flex;
+        align-items: center;
+        padding: 0 0.75rem;
+        font-size: 0.8rem;
+        color: var(--hud-text-3);
+        background: var(--hud-hover-bg);
+        border-left: 1px solid var(--hud-border-2);
+        white-space: nowrap;
+      }
+
+      .plain-input {
+        width: 100%;
+        border: 1px solid var(--hud-border-2);
+        border-radius: 3px;
+        padding: 0.55rem 0.75rem;
+        line-height: 1.3rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        color: var(--hud-text-1);
+        background: var(--hud-bg);
+        outline: none;
+        transition: border-color 0.15s;
+      }
+
+      .plain-input:focus {
+        border-color: var(--hud-text-1);
+      }
+
+      .fee-row {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .fee-row .field-block {
+        flex: 1;
+        min-width: 0;
+      }
+
+      /* Unit toggle switch */
+      .unit-toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.6rem 0.85rem;
+        background: var(--hud-hover-bg);
+        border: 1px solid var(--hud-border-2);
+        border-radius: 3px;
+      }
+
+      .unit-toggle-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--hud-text-1);
+      }
+
+      .unit-toggle-hint {
+        font-size: 0.75rem;
+        color: var(--hud-text-3);
+        margin-top: 0.15rem;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 42px;
+        height: 23px;
+        flex-shrink: 0;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .switch-slider {
+        position: absolute;
+        inset: 0;
+        background: var(--hud-border-2);
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+
+      .switch-slider::before {
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        left: 3px;
+        top: 3px;
+        background: var(--hud-card-bg);
+        border-radius: 50%;
+        transition: transform 0.15s;
+      }
+
+      .switch input:checked + .switch-slider {
+        background: var(--hud-text-1);
+      }
+
+      .switch input:checked + .switch-slider::before {
+        transform: translateX(19px);
+      }
+
+      .stock-lookup-row {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .stock-lookup-row .field-block {
+        flex: 1;
+        min-width: 120px;
+        margin-bottom: 0;
+      }
+
+      #dt-autofill-btn {
+        padding: 0.55rem 0.9rem;
+        line-height: 1.3rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+
+      .stock-name-hint {
+        font-size: 0.78rem;
+        color: var(--hud-text-3);
+        margin-top: 0.35rem;
+        min-height: 1em;
+      }
+
+      #dt-calc-btn {
+        width: 100%;
+        margin-top: 0.35rem;
+        padding: 0.65rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        background: var(--hud-text-1);
+        color: var(--hud-bg);
+        border: 1px solid var(--hud-text-1);
+        border-radius: 3px;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+
+      #dt-calc-btn:hover {
+        opacity: 0.85;
+      }
+
       .error-msg {
         color: var(--hud-up);
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         margin-top: 0.6rem;
       }
 
       .hint-text {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: var(--hud-text-3);
-        margin-top: 0.4rem;
+        margin-top: 0.9rem;
+        line-height: 1.5;
       }
 
-      /* Summary cards */
-      .summary-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
+      /* Results table */
+      .results-table-wrap {
+        overflow-x: auto;
       }
 
-      .summary-card {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.9rem 1.1rem;
+      table.results-table {
+        width: 100%;
+        border-collapse: collapse;
       }
 
-      .summary-card.highlight {
-        border-color: var(--hud-border-1);
+      table.results-table th,
+      table.results-table td {
+        padding: 0.55rem 0.7rem;
+        text-align: center;
+        font-size: 0.85rem;
+        white-space: nowrap;
       }
 
-      .summary-card .label {
+      table.results-table thead th {
+        color: var(--hud-text-3);
+        font-weight: 600;
         font-size: 0.78rem;
-        color: var(--hud-text-3);
-        margin-bottom: 0.3rem;
+        border-bottom: 2px solid var(--hud-border-2);
       }
 
-      .summary-card .value {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--hud-text-1);
+      table.results-table tbody tr {
+        border-bottom: 1px solid var(--hud-border-2);
       }
 
-      .breakdown-note {
-        font-size: 0.78rem;
+      table.results-table tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      table.results-table tbody tr:hover {
+        background: color-mix(in srgb, var(--hud-text-1) 4%, transparent);
+      }
+
+      table.results-table tbody tr.row-current {
+        background: color-mix(in srgb, var(--hud-text-1) 8%, transparent);
+      }
+
+      .load-more-row {
+        display: flex;
+        justify-content: center;
+        padding: 0.75rem;
+        border-top: 1px solid var(--hud-border-2);
+      }
+
+      .results-empty {
+        text-align: center;
+        padding: 2.5rem 1rem;
         color: var(--hud-text-3);
-        margin-top: 0.3rem;
+        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -291,145 +456,185 @@
 
     <main class="container">
       <div class="page-header">
-        <p class="page-title">🧮 當沖損益計算機</p>
+        <p class="page-title">🧮 台股當沖計算機</p>
       </div>
+      <p class="page-subtitle">
+        輸入開倉價格與交易數量，自動試算不同檔位下的手續費、證交稅（一般 0.3%／現股當沖
+        0.15%／ETF 0.1%）與損益，找出損益兩平與目標價位。
+      </p>
 
-      <div class="form-panel">
-        <h2>交易資訊</h2>
-        <div class="form-row">
-          <div class="field">
-            <label for="dt-stock-id">股票代號（選填）</label>
-            <input
-              type="text"
-              id="dt-stock-id"
-              placeholder="ex: 2330"
-              list="stock-datalist"
-              autocomplete="off"
-            />
-            <datalist id="stock-datalist"></datalist>
-          </div>
-          <div class="field">
-            <span class="stock-name-hint" id="dt-stock-name">&nbsp;</span>
-          </div>
-          <div class="field">
-            <label style="visibility: hidden">&nbsp;</label>
-            <button class="btn btn-secondary" id="dt-autofill-btn" type="button">
-              帶入最新收盤價
-            </button>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="checkbox-field">
-            <input type="checkbox" id="dt-day-trade" checked />
-            <label for="dt-day-trade">現股當沖（證交稅減半 0.15%）</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="dt-buy-price">買進價</label>
-            <input
-              type="number"
-              id="dt-buy-price"
-              placeholder="每股價格"
-              min="0"
-              step="any"
-            />
-          </div>
-          <div class="field">
-            <label for="dt-sell-price">賣出價</label>
-            <input
-              type="number"
-              id="dt-sell-price"
-              placeholder="每股價格"
-              min="0"
-              step="any"
-            />
-          </div>
-          <div class="field">
-            <label for="dt-qty">數量</label>
-            <input
-              type="number"
-              id="dt-qty"
-              placeholder="例如 1"
-              min="0"
-              step="any"
-            />
-          </div>
-          <div class="field">
-            <label for="dt-unit">單位</label>
-            <select id="dt-unit">
-              <option value="lot">張</option>
-              <option value="share">股</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="dt-fee-discount">手續費折數（折）</label>
-            <input
-              type="number"
-              id="dt-fee-discount"
-              placeholder="例如 6"
-              min="0"
-              max="10"
-              step="0.1"
-            />
-          </div>
-          <div class="field">
-            <label for="dt-min-fee">單筆最低手續費</label>
-            <input
-              type="number"
-              id="dt-min-fee"
-              placeholder="20"
-              min="0"
-              step="1"
-            />
-          </div>
-          <div class="field">
-            <label style="visibility: hidden">&nbsp;</label>
-            <div class="form-actions">
-              <button class="btn btn-secondary" id="dt-reset-btn">
-                重設
+      <div class="calc-grid">
+        <div class="card-panel">
+          <h2>計算機</h2>
+
+          <div class="field-block">
+            <label class="field-label">股票代號（選填）</label>
+            <div class="stock-lookup-row">
+              <div class="field-block">
+                <input
+                  type="text"
+                  id="dt-stock-id"
+                  placeholder="ex: 2330"
+                  list="stock-datalist"
+                  autocomplete="off"
+                  class="plain-input"
+                />
+                <datalist id="stock-datalist"></datalist>
+              </div>
+              <button class="btn btn-secondary" id="dt-autofill-btn" type="button">
+                帶入最新收盤價
               </button>
             </div>
+            <div class="stock-name-hint" id="dt-stock-name">&nbsp;</div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label">交易類型</label>
+            <div class="tab-group">
+              <button class="tab-btn" data-type="stock">個股</button>
+              <button class="tab-btn" data-type="daytrade">個股當沖</button>
+              <button class="tab-btn" data-type="etf">ETF</button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label" for="dt-price">開倉價格</label>
+            <div class="input-with-suffix">
+              <input
+                type="number"
+                id="dt-price"
+                placeholder="請輸入開倉價格"
+                min="0"
+                step="0.01"
+              />
+              <span class="suffix">元</span>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label" for="dt-qty">交易數量</label>
+            <div class="input-with-suffix">
+              <input
+                type="number"
+                id="dt-qty"
+                placeholder="請輸入交易數量"
+                min="0"
+                step="0.1"
+              />
+              <span class="suffix" id="dt-qty-suffix">張</span>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <div class="unit-toggle-row">
+              <div>
+                <div class="unit-toggle-label">以張為單位</div>
+                <div class="unit-toggle-hint">提示：1 張 = 1000 股</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="dt-unit-toggle" checked />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-block fee-row">
+            <div class="field-block">
+              <label class="field-label" for="dt-fee-discount"
+                >手續費折數（折）</label
+              >
+              <div class="input-with-suffix">
+                <input
+                  type="number"
+                  id="dt-fee-discount"
+                  placeholder="例如 2.8"
+                  min="0"
+                  max="10"
+                  step="0.1"
+                />
+              </div>
+            </div>
+            <div class="field-block">
+              <label class="field-label" for="dt-min-fee">最低手續費</label>
+              <div class="input-with-suffix">
+                <input
+                  type="number"
+                  id="dt-min-fee"
+                  placeholder="20"
+                  min="0"
+                  step="1"
+                />
+                <span class="suffix">元</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label">交易方向</label>
+            <div class="tab-group">
+              <button class="tab-btn dir-long" data-dir="long">
+                做多（賺漲）
+              </button>
+              <button class="tab-btn dir-short" data-dir="short">
+                做空（賺跌）
+              </button>
+            </div>
+            <div class="stock-name-hint">
+              開倉價格固定視為買入價格，梯次價格為賣出價格；選「做空」代表預期價格下跌，僅反轉損益方向。
+            </div>
+          </div>
+
+          <button id="dt-calc-btn" type="button">計算</button>
+
+          <div id="form-error" class="error-msg" style="display: none"></div>
+
+          <div class="hint-text">
+            手續費費率 0.1425%（可依券商折扣調整），證交稅一般現股 0.3%、現股當沖減半
+            0.15%、ETF 0.1%。試算結果僅供參考，實際費用依券商及交易所公告為準。
           </div>
         </div>
-        <div class="hint-text">
-          證券交易手續費預設費率 0.1425%；一般現股證交稅 0.3%，現股當沖減半課徵
-          0.15%。計算結果僅供試算參考，實際費用依券商及交易所公告為準。
-        </div>
-        <div id="form-error" class="error-msg" style="display: none"></div>
-      </div>
 
-      <div class="summary-grid" id="summary-grid">
-        <div class="summary-card">
-          <div class="label">買進成本</div>
-          <div class="value" id="sum-buy-cost">—</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">賣出金額</div>
-          <div class="value" id="sum-sell-amount">—</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">手續費合計</div>
-          <div class="value" id="sum-fee">—</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">證交稅</div>
-          <div class="value" id="sum-tax">—</div>
-        </div>
-        <div class="summary-card highlight">
-          <div class="label">淨損益</div>
-          <div class="value" id="sum-pl">—</div>
-        </div>
-        <div class="summary-card highlight">
-          <div class="label">報酬率</div>
-          <div class="value" id="sum-pct">—</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">損益兩平賣價（約）</div>
-          <div class="value" id="sum-breakeven">—</div>
-          <div class="breakdown-note">未計入最低手續費門檻的近似值</div>
+        <div class="card-panel">
+          <h2>計算結果</h2>
+          <div
+            class="load-more-row"
+            id="load-more-row-top"
+            style="display: none"
+          >
+            <button class="btn btn-secondary" id="load-more-top-btn">
+              ＋ 顯示更多
+            </button>
+          </div>
+          <div class="results-table-wrap">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th>買入價格</th>
+                  <th>賣出價格</th>
+                  <th>證交稅</th>
+                  <th>總手續費</th>
+                  <th>獲利</th>
+                  <th>報酬率</th>
+                </tr>
+              </thead>
+              <tbody id="results-tbody">
+                <tr>
+                  <td colspan="6" class="results-empty">
+                    請輸入開倉價格與交易數量後按「計算」
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            class="load-more-row"
+            id="load-more-row-bottom"
+            style="display: none"
+          >
+            <button class="btn btn-secondary" id="load-more-bottom-btn">
+              ＋ 顯示更多
+            </button>
+          </div>
         </div>
       </div>
     </main>
@@ -439,14 +644,26 @@
       NerdGrid.initThemeToggle();
       NerdGrid.initNavDropdowns();
 
-      const STATE_KEY = "day_trade_calc_state";
+      const STATE_KEY = "day_trade_calc_state_v2";
       const DEFAULT_FEE_RATE = 0.001425; // 0.1425%
-      const NORMAL_TAX_RATE = 0.003; // 0.3%
-      const DAY_TRADE_TAX_RATE = 0.0015; // 0.15%
+      const TAX_RATES = { stock: 0.003, daytrade: 0.0015, etf: 0.001 };
+      const MAX_PCT = 10; // stop the ladder once |報酬率| would exceed this
+      const MAX_STEPS = 500; // safety cap so a tiny tick size can't loop forever
+      const INITIAL_SIDE = 5; // rows shown above/below the entry row by default
+      const PAGE_SIZE = 5; // rows revealed per "顯示更多" click
 
       let stockInfo = {};
       const historyCache = {};
 
+      // UI state
+      let txType = "daytrade"; // stock | daytrade | etf
+      let direction = "long"; // long | short
+      let allRows = []; // sorted by sell price desc, all generated rows
+      let entryIndex = -1; // index of the entry-price row inside allRows
+      let topShown = 0; // rows revealed above the entry row (higher price)
+      let bottomShown = 0; // rows revealed below the entry row (lower price)
+
+      // ── Formatting ──────────────────────────────────────────────────────────
       function fmtMoney(v) {
         if (v == null || Number.isNaN(v)) return "—";
         return v.toLocaleString("zh-TW", { maximumFractionDigits: 0 });
@@ -478,6 +695,126 @@
           .replace(/>/g, "&gt;");
       }
 
+      function round2(v) {
+        return Math.round(v * 100) / 100;
+      }
+
+      // ── Taiwan tick-size ladder ────────────────────────────────────────────
+      // Official TWSE tick-size brackets: [0,10)=0.01 [10,50)=0.05 [50,100)=0.1
+      // [100,500)=0.5 [500,1000)=1 [1000,∞)=5
+      function tickSize(price) {
+        if (price < 10) return 0.01;
+        if (price < 50) return 0.05;
+        if (price < 100) return 0.1;
+        if (price < 500) return 0.5;
+        if (price < 1000) return 1;
+        return 5;
+      }
+
+      function stepUp(price) {
+        return round2(price + tickSize(price));
+      }
+
+      function stepDown(price) {
+        // The bracket just below the current price decides the down-tick,
+        // so boundary prices (10 / 50 / 100 / 500 / 1000) cross correctly.
+        return round2(price - tickSize(price - 1e-6));
+      }
+
+      // ── Fee / tax / profit ──────────────────────────────────────────────────
+      function calcFee(amount, discount, minFee) {
+        const raw = amount * DEFAULT_FEE_RATE * (discount / 10);
+        return Math.max(Math.floor(raw), minFee);
+      }
+
+      function calcTax(amount, rate) {
+        return Math.floor(amount * rate);
+      }
+
+      function computeRow(entryPrice, ladderPrice, shares, discount, minFee, taxRate) {
+        // 開倉價格一律視為買入價格，梯次價格一律視為賣出價格；
+        // 「做空（賣出）」只反轉損益方向（跌價才獲利），不改變買入/賣出欄位的對應。
+        const buyPrice = entryPrice;
+        const sellPrice = ladderPrice;
+        const buyAmount = buyPrice * shares;
+        const sellAmount = sellPrice * shares;
+        const buyFee = calcFee(buyAmount, discount, minFee);
+        const sellFee = calcFee(sellAmount, discount, minFee);
+        const totalFee = buyFee + sellFee;
+        const tax = calcTax(sellAmount, taxRate);
+        const rawDiff =
+          direction === "long"
+            ? sellAmount - buyAmount
+            : buyAmount - sellAmount;
+        const profit = rawDiff - totalFee - tax;
+        const entryAmount = entryPrice * shares;
+        const pct = entryAmount > 0 ? (profit / entryAmount) * 100 : null;
+        const isCurrent = ladderPrice === entryPrice;
+        return { buyPrice, sellPrice, tax, totalFee, profit, pct, isCurrent };
+      }
+
+      // Walk the tick ladder up and down from the entry price, stopping once the
+      // resulting 報酬率 would exceed ±MAX_PCT. Always sorted by sell price desc
+      // (highest price first) so the entry row lands in the middle, not buried.
+      function buildRows(entryPrice, shares, discount, minFee, taxRate) {
+        const rows = [computeRow(entryPrice, entryPrice, shares, discount, minFee, taxRate)];
+
+        let p = entryPrice;
+        for (let i = 0; i < MAX_STEPS; i++) {
+          p = stepUp(p);
+          const row = computeRow(entryPrice, p, shares, discount, minFee, taxRate);
+          if (row.pct != null && Math.abs(row.pct) > MAX_PCT) break;
+          rows.push(row);
+        }
+
+        p = entryPrice;
+        for (let i = 0; i < MAX_STEPS; i++) {
+          p = stepDown(p);
+          if (p <= 0) break;
+          const row = computeRow(entryPrice, p, shares, discount, minFee, taxRate);
+          if (row.pct != null && Math.abs(row.pct) > MAX_PCT) break;
+          rows.push(row);
+        }
+
+        rows.sort((a, b) => b.sellPrice - a.sellPrice);
+        return rows;
+      }
+
+      // ── Form helpers ────────────────────────────────────────────────────────
+      function showFormError(msg) {
+        const el = document.getElementById("form-error");
+        el.textContent = msg;
+        el.style.display = "block";
+      }
+
+      function clearFormError() {
+        document.getElementById("form-error").style.display = "none";
+      }
+
+      function setType(type) {
+        txType = type;
+        document.querySelectorAll(".tab-btn[data-type]").forEach((btn) => {
+          btn.classList.toggle("type-active", btn.dataset.type === type);
+        });
+      }
+
+      function setDirection(dir) {
+        direction = dir;
+        document.querySelectorAll(".tab-btn[data-dir]").forEach((btn) => {
+          btn.classList.toggle("dir-active", btn.dataset.dir === dir);
+        });
+      }
+
+      function isLotUnit() {
+        return document.getElementById("dt-unit-toggle").checked;
+      }
+
+      function updateQtySuffix() {
+        document.getElementById("dt-qty-suffix").textContent = isLotUnit()
+          ? "張"
+          : "股";
+      }
+
       // ── State persistence ───────────────────────────────────────────────────
       function loadState() {
         try {
@@ -491,11 +828,11 @@
       function saveState() {
         const state = {
           stockId: document.getElementById("dt-stock-id").value,
-          dayTrade: document.getElementById("dt-day-trade").checked,
-          buyPrice: document.getElementById("dt-buy-price").value,
-          sellPrice: document.getElementById("dt-sell-price").value,
+          txType,
+          direction,
+          isLot: isLotUnit(),
+          price: document.getElementById("dt-price").value,
           qty: document.getElementById("dt-qty").value,
-          unit: document.getElementById("dt-unit").value,
           feeDiscount: document.getElementById("dt-fee-discount").value,
           minFee: document.getElementById("dt-min-fee").value,
         };
@@ -547,16 +884,6 @@
           : " ";
       }
 
-      function showFormError(msg) {
-        const errDiv = document.getElementById("form-error");
-        errDiv.textContent = msg;
-        errDiv.style.display = "block";
-      }
-
-      function clearFormError() {
-        document.getElementById("form-error").style.display = "none";
-      }
-
       async function autofillLatestClose() {
         clearFormError();
         const id = document.getElementById("dt-stock-id").value.trim();
@@ -570,121 +897,100 @@
           return;
         }
         const latest = history[history.length - 1];
-        document.getElementById("dt-buy-price").value = latest.close;
-        if (!document.getElementById("dt-sell-price").value) {
-          document.getElementById("dt-sell-price").value = latest.close;
-        }
+        document.getElementById("dt-price").value = latest.close;
         calculate();
       }
 
       // ── Calculation ─────────────────────────────────────────────────────────
       function calculate() {
         saveState();
+        clearFormError();
 
-        const buyPrice = parseFloat(
-          document.getElementById("dt-buy-price").value,
-        );
-        const sellPrice = parseFloat(
-          document.getElementById("dt-sell-price").value,
-        );
+        const entryPrice = parseFloat(document.getElementById("dt-price").value);
         const qtyRaw = parseFloat(document.getElementById("dt-qty").value);
-        const unit = document.getElementById("dt-unit").value;
         const discountRaw = parseFloat(
           document.getElementById("dt-fee-discount").value,
         );
-        const minFeeRaw = parseFloat(
-          document.getElementById("dt-min-fee").value,
-        );
-        const isDayTrade = document.getElementById("dt-day-trade").checked;
+        const minFeeRaw = parseFloat(document.getElementById("dt-min-fee").value);
 
-        const summaryIds = [
-          "sum-buy-cost",
-          "sum-sell-amount",
-          "sum-fee",
-          "sum-tax",
-          "sum-pl",
-          "sum-pct",
-          "sum-breakeven",
-        ];
+        const tbody = document.getElementById("results-tbody");
 
-        if (!buyPrice || buyPrice <= 0 || !sellPrice || sellPrice <= 0 || !qtyRaw || qtyRaw <= 0) {
-          summaryIds.forEach((id) => {
-            const el = document.getElementById(id);
-            el.textContent = "—";
-            el.className = "value";
-          });
+        if (!entryPrice || entryPrice <= 0 || !qtyRaw || qtyRaw <= 0) {
+          allRows = [];
+          entryIndex = -1;
+          topShown = 0;
+          bottomShown = 0;
+          tbody.innerHTML =
+            '<tr><td colspan="6" class="results-empty">請輸入開倉價格與交易數量後按「計算」</td></tr>';
+          document.getElementById("load-more-row-top").style.display = "none";
+          document.getElementById("load-more-row-bottom").style.display = "none";
           return;
         }
 
-        const discount = discountRaw > 0 ? discountRaw / 10 : 1;
-        const minFee = minFeeRaw >= 0 && !Number.isNaN(minFeeRaw) ? minFeeRaw : 20;
-        const shares = unit === "lot" ? qtyRaw * 1000 : qtyRaw;
-        const taxRate = isDayTrade ? DAY_TRADE_TAX_RATE : NORMAL_TAX_RATE;
+        const discount = discountRaw > 0 ? discountRaw : 10;
+        const minFee =
+          minFeeRaw >= 0 && !Number.isNaN(minFeeRaw) ? minFeeRaw : 20;
+        const shares = isLotUnit() ? qtyRaw * 1000 : qtyRaw;
+        const taxRate = TAX_RATES[txType];
 
-        const buyCost = buyPrice * shares;
-        const sellAmount = sellPrice * shares;
-        const buyFee = Math.round(
-          Math.max(buyCost * DEFAULT_FEE_RATE * discount, minFee),
-        );
-        const sellFee = Math.round(
-          Math.max(sellAmount * DEFAULT_FEE_RATE * discount, minFee),
-        );
-        const totalFee = buyFee + sellFee;
-        const tax = Math.round(sellAmount * taxRate);
-        const netPl = sellAmount - buyCost - totalFee - tax;
-        const netPct = buyCost > 0 ? (netPl / buyCost) * 100 : null;
-
-        const breakevenDenom =
-          shares * (1 - DEFAULT_FEE_RATE * discount - taxRate);
-        const breakeven =
-          breakevenDenom > 0 ? (buyCost + buyFee) / breakevenDenom : null;
-
-        document.getElementById("sum-buy-cost").textContent =
-          fmtMoney(buyCost);
-        document.getElementById("sum-sell-amount").textContent =
-          fmtMoney(sellAmount);
-        document.getElementById("sum-fee").textContent = fmtMoney(totalFee);
-        document.getElementById("sum-tax").textContent = fmtMoney(tax);
-
-        const plEl = document.getElementById("sum-pl");
-        plEl.textContent = (netPl > 0 ? "+" : "") + fmtMoney(netPl);
-        plEl.className = "value " + plClass(netPl);
-
-        const pctEl = document.getElementById("sum-pct");
-        pctEl.textContent = fmtPct(netPct);
-        pctEl.className = "value " + plClass(netPct);
-
-        document.getElementById("sum-breakeven").textContent = breakeven
-          ? fmtPrice(breakeven)
-          : "—";
+        allRows = buildRows(entryPrice, shares, discount, minFee, taxRate);
+        entryIndex = allRows.findIndex((r) => r.isCurrent);
+        topShown = Math.min(INITIAL_SIDE, entryIndex);
+        bottomShown = Math.min(INITIAL_SIDE, allRows.length - 1 - entryIndex);
+        renderRows();
       }
 
-      function resetForm() {
-        document.getElementById("dt-stock-id").value = "";
-        document.getElementById("dt-day-trade").checked = true;
-        document.getElementById("dt-buy-price").value = "";
-        document.getElementById("dt-sell-price").value = "";
-        document.getElementById("dt-qty").value = "1";
-        document.getElementById("dt-unit").value = "lot";
-        document.getElementById("dt-fee-discount").value = "6";
-        document.getElementById("dt-min-fee").value = "20";
-        clearFormError();
-        updateStockNameHint();
-        calculate();
+      function renderRows() {
+        const tbody = document.getElementById("results-tbody");
+        if (entryIndex < 0) return;
+
+        const startIdx = Math.max(0, entryIndex - topShown);
+        const endIdx = Math.min(allRows.length - 1, entryIndex + bottomShown);
+        const rows = allRows.slice(startIdx, endIdx + 1);
+
+        tbody.innerHTML = rows
+          .map(
+            (r) => `<tr class="${r.isCurrent ? "row-current" : ""}">
+              <td>${fmtPrice(r.buyPrice)}</td>
+              <td>${fmtPrice(r.sellPrice)}</td>
+              <td>${fmtMoney(r.tax)}</td>
+              <td>${fmtMoney(r.totalFee)}</td>
+              <td class="${plClass(r.profit)}">${r.profit > 0 ? "+" : ""}${fmtMoney(r.profit)}</td>
+              <td class="${plClass(r.pct)}">${fmtPct(r.pct)}</td>
+            </tr>`,
+          )
+          .join("");
+
+        document.getElementById("load-more-row-top").style.display =
+          startIdx > 0 ? "flex" : "none";
+        document.getElementById("load-more-row-bottom").style.display =
+          endIdx < allRows.length - 1 ? "flex" : "none";
       }
 
       // ── Wire up events ──────────────────────────────────────────────────────
+      document.querySelectorAll(".tab-btn[data-type]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setType(btn.dataset.type);
+          calculate();
+        });
+      });
+      document.querySelectorAll(".tab-btn[data-dir]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setDirection(btn.dataset.dir);
+          calculate();
+        });
+      });
+      document.getElementById("dt-unit-toggle").addEventListener("change", () => {
+        updateQtySuffix();
+        calculate();
+      });
       [
-        "dt-buy-price",
-        "dt-sell-price",
+        "dt-price",
         "dt-qty",
-        "dt-unit",
         "dt-fee-discount",
         "dt-min-fee",
-        "dt-day-trade",
       ].forEach((id) => {
         document.getElementById(id).addEventListener("input", calculate);
-        document.getElementById(id).addEventListener("change", calculate);
       });
       document
         .getElementById("dt-stock-id")
@@ -692,24 +998,33 @@
       document
         .getElementById("dt-autofill-btn")
         .addEventListener("click", autofillLatestClose);
-      document
-        .getElementById("dt-reset-btn")
-        .addEventListener("click", resetForm);
+      document.getElementById("dt-calc-btn").addEventListener("click", calculate);
+      document.getElementById("load-more-top-btn").addEventListener("click", () => {
+        topShown = Math.min(entryIndex, topShown + PAGE_SIZE);
+        renderRows();
+      });
+      document.getElementById("load-more-bottom-btn").addEventListener("click", () => {
+        bottomShown = Math.min(
+          allRows.length - 1 - entryIndex,
+          bottomShown + PAGE_SIZE,
+        );
+        renderRows();
+      });
 
       (async function init() {
         await loadStockInfo();
 
         const saved = loadState();
         document.getElementById("dt-stock-id").value = saved.stockId || "";
-        document.getElementById("dt-day-trade").checked =
-          saved.dayTrade !== undefined ? saved.dayTrade : true;
-        document.getElementById("dt-buy-price").value = saved.buyPrice || "";
-        document.getElementById("dt-sell-price").value =
-          saved.sellPrice || "";
+        setType(saved.txType || "daytrade");
+        setDirection(saved.direction || "long");
+        document.getElementById("dt-unit-toggle").checked =
+          saved.isLot !== undefined ? saved.isLot : true;
+        updateQtySuffix();
+        document.getElementById("dt-price").value = saved.price || "100";
         document.getElementById("dt-qty").value = saved.qty || "1";
-        document.getElementById("dt-unit").value = saved.unit || "lot";
         document.getElementById("dt-fee-discount").value =
-          saved.feeDiscount || "6";
+          saved.feeDiscount || "2.8";
         document.getElementById("dt-min-fee").value = saved.minFee || "20";
 
         updateStockNameHint();
