@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8937",
+        "name": "合騏*",
+        "close": 26.45,
+        "open": 29.8,
+        "high": 29.8,
+        "low": 26.45,
+        "diff": -2.15,
+        "change_percent": -7.52,
+        "volume": 1404000,
+        "avg_volume": 147000,
+        "vol_ratio": 9.55,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "8932",
+        "name": "智通*",
+        "close": 105.0,
+        "open": 114.0,
+        "high": 115.5,
+        "low": 103.5,
+        "diff": -10.0,
+        "change_percent": -8.7,
+        "volume": 9075000,
+        "avg_volume": 3509400,
+        "vol_ratio": 2.59,
+        "body_ratio": 0.75
+    }
+]

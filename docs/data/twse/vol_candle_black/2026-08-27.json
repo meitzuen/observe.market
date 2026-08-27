@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2017",
+        "name": "官田鋼",
+        "close": 9.45,
+        "open": 9.92,
+        "high": 9.95,
+        "low": 9.2,
+        "diff": 0.4,
+        "change_percent": 4.42,
+        "volume": 7055837,
+        "avg_volume": 623800,
+        "vol_ratio": 11.31,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "2305",
+        "name": "全友",
+        "close": 29.45,
+        "open": 31.0,
+        "high": 31.2,
+        "low": 29.3,
+        "diff": -1.55,
+        "change_percent": -5.0,
+        "volume": 8580638,
+        "avg_volume": 2499000,
+        "vol_ratio": 3.43,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "1709",
+        "name": "和益",
+        "close": 34.15,
+        "open": 37.35,
+        "high": 37.7,
+        "low": 33.8,
+        "diff": -2.95,
+        "change_percent": -7.95,
+        "volume": 26503787,
+        "avg_volume": 11767400,
+        "vol_ratio": 2.25,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "2852",
+        "name": "第一保",
+        "close": 28.45,
+        "open": 29.35,
+        "high": 29.35,
+        "low": 28.25,
+        "diff": -1.6,
+        "change_percent": -5.32,
+        "volume": 2549646,
+        "avg_volume": 1218400,
+        "vol_ratio": 2.09,
+        "body_ratio": 0.82
+    }
+]

@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-08-26",
+        "measure": "第一次處置",
+        "id": "2486",
+        "name": "一詮",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-08-27",
+        "to": "2026-09-02"
+    },
+    {
         "publish_date": "2026-08-24",
         "measure": "人工管制撮合",
         "id": "6225",
