@@ -53,58 +53,7 @@
           >📈</span
         >
         <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar">
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn active">市場</button>
-            <div class="nav-dropdown-menu">
-              <a href="twse.html" class="nav-dropdown-item">上市</a>
-              <a href="tpex.html" class="nav-dropdown-item active">上櫃</a>
-              <a href="index.html" class="nav-dropdown-item">全部</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn">策略</button>
-            <div class="nav-dropdown-menu">
-              <a href="punish.html" class="nav-dropdown-item">處置股票</a>
-              <a href="volume-candle.html" class="nav-dropdown-item">爆量長紅黑K</a>
-              <a href="gap.html" class="nav-dropdown-item">跳空漲跌</a>
-              <a href="wantgoo.html" class="nav-dropdown-item">基本面</a>
-              <a href="volatility.html" class="nav-dropdown-item">區間波動率</a>
-              <a href="vcp.html" class="nav-dropdown-item">VCP選股</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn">權證</button>
-            <div class="nav-dropdown-menu">
-              <a href="premium-warrant.html" class="nav-dropdown-item"
-                >精選權證</a
-              >
-              <a href="warrant-filter.html" class="nav-dropdown-item"
-                >權證篩選</a
-              >
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn">選股</button>
-            <div class="nav-dropdown-menu">
-              <a href="screener.html" class="nav-dropdown-item">股票篩選</a>
-              <a href="watchlist.html" class="nav-dropdown-item">精選類股</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn">個人</button>
-            <div class="nav-dropdown-menu">
-              <a href="bookmark.html" class="nav-dropdown-item">常用連結</a>
-              <a href="portfolio.html" class="nav-dropdown-item">持股試算</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <button class="nav-link nav-dropdown-btn">當沖仔</button>
-            <div class="nav-dropdown-menu">
-              <a href="day-trade-calculator.html" class="nav-dropdown-item">當沖計算機</a>
-            </div>
-          </div>
-        </nav>
+        <nav class="nav-bar" id="nav-bar"></nav>
         <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
           🌙
         </button>
@@ -481,6 +430,8 @@
 
     <script src="assets/nerd-grid.js"></script>
     <script>
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNav();
       let fullManifest = null;
       let manifest = null;
       let currentMarket = "tpex";
@@ -580,9 +531,7 @@
               renderStockTable();
             }
           });
-          NerdGrid.initThemeToggle();
           NerdGrid.onThemeChange(() => renderChart(indexData));
-          NerdGrid.initNavDropdowns();
 
           // `/` key focuses search
           document.addEventListener("keydown", (e) => {
