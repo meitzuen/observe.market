@@ -71,6 +71,93 @@
     document.addEventListener(THEME_EVENT, (e) => handler(e.detail.theme));
   }
 
+  // Single source of truth for the site-wide nav. Add/rename/move a page
+  // here once and every page picks it up — no more hand-editing 17 files.
+  const NAV = [
+    {
+      label: "市場",
+      items: [
+        { href: "twse.html", label: "上市" },
+        { href: "tpex.html", label: "上櫃" },
+        { href: "index.html", label: "全部" },
+      ],
+    },
+    {
+      label: "策略",
+      items: [
+        { href: "punish.html", label: "處置股票" },
+        { href: "volume-candle.html", label: "爆量長紅黑K" },
+        { href: "gap.html", label: "跳空漲跌" },
+        { href: "wantgoo.html", label: "基本面" },
+        { href: "volatility.html", label: "區間波動率" },
+        { href: "vcp.html", label: "VCP選股" },
+      ],
+    },
+    {
+      label: "權證",
+      items: [
+        { href: "premium-warrant.html", label: "精選權證" },
+        { href: "warrant-filter.html", label: "權證篩選" },
+      ],
+    },
+    {
+      label: "選股",
+      items: [
+        { href: "screener.html", label: "股票篩選" },
+        { href: "watchlist.html", label: "精選類股" },
+      ],
+    },
+    {
+      label: "個人",
+      items: [
+        { href: "bookmark.html", label: "常用連結" },
+        { href: "portfolio.html", label: "持股試算" },
+      ],
+    },
+    {
+      label: "當沖仔",
+      items: [{ href: "day-trade-calculator.html", label: "當沖計算機" }],
+    },
+  ];
+
+  function currentPageFile() {
+    const path = location.pathname;
+    const file = path.substring(path.lastIndexOf("/") + 1);
+    return file || "index.html";
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // Renders the nav into #<containerId> (default "nav-bar") from NAV above,
+  // marking whichever item matches the current file as active, then wires
+  // up the dropdown interactions. Call this instead of hand-writing the
+  // <nav> markup and instead of initNavDropdowns() directly.
+  function initNav(containerId) {
+    const container = document.getElementById(containerId || "nav-bar");
+    if (!container) return;
+    const current = currentPageFile();
+
+    container.innerHTML = NAV.map((group) => {
+      const groupActive = group.items.some((item) => item.href === current);
+      const itemsHtml = group.items
+        .map((item) => {
+          const cls =
+            "nav-dropdown-item" + (item.href === current ? " active" : "");
+          return `<a href="${item.href}" class="${cls}">${escHtml(item.label)}</a>`;
+        })
+        .join("");
+      const btnCls = "nav-link nav-dropdown-btn" + (groupActive ? " active" : "");
+      return `<div class="nav-dropdown"><button class="${btnCls}">${escHtml(group.label)}</button><div class="nav-dropdown-menu">${itemsHtml}</div></div>`;
+    }).join("");
+
+    initNavDropdowns();
+  }
+
   function initNavDropdowns() {
     // Click-to-toggle (not hover) so this works identically with mouse,
     // trackpad, and touch. Menus use position:fixed, so the top/left
@@ -107,6 +194,7 @@
     initThemeToggle,
     onThemeChange,
     initNavDropdowns,
+    initNav,
     currentTheme,
     chartColors,
   };
