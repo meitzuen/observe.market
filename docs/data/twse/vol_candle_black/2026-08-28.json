@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2464",
+        "name": "盟立",
+        "close": 190.0,
+        "open": 216.5,
+        "high": 216.5,
+        "low": 190.0,
+        "diff": -21.0,
+        "change_percent": -9.95,
+        "volume": 25845387,
+        "avg_volume": 11385753,
+        "vol_ratio": 2.27,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "4551",
+        "name": "智伸科",
+        "close": 162.0,
+        "open": 172.0,
+        "high": 172.5,
+        "low": 162.0,
+        "diff": -8.0,
+        "change_percent": -4.71,
+        "volume": 1581599,
+        "avg_volume": 770563,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "7610",
+        "name": "聯友金屬-創",
+        "close": 1495.0,
+        "open": 1625.0,
+        "high": 1625.0,
+        "low": 1445.0,
+        "diff": -100.0,
+        "change_percent": -6.27,
+        "volume": 1189663,
+        "avg_volume": 587845,
+        "vol_ratio": 2.02,
+        "body_ratio": 0.72
+    }
+]

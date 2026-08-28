@@ -1,0 +1,72 @@
+[
+    {
+        "id": "5314",
+        "name": "世紀*",
+        "close": 34.2,
+        "open": 41.8,
+        "high": 41.8,
+        "low": 34.2,
+        "diff": -3.8,
+        "change_percent": -10.0,
+        "volume": 22104000,
+        "avg_volume": 1568000,
+        "vol_ratio": 14.1,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6227",
+        "name": "茂綸",
+        "close": 113.0,
+        "open": 124.5,
+        "high": 124.5,
+        "low": 113.0,
+        "diff": -12.0,
+        "change_percent": -9.6,
+        "volume": 2436000,
+        "avg_volume": 279000,
+        "vol_ratio": 8.73,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "4909",
+        "name": "新復興",
+        "close": 40.35,
+        "open": 43.2,
+        "high": 43.2,
+        "low": 40.3,
+        "diff": -2.55,
+        "change_percent": -5.94,
+        "volume": 2175000,
+        "avg_volume": 346800,
+        "vol_ratio": 6.27,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "4303",
+        "name": "信立",
+        "close": 39.0,
+        "open": 43.95,
+        "high": 44.9,
+        "low": 39.0,
+        "diff": -3.1,
+        "change_percent": -7.36,
+        "volume": 6423000,
+        "avg_volume": 2210250,
+        "vol_ratio": 2.91,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "3529",
+        "name": "力旺",
+        "close": 2540.0,
+        "open": 2720.0,
+        "high": 2720.0,
+        "low": 2520.0,
+        "diff": -110.0,
+        "change_percent": -4.15,
+        "volume": 1620000,
+        "avg_volume": 768200,
+        "vol_ratio": 2.11,
+        "body_ratio": 0.9
+    }
+]

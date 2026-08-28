@@ -1,0 +1,108 @@
+[
+    {
+        "id": "9912",
+        "name": "偉聯",
+        "close": 14.1,
+        "open": 13.2,
+        "high": 14.5,
+        "low": 13.2,
+        "diff": 0.9,
+        "change_percent": 6.82,
+        "volume": 1109845,
+        "avg_volume": 118980,
+        "vol_ratio": 9.33,
+        "prior_change_percent": 1.93,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3049",
+        "name": "精金",
+        "close": 13.5,
+        "open": 13.25,
+        "high": 13.95,
+        "low": 13.2,
+        "diff": 0.8,
+        "change_percent": 6.3,
+        "volume": 54731497,
+        "avg_volume": 6122734,
+        "vol_ratio": 8.94,
+        "prior_change_percent": -4.87,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 59,
+        "tags": [
+            "創20日新高",
+            "同族群59檔同步走強"
+        ]
+    },
+    {
+        "id": "4108",
+        "name": "懷特",
+        "close": 12.4,
+        "open": 11.55,
+        "high": 12.5,
+        "low": 11.45,
+        "diff": 1.0,
+        "change_percent": 8.77,
+        "volume": 1893290,
+        "avg_volume": 242344,
+        "vol_ratio": 7.81,
+        "prior_change_percent": 0.44,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3645",
+        "name": "達邁",
+        "close": 76.6,
+        "open": 69.7,
+        "high": 76.6,
+        "low": 68.3,
+        "diff": 6.9,
+        "change_percent": 9.9,
+        "volume": 8568904,
+        "avg_volume": 1426374,
+        "vol_ratio": 6.01,
+        "prior_change_percent": 4.81,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 68,
+        "tags": [
+            "創20日新高",
+            "同族群68檔同步走強"
+        ]
+    },
+    {
+        "id": "3094",
+        "name": "聯傑",
+        "close": 40.8,
+        "open": 38.05,
+        "high": 41.7,
+        "low": 38.05,
+        "diff": 2.7,
+        "change_percent": 7.09,
+        "volume": 11056818,
+        "avg_volume": 1913674,
+        "vol_ratio": 5.78,
+        "prior_change_percent": -0.13,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 61,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群61檔同步走強"
+        ]
+    }
+]

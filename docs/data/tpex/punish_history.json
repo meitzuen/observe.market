@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-08-27",
+        "measure": "第一次處置",
+        "id": "4979",
+        "name": "華星光",
+        "accumulated": 3,
+        "condition": "連續5個營業日",
+        "from": "2026-08-28",
+        "to": "2026-09-03"
+    },
+    {
         "publish_date": "2026-08-26",
         "measure": "第一次處置",
         "id": "3362",
