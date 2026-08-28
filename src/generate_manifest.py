@@ -23,6 +23,8 @@ def generate_manifest():
             "vcp": [],
             "vol_candle_red": [],
             "vol_candle_black": [],
+            "xiaoge_long": [],
+            "xiaoge_short": [],
         }
 
         for category in manifest[market].keys():
