@@ -1,0 +1,108 @@
+[
+    {
+        "id": "6020",
+        "name": "大展證",
+        "close": 23.45,
+        "open": 21.45,
+        "high": 23.45,
+        "low": 21.0,
+        "diff": 2.1,
+        "change_percent": 9.84,
+        "volume": 816000,
+        "avg_volume": 59750,
+        "vol_ratio": 13.66,
+        "prior_change_percent": 9.77,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4127",
+        "name": "天良",
+        "close": 43.75,
+        "open": 40.3,
+        "high": 43.75,
+        "low": 40.3,
+        "diff": 3.95,
+        "change_percent": 9.92,
+        "volume": 1039000,
+        "avg_volume": 118450,
+        "vol_ratio": 8.77,
+        "prior_change_percent": 1.14,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2065",
+        "name": "世豐",
+        "close": 32.35,
+        "open": 31.0,
+        "high": 33.1,
+        "low": 30.7,
+        "diff": 2.25,
+        "change_percent": 7.48,
+        "volume": 800000,
+        "avg_volume": 92800,
+        "vol_ratio": 8.62,
+        "prior_change_percent": 4.15,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "3597",
+        "name": "映興",
+        "close": 28.2,
+        "open": 26.0,
+        "high": 28.2,
+        "low": 26.0,
+        "diff": 2.55,
+        "change_percent": 9.94,
+        "volume": 697000,
+        "avg_volume": 83250,
+        "vol_ratio": 8.37,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 153,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群153檔同步走強"
+        ]
+    },
+    {
+        "id": "6651",
+        "name": "全宇昕",
+        "close": 133.5,
+        "open": 117.5,
+        "high": 133.5,
+        "low": 115.0,
+        "diff": 12.0,
+        "change_percent": 9.88,
+        "volume": 2341000,
+        "avg_volume": 407650,
+        "vol_ratio": 5.74,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

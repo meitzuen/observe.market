@@ -1,0 +1,45 @@
+[
+    {
+        "id": "6416",
+        "name": "瑞祺電通",
+        "close": 97.2,
+        "open": 92.8,
+        "high": 97.8,
+        "low": 90.4,
+        "diff": 6.2,
+        "change_percent": 6.81,
+        "volume": 4450482,
+        "avg_volume": 257374,
+        "vol_ratio": 17.29,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "2601",
+        "name": "益航",
+        "close": 7.55,
+        "open": 7.0,
+        "high": 7.55,
+        "low": 6.95,
+        "diff": 0.68,
+        "change_percent": 9.9,
+        "volume": 26882744,
+        "avg_volume": 3455428,
+        "vol_ratio": 7.78,
+        "prior_change_percent": 4.09,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 45,
+        "tags": [
+            "創20日新高",
+            "同族群45檔同步走強"
+        ]
+    }
+]

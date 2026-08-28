@@ -1,0 +1,107 @@
+[
+    {
+        "id": "4106",
+        "name": "雃博",
+        "close": 25.1,
+        "open": 24.3,
+        "high": 25.9,
+        "low": 24.2,
+        "diff": 1.55,
+        "change_percent": 6.58,
+        "volume": 1228385,
+        "avg_volume": 134417,
+        "vol_ratio": 9.14,
+        "prior_change_percent": 0.21,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2332",
+        "name": "友訊",
+        "close": 25.95,
+        "open": 24.85,
+        "high": 26.45,
+        "low": 23.9,
+        "diff": 1.9,
+        "change_percent": 7.9,
+        "volume": 131450187,
+        "avg_volume": 17214203,
+        "vol_ratio": 7.64,
+        "prior_change_percent": 9.82,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 11,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群11檔同步走強"
+        ]
+    },
+    {
+        "id": "6598",
+        "name": "ABC-KY",
+        "close": 24.85,
+        "open": 23.0,
+        "high": 25.1,
+        "low": 22.85,
+        "diff": 2.0,
+        "change_percent": 8.75,
+        "volume": 914057,
+        "avg_volume": 119641,
+        "vol_ratio": 7.64,
+        "prior_change_percent": 0.44,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    },
+    {
+        "id": "1709",
+        "name": "和益",
+        "close": 26.8,
+        "open": 26.3,
+        "high": 26.8,
+        "low": 25.7,
+        "diff": 2.4,
+        "change_percent": 9.84,
+        "volume": 18769827,
+        "avg_volume": 2524292,
+        "vol_ratio": 7.44,
+        "prior_change_percent": 1.88,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    },
+    {
+        "id": "4564",
+        "name": "元翎",
+        "close": 21.0,
+        "open": 19.2,
+        "high": 21.0,
+        "low": 18.9,
+        "diff": 1.7,
+        "change_percent": 8.81,
+        "volume": 11759182,
+        "avg_volume": 2300027,
+        "vol_ratio": 5.11,
+        "prior_change_percent": 3.76,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "創20日新高"
+        ]
+    }
+]

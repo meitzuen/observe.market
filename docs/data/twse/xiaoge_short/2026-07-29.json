@@ -1,0 +1,50 @@
+[
+    {
+        "id": "2923",
+        "name": "鼎固-KY",
+        "close": 41.0,
+        "open": 37.65,
+        "high": 41.35,
+        "low": 35.9,
+        "diff": 3.35,
+        "change_percent": 8.9,
+        "volume": 1062388,
+        "prior_change_percent": 9.29,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 22.55,
+        "open": 21.55,
+        "high": 22.55,
+        "low": 21.55,
+        "diff": 2.05,
+        "change_percent": 10.0,
+        "volume": 16023885,
+        "prior_change_percent": 9.92,
+        "gap_open_percent": 5.12,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": -2.46,
+        "peer_weak": true,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "同族群普遍疲弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

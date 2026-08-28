@@ -1,0 +1,46 @@
+[
+    {
+        "id": "6189",
+        "name": "豐藝",
+        "close": 51.7,
+        "open": 49.0,
+        "high": 52.9,
+        "low": 46.65,
+        "diff": 3.5,
+        "change_percent": 7.26,
+        "volume": 10174496,
+        "avg_volume": 824501,
+        "vol_ratio": 12.34,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "3686",
+        "name": "達能",
+        "close": 21.55,
+        "open": 20.0,
+        "high": 21.55,
+        "low": 19.95,
+        "diff": 1.95,
+        "change_percent": 9.95,
+        "volume": 5361026,
+        "avg_volume": 438827,
+        "vol_ratio": 12.22,
+        "prior_change_percent": 0.51,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 15,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群15檔同步走強"
+        ]
+    }
+]

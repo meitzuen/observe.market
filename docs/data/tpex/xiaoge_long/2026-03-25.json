@@ -1,0 +1,64 @@
+[
+    {
+        "id": "4510",
+        "name": "高鋒",
+        "close": 45.6,
+        "open": 44.45,
+        "high": 46.5,
+        "low": 44.1,
+        "diff": 3.3,
+        "change_percent": 7.8,
+        "volume": 6583000,
+        "avg_volume": 877050,
+        "vol_ratio": 7.51,
+        "prior_change_percent": -0.24,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 36,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "7547",
+        "name": "碩網",
+        "close": 76.3,
+        "open": 69.0,
+        "high": 76.3,
+        "low": 68.7,
+        "diff": 6.9,
+        "change_percent": 9.94,
+        "volume": 1573000,
+        "avg_volume": 236400,
+        "vol_ratio": 6.65,
+        "prior_change_percent": 4.05,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3713",
+        "name": "新晶投控",
+        "close": 18.25,
+        "open": 16.9,
+        "high": 18.25,
+        "low": 16.9,
+        "diff": 1.65,
+        "change_percent": 9.94,
+        "volume": 572000,
+        "avg_volume": 98500,
+        "vol_ratio": 5.81,
+        "prior_change_percent": -2.92,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 12,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群12檔同步走強"
+        ]
+    }
+]

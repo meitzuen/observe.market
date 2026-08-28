@@ -1,0 +1,45 @@
+[
+    {
+        "id": "3287",
+        "name": "廣寰科",
+        "close": 36.3,
+        "open": 33.1,
+        "high": 36.3,
+        "low": 33.1,
+        "diff": 3.3,
+        "change_percent": 10.0,
+        "volume": 2835000,
+        "avg_volume": 361750,
+        "vol_ratio": 7.84,
+        "prior_change_percent": 1.23,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2070",
+        "name": "精湛",
+        "close": 82.4,
+        "open": 79.0,
+        "high": 82.9,
+        "low": 77.0,
+        "diff": 7.0,
+        "change_percent": 9.28,
+        "volume": 11257000,
+        "avg_volume": 1752750,
+        "vol_ratio": 6.42,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 46,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群46檔同步走強"
+        ]
+    }
+]

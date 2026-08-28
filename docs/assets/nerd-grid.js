@@ -116,7 +116,10 @@
     },
     {
       label: "當沖仔",
-      items: [{ href: "day-trade-calculator.html", label: "當沖計算機" }],
+      items: [
+        { href: "day-trade-calculator.html", label: "當沖計算機" },
+        { href: "xiaoge-strategy.html", label: "小哥策略" },
+      ],
     },
   ];
 

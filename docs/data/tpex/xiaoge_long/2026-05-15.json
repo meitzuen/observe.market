@@ -1,0 +1,67 @@
+[
+    {
+        "id": "8044",
+        "name": "網家",
+        "close": 25.55,
+        "open": 23.95,
+        "high": 25.55,
+        "low": 23.5,
+        "diff": 2.3,
+        "change_percent": 9.89,
+        "volume": 3525000,
+        "avg_volume": 571250,
+        "vol_ratio": 6.17,
+        "prior_change_percent": 0.87,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 13,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群13檔同步走強"
+        ]
+    },
+    {
+        "id": "5227",
+        "name": "立凱-KY",
+        "close": 23.25,
+        "open": 22.7,
+        "high": 23.95,
+        "low": 22.7,
+        "diff": 1.45,
+        "change_percent": 6.65,
+        "volume": 953000,
+        "avg_volume": 156650,
+        "vol_ratio": 6.08,
+        "prior_change_percent": 5.83,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 61,
+        "tags": [
+            "創20日新高",
+            "同族群61檔同步走強"
+        ]
+    },
+    {
+        "id": "4168",
+        "name": "醣聯",
+        "close": 24.5,
+        "open": 22.65,
+        "high": 24.9,
+        "low": 22.65,
+        "diff": 1.85,
+        "change_percent": 8.17,
+        "volume": 1066000,
+        "avg_volume": 203600,
+        "vol_ratio": 5.24,
+        "prior_change_percent": -0.22,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    }
+]

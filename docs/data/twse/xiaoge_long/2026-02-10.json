@@ -1,0 +1,45 @@
+[
+    {
+        "id": "2460",
+        "name": "建通",
+        "close": 25.0,
+        "open": 23.8,
+        "high": 25.0,
+        "low": 23.2,
+        "diff": 2.25,
+        "change_percent": 9.89,
+        "volume": 2490042,
+        "avg_volume": 403874,
+        "vol_ratio": 6.17,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    },
+    {
+        "id": "9942",
+        "name": "茂順",
+        "close": 120.5,
+        "open": 114.0,
+        "high": 120.5,
+        "low": 114.0,
+        "diff": 8.5,
+        "change_percent": 7.59,
+        "volume": 608259,
+        "avg_volume": 120403,
+        "vol_ratio": 5.05,
+        "prior_change_percent": 0.45,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

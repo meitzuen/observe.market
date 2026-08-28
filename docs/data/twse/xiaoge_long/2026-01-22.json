@@ -1,0 +1,175 @@
+[
+    {
+        "id": "6202",
+        "name": "盛群",
+        "close": 44.2,
+        "open": 40.35,
+        "high": 44.2,
+        "low": 40.35,
+        "diff": 4.0,
+        "change_percent": 9.95,
+        "volume": 8349436,
+        "avg_volume": 840145,
+        "vol_ratio": 9.94,
+        "prior_change_percent": 1.01,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 103,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群103檔同步走強"
+        ]
+    },
+    {
+        "id": "3257",
+        "name": "虹冠電",
+        "close": 71.8,
+        "open": 69.2,
+        "high": 73.9,
+        "low": 69.2,
+        "diff": 4.3,
+        "change_percent": 6.37,
+        "volume": 4487228,
+        "avg_volume": 581751,
+        "vol_ratio": 7.71,
+        "prior_change_percent": -2.32,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    },
+    {
+        "id": "6142",
+        "name": "友勁",
+        "close": 10.95,
+        "open": 10.1,
+        "high": 10.95,
+        "low": 10.0,
+        "diff": 0.96,
+        "change_percent": 9.61,
+        "volume": 5385361,
+        "avg_volume": 767386,
+        "vol_ratio": 7.02,
+        "prior_change_percent": -1.09,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2356",
+        "name": "英業達",
+        "close": 51.2,
+        "open": 48.65,
+        "high": 51.2,
+        "low": 48.0,
+        "diff": 4.65,
+        "change_percent": 9.99,
+        "volume": 141656409,
+        "avg_volume": 21659789,
+        "vol_ratio": 6.54,
+        "prior_change_percent": 3.91,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 98,
+        "tags": [
+            "創20日新高",
+            "同族群98檔同步走強"
+        ]
+    },
+    {
+        "id": "4588",
+        "name": "玖鼎電力",
+        "close": 74.0,
+        "open": 69.9,
+        "high": 76.1,
+        "low": 69.9,
+        "diff": 4.8,
+        "change_percent": 6.94,
+        "volume": 1587665,
+        "avg_volume": 253947,
+        "vol_ratio": 6.25,
+        "prior_change_percent": 1.62,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    },
+    {
+        "id": "2444",
+        "name": "兆勁",
+        "close": 15.0,
+        "open": 13.8,
+        "high": 15.0,
+        "low": 13.6,
+        "diff": 1.35,
+        "change_percent": 9.89,
+        "volume": 5805987,
+        "avg_volume": 1017258,
+        "vol_ratio": 5.71,
+        "prior_change_percent": 9.64,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3338",
+        "name": "泰碩",
+        "close": 56.5,
+        "open": 52.8,
+        "high": 56.5,
+        "low": 52.8,
+        "diff": 5.1,
+        "change_percent": 9.92,
+        "volume": 2567554,
+        "avg_volume": 453566,
+        "vol_ratio": 5.66,
+        "prior_change_percent": 0.78,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    },
+    {
+        "id": "5471",
+        "name": "松翰",
+        "close": 36.85,
+        "open": 34.85,
+        "high": 37.3,
+        "low": 34.55,
+        "diff": 2.3,
+        "change_percent": 6.66,
+        "volume": 2220691,
+        "avg_volume": 413883,
+        "vol_ratio": 5.37,
+        "prior_change_percent": 1.92,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 97,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群97檔同步走強"
+        ]
+    }
+]

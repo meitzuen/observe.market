@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3310",
+        "name": "佳穎",
+        "close": 83.9,
+        "open": 77.9,
+        "high": 83.9,
+        "low": 76.7,
+        "diff": 7.6,
+        "change_percent": 9.96,
+        "volume": 1854000,
+        "avg_volume": 118950,
+        "vol_ratio": 15.59,
+        "prior_change_percent": 1.06,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 39,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群39檔同步走強"
+        ]
+    }
+]

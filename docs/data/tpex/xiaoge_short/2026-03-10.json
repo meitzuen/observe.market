@@ -1,0 +1,96 @@
+[
+    {
+        "id": "8908",
+        "name": "欣雄",
+        "close": 44.1,
+        "open": 44.1,
+        "high": 44.1,
+        "low": 44.1,
+        "diff": -4.85,
+        "change_percent": -9.91,
+        "volume": 556000,
+        "prior_change_percent": 10.0,
+        "gap_open_percent": -9.91,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "6508",
+        "name": "惠光",
+        "close": 26.65,
+        "open": 26.9,
+        "high": 27.25,
+        "low": 26.05,
+        "diff": -2.25,
+        "change_percent": -7.79,
+        "volume": 606000,
+        "prior_change_percent": 9.89,
+        "gap_open_percent": -6.92,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.62,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "3093",
+        "name": "港建*",
+        "close": 33.05,
+        "open": 34.0,
+        "high": 35.0,
+        "low": 32.3,
+        "diff": -0.95,
+        "change_percent": -2.79,
+        "volume": 5758000,
+        "prior_change_percent": 8.97,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "4973",
+        "name": "廣穎",
+        "close": 50.6,
+        "open": 49.45,
+        "high": 50.6,
+        "low": 49.25,
+        "diff": 4.55,
+        "change_percent": 9.88,
+        "volume": 4934000,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": 7.38,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

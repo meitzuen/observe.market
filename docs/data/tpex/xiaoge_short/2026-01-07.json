@@ -1,0 +1,163 @@
+[
+    {
+        "id": "6190",
+        "name": "萬泰科",
+        "close": 47.25,
+        "open": 46.8,
+        "high": 47.4,
+        "low": 46.15,
+        "diff": -0.15,
+        "change_percent": -0.32,
+        "volume": 7476000,
+        "prior_change_percent": 8.72,
+        "gap_open_percent": -1.27,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.87,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "5220",
+        "name": "萬達光電",
+        "close": 18.1,
+        "open": 19.6,
+        "high": 19.6,
+        "low": 18.1,
+        "diff": -1.35,
+        "change_percent": -6.94,
+        "volume": 566000,
+        "prior_change_percent": 9.89,
+        "gap_open_percent": 0.77,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "5245",
+        "name": "智晶",
+        "close": 29.65,
+        "open": 28.95,
+        "high": 30.3,
+        "low": 27.75,
+        "diff": 1.4,
+        "change_percent": 4.96,
+        "volume": 2305000,
+        "prior_change_percent": 9.92,
+        "gap_open_percent": 2.48,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.62,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "6113",
+        "name": "亞矽",
+        "close": 21.3,
+        "open": 22.65,
+        "high": 22.9,
+        "low": 21.2,
+        "diff": -0.6,
+        "change_percent": -2.74,
+        "volume": 1709000,
+        "prior_change_percent": 9.77,
+        "gap_open_percent": 3.42,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.82,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "6167",
+        "name": "久正",
+        "close": 12.5,
+        "open": 12.65,
+        "high": 13.35,
+        "low": 12.5,
+        "diff": 0.35,
+        "change_percent": 2.88,
+        "volume": 3714000,
+        "prior_change_percent": 9.95,
+        "gap_open_percent": 4.12,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "5291",
+        "name": "邑昇",
+        "close": 35.1,
+        "open": 35.8,
+        "high": 37.45,
+        "low": 34.65,
+        "diff": 1.0,
+        "change_percent": 2.93,
+        "volume": 2893000,
+        "prior_change_percent": 10.0,
+        "gap_open_percent": 4.99,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.63,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "3630",
+        "name": "新鉅科",
+        "close": 31.5,
+        "open": 31.8,
+        "high": 32.0,
+        "low": 29.55,
+        "diff": 1.95,
+        "change_percent": 6.6,
+        "volume": 7419000,
+        "prior_change_percent": 9.85,
+        "gap_open_percent": 7.61,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.87,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

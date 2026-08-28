@@ -1,0 +1,88 @@
+[
+    {
+        "id": "3508",
+        "name": "位速",
+        "close": 26.55,
+        "open": 25.4,
+        "high": 26.55,
+        "low": 25.4,
+        "diff": 2.4,
+        "change_percent": 9.94,
+        "volume": 1355000,
+        "avg_volume": 153000,
+        "vol_ratio": 8.86,
+        "prior_change_percent": 2.55,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "3521",
+        "name": "鴻翊",
+        "close": 16.15,
+        "open": 14.6,
+        "high": 16.15,
+        "low": 14.6,
+        "diff": 1.45,
+        "change_percent": 9.86,
+        "volume": 1298000,
+        "avg_volume": 171850,
+        "vol_ratio": 7.55,
+        "prior_change_percent": -2.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "9950",
+        "name": "萬國通",
+        "close": 11.65,
+        "open": 10.6,
+        "high": 11.65,
+        "low": 10.6,
+        "diff": 1.05,
+        "change_percent": 9.91,
+        "volume": 540000,
+        "avg_volume": 84950,
+        "vol_ratio": 6.36,
+        "prior_change_percent": 0.47,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3555",
+        "name": "博士旺",
+        "close": 123.0,
+        "open": 120.0,
+        "high": 123.0,
+        "low": 116.0,
+        "diff": 11.0,
+        "change_percent": 9.82,
+        "volume": 2005000,
+        "avg_volume": 363350,
+        "vol_ratio": 5.52,
+        "prior_change_percent": 9.8,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    }
+]

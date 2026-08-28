@@ -1,0 +1,153 @@
+[
+    {
+        "id": "6821",
+        "name": "聯寶",
+        "close": 61.0,
+        "open": 56.5,
+        "high": 61.4,
+        "low": 56.2,
+        "diff": 5.1,
+        "change_percent": 9.12,
+        "volume": 7064000,
+        "avg_volume": 468650,
+        "vol_ratio": 15.07,
+        "prior_change_percent": 9.82,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3710",
+        "name": "連展投控",
+        "close": 7.09,
+        "open": 6.6,
+        "high": 7.09,
+        "low": 6.45,
+        "diff": 0.64,
+        "change_percent": 9.92,
+        "volume": 3052000,
+        "avg_volume": 326500,
+        "vol_ratio": 9.35,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 35,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群35檔同步走強"
+        ]
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 72.6,
+        "open": 67.6,
+        "high": 72.6,
+        "low": 67.6,
+        "diff": 6.6,
+        "change_percent": 10.0,
+        "volume": 2287000,
+        "avg_volume": 316800,
+        "vol_ratio": 7.22,
+        "prior_change_percent": 6.45,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "6588",
+        "name": "東典光電",
+        "close": 129.5,
+        "open": 121.0,
+        "high": 129.5,
+        "low": 115.5,
+        "diff": 11.5,
+        "change_percent": 9.75,
+        "volume": 13965000,
+        "avg_volume": 2163100,
+        "vol_ratio": 6.46,
+        "prior_change_percent": 9.77,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "4741",
+        "name": "泓瀚",
+        "close": 35.35,
+        "open": 31.65,
+        "high": 35.35,
+        "low": 31.45,
+        "diff": 3.2,
+        "change_percent": 9.95,
+        "volume": 3793000,
+        "avg_volume": 686300,
+        "vol_ratio": 5.53,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4971",
+        "name": "IET-KY",
+        "close": 635.0,
+        "open": 588.0,
+        "high": 635.0,
+        "low": 580.0,
+        "diff": 57.0,
+        "change_percent": 9.86,
+        "volume": 13768000,
+        "avg_volume": 2507400,
+        "vol_ratio": 5.49,
+        "prior_change_percent": 9.89,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    },
+    {
+        "id": "4707",
+        "name": "磐亞",
+        "close": 11.65,
+        "open": 10.6,
+        "high": 11.65,
+        "low": 10.6,
+        "diff": 1.05,
+        "change_percent": 9.91,
+        "volume": 4195000,
+        "avg_volume": 770750,
+        "vol_ratio": 5.44,
+        "prior_change_percent": 0.47,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

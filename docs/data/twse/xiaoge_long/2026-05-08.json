@@ -1,0 +1,89 @@
+[
+    {
+        "id": "5607",
+        "name": "遠雄港",
+        "close": 51.9,
+        "open": 50.0,
+        "high": 52.6,
+        "low": 50.0,
+        "diff": 3.6,
+        "change_percent": 7.45,
+        "volume": 2757481,
+        "avg_volume": 387241,
+        "vol_ratio": 7.12,
+        "prior_change_percent": 1.47,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "2491",
+        "name": "吉祥全",
+        "close": 21.1,
+        "open": 18.8,
+        "high": 21.1,
+        "low": 18.8,
+        "diff": 1.9,
+        "change_percent": 9.9,
+        "volume": 2414190,
+        "avg_volume": 394401,
+        "vol_ratio": 6.12,
+        "prior_change_percent": 0.79,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3596",
+        "name": "智易",
+        "close": 178.0,
+        "open": 169.0,
+        "high": 178.0,
+        "low": 168.0,
+        "diff": 10.5,
+        "change_percent": 6.27,
+        "volume": 6662872,
+        "avg_volume": 1214117,
+        "vol_ratio": 5.49,
+        "prior_change_percent": -0.89,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "6834",
+        "name": "天二科技",
+        "close": 48.1,
+        "open": 48.0,
+        "high": 48.1,
+        "low": 45.8,
+        "diff": 4.35,
+        "change_percent": 9.94,
+        "volume": 5906614,
+        "avg_volume": 1169710,
+        "vol_ratio": 5.05,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 54,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群54檔同步走強"
+        ]
+    }
+]

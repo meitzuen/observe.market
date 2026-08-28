@@ -1,0 +1,45 @@
+[
+    {
+        "id": "6588",
+        "name": "東典光電",
+        "close": 89.6,
+        "open": 85.5,
+        "high": 89.6,
+        "low": 78.1,
+        "diff": 8.1,
+        "change_percent": 9.94,
+        "volume": 4458000,
+        "avg_volume": 547100,
+        "vol_ratio": 8.15,
+        "prior_change_percent": 9.99,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 30,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "同族群30檔同步走強"
+        ]
+    },
+    {
+        "id": "1799",
+        "name": "易威",
+        "close": 39.3,
+        "open": 37.85,
+        "high": 39.3,
+        "low": 36.05,
+        "diff": 3.55,
+        "change_percent": 9.93,
+        "volume": 909000,
+        "avg_volume": 142050,
+        "vol_ratio": 6.4,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    }
+]

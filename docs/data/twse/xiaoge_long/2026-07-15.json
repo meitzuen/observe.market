@@ -1,0 +1,87 @@
+[
+    {
+        "id": "2248",
+        "name": "華勝-KY",
+        "close": 66.0,
+        "open": 62.7,
+        "high": 66.0,
+        "low": 61.4,
+        "diff": 4.6,
+        "change_percent": 7.49,
+        "volume": 936599,
+        "avg_volume": 113696,
+        "vol_ratio": 8.24,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1810",
+        "name": "和成",
+        "close": 31.1,
+        "open": 29.2,
+        "high": 31.65,
+        "low": 27.7,
+        "diff": 2.3,
+        "change_percent": 7.99,
+        "volume": 65263645,
+        "avg_volume": 11154825,
+        "vol_ratio": 5.85,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 15,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群15檔同步走強"
+        ]
+    },
+    {
+        "id": "6598",
+        "name": "ABC-KY",
+        "close": 26.15,
+        "open": 24.05,
+        "high": 26.15,
+        "low": 24.0,
+        "diff": 2.35,
+        "change_percent": 9.87,
+        "volume": 919225,
+        "avg_volume": 175572,
+        "vol_ratio": 5.24,
+        "prior_change_percent": -4.23,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3033",
+        "name": "威健",
+        "close": 55.6,
+        "open": 51.4,
+        "high": 55.6,
+        "low": 51.3,
+        "diff": 5.0,
+        "change_percent": 9.88,
+        "volume": 37719657,
+        "avg_volume": 7278768,
+        "vol_ratio": 5.18,
+        "prior_change_percent": -0.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 127,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群127檔同步走強"
+        ]
+    }
+]

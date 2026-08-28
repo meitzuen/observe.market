@@ -1,0 +1,24 @@
+[
+    {
+        "id": "8045",
+        "name": "達運光電",
+        "close": 66.5,
+        "open": 66.4,
+        "high": 67.4,
+        "low": 63.5,
+        "diff": 5.2,
+        "change_percent": 8.48,
+        "volume": 1865936,
+        "avg_volume": 189792,
+        "vol_ratio": 9.83,
+        "prior_change_percent": 9.86,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 45,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群45檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,132 @@
+[
+    {
+        "id": "6277",
+        "name": "宏正",
+        "close": 65.4,
+        "open": 60.4,
+        "high": 65.4,
+        "low": 60.2,
+        "diff": 5.9,
+        "change_percent": 9.92,
+        "volume": 912911,
+        "avg_volume": 99947,
+        "vol_ratio": 9.13,
+        "prior_change_percent": 0.85,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "1904",
+        "name": "正隆",
+        "close": 20.15,
+        "open": 19.0,
+        "high": 20.4,
+        "low": 19.0,
+        "diff": 1.35,
+        "change_percent": 7.18,
+        "volume": 12020924,
+        "avg_volume": 1718926,
+        "vol_ratio": 6.99,
+        "prior_change_percent": 0.8,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "5292",
+        "name": "華懋",
+        "close": 234.5,
+        "open": 231.0,
+        "high": 240.5,
+        "low": 223.0,
+        "diff": 14.5,
+        "change_percent": 6.59,
+        "volume": 1746205,
+        "avg_volume": 256261,
+        "vol_ratio": 6.81,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "2231",
+        "name": "為升",
+        "close": 114.0,
+        "open": 107.0,
+        "high": 114.0,
+        "low": 103.0,
+        "diff": 10.0,
+        "change_percent": 9.62,
+        "volume": 3725284,
+        "avg_volume": 606230,
+        "vol_ratio": 6.14,
+        "prior_change_percent": 4.63,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 55,
+        "tags": [
+            "創20日新高",
+            "同族群55檔同步走強"
+        ]
+    },
+    {
+        "id": "2419",
+        "name": "仲琦",
+        "close": 33.25,
+        "open": 30.5,
+        "high": 33.25,
+        "low": 30.5,
+        "diff": 3.0,
+        "change_percent": 9.92,
+        "volume": 20348205,
+        "avg_volume": 3315370,
+        "vol_ratio": 6.14,
+        "prior_change_percent": 4.49,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 25,
+        "tags": [
+            "創20日新高",
+            "同族群25檔同步走強"
+        ]
+    },
+    {
+        "id": "4576",
+        "name": "大銀微系統",
+        "close": 137.5,
+        "open": 132.5,
+        "high": 141.0,
+        "low": 124.5,
+        "diff": 8.5,
+        "change_percent": 6.59,
+        "volume": 8001181,
+        "avg_volume": 1423274,
+        "vol_ratio": 5.62,
+        "prior_change_percent": 8.4,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

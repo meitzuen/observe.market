@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3178",
+        "name": "公準",
+        "close": 70.7,
+        "open": 64.3,
+        "high": 70.7,
+        "low": 64.3,
+        "diff": 6.4,
+        "change_percent": 9.95,
+        "volume": 695000,
+        "avg_volume": 97450,
+        "vol_ratio": 7.13,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    }
+]

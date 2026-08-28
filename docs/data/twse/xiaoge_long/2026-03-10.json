@@ -1,0 +1,88 @@
+[
+    {
+        "id": "9136",
+        "name": "巨騰-DR",
+        "close": 9.25,
+        "open": 8.89,
+        "high": 9.25,
+        "low": 8.85,
+        "diff": 0.84,
+        "change_percent": 9.99,
+        "volume": 8049616,
+        "avg_volume": 397698,
+        "vol_ratio": 20.24,
+        "prior_change_percent": 2.69,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 119,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群119檔同步走強"
+        ]
+    },
+    {
+        "id": "1589",
+        "name": "永冠-KY",
+        "close": 7.31,
+        "open": 5.99,
+        "high": 7.31,
+        "low": 5.99,
+        "diff": 0.66,
+        "change_percent": 9.92,
+        "volume": 9205657,
+        "avg_volume": 690675,
+        "vol_ratio": 13.33,
+        "prior_change_percent": -9.89,
+        "prior_pattern": "big_black",
+        "is_new_high": false,
+        "peer_strong_count": 40,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "同族群40檔同步走強"
+        ]
+    },
+    {
+        "id": "6206",
+        "name": "飛捷",
+        "close": 101.5,
+        "open": 98.5,
+        "high": 102.5,
+        "low": 97.0,
+        "diff": 8.0,
+        "change_percent": 8.56,
+        "volume": 4223872,
+        "avg_volume": 553374,
+        "vol_ratio": 7.63,
+        "prior_change_percent": -0.95,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 30,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群30檔同步走強"
+        ]
+    },
+    {
+        "id": "3054",
+        "name": "立萬利",
+        "close": 54.4,
+        "open": 54.1,
+        "high": 54.4,
+        "low": 50.6,
+        "diff": 4.9,
+        "change_percent": 9.9,
+        "volume": 2299722,
+        "avg_volume": 327662,
+        "vol_ratio": 7.02,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1906",
+        "name": "寶隆",
+        "close": 13.9,
+        "open": 13.55,
+        "high": 13.9,
+        "low": 13.3,
+        "diff": 1.25,
+        "change_percent": 9.88,
+        "volume": 2200608,
+        "avg_volume": 249943,
+        "vol_ratio": 8.8,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1324",
+        "name": "地球",
+        "close": 11.95,
+        "open": 10.9,
+        "high": 11.95,
+        "low": 10.9,
+        "diff": 1.05,
+        "change_percent": 9.63,
+        "volume": 871857,
+        "avg_volume": 149197,
+        "vol_ratio": 5.84,
+        "prior_change_percent": 2.83,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

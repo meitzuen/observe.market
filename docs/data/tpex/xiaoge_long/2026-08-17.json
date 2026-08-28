@@ -1,0 +1,68 @@
+[
+    {
+        "id": "3388",
+        "name": "崇越電",
+        "close": 92.2,
+        "open": 91.7,
+        "high": 92.2,
+        "low": 90.0,
+        "diff": 8.3,
+        "change_percent": 9.89,
+        "volume": 9577000,
+        "avg_volume": 686650,
+        "vol_ratio": 13.95,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 25,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群25檔同步走強"
+        ]
+    },
+    {
+        "id": "6727",
+        "name": "亞泰金屬",
+        "close": 475.0,
+        "open": 440.0,
+        "high": 475.0,
+        "low": 430.0,
+        "diff": 43.0,
+        "change_percent": 9.95,
+        "volume": 3393000,
+        "avg_volume": 551250,
+        "vol_ratio": 6.16,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    },
+    {
+        "id": "6218",
+        "name": "豪勉",
+        "close": 37.95,
+        "open": 36.2,
+        "high": 38.5,
+        "low": 35.55,
+        "diff": 2.35,
+        "change_percent": 6.6,
+        "volume": 2176000,
+        "avg_volume": 416750,
+        "vol_ratio": 5.22,
+        "prior_change_percent": -0.28,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 18.75,
+        "open": 17.75,
+        "high": 18.75,
+        "low": 17.25,
+        "diff": 1.7,
+        "change_percent": 9.97,
+        "volume": 4609000,
+        "avg_volume": 320150,
+        "vol_ratio": 14.4,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "3288",
+        "name": "點晶",
+        "close": 29.3,
+        "open": 27.3,
+        "high": 29.3,
+        "low": 26.65,
+        "diff": 2.65,
+        "change_percent": 9.94,
+        "volume": 590000,
+        "avg_volume": 74650,
+        "vol_ratio": 7.9,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    }
+]

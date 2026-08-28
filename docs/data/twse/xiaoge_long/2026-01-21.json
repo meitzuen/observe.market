@@ -1,0 +1,281 @@
+[
+    {
+        "id": "1473",
+        "name": "台南",
+        "close": 27.1,
+        "open": 24.35,
+        "high": 27.1,
+        "low": 24.35,
+        "diff": 2.45,
+        "change_percent": 9.94,
+        "volume": 2793171,
+        "avg_volume": 121893,
+        "vol_ratio": 22.91,
+        "prior_change_percent": 1.86,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "3704",
+        "name": "合勤控",
+        "close": 39.65,
+        "open": 37.1,
+        "high": 39.65,
+        "low": 36.8,
+        "diff": 3.6,
+        "change_percent": 9.99,
+        "volume": 50333615,
+        "avg_volume": 3257096,
+        "vol_ratio": 15.45,
+        "prior_change_percent": 4.8,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "3043",
+        "name": "科風",
+        "close": 24.9,
+        "open": 22.65,
+        "high": 24.9,
+        "low": 22.6,
+        "diff": 2.25,
+        "change_percent": 9.93,
+        "volume": 1610600,
+        "avg_volume": 141609,
+        "vol_ratio": 11.37,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "8162",
+        "name": "微矽電子-創",
+        "close": 38.9,
+        "open": 35.4,
+        "high": 38.9,
+        "low": 35.05,
+        "diff": 3.5,
+        "change_percent": 9.89,
+        "volume": 995693,
+        "avg_volume": 91783,
+        "vol_ratio": 10.85,
+        "prior_change_percent": -1.39,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    },
+    {
+        "id": "6753",
+        "name": "龍德造船",
+        "close": 161.5,
+        "open": 148.0,
+        "high": 161.5,
+        "low": 142.0,
+        "diff": 14.5,
+        "change_percent": 9.86,
+        "volume": 17130583,
+        "avg_volume": 1862918,
+        "vol_ratio": 9.2,
+        "prior_change_percent": 9.7,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "1529",
+        "name": "樂事綠能",
+        "close": 25.6,
+        "open": 24.25,
+        "high": 26.4,
+        "low": 24.15,
+        "diff": 1.6,
+        "change_percent": 6.67,
+        "volume": 15659985,
+        "avg_volume": 2053574,
+        "vol_ratio": 7.63,
+        "prior_change_percent": 5.03,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 7,
+        "tags": [
+            "創20日新高",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "1337",
+        "name": "再生-KY",
+        "close": 5.33,
+        "open": 4.85,
+        "high": 5.33,
+        "low": 4.85,
+        "diff": 0.48,
+        "change_percent": 9.9,
+        "volume": 2078923,
+        "avg_volume": 286354,
+        "vol_ratio": 7.26,
+        "prior_change_percent": -0.82,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 32,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群32檔同步走強"
+        ]
+    },
+    {
+        "id": "6573",
+        "name": "虹揚-KY",
+        "close": 17.25,
+        "open": 15.65,
+        "high": 17.45,
+        "low": 15.05,
+        "diff": 1.35,
+        "change_percent": 8.49,
+        "volume": 2276958,
+        "avg_volume": 326158,
+        "vol_ratio": 6.98,
+        "prior_change_percent": 3.58,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "4426",
+        "name": "利勤",
+        "close": 10.0,
+        "open": 9.07,
+        "high": 10.0,
+        "low": 9.07,
+        "diff": 0.9,
+        "change_percent": 9.89,
+        "volume": 1070811,
+        "avg_volume": 157497,
+        "vol_ratio": 6.8,
+        "prior_change_percent": -0.33,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "2302",
+        "name": "麗正",
+        "close": 21.35,
+        "open": 20.3,
+        "high": 22.0,
+        "low": 19.95,
+        "diff": 1.3,
+        "change_percent": 6.48,
+        "volume": 7441906,
+        "avg_volume": 1133973,
+        "vol_ratio": 6.56,
+        "prior_change_percent": -2.2,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8201",
+        "name": "無敵",
+        "close": 15.75,
+        "open": 14.35,
+        "high": 15.75,
+        "low": 14.35,
+        "diff": 1.4,
+        "change_percent": 9.76,
+        "volume": 996210,
+        "avg_volume": 183133,
+        "vol_ratio": 5.44,
+        "prior_change_percent": 1.41,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2457",
+        "name": "飛宏",
+        "close": 37.0,
+        "open": 34.0,
+        "high": 37.0,
+        "low": 33.25,
+        "diff": 3.35,
+        "change_percent": 9.96,
+        "volume": 71697002,
+        "avg_volume": 13397257,
+        "vol_ratio": 5.35,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "3016",
+        "name": "嘉晶",
+        "close": 72.6,
+        "open": 68.2,
+        "high": 72.6,
+        "low": 66.3,
+        "diff": 6.6,
+        "change_percent": 10.0,
+        "volume": 36059396,
+        "avg_volume": 6742350,
+        "vol_ratio": 5.35,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    }
+]

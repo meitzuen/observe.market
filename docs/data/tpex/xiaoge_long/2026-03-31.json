@@ -1,0 +1,45 @@
+[
+    {
+        "id": "3552",
+        "name": "同致",
+        "close": 57.7,
+        "open": 52.5,
+        "high": 57.7,
+        "low": 52.3,
+        "diff": 5.2,
+        "change_percent": 9.9,
+        "volume": 1941000,
+        "avg_volume": 206150,
+        "vol_ratio": 9.42,
+        "prior_change_percent": 9.83,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "3205",
+        "name": "佰研",
+        "close": 62.5,
+        "open": 56.3,
+        "high": 62.5,
+        "low": 55.9,
+        "diff": 5.6,
+        "change_percent": 9.84,
+        "volume": 2997000,
+        "avg_volume": 346400,
+        "vol_ratio": 8.65,
+        "prior_change_percent": 0.71,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

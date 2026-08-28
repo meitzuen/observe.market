@@ -1,0 +1,141 @@
+[
+    {
+        "id": "2484",
+        "name": "希華",
+        "close": 69.2,
+        "open": 76.8,
+        "high": 77.2,
+        "low": 69.2,
+        "diff": -7.6,
+        "change_percent": -9.9,
+        "volume": 63268906,
+        "prior_change_percent": 9.87,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "2483",
+        "name": "百容",
+        "close": 55.7,
+        "open": 55.7,
+        "high": 58.3,
+        "low": 53.3,
+        "diff": 0.0,
+        "change_percent": 0.0,
+        "volume": 25252090,
+        "prior_change_percent": 9.86,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "7795",
+        "name": "長廣",
+        "close": 506.0,
+        "open": 470.0,
+        "high": 506.0,
+        "low": 461.0,
+        "diff": 45.5,
+        "change_percent": 9.88,
+        "volume": 825062,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": 2.06,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.94,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "2906",
+        "name": "高林",
+        "close": 15.6,
+        "open": 14.95,
+        "high": 15.6,
+        "low": 14.8,
+        "diff": 1.4,
+        "change_percent": 9.86,
+        "volume": 5362833,
+        "prior_change_percent": 9.65,
+        "gap_open_percent": 5.28,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.51,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 20.05,
+        "open": 19.35,
+        "high": 20.05,
+        "low": 18.45,
+        "diff": 1.8,
+        "change_percent": 9.86,
+        "volume": 28664751,
+        "prior_change_percent": 9.94,
+        "gap_open_percent": 6.03,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.54,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "1718",
+        "name": "中纖",
+        "close": 12.25,
+        "open": 11.85,
+        "high": 12.25,
+        "low": 11.85,
+        "diff": 1.1,
+        "change_percent": 9.87,
+        "volume": 33754509,
+        "prior_change_percent": 9.85,
+        "gap_open_percent": 6.28,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.08,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

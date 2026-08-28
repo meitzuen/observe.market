@@ -1,0 +1,24 @@
+[
+    {
+        "id": "6214",
+        "name": "精誠",
+        "close": 154.0,
+        "open": 148.0,
+        "high": 154.5,
+        "low": 148.0,
+        "diff": 10.5,
+        "change_percent": 7.32,
+        "volume": 8853471,
+        "avg_volume": 1688886,
+        "vol_ratio": 5.24,
+        "prior_change_percent": -0.35,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 147,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群147檔同步走強"
+        ]
+    }
+]

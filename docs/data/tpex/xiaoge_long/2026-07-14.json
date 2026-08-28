@@ -1,0 +1,132 @@
+[
+    {
+        "id": "8421",
+        "name": "旭源",
+        "close": 16.85,
+        "open": 16.8,
+        "high": 16.85,
+        "low": 15.45,
+        "diff": 1.5,
+        "change_percent": 9.77,
+        "volume": 2970000,
+        "avg_volume": 162750,
+        "vol_ratio": 18.25,
+        "prior_change_percent": 9.25,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6130",
+        "name": "上亞科技",
+        "close": 28.6,
+        "open": 26.0,
+        "high": 28.6,
+        "low": 25.7,
+        "diff": 2.6,
+        "change_percent": 10.0,
+        "volume": 2131000,
+        "avg_volume": 210650,
+        "vol_ratio": 10.12,
+        "prior_change_percent": -0.76,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    },
+    {
+        "id": "1336",
+        "name": "台翰",
+        "close": 15.95,
+        "open": 15.35,
+        "high": 15.95,
+        "low": 14.85,
+        "diff": 1.45,
+        "change_percent": 10.0,
+        "volume": 1585000,
+        "avg_volume": 252050,
+        "vol_ratio": 6.29,
+        "prior_change_percent": 1.05,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 27,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群27檔同步走強"
+        ]
+    },
+    {
+        "id": "7714",
+        "name": "創泓科技",
+        "close": 202.0,
+        "open": 190.0,
+        "high": 202.0,
+        "low": 181.0,
+        "diff": 17.5,
+        "change_percent": 9.49,
+        "volume": 2294000,
+        "avg_volume": 372450,
+        "vol_ratio": 6.16,
+        "prior_change_percent": 6.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "6829",
+        "name": "千附精密",
+        "close": 256.5,
+        "open": 229.5,
+        "high": 256.5,
+        "low": 227.5,
+        "diff": 23.0,
+        "change_percent": 9.85,
+        "volume": 7751000,
+        "avg_volume": 1383150,
+        "vol_ratio": 5.6,
+        "prior_change_percent": 5.18,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "4556",
+        "name": "旭然",
+        "close": 120.5,
+        "open": 116.5,
+        "high": 122.0,
+        "low": 100.0,
+        "diff": 9.5,
+        "change_percent": 8.56,
+        "volume": 2754000,
+        "avg_volume": 543850,
+        "vol_ratio": 5.06,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    }
+]

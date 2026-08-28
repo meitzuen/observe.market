@@ -1,0 +1,65 @@
+[
+    {
+        "id": "4171",
+        "name": "瑞基",
+        "close": 18.4,
+        "open": 16.6,
+        "high": 18.4,
+        "low": 16.55,
+        "diff": 1.65,
+        "change_percent": 9.85,
+        "volume": 517000,
+        "avg_volume": 87450,
+        "vol_ratio": 5.91,
+        "prior_change_percent": -1.47,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 17.05,
+        "open": 15.3,
+        "high": 17.05,
+        "low": 15.05,
+        "diff": 1.55,
+        "change_percent": 10.0,
+        "volume": 1353000,
+        "avg_volume": 258050,
+        "vol_ratio": 5.24,
+        "prior_change_percent": 7.27,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "3297",
+        "name": "杭特",
+        "close": 32.35,
+        "open": 29.3,
+        "high": 32.35,
+        "low": 29.1,
+        "diff": 2.9,
+        "change_percent": 9.85,
+        "volume": 702000,
+        "avg_volume": 135000,
+        "vol_ratio": 5.2,
+        "prior_change_percent": -2.48,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    }
+]

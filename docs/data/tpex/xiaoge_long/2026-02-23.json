@@ -1,0 +1,68 @@
+[
+    {
+        "id": "6509",
+        "name": "聚和",
+        "close": 40.15,
+        "open": 40.0,
+        "high": 40.55,
+        "low": 38.8,
+        "diff": 2.45,
+        "change_percent": 6.5,
+        "volume": 8451000,
+        "avg_volume": 690450,
+        "vol_ratio": 12.24,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 19,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群19檔同步走強"
+        ]
+    },
+    {
+        "id": "6146",
+        "name": "耕興",
+        "close": 195.0,
+        "open": 186.0,
+        "high": 196.0,
+        "low": 186.0,
+        "diff": 16.5,
+        "change_percent": 9.24,
+        "volume": 1577000,
+        "avg_volume": 286650,
+        "vol_ratio": 5.5,
+        "prior_change_percent": -0.56,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 113,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群113檔同步走強"
+        ]
+    },
+    {
+        "id": "6894",
+        "name": "衛司特",
+        "close": 259.0,
+        "open": 243.5,
+        "high": 259.0,
+        "low": 243.5,
+        "diff": 23.5,
+        "change_percent": 9.98,
+        "volume": 559000,
+        "avg_volume": 105050,
+        "vol_ratio": 5.32,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    }
+]

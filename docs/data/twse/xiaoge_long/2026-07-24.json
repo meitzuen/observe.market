@@ -1,0 +1,23 @@
+[
+    {
+        "id": "3669",
+        "name": "圓展",
+        "close": 40.7,
+        "open": 37.1,
+        "high": 40.7,
+        "low": 37.0,
+        "diff": 3.7,
+        "change_percent": 10.0,
+        "volume": 2735032,
+        "avg_volume": 235362,
+        "vol_ratio": 11.62,
+        "prior_change_percent": 1.65,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

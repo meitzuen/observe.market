@@ -1,0 +1,156 @@
+[
+    {
+        "id": "8045",
+        "name": "達運光電",
+        "close": 87.6,
+        "open": 79.7,
+        "high": 87.6,
+        "low": 77.2,
+        "diff": 7.9,
+        "change_percent": 9.91,
+        "volume": 1773417,
+        "avg_volume": 206773,
+        "vol_ratio": 8.58,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    },
+    {
+        "id": "6202",
+        "name": "盛群",
+        "close": 48.4,
+        "open": 44.15,
+        "high": 48.4,
+        "low": 44.05,
+        "diff": 4.4,
+        "change_percent": 10.0,
+        "volume": 10004484,
+        "avg_volume": 1745138,
+        "vol_ratio": 5.73,
+        "prior_change_percent": -0.45,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 118,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群118檔同步走強"
+        ]
+    },
+    {
+        "id": "1444",
+        "name": "力麗",
+        "close": 6.82,
+        "open": 6.2,
+        "high": 6.82,
+        "low": 6.2,
+        "diff": 0.62,
+        "change_percent": 10.0,
+        "volume": 5797611,
+        "avg_volume": 1026379,
+        "vol_ratio": 5.65,
+        "prior_change_percent": 1.14,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 59,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群59檔同步走強"
+        ]
+    },
+    {
+        "id": "4585",
+        "name": "達明",
+        "close": 361.5,
+        "open": 340.0,
+        "high": 370.5,
+        "low": 338.5,
+        "diff": 24.5,
+        "change_percent": 7.27,
+        "volume": 2519762,
+        "avg_volume": 447272,
+        "vol_ratio": 5.63,
+        "prior_change_percent": 2.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    },
+    {
+        "id": "6133",
+        "name": "金橋",
+        "close": 25.5,
+        "open": 23.95,
+        "high": 25.5,
+        "low": 22.4,
+        "diff": 2.3,
+        "change_percent": 9.91,
+        "volume": 19741993,
+        "avg_volume": 3523627,
+        "vol_ratio": 5.6,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 78,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群78檔同步走強"
+        ]
+    },
+    {
+        "id": "4949",
+        "name": "有成精密",
+        "close": 49.7,
+        "open": 48.0,
+        "high": 49.7,
+        "low": 47.9,
+        "diff": 4.5,
+        "change_percent": 9.96,
+        "volume": 5532721,
+        "avg_volume": 1077348,
+        "vol_ratio": 5.14,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 21,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群21檔同步走強"
+        ]
+    },
+    {
+        "id": "3694",
+        "name": "海華",
+        "close": 67.1,
+        "open": 61.5,
+        "high": 67.1,
+        "low": 60.8,
+        "diff": 6.1,
+        "change_percent": 10.0,
+        "volume": 5726706,
+        "avg_volume": 1137766,
+        "vol_ratio": 5.03,
+        "prior_change_percent": -0.81,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 110,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群110檔同步走強"
+        ]
+    }
+]

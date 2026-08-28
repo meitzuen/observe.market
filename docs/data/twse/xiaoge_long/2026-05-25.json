@@ -1,0 +1,133 @@
+[
+    {
+        "id": "3021",
+        "name": "鴻名",
+        "close": 20.65,
+        "open": 19.5,
+        "high": 20.65,
+        "low": 19.5,
+        "diff": 1.85,
+        "change_percent": 9.84,
+        "volume": 2939616,
+        "avg_volume": 279388,
+        "vol_ratio": 10.52,
+        "prior_change_percent": 9.94,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 129,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群129檔同步走強"
+        ]
+    },
+    {
+        "id": "3168",
+        "name": "眾福科",
+        "close": 49.85,
+        "open": 45.6,
+        "high": 49.85,
+        "low": 45.5,
+        "diff": 4.5,
+        "change_percent": 9.92,
+        "volume": 501255,
+        "avg_volume": 58935,
+        "vol_ratio": 8.51,
+        "prior_change_percent": -0.98,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2014",
+        "name": "中鴻",
+        "close": 18.85,
+        "open": 17.4,
+        "high": 18.85,
+        "low": 17.4,
+        "diff": 1.7,
+        "change_percent": 9.91,
+        "volume": 27164241,
+        "avg_volume": 4766868,
+        "vol_ratio": 5.7,
+        "prior_change_percent": -0.58,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    },
+    {
+        "id": "3013",
+        "name": "晟銘電",
+        "close": 121.5,
+        "open": 113.5,
+        "high": 121.5,
+        "low": 113.0,
+        "diff": 11.0,
+        "change_percent": 9.95,
+        "volume": 19744095,
+        "avg_volume": 3479571,
+        "vol_ratio": 5.67,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 171,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群171檔同步走強"
+        ]
+    },
+    {
+        "id": "6906",
+        "name": "現觀科",
+        "close": 92.7,
+        "open": 90.2,
+        "high": 92.7,
+        "low": 85.5,
+        "diff": 8.4,
+        "change_percent": 9.96,
+        "volume": 1091793,
+        "avg_volume": 209894,
+        "vol_ratio": 5.2,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 80,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群80檔同步走強"
+        ]
+    },
+    {
+        "id": "1568",
+        "name": "倉佑",
+        "close": 31.95,
+        "open": 29.5,
+        "high": 31.95,
+        "low": 29.05,
+        "diff": 2.9,
+        "change_percent": 9.98,
+        "volume": 2240761,
+        "avg_volume": 442086,
+        "vol_ratio": 5.07,
+        "prior_change_percent": 2.11,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 26,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群26檔同步走強"
+        ]
+    }
+]

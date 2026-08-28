@@ -1,0 +1,68 @@
+[
+    {
+        "id": "3003",
+        "name": "健和興",
+        "close": 68.7,
+        "open": 64.5,
+        "high": 68.7,
+        "low": 64.5,
+        "diff": 6.2,
+        "change_percent": 9.92,
+        "volume": 4772263,
+        "avg_volume": 639575,
+        "vol_ratio": 7.46,
+        "prior_change_percent": 2.8,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 98,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群98檔同步走強"
+        ]
+    },
+    {
+        "id": "9934",
+        "name": "成霖",
+        "close": 12.0,
+        "open": 11.7,
+        "high": 12.0,
+        "low": 11.5,
+        "diff": 1.05,
+        "change_percent": 9.59,
+        "volume": 7763295,
+        "avg_volume": 1191950,
+        "vol_ratio": 6.51,
+        "prior_change_percent": 1.86,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    },
+    {
+        "id": "1455",
+        "name": "集盛",
+        "close": 9.9,
+        "open": 9.35,
+        "high": 9.9,
+        "low": 9.35,
+        "diff": 0.9,
+        "change_percent": 10.0,
+        "volume": 5146746,
+        "avg_volume": 908468,
+        "vol_ratio": 5.67,
+        "prior_change_percent": 1.35,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 55,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群55檔同步走強"
+        ]
+    }
+]

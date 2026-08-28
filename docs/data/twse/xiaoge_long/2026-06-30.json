@@ -1,0 +1,110 @@
+[
+    {
+        "id": "2634",
+        "name": "漢翔",
+        "close": 56.6,
+        "open": 52.2,
+        "high": 57.2,
+        "low": 52.0,
+        "diff": 4.6,
+        "change_percent": 8.85,
+        "volume": 65341206,
+        "avg_volume": 6423668,
+        "vol_ratio": 10.17,
+        "prior_change_percent": 5.69,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 109,
+        "tags": [
+            "創20日新高",
+            "同族群109檔同步走強"
+        ]
+    },
+    {
+        "id": "4532",
+        "name": "瑞智",
+        "close": 28.15,
+        "open": 27.35,
+        "high": 28.3,
+        "low": 26.8,
+        "diff": 2.0,
+        "change_percent": 7.65,
+        "volume": 17067787,
+        "avg_volume": 1703322,
+        "vol_ratio": 10.02,
+        "prior_change_percent": 9.87,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 166,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群166檔同步走強"
+        ]
+    },
+    {
+        "id": "8033",
+        "name": "雷虎",
+        "close": 169.5,
+        "open": 156.0,
+        "high": 169.5,
+        "low": 153.0,
+        "diff": 15.0,
+        "change_percent": 9.71,
+        "volume": 37042097,
+        "avg_volume": 3986735,
+        "vol_ratio": 9.29,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 77,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群77檔同步走強"
+        ]
+    },
+    {
+        "id": "6753",
+        "name": "龍德造船",
+        "close": 136.5,
+        "open": 128.0,
+        "high": 139.5,
+        "low": 127.5,
+        "diff": 8.0,
+        "change_percent": 6.23,
+        "volume": 5539298,
+        "avg_volume": 838597,
+        "vol_ratio": 6.61,
+        "prior_change_percent": 5.76,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    },
+    {
+        "id": "2630",
+        "name": "亞航",
+        "close": 48.85,
+        "open": 44.5,
+        "high": 48.85,
+        "low": 44.05,
+        "diff": 4.4,
+        "change_percent": 9.9,
+        "volume": 7685028,
+        "avg_volume": 1178128,
+        "vol_ratio": 6.52,
+        "prior_change_percent": 6.47,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 47,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群47檔同步走強"
+        ]
+    }
+]

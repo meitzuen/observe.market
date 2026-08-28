@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3577",
+        "name": "泓格",
+        "close": 157.0,
+        "open": 146.5,
+        "high": 157.0,
+        "low": 138.0,
+        "diff": 14.0,
+        "change_percent": 9.79,
+        "volume": 4753000,
+        "avg_volume": 719650,
+        "vol_ratio": 6.6,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 179,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群179檔同步走強"
+        ]
+    }
+]

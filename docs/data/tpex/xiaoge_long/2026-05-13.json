@@ -1,0 +1,175 @@
+[
+    {
+        "id": "6899",
+        "name": "創為精密",
+        "close": 65.3,
+        "open": 60.3,
+        "high": 65.3,
+        "low": 60.3,
+        "diff": 5.9,
+        "change_percent": 9.93,
+        "volume": 997000,
+        "avg_volume": 48400,
+        "vol_ratio": 20.6,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6210",
+        "name": "慶生",
+        "close": 22.4,
+        "open": 20.55,
+        "high": 22.65,
+        "low": 20.5,
+        "diff": 1.8,
+        "change_percent": 8.74,
+        "volume": 650000,
+        "avg_volume": 42800,
+        "vol_ratio": 15.19,
+        "prior_change_percent": 0.73,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "6498",
+        "name": "久禾光",
+        "close": 102.5,
+        "open": 96.9,
+        "high": 104.0,
+        "low": 96.9,
+        "diff": 7.6,
+        "change_percent": 8.01,
+        "volume": 902000,
+        "avg_volume": 118900,
+        "vol_ratio": 7.59,
+        "prior_change_percent": -2.57,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "8477",
+        "name": "創業家",
+        "close": 17.6,
+        "open": 16.5,
+        "high": 18.1,
+        "low": 16.2,
+        "diff": 1.1,
+        "change_percent": 6.67,
+        "volume": 573000,
+        "avg_volume": 75900,
+        "vol_ratio": 7.55,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "5211",
+        "name": "蒙恬",
+        "close": 21.45,
+        "open": 20.0,
+        "high": 21.9,
+        "low": 19.15,
+        "diff": 1.25,
+        "change_percent": 6.19,
+        "volume": 701000,
+        "avg_volume": 103250,
+        "vol_ratio": 6.79,
+        "prior_change_percent": -0.49,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "3577",
+        "name": "泓格",
+        "close": 99.6,
+        "open": 94.5,
+        "high": 99.6,
+        "low": 93.2,
+        "diff": 9.0,
+        "change_percent": 9.93,
+        "volume": 1661000,
+        "avg_volume": 266750,
+        "vol_ratio": 6.23,
+        "prior_change_percent": -1.63,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 48,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群48檔同步走強"
+        ]
+    },
+    {
+        "id": "6875",
+        "name": "國邑*",
+        "close": 40.15,
+        "open": 40.0,
+        "high": 40.15,
+        "low": 39.35,
+        "diff": 3.65,
+        "change_percent": 10.0,
+        "volume": 663000,
+        "avg_volume": 124800,
+        "vol_ratio": 5.31,
+        "prior_change_percent": 6.57,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "6506",
+        "name": "雙邦",
+        "close": 19.55,
+        "open": 18.2,
+        "high": 20.0,
+        "low": 18.2,
+        "diff": 1.25,
+        "change_percent": 6.83,
+        "volume": 1364000,
+        "avg_volume": 269800,
+        "vol_ratio": 5.06,
+        "prior_change_percent": 1.39,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

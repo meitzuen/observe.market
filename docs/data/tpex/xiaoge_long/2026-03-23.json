@@ -1,0 +1,110 @@
+[
+    {
+        "id": "6547",
+        "name": "高端疫苗",
+        "close": 54.5,
+        "open": 49.6,
+        "high": 54.5,
+        "low": 49.5,
+        "diff": 4.9,
+        "change_percent": 9.88,
+        "volume": 15633000,
+        "avg_volume": 1430400,
+        "vol_ratio": 10.93,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "3587",
+        "name": "閎康",
+        "close": 245.5,
+        "open": 244.0,
+        "high": 252.0,
+        "low": 237.0,
+        "diff": 16.0,
+        "change_percent": 6.97,
+        "volume": 13047000,
+        "avg_volume": 1712900,
+        "vol_ratio": 7.62,
+        "prior_change_percent": 9.81,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "3580",
+        "name": "友威科",
+        "close": 75.8,
+        "open": 69.0,
+        "high": 78.5,
+        "low": 67.9,
+        "diff": 4.4,
+        "change_percent": 6.16,
+        "volume": 4121000,
+        "avg_volume": 601200,
+        "vol_ratio": 6.85,
+        "prior_change_percent": 0.85,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    },
+    {
+        "id": "6841",
+        "name": "長佳智能",
+        "close": 62.0,
+        "open": 57.6,
+        "high": 64.0,
+        "low": 56.8,
+        "diff": 3.8,
+        "change_percent": 6.53,
+        "volume": 2038000,
+        "avg_volume": 362250,
+        "vol_ratio": 5.63,
+        "prior_change_percent": 0.17,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    },
+    {
+        "id": "3259",
+        "name": "鑫創",
+        "close": 20.1,
+        "open": 19.0,
+        "high": 20.1,
+        "low": 18.3,
+        "diff": 1.8,
+        "change_percent": 9.84,
+        "volume": 575000,
+        "avg_volume": 107250,
+        "vol_ratio": 5.36,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    }
+]

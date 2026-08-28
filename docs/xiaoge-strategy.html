@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小哥策略 | 當沖選股觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <style>
+      @media (max-width: 480px) {
+        h1 span.title-text {
+          display: none;
+        }
+      }
+
+      .type-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .type-tab {
+        padding: 0.5rem 1.25rem;
+        border-radius: 2px;
+        border: 2px solid var(--hud-border-2);
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        background: none;
+        color: var(--hud-text-3);
+        transition: all 0.2s;
+      }
+
+      .type-tab.active-long {
+        background: transparent;
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        color: rgba(185, 28, 28, 0.9);
+        border-color: rgba(252, 165, 165, 0.4);
+      }
+
+      .type-tab.active-short {
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
+        color: rgba(21, 128, 61, 0.9);
+        border-color: rgba(134, 239, 172, 0.4);
+      }
+
+      .market-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .market-tab {
+        padding: 0.4rem 1rem;
+        border-radius: 2px;
+        border: 1px solid var(--hud-border-2);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: none;
+        color: var(--hud-text-3);
+        transition: all 0.2s;
+      }
+
+      .market-tab.active {
+        background: transparent;
+        border: 1px solid var(--hud-border-1);
+        color: var(--hud-text-1);
+        border-color: var(--hud-text-1);
+      }
+
+      th:hover {
+        background-color: var(--hud-card-bg);
+      }
+
+      .badge-up {
+        background: transparent;
+        border: 1px solid rgba(185, 28, 28, 0.35);
+        color: rgba(185, 28, 28, 0.9);
+      }
+
+      .badge-down {
+        background: transparent;
+        border: 1px solid rgba(21, 128, 61, 0.35);
+        color: rgba(21, 128, 61, 0.9);
+      }
+
+      .note-box {
+        font-size: 0.8rem;
+        color: var(--hud-text-3);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .warn-box {
+        font-size: 0.8rem;
+        color: var(--hud-text-3);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        padding: 0.75rem 1rem;
+        border: 1px dashed var(--hud-border-2);
+        border-radius: 2px;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .tag-pill {
+        font-size: 0.72rem;
+        line-height: 1.4;
+        color: var(--hud-text-3);
+        white-space: nowrap;
+      }
+
+      .tag-pill.tag-risk {
+        color: rgba(217, 119, 6, 0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <img
+          id="header-logo"
+          src="assets/logo.png"
+          alt="Logo"
+          style="height: 40px; width: auto"
+          onerror="
+            this.style.display = 'none';
+            document.getElementById('header-emoji').style.display = 'inline';
+          "
+        />
+        <span id="header-emoji" style="display: none; font-size: 1.5rem"
+          >🚀</span
+        >
+        <h1><span class="title-text">Market Observer</span></h1>
+        <nav class="nav-bar" id="nav-bar"></nav>
+        <button class="theme-toggle" id="theme-toggle" title="切換深色模式">
+          🌙
+        </button>
+      </div>
+      <div class="header-right">
+        <select id="date-picker" class="date-select"></select>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-title"><span>🥢 小哥策略 選股設定</span></div>
+
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+          "
+        >
+          <div class="type-tabs" style="margin-bottom: 0">
+            <button class="type-tab active-long" data-type="xiaoge_long" id="tab-long">
+              🔴 多方（先買後賣）
+            </button>
+            <button class="type-tab" data-type="xiaoge_short" id="tab-short">
+              ⚫ 空方（先賣後買）
+            </button>
+          </div>
+          <div class="market-tabs" style="margin-bottom: 0">
+            <button class="market-tab active" data-market="twse">上市</button>
+            <button class="market-tab" data-market="tpex">上櫃</button>
+          </div>
+        </div>
+
+        <div id="note-long" class="note-box">
+          篩選邏輯：今日量 ≥ 20日均量 5 倍（爆量）且當天收長紅（漲幅 ≥ 6%）並創
+          20 日新高（吃掉前幾天盤整區）。前一天型態會標記「小紅小黑」（解套壓力小，較佳）或「大長紅／大黑K」（分別提示隔日沖倒貨與剛套牢賣壓風險），並統計同概念股當日一起走強（漲幅 ≥
+          3%）的檔數作為族群共振參考。
+        </div>
+        <div id="note-short" class="note-box" style="display: none">
+          篩選邏輯：前一天大漲／接近鎖漲停（漲幅 ≥ 8%），且今天開盤未強勢開高
+          8% 以上（避免再次鎖漲停）。額外標記今日開盤是否明顯轉弱（&lt; 3%）、股價是否接近近
+          60 日高點且月線走平（近似「做頭」型態），以及同概念股當日平均漲跌幅（族群是否偏弱）供判斷。
+        </div>
+
+        <div class="warn-box">
+          ⚠️ 本頁僅使用「盤後」日 K 與成交量資料計算，<strong
+            >不含分點籌碼、盤中 tick、內外盤與融資券資料</strong
+          >，因此無法判斷隔日沖分點是否為「真愛」、波段籌碼站買方或賣方、以及隔日補跌股。所有標記僅供技術面／量能參考，仍須自行確認籌碼面，並設好停損（建議
+          2%~4%）再進場。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span id="result-title"
+            >多方候選
+            <span id="result-count" class="badge badge-up">0</span></span
+          >
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead id="table-head-long">
+              <tr>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
+                <th onclick="setSort('close')">收盤價 <span id="sort-close"></span></th>
+                <th onclick="setSort('change_percent')">
+                  漲跌幅 <span id="sort-change_percent"></span>
+                </th>
+                <th onclick="setSort('vol_ratio')">量比 <span id="sort-vol_ratio"></span></th>
+                <th onclick="setSort('prior_change_percent')">
+                  前日漲跌幅 <span id="sort-prior_change_percent"></span>
+                </th>
+                <th>標記</th>
+              </tr>
+            </thead>
+            <thead id="table-head-short" style="display: none">
+              <tr>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
+                <th onclick="setSort('close')">收盤價 <span id="sort-close"></span></th>
+                <th onclick="setSort('change_percent')">
+                  今日漲跌幅 <span id="sort-change_percent"></span>
+                </th>
+                <th onclick="setSort('prior_change_percent')">
+                  前日漲跌幅 <span id="sort-prior_change_percent"></span>
+                </th>
+                <th onclick="setSort('gap_open_percent')">
+                  開盤跳空 <span id="sort-gap_open_percent"></span>
+                </th>
+                <th onclick="setSort('peer_avg_change')">
+                  同族群均幅 <span id="sort-peer_avg_change"></span>
+                </th>
+                <th>標記</th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="loader" class="loader" style="display: none">載入中...</div>
+
+        <div
+          id="pagination"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--hud-border-2);
+          "
+        >
+          <button id="prev-page" class="btn-secondary">上一頁</button>
+          <span
+            id="page-info"
+            style="font-size: 0.875rem; color: var(--hud-text-3); font-weight: 600"
+            >第 1 / 1 頁</span
+          >
+          <button id="next-page" class="btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/nerd-grid.js"></script>
+    <script>
+      NerdGrid.initThemeToggle();
+      NerdGrid.initNav();
+      let manifest = null;
+      let rawData = [];
+      let currentMarket = "twse";
+      let currentType = "xiaoge_long";
+      let sortColumn = "vol_ratio";
+      let sortDirection = "desc";
+      let currentPage = 1;
+      const rowsPerPage = 30;
+
+      // ── init ──────────────────────────────────────────────────────────────
+      async function init() {
+        const resp = await fetch("data/manifest.json");
+        manifest = await resp.json();
+
+        populateDatePicker();
+
+        document.querySelectorAll(".market-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            populateDatePicker();
+          });
+        });
+
+        document.querySelectorAll(".type-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            currentType = btn.dataset.type;
+            sortColumn = currentType === "xiaoge_long" ? "vol_ratio" : "gap_open_percent";
+            sortDirection = currentType === "xiaoge_long" ? "desc" : "asc";
+            updateTypeTabs();
+            loadData();
+          });
+        });
+
+        document.getElementById("date-picker").addEventListener("change", loadData);
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+          }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(rawData.length / rowsPerPage)) {
+            currentPage++;
+            renderTable();
+          }
+        });
+
+        loadData();
+      }
+
+      function populateDatePicker() {
+        const m = manifest[currentMarket];
+        const dates = (m && m[currentType]) || [];
+        const picker = document.getElementById("date-picker");
+        const prev = picker.value;
+        picker.innerHTML = "";
+        dates.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          picker.appendChild(opt);
+        });
+        if (prev && dates.includes(prev)) picker.value = prev;
+        loadData();
+      }
+
+      // ── data loading ──────────────────────────────────────────────────────
+      async function loadData() {
+        const m = manifest[currentMarket];
+        if (!m) return;
+        const dates = m[currentType] || [];
+        const date = document.getElementById("date-picker").value;
+        if (!date || !dates.includes(date)) {
+          rawData = [];
+          renderTable();
+          return;
+        }
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+
+        try {
+          const resp = await fetch(`data/${currentMarket}/${currentType}/${date}.json`);
+          rawData = await resp.json();
+        } catch (e) {
+          rawData = [];
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
+
+        currentPage = 1;
+        updateTypeTabs();
+        renderTable();
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function updateTypeTabs() {
+        const isLong = currentType === "xiaoge_long";
+
+        document.getElementById("tab-long").className =
+          "type-tab" + (isLong ? " active-long" : "");
+        document.getElementById("tab-short").className =
+          "type-tab" + (!isLong ? " active-short" : "");
+
+        document.getElementById("note-long").style.display = isLong ? "" : "none";
+        document.getElementById("note-short").style.display = isLong ? "none" : "";
+        document.getElementById("table-head-long").style.display = isLong ? "" : "none";
+        document.getElementById("table-head-short").style.display = isLong ? "none" : "";
+
+        const badge = isLong ? "badge-up" : "badge-down";
+        document.getElementById("result-title").innerHTML =
+          (isLong ? "🔴 多方候選" : "⚫ 空方候選") +
+          ` <span id="result-count" class="badge ${badge}">0</span>`;
+      }
+
+      function setSort(col) {
+        sortDirection =
+          sortColumn === col
+            ? sortDirection === "asc"
+              ? "desc"
+              : "asc"
+            : col === "id" || col === "name"
+              ? "asc"
+              : "desc";
+        sortColumn = col;
+        renderTable();
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = rawData.length;
+
+        const isLong = currentType === "xiaoge_long";
+        const colSpan = isLong ? 7 : 8;
+
+        const sorted = [...rawData].sort((a, b) => {
+          let va = a[sortColumn] ?? (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          let vb = b[sortColumn] ?? (sortColumn === "name" || sortColumn === "id" ? "" : 0);
+          if (typeof va === "string")
+            return sortDirection === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        [
+          "id",
+          "name",
+          "close",
+          "change_percent",
+          "vol_ratio",
+          "prior_change_percent",
+          "gap_open_percent",
+          "peer_avg_change",
+        ].forEach((col) => {
+          const el = document.getElementById("sort-" + col);
+          if (el) el.textContent = col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+        });
+
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+        if (pageData.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="${colSpan}" style="text-align:center;padding:2rem;color:var(--hud-text-3);font-style:italic;">無符合條件的股票</td></tr>`;
+          return;
+        }
+
+        pageData.forEach((s) => {
+          const tr = document.createElement("tr");
+          const priceClass = s.change_percent > 0 ? "price-up" : s.change_percent < 0 ? "price-down" : "";
+          const chgPrefix = s.change_percent > 0 ? "+" : "";
+          const tagsHtml = (s.tags || [])
+            .map(
+              (t) =>
+                `<div class="tag-pill${t.startsWith("⚠️") ? " tag-risk" : ""}">${t}</div>`,
+            )
+            .join("");
+
+          const stockCell = `
+            <td style="font-weight:500;"><a href="stock.html?id=${s.id}" class="stock-link">${s.id}</a></td>
+            <td style="font-weight:600;">
+              <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
+            </td>
+            <td class="${priceClass}" style="font-size:1rem;">${s.close}</td>
+            <td class="${priceClass}" style="font-weight:800;">${chgPrefix}${s.change_percent?.toFixed(2) ?? "-"}%</td>
+          `;
+
+          if (isLong) {
+            const priorPrefix = s.prior_change_percent > 0 ? "+" : "";
+            tr.innerHTML = `
+              ${stockCell}
+              <td class="price-up" style="font-weight:800;">${s.vol_ratio?.toFixed(2) ?? "-"}x</td>
+              <td style="color:var(--hud-text-3);">${priorPrefix}${s.prior_change_percent?.toFixed(2) ?? "-"}%</td>
+              <td><div class="tag-list">${tagsHtml}</div></td>
+            `;
+          } else {
+            const priorPrefix = s.prior_change_percent > 0 ? "+" : "";
+            const gapPrefix = s.gap_open_percent > 0 ? "+" : "";
+            const peerPrefix = s.peer_avg_change > 0 ? "+" : "";
+            const gapClass = s.gap_open_percent < 0 ? "price-down" : "price-up";
+            tr.innerHTML = `
+              ${stockCell}
+              <td style="color:var(--hud-text-3);">${priorPrefix}${s.prior_change_percent?.toFixed(2) ?? "-"}%</td>
+              <td class="${gapClass}" style="font-weight:700;">${gapPrefix}${s.gap_open_percent?.toFixed(2) ?? "-"}%</td>
+              <td style="color:var(--hud-text-3);">${s.peer_avg_change != null ? peerPrefix + s.peer_avg_change.toFixed(2) + "%" : "-"}</td>
+              <td><div class="tag-list">${tagsHtml}</div></td>
+            `;
+          }
+          tbody.appendChild(tr);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>

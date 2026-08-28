@@ -1,0 +1,52 @@
+[
+    {
+        "id": "4577",
+        "name": "達航科技",
+        "close": 69.6,
+        "open": 76.8,
+        "high": 82.7,
+        "low": 69.6,
+        "diff": -7.7,
+        "change_percent": -9.96,
+        "volume": 3948000,
+        "prior_change_percent": 9.96,
+        "gap_open_percent": -0.65,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -3.48,
+        "peer_weak": true,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "同族群普遍疲弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "3441",
+        "name": "聯一光",
+        "close": 84.8,
+        "open": 77.5,
+        "high": 84.9,
+        "low": 75.0,
+        "diff": 7.6,
+        "change_percent": 9.84,
+        "volume": 58554000,
+        "prior_change_percent": 9.19,
+        "gap_open_percent": 0.39,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -3.52,
+        "peer_weak": true,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "同族群普遍疲弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

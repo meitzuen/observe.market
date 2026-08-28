@@ -1,0 +1,23 @@
+[
+    {
+        "id": "6913",
+        "name": "鴻呈",
+        "close": 139.0,
+        "open": 126.5,
+        "high": 139.0,
+        "low": 126.5,
+        "diff": 12.5,
+        "change_percent": 9.88,
+        "volume": 1008000,
+        "avg_volume": 161750,
+        "vol_ratio": 6.23,
+        "prior_change_percent": -1.17,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "id": "6509",
+        "name": "聚和",
+        "close": 37.7,
+        "open": 35.3,
+        "high": 37.7,
+        "low": 35.1,
+        "diff": 3.4,
+        "change_percent": 9.91,
+        "volume": 4946000,
+        "avg_volume": 472500,
+        "vol_ratio": 10.47,
+        "prior_change_percent": 0.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    }
+]

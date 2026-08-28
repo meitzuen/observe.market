@@ -1,0 +1,23 @@
+[
+    {
+        "id": "6668",
+        "name": "中揚光",
+        "close": 43.8,
+        "open": 40.1,
+        "high": 43.8,
+        "low": 39.5,
+        "diff": 3.95,
+        "change_percent": 9.91,
+        "volume": 4960209,
+        "avg_volume": 910169,
+        "vol_ratio": 5.45,
+        "prior_change_percent": 4.73,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 52,
+        "tags": [
+            "創20日新高",
+            "同族群52檔同步走強"
+        ]
+    }
+]

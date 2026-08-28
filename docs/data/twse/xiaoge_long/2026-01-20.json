@@ -1,0 +1,109 @@
+[
+    {
+        "id": "2426",
+        "name": "鼎元",
+        "close": 20.15,
+        "open": 18.6,
+        "high": 20.15,
+        "low": 18.3,
+        "diff": 1.8,
+        "change_percent": 9.81,
+        "volume": 9136172,
+        "avg_volume": 930487,
+        "vol_ratio": 9.82,
+        "prior_change_percent": 3.97,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "3432",
+        "name": "台端",
+        "close": 21.15,
+        "open": 19.55,
+        "high": 21.15,
+        "low": 19.55,
+        "diff": 1.9,
+        "change_percent": 9.87,
+        "volume": 889562,
+        "avg_volume": 121902,
+        "vol_ratio": 7.3,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8249",
+        "name": "菱光",
+        "close": 58.9,
+        "open": 53.8,
+        "high": 58.9,
+        "low": 53.3,
+        "diff": 5.3,
+        "change_percent": 9.89,
+        "volume": 7577073,
+        "avg_volume": 1192778,
+        "vol_ratio": 6.35,
+        "prior_change_percent": 1.13,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 72,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群72檔同步走強"
+        ]
+    },
+    {
+        "id": "1512",
+        "name": "瑞利",
+        "close": 9.17,
+        "open": 8.6,
+        "high": 9.39,
+        "low": 8.6,
+        "diff": 0.63,
+        "change_percent": 7.38,
+        "volume": 1012361,
+        "avg_volume": 173519,
+        "vol_ratio": 5.83,
+        "prior_change_percent": 7.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1513",
+        "name": "中興電",
+        "close": 176.5,
+        "open": 160.5,
+        "high": 176.5,
+        "low": 158.0,
+        "diff": 16.0,
+        "change_percent": 9.97,
+        "volume": 46776115,
+        "avg_volume": 9057632,
+        "vol_ratio": 5.16,
+        "prior_change_percent": 0.31,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 48,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群48檔同步走強"
+        ]
+    }
+]

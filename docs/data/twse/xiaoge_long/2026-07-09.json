@@ -1,0 +1,46 @@
+[
+    {
+        "id": "2465",
+        "name": "麗臺",
+        "close": 89.5,
+        "open": 85.0,
+        "high": 89.5,
+        "low": 83.5,
+        "diff": 8.1,
+        "change_percent": 9.95,
+        "volume": 7339700,
+        "avg_volume": 1165692,
+        "vol_ratio": 6.3,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 72,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群72檔同步走強"
+        ]
+    },
+    {
+        "id": "1536",
+        "name": "和大",
+        "close": 55.0,
+        "open": 50.5,
+        "high": 55.0,
+        "low": 50.3,
+        "diff": 5.0,
+        "change_percent": 10.0,
+        "volume": 13866421,
+        "avg_volume": 2685567,
+        "vol_ratio": 5.16,
+        "prior_change_percent": -2.34,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    }
+]

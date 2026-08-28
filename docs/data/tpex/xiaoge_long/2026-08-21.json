@@ -1,0 +1,88 @@
+[
+    {
+        "id": "3540",
+        "name": "曜越",
+        "close": 23.8,
+        "open": 22.55,
+        "high": 23.8,
+        "low": 22.2,
+        "diff": 2.15,
+        "change_percent": 9.93,
+        "volume": 3463000,
+        "avg_volume": 245050,
+        "vol_ratio": 14.13,
+        "prior_change_percent": -1.21,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 12,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群12檔同步走強"
+        ]
+    },
+    {
+        "id": "4416",
+        "name": "三圓",
+        "close": 13.75,
+        "open": 12.7,
+        "high": 13.75,
+        "low": 12.4,
+        "diff": 1.25,
+        "change_percent": 10.0,
+        "volume": 2050000,
+        "avg_volume": 322900,
+        "vol_ratio": 6.35,
+        "prior_change_percent": 2.76,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 15,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群15檔同步走強"
+        ]
+    },
+    {
+        "id": "3152",
+        "name": "璟德",
+        "close": 256.5,
+        "open": 235.0,
+        "high": 256.5,
+        "low": 234.0,
+        "diff": 23.0,
+        "change_percent": 9.85,
+        "volume": 751000,
+        "avg_volume": 142000,
+        "vol_ratio": 5.29,
+        "prior_change_percent": -0.44,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "3485",
+        "name": "敘豐",
+        "close": 235.5,
+        "open": 223.5,
+        "high": 244.0,
+        "low": 217.0,
+        "diff": 13.5,
+        "change_percent": 6.08,
+        "volume": 755000,
+        "avg_volume": 150050,
+        "vol_ratio": 5.03,
+        "prior_change_percent": 5.56,
+        "prior_pattern": "normal",
+        "is_new_high": false,
+        "peer_strong_count": 6,
+        "tags": [
+            "同族群6檔同步走強"
+        ]
+    }
+]

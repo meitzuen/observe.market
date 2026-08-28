@@ -1,0 +1,23 @@
+[
+    {
+        "id": "3048",
+        "name": "益登",
+        "close": 55.8,
+        "open": 55.0,
+        "high": 55.8,
+        "low": 51.7,
+        "diff": 5.0,
+        "change_percent": 9.84,
+        "volume": 16234234,
+        "avg_volume": 2509295,
+        "vol_ratio": 6.47,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 192,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "同族群192檔同步走強"
+        ]
+    }
+]

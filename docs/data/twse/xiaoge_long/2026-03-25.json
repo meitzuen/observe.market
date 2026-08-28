@@ -1,0 +1,66 @@
+[
+    {
+        "id": "3031",
+        "name": "佰鴻",
+        "close": 24.4,
+        "open": 23.55,
+        "high": 25.0,
+        "low": 22.55,
+        "diff": 1.5,
+        "change_percent": 6.55,
+        "volume": 12409051,
+        "avg_volume": 1692841,
+        "vol_ratio": 7.33,
+        "prior_change_percent": 6.26,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 156,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群156檔同步走強"
+        ]
+    },
+    {
+        "id": "3150",
+        "name": "鈺寶-創",
+        "close": 19.35,
+        "open": 16.9,
+        "high": 19.35,
+        "low": 16.9,
+        "diff": 1.75,
+        "change_percent": 9.94,
+        "volume": 506327,
+        "avg_volume": 74349,
+        "vol_ratio": 6.81,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5292",
+        "name": "華懋",
+        "close": 220.0,
+        "open": 202.0,
+        "high": 220.0,
+        "low": 201.5,
+        "diff": 20.0,
+        "change_percent": 10.0,
+        "volume": 1081945,
+        "avg_volume": 210983,
+        "vol_ratio": 5.13,
+        "prior_change_percent": 3.36,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    }
+]

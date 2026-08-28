@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1413",
+        "name": "宏洲",
+        "close": 11.0,
+        "open": 10.0,
+        "high": 11.3,
+        "low": 10.0,
+        "diff": 0.7,
+        "change_percent": 6.8,
+        "volume": 1026254,
+        "avg_volume": 48488,
+        "vol_ratio": 21.16,
+        "prior_change_percent": 9.69,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

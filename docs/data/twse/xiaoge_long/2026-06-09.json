@@ -1,0 +1,46 @@
+[
+    {
+        "id": "3022",
+        "name": "威強電",
+        "close": 86.9,
+        "open": 81.4,
+        "high": 86.9,
+        "low": 79.5,
+        "diff": 7.9,
+        "change_percent": 10.0,
+        "volume": 10943280,
+        "avg_volume": 1249355,
+        "vol_ratio": 8.76,
+        "prior_change_percent": 2.07,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 68,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群68檔同步走強"
+        ]
+    },
+    {
+        "id": "2505",
+        "name": "國揚",
+        "close": 19.45,
+        "open": 17.6,
+        "high": 19.5,
+        "low": 17.6,
+        "diff": 1.7,
+        "change_percent": 9.58,
+        "volume": 2341495,
+        "avg_volume": 441737,
+        "vol_ratio": 5.3,
+        "prior_change_percent": -1.11,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    }
+]

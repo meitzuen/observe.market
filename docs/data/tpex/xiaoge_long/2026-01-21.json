@@ -1,0 +1,67 @@
+[
+    {
+        "id": "4502",
+        "name": "健信",
+        "close": 17.35,
+        "open": 16.2,
+        "high": 17.6,
+        "low": 16.2,
+        "diff": 1.35,
+        "change_percent": 8.44,
+        "volume": 557000,
+        "avg_volume": 35846,
+        "vol_ratio": 15.54,
+        "prior_change_percent": -1.23,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 33,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群33檔同步走強"
+        ]
+    },
+    {
+        "id": "4939",
+        "name": "亞電",
+        "close": 46.7,
+        "open": 45.0,
+        "high": 47.5,
+        "low": 44.2,
+        "diff": 3.5,
+        "change_percent": 8.1,
+        "volume": 47242000,
+        "avg_volume": 7973385,
+        "vol_ratio": 5.92,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 37,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群37檔同步走強"
+        ]
+    },
+    {
+        "id": "3707",
+        "name": "漢磊",
+        "close": 67.1,
+        "open": 63.4,
+        "high": 68.0,
+        "low": 63.1,
+        "diff": 5.2,
+        "change_percent": 8.4,
+        "volume": 72832000,
+        "avg_volume": 13393154,
+        "vol_ratio": 5.44,
+        "prior_change_percent": 5.81,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    }
+]

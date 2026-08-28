@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3284",
+        "name": "太普高",
+        "close": 22.1,
+        "open": 22.05,
+        "high": 22.1,
+        "low": 21.75,
+        "diff": 2.0,
+        "change_percent": 9.95,
+        "volume": 1630000,
+        "avg_volume": 122100,
+        "vol_ratio": 13.35,
+        "prior_change_percent": -1.95,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3615",
+        "name": "安可",
+        "close": 29.35,
+        "open": 27.45,
+        "high": 29.35,
+        "low": 27.0,
+        "diff": 2.65,
+        "change_percent": 9.93,
+        "volume": 14055000,
+        "avg_volume": 1261450,
+        "vol_ratio": 11.14,
+        "prior_change_percent": -3.26,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    }
+]

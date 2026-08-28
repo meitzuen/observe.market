@@ -1,0 +1,24 @@
+[
+    {
+        "id": "5608",
+        "name": "四維航",
+        "close": 17.5,
+        "open": 16.2,
+        "high": 17.5,
+        "low": 15.6,
+        "diff": 1.55,
+        "change_percent": 9.72,
+        "volume": 36037000,
+        "avg_volume": 1917780,
+        "vol_ratio": 18.79,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    }
+]

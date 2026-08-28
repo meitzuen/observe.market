@@ -1,0 +1,65 @@
+[
+    {
+        "id": "3206",
+        "name": "志豐",
+        "close": 39.55,
+        "open": 37.8,
+        "high": 40.95,
+        "low": 37.75,
+        "diff": 2.3,
+        "change_percent": 6.17,
+        "volume": 2684000,
+        "avg_volume": 216600,
+        "vol_ratio": 12.39,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 79,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群79檔同步走強"
+        ]
+    },
+    {
+        "id": "3093",
+        "name": "港建*",
+        "close": 31.2,
+        "open": 28.0,
+        "high": 31.2,
+        "low": 27.85,
+        "diff": 2.8,
+        "change_percent": 9.86,
+        "volume": 2627000,
+        "avg_volume": 407950,
+        "vol_ratio": 6.44,
+        "prior_change_percent": 3.27,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8047",
+        "name": "星雲",
+        "close": 50.8,
+        "open": 47.2,
+        "high": 50.8,
+        "low": 47.1,
+        "diff": 4.6,
+        "change_percent": 9.96,
+        "volume": 591000,
+        "avg_volume": 91700,
+        "vol_ratio": 6.44,
+        "prior_change_percent": 0.43,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,120 @@
+[
+    {
+        "id": "4707",
+        "name": "磐亞",
+        "close": 34.65,
+        "open": 35.15,
+        "high": 35.7,
+        "low": 33.8,
+        "diff": -0.5,
+        "change_percent": -1.42,
+        "volume": 4688000,
+        "prior_change_percent": 8.81,
+        "gap_open_percent": -1.82,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "3444",
+        "name": "利機",
+        "close": 89.7,
+        "open": 86.4,
+        "high": 89.9,
+        "low": 86.4,
+        "diff": 3.1,
+        "change_percent": 3.58,
+        "volume": 669000,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": -1.48,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.52,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "6290",
+        "name": "良維",
+        "close": 241.0,
+        "open": 233.0,
+        "high": 244.0,
+        "low": 232.5,
+        "diff": 2.0,
+        "change_percent": 0.84,
+        "volume": 6158000,
+        "prior_change_percent": 8.27,
+        "gap_open_percent": 1.75,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 2.0,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "4416",
+        "name": "三圓",
+        "close": 14.95,
+        "open": 15.4,
+        "high": 16.15,
+        "low": 14.9,
+        "diff": -0.3,
+        "change_percent": -1.97,
+        "volume": 2847000,
+        "prior_change_percent": 9.82,
+        "gap_open_percent": 1.99,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.3,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 71.4,
+        "open": 68.0,
+        "high": 71.6,
+        "low": 67.5,
+        "diff": 4.1,
+        "change_percent": 6.09,
+        "volume": 2012000,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": 7.42,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.32,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

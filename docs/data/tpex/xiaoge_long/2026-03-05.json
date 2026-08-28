@@ -1,0 +1,43 @@
+[
+    {
+        "id": "8908",
+        "name": "欣雄",
+        "close": 47.0,
+        "open": 45.1,
+        "high": 47.2,
+        "low": 42.95,
+        "diff": 2.8,
+        "change_percent": 6.33,
+        "volume": 1689000,
+        "avg_volume": 136700,
+        "vol_ratio": 12.36,
+        "prior_change_percent": 5.11,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6532",
+        "name": "瑞耘",
+        "close": 59.5,
+        "open": 58.2,
+        "high": 59.5,
+        "low": 56.5,
+        "diff": 5.4,
+        "change_percent": 9.98,
+        "volume": 597000,
+        "avg_volume": 88450,
+        "vol_ratio": 6.75,
+        "prior_change_percent": -4.75,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 228,
+        "tags": [
+            "創20日新高",
+            "同族群228檔同步走強"
+        ]
+    }
+]

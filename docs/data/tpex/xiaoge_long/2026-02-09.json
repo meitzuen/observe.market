@@ -1,0 +1,45 @@
+[
+    {
+        "id": "8147",
+        "name": "正淩",
+        "close": 132.0,
+        "open": 127.0,
+        "high": 132.0,
+        "low": 126.5,
+        "diff": 12.0,
+        "change_percent": 10.0,
+        "volume": 3285000,
+        "avg_volume": 273150,
+        "vol_ratio": 12.03,
+        "prior_change_percent": 4.8,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 105,
+        "tags": [
+            "創20日新高",
+            "同族群105檔同步走強"
+        ]
+    },
+    {
+        "id": "3526",
+        "name": "凡甲",
+        "close": 286.0,
+        "open": 272.0,
+        "high": 290.0,
+        "low": 269.0,
+        "diff": 22.0,
+        "change_percent": 8.33,
+        "volume": 2838000,
+        "avg_volume": 389900,
+        "vol_ratio": 7.28,
+        "prior_change_percent": 1.93,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 44,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群44檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 24.0,
+        "open": 22.0,
+        "high": 24.0,
+        "low": 21.9,
+        "diff": 2.15,
+        "change_percent": 9.84,
+        "volume": 7620000,
+        "avg_volume": 860450,
+        "vol_ratio": 8.86,
+        "prior_change_percent": 9.8,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    }
+]

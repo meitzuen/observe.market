@@ -1,0 +1,88 @@
+[
+    {
+        "id": "3162",
+        "name": "精確",
+        "close": 73.4,
+        "open": 72.5,
+        "high": 73.4,
+        "low": 68.3,
+        "diff": 6.6,
+        "change_percent": 9.88,
+        "volume": 6185000,
+        "avg_volume": 703400,
+        "vol_ratio": 8.79,
+        "prior_change_percent": -0.98,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 52,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群52檔同步走強"
+        ]
+    },
+    {
+        "id": "3354",
+        "name": "律勝",
+        "close": 22.4,
+        "open": 20.5,
+        "high": 22.4,
+        "low": 20.5,
+        "diff": 2.0,
+        "change_percent": 9.8,
+        "volume": 697000,
+        "avg_volume": 118200,
+        "vol_ratio": 5.9,
+        "prior_change_percent": 0.74,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 46,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群46檔同步走強"
+        ]
+    },
+    {
+        "id": "4908",
+        "name": "前鼎",
+        "close": 178.0,
+        "open": 163.5,
+        "high": 178.0,
+        "low": 160.0,
+        "diff": 16.0,
+        "change_percent": 9.88,
+        "volume": 10245000,
+        "avg_volume": 1892300,
+        "vol_ratio": 5.41,
+        "prior_change_percent": -3.59,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 71.4,
+        "open": 68.0,
+        "high": 71.6,
+        "low": 67.5,
+        "diff": 4.1,
+        "change_percent": 6.09,
+        "volume": 2012000,
+        "avg_volume": 378550,
+        "vol_ratio": 5.32,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    }
+]

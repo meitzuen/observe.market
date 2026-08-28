@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1466",
+        "name": "聚隆",
+        "close": 16.65,
+        "open": 15.3,
+        "high": 16.65,
+        "low": 14.85,
+        "diff": 1.5,
+        "change_percent": 9.9,
+        "volume": 2425836,
+        "avg_volume": 267912,
+        "vol_ratio": 9.05,
+        "prior_change_percent": 3.06,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3576",
+        "name": "聯合再生",
+        "close": 15.9,
+        "open": 15.55,
+        "high": 16.05,
+        "low": 14.2,
+        "diff": 1.05,
+        "change_percent": 7.07,
+        "volume": 141850551,
+        "avg_volume": 26081881,
+        "vol_ratio": 5.44,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    }
+]

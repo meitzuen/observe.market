@@ -1,0 +1,68 @@
+[
+    {
+        "id": "2434",
+        "name": "統懋",
+        "close": 42.7,
+        "open": 40.2,
+        "high": 42.7,
+        "low": 39.1,
+        "diff": 3.85,
+        "change_percent": 9.91,
+        "volume": 1451272,
+        "avg_volume": 268864,
+        "vol_ratio": 5.4,
+        "prior_change_percent": 6.44,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 134,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群134檔同步走強"
+        ]
+    },
+    {
+        "id": "6243",
+        "name": "迅杰",
+        "close": 38.35,
+        "open": 36.1,
+        "high": 38.35,
+        "low": 35.7,
+        "diff": 3.45,
+        "change_percent": 9.89,
+        "volume": 2144454,
+        "avg_volume": 408126,
+        "vol_ratio": 5.25,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 150,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群150檔同步走強"
+        ]
+    },
+    {
+        "id": "3652",
+        "name": "精聯",
+        "close": 42.7,
+        "open": 39.65,
+        "high": 43.4,
+        "low": 38.9,
+        "diff": 2.5,
+        "change_percent": 6.22,
+        "volume": 2856038,
+        "avg_volume": 557976,
+        "vol_ratio": 5.12,
+        "prior_change_percent": 7.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 26,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群26檔同步走強"
+        ]
+    }
+]

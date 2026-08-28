@@ -1,0 +1,174 @@
+[
+    {
+        "id": "5426",
+        "name": "振發",
+        "close": 32.9,
+        "open": 27.5,
+        "high": 32.9,
+        "low": 27.5,
+        "diff": 2.95,
+        "change_percent": 9.85,
+        "volume": 25476000,
+        "avg_volume": 1051750,
+        "vol_ratio": 24.22,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3520",
+        "name": "華盈",
+        "close": 18.75,
+        "open": 16.5,
+        "high": 18.75,
+        "low": 16.1,
+        "diff": 1.7,
+        "change_percent": 9.97,
+        "volume": 8651000,
+        "avg_volume": 370950,
+        "vol_ratio": 23.32,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 21,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群21檔同步走強"
+        ]
+    },
+    {
+        "id": "5450",
+        "name": "南良",
+        "close": 14.6,
+        "open": 13.1,
+        "high": 14.6,
+        "low": 12.9,
+        "diff": 1.3,
+        "change_percent": 9.77,
+        "volume": 588000,
+        "avg_volume": 60900,
+        "vol_ratio": 9.66,
+        "prior_change_percent": -0.37,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 19,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群19檔同步走強"
+        ]
+    },
+    {
+        "id": "5202",
+        "name": "力新",
+        "close": 17.3,
+        "open": 14.85,
+        "high": 17.3,
+        "low": 14.5,
+        "diff": 1.55,
+        "change_percent": 9.84,
+        "volume": 5484000,
+        "avg_volume": 646800,
+        "vol_ratio": 8.48,
+        "prior_change_percent": 6.78,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "6270",
+        "name": "倍微",
+        "close": 35.85,
+        "open": 32.75,
+        "high": 35.85,
+        "low": 32.7,
+        "diff": 3.25,
+        "change_percent": 9.97,
+        "volume": 7817000,
+        "avg_volume": 940550,
+        "vol_ratio": 8.31,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 19,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群19檔同步走強"
+        ]
+    },
+    {
+        "id": "6148",
+        "name": "驊宏資",
+        "close": 38.5,
+        "open": 31.95,
+        "high": 38.5,
+        "low": 31.95,
+        "diff": 3.5,
+        "change_percent": 10.0,
+        "volume": 7530000,
+        "avg_volume": 997750,
+        "vol_ratio": 7.55,
+        "prior_change_percent": -6.04,
+        "prior_pattern": "big_black",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "5381",
+        "name": "光譜",
+        "close": 34.0,
+        "open": 28.0,
+        "high": 34.0,
+        "low": 28.0,
+        "diff": 3.05,
+        "change_percent": 9.85,
+        "volume": 11902000,
+        "avg_volume": 2304750,
+        "vol_ratio": 5.16,
+        "prior_change_percent": 2.31,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4745",
+        "name": "合富-KY",
+        "close": 16.5,
+        "open": 15.25,
+        "high": 16.7,
+        "low": 15.05,
+        "diff": 1.3,
+        "change_percent": 8.55,
+        "volume": 1068000,
+        "avg_volume": 213350,
+        "vol_ratio": 5.01,
+        "prior_change_percent": -2.56,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    }
+]

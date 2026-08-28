@@ -1,0 +1,174 @@
+[
+    {
+        "id": "2613",
+        "name": "中櫃",
+        "close": 27.75,
+        "open": 25.3,
+        "high": 27.75,
+        "low": 25.3,
+        "diff": 2.5,
+        "change_percent": 9.9,
+        "volume": 6616985,
+        "avg_volume": 552937,
+        "vol_ratio": 11.97,
+        "prior_change_percent": 1.41,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2615",
+        "name": "萬海",
+        "close": 87.0,
+        "open": 80.4,
+        "high": 87.6,
+        "low": 80.4,
+        "diff": 7.1,
+        "change_percent": 8.89,
+        "volume": 84974327,
+        "avg_volume": 7488722,
+        "vol_ratio": 11.35,
+        "prior_change_percent": 4.58,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 23,
+        "tags": [
+            "創20日新高",
+            "同族群23檔同步走強"
+        ]
+    },
+    {
+        "id": "2609",
+        "name": "陽明",
+        "close": 66.0,
+        "open": 61.1,
+        "high": 66.0,
+        "low": 61.0,
+        "diff": 6.0,
+        "change_percent": 10.0,
+        "volume": 176100716,
+        "avg_volume": 16452381,
+        "vol_ratio": 10.7,
+        "prior_change_percent": 4.53,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    },
+    {
+        "id": "1313",
+        "name": "聯成",
+        "close": 12.55,
+        "open": 11.4,
+        "high": 12.55,
+        "low": 11.35,
+        "diff": 1.1,
+        "change_percent": 9.61,
+        "volume": 37238224,
+        "avg_volume": 4676941,
+        "vol_ratio": 7.96,
+        "prior_change_percent": 2.69,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    },
+    {
+        "id": "2399",
+        "name": "映泰",
+        "close": 25.15,
+        "open": 23.3,
+        "high": 25.5,
+        "low": 23.15,
+        "diff": 1.95,
+        "change_percent": 8.41,
+        "volume": 20340558,
+        "avg_volume": 2983865,
+        "vol_ratio": 6.82,
+        "prior_change_percent": -1.9,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "5608",
+        "name": "四維航",
+        "close": 18.85,
+        "open": 17.8,
+        "high": 19.1,
+        "low": 17.75,
+        "diff": 1.2,
+        "change_percent": 6.8,
+        "volume": 17582947,
+        "avg_volume": 2909262,
+        "vol_ratio": 6.04,
+        "prior_change_percent": 0.28,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    },
+    {
+        "id": "2601",
+        "name": "益航",
+        "close": 5.98,
+        "open": 5.44,
+        "high": 5.98,
+        "low": 5.42,
+        "diff": 0.54,
+        "change_percent": 9.93,
+        "volume": 9330638,
+        "avg_volume": 1595790,
+        "vol_ratio": 5.85,
+        "prior_change_percent": 0.74,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 31,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群31檔同步走強"
+        ]
+    },
+    {
+        "id": "6456",
+        "name": "GIS-KY",
+        "close": 57.7,
+        "open": 56.5,
+        "high": 57.7,
+        "low": 55.3,
+        "diff": 5.2,
+        "change_percent": 9.9,
+        "volume": 15799971,
+        "avg_volume": 2961962,
+        "vol_ratio": 5.33,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 19,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群19檔同步走強"
+        ]
+    }
+]

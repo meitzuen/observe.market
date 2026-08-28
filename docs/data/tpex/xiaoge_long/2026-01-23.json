@@ -1,0 +1,109 @@
+[
+    {
+        "id": "4121",
+        "name": "優盛",
+        "close": 16.55,
+        "open": 15.0,
+        "high": 16.55,
+        "low": 15.0,
+        "diff": 1.5,
+        "change_percent": 9.97,
+        "volume": 2895000,
+        "avg_volume": 100067,
+        "vol_ratio": 28.93,
+        "prior_change_percent": -0.66,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 7,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "3260",
+        "name": "威剛",
+        "close": 314.5,
+        "open": 307.0,
+        "high": 326.0,
+        "low": 294.5,
+        "diff": 18.0,
+        "change_percent": 6.07,
+        "volume": 31564000,
+        "avg_volume": 3764333,
+        "vol_ratio": 8.39,
+        "prior_change_percent": 9.21,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 45,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "同族群45檔同步走強"
+        ]
+    },
+    {
+        "id": "4127",
+        "name": "天良",
+        "close": 38.2,
+        "open": 35.8,
+        "high": 38.7,
+        "low": 35.8,
+        "diff": 2.95,
+        "change_percent": 8.37,
+        "volume": 598000,
+        "avg_volume": 107267,
+        "vol_ratio": 5.57,
+        "prior_change_percent": 5.22,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3162",
+        "name": "精確",
+        "close": 65.0,
+        "open": 59.4,
+        "high": 65.0,
+        "low": 59.4,
+        "diff": 5.9,
+        "change_percent": 9.98,
+        "volume": 14306000,
+        "avg_volume": 2577800,
+        "vol_ratio": 5.55,
+        "prior_change_percent": -0.17,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    },
+    {
+        "id": "3630",
+        "name": "新鉅科",
+        "close": 35.0,
+        "open": 32.4,
+        "high": 35.0,
+        "low": 32.05,
+        "diff": 3.15,
+        "change_percent": 9.89,
+        "volume": 10879000,
+        "avg_volume": 2078733,
+        "vol_ratio": 5.23,
+        "prior_change_percent": 2.91,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 65,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群65檔同步走強"
+        ]
+    }
+]

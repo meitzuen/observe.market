@@ -1,0 +1,108 @@
+[
+    {
+        "id": "1762",
+        "name": "中化生",
+        "close": 29.55,
+        "open": 27.95,
+        "high": 29.55,
+        "low": 27.5,
+        "diff": 2.65,
+        "change_percent": 9.85,
+        "volume": 1994226,
+        "avg_volume": 88861,
+        "vol_ratio": 22.44,
+        "prior_change_percent": 0.37,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "9908",
+        "name": "大台北",
+        "close": 34.5,
+        "open": 33.3,
+        "high": 35.1,
+        "low": 33.3,
+        "diff": 2.55,
+        "change_percent": 7.98,
+        "volume": 19358223,
+        "avg_volume": 912887,
+        "vol_ratio": 21.21,
+        "prior_change_percent": 3.9,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "2426",
+        "name": "鼎元",
+        "close": 25.05,
+        "open": 22.0,
+        "high": 25.05,
+        "low": 22.0,
+        "diff": 2.25,
+        "change_percent": 9.87,
+        "volume": 40257263,
+        "avg_volume": 2334932,
+        "vol_ratio": 17.24,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "9926",
+        "name": "新海",
+        "close": 57.2,
+        "open": 57.1,
+        "high": 57.2,
+        "low": 56.0,
+        "diff": 5.2,
+        "change_percent": 10.0,
+        "volume": 2140531,
+        "avg_volume": 161671,
+        "vol_ratio": 13.24,
+        "prior_change_percent": 3.59,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6715",
+        "name": "嘉基",
+        "close": 233.5,
+        "open": 195.5,
+        "high": 233.5,
+        "low": 195.5,
+        "diff": 21.0,
+        "change_percent": 9.88,
+        "volume": 6241804,
+        "avg_volume": 845014,
+        "vol_ratio": 7.39,
+        "prior_change_percent": 9.82,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    }
+]

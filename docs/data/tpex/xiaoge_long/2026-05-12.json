@@ -1,0 +1,87 @@
+[
+    {
+        "id": "6899",
+        "name": "創為精密",
+        "close": 59.4,
+        "open": 55.0,
+        "high": 59.4,
+        "low": 55.0,
+        "diff": 5.4,
+        "change_percent": 10.0,
+        "volume": 520000,
+        "avg_volume": 24400,
+        "vol_ratio": 21.31,
+        "prior_change_percent": 0.93,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3360",
+        "name": "尚立",
+        "close": 16.0,
+        "open": 15.2,
+        "high": 16.0,
+        "low": 14.75,
+        "diff": 1.45,
+        "change_percent": 9.97,
+        "volume": 6329000,
+        "avg_volume": 397850,
+        "vol_ratio": 15.91,
+        "prior_change_percent": 3.56,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 84,
+        "tags": [
+            "創20日新高",
+            "同族群84檔同步走強"
+        ]
+    },
+    {
+        "id": "4127",
+        "name": "天良",
+        "close": 48.1,
+        "open": 44.65,
+        "high": 48.1,
+        "low": 44.65,
+        "diff": 4.35,
+        "change_percent": 9.94,
+        "volume": 1366000,
+        "avg_volume": 165300,
+        "vol_ratio": 8.26,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3219",
+        "name": "倚強科",
+        "close": 83.0,
+        "open": 76.6,
+        "high": 83.0,
+        "low": 75.6,
+        "diff": 7.5,
+        "change_percent": 9.93,
+        "volume": 2636000,
+        "avg_volume": 448200,
+        "vol_ratio": 5.88,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 85,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群85檔同步走強"
+        ]
+    }
+]

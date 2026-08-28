@@ -1,0 +1,45 @@
+[
+    {
+        "id": "6742",
+        "name": "澤米",
+        "close": 52.2,
+        "open": 46.5,
+        "high": 52.2,
+        "low": 46.25,
+        "diff": 4.7,
+        "change_percent": 9.89,
+        "volume": 6094432,
+        "avg_volume": 690226,
+        "vol_ratio": 8.83,
+        "prior_change_percent": 7.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    },
+    {
+        "id": "4771",
+        "name": "望隼",
+        "close": 198.5,
+        "open": 193.5,
+        "high": 205.0,
+        "low": 191.5,
+        "diff": 12.0,
+        "change_percent": 6.43,
+        "volume": 1186467,
+        "avg_volume": 191173,
+        "vol_ratio": 6.21,
+        "prior_change_percent": 0.81,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

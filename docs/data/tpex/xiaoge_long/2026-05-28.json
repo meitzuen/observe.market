@@ -1,0 +1,152 @@
+[
+    {
+        "id": "3556",
+        "name": "禾瑞亞",
+        "close": 61.1,
+        "open": 56.8,
+        "high": 61.7,
+        "low": 56.8,
+        "diff": 5.0,
+        "change_percent": 8.91,
+        "volume": 3691000,
+        "avg_volume": 522250,
+        "vol_ratio": 7.07,
+        "prior_change_percent": -0.36,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "4549",
+        "name": "桓達",
+        "close": 113.5,
+        "open": 106.5,
+        "high": 113.5,
+        "low": 106.5,
+        "diff": 10.0,
+        "change_percent": 9.66,
+        "volume": 1827000,
+        "avg_volume": 276250,
+        "vol_ratio": 6.61,
+        "prior_change_percent": -3.27,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 58,
+        "tags": [
+            "創20日新高",
+            "同族群58檔同步走強"
+        ]
+    },
+    {
+        "id": "6654",
+        "name": "天正國際",
+        "close": 140.0,
+        "open": 129.5,
+        "high": 140.0,
+        "low": 128.0,
+        "diff": 12.5,
+        "change_percent": 9.8,
+        "volume": 520000,
+        "avg_volume": 90850,
+        "vol_ratio": 5.72,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "5202",
+        "name": "力新",
+        "close": 12.45,
+        "open": 11.45,
+        "high": 12.45,
+        "low": 11.45,
+        "diff": 1.1,
+        "change_percent": 9.69,
+        "volume": 1108000,
+        "avg_volume": 195300,
+        "vol_ratio": 5.67,
+        "prior_change_percent": -2.58,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 1,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    },
+    {
+        "id": "3558",
+        "name": "神準",
+        "close": 141.5,
+        "open": 131.0,
+        "high": 141.5,
+        "low": 130.0,
+        "diff": 12.5,
+        "change_percent": 9.69,
+        "volume": 2195000,
+        "avg_volume": 424250,
+        "vol_ratio": 5.17,
+        "prior_change_percent": -4.44,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    },
+    {
+        "id": "6411",
+        "name": "晶焱",
+        "close": 111.0,
+        "open": 101.0,
+        "high": 111.0,
+        "low": 100.5,
+        "diff": 10.0,
+        "change_percent": 9.9,
+        "volume": 8808000,
+        "avg_volume": 1721950,
+        "vol_ratio": 5.12,
+        "prior_change_percent": 0.5,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 62,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群62檔同步走強"
+        ]
+    },
+    {
+        "id": "4939",
+        "name": "亞電",
+        "close": 45.95,
+        "open": 44.75,
+        "high": 47.0,
+        "low": 43.4,
+        "diff": 2.8,
+        "change_percent": 6.49,
+        "volume": 19687000,
+        "avg_volume": 3881150,
+        "vol_ratio": 5.07,
+        "prior_change_percent": -1.03,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 61,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群61檔同步走強"
+        ]
+    }
+]

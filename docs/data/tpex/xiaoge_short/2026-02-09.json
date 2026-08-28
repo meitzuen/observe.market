@@ -1,0 +1,121 @@
+[
+    {
+        "id": "6535",
+        "name": "順藥",
+        "close": 181.5,
+        "open": 193.5,
+        "high": 193.5,
+        "low": 178.0,
+        "diff": -12.0,
+        "change_percent": -6.2,
+        "volume": 594000,
+        "prior_change_percent": 8.1,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": -0.38,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "3284",
+        "name": "太普高",
+        "close": 21.05,
+        "open": 23.1,
+        "high": 23.15,
+        "low": 21.0,
+        "diff": -1.05,
+        "change_percent": -4.75,
+        "volume": 1988000,
+        "prior_change_percent": 9.95,
+        "gap_open_percent": 4.52,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "5386",
+        "name": "青雲",
+        "close": 134.5,
+        "open": 131.0,
+        "high": 134.5,
+        "low": 126.0,
+        "diff": 12.0,
+        "change_percent": 9.8,
+        "volume": 10925000,
+        "prior_change_percent": 9.87,
+        "gap_open_percent": 6.94,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.14,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "3615",
+        "name": "安可",
+        "close": 27.8,
+        "open": 31.4,
+        "high": 31.7,
+        "low": 27.5,
+        "diff": -1.55,
+        "change_percent": -5.28,
+        "volume": 19517000,
+        "prior_change_percent": 9.93,
+        "gap_open_percent": 6.98,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": 1.15,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "7744",
+        "name": "崴寶",
+        "close": 389.0,
+        "open": 390.0,
+        "high": 399.0,
+        "low": 369.0,
+        "diff": 26.0,
+        "change_percent": 7.16,
+        "volume": 1102000,
+        "prior_change_percent": 10.0,
+        "gap_open_percent": 7.44,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": 1.48,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "高檔月線走平，疑似做頭"
+        ]
+    }
+]

@@ -1,0 +1,73 @@
+[
+    {
+        "id": "4123",
+        "name": "晟德",
+        "close": 48.0,
+        "open": 49.8,
+        "high": 51.4,
+        "low": 48.0,
+        "diff": -1.35,
+        "change_percent": -2.74,
+        "volume": 45190000,
+        "prior_change_percent": 9.91,
+        "gap_open_percent": 0.91,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.44,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "close": 15.6,
+        "open": 16.5,
+        "high": 16.55,
+        "low": 15.55,
+        "diff": 0.05,
+        "change_percent": 0.32,
+        "volume": 1816000,
+        "prior_change_percent": 9.89,
+        "gap_open_percent": 6.11,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "8917",
+        "name": "欣泰",
+        "close": 57.3,
+        "open": 64.8,
+        "high": 66.8,
+        "low": 57.2,
+        "diff": -3.5,
+        "change_percent": -5.76,
+        "volume": 546000,
+        "prior_change_percent": 9.95,
+        "gap_open_percent": 6.58,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

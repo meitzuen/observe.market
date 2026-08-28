@@ -1,0 +1,89 @@
+[
+    {
+        "id": "1776",
+        "name": "展宇",
+        "close": 18.7,
+        "open": 17.5,
+        "high": 18.7,
+        "low": 17.5,
+        "diff": 1.7,
+        "change_percent": 10.0,
+        "volume": 800623,
+        "avg_volume": 121120,
+        "vol_ratio": 6.61,
+        "prior_change_percent": 0.89,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 89,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群89檔同步走強"
+        ]
+    },
+    {
+        "id": "1447",
+        "name": "力鵬",
+        "close": 5.22,
+        "open": 4.92,
+        "high": 5.38,
+        "low": 4.92,
+        "diff": 0.32,
+        "change_percent": 6.53,
+        "volume": 6341870,
+        "avg_volume": 1054258,
+        "vol_ratio": 6.02,
+        "prior_change_percent": -0.61,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 38,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群38檔同步走強"
+        ]
+    },
+    {
+        "id": "6416",
+        "name": "瑞祺電通",
+        "close": 89.5,
+        "open": 85.0,
+        "high": 91.5,
+        "low": 85.0,
+        "diff": 6.3,
+        "change_percent": 7.57,
+        "volume": 1663861,
+        "avg_volume": 306199,
+        "vol_ratio": 5.43,
+        "prior_change_percent": -0.83,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "3048",
+        "name": "益登",
+        "close": 51.0,
+        "open": 48.5,
+        "high": 51.0,
+        "low": 46.6,
+        "diff": 4.55,
+        "change_percent": 9.8,
+        "volume": 34119735,
+        "avg_volume": 6667947,
+        "vol_ratio": 5.12,
+        "prior_change_percent": -0.96,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 108,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群108檔同步走強"
+        ]
+    }
+]

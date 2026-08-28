@@ -1,0 +1,24 @@
+[
+    {
+        "id": "4163",
+        "name": "鐿鈦",
+        "close": 144.0,
+        "open": 138.0,
+        "high": 147.5,
+        "low": 138.0,
+        "diff": 9.5,
+        "change_percent": 7.06,
+        "volume": 896000,
+        "avg_volume": 96300,
+        "vol_ratio": 9.3,
+        "prior_change_percent": 9.8,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    }
+]

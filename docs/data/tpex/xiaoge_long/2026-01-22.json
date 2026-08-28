@@ -1,0 +1,111 @@
+[
+    {
+        "id": "8929",
+        "name": "富堡",
+        "close": 18.2,
+        "open": 17.0,
+        "high": 18.2,
+        "low": 17.0,
+        "diff": 1.65,
+        "change_percent": 9.97,
+        "volume": 991000,
+        "avg_volume": 15462,
+        "vol_ratio": 64.09,
+        "prior_change_percent": -0.6,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 66,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群66檔同步走強"
+        ]
+    },
+    {
+        "id": "4533",
+        "name": "協易機",
+        "close": 35.35,
+        "open": 31.7,
+        "high": 35.35,
+        "low": 31.5,
+        "diff": 3.2,
+        "change_percent": 9.95,
+        "volume": 48279000,
+        "avg_volume": 6311071,
+        "vol_ratio": 7.65,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    },
+    {
+        "id": "3287",
+        "name": "廣寰科",
+        "close": 32.1,
+        "open": 29.3,
+        "high": 32.1,
+        "low": 29.3,
+        "diff": 2.9,
+        "change_percent": 9.93,
+        "volume": 543000,
+        "avg_volume": 83857,
+        "vol_ratio": 6.48,
+        "prior_change_percent": -0.34,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "5371",
+        "name": "中光電",
+        "close": 105.5,
+        "open": 99.0,
+        "high": 106.0,
+        "low": 96.0,
+        "diff": 8.8,
+        "change_percent": 9.1,
+        "volume": 69271000,
+        "avg_volume": 13194857,
+        "vol_ratio": 5.25,
+        "prior_change_percent": 3.98,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 109,
+        "tags": [
+            "創20日新高",
+            "同族群109檔同步走強"
+        ]
+    },
+    {
+        "id": "3556",
+        "name": "禾瑞亞",
+        "close": 41.95,
+        "open": 39.0,
+        "high": 41.95,
+        "low": 38.9,
+        "diff": 3.8,
+        "change_percent": 9.96,
+        "volume": 615000,
+        "avg_volume": 122143,
+        "vol_ratio": 5.04,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    }
+]

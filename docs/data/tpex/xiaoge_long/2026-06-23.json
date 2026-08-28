@@ -1,0 +1,88 @@
+[
+    {
+        "id": "3672",
+        "name": "康聯訊",
+        "close": 13.05,
+        "open": 13.0,
+        "high": 13.05,
+        "low": 12.7,
+        "diff": 1.15,
+        "change_percent": 9.66,
+        "volume": 560000,
+        "avg_volume": 51650,
+        "vol_ratio": 10.84,
+        "prior_change_percent": -1.24,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "6109",
+        "name": "亞元",
+        "close": 13.65,
+        "open": 13.45,
+        "high": 13.8,
+        "low": 12.6,
+        "diff": 0.9,
+        "change_percent": 7.06,
+        "volume": 3656000,
+        "avg_volume": 400600,
+        "vol_ratio": 9.13,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "8054",
+        "name": "安國",
+        "close": 124.5,
+        "open": 119.5,
+        "high": 124.5,
+        "low": 118.0,
+        "diff": 11.0,
+        "change_percent": 9.69,
+        "volume": 12742000,
+        "avg_volume": 2234450,
+        "vol_ratio": 5.7,
+        "prior_change_percent": 9.66,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    },
+    {
+        "id": "3372",
+        "name": "典範",
+        "close": 23.5,
+        "open": 21.9,
+        "high": 23.65,
+        "low": 21.5,
+        "diff": 2.0,
+        "change_percent": 9.3,
+        "volume": 8758000,
+        "avg_volume": 1615300,
+        "vol_ratio": 5.42,
+        "prior_change_percent": 5.39,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    }
+]

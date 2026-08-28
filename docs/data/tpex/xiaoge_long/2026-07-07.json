@@ -1,0 +1,65 @@
+[
+    {
+        "id": "8421",
+        "name": "旭源",
+        "close": 14.25,
+        "open": 13.5,
+        "high": 14.5,
+        "low": 13.4,
+        "diff": 0.85,
+        "change_percent": 6.34,
+        "volume": 525000,
+        "avg_volume": 40000,
+        "vol_ratio": 13.12,
+        "prior_change_percent": 2.29,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6423",
+        "name": "億而得",
+        "close": 86.8,
+        "open": 79.7,
+        "high": 87.0,
+        "low": 79.7,
+        "diff": 7.7,
+        "change_percent": 9.73,
+        "volume": 885000,
+        "avg_volume": 140900,
+        "vol_ratio": 6.28,
+        "prior_change_percent": -3.18,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6712",
+        "name": "長聖",
+        "close": 177.5,
+        "open": 170.0,
+        "high": 177.5,
+        "low": 168.0,
+        "diff": 16.0,
+        "change_percent": 9.91,
+        "volume": 4230000,
+        "avg_volume": 761500,
+        "vol_ratio": 5.55,
+        "prior_change_percent": 1.25,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

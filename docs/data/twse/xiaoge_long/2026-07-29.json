@@ -1,0 +1,44 @@
+[
+    {
+        "id": "4976",
+        "name": "佳凌",
+        "close": 37.7,
+        "open": 34.6,
+        "high": 37.7,
+        "low": 34.55,
+        "diff": 3.4,
+        "change_percent": 9.91,
+        "volume": 13072274,
+        "avg_volume": 2308209,
+        "vol_ratio": 5.66,
+        "prior_change_percent": 1.18,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 2,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "6668",
+        "name": "中揚光",
+        "close": 37.15,
+        "open": 35.3,
+        "high": 37.15,
+        "low": 33.7,
+        "diff": 3.35,
+        "change_percent": 9.91,
+        "volume": 3025510,
+        "avg_volume": 549304,
+        "vol_ratio": 5.51,
+        "prior_change_percent": -2.59,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 11,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群11檔同步走強"
+        ]
+    }
+]

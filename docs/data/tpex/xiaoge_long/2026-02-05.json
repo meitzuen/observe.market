@@ -1,0 +1,112 @@
+[
+    {
+        "id": "2736",
+        "name": "富野",
+        "close": 15.15,
+        "open": 14.05,
+        "high": 15.15,
+        "low": 13.8,
+        "diff": 1.35,
+        "change_percent": 9.78,
+        "volume": 1693000,
+        "avg_volume": 93500,
+        "vol_ratio": 18.11,
+        "prior_change_percent": -0.36,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "3508",
+        "name": "位速",
+        "close": 35.3,
+        "open": 34.0,
+        "high": 35.3,
+        "low": 33.9,
+        "diff": 3.2,
+        "change_percent": 9.97,
+        "volume": 5176000,
+        "avg_volume": 480850,
+        "vol_ratio": 10.76,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 28,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群28檔同步走強"
+        ]
+    },
+    {
+        "id": "2734",
+        "name": "易飛網",
+        "close": 19.5,
+        "open": 18.2,
+        "high": 19.5,
+        "low": 18.2,
+        "diff": 1.75,
+        "change_percent": 9.86,
+        "volume": 1181000,
+        "avg_volume": 111550,
+        "vol_ratio": 10.59,
+        "prior_change_percent": -0.28,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "8289",
+        "name": "泰藝",
+        "close": 29.0,
+        "open": 28.5,
+        "high": 29.55,
+        "low": 27.7,
+        "diff": 1.75,
+        "change_percent": 6.42,
+        "volume": 5494000,
+        "avg_volume": 745650,
+        "vol_ratio": 7.37,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "4542",
+        "name": "科嶠",
+        "close": 130.0,
+        "open": 122.0,
+        "high": 133.0,
+        "low": 119.5,
+        "diff": 8.5,
+        "change_percent": 7.0,
+        "volume": 5390000,
+        "avg_volume": 943350,
+        "vol_ratio": 5.71,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 23,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群23檔同步走強"
+        ]
+    }
+]

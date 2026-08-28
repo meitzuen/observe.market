@@ -1,0 +1,66 @@
+[
+    {
+        "id": "9918",
+        "name": "欣天然",
+        "close": 46.25,
+        "open": 43.6,
+        "high": 46.25,
+        "low": 43.6,
+        "diff": 4.2,
+        "change_percent": 9.99,
+        "volume": 1561564,
+        "avg_volume": 26072,
+        "vol_ratio": 59.89,
+        "prior_change_percent": 2.44,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "9931",
+        "name": "欣高",
+        "close": 38.85,
+        "open": 35.6,
+        "high": 38.85,
+        "low": 35.6,
+        "diff": 3.5,
+        "change_percent": 9.9,
+        "volume": 902549,
+        "avg_volume": 16343,
+        "vol_ratio": 55.23,
+        "prior_change_percent": 1.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1582",
+        "name": "信錦",
+        "close": 81.4,
+        "open": 75.5,
+        "high": 83.8,
+        "low": 75.5,
+        "diff": 4.8,
+        "change_percent": 6.27,
+        "volume": 16751944,
+        "avg_volume": 1688416,
+        "vol_ratio": 9.92,
+        "prior_change_percent": 1.86,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    }
+]

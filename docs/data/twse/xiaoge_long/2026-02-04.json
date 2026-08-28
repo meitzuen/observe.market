@@ -1,0 +1,111 @@
+[
+    {
+        "id": "6412",
+        "name": "群電",
+        "close": 92.5,
+        "open": 88.4,
+        "high": 92.5,
+        "low": 84.5,
+        "diff": 8.4,
+        "change_percent": 9.99,
+        "volume": 9724281,
+        "avg_volume": 1228960,
+        "vol_ratio": 7.91,
+        "prior_change_percent": 4.08,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 96,
+        "tags": [
+            "創20日新高",
+            "同族群96檔同步走強"
+        ]
+    },
+    {
+        "id": "3686",
+        "name": "達能",
+        "close": 23.1,
+        "open": 20.8,
+        "high": 23.7,
+        "low": 20.1,
+        "diff": 1.55,
+        "change_percent": 7.19,
+        "volume": 4724704,
+        "avg_volume": 687939,
+        "vol_ratio": 6.87,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 23,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群23檔同步走強"
+        ]
+    },
+    {
+        "id": "6451",
+        "name": "訊芯-KY",
+        "close": 208.0,
+        "open": 195.5,
+        "high": 208.0,
+        "low": 191.0,
+        "diff": 18.5,
+        "change_percent": 9.76,
+        "volume": 10469508,
+        "avg_volume": 1762490,
+        "vol_ratio": 5.94,
+        "prior_change_percent": 9.86,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 79,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群79檔同步走強"
+        ]
+    },
+    {
+        "id": "6715",
+        "name": "嘉基",
+        "close": 150.0,
+        "open": 145.0,
+        "high": 151.0,
+        "low": 138.5,
+        "diff": 9.5,
+        "change_percent": 6.76,
+        "volume": 1351039,
+        "avg_volume": 246425,
+        "vol_ratio": 5.48,
+        "prior_change_percent": 9.77,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 58,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群58檔同步走強"
+        ]
+    },
+    {
+        "id": "2355",
+        "name": "敬鵬",
+        "close": 43.75,
+        "open": 39.9,
+        "high": 43.75,
+        "low": 39.15,
+        "diff": 3.95,
+        "change_percent": 9.92,
+        "volume": 59271756,
+        "avg_volume": 10886606,
+        "vol_ratio": 5.44,
+        "prior_change_percent": 7.57,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 157,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群157檔同步走強"
+        ]
+    }
+]

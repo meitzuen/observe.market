@@ -1,0 +1,280 @@
+[
+    {
+        "id": "5426",
+        "name": "振發",
+        "close": 29.95,
+        "open": 29.0,
+        "high": 29.95,
+        "low": 28.6,
+        "diff": 2.7,
+        "change_percent": 9.91,
+        "volume": 11300000,
+        "avg_volume": 504800,
+        "vol_ratio": 22.39,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8099",
+        "name": "大世科",
+        "close": 70.2,
+        "open": 63.6,
+        "high": 70.2,
+        "low": 62.6,
+        "diff": 6.3,
+        "change_percent": 9.86,
+        "volume": 1990000,
+        "avg_volume": 142950,
+        "vol_ratio": 13.92,
+        "prior_change_percent": 1.43,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6763",
+        "name": "綠界科技*",
+        "close": 50.4,
+        "open": 46.35,
+        "high": 50.4,
+        "low": 46.35,
+        "diff": 4.55,
+        "change_percent": 9.92,
+        "volume": 6716000,
+        "avg_volume": 497100,
+        "vol_ratio": 13.51,
+        "prior_change_percent": 0.11,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    },
+    {
+        "id": "6270",
+        "name": "倍微",
+        "close": 32.6,
+        "open": 30.0,
+        "high": 32.6,
+        "low": 29.8,
+        "diff": 2.95,
+        "change_percent": 9.95,
+        "volume": 6215000,
+        "avg_volume": 668950,
+        "vol_ratio": 9.29,
+        "prior_change_percent": 1.02,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 46,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群46檔同步走強"
+        ]
+    },
+    {
+        "id": "6517",
+        "name": "保勝光學",
+        "close": 69.3,
+        "open": 62.7,
+        "high": 69.3,
+        "low": 62.5,
+        "diff": 6.3,
+        "change_percent": 10.0,
+        "volume": 3077000,
+        "avg_volume": 374000,
+        "vol_ratio": 8.23,
+        "prior_change_percent": 2.61,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 13,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群13檔同步走強"
+        ]
+    },
+    {
+        "id": "3147",
+        "name": "大綜",
+        "close": 284.5,
+        "open": 263.0,
+        "high": 293.0,
+        "low": 262.5,
+        "diff": 18.0,
+        "change_percent": 6.75,
+        "volume": 5293000,
+        "avg_volume": 696000,
+        "vol_ratio": 7.6,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 12,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群12檔同步走強"
+        ]
+    },
+    {
+        "id": "3213",
+        "name": "茂訊",
+        "close": 139.0,
+        "open": 131.0,
+        "high": 139.0,
+        "low": 130.0,
+        "diff": 12.5,
+        "change_percent": 9.88,
+        "volume": 5252000,
+        "avg_volume": 696150,
+        "vol_ratio": 7.54,
+        "prior_change_percent": 0.4,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "3114",
+        "name": "好德",
+        "close": 44.65,
+        "open": 42.5,
+        "high": 44.65,
+        "low": 41.6,
+        "diff": 4.05,
+        "change_percent": 9.98,
+        "volume": 7049000,
+        "avg_volume": 989500,
+        "vol_ratio": 7.12,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 46,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群46檔同步走強"
+        ]
+    },
+    {
+        "id": "3520",
+        "name": "華盈",
+        "close": 17.05,
+        "open": 15.6,
+        "high": 17.05,
+        "low": 15.0,
+        "diff": 1.55,
+        "change_percent": 10.0,
+        "volume": 2036000,
+        "avg_volume": 287150,
+        "vol_ratio": 7.09,
+        "prior_change_percent": 3.68,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 48,
+        "tags": [
+            "創20日新高",
+            "同族群48檔同步走強"
+        ]
+    },
+    {
+        "id": "6895",
+        "name": "宏碩系統",
+        "close": 169.5,
+        "open": 158.0,
+        "high": 169.5,
+        "low": 158.0,
+        "diff": 15.0,
+        "change_percent": 9.71,
+        "volume": 684000,
+        "avg_volume": 99250,
+        "vol_ratio": 6.89,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 13,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群13檔同步走強"
+        ]
+    },
+    {
+        "id": "7794",
+        "name": "宏碁智新",
+        "close": 34.9,
+        "open": 33.55,
+        "high": 34.9,
+        "low": 32.95,
+        "diff": 3.15,
+        "change_percent": 9.92,
+        "volume": 551000,
+        "avg_volume": 86950,
+        "vol_ratio": 6.34,
+        "prior_change_percent": -4.51,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3548",
+        "name": "兆利",
+        "close": 104.5,
+        "open": 95.0,
+        "high": 104.5,
+        "low": 91.7,
+        "diff": 9.1,
+        "change_percent": 9.54,
+        "volume": 3408000,
+        "avg_volume": 590000,
+        "vol_ratio": 5.78,
+        "prior_change_percent": -3.15,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "4109",
+        "name": "加捷生醫",
+        "close": 13.05,
+        "open": 12.0,
+        "high": 13.05,
+        "low": 11.8,
+        "diff": 1.15,
+        "change_percent": 9.66,
+        "volume": 1359000,
+        "avg_volume": 242600,
+        "vol_ratio": 5.6,
+        "prior_change_percent": 3.93,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    }
+]

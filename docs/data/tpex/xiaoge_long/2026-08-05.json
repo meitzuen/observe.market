@@ -1,0 +1,84 @@
+[
+    {
+        "id": "6840",
+        "name": "東研信超",
+        "close": 68.6,
+        "open": 63.3,
+        "high": 68.6,
+        "low": 63.2,
+        "diff": 6.2,
+        "change_percent": 9.94,
+        "volume": 613000,
+        "avg_volume": 66350,
+        "vol_ratio": 9.24,
+        "prior_change_percent": 2.3,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 143,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群143檔同步走強"
+        ]
+    },
+    {
+        "id": "6161",
+        "name": "捷波",
+        "close": 55.6,
+        "open": 55.0,
+        "high": 55.6,
+        "low": 53.6,
+        "diff": 5.0,
+        "change_percent": 9.88,
+        "volume": 1918000,
+        "avg_volume": 246000,
+        "vol_ratio": 7.8,
+        "prior_change_percent": 5.42,
+        "prior_pattern": "normal",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": []
+    },
+    {
+        "id": "5340",
+        "name": "建榮",
+        "close": 75.7,
+        "open": 73.0,
+        "high": 76.2,
+        "low": 72.2,
+        "diff": 5.1,
+        "change_percent": 7.22,
+        "volume": 8029000,
+        "avg_volume": 1081000,
+        "vol_ratio": 7.43,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 166,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "同族群166檔同步走強"
+        ]
+    },
+    {
+        "id": "3339",
+        "name": "泰谷",
+        "close": 39.8,
+        "open": 38.35,
+        "high": 40.4,
+        "low": 38.0,
+        "diff": 2.4,
+        "change_percent": 6.42,
+        "volume": 4830000,
+        "avg_volume": 956250,
+        "vol_ratio": 5.05,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

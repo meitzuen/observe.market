@@ -1,0 +1,23 @@
+[
+    {
+        "id": "4442",
+        "name": "竣邦-KY",
+        "close": 66.3,
+        "open": 60.0,
+        "high": 66.3,
+        "low": 57.9,
+        "diff": 4.2,
+        "change_percent": 6.76,
+        "volume": 1355000,
+        "avg_volume": 210250,
+        "vol_ratio": 6.44,
+        "prior_change_percent": -0.64,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,109 @@
+[
+    {
+        "id": "6732",
+        "name": "昇佳電子",
+        "close": 199.5,
+        "open": 185.0,
+        "high": 199.5,
+        "low": 185.0,
+        "diff": 18.0,
+        "change_percent": 9.92,
+        "volume": 2057000,
+        "avg_volume": 161053,
+        "vol_ratio": 12.77,
+        "prior_change_percent": 2.25,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 57.8,
+        "open": 54.2,
+        "high": 57.8,
+        "low": 54.2,
+        "diff": 5.2,
+        "change_percent": 9.89,
+        "volume": 600000,
+        "avg_volume": 63368,
+        "vol_ratio": 9.47,
+        "prior_change_percent": 0.57,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "8096",
+        "name": "擎亞",
+        "close": 69.4,
+        "open": 66.1,
+        "high": 70.6,
+        "low": 65.6,
+        "diff": 5.2,
+        "change_percent": 8.1,
+        "volume": 64016000,
+        "avg_volume": 9789947,
+        "vol_ratio": 6.54,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "6291",
+        "name": "沛亨",
+        "close": 244.5,
+        "open": 237.0,
+        "high": 244.5,
+        "low": 230.5,
+        "diff": 22.0,
+        "change_percent": 9.89,
+        "volume": 4002000,
+        "avg_volume": 619000,
+        "vol_ratio": 6.47,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2061",
+        "name": "風青",
+        "close": 18.7,
+        "open": 17.2,
+        "high": 18.7,
+        "low": 17.15,
+        "diff": 1.7,
+        "change_percent": 10.0,
+        "volume": 744000,
+        "avg_volume": 131789,
+        "vol_ratio": 5.65,
+        "prior_change_percent": -3.13,
+        "prior_pattern": "normal",
+        "is_new_high": false,
+        "peer_strong_count": 26,
+        "tags": [
+            "同族群26檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,240 @@
+[
+    {
+        "id": "1225",
+        "name": "福懋油",
+        "close": 32.6,
+        "open": 30.0,
+        "high": 32.65,
+        "low": 30.0,
+        "diff": 2.9,
+        "change_percent": 9.76,
+        "volume": 1712822,
+        "avg_volume": 171778,
+        "vol_ratio": 9.97,
+        "prior_change_percent": 1.02,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "6689",
+        "name": "伊雲谷",
+        "close": 72.9,
+        "open": 66.9,
+        "high": 72.9,
+        "low": 66.9,
+        "diff": 6.6,
+        "change_percent": 9.95,
+        "volume": 3084290,
+        "avg_volume": 347494,
+        "vol_ratio": 8.88,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 15,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群15檔同步走強"
+        ]
+    },
+    {
+        "id": "2616",
+        "name": "山隆",
+        "close": 14.95,
+        "open": 14.9,
+        "high": 14.95,
+        "low": 14.9,
+        "diff": 1.35,
+        "change_percent": 9.93,
+        "volume": 889607,
+        "avg_volume": 109368,
+        "vol_ratio": 8.13,
+        "prior_change_percent": 0.74,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8438",
+        "name": "昶昕",
+        "close": 75.8,
+        "open": 68.5,
+        "high": 76.3,
+        "low": 67.1,
+        "diff": 6.4,
+        "change_percent": 9.22,
+        "volume": 13505086,
+        "avg_volume": 1675634,
+        "vol_ratio": 8.06,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "6230",
+        "name": "尼得科超眾",
+        "close": 167.0,
+        "open": 152.0,
+        "high": 172.5,
+        "low": 152.0,
+        "diff": 10.0,
+        "change_percent": 6.37,
+        "volume": 1524204,
+        "avg_volume": 197119,
+        "vol_ratio": 7.73,
+        "prior_change_percent": 9.79,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 83,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群83檔同步走強"
+        ]
+    },
+    {
+        "id": "6141",
+        "name": "柏承",
+        "close": 13.6,
+        "open": 13.0,
+        "high": 13.6,
+        "low": 13.0,
+        "diff": 1.2,
+        "change_percent": 9.68,
+        "volume": 2350681,
+        "avg_volume": 327774,
+        "vol_ratio": 7.17,
+        "prior_change_percent": 9.73,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 65,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群65檔同步走強"
+        ]
+    },
+    {
+        "id": "6526",
+        "name": "達發",
+        "close": 552.0,
+        "open": 530.0,
+        "high": 568.0,
+        "low": 529.0,
+        "diff": 35.0,
+        "change_percent": 6.77,
+        "volume": 4358754,
+        "avg_volume": 650328,
+        "vol_ratio": 6.7,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "8162",
+        "name": "微矽電子-創",
+        "close": 43.9,
+        "open": 40.85,
+        "high": 43.9,
+        "low": 39.95,
+        "diff": 3.95,
+        "change_percent": 9.89,
+        "volume": 1394390,
+        "avg_volume": 217158,
+        "vol_ratio": 6.42,
+        "prior_change_percent": 4.86,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2504",
+        "name": "國產",
+        "close": 39.65,
+        "open": 37.5,
+        "high": 40.1,
+        "low": 37.5,
+        "diff": 2.55,
+        "change_percent": 6.87,
+        "volume": 9017886,
+        "avg_volume": 1563140,
+        "vol_ratio": 5.77,
+        "prior_change_percent": 0.82,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 35,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群35檔同步走強"
+        ]
+    },
+    {
+        "id": "2402",
+        "name": "毅嘉",
+        "close": 61.0,
+        "open": 55.8,
+        "high": 62.7,
+        "low": 54.5,
+        "diff": 4.0,
+        "change_percent": 7.02,
+        "volume": 33498801,
+        "avg_volume": 6014579,
+        "vol_ratio": 5.57,
+        "prior_change_percent": 3.83,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 41,
+        "tags": [
+            "創20日新高",
+            "同族群41檔同步走強"
+        ]
+    },
+    {
+        "id": "2338",
+        "name": "光罩",
+        "close": 54.1,
+        "open": 50.2,
+        "high": 54.1,
+        "low": 49.5,
+        "diff": 4.9,
+        "change_percent": 9.96,
+        "volume": 15269185,
+        "avg_volume": 2775955,
+        "vol_ratio": 5.5,
+        "prior_change_percent": 9.94,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,88 @@
+[
+    {
+        "id": "4503",
+        "name": "金雨",
+        "close": 41.7,
+        "open": 39.0,
+        "high": 42.25,
+        "low": 37.7,
+        "diff": 3.05,
+        "change_percent": 7.89,
+        "volume": 1451000,
+        "avg_volume": 174000,
+        "vol_ratio": 8.34,
+        "prior_change_percent": 4.6,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3230",
+        "name": "錦明",
+        "close": 46.45,
+        "open": 46.0,
+        "high": 46.45,
+        "low": 42.35,
+        "diff": 2.65,
+        "change_percent": 6.05,
+        "volume": 10862000,
+        "avg_volume": 1538350,
+        "vol_ratio": 7.06,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 164,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群164檔同步走強"
+        ]
+    },
+    {
+        "id": "5371",
+        "name": "中光電",
+        "close": 86.9,
+        "open": 82.2,
+        "high": 86.9,
+        "low": 79.4,
+        "diff": 7.9,
+        "change_percent": 10.0,
+        "volume": 42297000,
+        "avg_volume": 6174050,
+        "vol_ratio": 6.85,
+        "prior_change_percent": 9.87,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 266,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群266檔同步走強"
+        ]
+    },
+    {
+        "id": "5314",
+        "name": "世紀*",
+        "close": 66.8,
+        "open": 63.5,
+        "high": 66.8,
+        "low": 62.2,
+        "diff": 6.0,
+        "change_percent": 9.87,
+        "volume": 16637000,
+        "avg_volume": 2893250,
+        "vol_ratio": 5.75,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 48,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群48檔同步走強"
+        ]
+    }
+]

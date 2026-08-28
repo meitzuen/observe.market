@@ -1,0 +1,23 @@
+[
+    {
+        "id": "2816",
+        "name": "旺旺保",
+        "close": 36.5,
+        "open": 36.2,
+        "high": 36.85,
+        "low": 36.0,
+        "diff": 2.3,
+        "change_percent": 6.73,
+        "volume": 1696000,
+        "avg_volume": 219656,
+        "vol_ratio": 7.72,
+        "prior_change_percent": 0.15,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

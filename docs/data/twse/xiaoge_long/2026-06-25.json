@@ -1,0 +1,86 @@
+[
+    {
+        "id": "2415",
+        "name": "錩新",
+        "close": 34.05,
+        "open": 31.4,
+        "high": 34.2,
+        "low": 31.4,
+        "diff": 2.95,
+        "change_percent": 9.49,
+        "volume": 2733828,
+        "avg_volume": 298181,
+        "vol_ratio": 9.17,
+        "prior_change_percent": 2.98,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "7631",
+        "name": "聚賢研發-創",
+        "close": 162.5,
+        "open": 149.5,
+        "high": 165.0,
+        "low": 149.0,
+        "diff": 12.5,
+        "change_percent": 8.33,
+        "volume": 503827,
+        "avg_volume": 57408,
+        "vol_ratio": 8.78,
+        "prior_change_percent": 9.09,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1617",
+        "name": "榮星",
+        "close": 17.05,
+        "open": 15.9,
+        "high": 17.45,
+        "low": 15.75,
+        "diff": 1.15,
+        "change_percent": 7.23,
+        "volume": 1858539,
+        "avg_volume": 353910,
+        "vol_ratio": 5.25,
+        "prior_change_percent": 0.63,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 47,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群47檔同步走強"
+        ]
+    },
+    {
+        "id": "2363",
+        "name": "矽統",
+        "close": 76.1,
+        "open": 72.0,
+        "high": 76.1,
+        "low": 70.9,
+        "diff": 6.9,
+        "change_percent": 9.97,
+        "volume": 74310774,
+        "avg_volume": 14315106,
+        "vol_ratio": 5.19,
+        "prior_change_percent": 5.01,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "創20日新高"
+        ]
+    }
+]

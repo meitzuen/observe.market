@@ -1,0 +1,219 @@
+[
+    {
+        "id": "2115",
+        "name": "六暉-KY",
+        "close": 26.95,
+        "open": 24.55,
+        "high": 26.95,
+        "low": 24.55,
+        "diff": 2.45,
+        "change_percent": 10.0,
+        "volume": 1471410,
+        "avg_volume": 71918,
+        "vol_ratio": 20.46,
+        "prior_change_percent": 0.41,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1539",
+        "name": "巨庭",
+        "close": 21.55,
+        "open": 19.85,
+        "high": 21.55,
+        "low": 19.8,
+        "diff": 1.95,
+        "change_percent": 9.95,
+        "volume": 2875547,
+        "avg_volume": 199081,
+        "vol_ratio": 14.44,
+        "prior_change_percent": 9.8,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    },
+    {
+        "id": "9934",
+        "name": "成霖",
+        "close": 10.8,
+        "open": 10.2,
+        "high": 10.8,
+        "low": 10.2,
+        "diff": 0.8,
+        "change_percent": 8.0,
+        "volume": 5507987,
+        "avg_volume": 471577,
+        "vol_ratio": 11.68,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "1541",
+        "name": "錩泰",
+        "close": 28.05,
+        "open": 27.0,
+        "high": 28.05,
+        "low": 27.0,
+        "diff": 2.55,
+        "change_percent": 10.0,
+        "volume": 607097,
+        "avg_volume": 61939,
+        "vol_ratio": 9.8,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4949",
+        "name": "有成精密",
+        "close": 42.5,
+        "open": 40.25,
+        "high": 43.55,
+        "low": 40.1,
+        "diff": 2.9,
+        "change_percent": 7.32,
+        "volume": 4076634,
+        "avg_volume": 460147,
+        "vol_ratio": 8.86,
+        "prior_change_percent": -1.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 25,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群25檔同步走強"
+        ]
+    },
+    {
+        "id": "1512",
+        "name": "瑞利",
+        "close": 8.54,
+        "open": 7.9,
+        "high": 8.65,
+        "low": 7.9,
+        "diff": 0.63,
+        "change_percent": 7.96,
+        "volume": 909418,
+        "avg_volume": 106619,
+        "vol_ratio": 8.53,
+        "prior_change_percent": 9.1,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1517",
+        "name": "利奇",
+        "close": 13.45,
+        "open": 12.5,
+        "high": 13.45,
+        "low": 12.2,
+        "diff": 1.2,
+        "change_percent": 9.8,
+        "volume": 3692640,
+        "avg_volume": 441223,
+        "vol_ratio": 8.37,
+        "prior_change_percent": 6.99,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "5222",
+        "name": "全訊",
+        "close": 147.0,
+        "open": 141.0,
+        "high": 149.5,
+        "low": 141.0,
+        "diff": 11.0,
+        "change_percent": 8.09,
+        "volume": 3749786,
+        "avg_volume": 566376,
+        "vol_ratio": 6.62,
+        "prior_change_percent": -0.73,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 51,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群51檔同步走強"
+        ]
+    },
+    {
+        "id": "1524",
+        "name": "耿鼎",
+        "close": 35.15,
+        "open": 33.35,
+        "high": 36.2,
+        "low": 32.5,
+        "diff": 2.2,
+        "change_percent": 6.68,
+        "volume": 17350885,
+        "avg_volume": 3266614,
+        "vol_ratio": 5.31,
+        "prior_change_percent": 6.63,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "6873",
+        "name": "泓德能源",
+        "close": 124.0,
+        "open": 119.0,
+        "high": 124.0,
+        "low": 117.0,
+        "diff": 11.0,
+        "change_percent": 9.73,
+        "volume": 3050840,
+        "avg_volume": 604862,
+        "vol_ratio": 5.04,
+        "prior_change_percent": 9.71,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 38,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群38檔同步走強"
+        ]
+    }
+]

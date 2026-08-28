@@ -1,0 +1,97 @@
+[
+    {
+        "id": "4178",
+        "name": "永笙-KY",
+        "close": 19.3,
+        "open": 18.3,
+        "high": 19.6,
+        "low": 18.3,
+        "diff": -0.7,
+        "change_percent": -3.5,
+        "volume": 1435545,
+        "prior_change_percent": 8.11,
+        "gap_open_percent": -8.5,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -0.16,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "6598",
+        "name": "ABC-KY",
+        "close": 26.7,
+        "open": 26.9,
+        "high": 27.4,
+        "low": 26.35,
+        "diff": -0.95,
+        "change_percent": -3.44,
+        "volume": 1189043,
+        "prior_change_percent": 9.72,
+        "gap_open_percent": -2.71,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": -0.16,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "1526",
+        "name": "日馳",
+        "close": 17.35,
+        "open": 17.25,
+        "high": 18.35,
+        "low": 16.8,
+        "diff": 0.1,
+        "change_percent": 0.58,
+        "volume": 5368249,
+        "prior_change_percent": 9.87,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -1.71,
+        "peer_weak": true,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "同族群普遍疲弱"
+        ]
+    },
+    {
+        "id": "6277",
+        "name": "宏正",
+        "close": 76.0,
+        "open": 83.7,
+        "high": 85.0,
+        "low": 76.0,
+        "diff": 0.0,
+        "change_percent": 0.0,
+        "volume": 4700824,
+        "prior_change_percent": 8.49,
+        "gap_open_percent": 3.98,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": -0.85,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

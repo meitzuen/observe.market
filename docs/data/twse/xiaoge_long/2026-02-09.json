@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3550",
+        "name": "聯穎",
+        "close": 20.6,
+        "open": 20.2,
+        "high": 20.6,
+        "low": 19.65,
+        "diff": 1.85,
+        "change_percent": 9.87,
+        "volume": 21912748,
+        "avg_volume": 3635498,
+        "vol_ratio": 6.03,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 75,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群75檔同步走強"
+        ]
+    }
+]

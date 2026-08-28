@@ -1,0 +1,89 @@
+[
+    {
+        "id": "2061",
+        "name": "風青",
+        "close": 19.95,
+        "open": 19.6,
+        "high": 20.55,
+        "low": 19.2,
+        "diff": 1.25,
+        "change_percent": 6.68,
+        "volume": 3141000,
+        "avg_volume": 162400,
+        "vol_ratio": 19.34,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "7709",
+        "name": "榮田",
+        "close": 63.1,
+        "open": 59.6,
+        "high": 63.5,
+        "low": 56.0,
+        "diff": 5.3,
+        "change_percent": 9.17,
+        "volume": 1223000,
+        "avg_volume": 90200,
+        "vol_ratio": 13.56,
+        "prior_change_percent": 9.89,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "6588",
+        "name": "東典光電",
+        "close": 67.5,
+        "open": 64.0,
+        "high": 67.5,
+        "low": 59.9,
+        "diff": 6.1,
+        "change_percent": 9.93,
+        "volume": 9819000,
+        "avg_volume": 1385000,
+        "vol_ratio": 7.09,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 24,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群24檔同步走強"
+        ]
+    },
+    {
+        "id": "3221",
+        "name": "台嘉碩",
+        "close": 30.1,
+        "open": 28.75,
+        "high": 30.8,
+        "low": 28.0,
+        "diff": 2.1,
+        "change_percent": 7.5,
+        "volume": 22409000,
+        "avg_volume": 3724950,
+        "vol_ratio": 6.02,
+        "prior_change_percent": 5.66,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    }
+]

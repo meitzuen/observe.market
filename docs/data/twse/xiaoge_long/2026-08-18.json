@@ -1,0 +1,66 @@
+[
+    {
+        "id": "5608",
+        "name": "四維航",
+        "close": 15.95,
+        "open": 14.65,
+        "high": 15.95,
+        "low": 14.55,
+        "diff": 1.45,
+        "change_percent": 10.0,
+        "volume": 14538000,
+        "avg_volume": 1289248,
+        "vol_ratio": 11.28,
+        "prior_change_percent": 0.71,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "1727",
+        "name": "中華化",
+        "close": 89.1,
+        "open": 84.2,
+        "high": 90.8,
+        "low": 83.2,
+        "diff": 6.5,
+        "change_percent": 7.87,
+        "volume": 14437000,
+        "avg_volume": 1993672,
+        "vol_ratio": 7.24,
+        "prior_change_percent": -1.7,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "3054",
+        "name": "立萬利",
+        "close": 53.7,
+        "open": 51.5,
+        "high": 55.2,
+        "low": 51.4,
+        "diff": 3.5,
+        "change_percent": 6.97,
+        "volume": 565000,
+        "avg_volume": 83727,
+        "vol_ratio": 6.75,
+        "prior_change_percent": -0.1,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    }
+]

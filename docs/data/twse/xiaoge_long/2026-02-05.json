@@ -1,0 +1,66 @@
+[
+    {
+        "id": "6861",
+        "name": "睿生光電",
+        "close": 74.9,
+        "open": 70.3,
+        "high": 75.5,
+        "low": 70.3,
+        "diff": 6.2,
+        "change_percent": 9.02,
+        "volume": 3582105,
+        "avg_volume": 233539,
+        "vol_ratio": 15.34,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2483",
+        "name": "百容",
+        "close": 21.15,
+        "open": 20.2,
+        "high": 21.15,
+        "low": 20.2,
+        "diff": 1.9,
+        "change_percent": 9.87,
+        "volume": 1461754,
+        "avg_volume": 229096,
+        "vol_ratio": 6.38,
+        "prior_change_percent": 0.79,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4956",
+        "name": "光鋐",
+        "close": 26.05,
+        "open": 23.95,
+        "high": 26.65,
+        "low": 23.2,
+        "diff": 1.8,
+        "change_percent": 7.42,
+        "volume": 16588325,
+        "avg_volume": 2747394,
+        "vol_ratio": 6.04,
+        "prior_change_percent": 0.41,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 27,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群27檔同步走強"
+        ]
+    }
+]

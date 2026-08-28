@@ -1,0 +1,64 @@
+[
+    {
+        "id": "1786",
+        "name": "科妍",
+        "close": 56.0,
+        "open": 54.8,
+        "high": 56.6,
+        "low": 53.5,
+        "diff": 4.5,
+        "change_percent": 8.74,
+        "volume": 2137006,
+        "avg_volume": 346683,
+        "vol_ratio": 6.16,
+        "prior_change_percent": -5.33,
+        "prior_pattern": "normal",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": []
+    },
+    {
+        "id": "5484",
+        "name": "慧友",
+        "close": 40.6,
+        "open": 37.75,
+        "high": 41.45,
+        "low": 37.75,
+        "diff": 2.9,
+        "change_percent": 7.69,
+        "volume": 2238949,
+        "avg_volume": 384724,
+        "vol_ratio": 5.82,
+        "prior_change_percent": -1.82,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 29,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群29檔同步走強"
+        ]
+    },
+    {
+        "id": "3504",
+        "name": "揚明光",
+        "close": 77.3,
+        "open": 71.9,
+        "high": 78.5,
+        "low": 70.4,
+        "diff": 5.9,
+        "change_percent": 8.26,
+        "volume": 10386781,
+        "avg_volume": 1881032,
+        "vol_ratio": 5.52,
+        "prior_change_percent": 7.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    }
+]

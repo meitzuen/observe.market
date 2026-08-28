@@ -1,0 +1,68 @@
+[
+    {
+        "id": "4555",
+        "name": "氣立",
+        "close": 49.7,
+        "open": 46.95,
+        "high": 51.0,
+        "low": 46.45,
+        "diff": 3.1,
+        "change_percent": 6.65,
+        "volume": 4884680,
+        "avg_volume": 566748,
+        "vol_ratio": 8.62,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 228,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群228檔同步走強"
+        ]
+    },
+    {
+        "id": "3021",
+        "name": "鴻名",
+        "close": 18.8,
+        "open": 17.55,
+        "high": 18.8,
+        "low": 17.35,
+        "diff": 1.7,
+        "change_percent": 9.94,
+        "volume": 1360416,
+        "avg_volume": 222195,
+        "vol_ratio": 6.12,
+        "prior_change_percent": 0.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 172,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群172檔同步走強"
+        ]
+    },
+    {
+        "id": "9105",
+        "name": "泰金寶-DR",
+        "close": 6.75,
+        "open": 6.3,
+        "high": 6.75,
+        "low": 6.26,
+        "diff": 0.61,
+        "change_percent": 9.93,
+        "volume": 129475932,
+        "avg_volume": 22084595,
+        "vol_ratio": 5.86,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "id": "5302",
+        "name": "太欣",
+        "close": 12.7,
+        "open": 11.65,
+        "high": 12.7,
+        "low": 11.6,
+        "diff": 1.15,
+        "change_percent": 9.96,
+        "volume": 6623000,
+        "avg_volume": 887350,
+        "vol_ratio": 7.46,
+        "prior_change_percent": 2.21,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 47,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群47檔同步走強"
+        ]
+    },
+    {
+        "id": "6494",
+        "name": "九齊",
+        "close": 68.8,
+        "open": 63.6,
+        "high": 69.0,
+        "low": 60.5,
+        "diff": 5.2,
+        "change_percent": 8.18,
+        "volume": 3103000,
+        "avg_volume": 428550,
+        "vol_ratio": 7.24,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6517",
+        "name": "保勝光學",
+        "close": 76.6,
+        "open": 70.2,
+        "high": 76.6,
+        "low": 69.3,
+        "diff": 6.9,
+        "change_percent": 9.9,
+        "volume": 6186000,
+        "avg_volume": 1223250,
+        "vol_ratio": 5.06,
+        "prior_change_percent": 4.65,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,88 @@
+[
+    {
+        "id": "6109",
+        "name": "亞元",
+        "close": 12.75,
+        "open": 11.85,
+        "high": 12.75,
+        "low": 11.8,
+        "diff": 1.15,
+        "change_percent": 9.91,
+        "volume": 2658000,
+        "avg_volume": 275600,
+        "vol_ratio": 9.64,
+        "prior_change_percent": 4.98,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 133,
+        "tags": [
+            "創20日新高",
+            "同族群133檔同步走強"
+        ]
+    },
+    {
+        "id": "3522",
+        "name": "御嵿",
+        "close": 12.95,
+        "open": 12.0,
+        "high": 12.95,
+        "low": 12.0,
+        "diff": 1.15,
+        "change_percent": 9.75,
+        "volume": 891000,
+        "avg_volume": 127050,
+        "vol_ratio": 7.01,
+        "prior_change_percent": -0.42,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5344",
+        "name": "立衛",
+        "close": 17.2,
+        "open": 16.0,
+        "high": 17.2,
+        "low": 15.85,
+        "diff": 1.55,
+        "change_percent": 9.9,
+        "volume": 665000,
+        "avg_volume": 99300,
+        "vol_ratio": 6.7,
+        "prior_change_percent": 0.32,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "2066",
+        "name": "世德",
+        "close": 69.2,
+        "open": 65.7,
+        "high": 71.1,
+        "low": 65.0,
+        "diff": 4.5,
+        "change_percent": 6.96,
+        "volume": 965000,
+        "avg_volume": 166800,
+        "vol_ratio": 5.79,
+        "prior_change_percent": 2.54,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    }
+]

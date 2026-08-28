@@ -1,0 +1,87 @@
+[
+    {
+        "id": "8183",
+        "name": "精星",
+        "close": 40.65,
+        "open": 40.0,
+        "high": 41.35,
+        "low": 39.55,
+        "diff": 3.05,
+        "change_percent": 8.11,
+        "volume": 8508000,
+        "avg_volume": 335400,
+        "vol_ratio": 25.37,
+        "prior_change_percent": 9.94,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    },
+    {
+        "id": "6877",
+        "name": "鏵友益",
+        "close": 96.0,
+        "open": 86.7,
+        "high": 97.3,
+        "low": 86.7,
+        "diff": 7.5,
+        "change_percent": 8.47,
+        "volume": 1624000,
+        "avg_volume": 256150,
+        "vol_ratio": 6.34,
+        "prior_change_percent": 7.01,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 37,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群37檔同步走強"
+        ]
+    },
+    {
+        "id": "3093",
+        "name": "港建*",
+        "close": 28.5,
+        "open": 27.0,
+        "high": 29.0,
+        "low": 26.95,
+        "diff": 1.75,
+        "change_percent": 6.54,
+        "volume": 1256000,
+        "avg_volume": 198450,
+        "vol_ratio": 6.33,
+        "prior_change_percent": 3.08,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3372",
+        "name": "典範",
+        "close": 25.65,
+        "open": 25.0,
+        "high": 26.0,
+        "low": 24.6,
+        "diff": 1.85,
+        "change_percent": 7.77,
+        "volume": 11973000,
+        "avg_volume": 2336650,
+        "vol_ratio": 5.12,
+        "prior_change_percent": 7.69,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

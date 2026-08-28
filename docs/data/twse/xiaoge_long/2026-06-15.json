@@ -1,0 +1,24 @@
+[
+    {
+        "id": "6202",
+        "name": "盛群",
+        "close": 65.2,
+        "open": 59.4,
+        "high": 65.3,
+        "low": 59.0,
+        "diff": 5.8,
+        "change_percent": 9.76,
+        "volume": 22672088,
+        "avg_volume": 4082353,
+        "vol_ratio": 5.55,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 218,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群218檔同步走強"
+        ]
+    }
+]

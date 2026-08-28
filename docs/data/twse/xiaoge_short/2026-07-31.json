@@ -1,0 +1,26 @@
+[
+    {
+        "id": "3543",
+        "name": "州巧",
+        "close": 33.05,
+        "open": 30.5,
+        "high": 33.05,
+        "low": 30.3,
+        "diff": 3.0,
+        "change_percent": 9.98,
+        "volume": 5518095,
+        "prior_change_percent": 9.87,
+        "gap_open_percent": 1.5,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

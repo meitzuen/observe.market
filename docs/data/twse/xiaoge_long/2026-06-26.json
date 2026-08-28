@@ -1,0 +1,66 @@
+[
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 18.25,
+        "open": 17.0,
+        "high": 18.25,
+        "low": 16.45,
+        "diff": 1.65,
+        "change_percent": 9.94,
+        "volume": 48788960,
+        "avg_volume": 2425950,
+        "vol_ratio": 20.11,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2906",
+        "name": "高林",
+        "close": 14.2,
+        "open": 13.6,
+        "high": 14.2,
+        "low": 13.3,
+        "diff": 1.25,
+        "change_percent": 9.65,
+        "volume": 2116790,
+        "avg_volume": 196976,
+        "vol_ratio": 10.75,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "1718",
+        "name": "中纖",
+        "close": 11.15,
+        "open": 10.35,
+        "high": 11.15,
+        "low": 9.93,
+        "diff": 1.0,
+        "change_percent": 9.85,
+        "volume": 153432821,
+        "avg_volume": 29566911,
+        "vol_ratio": 5.19,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

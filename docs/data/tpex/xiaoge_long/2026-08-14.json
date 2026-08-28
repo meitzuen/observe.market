@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1336",
+        "name": "台翰",
+        "close": 17.65,
+        "open": 16.2,
+        "high": 17.65,
+        "low": 16.05,
+        "diff": 1.6,
+        "change_percent": 9.97,
+        "volume": 3475000,
+        "avg_volume": 384900,
+        "vol_ratio": 9.03,
+        "prior_change_percent": -0.93,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 35,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群35檔同步走強"
+        ]
+    },
+    {
+        "id": "3490",
+        "name": "單井",
+        "close": 39.65,
+        "open": 37.85,
+        "high": 40.45,
+        "low": 37.2,
+        "diff": 2.8,
+        "change_percent": 7.6,
+        "volume": 12684000,
+        "avg_volume": 1867300,
+        "vol_ratio": 6.79,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

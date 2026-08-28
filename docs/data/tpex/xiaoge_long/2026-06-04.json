@@ -1,0 +1,66 @@
+[
+    {
+        "id": "3284",
+        "name": "太普高",
+        "close": 19.1,
+        "open": 18.1,
+        "high": 19.1,
+        "low": 18.1,
+        "diff": 1.7,
+        "change_percent": 9.77,
+        "volume": 2883000,
+        "avg_volume": 297900,
+        "vol_ratio": 9.68,
+        "prior_change_percent": 9.78,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8936",
+        "name": "國統",
+        "close": 60.1,
+        "open": 55.5,
+        "high": 60.1,
+        "low": 55.2,
+        "diff": 5.4,
+        "change_percent": 9.87,
+        "volume": 21385000,
+        "avg_volume": 2995000,
+        "vol_ratio": 7.14,
+        "prior_change_percent": 4.19,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 25,
+        "tags": [
+            "創20日新高",
+            "同族群25檔同步走強"
+        ]
+    },
+    {
+        "id": "3630",
+        "name": "新鉅科",
+        "close": 29.15,
+        "open": 27.35,
+        "high": 30.05,
+        "low": 26.7,
+        "diff": 1.8,
+        "change_percent": 6.58,
+        "volume": 5159000,
+        "avg_volume": 1006000,
+        "vol_ratio": 5.13,
+        "prior_change_percent": 1.11,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 55,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群55檔同步走強"
+        ]
+    }
+]

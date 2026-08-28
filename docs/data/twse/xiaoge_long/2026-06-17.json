@@ -1,0 +1,89 @@
+[
+    {
+        "id": "4976",
+        "name": "佳凌",
+        "close": 41.7,
+        "open": 38.05,
+        "high": 41.85,
+        "low": 37.0,
+        "diff": 3.65,
+        "change_percent": 9.59,
+        "volume": 27817865,
+        "avg_volume": 2434487,
+        "vol_ratio": 11.43,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 32,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群32檔同步走強"
+        ]
+    },
+    {
+        "id": "3026",
+        "name": "禾伸堂",
+        "close": 896.0,
+        "open": 830.0,
+        "high": 896.0,
+        "low": 805.0,
+        "diff": 81.0,
+        "change_percent": 9.94,
+        "volume": 15854334,
+        "avg_volume": 3080969,
+        "vol_ratio": 5.15,
+        "prior_change_percent": -2.98,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 109,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群109檔同步走強"
+        ]
+    },
+    {
+        "id": "6449",
+        "name": "鈺邦",
+        "close": 445.0,
+        "open": 420.0,
+        "high": 453.0,
+        "low": 399.0,
+        "diff": 26.5,
+        "change_percent": 6.33,
+        "volume": 4883330,
+        "avg_volume": 955544,
+        "vol_ratio": 5.11,
+        "prior_change_percent": -9.61,
+        "prior_pattern": "big_black",
+        "is_new_high": false,
+        "peer_strong_count": 16,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "同族群16檔同步走強"
+        ]
+    },
+    {
+        "id": "3094",
+        "name": "聯傑",
+        "close": 39.0,
+        "open": 36.95,
+        "high": 39.75,
+        "low": 36.95,
+        "diff": 2.85,
+        "change_percent": 7.88,
+        "volume": 14212332,
+        "avg_volume": 2818071,
+        "vol_ratio": 5.04,
+        "prior_change_percent": 2.26,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 117,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群117檔同步走強"
+        ]
+    }
+]

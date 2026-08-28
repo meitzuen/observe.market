@@ -1,0 +1,152 @@
+[
+    {
+        "id": "2754",
+        "name": "亞洲藏壽司",
+        "close": 77.0,
+        "open": 71.6,
+        "high": 77.0,
+        "low": 71.6,
+        "diff": 7.0,
+        "change_percent": 10.0,
+        "volume": 912000,
+        "avg_volume": 41200,
+        "vol_ratio": 22.14,
+        "prior_change_percent": -0.14,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "5488",
+        "name": "松普",
+        "close": 11.7,
+        "open": 10.95,
+        "high": 11.75,
+        "low": 10.85,
+        "diff": 1.0,
+        "change_percent": 9.35,
+        "volume": 3783000,
+        "avg_volume": 419300,
+        "vol_ratio": 9.02,
+        "prior_change_percent": 3.88,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5529",
+        "name": "鉅陞",
+        "close": 25.55,
+        "open": 24.55,
+        "high": 25.75,
+        "low": 23.45,
+        "diff": 2.1,
+        "change_percent": 8.96,
+        "volume": 622000,
+        "avg_volume": 88150,
+        "vol_ratio": 7.06,
+        "prior_change_percent": 5.16,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "8044",
+        "name": "網家",
+        "close": 29.0,
+        "open": 27.3,
+        "high": 29.0,
+        "low": 26.15,
+        "diff": 2.15,
+        "change_percent": 8.01,
+        "volume": 4840000,
+        "avg_volume": 817300,
+        "vol_ratio": 5.92,
+        "prior_change_percent": 9.82,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    },
+    {
+        "id": "3537",
+        "name": "堡達",
+        "close": 57.8,
+        "open": 52.6,
+        "high": 57.8,
+        "low": 52.6,
+        "diff": 5.2,
+        "change_percent": 9.89,
+        "volume": 5739000,
+        "avg_volume": 979600,
+        "vol_ratio": 5.86,
+        "prior_change_percent": -4.36,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 74,
+        "tags": [
+            "創20日新高",
+            "同族群74檔同步走強"
+        ]
+    },
+    {
+        "id": "3441",
+        "name": "聯一光",
+        "close": 48.15,
+        "open": 44.0,
+        "high": 48.15,
+        "low": 44.0,
+        "diff": 4.35,
+        "change_percent": 9.93,
+        "volume": 9353000,
+        "avg_volume": 1633300,
+        "vol_ratio": 5.73,
+        "prior_change_percent": 1.04,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 74,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群74檔同步走強"
+        ]
+    },
+    {
+        "id": "3479",
+        "name": "安勤",
+        "close": 110.5,
+        "open": 102.0,
+        "high": 110.5,
+        "low": 100.5,
+        "diff": 10.0,
+        "change_percent": 9.95,
+        "volume": 3201000,
+        "avg_volume": 564450,
+        "vol_ratio": 5.67,
+        "prior_change_percent": -1.95,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "id": "4121",
+        "name": "優盛",
+        "close": 18.85,
+        "open": 17.4,
+        "high": 18.85,
+        "low": 17.0,
+        "diff": 1.7,
+        "change_percent": 9.91,
+        "volume": 6459000,
+        "avg_volume": 447941,
+        "vol_ratio": 14.42,
+        "prior_change_percent": 3.63,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "1781",
+        "name": "合世",
+        "close": 13.6,
+        "open": 12.4,
+        "high": 13.6,
+        "low": 12.4,
+        "diff": 1.2,
+        "change_percent": 9.68,
+        "volume": 1242000,
+        "avg_volume": 108353,
+        "vol_ratio": 11.46,
+        "prior_change_percent": 2.9,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "3373",
+        "name": "熱映",
+        "close": 18.8,
+        "open": 17.4,
+        "high": 18.8,
+        "low": 17.4,
+        "diff": 1.7,
+        "change_percent": 9.94,
+        "volume": 689000,
+        "avg_volume": 90588,
+        "vol_ratio": 7.61,
+        "prior_change_percent": 0.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

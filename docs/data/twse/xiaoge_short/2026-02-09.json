@@ -1,0 +1,96 @@
+[
+    {
+        "id": "1466",
+        "name": "聚隆",
+        "close": 17.25,
+        "open": 16.4,
+        "high": 17.75,
+        "low": 16.15,
+        "diff": 0.6,
+        "change_percent": 3.6,
+        "volume": 4753493,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": -1.5,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.83,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "8103",
+        "name": "瀚荃",
+        "close": 96.4,
+        "open": 97.0,
+        "high": 99.5,
+        "low": 95.0,
+        "diff": 1.4,
+        "change_percent": 1.47,
+        "volume": 5346184,
+        "prior_change_percent": 8.94,
+        "gap_open_percent": 2.11,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": 0.87,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "3167",
+        "name": "大量",
+        "close": 251.5,
+        "open": 246.0,
+        "high": 251.5,
+        "low": 246.0,
+        "diff": 22.5,
+        "change_percent": 9.83,
+        "volume": 8704699,
+        "prior_change_percent": 9.83,
+        "gap_open_percent": 7.42,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": 1.03,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "3550",
+        "name": "聯穎",
+        "close": 20.6,
+        "open": 20.2,
+        "high": 20.6,
+        "low": 19.65,
+        "diff": 1.85,
+        "change_percent": 9.87,
+        "volume": 21912748,
+        "prior_change_percent": 9.97,
+        "gap_open_percent": 7.73,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.83,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

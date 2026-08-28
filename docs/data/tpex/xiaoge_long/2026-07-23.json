@@ -1,0 +1,109 @@
+[
+    {
+        "id": "3373",
+        "name": "熱映",
+        "close": 17.75,
+        "open": 17.1,
+        "high": 18.35,
+        "low": 17.1,
+        "diff": 1.05,
+        "change_percent": 6.29,
+        "volume": 2562000,
+        "avg_volume": 74600,
+        "vol_ratio": 34.34,
+        "prior_change_percent": 1.21,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "4442",
+        "name": "竣邦-KY",
+        "close": 56.4,
+        "open": 51.5,
+        "high": 56.4,
+        "low": 51.2,
+        "diff": 5.1,
+        "change_percent": 9.94,
+        "volume": 748000,
+        "avg_volume": 31950,
+        "vol_ratio": 23.41,
+        "prior_change_percent": 9.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5312",
+        "name": "寶島科",
+        "close": 100.0,
+        "open": 91.8,
+        "high": 100.0,
+        "low": 91.8,
+        "diff": 8.4,
+        "change_percent": 9.17,
+        "volume": 933000,
+        "avg_volume": 65850,
+        "vol_ratio": 14.17,
+        "prior_change_percent": 1.78,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6577",
+        "name": "勁豐",
+        "close": 85.9,
+        "open": 78.5,
+        "high": 85.9,
+        "low": 78.3,
+        "diff": 7.8,
+        "change_percent": 9.99,
+        "volume": 612000,
+        "avg_volume": 57700,
+        "vol_ratio": 10.61,
+        "prior_change_percent": 2.09,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8111",
+        "name": "立碁",
+        "close": 56.8,
+        "open": 56.5,
+        "high": 56.8,
+        "low": 53.0,
+        "diff": 5.1,
+        "change_percent": 9.86,
+        "volume": 8308000,
+        "avg_volume": 1086650,
+        "vol_ratio": 7.65,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    }
+]

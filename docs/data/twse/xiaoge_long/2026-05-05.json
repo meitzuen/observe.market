@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2491",
+        "name": "吉祥全",
+        "close": 17.35,
+        "open": 16.15,
+        "high": 17.35,
+        "low": 16.0,
+        "diff": 1.55,
+        "change_percent": 9.81,
+        "volume": 910028,
+        "avg_volume": 164600,
+        "vol_ratio": 5.53,
+        "prior_change_percent": 3.95,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2354",
+        "name": "鴻準",
+        "close": 58.5,
+        "open": 56.5,
+        "high": 58.5,
+        "low": 55.7,
+        "diff": 5.3,
+        "change_percent": 9.96,
+        "volume": 36260363,
+        "avg_volume": 6634849,
+        "vol_ratio": 5.47,
+        "prior_change_percent": 2.7,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 172,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群172檔同步走強"
+        ]
+    }
+]

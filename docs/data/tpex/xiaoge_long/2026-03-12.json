@@ -1,0 +1,153 @@
+[
+    {
+        "id": "8240",
+        "name": "華宏",
+        "close": 45.9,
+        "open": 42.8,
+        "high": 46.2,
+        "low": 42.4,
+        "diff": 3.4,
+        "change_percent": 8.0,
+        "volume": 5475000,
+        "avg_volume": 467950,
+        "vol_ratio": 11.7,
+        "prior_change_percent": 6.25,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 68,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群68檔同步走強"
+        ]
+    },
+    {
+        "id": "3339",
+        "name": "泰谷",
+        "close": 31.35,
+        "open": 29.0,
+        "high": 31.35,
+        "low": 28.8,
+        "diff": 2.85,
+        "change_percent": 10.0,
+        "volume": 5637000,
+        "avg_volume": 571750,
+        "vol_ratio": 9.86,
+        "prior_change_percent": 9.83,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3492",
+        "name": "長盛",
+        "close": 26.5,
+        "open": 23.85,
+        "high": 26.5,
+        "low": 23.85,
+        "diff": 2.4,
+        "change_percent": 9.96,
+        "volume": 927000,
+        "avg_volume": 102900,
+        "vol_ratio": 9.01,
+        "prior_change_percent": 4.78,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 64,
+        "tags": [
+            "創20日新高",
+            "同族群64檔同步走強"
+        ]
+    },
+    {
+        "id": "6147",
+        "name": "頎邦",
+        "close": 61.0,
+        "open": 55.6,
+        "high": 61.0,
+        "low": 55.3,
+        "diff": 5.5,
+        "change_percent": 9.91,
+        "volume": 23946000,
+        "avg_volume": 2777650,
+        "vol_ratio": 8.62,
+        "prior_change_percent": 6.32,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 42,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群42檔同步走強"
+        ]
+    },
+    {
+        "id": "4973",
+        "name": "廣穎",
+        "close": 61.1,
+        "open": 57.0,
+        "high": 61.1,
+        "low": 56.5,
+        "diff": 5.5,
+        "change_percent": 9.89,
+        "volume": 20364000,
+        "avg_volume": 2441900,
+        "vol_ratio": 8.34,
+        "prior_change_percent": 9.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6148",
+        "name": "驊宏資",
+        "close": 37.2,
+        "open": 36.25,
+        "high": 37.2,
+        "low": 34.4,
+        "diff": 3.35,
+        "change_percent": 9.9,
+        "volume": 2143000,
+        "avg_volume": 261350,
+        "vol_ratio": 8.2,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "6693",
+        "name": "廣閎科",
+        "close": 101.0,
+        "open": 92.1,
+        "high": 101.0,
+        "low": 91.6,
+        "diff": 8.9,
+        "change_percent": 9.66,
+        "volume": 3134000,
+        "avg_volume": 440000,
+        "vol_ratio": 7.12,
+        "prior_change_percent": 1.77,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 66,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群66檔同步走強"
+        ]
+    }
+]

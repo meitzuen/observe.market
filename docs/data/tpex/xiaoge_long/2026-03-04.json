@@ -1,0 +1,23 @@
+[
+    {
+        "id": "4123",
+        "name": "晟德",
+        "close": 49.35,
+        "open": 48.5,
+        "high": 49.35,
+        "low": 45.8,
+        "diff": 4.45,
+        "change_percent": 9.91,
+        "volume": 39338000,
+        "avg_volume": 3716600,
+        "vol_ratio": 10.58,
+        "prior_change_percent": -0.22,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "8091",
+        "name": "翔名",
+        "close": 154.5,
+        "open": 145.0,
+        "high": 154.5,
+        "low": 144.5,
+        "diff": 14.0,
+        "change_percent": 9.96,
+        "volume": 2038000,
+        "avg_volume": 320600,
+        "vol_ratio": 6.36,
+        "prior_change_percent": 3.31,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 33,
+        "tags": [
+            "創20日新高",
+            "同族群33檔同步走強"
+        ]
+    },
+    {
+        "id": "6218",
+        "name": "豪勉",
+        "close": 25.35,
+        "open": 23.9,
+        "high": 26.0,
+        "low": 22.75,
+        "diff": 1.7,
+        "change_percent": 7.19,
+        "volume": 1840000,
+        "avg_volume": 320900,
+        "vol_ratio": 5.73,
+        "prior_change_percent": -3.67,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 28,
+        "tags": [
+            "創20日新高",
+            "同族群28檔同步走強"
+        ]
+    }
+]

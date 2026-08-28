@@ -1,0 +1,177 @@
+[
+    {
+        "id": "2471",
+        "name": "資通",
+        "close": 54.6,
+        "open": 51.3,
+        "high": 56.2,
+        "low": 51.3,
+        "diff": 3.5,
+        "change_percent": 6.85,
+        "volume": 2251819,
+        "avg_volume": 245509,
+        "vol_ratio": 9.17,
+        "prior_change_percent": 0.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 51,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群51檔同步走強"
+        ]
+    },
+    {
+        "id": "3046",
+        "name": "建碁",
+        "close": 64.0,
+        "open": 58.0,
+        "high": 64.0,
+        "low": 57.3,
+        "diff": 5.8,
+        "change_percent": 9.97,
+        "volume": 4371760,
+        "avg_volume": 531547,
+        "vol_ratio": 8.22,
+        "prior_change_percent": 6.99,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 15,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群15檔同步走強"
+        ]
+    },
+    {
+        "id": "6112",
+        "name": "邁達特",
+        "close": 47.05,
+        "open": 43.2,
+        "high": 47.05,
+        "low": 43.2,
+        "diff": 4.25,
+        "change_percent": 9.93,
+        "volume": 4145789,
+        "avg_volume": 602777,
+        "vol_ratio": 6.88,
+        "prior_change_percent": 2.15,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 98,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群98檔同步走強"
+        ]
+    },
+    {
+        "id": "3011",
+        "name": "今皓",
+        "close": 14.5,
+        "open": 13.25,
+        "high": 14.5,
+        "low": 13.25,
+        "diff": 1.3,
+        "change_percent": 9.85,
+        "volume": 7269545,
+        "avg_volume": 1147357,
+        "vol_ratio": 6.34,
+        "prior_change_percent": 0.38,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 179,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群179檔同步走強"
+        ]
+    },
+    {
+        "id": "2362",
+        "name": "藍天",
+        "close": 47.25,
+        "open": 45.2,
+        "high": 48.45,
+        "low": 43.9,
+        "diff": 3.2,
+        "change_percent": 7.26,
+        "volume": 8683688,
+        "avg_volume": 1384393,
+        "vol_ratio": 6.27,
+        "prior_change_percent": 7.44,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 221,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群221檔同步走強"
+        ]
+    },
+    {
+        "id": "5203",
+        "name": "訊連",
+        "close": 70.0,
+        "open": 65.5,
+        "high": 71.0,
+        "low": 65.5,
+        "diff": 5.4,
+        "change_percent": 8.36,
+        "volume": 1538919,
+        "avg_volume": 248515,
+        "vol_ratio": 6.19,
+        "prior_change_percent": 0.94,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 88,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群88檔同步走強"
+        ]
+    },
+    {
+        "id": "2497",
+        "name": "怡利電",
+        "close": 65.6,
+        "open": 60.1,
+        "high": 65.6,
+        "low": 60.1,
+        "diff": 5.9,
+        "change_percent": 9.88,
+        "volume": 5008585,
+        "avg_volume": 969241,
+        "vol_ratio": 5.17,
+        "prior_change_percent": -1.81,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 170,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群170檔同步走強"
+        ]
+    },
+    {
+        "id": "1471",
+        "name": "首利",
+        "close": 12.25,
+        "open": 11.55,
+        "high": 12.25,
+        "low": 11.55,
+        "diff": 1.1,
+        "change_percent": 9.87,
+        "volume": 3635986,
+        "avg_volume": 708393,
+        "vol_ratio": 5.13,
+        "prior_change_percent": 9.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 133,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群133檔同步走強"
+        ]
+    }
+]

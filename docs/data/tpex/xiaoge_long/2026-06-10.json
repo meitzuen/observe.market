@@ -1,0 +1,66 @@
+[
+    {
+        "id": "4113",
+        "name": "聯上",
+        "close": 16.5,
+        "open": 14.95,
+        "high": 16.5,
+        "low": 14.9,
+        "diff": 1.5,
+        "change_percent": 10.0,
+        "volume": 3354000,
+        "avg_volume": 266450,
+        "vol_ratio": 12.59,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 50,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群50檔同步走強"
+        ]
+    },
+    {
+        "id": "3188",
+        "name": "鑫龍騰",
+        "close": 25.95,
+        "open": 24.15,
+        "high": 25.95,
+        "low": 23.9,
+        "diff": 2.05,
+        "change_percent": 8.58,
+        "volume": 2368000,
+        "avg_volume": 378000,
+        "vol_ratio": 6.26,
+        "prior_change_percent": 3.02,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 50,
+        "tags": [
+            "創20日新高",
+            "同族群50檔同步走強"
+        ]
+    },
+    {
+        "id": "3313",
+        "name": "斐成",
+        "close": 12.55,
+        "open": 11.35,
+        "high": 12.55,
+        "low": 11.25,
+        "diff": 1.1,
+        "change_percent": 9.61,
+        "volume": 1166000,
+        "avg_volume": 195150,
+        "vol_ratio": 5.97,
+        "prior_change_percent": 3.62,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 50,
+        "tags": [
+            "創20日新高",
+            "同族群50檔同步走強"
+        ]
+    }
+]

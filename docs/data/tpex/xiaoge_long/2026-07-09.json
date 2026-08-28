@@ -1,0 +1,23 @@
+[
+    {
+        "id": "5488",
+        "name": "松普",
+        "close": 16.2,
+        "open": 15.0,
+        "high": 16.2,
+        "low": 15.0,
+        "diff": 1.45,
+        "change_percent": 9.83,
+        "volume": 7796000,
+        "avg_volume": 1449900,
+        "vol_ratio": 5.38,
+        "prior_change_percent": 6.88,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

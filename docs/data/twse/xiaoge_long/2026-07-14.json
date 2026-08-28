@@ -1,0 +1,109 @@
+[
+    {
+        "id": "6533",
+        "name": "晶心科",
+        "close": 225.0,
+        "open": 216.0,
+        "high": 228.0,
+        "low": 211.0,
+        "diff": 14.5,
+        "change_percent": 6.89,
+        "volume": 3124829,
+        "avg_volume": 368187,
+        "vol_ratio": 8.49,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 29,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群29檔同步走強"
+        ]
+    },
+    {
+        "id": "2923",
+        "name": "鼎固-KY",
+        "close": 31.2,
+        "open": 29.5,
+        "high": 31.5,
+        "low": 28.6,
+        "diff": 2.45,
+        "change_percent": 8.52,
+        "volume": 762864,
+        "avg_volume": 121372,
+        "vol_ratio": 6.29,
+        "prior_change_percent": 5.89,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8039",
+        "name": "台虹",
+        "close": 185.5,
+        "open": 173.0,
+        "high": 185.5,
+        "low": 169.0,
+        "diff": 16.5,
+        "change_percent": 9.76,
+        "volume": 48874130,
+        "avg_volume": 8552510,
+        "vol_ratio": 5.71,
+        "prior_change_percent": 9.74,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 32,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群32檔同步走強"
+        ]
+    },
+    {
+        "id": "1810",
+        "name": "和成",
+        "close": 28.8,
+        "open": 27.5,
+        "high": 28.8,
+        "low": 26.65,
+        "diff": 2.6,
+        "change_percent": 9.92,
+        "volume": 48839829,
+        "avg_volume": 8841241,
+        "vol_ratio": 5.52,
+        "prior_change_percent": 9.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "2630",
+        "name": "亞航",
+        "close": 62.3,
+        "open": 57.5,
+        "high": 62.3,
+        "low": 56.7,
+        "diff": 5.6,
+        "change_percent": 9.88,
+        "volume": 41250222,
+        "avg_volume": 7500295,
+        "vol_ratio": 5.5,
+        "prior_change_percent": 5.19,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 11,
+        "tags": [
+            "創20日新高",
+            "同族群11檔同步走強"
+        ]
+    }
+]

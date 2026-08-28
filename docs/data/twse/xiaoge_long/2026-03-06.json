@@ -1,0 +1,198 @@
+[
+    {
+        "id": "2543",
+        "name": "皇昌",
+        "close": 78.4,
+        "open": 72.0,
+        "high": 78.4,
+        "low": 71.8,
+        "diff": 7.1,
+        "change_percent": 9.96,
+        "volume": 28761985,
+        "avg_volume": 3053794,
+        "vol_ratio": 9.42,
+        "prior_change_percent": 1.86,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    },
+    {
+        "id": "4952",
+        "name": "凌通",
+        "close": 50.8,
+        "open": 48.25,
+        "high": 50.9,
+        "low": 47.0,
+        "diff": 4.5,
+        "change_percent": 9.72,
+        "volume": 10409052,
+        "avg_volume": 1153833,
+        "vol_ratio": 9.02,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 84,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群84檔同步走強"
+        ]
+    },
+    {
+        "id": "9918",
+        "name": "欣天然",
+        "close": 55.8,
+        "open": 54.5,
+        "high": 55.8,
+        "low": 53.4,
+        "diff": 5.0,
+        "change_percent": 9.84,
+        "volume": 2397432,
+        "avg_volume": 307059,
+        "vol_ratio": 7.81,
+        "prior_change_percent": 9.84,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "9931",
+        "name": "欣高",
+        "close": 46.65,
+        "open": 46.5,
+        "high": 46.65,
+        "low": 46.1,
+        "diff": 4.2,
+        "change_percent": 9.89,
+        "volume": 1133602,
+        "avg_volume": 170970,
+        "vol_ratio": 6.63,
+        "prior_change_percent": 9.27,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4960",
+        "name": "誠美材",
+        "close": 17.8,
+        "open": 17.2,
+        "high": 17.8,
+        "low": 16.35,
+        "diff": 1.6,
+        "change_percent": 9.88,
+        "volume": 39040758,
+        "avg_volume": 6469693,
+        "vol_ratio": 6.03,
+        "prior_change_percent": 8.72,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 89,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群89檔同步走強"
+        ]
+    },
+    {
+        "id": "1308",
+        "name": "亞聚",
+        "close": 15.0,
+        "open": 13.8,
+        "high": 15.0,
+        "low": 13.75,
+        "diff": 1.35,
+        "change_percent": 9.89,
+        "volume": 13471084,
+        "avg_volume": 2461776,
+        "vol_ratio": 5.47,
+        "prior_change_percent": -2.85,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 39,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群39檔同步走強"
+        ]
+    },
+    {
+        "id": "1314",
+        "name": "中石化",
+        "close": 8.92,
+        "open": 8.14,
+        "high": 8.92,
+        "low": 8.1,
+        "diff": 0.81,
+        "change_percent": 9.99,
+        "volume": 134119859,
+        "avg_volume": 25568650,
+        "vol_ratio": 5.25,
+        "prior_change_percent": -0.37,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 39,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群39檔同步走強"
+        ]
+    },
+    {
+        "id": "1582",
+        "name": "信錦",
+        "close": 90.5,
+        "open": 82.0,
+        "high": 90.5,
+        "low": 80.4,
+        "diff": 8.2,
+        "change_percent": 9.96,
+        "volume": 15779298,
+        "avg_volume": 3029582,
+        "vol_ratio": 5.21,
+        "prior_change_percent": 1.11,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 90,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群90檔同步走強"
+        ]
+    },
+    {
+        "id": "2395",
+        "name": "研華",
+        "close": 375.0,
+        "open": 349.0,
+        "high": 376.5,
+        "low": 344.5,
+        "diff": 32.5,
+        "change_percent": 9.49,
+        "volume": 20083460,
+        "avg_volume": 3935075,
+        "vol_ratio": 5.1,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    }
+]

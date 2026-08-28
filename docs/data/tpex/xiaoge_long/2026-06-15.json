@@ -1,0 +1,90 @@
+[
+    {
+        "id": "3303",
+        "name": "岱稜",
+        "close": 62.9,
+        "open": 61.6,
+        "high": 64.7,
+        "low": 61.6,
+        "diff": 4.0,
+        "change_percent": 6.79,
+        "volume": 11396000,
+        "avg_volume": 620500,
+        "vol_ratio": 18.37,
+        "prior_change_percent": 9.89,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 156,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群156檔同步走強"
+        ]
+    },
+    {
+        "id": "1336",
+        "name": "台翰",
+        "close": 15.6,
+        "open": 14.8,
+        "high": 16.1,
+        "low": 14.7,
+        "diff": 0.95,
+        "change_percent": 6.48,
+        "volume": 1639000,
+        "avg_volume": 156350,
+        "vol_ratio": 10.48,
+        "prior_change_percent": 2.81,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 156,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群156檔同步走強"
+        ]
+    },
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 19.3,
+        "open": 17.75,
+        "high": 19.3,
+        "low": 17.75,
+        "diff": 1.75,
+        "change_percent": 9.97,
+        "volume": 1250000,
+        "avg_volume": 219400,
+        "vol_ratio": 5.7,
+        "prior_change_percent": -0.28,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 156,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群156檔同步走強"
+        ]
+    },
+    {
+        "id": "3527",
+        "name": "聚積",
+        "close": 65.3,
+        "open": 60.1,
+        "high": 65.3,
+        "low": 60.1,
+        "diff": 5.9,
+        "change_percent": 9.93,
+        "volume": 1214000,
+        "avg_volume": 237250,
+        "vol_ratio": 5.12,
+        "prior_change_percent": 2.59,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 188,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群188檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "id": "3303",
+        "name": "岱稜",
+        "close": 58.9,
+        "open": 55.0,
+        "high": 58.9,
+        "low": 54.2,
+        "diff": 5.3,
+        "change_percent": 9.89,
+        "volume": 3673000,
+        "avg_volume": 456650,
+        "vol_ratio": 8.04,
+        "prior_change_percent": 4.48,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 120,
+        "tags": [
+            "創20日新高",
+            "同族群120檔同步走強"
+        ]
+    }
+]

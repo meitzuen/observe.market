@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1905",
+        "name": "華紙",
+        "close": 12.5,
+        "open": 11.75,
+        "high": 12.85,
+        "low": 11.75,
+        "diff": 0.8,
+        "change_percent": 6.84,
+        "volume": 16609485,
+        "avg_volume": 2940802,
+        "vol_ratio": 5.65,
+        "prior_change_percent": 0.43,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 27,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群27檔同步走強"
+        ]
+    }
+]

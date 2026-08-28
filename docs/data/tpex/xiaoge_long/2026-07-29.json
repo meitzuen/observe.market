@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3441",
+        "name": "聯一光",
+        "close": 84.8,
+        "open": 77.5,
+        "high": 84.9,
+        "low": 75.0,
+        "diff": 7.6,
+        "change_percent": 9.84,
+        "volume": 58554000,
+        "avg_volume": 4699550,
+        "vol_ratio": 12.46,
+        "prior_change_percent": 9.19,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    }
+]

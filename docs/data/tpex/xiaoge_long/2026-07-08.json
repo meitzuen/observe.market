@@ -1,0 +1,24 @@
+[
+    {
+        "id": "3564",
+        "name": "其陽",
+        "close": 56.1,
+        "open": 52.1,
+        "high": 56.1,
+        "low": 50.7,
+        "diff": 5.1,
+        "change_percent": 10.0,
+        "volume": 1935000,
+        "avg_volume": 285100,
+        "vol_ratio": 6.79,
+        "prior_change_percent": -6.93,
+        "prior_pattern": "big_black",
+        "is_new_high": true,
+        "peer_strong_count": 37,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "創20日新高",
+            "同族群37檔同步走強"
+        ]
+    }
+]

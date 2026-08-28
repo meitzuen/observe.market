@@ -1,0 +1,67 @@
+[
+    {
+        "id": "8354",
+        "name": "冠好",
+        "close": 17.95,
+        "open": 16.55,
+        "high": 18.25,
+        "low": 16.45,
+        "diff": 1.3,
+        "change_percent": 7.81,
+        "volume": 929000,
+        "avg_volume": 81200,
+        "vol_ratio": 11.44,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 7,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "6292",
+        "name": "迅德",
+        "close": 65.7,
+        "open": 60.9,
+        "high": 66.0,
+        "low": 60.3,
+        "diff": 5.5,
+        "change_percent": 9.14,
+        "volume": 984000,
+        "avg_volume": 162350,
+        "vol_ratio": 6.06,
+        "prior_change_percent": 2.73,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4931",
+        "name": "新盛力",
+        "close": 255.0,
+        "open": 239.5,
+        "high": 261.0,
+        "low": 239.0,
+        "diff": 17.0,
+        "change_percent": 7.14,
+        "volume": 21258000,
+        "avg_volume": 4120850,
+        "vol_ratio": 5.16,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 60,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群60檔同步走強"
+        ]
+    }
+]

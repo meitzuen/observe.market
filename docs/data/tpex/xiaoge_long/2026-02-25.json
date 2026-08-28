@@ -1,0 +1,45 @@
+[
+    {
+        "id": "6219",
+        "name": "富旺",
+        "close": 17.15,
+        "open": 15.75,
+        "high": 17.3,
+        "low": 15.45,
+        "diff": 1.4,
+        "change_percent": 8.89,
+        "volume": 3285000,
+        "avg_volume": 487950,
+        "vol_ratio": 6.73,
+        "prior_change_percent": -0.32,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 7,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "6233",
+        "name": "旺玖",
+        "close": 27.2,
+        "open": 24.95,
+        "high": 27.2,
+        "low": 24.95,
+        "diff": 2.45,
+        "change_percent": 9.9,
+        "volume": 3234000,
+        "avg_volume": 582050,
+        "vol_ratio": 5.56,
+        "prior_change_percent": -0.8,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 32,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群32檔同步走強"
+        ]
+    }
+]

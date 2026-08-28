@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1307",
+        "name": "三芳",
+        "close": 33.0,
+        "open": 32.4,
+        "high": 33.65,
+        "low": 32.15,
+        "diff": 2.4,
+        "change_percent": 7.84,
+        "volume": 5792378,
+        "avg_volume": 768001,
+        "vol_ratio": 7.54,
+        "prior_change_percent": -0.33,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 56,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群56檔同步走強"
+        ]
+    }
+]

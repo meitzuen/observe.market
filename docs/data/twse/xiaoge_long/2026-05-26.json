@@ -1,0 +1,131 @@
+[
+    {
+        "id": "2453",
+        "name": "凌群",
+        "close": 61.6,
+        "open": 58.2,
+        "high": 62.2,
+        "low": 58.2,
+        "diff": 4.1,
+        "change_percent": 7.13,
+        "volume": 5423106,
+        "avg_volume": 473170,
+        "vol_ratio": 11.46,
+        "prior_change_percent": 0.52,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 62,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群62檔同步走強"
+        ]
+    },
+    {
+        "id": "1530",
+        "name": "亞崴",
+        "close": 31.95,
+        "open": 29.75,
+        "high": 31.95,
+        "low": 29.75,
+        "diff": 2.9,
+        "change_percent": 9.98,
+        "volume": 512979,
+        "avg_volume": 65608,
+        "vol_ratio": 7.82,
+        "prior_change_percent": 3.75,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 85,
+        "tags": [
+            "創20日新高",
+            "同族群85檔同步走強"
+        ]
+    },
+    {
+        "id": "1618",
+        "name": "合機",
+        "close": 42.3,
+        "open": 41.3,
+        "high": 42.75,
+        "low": 41.1,
+        "diff": 2.55,
+        "change_percent": 6.42,
+        "volume": 4849316,
+        "avg_volume": 650005,
+        "vol_ratio": 7.46,
+        "prior_change_percent": 1.15,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 7,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "8249",
+        "name": "菱光",
+        "close": 58.3,
+        "open": 53.5,
+        "high": 58.3,
+        "low": 51.5,
+        "diff": 5.3,
+        "change_percent": 10.0,
+        "volume": 9046165,
+        "avg_volume": 1329027,
+        "vol_ratio": 6.81,
+        "prior_change_percent": 0.38,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 115,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群115檔同步走強"
+        ]
+    },
+    {
+        "id": "3257",
+        "name": "虹冠電",
+        "close": 59.8,
+        "open": 55.1,
+        "high": 59.8,
+        "low": 54.7,
+        "diff": 5.4,
+        "change_percent": 9.93,
+        "volume": 3309619,
+        "avg_volume": 532035,
+        "vol_ratio": 6.22,
+        "prior_change_percent": 3.03,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 85,
+        "tags": [
+            "創20日新高",
+            "同族群85檔同步走強"
+        ]
+    },
+    {
+        "id": "6799",
+        "name": "來頡",
+        "close": 111.0,
+        "open": 103.5,
+        "high": 111.0,
+        "low": 100.5,
+        "diff": 10.0,
+        "change_percent": 9.9,
+        "volume": 3407083,
+        "avg_volume": 620885,
+        "vol_ratio": 5.49,
+        "prior_change_percent": 0.5,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "id": "3520",
+        "name": "華盈",
+        "close": 18.45,
+        "open": 17.9,
+        "high": 19.0,
+        "low": 17.75,
+        "diff": 0.55,
+        "change_percent": 3.07,
+        "volume": 2577000,
+        "prior_change_percent": 9.82,
+        "gap_open_percent": 0.0,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": 4.96,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "6620",
+        "name": "漢達",
+        "close": 87.9,
+        "open": 98.3,
+        "high": 99.6,
+        "low": 87.7,
+        "diff": -8.4,
+        "change_percent": -8.72,
+        "volume": 5161000,
+        "prior_change_percent": 9.93,
+        "gap_open_percent": 2.08,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.9,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

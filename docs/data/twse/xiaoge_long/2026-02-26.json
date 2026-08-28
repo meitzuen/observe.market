@@ -1,0 +1,133 @@
+[
+    {
+        "id": "6456",
+        "name": "GIS-KY",
+        "close": 47.75,
+        "open": 43.65,
+        "high": 47.75,
+        "low": 43.6,
+        "diff": 4.3,
+        "change_percent": 9.9,
+        "volume": 15634177,
+        "avg_volume": 1839034,
+        "vol_ratio": 8.5,
+        "prior_change_percent": -1.92,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 59,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群59檔同步走強"
+        ]
+    },
+    {
+        "id": "6230",
+        "name": "尼得科超眾",
+        "close": 157.0,
+        "open": 150.0,
+        "high": 157.0,
+        "low": 149.0,
+        "diff": 14.0,
+        "change_percent": 9.79,
+        "volume": 1065437,
+        "avg_volume": 147870,
+        "vol_ratio": 7.21,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 110,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群110檔同步走強"
+        ]
+    },
+    {
+        "id": "6112",
+        "name": "邁達特",
+        "close": 48.45,
+        "open": 46.05,
+        "high": 48.45,
+        "low": 46.05,
+        "diff": 4.4,
+        "change_percent": 9.99,
+        "volume": 3369054,
+        "avg_volume": 474539,
+        "vol_ratio": 7.1,
+        "prior_change_percent": -1.12,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 44,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群44檔同步走強"
+        ]
+    },
+    {
+        "id": "2316",
+        "name": "楠梓電",
+        "close": 112.5,
+        "open": 107.5,
+        "high": 112.5,
+        "low": 105.0,
+        "diff": 10.0,
+        "change_percent": 9.76,
+        "volume": 20493393,
+        "avg_volume": 3325189,
+        "vol_ratio": 6.16,
+        "prior_change_percent": 4.27,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    },
+    {
+        "id": "6141",
+        "name": "柏承",
+        "close": 12.4,
+        "open": 11.2,
+        "high": 12.4,
+        "low": 11.2,
+        "diff": 1.1,
+        "change_percent": 9.73,
+        "volume": 1519567,
+        "avg_volume": 266265,
+        "vol_ratio": 5.71,
+        "prior_change_percent": 0.44,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 97,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群97檔同步走強"
+        ]
+    },
+    {
+        "id": "8438",
+        "name": "昶昕",
+        "close": 69.4,
+        "open": 64.6,
+        "high": 69.4,
+        "low": 64.1,
+        "diff": 6.3,
+        "change_percent": 9.98,
+        "volume": 7421340,
+        "avg_volume": 1321089,
+        "vol_ratio": 5.62,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    }
+]

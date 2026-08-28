@@ -1,0 +1,66 @@
+[
+    {
+        "id": "6243",
+        "name": "迅杰",
+        "close": 45.65,
+        "open": 42.6,
+        "high": 45.65,
+        "low": 42.6,
+        "diff": 4.15,
+        "change_percent": 10.0,
+        "volume": 8694604,
+        "avg_volume": 731014,
+        "vol_ratio": 11.89,
+        "prior_change_percent": 8.21,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 70,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群70檔同步走強"
+        ]
+    },
+    {
+        "id": "2460",
+        "name": "建通",
+        "close": 40.45,
+        "open": 36.4,
+        "high": 40.45,
+        "low": 35.7,
+        "diff": 3.65,
+        "change_percent": 9.92,
+        "volume": 7757539,
+        "avg_volume": 1362065,
+        "vol_ratio": 5.7,
+        "prior_change_percent": 4.99,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 66,
+        "tags": [
+            "創20日新高",
+            "同族群66檔同步走強"
+        ]
+    },
+    {
+        "id": "2432",
+        "name": "倚天酷碁-創",
+        "close": 31.95,
+        "open": 29.45,
+        "high": 31.95,
+        "low": 29.0,
+        "diff": 2.9,
+        "change_percent": 9.98,
+        "volume": 546268,
+        "avg_volume": 103929,
+        "vol_ratio": 5.26,
+        "prior_change_percent": 1.93,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

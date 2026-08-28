@@ -1,0 +1,152 @@
+[
+    {
+        "id": "7718",
+        "name": "友鋮",
+        "close": 55.0,
+        "open": 50.3,
+        "high": 55.0,
+        "low": 50.1,
+        "diff": 5.0,
+        "change_percent": 10.0,
+        "volume": 729000,
+        "avg_volume": 23700,
+        "vol_ratio": 30.76,
+        "prior_change_percent": 9.77,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "8176",
+        "name": "智捷",
+        "close": 13.9,
+        "open": 12.2,
+        "high": 14.4,
+        "low": 12.0,
+        "diff": 0.8,
+        "change_percent": 6.11,
+        "volume": 3084000,
+        "avg_volume": 278050,
+        "vol_ratio": 11.09,
+        "prior_change_percent": 9.62,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    },
+    {
+        "id": "6465",
+        "name": "威潤",
+        "close": 44.9,
+        "open": 44.4,
+        "high": 44.9,
+        "low": 43.5,
+        "diff": 4.05,
+        "change_percent": 9.91,
+        "volume": 1797000,
+        "avg_volume": 183750,
+        "vol_ratio": 9.78,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5490",
+        "name": "同亨",
+        "close": 28.8,
+        "open": 27.0,
+        "high": 29.7,
+        "low": 26.9,
+        "diff": 1.7,
+        "change_percent": 6.27,
+        "volume": 2617000,
+        "avg_volume": 359650,
+        "vol_ratio": 7.28,
+        "prior_change_percent": 0.56,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3289",
+        "name": "宜特",
+        "close": 145.0,
+        "open": 138.5,
+        "high": 149.5,
+        "low": 138.5,
+        "diff": 9.0,
+        "change_percent": 6.62,
+        "volume": 17233000,
+        "avg_volume": 2786350,
+        "vol_ratio": 6.18,
+        "prior_change_percent": 9.68,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 44,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群44檔同步走強"
+        ]
+    },
+    {
+        "id": "3631",
+        "name": "晟楠",
+        "close": 28.6,
+        "open": 26.7,
+        "high": 29.2,
+        "low": 26.7,
+        "diff": 2.05,
+        "change_percent": 7.72,
+        "volume": 585000,
+        "avg_volume": 104200,
+        "vol_ratio": 5.61,
+        "prior_change_percent": -1.67,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 47,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群47檔同步走強"
+        ]
+    },
+    {
+        "id": "6190",
+        "name": "萬泰科",
+        "close": 56.0,
+        "open": 51.9,
+        "high": 56.7,
+        "low": 51.0,
+        "diff": 4.1,
+        "change_percent": 7.9,
+        "volume": 28467000,
+        "avg_volume": 5222650,
+        "vol_ratio": 5.45,
+        "prior_change_percent": 3.8,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 41,
+        "tags": [
+            "創20日新高",
+            "同族群41檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,45 @@
+[
+    {
+        "id": "6283",
+        "name": "淳安",
+        "close": 26.55,
+        "open": 25.8,
+        "high": 26.65,
+        "low": 25.2,
+        "diff": 2.3,
+        "change_percent": 9.48,
+        "volume": 4067558,
+        "avg_volume": 322937,
+        "vol_ratio": 12.6,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 100,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群100檔同步走強"
+        ]
+    },
+    {
+        "id": "2025",
+        "name": "千興",
+        "close": 11.95,
+        "open": 11.4,
+        "high": 11.95,
+        "low": 11.4,
+        "diff": 1.05,
+        "change_percent": 9.63,
+        "volume": 1261537,
+        "avg_volume": 176883,
+        "vol_ratio": 7.13,
+        "prior_change_percent": -0.46,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 15,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群15檔同步走強"
+        ]
+    }
+]

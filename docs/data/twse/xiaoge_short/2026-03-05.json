@@ -1,0 +1,142 @@
+[
+    {
+        "id": "6831",
+        "name": "邁科",
+        "close": 329.0,
+        "open": 322.5,
+        "high": 338.0,
+        "low": 316.0,
+        "diff": 5.5,
+        "change_percent": 1.7,
+        "volume": 2939851,
+        "prior_change_percent": 8.01,
+        "gap_open_percent": -0.31,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 3.51,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "3054",
+        "name": "立萬利",
+        "close": 40.95,
+        "open": 42.0,
+        "high": 44.4,
+        "low": 40.3,
+        "diff": -0.55,
+        "change_percent": -1.33,
+        "volume": 1105544,
+        "prior_change_percent": 9.93,
+        "gap_open_percent": 1.2,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "3036",
+        "name": "文曄",
+        "close": 211.0,
+        "open": 201.5,
+        "high": 213.5,
+        "low": 200.5,
+        "diff": 15.5,
+        "change_percent": 7.93,
+        "volume": 43341481,
+        "prior_change_percent": 9.83,
+        "gap_open_percent": 3.07,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 2.53,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "6133",
+        "name": "金橋",
+        "close": 27.3,
+        "open": 28.5,
+        "high": 30.05,
+        "low": 26.0,
+        "diff": -0.05,
+        "change_percent": -0.18,
+        "volume": 42283576,
+        "prior_change_percent": 8.96,
+        "gap_open_percent": 4.2,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 2.66,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "9918",
+        "name": "欣天然",
+        "close": 50.8,
+        "open": 49.0,
+        "high": 50.8,
+        "low": 48.05,
+        "diff": 4.55,
+        "change_percent": 9.84,
+        "volume": 4105726,
+        "prior_change_percent": 9.99,
+        "gap_open_percent": 5.95,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    },
+    {
+        "id": "9931",
+        "name": "欣高",
+        "close": 42.45,
+        "open": 41.65,
+        "high": 42.7,
+        "low": 40.6,
+        "diff": 3.6,
+        "change_percent": 9.27,
+        "volume": 2207167,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": 7.21,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

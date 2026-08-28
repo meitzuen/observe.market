@@ -1,0 +1,24 @@
+[
+    {
+        "id": "2387",
+        "name": "精元",
+        "close": 43.3,
+        "open": 41.9,
+        "high": 43.3,
+        "low": 41.9,
+        "diff": 3.9,
+        "change_percent": 9.9,
+        "volume": 5720809,
+        "avg_volume": 541564,
+        "vol_ratio": 10.56,
+        "prior_change_percent": -0.25,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 90,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群90檔同步走強"
+        ]
+    }
+]

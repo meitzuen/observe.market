@@ -1,0 +1,130 @@
+[
+    {
+        "id": "6840",
+        "name": "東研信超",
+        "close": 75.6,
+        "open": 72.0,
+        "high": 75.6,
+        "low": 72.0,
+        "diff": 6.8,
+        "change_percent": 9.88,
+        "volume": 1176000,
+        "avg_volume": 95500,
+        "vol_ratio": 12.31,
+        "prior_change_percent": 1.18,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 51,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群51檔同步走強"
+        ]
+    },
+    {
+        "id": "8942",
+        "name": "森鉅",
+        "close": 42.8,
+        "open": 41.9,
+        "high": 43.45,
+        "low": 41.9,
+        "diff": 2.75,
+        "change_percent": 6.87,
+        "volume": 1670000,
+        "avg_volume": 194000,
+        "vol_ratio": 8.61,
+        "prior_change_percent": 1.52,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 13,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群13檔同步走強"
+        ]
+    },
+    {
+        "id": "6173",
+        "name": "信昌電",
+        "close": 223.5,
+        "open": 207.5,
+        "high": 223.5,
+        "low": 203.5,
+        "diff": 20.0,
+        "change_percent": 9.83,
+        "volume": 36379000,
+        "avg_volume": 5055650,
+        "vol_ratio": 7.2,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "6130",
+        "name": "上亞科技",
+        "close": 29.7,
+        "open": 27.0,
+        "high": 29.7,
+        "low": 27.0,
+        "diff": 2.7,
+        "change_percent": 10.0,
+        "volume": 1295000,
+        "avg_volume": 213300,
+        "vol_ratio": 6.07,
+        "prior_change_percent": 5.88,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 11,
+        "tags": [
+            "創20日新高",
+            "同族群11檔同步走強"
+        ]
+    },
+    {
+        "id": "5475",
+        "name": "德宏",
+        "close": 163.0,
+        "open": 157.5,
+        "high": 163.0,
+        "low": 148.5,
+        "diff": 14.5,
+        "change_percent": 9.76,
+        "volume": 24104000,
+        "avg_volume": 4655600,
+        "vol_ratio": 5.18,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨"
+        ]
+    },
+    {
+        "id": "6716",
+        "name": "應廣",
+        "close": 117.5,
+        "open": 111.5,
+        "high": 119.5,
+        "low": 109.0,
+        "diff": 8.5,
+        "change_percent": 7.8,
+        "volume": 1671000,
+        "avg_volume": 325050,
+        "vol_ratio": 5.14,
+        "prior_change_percent": 4.31,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 50,
+        "tags": [
+            "創20日新高",
+            "同族群50檔同步走強"
+        ]
+    }
+]

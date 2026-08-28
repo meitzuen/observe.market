@@ -1,0 +1,43 @@
+[
+    {
+        "id": "2929",
+        "name": "淘帝-KY",
+        "close": 5.96,
+        "open": 5.6,
+        "high": 6.03,
+        "low": 5.6,
+        "diff": 0.47,
+        "change_percent": 8.56,
+        "volume": 1749775,
+        "avg_volume": 157785,
+        "vol_ratio": 11.09,
+        "prior_change_percent": -0.54,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小"
+        ]
+    },
+    {
+        "id": "2033",
+        "name": "佳大",
+        "close": 20.55,
+        "open": 19.4,
+        "high": 20.55,
+        "low": 19.05,
+        "diff": 1.85,
+        "change_percent": 9.89,
+        "volume": 2977506,
+        "avg_volume": 572467,
+        "vol_ratio": 5.2,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

@@ -1,0 +1,68 @@
+[
+    {
+        "id": "6243",
+        "name": "迅杰",
+        "close": 41.5,
+        "open": 40.5,
+        "high": 42.15,
+        "low": 37.45,
+        "diff": 3.15,
+        "change_percent": 8.21,
+        "volume": 6327185,
+        "avg_volume": 452313,
+        "vol_ratio": 13.99,
+        "prior_change_percent": 9.89,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "3591",
+        "name": "艾笛森",
+        "close": 27.55,
+        "open": 26.55,
+        "high": 28.5,
+        "low": 25.5,
+        "diff": 1.6,
+        "change_percent": 6.17,
+        "volume": 11598091,
+        "avg_volume": 1476724,
+        "vol_ratio": 7.85,
+        "prior_change_percent": 8.35,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    },
+    {
+        "id": "3257",
+        "name": "虹冠電",
+        "close": 73.9,
+        "open": 70.4,
+        "high": 73.9,
+        "low": 67.8,
+        "diff": 6.7,
+        "change_percent": 9.97,
+        "volume": 9788891,
+        "avg_volume": 1709306,
+        "vol_ratio": 5.73,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 36,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群36檔同步走強"
+        ]
+    }
+]

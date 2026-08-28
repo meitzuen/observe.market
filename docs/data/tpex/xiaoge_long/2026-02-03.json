@@ -1,0 +1,46 @@
+[
+    {
+        "id": "5386",
+        "name": "青雲",
+        "close": 114.0,
+        "open": 107.5,
+        "high": 114.0,
+        "low": 104.0,
+        "diff": 10.0,
+        "change_percent": 9.62,
+        "volume": 13697000,
+        "avg_volume": 1712500,
+        "vol_ratio": 8.0,
+        "prior_change_percent": 9.94,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 21,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群21檔同步走強"
+        ]
+    },
+    {
+        "id": "7728",
+        "name": "光焱科技",
+        "close": 816.0,
+        "open": 790.0,
+        "high": 816.0,
+        "low": 780.0,
+        "diff": 74.0,
+        "change_percent": 9.97,
+        "volume": 1173000,
+        "avg_volume": 203950,
+        "vol_ratio": 5.75,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 23,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群23檔同步走強"
+        ]
+    }
+]

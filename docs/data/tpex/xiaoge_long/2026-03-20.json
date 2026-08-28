@@ -1,0 +1,154 @@
+[
+    {
+        "id": "6276",
+        "name": "安鈦克",
+        "close": 37.6,
+        "open": 35.35,
+        "high": 38.85,
+        "low": 35.35,
+        "diff": 2.25,
+        "change_percent": 6.36,
+        "volume": 887000,
+        "avg_volume": 53900,
+        "vol_ratio": 16.46,
+        "prior_change_percent": 9.95,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4991",
+        "name": "環宇-KY",
+        "close": 427.0,
+        "open": 415.5,
+        "high": 427.0,
+        "low": 393.5,
+        "diff": 38.5,
+        "change_percent": 9.91,
+        "volume": 19456000,
+        "avg_volume": 1893650,
+        "vol_ratio": 10.27,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 71,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群71檔同步走強"
+        ]
+    },
+    {
+        "id": "1595",
+        "name": "川寶",
+        "close": 43.6,
+        "open": 41.0,
+        "high": 44.4,
+        "low": 40.9,
+        "diff": 3.15,
+        "change_percent": 7.79,
+        "volume": 1278000,
+        "avg_volume": 204800,
+        "vol_ratio": 6.24,
+        "prior_change_percent": -1.7,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "5452",
+        "name": "佶優",
+        "close": 39.45,
+        "open": 36.85,
+        "high": 39.6,
+        "low": 36.6,
+        "diff": 3.45,
+        "change_percent": 9.58,
+        "volume": 23832000,
+        "avg_volume": 3919050,
+        "vol_ratio": 6.08,
+        "prior_change_percent": 4.35,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 59,
+        "tags": [
+            "創20日新高",
+            "同族群59檔同步走強"
+        ]
+    },
+    {
+        "id": "6270",
+        "name": "倍微",
+        "close": 26.5,
+        "open": 24.2,
+        "high": 26.5,
+        "low": 24.1,
+        "diff": 2.4,
+        "change_percent": 9.96,
+        "volume": 2780000,
+        "avg_volume": 464900,
+        "vol_ratio": 5.98,
+        "prior_change_percent": -2.43,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 53,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群53檔同步走強"
+        ]
+    },
+    {
+        "id": "6231",
+        "name": "系微",
+        "close": 270.0,
+        "open": 252.5,
+        "high": 270.5,
+        "low": 249.5,
+        "diff": 24.0,
+        "change_percent": 9.76,
+        "volume": 3836000,
+        "avg_volume": 704200,
+        "vol_ratio": 5.45,
+        "prior_change_percent": 2.07,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 19,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群19檔同步走強"
+        ]
+    },
+    {
+        "id": "6127",
+        "name": "九豪",
+        "close": 47.6,
+        "open": 46.85,
+        "high": 48.8,
+        "low": 46.25,
+        "diff": 3.2,
+        "change_percent": 7.21,
+        "volume": 37477000,
+        "avg_volume": 7305050,
+        "vol_ratio": 5.13,
+        "prior_change_percent": 9.9,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 60,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群60檔同步走強"
+        ]
+    }
+]

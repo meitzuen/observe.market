@@ -1,0 +1,22 @@
+[
+    {
+        "id": "7723",
+        "name": "築間",
+        "close": 21.95,
+        "open": 21.5,
+        "high": 22.35,
+        "low": 20.85,
+        "diff": 1.6,
+        "change_percent": 7.86,
+        "volume": 620000,
+        "avg_volume": 68750,
+        "vol_ratio": 9.02,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨"
+        ]
+    }
+]

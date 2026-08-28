@@ -1,0 +1,65 @@
+[
+    {
+        "id": "6101",
+        "name": "寬魚國際",
+        "close": 41.85,
+        "open": 38.1,
+        "high": 41.85,
+        "low": 37.55,
+        "diff": 3.8,
+        "change_percent": 9.99,
+        "volume": 1425000,
+        "avg_volume": 90450,
+        "vol_ratio": 15.75,
+        "prior_change_percent": -0.91,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4416",
+        "name": "三圓",
+        "close": 12.3,
+        "open": 11.8,
+        "high": 12.3,
+        "low": 11.8,
+        "diff": 1.1,
+        "change_percent": 9.82,
+        "volume": 2409000,
+        "avg_volume": 221400,
+        "vol_ratio": 10.88,
+        "prior_change_percent": -3.03,
+        "prior_pattern": "normal",
+        "is_new_high": false,
+        "peer_strong_count": 26,
+        "tags": [
+            "同族群26檔同步走強"
+        ]
+    },
+    {
+        "id": "6609",
+        "name": "瀧澤科",
+        "close": 49.4,
+        "open": 46.75,
+        "high": 49.45,
+        "low": 46.6,
+        "diff": 3.05,
+        "change_percent": 6.58,
+        "volume": 4619000,
+        "avg_volume": 911700,
+        "vol_ratio": 5.07,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 37,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群37檔同步走強"
+        ]
+    }
+]

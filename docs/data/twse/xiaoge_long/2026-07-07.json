@@ -1,0 +1,45 @@
+[
+    {
+        "id": "3046",
+        "name": "建碁",
+        "close": 58.4,
+        "open": 58.3,
+        "high": 58.4,
+        "low": 57.2,
+        "diff": 5.3,
+        "change_percent": 9.98,
+        "volume": 5304630,
+        "avg_volume": 396253,
+        "vol_ratio": 13.39,
+        "prior_change_percent": 0.76,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6579",
+        "name": "研揚",
+        "close": 179.0,
+        "open": 173.5,
+        "high": 180.5,
+        "low": 173.5,
+        "diff": 14.5,
+        "change_percent": 8.81,
+        "volume": 5136763,
+        "avg_volume": 561885,
+        "vol_ratio": 9.14,
+        "prior_change_percent": -0.6,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 12,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群12檔同步走強"
+        ]
+    }
+]
