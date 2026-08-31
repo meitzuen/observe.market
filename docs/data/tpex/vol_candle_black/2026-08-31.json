@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6643",
+        "name": "M31",
+        "close": 411.5,
+        "open": 428.0,
+        "high": 432.0,
+        "low": 411.5,
+        "diff": -25.5,
+        "change_percent": -5.84,
+        "volume": 1217000,
+        "avg_volume": 237800,
+        "vol_ratio": 5.12,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "3066",
+        "name": "李洲",
+        "close": 25.55,
+        "open": 27.65,
+        "high": 28.6,
+        "low": 25.2,
+        "diff": -1.95,
+        "change_percent": -7.09,
+        "volume": 4594000,
+        "avg_volume": 1165000,
+        "vol_ratio": 3.94,
+        "body_ratio": 0.62
+    },
+    {
+        "id": "6584",
+        "name": "南俊國際",
+        "close": 629.0,
+        "open": 682.0,
+        "high": 694.0,
+        "low": 614.0,
+        "diff": -53.0,
+        "change_percent": -7.77,
+        "volume": 4121000,
+        "avg_volume": 1284200,
+        "vol_ratio": 3.21,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "7751",
+        "name": "竑騰",
+        "close": 1615.0,
+        "open": 1790.0,
+        "high": 1790.0,
+        "low": 1615.0,
+        "diff": -175.0,
+        "change_percent": -9.78,
+        "volume": 1315000,
+        "avg_volume": 631200,
+        "vol_ratio": 2.08,
+        "body_ratio": 1.0
+    }
+]

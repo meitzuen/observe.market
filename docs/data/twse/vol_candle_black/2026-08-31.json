@@ -1,0 +1,58 @@
+[
+    {
+        "id": "6541",
+        "name": "泰福-KY",
+        "close": 34.0,
+        "open": 35.85,
+        "high": 36.05,
+        "low": 33.6,
+        "diff": -2.1,
+        "change_percent": -5.82,
+        "volume": 1179836,
+        "avg_volume": 232987,
+        "vol_ratio": 5.06,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "7769",
+        "name": "鴻勁",
+        "close": 5860.0,
+        "open": 6485.0,
+        "high": 6485.0,
+        "low": 5845.0,
+        "diff": -630.0,
+        "change_percent": -9.71,
+        "volume": 1526208,
+        "avg_volume": 381068,
+        "vol_ratio": 4.01,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "6446",
+        "name": "藥華藥",
+        "close": 1395.0,
+        "open": 1630.0,
+        "high": 1645.0,
+        "low": 1395.0,
+        "diff": -150.0,
+        "change_percent": -9.71,
+        "volume": 10723537,
+        "avg_volume": 3569491,
+        "vol_ratio": 3.0,
+        "body_ratio": 0.94
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 31.6,
+        "open": 35.25,
+        "high": 36.6,
+        "low": 31.5,
+        "diff": -2.4,
+        "change_percent": -7.06,
+        "volume": 64819357,
+        "avg_volume": 26931143,
+        "vol_ratio": 2.41,
+        "body_ratio": 0.72
+    }
+]

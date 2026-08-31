@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1312",
+        "name": "國喬",
+        "close": 15.55,
+        "open": 14.2,
+        "high": 15.55,
+        "low": 14.15,
+        "diff": 1.4,
+        "change_percent": 9.89,
+        "volume": 108410961,
+        "avg_volume": 15008725,
+        "vol_ratio": 7.22,
+        "prior_change_percent": -1.05,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 44,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群44檔同步走強"
+        ]
+    },
+    {
+        "id": "2421",
+        "name": "建準",
+        "close": 179.5,
+        "open": 163.5,
+        "high": 179.5,
+        "low": 163.0,
+        "diff": 16.0,
+        "change_percent": 9.79,
+        "volume": 21013490,
+        "avg_volume": 3533504,
+        "vol_ratio": 5.95,
+        "prior_change_percent": 2.51,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 40,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群40檔同步走強"
+        ]
+    }
+]
