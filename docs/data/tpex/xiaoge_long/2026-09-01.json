@@ -1,0 +1,45 @@
+[
+    {
+        "id": "3141",
+        "name": "晶宏",
+        "close": 90.5,
+        "open": 83.0,
+        "high": 90.5,
+        "low": 81.9,
+        "diff": 8.2,
+        "change_percent": 9.96,
+        "volume": 10308000,
+        "avg_volume": 1122100,
+        "vol_ratio": 9.19,
+        "prior_change_percent": 8.72,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 17,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群17檔同步走強"
+        ]
+    },
+    {
+        "id": "3086",
+        "name": "華義*",
+        "close": 32.7,
+        "open": 30.8,
+        "high": 33.25,
+        "low": 30.25,
+        "diff": 2.45,
+        "change_percent": 8.1,
+        "volume": 871000,
+        "avg_volume": 147050,
+        "vol_ratio": 5.92,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]

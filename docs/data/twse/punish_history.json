@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-08-31",
+        "measure": "第一次處置",
+        "id": "6226",
+        "name": "光鼎",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-09-01",
+        "to": "2026-09-07"
+    },
+    {
         "publish_date": "2026-08-26",
         "measure": "第一次處置",
         "id": "2486",
