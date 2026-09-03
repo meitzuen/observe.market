@@ -1,0 +1,67 @@
+[
+    {
+        "id": "8431",
+        "name": "匯鑽科",
+        "close": 63.7,
+        "open": 59.1,
+        "high": 65.7,
+        "low": 58.7,
+        "diff": 3.9,
+        "change_percent": 6.52,
+        "volume": 7618000,
+        "avg_volume": 365450,
+        "vol_ratio": 20.85,
+        "prior_change_percent": 1.49,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 11,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群11檔同步走強"
+        ]
+    },
+    {
+        "id": "6122",
+        "name": "擎邦",
+        "close": 51.9,
+        "open": 50.6,
+        "high": 52.4,
+        "low": 49.5,
+        "diff": 3.2,
+        "change_percent": 6.57,
+        "volume": 2005000,
+        "avg_volume": 234500,
+        "vol_ratio": 8.55,
+        "prior_change_percent": 0.1,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 91.5,
+        "open": 84.2,
+        "high": 91.5,
+        "low": 84.2,
+        "diff": 8.3,
+        "change_percent": 9.98,
+        "volume": 4812000,
+        "avg_volume": 840400,
+        "vol_ratio": 5.73,
+        "prior_change_percent": 2.24,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

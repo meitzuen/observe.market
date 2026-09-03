@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8431",
+        "name": "匯鑽科",
+        "close": 63.7,
+        "open": 59.1,
+        "high": 65.7,
+        "low": 58.7,
+        "diff": 3.9,
+        "change_percent": 6.52,
+        "volume": 7618000,
+        "avg_volume": 691000,
+        "vol_ratio": 11.02,
+        "body_ratio": 0.66
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 91.5,
+        "open": 84.2,
+        "high": 91.5,
+        "low": 84.2,
+        "diff": 8.3,
+        "change_percent": 9.98,
+        "volume": 4812000,
+        "avg_volume": 2234600,
+        "vol_ratio": 2.15,
+        "body_ratio": 1.0
+    }
+]

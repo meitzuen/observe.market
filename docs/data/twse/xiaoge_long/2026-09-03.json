@@ -1,0 +1,23 @@
+[
+    {
+        "id": "2438",
+        "name": "翔耀",
+        "close": 22.05,
+        "open": 21.5,
+        "high": 22.05,
+        "low": 21.05,
+        "diff": 2.0,
+        "change_percent": 9.98,
+        "volume": 1014704,
+        "avg_volume": 67983,
+        "vol_ratio": 14.93,
+        "prior_change_percent": 0.55,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

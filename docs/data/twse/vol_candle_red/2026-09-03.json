@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3021",
+        "name": "鴻名",
+        "close": 22.1,
+        "open": 20.1,
+        "high": 22.1,
+        "low": 20.1,
+        "diff": 2.0,
+        "change_percent": 9.95,
+        "volume": 525343,
+        "avg_volume": 111207,
+        "vol_ratio": 4.72,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2884",
+        "name": "玉山金",
+        "close": 43.2,
+        "open": 41.35,
+        "high": 43.5,
+        "low": 40.55,
+        "diff": 2.7,
+        "change_percent": 6.67,
+        "volume": 96702581,
+        "avg_volume": 38252735,
+        "vol_ratio": 2.53,
+        "body_ratio": 0.63
+    },
+    {
+        "id": "2845",
+        "name": "遠東銀",
+        "close": 13.65,
+        "open": 13.05,
+        "high": 13.8,
+        "low": 13.05,
+        "diff": 0.65,
+        "change_percent": 5.0,
+        "volume": 42579382,
+        "avg_volume": 20548590,
+        "vol_ratio": 2.07,
+        "body_ratio": 0.8
+    }
+]
