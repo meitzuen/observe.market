@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6538",
+        "name": "倉和",
+        "close": 300.0,
+        "open": 261.5,
+        "high": 300.0,
+        "low": 257.5,
+        "diff": 27.0,
+        "change_percent": 9.89,
+        "volume": 9472000,
+        "prior_change_percent": 9.86,
+        "gap_open_percent": -4.21,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.33,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "3564",
+        "name": "其陽",
+        "close": 50.2,
+        "open": 53.2,
+        "high": 53.4,
+        "low": 49.5,
+        "diff": -2.7,
+        "change_percent": -5.1,
+        "volume": 1603000,
+        "prior_change_percent": 9.98,
+        "gap_open_percent": 0.57,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 2.07,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "2221",
+        "name": "大甲",
+        "close": 90.8,
+        "open": 95.7,
+        "high": 98.5,
+        "low": 90.3,
+        "diff": -0.7,
+        "change_percent": -0.77,
+        "volume": 12640000,
+        "prior_change_percent": 9.98,
+        "gap_open_percent": 4.59,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.47,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

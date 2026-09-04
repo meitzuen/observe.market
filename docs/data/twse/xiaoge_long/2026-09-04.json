@@ -1,0 +1,67 @@
+[
+    {
+        "id": "3591",
+        "name": "艾笛森",
+        "close": 24.9,
+        "open": 22.85,
+        "high": 24.95,
+        "low": 22.2,
+        "diff": 2.2,
+        "change_percent": 9.69,
+        "volume": 5265540,
+        "avg_volume": 766932,
+        "vol_ratio": 6.87,
+        "prior_change_percent": 0.44,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 89,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群89檔同步走強"
+        ]
+    },
+    {
+        "id": "3094",
+        "name": "聯傑",
+        "close": 46.5,
+        "open": 43.2,
+        "high": 46.5,
+        "low": 43.15,
+        "diff": 4.2,
+        "change_percent": 9.93,
+        "volume": 17920641,
+        "avg_volume": 2824226,
+        "vol_ratio": 6.35,
+        "prior_change_percent": 2.67,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 118,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群118檔同步走強"
+        ]
+    },
+    {
+        "id": "2413",
+        "name": "環科",
+        "close": 45.8,
+        "open": 41.9,
+        "high": 45.8,
+        "low": 41.9,
+        "diff": 4.15,
+        "change_percent": 9.96,
+        "volume": 4428068,
+        "avg_volume": 781592,
+        "vol_ratio": 5.67,
+        "prior_change_percent": -3.03,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 50,
+        "tags": [
+            "創20日新高",
+            "同族群50檔同步走強"
+        ]
+    }
+]

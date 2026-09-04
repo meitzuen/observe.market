@@ -1,0 +1,16 @@
+[
+    {
+        "id": "5225",
+        "name": "東科-KY",
+        "close": 57.4,
+        "open": 60.5,
+        "high": 60.6,
+        "low": 57.1,
+        "diff": -3.6,
+        "change_percent": -5.9,
+        "volume": 1162649,
+        "avg_volume": 190142,
+        "vol_ratio": 6.11,
+        "body_ratio": 0.89
+    }
+]

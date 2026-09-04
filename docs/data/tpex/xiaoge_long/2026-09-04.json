@@ -1,0 +1,111 @@
+[
+    {
+        "id": "8431",
+        "name": "匯鑽科",
+        "close": 68.8,
+        "open": 64.8,
+        "high": 69.7,
+        "low": 64.0,
+        "diff": 5.1,
+        "change_percent": 8.01,
+        "volume": 10612000,
+        "avg_volume": 727500,
+        "vol_ratio": 14.59,
+        "prior_change_percent": 6.52,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 121,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群121檔同步走強"
+        ]
+    },
+    {
+        "id": "7717",
+        "name": "萊德光電-KY",
+        "close": 449.5,
+        "open": 416.0,
+        "high": 449.5,
+        "low": 416.0,
+        "diff": 40.5,
+        "change_percent": 9.9,
+        "volume": 1126000,
+        "avg_volume": 170400,
+        "vol_ratio": 6.61,
+        "prior_change_percent": -3.31,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "6620",
+        "name": "漢達",
+        "close": 107.5,
+        "open": 105.0,
+        "high": 107.5,
+        "low": 97.1,
+        "diff": 9.5,
+        "change_percent": 9.69,
+        "volume": 6781000,
+        "avg_volume": 1163000,
+        "vol_ratio": 5.83,
+        "prior_change_percent": 2.73,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "6275",
+        "name": "元山",
+        "close": 48.15,
+        "open": 45.15,
+        "high": 48.9,
+        "low": 45.0,
+        "diff": 3.1,
+        "change_percent": 6.88,
+        "volume": 1507000,
+        "avg_volume": 272000,
+        "vol_ratio": 5.54,
+        "prior_change_percent": -1.85,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 110,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群110檔同步走強"
+        ]
+    },
+    {
+        "id": "6667",
+        "name": "信紘科",
+        "close": 239.5,
+        "open": 231.0,
+        "high": 239.5,
+        "low": 230.5,
+        "diff": 21.5,
+        "change_percent": 9.86,
+        "volume": 837000,
+        "avg_volume": 157500,
+        "vol_ratio": 5.31,
+        "prior_change_percent": 0.46,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 26,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群26檔同步走強"
+        ]
+    }
+]

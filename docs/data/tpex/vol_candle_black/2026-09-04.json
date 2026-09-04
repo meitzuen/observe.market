@@ -1,0 +1,58 @@
+[
+    {
+        "id": "4127",
+        "name": "天良",
+        "close": 61.3,
+        "open": 65.9,
+        "high": 65.9,
+        "low": 59.4,
+        "diff": -4.7,
+        "change_percent": -7.12,
+        "volume": 1517000,
+        "avg_volume": 311200,
+        "vol_ratio": 4.87,
+        "body_ratio": 0.71
+    },
+    {
+        "id": "3564",
+        "name": "其陽",
+        "close": 50.2,
+        "open": 53.2,
+        "high": 53.4,
+        "low": 49.5,
+        "diff": -2.7,
+        "change_percent": -5.1,
+        "volume": 1603000,
+        "avg_volume": 420000,
+        "vol_ratio": 3.82,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "6240",
+        "name": "松崗",
+        "close": 25.2,
+        "open": 27.2,
+        "high": 27.7,
+        "low": 25.2,
+        "diff": -2.75,
+        "change_percent": -9.84,
+        "volume": 533000,
+        "avg_volume": 165000,
+        "vol_ratio": 3.23,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "6716",
+        "name": "應廣",
+        "close": 117.0,
+        "open": 129.0,
+        "high": 131.5,
+        "low": 117.0,
+        "diff": -13.0,
+        "change_percent": -10.0,
+        "volume": 2315000,
+        "avg_volume": 766000,
+        "vol_ratio": 3.02,
+        "body_ratio": 0.83
+    }
+]

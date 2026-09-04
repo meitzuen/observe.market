@@ -1,0 +1,49 @@
+[
+    {
+        "id": "2464",
+        "name": "盟立",
+        "close": 211.0,
+        "open": 223.5,
+        "high": 224.0,
+        "low": 203.0,
+        "diff": -11.0,
+        "change_percent": -4.95,
+        "volume": 54753350,
+        "prior_change_percent": 9.9,
+        "gap_open_percent": 0.68,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.58,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "2438",
+        "name": "翔耀",
+        "close": 21.9,
+        "open": 22.5,
+        "high": 23.0,
+        "low": 21.1,
+        "diff": -0.15,
+        "change_percent": -0.68,
+        "volume": 905569,
+        "prior_change_percent": 9.98,
+        "gap_open_percent": 2.04,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]
