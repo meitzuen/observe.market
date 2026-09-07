@@ -1,0 +1,30 @@
+[
+    {
+        "id": "4979",
+        "name": "華星光",
+        "close": 590.0,
+        "open": 630.0,
+        "high": 635.0,
+        "low": 590.0,
+        "diff": -39.0,
+        "change_percent": -6.2,
+        "volume": 15293000,
+        "avg_volume": 5497000,
+        "vol_ratio": 2.78,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "4534",
+        "name": "慶騰",
+        "close": 28.5,
+        "open": 30.35,
+        "high": 30.35,
+        "low": 28.3,
+        "diff": -1.4,
+        "change_percent": -4.68,
+        "volume": 1123000,
+        "avg_volume": 510400,
+        "vol_ratio": 2.2,
+        "body_ratio": 0.9
+    }
+]

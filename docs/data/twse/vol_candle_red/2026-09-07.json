@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2444",
+        "name": "兆勁",
+        "close": 11.85,
+        "open": 10.9,
+        "high": 11.85,
+        "low": 10.85,
+        "diff": 1.05,
+        "change_percent": 9.72,
+        "volume": 816529,
+        "avg_volume": 150991,
+        "vol_ratio": 5.41,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "2436",
+        "name": "偉詮電",
+        "close": 71.7,
+        "open": 69.1,
+        "high": 71.7,
+        "low": 69.1,
+        "diff": 6.5,
+        "change_percent": 9.97,
+        "volume": 15538506,
+        "avg_volume": 4217272,
+        "vol_ratio": 3.68,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "2409",
+        "name": "友達",
+        "close": 28.7,
+        "open": 26.95,
+        "high": 29.45,
+        "low": 26.7,
+        "diff": 1.9,
+        "change_percent": 7.09,
+        "volume": 523099639,
+        "avg_volume": 198992303,
+        "vol_ratio": 2.63,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "2454",
+        "name": "聯發科",
+        "close": 4760.0,
+        "open": 4500.0,
+        "high": 4855.0,
+        "low": 4485.0,
+        "diff": 345.0,
+        "change_percent": 7.81,
+        "volume": 17178200,
+        "avg_volume": 7156105,
+        "vol_ratio": 2.4,
+        "body_ratio": 0.7
+    }
+]

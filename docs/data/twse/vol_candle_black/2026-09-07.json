@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3669",
+        "name": "圓展",
+        "close": 33.05,
+        "open": 34.45,
+        "high": 34.45,
+        "low": 32.95,
+        "diff": -2.05,
+        "change_percent": -5.84,
+        "volume": 656558,
+        "avg_volume": 210165,
+        "vol_ratio": 3.12,
+        "body_ratio": 0.93
+    },
+    {
+        "id": "2417",
+        "name": "圓剛",
+        "close": 39.8,
+        "open": 41.7,
+        "high": 41.75,
+        "low": 39.8,
+        "diff": -2.6,
+        "change_percent": -6.13,
+        "volume": 1566719,
+        "avg_volume": 526329,
+        "vol_ratio": 2.98,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "3003",
+        "name": "健和興",
+        "close": 59.0,
+        "open": 65.0,
+        "high": 65.0,
+        "low": 59.0,
+        "diff": -6.5,
+        "change_percent": -9.92,
+        "volume": 3354602,
+        "avg_volume": 1205535,
+        "vol_ratio": 2.78,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3022",
+        "name": "威強電",
+        "close": 91.5,
+        "open": 97.0,
+        "high": 98.6,
+        "low": 91.2,
+        "diff": -4.4,
+        "change_percent": -4.59,
+        "volume": 4751940,
+        "avg_volume": 1993346,
+        "vol_ratio": 2.38,
+        "body_ratio": 0.74
+    },
+    {
+        "id": "8996",
+        "name": "高力",
+        "close": 1240.0,
+        "open": 1390.0,
+        "high": 1410.0,
+        "low": 1205.0,
+        "diff": -60.0,
+        "change_percent": -4.62,
+        "volume": 8775069,
+        "avg_volume": 4027945,
+        "vol_ratio": 2.18,
+        "body_ratio": 0.73
+    }
+]
