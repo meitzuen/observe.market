@@ -1,0 +1,46 @@
+[
+    {
+        "id": "5230",
+        "name": "雷笛克光學",
+        "close": 19.05,
+        "open": 18.45,
+        "high": 19.55,
+        "low": 18.2,
+        "diff": 1.25,
+        "change_percent": 7.02,
+        "volume": 1791000,
+        "avg_volume": 105850,
+        "vol_ratio": 16.92,
+        "prior_change_percent": 0.56,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "3354",
+        "name": "律勝",
+        "close": 28.3,
+        "open": 26.4,
+        "high": 28.85,
+        "low": 26.25,
+        "diff": 1.9,
+        "change_percent": 7.2,
+        "volume": 4373000,
+        "avg_volume": 478550,
+        "vol_ratio": 9.14,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    }
+]
