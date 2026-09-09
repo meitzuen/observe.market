@@ -1,0 +1,67 @@
+[
+    {
+        "id": "6657",
+        "name": "華安",
+        "close": 36.6,
+        "open": 33.45,
+        "high": 36.75,
+        "low": 33.15,
+        "diff": 3.15,
+        "change_percent": 9.42,
+        "volume": 1110831,
+        "avg_volume": 109615,
+        "vol_ratio": 10.13,
+        "prior_change_percent": 9.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 3,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群3檔同步走強"
+        ]
+    },
+    {
+        "id": "2413",
+        "name": "環科",
+        "close": 50.5,
+        "open": 46.9,
+        "high": 50.5,
+        "low": 46.8,
+        "diff": 4.55,
+        "change_percent": 9.9,
+        "volume": 9956309,
+        "avg_volume": 1605585,
+        "vol_ratio": 6.2,
+        "prior_change_percent": -4.96,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 27,
+        "tags": [
+            "創20日新高",
+            "同族群27檔同步走強"
+        ]
+    },
+    {
+        "id": "1409",
+        "name": "新纖",
+        "close": 26.85,
+        "open": 25.3,
+        "high": 26.85,
+        "low": 25.05,
+        "diff": 2.4,
+        "change_percent": 9.82,
+        "volume": 89005580,
+        "avg_volume": 14780077,
+        "vol_ratio": 6.02,
+        "prior_change_percent": 0.41,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 37,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群37檔同步走強"
+        ]
+    }
+]

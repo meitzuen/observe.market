@@ -1,0 +1,52 @@
+[
+    {
+        "publish_date": "2026-09-02",
+        "measure": "第一次處置",
+        "id": "3008",
+        "name": "大立光",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-09-03",
+        "to": "2026-09-09"
+    },
+    {
+        "publish_date": "2026-09-02",
+        "measure": "第二次處置",
+        "id": "3450",
+        "name": "聯鈞",
+        "accumulated": 1,
+        "condition": "連續五次及當日沖銷標準",
+        "from": "2026-09-03",
+        "to": "2026-09-11"
+    },
+    {
+        "publish_date": "2026-09-04",
+        "measure": "第二次處置",
+        "id": "2455",
+        "name": "全新",
+        "accumulated": 1,
+        "condition": "連續五次及當日沖銷標準",
+        "from": "2026-09-07",
+        "to": "2026-09-15"
+    },
+    {
+        "publish_date": "2026-09-04",
+        "measure": "第二次處置",
+        "id": "6933",
+        "name": "AMAX-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-09-07",
+        "to": "2026-09-11"
+    },
+    {
+        "publish_date": "2026-09-08",
+        "measure": "第二次處置",
+        "id": "8021",
+        "name": "尖點",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-09-09",
+        "to": "2026-09-15"
+    }
+]

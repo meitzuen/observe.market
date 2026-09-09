@@ -1,0 +1,88 @@
+[
+    {
+        "id": "5211",
+        "name": "蒙恬",
+        "close": 21.15,
+        "open": 19.9,
+        "high": 21.15,
+        "low": 19.9,
+        "diff": 1.9,
+        "change_percent": 9.87,
+        "volume": 519000,
+        "avg_volume": 33050,
+        "vol_ratio": 15.7,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "8227",
+        "name": "巨有科技",
+        "close": 198.0,
+        "open": 183.0,
+        "high": 198.0,
+        "low": 178.5,
+        "diff": 18.0,
+        "change_percent": 10.0,
+        "volume": 7282000,
+        "avg_volume": 755900,
+        "vol_ratio": 9.63,
+        "prior_change_percent": 9.76,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 20,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群20檔同步走強"
+        ]
+    },
+    {
+        "id": "6179",
+        "name": "亞通",
+        "close": 36.4,
+        "open": 33.05,
+        "high": 36.4,
+        "low": 32.5,
+        "diff": 3.3,
+        "change_percent": 9.97,
+        "volume": 25818000,
+        "avg_volume": 3591600,
+        "vol_ratio": 7.19,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "8089",
+        "name": "康全電訊",
+        "close": 18.1,
+        "open": 17.7,
+        "high": 18.5,
+        "low": 17.3,
+        "diff": 1.2,
+        "change_percent": 7.1,
+        "volume": 503000,
+        "avg_volume": 99700,
+        "vol_ratio": 5.05,
+        "prior_change_percent": -0.88,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 14,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群14檔同步走強"
+        ]
+    }
+]
