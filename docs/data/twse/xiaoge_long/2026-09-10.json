@@ -1,0 +1,66 @@
+[
+    {
+        "id": "2338",
+        "name": "光罩",
+        "close": 45.65,
+        "open": 44.65,
+        "high": 45.65,
+        "low": 43.55,
+        "diff": 4.15,
+        "change_percent": 10.0,
+        "volume": 12836401,
+        "avg_volume": 1280032,
+        "vol_ratio": 10.03,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 7,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "6949",
+        "name": "沛爾生醫*-創",
+        "close": 58.8,
+        "open": 56.8,
+        "high": 60.3,
+        "low": 55.4,
+        "diff": 3.9,
+        "change_percent": 7.1,
+        "volume": 26068201,
+        "avg_volume": 4115109,
+        "vol_ratio": 6.33,
+        "prior_change_percent": -9.11,
+        "prior_pattern": "big_black",
+        "is_new_high": false,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "3346",
+        "name": "麗清",
+        "close": 20.35,
+        "open": 18.7,
+        "high": 20.35,
+        "low": 18.65,
+        "diff": 1.85,
+        "change_percent": 10.0,
+        "volume": 1427350,
+        "avg_volume": 241742,
+        "vol_ratio": 5.9,
+        "prior_change_percent": 0.54,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 17,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群17檔同步走強"
+        ]
+    }
+]

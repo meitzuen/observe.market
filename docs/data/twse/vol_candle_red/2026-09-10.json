@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3346",
+        "name": "麗清",
+        "close": 20.35,
+        "open": 18.7,
+        "high": 20.35,
+        "low": 18.65,
+        "diff": 1.85,
+        "change_percent": 10.0,
+        "volume": 1427350,
+        "avg_volume": 216745,
+        "vol_ratio": 6.59,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "3437",
+        "name": "榮創",
+        "close": 19.7,
+        "open": 18.5,
+        "high": 20.2,
+        "low": 18.4,
+        "diff": 1.05,
+        "change_percent": 5.63,
+        "volume": 2294782,
+        "avg_volume": 716108,
+        "vol_ratio": 3.2,
+        "body_ratio": 0.67
+    },
+    {
+        "id": "3016",
+        "name": "嘉晶",
+        "close": 110.0,
+        "open": 99.3,
+        "high": 110.0,
+        "low": 99.3,
+        "diff": 10.0,
+        "change_percent": 10.0,
+        "volume": 13980714,
+        "avg_volume": 4932885,
+        "vol_ratio": 2.83,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7799",
+        "name": "禾榮科",
+        "close": 425.0,
+        "open": 400.0,
+        "high": 425.0,
+        "low": 392.0,
+        "diff": 38.5,
+        "change_percent": 9.96,
+        "volume": 997569,
+        "avg_volume": 364647,
+        "vol_ratio": 2.74,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "6861",
+        "name": "睿生光電",
+        "close": 204.0,
+        "open": 190.5,
+        "high": 204.0,
+        "low": 188.5,
+        "diff": 18.5,
+        "change_percent": 9.97,
+        "volume": 1493423,
+        "avg_volume": 728894,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.87
+    }
+]

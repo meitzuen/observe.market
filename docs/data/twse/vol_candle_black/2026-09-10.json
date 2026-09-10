@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3376",
+        "name": "新日興",
+        "close": 189.5,
+        "open": 210.0,
+        "high": 211.0,
+        "low": 186.0,
+        "diff": -16.5,
+        "change_percent": -8.01,
+        "volume": 19831863,
+        "avg_volume": 4750833,
+        "vol_ratio": 4.17,
+        "body_ratio": 0.82
+    },
+    {
+        "id": "9934",
+        "name": "成霖",
+        "close": 10.15,
+        "open": 10.35,
+        "high": 10.35,
+        "low": 10.1,
+        "diff": -0.45,
+        "change_percent": -4.25,
+        "volume": 3035070,
+        "avg_volume": 742325,
+        "vol_ratio": 4.09,
+        "body_ratio": 0.8
+    },
+    {
+        "id": "5515",
+        "name": "建國",
+        "close": 50.0,
+        "open": 51.7,
+        "high": 51.7,
+        "low": 49.05,
+        "diff": -2.4,
+        "change_percent": -4.58,
+        "volume": 994829,
+        "avg_volume": 304213,
+        "vol_ratio": 3.27,
+        "body_ratio": 0.64
+    },
+    {
+        "id": "2308",
+        "name": "台達電",
+        "close": 1675.0,
+        "open": 1775.0,
+        "high": 1775.0,
+        "low": 1675.0,
+        "diff": -120.0,
+        "change_percent": -6.69,
+        "volume": 20489051,
+        "avg_volume": 8348378,
+        "vol_ratio": 2.45,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "1409",
+        "name": "新纖",
+        "close": 25.15,
+        "open": 26.85,
+        "high": 26.85,
+        "low": 24.75,
+        "diff": -1.7,
+        "change_percent": -6.33,
+        "volume": 64176367,
+        "avg_volume": 27772493,
+        "vol_ratio": 2.31,
+        "body_ratio": 0.81
+    }
+]
