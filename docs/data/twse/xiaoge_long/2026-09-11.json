@@ -1,0 +1,107 @@
+[
+    {
+        "id": "2468",
+        "name": "華經",
+        "close": 35.8,
+        "open": 33.0,
+        "high": 35.8,
+        "low": 33.0,
+        "diff": 3.25,
+        "change_percent": 9.98,
+        "volume": 4234479,
+        "avg_volume": 250821,
+        "vol_ratio": 16.88,
+        "prior_change_percent": 0.31,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 11,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群11檔同步走強"
+        ]
+    },
+    {
+        "id": "1528",
+        "name": "恩德",
+        "close": 21.2,
+        "open": 19.9,
+        "high": 21.2,
+        "low": 19.9,
+        "diff": 1.9,
+        "change_percent": 9.84,
+        "volume": 9585675,
+        "avg_volume": 1152718,
+        "vol_ratio": 8.32,
+        "prior_change_percent": -4.69,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "2305",
+        "name": "全友",
+        "close": 41.05,
+        "open": 38.65,
+        "high": 41.05,
+        "low": 37.7,
+        "diff": 2.55,
+        "change_percent": 6.62,
+        "volume": 57982441,
+        "avg_volume": 7634666,
+        "vol_ratio": 7.59,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6689",
+        "name": "伊雲谷",
+        "close": 64.1,
+        "open": 60.1,
+        "high": 65.0,
+        "low": 60.1,
+        "diff": 4.0,
+        "change_percent": 6.66,
+        "volume": 658239,
+        "avg_volume": 91959,
+        "vol_ratio": 7.16,
+        "prior_change_percent": -2.12,
+        "prior_pattern": "small",
+        "is_new_high": false,
+        "peer_strong_count": 7,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "同族群7檔同步走強"
+        ]
+    },
+    {
+        "id": "2444",
+        "name": "兆勁",
+        "close": 12.2,
+        "open": 11.5,
+        "high": 12.3,
+        "low": 11.5,
+        "diff": 1.0,
+        "change_percent": 8.93,
+        "volume": 1486861,
+        "avg_volume": 244242,
+        "vol_ratio": 6.09,
+        "prior_change_percent": -0.88,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]
