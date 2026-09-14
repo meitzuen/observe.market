@@ -1,0 +1,143 @@
+[
+    {
+        "id": "3624",
+        "name": "光頡",
+        "close": 124.0,
+        "open": 122.0,
+        "high": 128.5,
+        "low": 117.0,
+        "diff": -0.5,
+        "change_percent": -0.4,
+        "volume": 44654000,
+        "prior_change_percent": 9.69,
+        "gap_open_percent": -2.01,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -0.44,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "3441",
+        "name": "聯一光",
+        "close": 160.5,
+        "open": 167.0,
+        "high": 173.0,
+        "low": 157.5,
+        "diff": -5.5,
+        "change_percent": -3.31,
+        "volume": 36125000,
+        "prior_change_percent": 9.93,
+        "gap_open_percent": 0.6,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -0.47,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "8227",
+        "name": "巨有科技",
+        "close": 241.0,
+        "open": 240.5,
+        "high": 259.0,
+        "low": 235.0,
+        "diff": 2.0,
+        "change_percent": 0.84,
+        "volume": 19766000,
+        "prior_change_percent": 9.89,
+        "gap_open_percent": 0.63,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": -0.75,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "6227",
+        "name": "茂綸",
+        "close": 127.0,
+        "open": 130.0,
+        "high": 134.0,
+        "low": 124.5,
+        "diff": -0.5,
+        "change_percent": -0.39,
+        "volume": 4881000,
+        "prior_change_percent": 9.91,
+        "gap_open_percent": 1.96,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": null,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "7714",
+        "name": "創泓科技",
+        "close": 183.0,
+        "open": 178.5,
+        "high": 189.5,
+        "low": 178.5,
+        "diff": 9.5,
+        "change_percent": 5.48,
+        "volume": 1582000,
+        "prior_change_percent": 9.81,
+        "gap_open_percent": 2.88,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 0.32,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "6148",
+        "name": "驊宏資",
+        "close": 34.1,
+        "open": 33.3,
+        "high": 34.1,
+        "low": 33.3,
+        "diff": 3.1,
+        "change_percent": 10.0,
+        "volume": 1342000,
+        "prior_change_percent": 9.93,
+        "gap_open_percent": 7.42,
+        "gap_class": "mid_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.07,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤普通，觀察中"
+        ]
+    }
+]

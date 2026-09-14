@@ -1,0 +1,90 @@
+[
+    {
+        "id": "6690",
+        "name": "安碁資訊",
+        "close": 188.0,
+        "open": 181.0,
+        "high": 188.0,
+        "low": 181.0,
+        "diff": 17.0,
+        "change_percent": 9.94,
+        "volume": 547000,
+        "avg_volume": 50950,
+        "vol_ratio": 10.74,
+        "prior_change_percent": 6.54,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 18,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群18檔同步走強"
+        ]
+    },
+    {
+        "id": "6811",
+        "name": "宏碁資訊",
+        "close": 248.0,
+        "open": 235.0,
+        "high": 248.0,
+        "low": 233.0,
+        "diff": 22.5,
+        "change_percent": 9.98,
+        "volume": 1006000,
+        "avg_volume": 115050,
+        "vol_ratio": 8.74,
+        "prior_change_percent": 2.27,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    },
+    {
+        "id": "5202",
+        "name": "力新",
+        "close": 12.9,
+        "open": 12.15,
+        "high": 12.9,
+        "low": 12.05,
+        "diff": 1.15,
+        "change_percent": 9.79,
+        "volume": 1026000,
+        "avg_volume": 130800,
+        "vol_ratio": 7.84,
+        "prior_change_percent": 0.43,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "6148",
+        "name": "驊宏資",
+        "close": 34.1,
+        "open": 33.3,
+        "high": 34.1,
+        "low": 33.3,
+        "diff": 3.1,
+        "change_percent": 10.0,
+        "volume": 1342000,
+        "avg_volume": 213900,
+        "vol_ratio": 6.27,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    }
+]

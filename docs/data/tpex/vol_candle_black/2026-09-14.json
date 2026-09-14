@@ -1,0 +1,30 @@
+[
+    {
+        "id": "8096",
+        "name": "擎亞",
+        "close": 86.0,
+        "open": 89.4,
+        "high": 89.4,
+        "low": 84.4,
+        "diff": -4.7,
+        "change_percent": -5.18,
+        "volume": 7439000,
+        "avg_volume": 3631000,
+        "vol_ratio": 2.05,
+        "body_ratio": 0.68
+    },
+    {
+        "id": "4556",
+        "name": "旭然",
+        "close": 90.4,
+        "open": 104.0,
+        "high": 104.0,
+        "low": 90.0,
+        "diff": -4.2,
+        "change_percent": -4.44,
+        "volume": 2388000,
+        "avg_volume": 1191800,
+        "vol_ratio": 2.0,
+        "body_ratio": 0.97
+    }
+]
