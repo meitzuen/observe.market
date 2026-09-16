@@ -9,14 +9,14 @@
         "diff": 4.85,
         "change_percent": 9.85,
         "volume": 15166000,
-        "avg_volume": 1896500,
-        "vol_ratio": 8.0,
-        "prior_change_percent": -0.22,
-        "prior_pattern": "small",
+        "avg_volume": 2056650,
+        "vol_ratio": 7.37,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
         "is_new_high": true,
         "peer_strong_count": 101,
         "tags": [
-            "前日小紅小黑，解套壓力小",
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
             "創20日新高",
             "同族群101檔同步走強"
         ]
