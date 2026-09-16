@@ -1,45 +1,11 @@
 /* ==========================================================================
    Nerd Grid (Wireframe HUD) — shared design system
-   Dark = pure-black cyan wireframe HUD (default)
-   Light = paper-white deep-blue wireframe HUD ([data-theme="light"])
+   Light = paper-white deep-blue wireframe HUD (the only theme; dark mode
+   has been removed)
    See /Nerd Grid.md for the source design brief.
    ========================================================================== */
 
 :root {
-  /* dark (default) */
-  --hud-bg: #000000;
-  --hud-bg-raised: #050708;
-  --hud-card-bg: transparent;  /* pure wireframe: no fill, per design brief */
-
-  --hud-border-1: rgba(0, 180, 255, 0.18);   /* primary panel border */
-  --hud-border-2: rgba(0, 180, 255, 0.12);   /* secondary panel border */
-  --hud-border-3: rgba(0, 180, 255, 0.08);   /* hairline / row divider */
-
-  --hud-grid-h: rgba(0, 180, 255, 0.08);
-  --hud-grid-v: rgba(0, 180, 255, 0.05);
-
-  --hud-text-1: rgba(0, 190, 255, 0.9);      /* headline numbers */
-  --hud-text-2: rgba(0, 190, 255, 0.7);      /* primary data */
-  --hud-text-3: rgba(0, 190, 255, 0.5);      /* labels / secondary */
-  --hud-text-4: rgba(0, 190, 255, 0.35);     /* tertiary / muted */
-
-  /* TW market convention: red = up, green = down (opposite of US/EU) */
-  --hud-up: rgba(255, 80, 80, 0.85);
-  --hud-up-dim: rgba(255, 80, 80, 0.5);
-  --hud-down: rgba(0, 220, 180, 0.85);
-  --hud-down-dim: rgba(0, 220, 180, 0.5);
-
-  --hud-danger-border: rgba(255, 80, 80, 0.35);
-  --hud-danger-text: rgba(255, 120, 120, 0.85);
-
-  --hud-hover-bg: rgba(0, 180, 255, 0.05);
-  --hud-active-bg: rgba(0, 180, 255, 0.1);
-
-  --hud-radius: 2px;
-  --hud-font: "JetBrains Mono", "Noto Sans TC", ui-monospace, monospace;
-}
-
-[data-theme="light"] {
   /* toned page bg + solid white card surface, so wireframe panels actually
      separate from the page instead of dissolving into it (pure #fff-on-#fff
      wireframe reads as "barely there" once you remove the black backdrop) */
@@ -70,6 +36,9 @@
 
   --hud-hover-bg: rgba(0, 60, 130, 0.07);
   --hud-active-bg: rgba(0, 60, 130, 0.14);
+
+  --hud-radius: 2px;
+  --hud-font: "JetBrains Mono", "Noto Sans TC", ui-monospace, monospace;
 }
 
 * {
@@ -276,21 +245,6 @@ h1 {
 
 .nav-dropdown-item.active {
   background: var(--hud-active-bg);
-  color: var(--hud-text-1);
-}
-
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--hud-border-1);
-  border-radius: var(--hud-radius);
-  padding: 0.4rem 0.6rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: var(--hud-text-3);
-  transition: all 0.15s;
-}
-.theme-toggle:hover {
-  background: var(--hud-hover-bg);
   color: var(--hud-text-1);
 }
 
@@ -702,13 +656,9 @@ select {
     font-size: 0.7rem;
   }
 
-  .theme-toggle {
-    padding: 0.55rem 0.75rem;
-  }
-
   /* .header-left's overflow-x:auto works for wide screens, but on a phone
-     it hides the tail of the nav bar (later dropdowns, theme toggle) behind
-     a silent horizontal scroll with no visible scrollbar — those items are
+     it hides the tail of the nav bar (later dropdowns) behind a silent
+     horizontal scroll with no visible scrollbar — those items are
      effectively invisible. Wrap the nav onto its own full-width row instead
      so every dropdown stays on-screen without needing a hidden swipe. */
   .header-left {
