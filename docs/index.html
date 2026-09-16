@@ -13,6 +13,40 @@
     />
     <link rel="stylesheet" href="assets/nerd-grid.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .ma-toggle-row {
+        display: flex;
+        gap: 0.4rem;
+        margin: 0.1rem 0 0.85rem;
+      }
+      .ma-toggle {
+        padding: 0.2rem 0.65rem;
+        border-radius: var(--hud-radius);
+        border: 1px solid var(--hud-border-2);
+        background: none;
+        color: var(--hud-text-3);
+        font-family: var(--hud-font);
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .ma-toggle:hover {
+        background: var(--hud-hover-bg);
+        color: var(--hud-text-1);
+      }
+      .ma-toggle.active {
+        background: var(--hud-active-bg);
+        border-color: var(--hud-text-2);
+        color: var(--hud-text-1);
+      }
+      .stat-spark {
+        display: block;
+        width: 100%;
+        height: 20px;
+        margin-top: 0.3rem;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -63,6 +97,11 @@
                   letter-spacing: 0.05em;
                 "
               ></div>
+            </div>
+            <div class="ma-toggle-row" id="ma-toggle-row">
+              <button class="ma-toggle" data-ma="5">MA5</button>
+              <button class="ma-toggle" data-ma="10">MA10</button>
+              <button class="ma-toggle" data-ma="20">MA20</button>
             </div>
             <div style="height: 300px; position: relative">
               <canvas id="indexChart"></canvas>
@@ -206,23 +245,28 @@
                   <span class="stat-label">上市指數</span>
                   <span id="summary-index-twse" class="stat-value">--</span>
                   <span id="summary-changes-twse" class="stat-change">--</span>
+                  <svg id="spark-index-twse" class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">上櫃指數</span>
                   <span id="summary-index-tpex" class="stat-value">--</span>
                   <span id="summary-changes-tpex" class="stat-change">--</span>
+                  <svg id="spark-index-tpex" class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">成交金額(合計)</span>
                   <span id="summary-turnover" class="stat-value">--</span>
+                  <svg id="spark-turnover" class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">成交股數(合計)</span>
                   <span id="summary-volume" class="stat-value">--</span>
+                  <svg id="spark-volume" class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
                 </div>
                 <div class="stat-item">
                   <span class="stat-label">成交比數(合計)</span>
                   <span id="summary-transactions" class="stat-value">--</span>
+                  <svg id="spark-transactions" class="stat-spark" viewBox="0 0 100 24" preserveAspectRatio="none"></svg>
                 </div>
               </div>
             </div>
@@ -312,6 +356,7 @@
       let currentPunishData = [];
       let filteredStocks = [];
       let chart = null;
+      let activeMAs = new Set();
 
       // Pagination & Sorting State
       let currentPage = 1;
@@ -399,6 +444,21 @@
               rowsPerPage = 10;
               filterStocks();
             });
+
+          // MA indicator toggles on the index trend chart
+          document.querySelectorAll(".ma-toggle").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const period = parseInt(btn.dataset.ma, 10);
+              if (activeMAs.has(period)) {
+                activeMAs.delete(period);
+                btn.classList.remove("active");
+              } else {
+                activeMAs.add(period);
+                btn.classList.add("active");
+              }
+              renderChart();
+            });
+          });
 
           // Gap Jump sort listener
           document
@@ -514,6 +574,88 @@
           Math.round(volume / 100000000) + " 億";
         document.getElementById("summary-transactions").textContent =
           Math.round(transactions / 10000) + " 萬";
+
+        const hist = buildMergedHistory(30);
+        renderSparkline("spark-index-twse", hist.twseIndex);
+        renderSparkline("spark-index-tpex", hist.tpexIndex);
+        renderSparkline("spark-turnover", hist.turnover);
+        renderSparkline("spark-volume", hist.volume);
+        renderSparkline("spark-transactions", hist.transactions);
+      }
+
+      // Merges twse/tpex history onto a shared date axis and returns the
+      // last `n` trading days of each metric, for the summary sparklines.
+      function buildMergedHistory(n) {
+        const dateMap = new Map();
+        indexDataTwse.forEach((d) => dateMap.set(toISO(d.date), d.date));
+        indexDataTpex.forEach((d) => dateMap.set(toISO(d.date), d.date));
+        const recentIso = [...dateMap.keys()].sort().slice(-n);
+
+        const twseByIso = new Map(indexDataTwse.map((d) => [toISO(d.date), d]));
+        const tpexByIso = new Map(indexDataTpex.map((d) => [toISO(d.date), d]));
+        const sum = (iso, field) =>
+          (twseByIso.get(iso)?.[field] || 0) + (tpexByIso.get(iso)?.[field] || 0) ||
+          null;
+
+        return {
+          twseIndex: recentIso.map((iso) => twseByIso.get(iso)?.index ?? null),
+          tpexIndex: recentIso.map((iso) => tpexByIso.get(iso)?.index ?? null),
+          turnover: recentIso.map((iso) => sum(iso, "turnover")),
+          volume: recentIso.map((iso) => sum(iso, "volume")),
+          transactions: recentIso.map((iso) => sum(iso, "transactions")),
+        };
+      }
+
+      // Draws a minimal trend line into a `viewBox="0 0 100 24"` sparkline
+      // <svg>, colored by the TW up/down convention (red = up, green = down).
+      function renderSparkline(svgId, values) {
+        const svg = document.getElementById(svgId);
+        if (!svg) return;
+        const points = (values || [])
+          .map((v, i) => [i, v])
+          .filter(([, v]) => v != null);
+        if (points.length < 2) {
+          svg.innerHTML = "";
+          return;
+        }
+
+        const w = 100,
+          h = 24,
+          pad = 2;
+        const nums = points.map(([, v]) => v);
+        const min = Math.min(...nums);
+        const max = Math.max(...nums);
+        const range = max - min || 1;
+        const stepX = (w - pad * 2) / (values.length - 1);
+
+        const d = points
+          .map(([i, v], k) => {
+            const x = pad + i * stepX;
+            const y = h - pad - ((v - min) / range) * (h - pad * 2);
+            return `${k === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
+          })
+          .join(" ");
+
+        const c = NerdGrid.chartColors();
+        const isUp = nums[nums.length - 1] >= nums[0];
+        const color = isUp ? c.up : c.down;
+        svg.innerHTML = `<path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />`;
+      }
+
+      // Simple moving average over a market's chronological index history,
+      // keyed by ISO date so it can be aligned onto the chart's date axis.
+      function computeMA(dataArr, period) {
+        const sorted = [...dataArr].sort((a, b) =>
+          toISO(a.date) < toISO(b.date) ? -1 : 1,
+        );
+        const closes = sorted.map((d) => d.index);
+        const result = new Map();
+        for (let i = period - 1; i < sorted.length; i++) {
+          const window = closes.slice(i - period + 1, i + 1);
+          const avg = window.reduce((a, b) => a + b, 0) / period;
+          result.set(toISO(sorted[i].date), avg);
+        }
+        return result;
       }
 
       async function loadStockData(date) {
@@ -849,6 +991,45 @@
         const c = NerdGrid.chartColors();
         const monoFont = { family: "JetBrains Mono, monospace", size: 10 };
 
+        // MA overlays: dashed lines in each series' own color, one dash
+        // pattern per period, so toggling them on doesn't require new hues.
+        const maDashPatterns = { 5: [3, 3], 10: [7, 4], 20: [12, 5] };
+        const maDatasets = [];
+        [...activeMAs]
+          .sort((a, b) => a - b)
+          .forEach((period) => {
+            const twseMA = computeMA(indexDataTwse, period);
+            const tpexMA = computeMA(indexDataTpex, period);
+            maDatasets.push({
+              label: `MA${period} 上市`,
+              data: isoDates.map((iso) =>
+                twseMA.has(iso) ? twseMA.get(iso) : null,
+              ),
+              borderColor: c.seriesA,
+              borderWidth: 1,
+              borderDash: maDashPatterns[period],
+              pointRadius: 0,
+              fill: false,
+              tension: 0.15,
+              yAxisID: "y",
+              spanGaps: true,
+            });
+            maDatasets.push({
+              label: `MA${period} 上櫃`,
+              data: isoDates.map((iso) =>
+                tpexMA.has(iso) ? tpexMA.get(iso) : null,
+              ),
+              borderColor: c.seriesB,
+              borderWidth: 1,
+              borderDash: maDashPatterns[period],
+              pointRadius: 0,
+              fill: false,
+              tension: 0.15,
+              yAxisID: "y1",
+              spanGaps: true,
+            });
+          });
+
         chart = new Chart(ctx, {
           type: "line",
           data: {
@@ -882,6 +1063,7 @@
                 yAxisID: "y1",
                 spanGaps: true,
               },
+              ...maDatasets,
             ],
           },
           options: {
