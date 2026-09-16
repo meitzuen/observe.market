@@ -1,0 +1,24 @@
+[
+    {
+        "id": "6218",
+        "name": "豪勉",
+        "close": 54.1,
+        "open": 50.2,
+        "high": 54.1,
+        "low": 48.5,
+        "diff": 4.85,
+        "change_percent": 9.85,
+        "volume": 15166000,
+        "avg_volume": 1896500,
+        "vol_ratio": 8.0,
+        "prior_change_percent": -0.22,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 101,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群101檔同步走強"
+        ]
+    }
+]

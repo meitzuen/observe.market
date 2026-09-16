@@ -1,0 +1,121 @@
+[
+    {
+        "id": "3675",
+        "name": "德微",
+        "close": 295.5,
+        "open": 270.0,
+        "high": 295.5,
+        "low": 270.0,
+        "diff": 26.5,
+        "change_percent": 9.85,
+        "volume": 1584000,
+        "prior_change_percent": 9.85,
+        "gap_open_percent": -5.1,
+        "gap_class": "weak_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": 2.17,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    },
+    {
+        "id": "8431",
+        "name": "匯鑽科",
+        "close": 65.0,
+        "open": 60.1,
+        "high": 65.8,
+        "low": 60.0,
+        "diff": 4.9,
+        "change_percent": 8.15,
+        "volume": 3834000,
+        "prior_change_percent": 9.84,
+        "gap_open_percent": -3.84,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": false,
+        "topping_pattern": false,
+        "peer_avg_change": 1.78,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱"
+        ]
+    },
+    {
+        "id": "6690",
+        "name": "安碁資訊",
+        "close": 181.0,
+        "open": 184.5,
+        "high": 187.0,
+        "low": 179.0,
+        "diff": -2.5,
+        "change_percent": -1.36,
+        "volume": 744000,
+        "prior_change_percent": 9.94,
+        "gap_open_percent": -1.86,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": 1.39,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "6811",
+        "name": "宏碁資訊",
+        "close": 246.0,
+        "open": 246.0,
+        "high": 254.5,
+        "low": 245.0,
+        "diff": -5.0,
+        "change_percent": -1.99,
+        "volume": 708000,
+        "prior_change_percent": 9.98,
+        "gap_open_percent": -0.81,
+        "gap_class": "weak_open",
+        "near_high": true,
+        "ma_flat": true,
+        "topping_pattern": true,
+        "peer_avg_change": 1.11,
+        "peer_weak": false,
+        "risk_breakout": false,
+        "tags": [
+            "今日開盤明顯轉弱",
+            "高檔月線走平，疑似做頭"
+        ]
+    },
+    {
+        "id": "6925",
+        "name": "意藍",
+        "close": 57.8,
+        "open": 58.4,
+        "high": 60.2,
+        "low": 56.9,
+        "diff": -2.9,
+        "change_percent": -4.78,
+        "volume": 565000,
+        "prior_change_percent": 9.96,
+        "gap_open_percent": 5.8,
+        "gap_class": "mid_open",
+        "near_high": false,
+        "ma_flat": true,
+        "topping_pattern": false,
+        "peer_avg_change": 0.77,
+        "peer_weak": false,
+        "risk_breakout": true,
+        "tags": [
+            "今日開盤普通，觀察中",
+            "⚠️ 股價未創高，慎防為剛突破而非出貨"
+        ]
+    }
+]

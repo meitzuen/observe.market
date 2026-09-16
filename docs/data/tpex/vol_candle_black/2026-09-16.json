@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3434",
+        "name": "哲固",
+        "close": 30.95,
+        "open": 32.9,
+        "high": 32.95,
+        "low": 30.95,
+        "diff": -1.55,
+        "change_percent": -4.77,
+        "volume": 1198000,
+        "avg_volume": 39600,
+        "vol_ratio": 30.25,
+        "body_ratio": 0.97
+    }
+]
