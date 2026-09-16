@@ -280,6 +280,7 @@
 
     <script src="assets/nerd-grid.js"></script>
     <script>
+      const isAdmin = new URLSearchParams(location.search).get("admin") === "True";
       NerdGrid.initThemeToggle();
       NerdGrid.initNav();
       let chart = null;
@@ -538,11 +539,15 @@
             </div>
             ${conceptTagsHtml}
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-              <div class="watchlist-picker-wrap">
+              ${
+                isAdmin
+                  ? `<div class="watchlist-picker-wrap">
                 <button class="btn" id="btn-add-watchlist">＋ 加入自選股</button>
                 <div class="watchlist-picker" id="watchlist-picker"></div>
               </div>
-              <a href="portfolio.html?add=${id}" class="btn">＋ 加入持股試算</a>
+              <a href="portfolio.html?add=${id}" class="btn">＋ 加入持股試算</a>`
+                  : ""
+              }
               <a
                 href="http://cnyes.com/twstock/${id}/analysis/performance"
                 target="_blank"
