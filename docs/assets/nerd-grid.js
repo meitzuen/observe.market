@@ -7,23 +7,10 @@
 (function (global) {
   "use strict";
 
-  const STORAGE_KEY = "theme";
+  // Dark mode has been removed — the app is light-only now.
   const THEME_EVENT = "nerdgrid:themechange";
 
   const CHART_PALETTE = {
-    dark: {
-      seriesA: "rgba(0, 190, 255, 0.85)", // twse / primary series
-      seriesB: "rgba(0, 220, 180, 0.75)", // tpex / secondary series
-      gridH: "rgba(0, 180, 255, 0.08)",
-      gridV: "rgba(0, 180, 255, 0.05)",
-      tick: "rgba(0, 190, 255, 0.5)",
-      // TW market convention: red = up, green = down
-      up: "rgba(255, 80, 80, 0.85)",
-      down: "rgba(0, 220, 180, 0.85)",
-      tooltipBg: "rgba(0, 8, 16, 0.92)",
-      tooltipBorder: "rgba(0, 180, 255, 0.25)",
-      tooltipText: "rgba(0, 190, 255, 0.9)",
-    },
     light: {
       seriesA: "rgba(0, 75, 150, 0.9)",
       seriesB: "rgba(0, 120, 100, 0.95)",
@@ -40,32 +27,17 @@
   };
 
   function currentTheme() {
-    return document.documentElement.getAttribute("data-theme") === "light"
-      ? "light"
-      : "dark";
+    return "light";
   }
 
   function chartColors(theme) {
     return CHART_PALETTE[theme || currentTheme()];
   }
 
-  function initThemeToggle(buttonId) {
-    const btn = document.getElementById(buttonId || "theme-toggle");
-    const saved = localStorage.getItem(STORAGE_KEY) || "dark";
-    document.documentElement.setAttribute("data-theme", saved);
-    if (btn) btn.textContent = saved === "light" ? "☀️" : "🌙";
-
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-      const next = currentTheme() === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem(STORAGE_KEY, next);
-      btn.textContent = next === "light" ? "☀️" : "🌙";
-      document.dispatchEvent(
-        new CustomEvent(THEME_EVENT, { detail: { theme: next } }),
-      );
-    });
-  }
+  // No-op kept so existing `NerdGrid.initThemeToggle();` call sites across
+  // pages don't need to change now that there's no toggle button or theme
+  // to switch to.
+  function initThemeToggle() {}
 
   function onThemeChange(handler) {
     document.addEventListener(THEME_EVENT, (e) => handler(e.detail.theme));
