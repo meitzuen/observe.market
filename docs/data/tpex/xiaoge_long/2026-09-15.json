@@ -1,0 +1,66 @@
+[
+    {
+        "id": "3434",
+        "name": "哲固",
+        "close": 32.5,
+        "open": 29.85,
+        "high": 32.5,
+        "low": 29.55,
+        "diff": 2.95,
+        "change_percent": 9.98,
+        "volume": 750000,
+        "avg_volume": 65250,
+        "vol_ratio": 11.49,
+        "prior_change_percent": 1.55,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5202",
+        "name": "力新",
+        "close": 14.15,
+        "open": 12.8,
+        "high": 14.15,
+        "low": 12.75,
+        "diff": 1.25,
+        "change_percent": 9.69,
+        "volume": 1991000,
+        "avg_volume": 173850,
+        "vol_ratio": 11.45,
+        "prior_change_percent": 9.79,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 2,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群2檔同步走強"
+        ]
+    },
+    {
+        "id": "5251",
+        "name": "天鉞電",
+        "close": 29.15,
+        "open": 27.65,
+        "high": 29.15,
+        "low": 27.0,
+        "diff": 2.65,
+        "change_percent": 10.0,
+        "volume": 673000,
+        "avg_volume": 66300,
+        "vol_ratio": 10.15,
+        "prior_change_percent": 2.71,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

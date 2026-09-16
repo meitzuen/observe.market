@@ -1,0 +1,46 @@
+[
+    {
+        "id": "2468",
+        "name": "華經",
+        "close": 43.25,
+        "open": 40.95,
+        "high": 43.25,
+        "low": 40.05,
+        "diff": 3.9,
+        "change_percent": 9.91,
+        "volume": 7140627,
+        "avg_volume": 551306,
+        "vol_ratio": 12.95,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 6,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群6檔同步走強"
+        ]
+    },
+    {
+        "id": "2427",
+        "name": "三商電",
+        "close": 24.35,
+        "open": 22.95,
+        "high": 24.5,
+        "low": 22.65,
+        "diff": 1.55,
+        "change_percent": 6.8,
+        "volume": 5301477,
+        "avg_volume": 497776,
+        "vol_ratio": 10.65,
+        "prior_change_percent": 1.79,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 5,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群5檔同步走強"
+        ]
+    }
+]

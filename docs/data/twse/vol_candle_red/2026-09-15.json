@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2427",
+        "name": "三商電",
+        "close": 24.35,
+        "open": 22.95,
+        "high": 24.5,
+        "low": 22.65,
+        "diff": 1.55,
+        "change_percent": 6.8,
+        "volume": 5301477,
+        "avg_volume": 896064,
+        "vol_ratio": 5.92,
+        "body_ratio": 0.76
+    },
+    {
+        "id": "2468",
+        "name": "華經",
+        "close": 43.25,
+        "open": 40.95,
+        "high": 43.25,
+        "low": 40.05,
+        "diff": 3.9,
+        "change_percent": 9.91,
+        "volume": 7140627,
+        "avg_volume": 1390134,
+        "vol_ratio": 5.14,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "6226",
+        "name": "光鼎",
+        "close": 36.3,
+        "open": 33.95,
+        "high": 36.3,
+        "low": 33.05,
+        "diff": 3.3,
+        "change_percent": 10.0,
+        "volume": 81114487,
+        "avg_volume": 24656809,
+        "vol_ratio": 3.29,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "3311",
+        "name": "閎暉",
+        "close": 36.8,
+        "open": 35.0,
+        "high": 37.6,
+        "low": 34.85,
+        "diff": 1.8,
+        "change_percent": 5.14,
+        "volume": 2318623,
+        "avg_volume": 788704,
+        "vol_ratio": 2.94,
+        "body_ratio": 0.65
+    }
+]
