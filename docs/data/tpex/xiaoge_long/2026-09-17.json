@@ -1,0 +1,64 @@
+[
+    {
+        "id": "3372",
+        "name": "典範",
+        "close": 16.4,
+        "open": 15.0,
+        "high": 16.4,
+        "low": 14.7,
+        "diff": 1.45,
+        "change_percent": 9.7,
+        "volume": 2554000,
+        "avg_volume": 332800,
+        "vol_ratio": 7.67,
+        "prior_change_percent": 5.28,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6126",
+        "name": "信音",
+        "close": 31.6,
+        "open": 29.5,
+        "high": 31.6,
+        "low": 29.2,
+        "diff": 1.9,
+        "change_percent": 6.4,
+        "volume": 2196000,
+        "avg_volume": 343600,
+        "vol_ratio": 6.39,
+        "prior_change_percent": 4.21,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    },
+    {
+        "id": "7717",
+        "name": "萊德光電-KY",
+        "close": 579.0,
+        "open": 544.0,
+        "high": 579.0,
+        "low": 530.0,
+        "diff": 52.0,
+        "change_percent": 9.87,
+        "volume": 3258000,
+        "avg_volume": 612500,
+        "vol_ratio": 5.32,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]
