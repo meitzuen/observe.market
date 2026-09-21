@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6620",
+        "name": "漢達",
+        "close": 137.5,
+        "open": 151.5,
+        "high": 152.0,
+        "low": 135.0,
+        "diff": -11.5,
+        "change_percent": -7.72,
+        "volume": 6121000,
+        "avg_volume": 1931200,
+        "vol_ratio": 3.17,
+        "body_ratio": 0.82
+    }
+]
