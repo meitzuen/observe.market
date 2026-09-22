@@ -1,0 +1,72 @@
+[
+    {
+        "id": "4951",
+        "name": "精拓科",
+        "close": 92.9,
+        "open": 109.5,
+        "high": 109.5,
+        "low": 92.1,
+        "diff": -6.8,
+        "change_percent": -6.82,
+        "volume": 4159000,
+        "avg_volume": 240600,
+        "vol_ratio": 17.29,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "4127",
+        "name": "天良",
+        "close": 54.2,
+        "open": 60.0,
+        "high": 60.0,
+        "low": 54.0,
+        "diff": -5.8,
+        "change_percent": -9.67,
+        "volume": 817000,
+        "avg_volume": 111200,
+        "vol_ratio": 7.35,
+        "body_ratio": 0.97
+    },
+    {
+        "id": "6234",
+        "name": "高僑",
+        "close": 38.65,
+        "open": 41.95,
+        "high": 41.95,
+        "low": 38.5,
+        "diff": -3.7,
+        "change_percent": -8.74,
+        "volume": 2471000,
+        "avg_volume": 801800,
+        "vol_ratio": 3.08,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "4534",
+        "name": "慶騰",
+        "close": 30.6,
+        "open": 34.8,
+        "high": 34.8,
+        "low": 30.6,
+        "diff": -1.65,
+        "change_percent": -5.12,
+        "volume": 1978000,
+        "avg_volume": 725400,
+        "vol_ratio": 2.73,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6640",
+        "name": "均華",
+        "close": 1035.0,
+        "open": 1130.0,
+        "high": 1140.0,
+        "low": 1030.0,
+        "diff": -75.0,
+        "change_percent": -6.76,
+        "volume": 627000,
+        "avg_volume": 256600,
+        "vol_ratio": 2.44,
+        "body_ratio": 0.86
+    }
+]

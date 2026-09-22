@@ -1,0 +1,108 @@
+[
+    {
+        "id": "3541",
+        "name": "西柏",
+        "close": 24.6,
+        "open": 22.75,
+        "high": 24.6,
+        "low": 22.75,
+        "diff": 2.2,
+        "change_percent": 9.82,
+        "volume": 773000,
+        "avg_volume": 28400,
+        "vol_ratio": 27.22,
+        "prior_change_percent": 1.13,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "1595",
+        "name": "川寶",
+        "close": 74.6,
+        "open": 70.1,
+        "high": 75.3,
+        "low": 69.5,
+        "diff": 6.1,
+        "change_percent": 8.91,
+        "volume": 2789000,
+        "avg_volume": 324650,
+        "vol_ratio": 8.59,
+        "prior_change_percent": 4.26,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 29,
+        "tags": [
+            "創20日新高",
+            "同族群29檔同步走強"
+        ]
+    },
+    {
+        "id": "4563",
+        "name": "百德",
+        "close": 50.1,
+        "open": 47.5,
+        "high": 51.7,
+        "low": 47.4,
+        "diff": 3.1,
+        "change_percent": 6.6,
+        "volume": 954000,
+        "avg_volume": 119300,
+        "vol_ratio": 8.0,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "3691",
+        "name": "碩禾",
+        "close": 110.5,
+        "open": 103.0,
+        "high": 110.5,
+        "low": 102.0,
+        "diff": 10.0,
+        "change_percent": 9.95,
+        "volume": 2162000,
+        "avg_volume": 373100,
+        "vol_ratio": 5.79,
+        "prior_change_percent": 3.08,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    },
+    {
+        "id": "7792",
+        "name": "安葆",
+        "close": 378.0,
+        "open": 345.0,
+        "high": 378.0,
+        "low": 332.0,
+        "diff": 34.0,
+        "change_percent": 9.88,
+        "volume": 2130000,
+        "avg_volume": 409450,
+        "vol_ratio": 5.2,
+        "prior_change_percent": 1.47,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]
