@@ -1,0 +1,133 @@
+[
+    {
+        "id": "2241",
+        "name": "艾姆勒",
+        "close": 43.65,
+        "open": 40.8,
+        "high": 44.0,
+        "low": 39.4,
+        "diff": 2.6,
+        "change_percent": 6.33,
+        "volume": 6674337,
+        "avg_volume": 704003,
+        "vol_ratio": 9.48,
+        "prior_change_percent": 9.91,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 8,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群8檔同步走強"
+        ]
+    },
+    {
+        "id": "6838",
+        "name": "台新藥",
+        "close": 26.25,
+        "open": 24.2,
+        "high": 26.25,
+        "low": 24.2,
+        "diff": 2.35,
+        "change_percent": 9.83,
+        "volume": 889639,
+        "avg_volume": 99852,
+        "vol_ratio": 8.91,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 4,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群4檔同步走強"
+        ]
+    },
+    {
+        "id": "6205",
+        "name": "詮欣",
+        "close": 72.0,
+        "open": 66.1,
+        "high": 72.0,
+        "low": 66.1,
+        "diff": 6.5,
+        "change_percent": 9.92,
+        "volume": 4231383,
+        "avg_volume": 618178,
+        "vol_ratio": 6.84,
+        "prior_change_percent": -6.43,
+        "prior_pattern": "big_black",
+        "is_new_high": true,
+        "peer_strong_count": 41,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "創20日新高",
+            "同族群41檔同步走強"
+        ]
+    },
+    {
+        "id": "2104",
+        "name": "國際中橡",
+        "close": 11.65,
+        "open": 10.65,
+        "high": 11.65,
+        "low": 10.65,
+        "diff": 1.05,
+        "change_percent": 9.91,
+        "volume": 21035315,
+        "avg_volume": 3319660,
+        "vol_ratio": 6.34,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 9,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群9檔同步走強"
+        ]
+    },
+    {
+        "id": "6526",
+        "name": "達發",
+        "close": 840.0,
+        "open": 777.0,
+        "high": 840.0,
+        "low": 761.0,
+        "diff": 76.0,
+        "change_percent": 9.95,
+        "volume": 4748267,
+        "avg_volume": 839125,
+        "vol_ratio": 5.66,
+        "prior_change_percent": 5.52,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 28,
+        "tags": [
+            "創20日新高",
+            "同族群28檔同步走強"
+        ]
+    },
+    {
+        "id": "6456",
+        "name": "GIS-KY",
+        "close": 78.6,
+        "open": 76.5,
+        "high": 80.9,
+        "low": 76.5,
+        "diff": 5.0,
+        "change_percent": 6.79,
+        "volume": 26940277,
+        "avg_volume": 5049668,
+        "vol_ratio": 5.34,
+        "prior_change_percent": 2.36,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 25,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群25檔同步走強"
+        ]
+    }
+]

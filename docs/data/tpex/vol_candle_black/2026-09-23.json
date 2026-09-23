@@ -1,0 +1,72 @@
+[
+    {
+        "id": "6546",
+        "name": "正基",
+        "close": 57.5,
+        "open": 60.1,
+        "high": 60.6,
+        "low": 57.5,
+        "diff": -2.5,
+        "change_percent": -4.17,
+        "volume": 1419000,
+        "avg_volume": 143800,
+        "vol_ratio": 9.87,
+        "body_ratio": 0.84
+    },
+    {
+        "id": "8084",
+        "name": "巨虹",
+        "close": 36.75,
+        "open": 40.7,
+        "high": 40.7,
+        "low": 36.75,
+        "diff": -4.05,
+        "change_percent": -9.93,
+        "volume": 3230000,
+        "avg_volume": 381600,
+        "vol_ratio": 8.46,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7772",
+        "name": "耀穎",
+        "close": 173.5,
+        "open": 199.0,
+        "high": 199.0,
+        "low": 171.0,
+        "diff": -14.5,
+        "change_percent": -7.71,
+        "volume": 2624000,
+        "avg_volume": 846600,
+        "vol_ratio": 3.1,
+        "body_ratio": 0.91
+    },
+    {
+        "id": "4924",
+        "name": "欣厚-KY",
+        "close": 16.9,
+        "open": 18.4,
+        "high": 18.4,
+        "low": 16.9,
+        "diff": -1.85,
+        "change_percent": -9.87,
+        "volume": 1722000,
+        "avg_volume": 649000,
+        "vol_ratio": 2.65,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "5483",
+        "name": "中美晶",
+        "close": 184.5,
+        "open": 195.0,
+        "high": 195.0,
+        "low": 183.0,
+        "diff": -10.5,
+        "change_percent": -5.38,
+        "volume": 41028000,
+        "avg_volume": 16629600,
+        "vol_ratio": 2.47,
+        "body_ratio": 0.88
+    }
+]
