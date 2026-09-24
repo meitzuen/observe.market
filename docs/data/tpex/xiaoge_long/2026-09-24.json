@@ -1,0 +1,67 @@
+[
+    {
+        "id": "6925",
+        "name": "意藍",
+        "close": 68.2,
+        "open": 62.6,
+        "high": 68.2,
+        "low": 62.6,
+        "diff": 6.2,
+        "change_percent": 10.0,
+        "volume": 1439000,
+        "avg_volume": 105650,
+        "vol_ratio": 13.62,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6693",
+        "name": "廣閎科",
+        "close": 209.5,
+        "open": 201.5,
+        "high": 212.5,
+        "low": 194.0,
+        "diff": 12.5,
+        "change_percent": 6.35,
+        "volume": 7507000,
+        "avg_volume": 1316200,
+        "vol_ratio": 5.7,
+        "prior_change_percent": 9.75,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 43,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群43檔同步走強"
+        ]
+    },
+    {
+        "id": "6643",
+        "name": "M31",
+        "close": 515.0,
+        "open": 471.0,
+        "high": 524.0,
+        "low": 471.0,
+        "diff": 38.5,
+        "change_percent": 8.08,
+        "volume": 3032000,
+        "avg_volume": 537750,
+        "vol_ratio": 5.64,
+        "prior_change_percent": -2.66,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 35,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群35檔同步走強"
+        ]
+    }
+]

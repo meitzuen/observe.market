@@ -1,0 +1,43 @@
+[
+    {
+        "id": "6225",
+        "name": "天瀚",
+        "close": 50.4,
+        "open": 41.6,
+        "high": 50.8,
+        "low": 41.6,
+        "diff": 4.2,
+        "change_percent": 9.09,
+        "volume": 2846605,
+        "avg_volume": 157408,
+        "vol_ratio": 18.08,
+        "prior_change_percent": -9.94,
+        "prior_pattern": "big_black",
+        "is_new_high": false,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓"
+        ]
+    },
+    {
+        "id": "4566",
+        "name": "時碩工業",
+        "close": 74.3,
+        "open": 67.0,
+        "high": 74.3,
+        "low": 66.9,
+        "diff": 6.7,
+        "change_percent": 9.91,
+        "volume": 7828463,
+        "avg_volume": 939062,
+        "vol_ratio": 8.34,
+        "prior_change_percent": 4.0,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 12,
+        "tags": [
+            "創20日新高",
+            "同族群12檔同步走強"
+        ]
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6243",
+        "name": "迅杰",
+        "close": 39.5,
+        "open": 41.25,
+        "high": 41.4,
+        "low": 39.25,
+        "diff": -1.75,
+        "change_percent": -4.24,
+        "volume": 1765177,
+        "avg_volume": 478485,
+        "vol_ratio": 3.69,
+        "body_ratio": 0.81
+    }
+]
