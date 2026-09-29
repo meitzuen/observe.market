@@ -1,0 +1,132 @@
+[
+    {
+        "id": "2032",
+        "name": "新鋼",
+        "close": 19.9,
+        "open": 18.9,
+        "high": 20.4,
+        "low": 18.8,
+        "diff": 1.35,
+        "change_percent": 7.28,
+        "volume": 12313640,
+        "avg_volume": 497900,
+        "vol_ratio": 24.73,
+        "prior_change_percent": 5.7,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 10,
+        "tags": [
+            "創20日新高",
+            "同族群10檔同步走強"
+        ]
+    },
+    {
+        "id": "2020",
+        "name": "美亞",
+        "close": 24.3,
+        "open": 22.5,
+        "high": 24.3,
+        "low": 22.5,
+        "diff": 2.2,
+        "change_percent": 9.95,
+        "volume": 5753984,
+        "avg_volume": 270748,
+        "vol_ratio": 21.25,
+        "prior_change_percent": 2.31,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 16,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群16檔同步走強"
+        ]
+    },
+    {
+        "id": "4195",
+        "name": "基米-創",
+        "close": 15.8,
+        "open": 14.4,
+        "high": 15.8,
+        "low": 14.4,
+        "diff": 1.4,
+        "change_percent": 9.72,
+        "volume": 816104,
+        "avg_volume": 104793,
+        "vol_ratio": 7.79,
+        "prior_change_percent": 9.92,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 1,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6155",
+        "name": "鈞寶",
+        "close": 64.0,
+        "open": 61.5,
+        "high": 64.9,
+        "low": 61.2,
+        "diff": 3.8,
+        "change_percent": 6.31,
+        "volume": 7364788,
+        "avg_volume": 1322643,
+        "vol_ratio": 5.57,
+        "prior_change_percent": 7.12,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 57,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群57檔同步走強"
+        ]
+    },
+    {
+        "id": "6533",
+        "name": "晶心科",
+        "close": 303.5,
+        "open": 272.5,
+        "high": 303.5,
+        "low": 268.0,
+        "diff": 27.5,
+        "change_percent": 9.96,
+        "volume": 11054299,
+        "avg_volume": 2045402,
+        "vol_ratio": 5.4,
+        "prior_change_percent": 9.96,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 72,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群72檔同步走強"
+        ]
+    },
+    {
+        "id": "3016",
+        "name": "嘉晶",
+        "close": 172.5,
+        "open": 165.0,
+        "high": 176.0,
+        "low": 161.5,
+        "diff": 12.5,
+        "change_percent": 7.81,
+        "volume": 75400142,
+        "avg_volume": 14351242,
+        "vol_ratio": 5.25,
+        "prior_change_percent": 9.97,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 14,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群14檔同步走強"
+        ]
+    }
+]

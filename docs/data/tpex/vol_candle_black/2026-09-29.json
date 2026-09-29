@@ -1,0 +1,16 @@
+[
+    {
+        "id": "8155",
+        "name": "博智",
+        "close": 306.0,
+        "open": 331.0,
+        "high": 331.0,
+        "low": 306.0,
+        "diff": -30.0,
+        "change_percent": -8.93,
+        "volume": 1879000,
+        "avg_volume": 674400,
+        "vol_ratio": 2.79,
+        "body_ratio": 1.0
+    }
+]
