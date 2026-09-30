@@ -1,0 +1,30 @@
+[
+    {
+        "id": "5234",
+        "name": "達興材料",
+        "close": 308.5,
+        "open": 329.0,
+        "high": 329.0,
+        "low": 308.5,
+        "diff": -13.5,
+        "change_percent": -4.19,
+        "volume": 1311283,
+        "avg_volume": 255924,
+        "vol_ratio": 5.12,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "8210",
+        "name": "勤誠",
+        "close": 836.0,
+        "open": 870.0,
+        "high": 871.0,
+        "low": 832.0,
+        "diff": -41.0,
+        "change_percent": -4.68,
+        "volume": 4742387,
+        "avg_volume": 1001541,
+        "vol_ratio": 4.74,
+        "body_ratio": 0.87
+    }
+]

@@ -1,0 +1,196 @@
+[
+    {
+        "id": "5220",
+        "name": "萬達光電",
+        "close": 24.2,
+        "open": 22.8,
+        "high": 24.2,
+        "low": 22.0,
+        "diff": 2.2,
+        "change_percent": 10.0,
+        "volume": 1471000,
+        "avg_volume": 47300,
+        "vol_ratio": 31.1,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "4729",
+        "name": "熒茂",
+        "close": 20.65,
+        "open": 19.1,
+        "high": 20.65,
+        "low": 19.1,
+        "diff": 1.85,
+        "change_percent": 9.84,
+        "volume": 1063000,
+        "avg_volume": 65500,
+        "vol_ratio": 16.23,
+        "prior_change_percent": 0.0,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5309",
+        "name": "系統電",
+        "close": 62.7,
+        "open": 60.5,
+        "high": 64.0,
+        "low": 60.0,
+        "diff": 3.6,
+        "change_percent": 6.09,
+        "volume": 21584000,
+        "avg_volume": 1660600,
+        "vol_ratio": 13.0,
+        "prior_change_percent": 9.85,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 80,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群80檔同步走強"
+        ]
+    },
+    {
+        "id": "5013",
+        "name": "強新",
+        "close": 38.75,
+        "open": 38.5,
+        "high": 38.75,
+        "low": 38.05,
+        "diff": 3.5,
+        "change_percent": 9.93,
+        "volume": 1214000,
+        "avg_volume": 113100,
+        "vol_ratio": 10.73,
+        "prior_change_percent": 9.98,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 22,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群22檔同步走強"
+        ]
+    },
+    {
+        "id": "1595",
+        "name": "川寶",
+        "close": 85.3,
+        "open": 79.4,
+        "high": 85.3,
+        "low": 76.2,
+        "diff": 7.7,
+        "change_percent": 9.92,
+        "volume": 5766000,
+        "avg_volume": 632400,
+        "vol_ratio": 9.12,
+        "prior_change_percent": 0.26,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 79,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群79檔同步走強"
+        ]
+    },
+    {
+        "id": "4768",
+        "name": "晶呈科技",
+        "close": 380.0,
+        "open": 365.0,
+        "high": 382.0,
+        "low": 360.0,
+        "diff": 22.5,
+        "change_percent": 6.29,
+        "volume": 2834000,
+        "avg_volume": 429950,
+        "vol_ratio": 6.59,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6485",
+        "name": "點序",
+        "close": 77.0,
+        "open": 70.6,
+        "high": 77.0,
+        "low": 70.6,
+        "diff": 7.0,
+        "change_percent": 10.0,
+        "volume": 2135000,
+        "avg_volume": 341100,
+        "vol_ratio": 6.26,
+        "prior_change_percent": -0.14,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 79,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群79檔同步走強"
+        ]
+    },
+    {
+        "id": "3663",
+        "name": "鑫科",
+        "close": 67.8,
+        "open": 63.1,
+        "high": 68.6,
+        "low": 63.0,
+        "diff": 5.4,
+        "change_percent": 8.65,
+        "volume": 2670000,
+        "avg_volume": 466850,
+        "vol_ratio": 5.72,
+        "prior_change_percent": 1.46,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 12,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群12檔同步走強"
+        ]
+    },
+    {
+        "id": "6841",
+        "name": "長佳智能",
+        "close": 58.8,
+        "open": 57.7,
+        "high": 58.8,
+        "low": 56.5,
+        "diff": 3.5,
+        "change_percent": 6.33,
+        "volume": 796000,
+        "avg_volume": 156550,
+        "vol_ratio": 5.08,
+        "prior_change_percent": 2.98,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]

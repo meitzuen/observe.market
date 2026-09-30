@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-09-29",
+        "measure": "第一次處置",
+        "id": "7792",
+        "name": "安葆",
+        "accumulated": 3,
+        "condition": "連續3個營業日",
+        "from": "2026-09-30",
+        "to": "2026-10-06"
+    },
+    {
         "publish_date": "2026-09-24",
         "measure": "第一次處置",
         "id": "3374",
