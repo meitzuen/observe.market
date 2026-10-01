@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3354",
+        "name": "律勝",
+        "close": 29.8,
+        "open": 35.35,
+        "high": 35.35,
+        "low": 29.8,
+        "diff": -2.35,
+        "change_percent": -7.31,
+        "volume": 8907000,
+        "avg_volume": 1580200,
+        "vol_ratio": 5.64,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "3615",
+        "name": "安可",
+        "close": 43.25,
+        "open": 45.8,
+        "high": 45.8,
+        "low": 43.2,
+        "diff": -2.55,
+        "change_percent": -5.57,
+        "volume": 7132000,
+        "avg_volume": 2018800,
+        "vol_ratio": 3.53,
+        "body_ratio": 0.98
+    },
+    {
+        "id": "4939",
+        "name": "亞電",
+        "close": 78.9,
+        "open": 84.0,
+        "high": 84.0,
+        "low": 78.3,
+        "diff": -3.9,
+        "change_percent": -4.71,
+        "volume": 15461000,
+        "avg_volume": 5428400,
+        "vol_ratio": 2.85,
+        "body_ratio": 0.89
+    },
+    {
+        "id": "8027",
+        "name": "鈦昇",
+        "close": 209.5,
+        "open": 225.0,
+        "high": 225.0,
+        "low": 207.0,
+        "diff": -12.5,
+        "change_percent": -5.63,
+        "volume": 8948000,
+        "avg_volume": 3190600,
+        "vol_ratio": 2.8,
+        "body_ratio": 0.86
+    },
+    {
+        "id": "5220",
+        "name": "萬達光電",
+        "close": 23.2,
+        "open": 24.25,
+        "high": 24.3,
+        "low": 22.6,
+        "diff": -1.0,
+        "change_percent": -4.13,
+        "volume": 830000,
+        "avg_volume": 412600,
+        "vol_ratio": 2.01,
+        "body_ratio": 0.62
+    }
+]

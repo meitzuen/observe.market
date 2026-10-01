@@ -1,0 +1,44 @@
+[
+    {
+        "id": "2883",
+        "name": "凱基金",
+        "close": 36.9,
+        "open": 38.6,
+        "high": 38.75,
+        "low": 36.4,
+        "diff": -1.95,
+        "change_percent": -5.02,
+        "volume": 124035181,
+        "avg_volume": 34995822,
+        "vol_ratio": 3.54,
+        "body_ratio": 0.72
+    },
+    {
+        "id": "2025",
+        "name": "千興",
+        "close": 14.05,
+        "open": 14.85,
+        "high": 15.0,
+        "low": 13.7,
+        "diff": -0.6,
+        "change_percent": -4.1,
+        "volume": 4380086,
+        "avg_volume": 1945768,
+        "vol_ratio": 2.25,
+        "body_ratio": 0.62
+    },
+    {
+        "id": "8105",
+        "name": "凌巨",
+        "close": 15.45,
+        "open": 16.05,
+        "high": 16.05,
+        "low": 15.45,
+        "diff": -0.9,
+        "change_percent": -5.5,
+        "volume": 6433836,
+        "avg_volume": 3009925,
+        "vol_ratio": 2.14,
+        "body_ratio": 1.0
+    }
+]
