@@ -1,0 +1,30 @@
+[
+    {
+        "id": "3025",
+        "name": "星通",
+        "close": 55.4,
+        "open": 59.9,
+        "high": 59.9,
+        "low": 54.9,
+        "diff": -2.7,
+        "change_percent": -4.65,
+        "volume": 1332929,
+        "avg_volume": 213944,
+        "vol_ratio": 6.23,
+        "body_ratio": 0.9
+    },
+    {
+        "id": "6949",
+        "name": "沛爾生醫*-創",
+        "close": 44.5,
+        "open": 48.85,
+        "high": 49.2,
+        "low": 44.5,
+        "diff": -4.9,
+        "change_percent": -9.92,
+        "volume": 14023533,
+        "avg_volume": 2745994,
+        "vol_ratio": 5.11,
+        "body_ratio": 0.93
+    }
+]
