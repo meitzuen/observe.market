@@ -1,0 +1,82 @@
+[
+    {
+        "publish_date": "2026-09-22",
+        "measure": "第二次處置",
+        "id": "2455",
+        "name": "全新",
+        "accumulated": 1,
+        "condition": "連續五次及當日沖銷標準",
+        "from": "2026-09-23",
+        "to": "2026-10-05"
+    },
+    {
+        "publish_date": "2026-09-24",
+        "measure": "第一次處置",
+        "id": "3443",
+        "name": "創意",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-09-29",
+        "to": "2026-10-05"
+    },
+    {
+        "publish_date": "2026-09-29",
+        "measure": "第一次處置",
+        "id": "6526",
+        "name": "達發",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-09-30",
+        "to": "2026-10-06"
+    },
+    {
+        "publish_date": "2026-09-30",
+        "measure": "第一次處置",
+        "id": "3016",
+        "name": "嘉晶",
+        "accumulated": 1,
+        "condition": "連續三次及當日沖銷標準",
+        "from": "2026-10-01",
+        "to": "2026-10-12"
+    },
+    {
+        "publish_date": "2026-09-30",
+        "measure": "第二次處置",
+        "id": "3055",
+        "name": "蔚華科",
+        "accumulated": 1,
+        "condition": "連續五次及當日沖銷標準",
+        "from": "2026-10-01",
+        "to": "2026-10-12"
+    },
+    {
+        "publish_date": "2026-10-01",
+        "measure": "第一次處置",
+        "id": "2030",
+        "name": "彰源",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-02",
+        "to": "2026-10-08"
+    },
+    {
+        "publish_date": "2026-10-02",
+        "measure": "第一次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-10-05",
+        "to": "2026-10-12"
+    },
+    {
+        "publish_date": "2026-10-02",
+        "measure": "第二次處置",
+        "id": "8996",
+        "name": "高力",
+        "accumulated": 1,
+        "condition": "最近十個營業日已有六次",
+        "from": "2026-10-05",
+        "to": "2026-10-12"
+    }
+]

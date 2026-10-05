@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-10-02",
+        "measure": "第一次處置",
+        "id": "4174",
+        "name": "浩鼎",
+        "accumulated": 4,
+        "condition": "連續3個營業日",
+        "from": "2026-10-05",
+        "to": "2026-10-12"
+    },
+    {
         "publish_date": "2026-10-01",
         "measure": "第一次處置",
         "id": "8084",

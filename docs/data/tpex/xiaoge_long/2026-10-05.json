@@ -1,0 +1,152 @@
+[
+    {
+        "id": "3597",
+        "name": "映興",
+        "close": 30.45,
+        "open": 28.35,
+        "high": 30.45,
+        "low": 28.35,
+        "diff": 2.75,
+        "change_percent": 9.93,
+        "volume": 1208000,
+        "avg_volume": 46250,
+        "vol_ratio": 26.12,
+        "prior_change_percent": -1.42,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 74,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群74檔同步走強"
+        ]
+    },
+    {
+        "id": "3268",
+        "name": "海德威",
+        "close": 23.1,
+        "open": 21.9,
+        "high": 23.75,
+        "low": 21.9,
+        "diff": 1.45,
+        "change_percent": 6.7,
+        "volume": 1034000,
+        "avg_volume": 87350,
+        "vol_ratio": 11.84,
+        "prior_change_percent": 0.23,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "6126",
+        "name": "信音",
+        "close": 33.4,
+        "open": 31.55,
+        "high": 34.35,
+        "low": 31.2,
+        "diff": 2.15,
+        "change_percent": 6.88,
+        "volume": 4561000,
+        "avg_volume": 440500,
+        "vol_ratio": 10.35,
+        "prior_change_percent": 1.46,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 58,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群58檔同步走強"
+        ]
+    },
+    {
+        "id": "6419",
+        "name": "京晨科",
+        "close": 171.5,
+        "open": 159.0,
+        "high": 171.5,
+        "low": 157.5,
+        "diff": 15.5,
+        "change_percent": 9.94,
+        "volume": 1473000,
+        "avg_volume": 156400,
+        "vol_ratio": 9.42,
+        "prior_change_percent": 0.65,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "5452",
+        "name": "佶優",
+        "close": 30.0,
+        "open": 28.25,
+        "high": 30.7,
+        "low": 27.65,
+        "diff": 2.05,
+        "change_percent": 7.33,
+        "volume": 3016000,
+        "avg_volume": 327500,
+        "vol_ratio": 9.21,
+        "prior_change_percent": 1.82,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 65,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高",
+            "同族群65檔同步走強"
+        ]
+    },
+    {
+        "id": "8086",
+        "name": "宏捷科",
+        "close": 129.0,
+        "open": 125.0,
+        "high": 132.0,
+        "low": 120.5,
+        "diff": 9.0,
+        "change_percent": 7.5,
+        "volume": 18622000,
+        "avg_volume": 2820750,
+        "vol_ratio": 6.6,
+        "prior_change_percent": 4.35,
+        "prior_pattern": "normal",
+        "is_new_high": true,
+        "peer_strong_count": 97,
+        "tags": [
+            "創20日新高",
+            "同族群97檔同步走強"
+        ]
+    },
+    {
+        "id": "3284",
+        "name": "太普高",
+        "close": 21.6,
+        "open": 20.2,
+        "high": 22.1,
+        "low": 19.8,
+        "diff": 1.5,
+        "change_percent": 7.46,
+        "volume": 829000,
+        "avg_volume": 137800,
+        "vol_ratio": 6.02,
+        "prior_change_percent": 2.29,
+        "prior_pattern": "small",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "前日小紅小黑，解套壓力小",
+            "創20日新高"
+        ]
+    }
+]
