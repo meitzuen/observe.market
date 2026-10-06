@@ -1,5 +1,45 @@
 [
     {
+        "publish_date": "2026-10-05",
+        "measure": "第一次處置",
+        "id": "2033",
+        "name": "佳大",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-06",
+        "to": "2026-10-13"
+    },
+    {
+        "publish_date": "2026-10-05",
+        "measure": "第一次處置",
+        "id": "6533",
+        "name": "晶心科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-06",
+        "to": "2026-10-13"
+    },
+    {
+        "publish_date": "2026-10-05",
+        "measure": "第一次處置",
+        "id": "6672",
+        "name": "騰輝電子-KY",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-06",
+        "to": "2026-10-13"
+    },
+    {
+        "publish_date": "2026-10-05",
+        "measure": "第一次處置",
+        "id": "8201",
+        "name": "無敵",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-06",
+        "to": "2026-10-13"
+    },
+    {
         "publish_date": "2026-10-02",
         "measure": "第一次處置",
         "id": "3167",
