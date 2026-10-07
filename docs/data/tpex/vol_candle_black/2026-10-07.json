@@ -1,0 +1,44 @@
+[
+    {
+        "id": "7792",
+        "name": "安葆",
+        "close": 406.5,
+        "open": 440.0,
+        "high": 440.0,
+        "low": 406.5,
+        "diff": -45.0,
+        "change_percent": -9.97,
+        "volume": 1991000,
+        "avg_volume": 408200,
+        "vol_ratio": 4.88,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "4716",
+        "name": "大立",
+        "close": 19.45,
+        "open": 22.0,
+        "high": 22.3,
+        "low": 19.15,
+        "diff": -1.5,
+        "change_percent": -7.16,
+        "volume": 11058000,
+        "avg_volume": 2551800,
+        "vol_ratio": 4.33,
+        "body_ratio": 0.81
+    },
+    {
+        "id": "4711",
+        "name": "永純",
+        "close": 17.5,
+        "open": 18.45,
+        "high": 18.45,
+        "low": 17.45,
+        "diff": -0.95,
+        "change_percent": -5.15,
+        "volume": 1526000,
+        "avg_volume": 450000,
+        "vol_ratio": 3.39,
+        "body_ratio": 0.95
+    }
+]

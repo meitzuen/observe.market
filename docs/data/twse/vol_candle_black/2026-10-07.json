@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1711",
+        "name": "永光",
+        "close": 45.45,
+        "open": 51.8,
+        "high": 51.8,
+        "low": 45.2,
+        "diff": -3.15,
+        "change_percent": -6.48,
+        "volume": 57037696,
+        "avg_volume": 15755703,
+        "vol_ratio": 3.62,
+        "body_ratio": 0.96
+    },
+    {
+        "id": "4720",
+        "name": "德淵",
+        "close": 23.25,
+        "open": 25.3,
+        "high": 25.3,
+        "low": 23.15,
+        "diff": -2.05,
+        "change_percent": -8.1,
+        "volume": 12742306,
+        "avg_volume": 3767381,
+        "vol_ratio": 3.38,
+        "body_ratio": 0.95
+    },
+    {
+        "id": "6526",
+        "name": "達發",
+        "close": 786.0,
+        "open": 833.0,
+        "high": 833.0,
+        "low": 772.0,
+        "diff": -56.0,
+        "change_percent": -6.65,
+        "volume": 2292002,
+        "avg_volume": 814678,
+        "vol_ratio": 2.81,
+        "body_ratio": 0.77
+    },
+    {
+        "id": "2254",
+        "name": "巨鎧精密-創",
+        "close": 91.4,
+        "open": 102.0,
+        "high": 106.0,
+        "low": 91.4,
+        "diff": -10.1,
+        "change_percent": -9.95,
+        "volume": 5827764,
+        "avg_volume": 2487604,
+        "vol_ratio": 2.34,
+        "body_ratio": 0.73
+    }
+]
