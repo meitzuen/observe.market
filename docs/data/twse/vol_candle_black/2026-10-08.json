@@ -1,0 +1,16 @@
+[
+    {
+        "id": "2059",
+        "name": "川湖",
+        "close": 10615.0,
+        "open": 10935.0,
+        "high": 10965.0,
+        "low": 10615.0,
+        "diff": -1175.0,
+        "change_percent": -9.97,
+        "volume": 2003115,
+        "avg_volume": 512625,
+        "vol_ratio": 3.91,
+        "body_ratio": 0.91
+    }
+]

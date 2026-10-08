@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6234",
+        "name": "高僑",
+        "close": 39.5,
+        "open": 42.0,
+        "high": 42.75,
+        "low": 39.45,
+        "diff": -2.3,
+        "change_percent": -5.5,
+        "volume": 2460000,
+        "avg_volume": 943400,
+        "vol_ratio": 2.61,
+        "body_ratio": 0.76
+    }
+]
