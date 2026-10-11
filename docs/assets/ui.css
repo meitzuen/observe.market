@@ -403,6 +403,14 @@ select:focus {
 .table-container {
   overflow-x: auto;
 }
+.table-container th,
+.table-container td {
+  white-space: nowrap;
+}
+.table-container td.wrap {
+  white-space: normal;
+  min-width: 16rem;
+}
 .table-container.sticky {
   max-height: 70vh;
   overflow: auto;

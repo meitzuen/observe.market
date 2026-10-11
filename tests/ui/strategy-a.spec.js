@@ -183,4 +183,24 @@ test.describe("strategy batch A behaviour", () => {
     expect(await page.locator(".banner-error").count()).toBe(0);
     expect(errors).toEqual([]);
   });
+  for (const file of ["gap.html", "volume-candle.html", "xiaoge-strategy.html"]) {
+    test(`${file}: failed data request shows error banner, Retry recovers`, async ({
+      page,
+    }) => {
+      const errors = collectErrors(page);
+      const isDataFile = (u) => /\/data\/(twse|tpex)\/.+\.json$/.test(u.pathname);
+      await page.route(isDataFile, (route) => route.abort());
+      await page.goto("/" + file, { waitUntil: "networkidle" });
+      await expect(page.locator(".banner-error")).toBeVisible();
+      await expect(page.locator(".banner-error")).toContainText("資料載入失敗");
+      expect(await page.locator(".empty-state").count()).toBe(0);
+
+      await page.unroute(isDataFile);
+      await page.click('.banner-error [data-action="retry"]');
+      await expect(page.locator("#result-list tr").first()).toBeVisible();
+      expect(await page.locator("#result-list tr").count()).toBeGreaterThan(0);
+      expect(await page.locator(".banner-error").count()).toBe(0);
+      expect(errors).toEqual([]);
+    });
+  }
 });
