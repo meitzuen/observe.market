@@ -116,14 +116,19 @@
     </div>
     <footer id="site-footer"></footer>
 
+    <script src="assets/data.js"></script>
     <script>
-      // Placeholder state renderers until data.js is added in Task 3.
-      document.getElementById("state-skeleton").innerHTML =
-        '<div class="skeleton-block"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>';
-      document.getElementById("state-empty").innerHTML =
-        '<div class="empty-state"><div class="empty-title">沒有符合的資料</div><div class="empty-hint">請調整篩選條件</div></div>';
-      document.getElementById("state-error").innerHTML =
-        '<div class="banner banner-error" role="alert"><span>資料載入失敗</span><button class="btn btn-secondary">重試</button></div>';
+      UIData.renderState(document.getElementById("state-skeleton"), "loading");
+      UIData.renderState(document.getElementById("state-empty"), "empty", {
+        title: "沒有符合的資料",
+        hint: "請調整篩選條件",
+        actionLabel: "重設篩選",
+        onAction: () => (document.body.dataset.reset = "1"),
+      });
+      UIData.renderState(document.getElementById("state-error"), "error", {
+        message: "資料載入失敗",
+        onRetry: () => (document.body.dataset.retried = "1"),
+      });
     </script>
   </body>
 </html>
