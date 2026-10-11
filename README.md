@@ -4,7 +4,7 @@
 
 ## 專案特色
 
-- **現代化 UI 設計**：採用簡潔美觀的儀表板介面，支援 **jf-openhuninn (粉圓體)** 字體，統一導覽列跨頁共用。導覽列依「市場」「策略」「權證」「選股」「個人」分類，方便快速切換頁面。
+- **現代化 UI 設計**：現代化金融風格介面（Inter／Noto Sans TC），共用頂部導覽、全站搜尋（⌘K / Ctrl+K）與「資料截至」提示；支援手機版。導覽列依「市場」「策略」「權證」「選股」「個人」分類，方便快速切換頁面。
 - **上市／上櫃雙市場**：分別追蹤 TWSE 上市與 TPEx 上櫃個股，資料結構一致。
 - **數據視覺化**：整合 Chart.js 展示大盤趨勢，提供即時漲跌狀態與成交資訊。
 - **進階篩選功能**：支援搜尋、價格區間過濾及成交量篩選，快速鎖定目標個股。
@@ -48,13 +48,26 @@ observe.market/
 │   ├── stock.html               # 個股歷史走勢頁面
 │   ├── bookmark.html            # 常用連結
 │   ├── portfolio.html           # 持股試算
-│   ├── assets/                 # Logo、Favicon 與樣式資源
+│   ├── volume-candle.html      # 量價K線
+│   ├── xiaoge-strategy.html    # 小哥策略
+│   ├── day-trade-calculator.html # 當沖試算
+│   ├── ui-gallery.html         # 元件展示（不在導覽中）
+│   ├── assets/                 # 前端資源
+│   │   ├── ui.css              # 設計系統
+│   │   ├── shell.js            # 導覽／搜尋／頁尾
+│   │   ├── data.js             # 資料載入
+│   │   ├── chart-theme.js      # 圖表主題
+│   │   ├── ui-table.js         # 表格元件
+│   │   └── market-page.js      # 大盤頁共用邏輯
 │   └── data/
 │       ├── manifest.json       # 資料索引清單
 │       ├── stock_info.json     # 個股基本資料
 │       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, stock_history）
 │       ├── tpex/               # 上櫃數據（同上結構）
 │       └── warrant/            # 權證數據
+├── tests/ui/                   # Playwright 與單元測試
+├── specs/                      # 設計文件
+├── plans/                      # 實作計畫
 └── .github/workflows/          # 定時自動化任務配置
 ```
 
@@ -110,6 +123,12 @@ python3 -m http.server 8000
 2. 在 **Build and deployment** 下，將 **Branch** 設定為 `main`。
 3. **關鍵步驟**：將資料夾路徑設定為 **`/docs`** 而非 root。
 4. 點擊 **Save** 並等待部署完成。
+
+## UI 測試
+
+```bash
+cd tests/ui && npm install && npx playwright install chromium && npm run test:unit && npm test
+```
 
 ## 授權
 本專案採用 [LICENSE](LICENSE) 授權。
