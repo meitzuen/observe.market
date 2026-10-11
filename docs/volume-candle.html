@@ -167,6 +167,7 @@
     <script>
       let manifest = null;
       let rawData = [];
+      let loadFailed = false;
       let filteredData = [];
       let currentMarket = "twse";
       let currentType = "vol_candle_red";
@@ -255,6 +256,7 @@
 
       // ── data loading ──────────────────────────────────────────────────────
       async function loadData() {
+        loadFailed = false;
         const m = manifest[currentMarket];
         if (!m) return;
         const dates = m[currentType] || [];
@@ -276,6 +278,11 @@
           rawData = await resp.json();
         } catch (e) {
           rawData = [];
+          loadFailed = true;
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: loadData,
+          });
         } finally {
           document.getElementById("loader").style.display = "none";
         }
@@ -360,7 +367,7 @@
       function renderTable() {
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
-        document.getElementById("result-state").innerHTML = "";
+        if (!loadFailed) document.getElementById("result-state").innerHTML = "";
 
         const countEl = document.getElementById("result-count");
         if (countEl) countEl.textContent = filteredData.length;
@@ -414,6 +421,7 @@
         );
 
         if (pageData.length === 0) {
+          if (loadFailed) return;
           UIData.renderState(document.getElementById("result-state"), "empty", {
             title: "沒有符合的資料",
             hint: "請調整日期或篩選條件",
