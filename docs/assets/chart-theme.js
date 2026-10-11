@@ -25,8 +25,8 @@
     }
   }
 
-  // Same key names as the old NerdGrid.chartColors(), so call sites only
-  // change the receiver. Reads tokens at call time so a future dark theme works.
+  // Resolves chart colours from the design tokens in ui.css. Reads them at
+  // call time so a future dark theme works.
   function colors() {
     return {
       seriesA: cssVar("--accent", FALLBACK.seriesA),

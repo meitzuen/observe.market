@@ -37,31 +37,6 @@
   --s4: 16px;
   --s5: 24px;
   --s6: 32px;
-
-  /* Legacy aliases so un-migrated page-local styles keep working. Removed in
-     the cleanup task once `grep -- --hud-` finds nothing. */
-  --hud-bg: var(--bg);
-  --hud-bg-raised: var(--surface);
-  --hud-card-bg: var(--surface);
-  --hud-border-1: var(--border-strong);
-  --hud-border-2: var(--border);
-  --hud-border-3: var(--border);
-  --hud-grid-h: rgba(28, 35, 51, 0.08);
-  --hud-grid-v: rgba(28, 35, 51, 0.04);
-  --hud-text-1: var(--text);
-  --hud-text-2: var(--text);
-  --hud-text-3: var(--text-muted);
-  --hud-text-4: var(--text-muted);
-  --hud-up: var(--up);
-  --hud-up-dim: var(--up);
-  --hud-down: var(--down);
-  --hud-down-dim: var(--down);
-  --hud-danger-border: var(--up);
-  --hud-danger-text: var(--up);
-  --hud-hover-bg: var(--hover);
-  --hud-active-bg: var(--accent-soft);
-  --hud-radius: var(--radius);
-  --hud-font: var(--font);
 }
 
 /* ---- base ---------------------------------------------------------------- */
