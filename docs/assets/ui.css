@@ -177,6 +177,12 @@ a:hover {
     padding: var(--s5);
   }
 }
+/* Stacked cards that sit directly in the page flow. Grid items and nested
+   cards carry their own spacing. */
+.container > .card + .card,
+.page > .card + .card {
+  margin-top: var(--s4);
+}
 .card-title {
   display: flex;
   flex-wrap: wrap;
