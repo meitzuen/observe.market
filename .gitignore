@@ -55,3 +55,8 @@ mongo_import/
 
 # Visual companion mockups
 .superpowers/
+
+# UI test tooling
+tests/ui/node_modules/
+tests/ui/test-results/
+tests/ui/playwright-report/
