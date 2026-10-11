@@ -7,248 +7,108 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .filter-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        margin-bottom: 1.5rem;
-      }
-
-      @media (min-width: 640px) {
-        .filter-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 1200px) {
-        .filter-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        min-width: 0; /* Prevent grid blowout */
-      }
-
-      .filter-label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--hud-text-3);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .filter-range {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .filter-input {
+      .filter-pill input,
+      .filter-pill select {
         flex: 1;
-        padding: 0.6rem 0.75rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
+        min-width: 0;
+        width: 72px;
+      }
+
+      .filter-pill label,
+      .filter-pill > span:first-child {
+        white-space: nowrap;
+      }
+
+      .filter-pill.grow {
+        flex: 1 1 280px;
         min-width: 0;
       }
 
-      .filter-input:focus {
-        border-color: var(--hud-text-1);
+      .filter-pill.grow input {
+        width: 100%;
       }
 
-      th:hover {
-        background-color: var(--hud-card-bg);
+      .table-container th[onclick] {
+        cursor: pointer;
       }
 
-      .btn-primary {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
+      .table-container th[onclick]:hover {
+        background: var(--hover);
       }
 
-      .btn-primary:hover {
-        background: var(--hud-hover-bg);
-        transform: translateY(-1px);
+      .actions-row {
+        display: flex;
+        gap: var(--s2);
+        justify-content: flex-end;
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >🔍</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">權證篩選</h1>
+          <p class="page-subtitle">依條件篩選權證</p>
+        </div>
+      </div>
       <div class="card">
         <div class="card-title">篩選條件</div>
-        <div class="filter-grid">
-          <div class="filter-group">
-            <label class="filter-label">標的代號 (多個請用逗號隔開)</label>
-            <input
-              type="text"
-              id="stock_codes"
-              class="filter-input"
-              placeholder="例如: 2330, 2317"
-            />
+        <div class="toolbar">
+          <div class="filter-pill grow">
+            <label for="stock_codes">標的代號</label>
+            <input type="text" id="stock_codes" class="filter-input" placeholder="多個請用逗號隔開，例如: 2330, 2317" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">權證類型</label>
+          <div class="filter-pill">
+            <label for="type">權證類型</label>
             <select id="type" class="filter-input">
               <option value="0">全部</option>
               <option value="1" selected>認購</option>
               <option value="2">認售</option>
             </select>
           </div>
-          <div class="filter-group">
-            <label class="filter-label">剩餘天數</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="period_left"
-                class="filter-input"
-                value="90"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="period_right"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>剩餘天數</span>
+            <input type="text" id="period_left" class="filter-input" value="90" aria-label="剩餘天數 最小" />
+            <span>~</span>
+            <input type="text" id="period_right" class="filter-input" placeholder="最大" aria-label="剩餘天數 最大" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">成交量 (張)</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="volume_left"
-                class="filter-input"
-                placeholder="最小"
-                value="500"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="volume_right"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>成交量 (張)</span>
+            <input type="text" id="volume_left" class="filter-input" placeholder="最小" value="500" aria-label="成交量 (張) 最小" />
+            <span>~</span>
+            <input type="text" id="volume_right" class="filter-input" placeholder="最大" aria-label="成交量 (張) 最大" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">實質槓桿</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="leverage_left"
-                class="filter-input"
-                placeholder="最小"
-                value="3"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="leverage_right"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>實質槓桿</span>
+            <input type="text" id="leverage_left" class="filter-input" placeholder="最小" value="3" aria-label="實質槓桿 最小" />
+            <span>~</span>
+            <input type="text" id="leverage_right" class="filter-input" placeholder="最大" aria-label="實質槓桿 最大" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">價內外程度 (%)</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="in_out_left"
-                class="filter-input"
-                value="-20"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="in_out_right"
-                class="filter-input"
-                value="20"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>價內外程度 (%)</span>
+            <input type="text" id="in_out_left" class="filter-input" value="-20" aria-label="價內外程度 (%) 最小" />
+            <span>~</span>
+            <input type="text" id="in_out_right" class="filter-input" placeholder="最大" value="20" aria-label="價內外程度 (%) 最大" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">流通在外比例 (%)</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="out_vol_rate_left"
-                class="filter-input"
-                placeholder="最小"
-                value="30"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="out_vol_rate_right"
-                class="filter-input"
-                placeholder="最大"
-                value="70"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>流通在外比例 (%)</span>
+            <input type="text" id="out_vol_rate_left" class="filter-input" placeholder="最小" value="30" aria-label="流通在外比例 (%) 最小" />
+            <span>~</span>
+            <input type="text" id="out_vol_rate_right" class="filter-input" placeholder="最大" value="70" aria-label="流通在外比例 (%) 最大" />
           </div>
-          <div class="filter-group">
-            <label class="filter-label">買賣價差比 (%)</label>
-            <div class="filter-range">
-              <input
-                type="text"
-                id="buy_sell_rate_left"
-                class="filter-input"
-                placeholder="最小"
-                value="0"
-              />
-              <span>~</span>
-              <input
-                type="text"
-                id="buy_sell_rate_right"
-                class="filter-input"
-                placeholder="最大"
-                value="1.5"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>買賣價差比 (%)</span>
+            <input type="text" id="buy_sell_rate_left" class="filter-input" placeholder="最小" value="0" aria-label="買賣價差比 (%) 最小" />
+            <span>~</span>
+            <input type="text" id="buy_sell_rate_right" class="filter-input" placeholder="最大" value="1.5" aria-label="買賣價差比 (%) 最大" />
           </div>
         </div>
-        <div style="display: flex; justify-content: flex-end">
+        <div class="actions-row">
           <button id="search-btn" class="btn btn-primary">執行篩選</button>
         </div>
       </div>
@@ -260,7 +120,7 @@
             <span id="warrant-count" class="badge badge-primary">0</span></span
           >
         </div>
-        <div class="table-container">
+        <div class="table-container sticky">
           <table>
             <thead>
               <tr>
@@ -305,20 +165,26 @@
             <tbody id="warrant-list"></tbody>
           </table>
         </div>
+        <div id="result-state"></div>
         <div id="loader" class="loader">正在分析市場數據...</div>
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
       let currentData = [];
       let sortColumn = "權證成交量";
       let sortDirection = "desc";
+      let loadFailed = false;
 
       async function fetchFilteredWarrants() {
         const loader = document.getElementById("loader");
         const list = document.getElementById("warrant-list");
         const countLabel = document.getElementById("warrant-count");
+
+        loadFailed = false;
+        document.getElementById("result-state").innerHTML = "";
 
         loader.style.display = "flex";
         list.innerHTML = "";
@@ -375,7 +241,12 @@
           renderTable();
         } catch (error) {
           console.error("Error:", error);
-          list.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--hud-up);">載入失敗，請稍後再試</td></tr>`;
+          loadFailed = true;
+          currentData = [];
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: fetchFilteredWarrants,
+          });
         } finally {
           loader.style.display = "none";
         }
@@ -432,18 +303,18 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td style="font-weight: 500;">
-                <a href="https://www.warrantwin.com.tw/eyuanta/warrant/Info.aspx?WID=${w["權證代碼"]}" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--hud-text-3);">${w["權證代碼"]}</a>
+                <a href="https://www.warrantwin.com.tw/eyuanta/warrant/Info.aspx?WID=${w["權證代碼"]}" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--text-muted);">${w["權證代碼"]}</a>
             </td>
             <td style="font-weight: 600;">${w["權證名稱"]}</td>
             <td>
                 <div style="font-weight: 600;">${w["標的名稱"]}</div>
-                <div style="font-size: 0.75rem; color: var(--hud-text-3);">${w["標的代碼"]}</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">${w["標的代碼"]}</div>
             </td>
             <td>${w["認購/認售"]}</td>
-            <td style="font-weight: 700; color: var(--hud-text-1);">${w["權證成交價"]}</td>
+            <td style="font-weight: 700; color: var(--text);">${w["權證成交價"]}</td>
             <td>${parseInt(w["權證成交量"] || 0).toLocaleString()}</td>
             <td>${w["流通在外比例"]}%</td>
-            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? "var(--hud-up)" : "inherit"}">${w["買賣價差比率"]}%</td>
+            <td style="color: ${parseFloat(w["買賣價差比率"]) > 1 ? "var(--up)" : "inherit"}">${w["買賣價差比率"]}%</td>
             <td>${w["最新履約價"]}</td>
             <td>${w["剩餘天數"]}</td>
             <td>${w["價內外程度"]}</td>
@@ -452,8 +323,11 @@
           list.appendChild(tr);
         });
 
-        if (currentData.length === 0) {
-          list.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--hud-text-3);">無符合條件的權證</td></tr>`;
+        if (currentData.length === 0 && !loadFailed) {
+          UIData.renderState(document.getElementById("result-state"), "empty", {
+            title: "沒有符合的資料",
+            hint: "請調整日期或篩選條件",
+          });
         }
       }
 
@@ -465,8 +339,6 @@
           if (e.key === "Enter") fetchFilteredWarrants();
         });
       });
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
 
       // Save/restore filter values in localStorage
       const filterIds = [
