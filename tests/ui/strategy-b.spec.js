@@ -162,6 +162,60 @@ test.describe("strategy batch B behaviour", () => {
     });
   }
 
+  // ------------------------------------------------ manifest load failure
+  const manifestUrl = "**/data/manifest.json";
+
+  async function failManifestThenRetry(page, file) {
+    await page.route(manifestUrl, (route) => route.abort());
+    await page.goto("/" + file, { waitUntil: "networkidle" });
+    await expect(page.locator("#result-state .banner-error")).toBeVisible();
+    await expect(page.locator("#result-state .banner-error")).toContainText("資料載入失敗");
+    expect(await page.locator("#result-list tr").count()).toBe(0);
+
+    await page.unroute(manifestUrl);
+    await page.click('#result-state .banner-error [data-action="retry"]');
+    await expect(page.locator("#result-list tr").first()).toBeVisible();
+    await expect(page.locator("#result-state .banner-error")).toHaveCount(0);
+  }
+
+  test("vcp.html: manifest failure shows error banner, Retry recovers and wires handlers once", async ({
+    page,
+  }) => {
+    const errors = collectErrors(page);
+    await failManifestThenRetry(page, "vcp.html");
+
+    const hits = [];
+    page.on("request", (r) => {
+      if (/\/tpex\/vcp\/.+\.json$/.test(r.url())) hits.push(r.url());
+    });
+    await page.click('.market-tab[data-market="tpex"]');
+    await expect.poll(() => hits.length).toBeGreaterThan(0);
+    await page.waitForLoadState("networkidle");
+    expect(hits.length).toBe(1);
+    expect(errors).toEqual([]);
+  });
+
+  for (const file of ["volatility.html", "screener.html"]) {
+    test(`${file}: manifest failure shows error banner, Retry recovers and wires handlers once`, async ({
+      page,
+    }) => {
+      const errors = collectErrors(page);
+      await failManifestThenRetry(page, file);
+
+      const dates = await manifestDates(page, "twse", "daily_price");
+      await setRange(page, dates[dates.length - 3], dates[dates.length - 1]);
+      const hits = [];
+      page.on("request", (r) => {
+        if (/\/twse\/daily_price\/.+\.json$/.test(r.url())) hits.push(r.url());
+      });
+      await page.click("#btn-calc");
+      await expect(page.locator("#result-summary")).toContainText("共 3 個交易日");
+      await page.waitForLoadState("networkidle");
+      expect(hits.length).toBe(3);
+      expect(errors).toEqual([]);
+    });
+  }
+
   // ------------------------------------------------------------ wantgoo
   // The production API sends no CORS headers for localhost, so every
   // endpoint is served from a fixture. A floor >= 9999 matches nothing.

@@ -397,8 +397,16 @@
 
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
-        const resp = await fetch("data/manifest.json");
-        manifest = await resp.json();
+        try {
+          const resp = await fetch("data/manifest.json");
+          manifest = await resp.json();
+        } catch (e) {
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: init,
+          });
+          return;
+        }
 
         const allDates = MARKETS.flatMap((m) => manifest[m].daily_price);
         const minDate = allDates.reduce((a, b) => (b < a ? b : a));
