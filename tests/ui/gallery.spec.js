@@ -42,3 +42,15 @@ test("renderState escapes message text", async ({ page }) => {
   expect(await page.evaluate(() => window.__pwned)).toBeUndefined();
   await expect(page.locator("#state-error span")).toContainText("<img");
 });
+
+test("ChartTheme reads tokens and UITable is available", async ({ page }) => {
+  await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
+  const c = await page.evaluate(() => ChartTheme.colors());
+  expect(c.up).toBe("#c0262d");
+  expect(c.down).toBe("#16794a");
+  expect(c.seriesA).toBe("#3b5bdb");
+  for (const k of ["gridH", "gridV", "tick", "tooltipBg", "tooltipBorder", "tooltipText"]) {
+    expect(c[k], k).toBeTruthy();
+  }
+  expect(await page.evaluate(() => UITable.fmtPct(1.5))).toBe("+1.50%");
+});
