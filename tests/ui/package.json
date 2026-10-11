@@ -1,0 +1,11 @@
+{
+  "name": "observe-market-ui-tests",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:unit": "node --test \"unit/*.test.js\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.48.2"
+  }
+}
