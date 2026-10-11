@@ -7,26 +7,10 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .btn:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-secondary:hover {
-        background: var(--hud-text-3);
-      }
 
       .stock-header {
         display: flex;
@@ -34,12 +18,6 @@
         align-items: center;
         gap: 0.75rem;
         margin-bottom: 0.5rem;
-      }
-
-      .stock-header h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 800;
       }
 
       .back-link {
@@ -252,37 +230,25 @@
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title" id="stock-title">個股歷史走勢</h1>
+          <p class="page-subtitle" id="stock-subtitle">歷史股價走勢、區間漲跌幅與近期成交</p>
+        </div>
+      </div>
       <div id="content-area">
         <div class="loader">載入中...</div>
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/chart-theme.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
       const isAdmin = new URLSearchParams(location.search).get("admin") === "True";
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       let chart = null;
       let candleSeries = null;
       let volumeSeries = null;
@@ -352,6 +318,7 @@
 
         const market = stockInfo.type === "tpex" ? "tpex" : "twse";
         document.title = `${stockInfo.name} (${id}) | Market Observer`;
+        document.getElementById("stock-title").textContent = `${stockInfo.name} (${id})`;
 
         let history = [];
         try {
@@ -388,9 +355,6 @@
         renderStock(id, stockInfo, market, history, concepts, punishRecords);
         initPeriodFilter(history);
         initWatchlistPicker(id);
-        NerdGrid.onThemeChange(() => {
-          if (chart) renderPriceChart(history);
-        });
       }
 
       async function loadConceptTags(id) {
@@ -515,7 +479,6 @@
           <a class="back-link" href="${backHref(market)}">&larr; 返回</a>
           <div class="card">
             <div class="stock-header">
-              <h2>${stockInfo.name} (${id})</h2>
               <span class="badge ${market === "tpex" ? "badge-accent" : "badge-primary"}">${marketTag}</span>
               ${punishBadge}
             </div>
@@ -967,7 +930,7 @@
 
         // LightweightCharts draws to <canvas>, which can't resolve CSS
         // custom properties — pull already-resolved values instead.
-        const c = NerdGrid.chartColors();
+        const c = ChartTheme.colors();
         const upColor = c.up;
         const downColor = c.down;
         const textColor = c.tick;
@@ -1035,15 +998,9 @@
           })),
         );
 
-        // Deliberately not reusing c.seriesA/c.tick here — both land in the
-        // same cyan hue as the axis text, making MA5 and MA60 hard to tell
-        // apart at a glance. These three are chosen to stay distinct from
-        // each other and from up/down candle colors, in both themes.
-        const MA_PALETTE = {
-          dark: { ma5: "rgba(255, 190, 60, 0.9)", ma20: c.seriesB, ma60: "rgba(190, 130, 255, 0.85)" },
-          light: { ma5: "rgba(200, 120, 0, 0.95)", ma20: c.seriesB, ma60: "rgba(120, 70, 200, 0.9)" },
-        };
-        const maColors = MA_PALETTE[NerdGrid.currentTheme()];
+        // MA lines use the three series tokens: all distinct from each other
+        // and from the up/down candle colours.
+        const maColors = { ma5: c.seriesA, ma20: c.seriesB, ma60: c.seriesC };
         [
           ["ma5", 5],
           ["ma20", 20],

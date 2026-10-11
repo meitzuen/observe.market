@@ -8,7 +8,7 @@
       name="description"
       content="台股即時數據觀測平台：上市／上櫃大盤走勢、個股行情、跳空漲跌、處置股票、VCP 選股與權證篩選，每日自動更新。"
     />
-    <meta name="theme-color" content="#e7ecf2" />
+    <meta name="theme-color" content="#f6f7fb" />
     <link rel="canonical" href="https://observe.smallplum.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Market Observer 市場觀測站" />
@@ -29,38 +29,15 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <style>
-      .ma-toggle-row {
+      .chip-row {
         display: flex;
-        gap: 0.4rem;
-        margin: 0.1rem 0 0.85rem;
-      }
-      .ma-toggle {
-        padding: 0.2rem 0.65rem;
-        border-radius: var(--hud-radius);
-        border: 1px solid var(--hud-border-2);
-        background: none;
-        color: var(--hud-text-3);
-        font-family: var(--hud-font);
-        font-size: 0.7rem;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
-      .ma-toggle:hover {
-        background: var(--hud-hover-bg);
-        color: var(--hud-text-1);
-      }
-      .ma-toggle.active {
-        background: var(--hud-active-bg);
-        border-color: var(--hud-text-2);
-        color: var(--hud-text-1);
+        gap: var(--s2);
+        flex-wrap: wrap;
+        margin: 0 0 var(--s3);
       }
       .stat-spark {
         display: block;
@@ -71,42 +48,19 @@
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <div class="header-title-block">
-          <h1><span class="title-text">Market Observer</span></h1>
-          <span class="header-tagline">台股即時數據觀測平台</span>
-        </div>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right">
-        <select id="date-picker" class="date-select"></select>
-        <div
-          id="last-update"
-          style="
-            font-size: 0.7rem;
-            color: var(--hud-text-3);
-            font-family: var(--hud-font);
-            letter-spacing: 0.05em;
-          "
-        ></div>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">全市場大盤</h1>
+          <p class="page-subtitle">上市／上櫃大盤指數、個股行情與市場摘要</p>
+        </div>
+        <div class="page-actions">
+          <select id="date-picker" class="date-select" aria-label="選擇日期"></select>
+          <span id="last-update" class="last-update"></span>
+        </div>
+      </div>
       <div class="grid">
         <div class="main-content">
           <div class="card" style="margin-bottom: 1.5rem">
@@ -123,10 +77,10 @@
                 "
               ></div>
             </div>
-            <div class="ma-toggle-row" id="ma-toggle-row">
-              <button class="ma-toggle" data-ma="5">MA5</button>
-              <button class="ma-toggle" data-ma="10">MA10</button>
-              <button class="ma-toggle" data-ma="20">MA20</button>
+            <div class="chip-row" id="ma-toggle-row">
+              <button class="chip" data-ma="5">MA5</button>
+              <button class="chip" data-ma="10">MA10</button>
+              <button class="chip" data-ma="20">MA20</button>
             </div>
             <div style="height: 300px; position: relative">
               <canvas id="indexChart"></canvas>
@@ -147,16 +101,7 @@
                 placeholder="搜尋代號或名稱..."
               />
             </div>
-            <div
-              class="filter-controls"
-              style="
-                display: flex;
-                gap: 0.6rem;
-                margin-bottom: 1.25rem;
-                flex-wrap: wrap;
-                align-items: center;
-              "
-            >
+            <div class="filter-controls toolbar">
               <div class="filter-pill">
                 <span>市場:</span>
                 <select id="market-filter">
@@ -177,7 +122,6 @@
                   type="number"
                   id="volume-min"
                   placeholder="10,000"
-                  style="width: 84px"
                 />
                 <span>張</span>
               </div>
@@ -234,28 +178,9 @@
               </table>
             </div>
             <div id="stock-loader" class="loader">載入中...</div>
-            <div
-              id="pagination-controls"
-              style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 1.5rem;
-                margin-top: 1.5rem;
-                padding-top: 1.5rem;
-                border-top: 1px solid var(--hud-border-3);
-              "
-            >
+            <div id="pagination-controls" class="pagination">
               <button id="prev-page" class="btn btn-secondary">上一頁</button>
-              <span
-                id="page-info"
-                style="
-                  font-size: 0.7rem;
-                  color: var(--hud-text-3);
-                  letter-spacing: 0.05em;
-                "
-                >第 1 / 1 頁</span
-              >
+              <span id="page-info">第 1 / 1 頁</span>
               <button id="next-page" class="btn btn-secondary">下一頁</button>
             </div>
           </div>
@@ -366,10 +291,10 @@
           </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/chart-theme.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       const MARKETS = ["twse", "tpex"];
       const MARKET_LABEL = { twse: "上市", tpex: "上櫃" };
 
@@ -398,10 +323,6 @@
 
       async function init() {
         try {
-          // Apply saved theme before any data/chart rendering so the first
-          // paint (including Chart.js colors, which are JS values, not CSS)
-          // matches the visitor's saved preference.
-          NerdGrid.onThemeChange(() => renderChart());
 
           const response = await fetch("data/manifest.json");
           fullManifest = await response.json();
@@ -471,7 +392,7 @@
             });
 
           // MA indicator toggles on the index trend chart
-          document.querySelectorAll(".ma-toggle").forEach((btn) => {
+          document.querySelectorAll("#ma-toggle-row .chip").forEach((btn) => {
             btn.addEventListener("click", () => {
               const period = parseInt(btn.dataset.ma, 10);
               if (activeMAs.has(period)) {
@@ -661,7 +582,7 @@
           })
           .join(" ");
 
-        const c = NerdGrid.chartColors();
+        const c = ChartTheme.colors();
         const isUp = nums[nums.length - 1] >= nums[0];
         const color = isUp ? c.up : c.down;
         svg.innerHTML = `<path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />`;
@@ -1013,8 +934,8 @@
           tpexByIso.has(iso) ? tpexByIso.get(iso) : null,
         );
 
-        const c = NerdGrid.chartColors();
-        const monoFont = { family: "JetBrains Mono, monospace", size: 10 };
+        const c = ChartTheme.colors();
+        const monoFont = { family: '"Inter", "Noto Sans TC", sans-serif', size: 10 };
 
         // MA overlays: dashed lines in each series' own color, one dash
         // pattern per period, so toggling them on doesn't require new hues.
@@ -1111,8 +1032,8 @@
                 borderColor: c.tooltipBorder,
                 borderWidth: 1,
                 padding: 10,
-                titleFont: { family: "JetBrains Mono, monospace", size: 11 },
-                bodyFont: { family: "JetBrains Mono, monospace", size: 11 },
+                titleFont: { family: '"Inter", "Noto Sans TC", sans-serif', size: 11 },
+                bodyFont: { family: '"Inter", "Noto Sans TC", sans-serif', size: 11 },
                 titleColor: c.tooltipText,
                 bodyColor: c.tooltipText,
                 displayColors: false,

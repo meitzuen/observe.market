@@ -501,7 +501,7 @@ function renderChart(data) {
   const prices = data.map((d) => d.index);
 
   const c = ChartTheme.colors();
-  const monoFont = { family: "JetBrains Mono, monospace", size: 10 };
+  const monoFont = { family: '"Inter", "Noto Sans TC", sans-serif', size: 10 };
 
   chart = new Chart(ctx, {
     type: "line",
@@ -532,8 +532,8 @@ function renderChart(data) {
           borderColor: c.tooltipBorder,
           borderWidth: 1,
           padding: 10,
-          titleFont: { family: "JetBrains Mono, monospace", size: 11 },
-          bodyFont: { family: "JetBrains Mono, monospace", size: 11 },
+          titleFont: { family: '"Inter", "Noto Sans TC", sans-serif', size: 11 },
+          bodyFont: { family: '"Inter", "Noto Sans TC", sans-serif', size: 11 },
           titleColor: c.tooltipText,
           bodyColor: c.tooltipText,
           displayColors: false,
