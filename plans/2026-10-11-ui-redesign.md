@@ -2976,7 +2976,7 @@ git rm docs/assets/nerd-grid.css docs/assets/nerd-grid.js
 ```
 In `docs/assets/ui.css` delete the whole `/* Legacy aliases … */` block (every `--hud-*` line inside `:root`).
 In `docs/assets/shell.js` delete the `if (!global.NerdGrid) { … }` block.
-Set `tests/ui/baseline-overflow.json` back to `[]` (all pages are migrated and strictly checked).
+Set `tests/ui/baseline-overflow.json` back to `{}` (all pages are migrated and strictly checked).
 
 - [ ] **Step 4: Full verification**
 
