@@ -798,6 +798,10 @@ tbody tr:hover td {
   font-size: 16px;
   outline: none;
 }
+.search-dialog input:focus-visible {
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 var(--accent);
+}
 .search-results {
   max-height: 50vh;
   overflow: auto;
