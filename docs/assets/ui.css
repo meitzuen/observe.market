@@ -131,12 +131,12 @@ a:hover {
 }
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--s4);
 }
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: 2.5fr 1fr;
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
   }
 }
 .page-header {
@@ -151,7 +151,7 @@ a:hover {
   font-size: 20px;
 }
 .page-subtitle {
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   color: var(--text-muted);
 }
 .page-actions {
@@ -206,13 +206,13 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: var(--s1);
-  padding: 6px var(--s3);
+  padding: 8px var(--s3);
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
 }
 .btn:hover:not(:disabled) {
@@ -236,7 +236,7 @@ a:hover {
 .chip {
   display: inline-flex;
   align-items: center;
-  padding: 3px var(--s3);
+  padding: 4px var(--s3);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -290,12 +290,12 @@ a:hover {
 }
 .tag {
   display: inline-block;
-  padding: 0 6px;
+  padding: 0 8px;
   margin-right: var(--s1);
   border-radius: 4px;
   background: var(--hover);
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 .tag-warn {
   background: var(--warn-soft);
@@ -313,13 +313,13 @@ input[type="search"],
 input[type="date"],
 select,
 .date-select {
-  padding: 6px var(--s3);
+  padding: 8px var(--s3);
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
 }
 input:focus,
 select:focus {
@@ -332,7 +332,7 @@ select:focus {
 }
 .search-box input {
   width: 100%;
-  padding: 10px var(--s3);
+  padding: 12px var(--s3);
   font-size: 14px;
 }
 .filter-pill {
@@ -349,7 +349,7 @@ select:focus {
 .filter-pill input,
 .filter-pill select {
   width: 72px;
-  padding: 2px 6px;
+  padding: 4px 8px;
 }
 .toolbar {
   display: flex;
@@ -414,7 +414,7 @@ table {
   text-align: left;
 }
 th {
-  padding: var(--s3) 10px;
+  padding: var(--s3) 12px;
   background: #fafbfd;
   border-bottom: 1px solid var(--border);
   color: var(--text-muted);
@@ -428,12 +428,17 @@ th {
   z-index: 2;
 }
 td {
-  padding: 10px;
+  padding: 12px;
   border-bottom: 1px solid var(--border);
-  font-size: 13px;
+  font-size: 14px;
 }
 tbody tr:hover td {
   background: var(--hover);
+}
+.stat-change {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 .price-up {
   color: var(--up);
@@ -458,6 +463,12 @@ tbody tr:hover td {
     background: var(--surface);
     z-index: 1;
   }
+  .table-container th:first-child {
+    background: #fafbfd;
+  }
+  .table-container.sticky th:first-child {
+    z-index: 3;
+  }
 }
 .pagination {
   display: flex;
@@ -479,7 +490,7 @@ tbody tr:hover td {
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   padding: var(--s3);
   background: var(--bg);
   border-radius: var(--radius);
@@ -491,11 +502,6 @@ tbody tr:hover td {
 .stat-value {
   font-size: 20px;
   font-weight: 600;
-}
-.stat-change {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
 }
 
 /* ---- states ---------------------------------------------------------------- */
@@ -550,7 +556,7 @@ tbody tr:hover td {
   gap: var(--s3);
   padding: var(--s3) var(--s4);
   border-radius: var(--radius);
-  font-size: 13px;
+  font-size: 14px;
 }
 .banner-error {
   background: var(--up-soft);
@@ -606,7 +612,7 @@ tbody tr:hover td {
 .site-nav {
   display: none;
   flex: 1;
-  gap: 2px;
+  gap: 4px;
 }
 @media (min-width: 768px) {
   .site-nav {
@@ -614,7 +620,7 @@ tbody tr:hover td {
   }
 }
 .nav-group-btn {
-  padding: 6px var(--s3);
+  padding: 8px var(--s3);
   background: none;
   border: 0;
   border-radius: var(--radius);
@@ -680,22 +686,22 @@ tbody tr:hover td {
   align-items: center;
   gap: var(--s2);
   margin-left: auto;
-  padding: 6px var(--s3);
+  padding: 8px var(--s3);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-muted);
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
 }
 .search-btn kbd {
-  padding: 0 6px;
+  padding: 0 8px;
   border: 1px solid var(--border-strong);
   border-radius: 4px;
   background: var(--surface);
   font: inherit;
-  font-size: 11px;
+  font-size: 12px;
 }
 .search-icon {
   font-size: 14px;
@@ -713,7 +719,7 @@ tbody tr:hover td {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   font: inherit;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 @media (min-width: 768px) {
@@ -777,6 +783,8 @@ tbody tr:hover td {
   .search-dialog {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius: 0;
     box-shadow: none;
   }
@@ -798,6 +806,8 @@ tbody tr:hover td {
 @media (max-width: 767px) {
   .search-results {
     max-height: none;
+    flex: 1;
+    min-height: 0;
   }
 }
 .search-group {
