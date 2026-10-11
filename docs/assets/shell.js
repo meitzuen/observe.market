@@ -434,18 +434,6 @@
 
     api.mount = mount;
 
-    if (!global.NerdGrid) {
-      global.NerdGrid = {
-        initThemeToggle() {},
-        initNav() {},
-        initNavDropdowns() {},
-        initFooter() {},
-        onThemeChange() {},
-        currentTheme() { return "light"; },
-        chartColors() { return global.ChartTheme ? global.ChartTheme.colors() : {}; },
-      };
-    }
-
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount);
     else mount();
   }

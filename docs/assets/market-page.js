@@ -257,7 +257,7 @@ async function loadStockData(date) {
     } else {
       currentPunishData = [];
       document.getElementById("punish-list").innerHTML =
-        '<div style="padding: 1.5rem; color: var(--hud-text-3); text-align: center; font-style: italic;">今日無處置股票</div>';
+        '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">今日無處置股票</div>';
       document.getElementById("punish-count").textContent = "0";
     }
   } catch (error) {
@@ -303,7 +303,7 @@ async function loadGapData(date) {
   } else {
     currentGapData = [];
     document.getElementById("gap-list").innerHTML =
-      '<div style="padding: 1.5rem; color: var(--hud-text-3); text-align: center; font-style: italic;">無此日期數據</div>';
+      '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無此日期數據</div>';
     document.getElementById("gap-count").textContent = "0";
   }
 }
@@ -319,7 +319,7 @@ function renderGapList() {
 
   if (currentGapData.length === 0) {
     container.innerHTML =
-      '<div style="padding: 1.5rem; color: var(--hud-text-3); text-align: center; font-style: italic;">無符合條件股票</div>';
+      '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">無符合條件股票</div>';
     return;
   }
 
@@ -346,12 +346,12 @@ function renderGapList() {
 
     item.innerHTML = `
               <div>
-                  <div style="font-weight: 700; color: var(--hud-text-1);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--hud-text-3); font-weight: normal;">${stock.id}</a></div>
-                  <div style="font-size: 0.75rem; color: var(--hud-text-3);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
+                  <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
               </div>
               <div style="text-align: right;">
                   <div class="${priceClass}" style="font-size: 1rem;">${stock.today_close}</div>
-                  <div style="font-size: 0.75rem; color: var(--hud-text-3); font-weight: 500;">${diffPrefix}${stock.gap_diff} (${stock.gap_ratio}%)</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">${diffPrefix}${stock.gap_diff} (${stock.gap_ratio}%)</div>
               </div>
           `;
     container.appendChild(item);
@@ -367,7 +367,7 @@ function renderPunishList() {
 
   if (currentPunishData.length === 0) {
     container.innerHTML =
-      '<div style="padding: 1.5rem; color: var(--hud-text-3); text-align: center; font-style: italic;">今日無處置股票</div>';
+      '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center; font-style: italic;">今日無處置股票</div>';
     return;
   }
 
@@ -377,10 +377,10 @@ function renderPunishList() {
 
     item.innerHTML = `
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                  <div style="font-weight: 700; color: var(--hud-text-1);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--hud-text-3); font-weight: normal;">${stock.id}</a></div>
+                  <div style="font-weight: 700; color: var(--text);"><a href="http://cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
                   <span class="tag" style="margin: 0; background: transparent; border: 1px solid rgba(185, 28, 28, 0.35); color: rgba(185, 28, 28, 0.9);">${stock.measure}</span>
               </div>
-              <div style="font-size: 0.75rem; color: var(--hud-text-3); display: flex; justify-content: space-between;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
                   <span>期間: ${stock.from} ~ ${stock.to}</span>
                   <span>次數: ${stock.accumulated}</span>
               </div>
@@ -433,7 +433,7 @@ function renderStockTable() {
     if (span) {
       span.textContent =
         col === sortColumn ? (sortDirection === "asc" ? "↑" : "↓") : "";
-      span.style.color = col === sortColumn ? "var(--hud-text-1)" : "";
+      span.style.color = col === sortColumn ? "var(--text)" : "";
     }
   });
 
@@ -469,7 +469,7 @@ function renderStockTable() {
               <td style="font-weight: 600;">${stock.close}</td>
               <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
               <td class="${ratioClass}" style="font-weight: 700;">${ratioText}</td>
-              <td style="color: var(--hud-text-3);">${(stock.volume / 1000).toLocaleString(undefined, { maximumFractionDigits: 0 })} 張</td>
+              <td style="color: var(--text-muted);">${(stock.volume / 1000).toLocaleString(undefined, { maximumFractionDigits: 0 })} 張</td>
           `;
     tbody.appendChild(tr);
   });

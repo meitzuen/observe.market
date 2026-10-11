@@ -21,7 +21,7 @@
       }
 
       .back-link {
-        color: var(--hud-text-3);
+        color: var(--text-muted);
         text-decoration: none;
         font-size: 0.9rem;
         font-weight: 600;
@@ -30,17 +30,17 @@
       }
 
       .back-link:hover {
-        color: var(--hud-text-1);
+        color: var(--text);
       }
 
       .empty-state {
         text-align: center;
         padding: 3rem 1rem;
-        color: var(--hud-text-3);
+        color: var(--text-muted);
       }
 
       .empty-state a {
-        color: var(--hud-text-1);
+        color: var(--text);
         font-weight: 600;
       }
 
@@ -54,20 +54,20 @@
       .period-tab {
         padding: 0.35rem 0.9rem;
         border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
+        border: 1px solid var(--border);
         font-size: 0.8rem;
         font-weight: 600;
         cursor: pointer;
         background: none;
-        color: var(--hud-text-3);
-        font-family: var(--hud-font);
+        color: var(--text-muted);
+        font-family: var(--font);
         transition: all 0.2s;
       }
 
       .period-tab.active {
         background: transparent;
-        border-color: var(--hud-text-1);
-        color: var(--hud-text-1);
+        border-color: var(--text);
+        color: var(--text);
       }
 
       .period-controls {
@@ -92,30 +92,30 @@
       .filter-label {
         font-size: 0.8rem;
         font-weight: 600;
-        color: var(--hud-text-3);
+        color: var(--text-muted);
       }
 
       .filter-input {
         min-width: 0;
         padding: 0.5rem 0.6rem;
-        border: 1px solid var(--hud-border-2);
+        border: 1px solid var(--border);
         border-radius: 2px;
         font-size: 0.875rem;
         outline: none;
         transition: border-color 0.2s;
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
+        background: var(--bg);
+        color: var(--text);
         font-family: inherit;
       }
 
       .filter-input:focus {
-        border-color: var(--hud-text-1);
-        background: var(--hud-card-bg);
+        border-color: var(--text);
+        background: var(--surface);
       }
 
       .period-hint {
         font-size: 0.8rem;
-        color: var(--hud-text-3);
+        color: var(--text-muted);
         margin-top: 0.75rem;
       }
 
@@ -129,17 +129,17 @@
 
       .concept-tags-more {
         background: none;
-        border: 1px solid var(--hud-border-2);
-        border-radius: var(--hud-radius);
-        color: var(--hud-text-3);
-        font-family: var(--hud-font);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text-muted);
+        font-family: var(--font);
         font-size: 0.62rem;
         padding: 0.05rem 0.4rem;
         cursor: pointer;
       }
       .concept-tags-more:hover {
-        color: var(--hud-text-1);
-        border-color: var(--hud-border-1);
+        color: var(--text);
+        border-color: var(--border-strong);
       }
 
       .watchlist-picker-wrap {
@@ -153,9 +153,9 @@
         top: calc(100% + 0.4rem);
         left: 0;
         min-width: 12rem;
-        background: var(--hud-bg-raised);
-        border: 1px solid var(--hud-border-1);
-        border-radius: var(--hud-radius);
+        background: var(--surface);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
         padding: 0.35rem;
         box-sizing: border-box;
         z-index: 50;
@@ -167,14 +167,14 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-width: thin;
-        scrollbar-color: var(--hud-border-1) transparent;
+        scrollbar-color: var(--border-strong) transparent;
       }
 
       .watchlist-picker::-webkit-scrollbar {
         width: 6px;
       }
       .watchlist-picker::-webkit-scrollbar-thumb {
-        background: var(--hud-border-1);
+        background: var(--border-strong);
         border-radius: 3px;
       }
       .watchlist-picker::-webkit-scrollbar-track {
@@ -191,30 +191,30 @@
         text-align: left;
         background: none;
         border: none;
-        border-radius: var(--hud-radius);
-        color: var(--hud-text-2);
-        font-family: var(--hud-font);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-family: var(--font);
         font-size: 0.75rem;
         padding: 0.45rem 0.6rem;
         cursor: pointer;
       }
       .watchlist-picker-item:hover:not(:disabled) {
-        background: var(--hud-hover-bg);
-        color: var(--hud-text-1);
+        background: var(--hover);
+        color: var(--text);
       }
       .watchlist-picker-item:disabled {
-        color: var(--hud-text-4);
+        color: var(--text-muted);
         cursor: default;
       }
 
       .watchlist-picker-empty {
         padding: 0.6rem 0.7rem;
         font-size: 0.75rem;
-        color: var(--hud-text-3);
+        color: var(--text-muted);
         line-height: 1.6;
       }
       .watchlist-picker-empty a {
-        color: var(--hud-text-1);
+        color: var(--text);
         font-weight: 600;
       }
 
@@ -225,7 +225,7 @@
         letter-spacing: 0;
         text-transform: none;
         font-weight: 400;
-        font-family: var(--hud-font);
+        font-family: var(--font);
       }
     </style>
   </head>
@@ -277,7 +277,7 @@
         document.getElementById("content-area").innerHTML = `
           <div class="card">
             <div class="empty-state">
-              <h2 style="color: var(--hud-text-1); margin-bottom: 0.5rem;">${title}</h2>
+              <h2 style="color: var(--text); margin-bottom: 0.5rem;">${title}</h2>
               <p>${message}</p>
               <a href="${backHref}">&larr; 返回股票列表</a>
             </div>
@@ -463,7 +463,7 @@
                 <td>${p.high ?? "n/a"}</td>
                 <td>${p.low ?? "n/a"}</td>
                 <td style="font-weight:600;">${p.close ?? "n/a"}</td>
-                <td style="color: var(--hud-text-3);">${
+                <td style="color: var(--text-muted);">${
                   p.volume != null
                     ? (p.volume / 1000).toLocaleString(undefined, {
                         maximumFractionDigits: 0,
@@ -483,7 +483,7 @@
               ${punishBadge}
             </div>
             <div class="stats">
-              <div class="stat-item" style="border-left: 4px solid var(--hud-text-1);">
+              <div class="stat-item" style="border-left: 4px solid var(--text);">
                 <span class="stat-label">最新收盤</span>
                 <span class="stat-value">${latest.close ?? "n/a"}</span>
               </div>
