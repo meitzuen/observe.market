@@ -22,3 +22,23 @@ test("gallery renders every component with design tokens applied", async ({ page
   expect(font).toContain("Inter");
   expect(errors).toEqual([]);
 });
+
+test("renderState wires retry and empty-state actions", async ({ page }) => {
+  await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
+  await page.locator("#state-error [data-action=retry]").click();
+  await expect(page.locator("body")).toHaveAttribute("data-retried", "1");
+  await page.locator("#state-empty [data-action=empty]").click();
+  await expect(page.locator("body")).toHaveAttribute("data-reset", "1");
+  await expect(page.locator("#state-skeleton .skeleton")).toHaveCount(4);
+});
+
+test("renderState escapes message text", async ({ page }) => {
+  await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
+  await page.evaluate(() => {
+    UIData.renderState(document.getElementById("state-error"), "error", {
+      message: "<img src=x onerror=window.__pwned=1>",
+    });
+  });
+  expect(await page.evaluate(() => window.__pwned)).toBeUndefined();
+  await expect(page.locator("#state-error span")).toContainText("<img");
+});
