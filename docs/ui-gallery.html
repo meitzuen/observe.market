@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>UI Gallery | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .gallery-section { margin-bottom: var(--s5); }
+      .gallery-section > h2 { font-size: 14px; color: var(--text-muted); margin-bottom: var(--s3); }
+      .row { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+    <div class="container" id="main">
+      <div class="page-header" data-component="page-header">
+        <div>
+          <h1 class="page-title">UI Gallery</h1>
+          <p class="page-subtitle">Every component and state, used as the visual reference.</p>
+        </div>
+        <div class="page-actions">
+          <select id="date-picker" class="date-select" aria-label="選擇日期">
+            <option>2026-10-09</option>
+          </select>
+          <span id="last-update" class="last-update">最後更新: 2026-10-09</span>
+        </div>
+      </div>
+
+      <div class="card gallery-section">
+        <h2>Buttons, chips, pills, tags, badges</h2>
+        <div class="row">
+          <button class="btn btn-primary" data-component="button">Primary</button>
+          <button class="btn">Secondary</button>
+          <button class="btn" disabled>Disabled</button>
+          <button class="chip active" data-component="chip">MA5</button>
+          <button class="chip">MA10</button>
+          <span class="pill pill-up" data-component="pill">▲ 1.24%</span>
+          <span class="pill pill-down">▼ 0.31%</span>
+          <span class="tag tag-warn" data-component="tag">處置中</span>
+          <span class="badge badge-accent" data-component="badge">1,082</span>
+        </div>
+      </div>
+
+      <div class="card gallery-section">
+        <h2>Inputs and toolbar</h2>
+        <div class="toolbar" data-component="toolbar">
+          <div class="search-box" style="margin: 0; flex: 1; min-width: 220px" data-component="search-input">
+            <input type="text" placeholder="搜尋代號或名稱..." />
+          </div>
+          <select data-component="select">
+            <option>全部市場</option>
+            <option>上市</option>
+            <option>上櫃</option>
+          </select>
+          <div class="filter-pill">價格 <input type="number" placeholder="最低" /> – <input type="number" placeholder="最高" /></div>
+          <span class="pill" data-component="tooltip" data-tip="提示文字" tabindex="0">ⓘ 說明</span>
+        </div>
+        <div class="tabs" data-component="tabs">
+          <button class="tab active">1M</button>
+          <button class="tab">3M</button>
+          <button class="tab">6M</button>
+          <button class="tab">1Y</button>
+        </div>
+      </div>
+
+      <div class="grid gallery-section">
+        <div class="card">
+          <h2 class="card-title">Data table</h2>
+          <div class="table-container sticky" data-component="data-table">
+            <table>
+              <thead>
+                <tr><th>代號</th><th>名稱</th><th>收盤</th><th>漲跌幅</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><a class="stock-link" href="stock.html?id=2330">2330</a></td><td>台積電</td><td>1,085.0</td><td class="price-up">▲ 1.87%</td></tr>
+                <tr><td><a class="stock-link" href="stock.html?id=2454">2454</a></td><td>聯發科</td><td>1,420.0</td><td class="price-down">▼ 0.70%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="card-title">市場摘要</h2>
+          <div class="stats">
+            <div class="stat-item" data-component="stat-tile">
+              <span class="stat-label">加權指數</span>
+              <span class="stat-value">23,481</span>
+              <span class="stat-change price-up">▲ 1.24%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">成交金額</span>
+              <span class="stat-value">4,126 億</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card gallery-section">
+        <h2>States</h2>
+        <div id="state-skeleton" data-component="skeleton"></div>
+        <div id="state-empty" data-component="empty-state"></div>
+        <div id="state-error" data-component="error-banner"></div>
+        <div class="banner banner-warn" data-component="stale-banner">
+          <span>資料最後更新於 2026-10-01，可能因休市或更新延遲而非最新資料。</span>
+          <button type="button" class="banner-close" aria-label="關閉">✕</button>
+        </div>
+      </div>
+    </div>
+    <footer id="site-footer"></footer>
+
+    <script>
+      // Placeholder state renderers until data.js is added in Task 3.
+      document.getElementById("state-skeleton").innerHTML =
+        '<div class="skeleton-block"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>';
+      document.getElementById("state-empty").innerHTML =
+        '<div class="empty-state"><div class="empty-title">沒有符合的資料</div><div class="empty-hint">請調整篩選條件</div></div>';
+      document.getElementById("state-error").innerHTML =
+        '<div class="banner banner-error" role="alert"><span>資料載入失敗</span><button class="btn btn-secondary">重試</button></div>';
+    </script>
+  </body>
+</html>
