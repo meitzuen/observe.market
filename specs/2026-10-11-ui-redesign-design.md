@@ -34,7 +34,7 @@ Success criteria:
 | `--border` | `#e3e6ee` | hairlines |
 | `--text` | `#1c2333` | primary text |
 | `--text-muted` | `#5b6478` | secondary text |
-| `--text-subtle` | `#8a93a6` | captions, placeholders (large/auxiliary text only) |
+| `--text-subtle` | `#8a93a6` | placeholders, disabled and decorative text only (3.09:1 on white; captions use --text-muted) |
 | `--accent` / `--accent-soft` | `#3b5bdb` / `#edf2ff` | primary actions, active states |
 | `--up` / `--up-soft` | `#c0262d` / `#fde8e8` | price up (TW convention: red = up) |
 | `--down` / `--down-soft` | `#16794a` / `#e3f5ec` | price down (green = down) |
