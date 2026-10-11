@@ -124,7 +124,7 @@
     return ms / 86400000 > (maxDays == null ? 3 : maxDays);
   }
 
-  const api = { NAV, searchPages, searchStocks, latestDate, isStale };
+  const api = { NAV, searchPages, searchStocks, latestDate, isStale, mount: function () {} };
 
   // ---- DOM (browser only) ---------------------------------------------------
 
@@ -308,12 +308,22 @@
       const input = overlay.querySelector("input");
       overlay.addEventListener("mousedown", (e) => { if (e.target === overlay) closeSearch(); });
       input.addEventListener("input", () => renderResults(input.value));
-      input.addEventListener("keydown", (e) => {
+      // Delegated on the overlay so Escape/Tab work even when focus has
+      // dropped to a non-focusable part of the dialog.
+      overlay.addEventListener("keydown", (e) => {
+        if (e.isComposing || e.keyCode === 229) return;
         if (e.key === "Escape") { e.preventDefault(); closeSearch(); }
         else if (e.key === "ArrowDown") { e.preventDefault(); move(1); }
         else if (e.key === "ArrowUp") { e.preventDefault(); move(-1); }
         else if (e.key === "Enter") { e.preventDefault(); if (items[selected]) location.href = items[selected].href; }
-        else if (e.key === "Tab") { e.preventDefault(); }
+        else if (e.key === "Tab") { e.preventDefault(); input.focus(); }
+      });
+      // Keep focus on the input when clicking inert parts of the dialog;
+      // result links must still receive their click.
+      overlay.querySelector(".search-dialog").addEventListener("mousedown", (e) => {
+        if (e.target === input || e.target.closest("a.search-item")) return;
+        e.preventDefault();
+        input.focus();
       });
     }
 

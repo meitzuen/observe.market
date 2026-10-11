@@ -5,6 +5,13 @@ const STALE_MANIFEST = {
   tpex: { daily_price: ["2020-01-01"] },
 };
 
+const FIXTURE_STOCKS = {
+  "2330": { name: "台積電", type: "twse" },
+  "2454": { name: "聯發科", type: "twse" },
+  "00835B": { name: "第一金科技債10+", type: "tpex" },
+  "6488": { name: "環球晶", type: "tpex" },
+};
+
 test.describe("desktop shell", () => {
   test.beforeEach(async ({}, testInfo) => {
     test.skip(testInfo.project.name !== "desktop");
@@ -50,6 +57,8 @@ test.describe("desktop shell", () => {
   });
 
   test("hostile search text injects nothing and shows no-result", async ({ page }) => {
+    const errors = [];
+    page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
     await page.keyboard.press("Control+k");
     await page.locator("#search-input").fill("<img src=x onerror=window.__pwned=1>");
@@ -59,6 +68,98 @@ test.describe("desktop shell", () => {
       await page.locator("#search-input").fill(q);
       await expect(page.locator("#search-results")).toBeVisible();
     }
+    expect(errors).toEqual([]);
+  });
+
+  test("hostile stock name from data is rendered as text, not markup", async ({ page }) => {
+    await page.route("**/data/stock_info.json", (r) =>
+      r.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ "9999": { name: "<img src=x onerror=window.__pwned=1>", type: "twse" } }),
+      }),
+    );
+    await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
+    await page.keyboard.press("Control+k");
+    await page.locator("#search-input").fill("9999");
+    await expect(page.locator(".search-item").first()).toContainText("<img");
+    expect(await page.evaluate(() => window.__pwned)).toBeUndefined();
+    await expect(page.locator(".search-item img")).toHaveCount(0);
+  });
+
+  test.describe("search keyboard behaviour", () => {
+    test.beforeEach(async ({ page }) => {
+      await page.route("**/data/stock_info.json", (r) =>
+        r.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify(FIXTURE_STOCKS),
+        }),
+      );
+      await page.goto("/ui-gallery.html", { waitUntil: "networkidle" });
+    });
+
+    test("Escape closes search and returns focus to the opener", async ({ page }) => {
+      const opener = page.locator("[data-open-search]");
+      await opener.focus();
+      await opener.press("Enter");
+      await expect(page.locator(".search-overlay")).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(page.locator(".search-overlay")).toBeHidden();
+      await expect(opener).toBeFocused();
+    });
+
+    test("Tab keeps focus inside the dialog", async ({ page }) => {
+      await page.keyboard.press("Control+k");
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Tab");
+      await expect(page.locator("#search-input")).toBeFocused();
+    });
+
+    test("ArrowDown/ArrowUp wrap through results", async ({ page }) => {
+      await page.keyboard.press("Control+k");
+      await page.locator("#search-input").fill("2");
+      const items = page.locator(".search-item");
+      const n = await items.count();
+      expect(n).toBeGreaterThan(1);
+      await expect(items.first()).toHaveAttribute("aria-selected", "true");
+      await page.keyboard.press("ArrowUp");
+      await expect(items.nth(n - 1)).toHaveAttribute("aria-selected", "true");
+      await page.keyboard.press("ArrowDown");
+      await expect(items.first()).toHaveAttribute("aria-selected", "true");
+    });
+
+    test("Ctrl+K toggles search closed when open", async ({ page }) => {
+      await page.keyboard.press("Control+k");
+      await expect(page.locator(".search-overlay")).toBeVisible();
+      await page.keyboard.press("Control+k");
+      await expect(page.locator(".search-overlay")).toBeHidden();
+    });
+
+    test("Enter with zero results does nothing", async ({ page }) => {
+      const before = page.url();
+      await page.keyboard.press("Control+k");
+      await page.locator("#search-input").fill("zzzzzz");
+      await expect(page.locator(".search-hint")).toContainText("找不到");
+      await page.keyboard.press("Enter");
+      await expect(page.locator(".search-overlay")).toBeVisible();
+      expect(page.url()).toBe(before);
+    });
+
+    test("/ opens search on a page without #stock-search", async ({ page }) => {
+      await page.locator("body").click({ position: { x: 5, y: 300 } });
+      await page.keyboard.press("/");
+      await expect(page.locator(".search-overlay")).toBeVisible();
+      await expect(page.locator("#search-input")).toBeFocused();
+    });
+
+    test("clicking a non-input part of the dialog keeps Escape working", async ({ page }) => {
+      await page.keyboard.press("Control+k");
+      await page.locator(".search-hint").click();
+      await expect(page.locator("#search-input")).toBeFocused();
+      await page.keyboard.press("Escape");
+      await expect(page.locator(".search-overlay")).toBeHidden();
+    });
   });
 
   test("stock_info failure still allows page search with a notice", async ({ page }) => {
