@@ -16,8 +16,22 @@ let sortDirection = "asc";
 
 async function init() {
   try {
-    const response = await fetch("data/manifest.json");
-    fullManifest = await response.json();
+    try {
+      const response = await fetch("data/manifest.json");
+      fullManifest = await response.json();
+    } catch (e) {
+      console.error("Manifest load error:", e);
+      document.getElementById("stock-loader").style.display = "none";
+      // sidebar panels ship with a loading placeholder; clear it
+      document.getElementById("gap-list").innerHTML = "";
+      document.getElementById("punish-list").innerHTML = "";
+      UIData.renderState(document.getElementById("result-state"), "error", {
+        message: "資料載入失敗",
+        onRetry: init,
+      });
+      return;
+    }
+    document.getElementById("result-state").innerHTML = "";
 
     const urlParams = new URLSearchParams(window.location.search);
     const marketParam = urlParams.get("market");

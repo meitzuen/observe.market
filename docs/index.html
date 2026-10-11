@@ -177,6 +177,7 @@
                 </tbody>
               </table>
             </div>
+            <div id="result-state"></div>
             <div id="stock-loader" class="loader">載入中...</div>
             <div id="pagination-controls" class="pagination">
               <button id="prev-page" class="btn btn-secondary">上一頁</button>
@@ -324,8 +325,22 @@
       async function init() {
         try {
 
-          const response = await fetch("data/manifest.json");
-          fullManifest = await response.json();
+          try {
+            const response = await fetch("data/manifest.json");
+            fullManifest = await response.json();
+          } catch (e) {
+            console.error("Manifest load error:", e);
+            document.getElementById("stock-loader").style.display = "none";
+            // sidebar panels ship with a loading placeholder; clear it
+            document.getElementById("gap-list").innerHTML = "";
+            document.getElementById("punish-list").innerHTML = "";
+            UIData.renderState(document.getElementById("result-state"), "error", {
+              message: "資料載入失敗",
+              onRetry: init,
+            });
+            return;
+          }
+          document.getElementById("result-state").innerHTML = "";
 
           const twseDates = fullManifest.twse?.daily_price || [];
           const tpexDates = fullManifest.tpex?.daily_price || [];
