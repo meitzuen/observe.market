@@ -7,41 +7,29 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
       .help-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 1.4rem;
-        height: 1.4rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        background: var(--hud-bg);
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-        font-weight: 700;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 1px solid var(--border-strong);
+        background: var(--surface);
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 600;
         cursor: pointer;
-        margin-left: 0.5rem;
+        margin-left: var(--s2);
         flex-shrink: 0;
-        transition: all 0.2s;
       }
 
       .help-btn:hover {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        border-color: var(--hud-text-1);
-        color: var(--hud-text-1);
+        background: var(--hover);
+        color: var(--text);
       }
 
       .modal-overlay {
@@ -52,7 +40,7 @@
         z-index: 10000;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
+        padding: var(--s4);
       }
 
       .modal-overlay.open {
@@ -60,10 +48,10 @@
       }
 
       .modal-box {
-        background: var(--hud-bg-raised);
-        color: var(--hud-text-1);
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-pop);
         max-width: 640px;
         width: 100%;
         max-height: 85vh;
@@ -74,43 +62,41 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1.1rem 1.25rem;
-        border-bottom: 1px solid var(--hud-border-2);
+        padding: var(--s4) var(--s5);
+        border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: var(--hud-card-bg);
+        background: var(--surface);
       }
 
       .modal-header h2 {
         margin: 0;
-        font-size: 1.05rem;
-        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        font-size: 16px;
       }
 
       .modal-close {
         background: none;
         border: none;
-        font-size: 1.3rem;
+        font-size: 22px;
         line-height: 1;
         cursor: pointer;
-        color: var(--hud-text-3);
-        padding: 0.25rem;
+        color: var(--text-muted);
+        padding: var(--s1);
       }
 
       .modal-close:hover {
-        color: var(--hud-text-1);
+        color: var(--text);
       }
 
       .modal-body {
-        padding: 1.25rem;
-        font-size: 0.875rem;
+        padding: var(--s5);
+        font-size: 14px;
         line-height: 1.75;
       }
 
       .modal-body h3 {
-        font-size: 0.95rem;
-        margin: 1.25rem 0 0.5rem;
-        color: var(--hud-text-1);
+        font-size: 15px;
+        margin: var(--s5) 0 var(--s2);
       }
 
       .modal-body h3:first-child {
@@ -118,179 +104,63 @@
       }
 
       .modal-body p {
-        margin: 0.4rem 0;
+        margin: var(--s2) 0;
       }
 
       .modal-body ul,
       .modal-body ol {
-        margin: 0.4rem 0;
-        padding-left: 1.25rem;
+        margin: var(--s2) 0;
+        padding-left: var(--s5);
       }
 
       .modal-body li {
-        margin: 0.3rem 0;
+        margin: var(--s1) 0;
       }
 
       .modal-body code {
-        background: var(--hud-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.05rem 0.35rem;
-        font-size: 0.82rem;
+        background: var(--hover);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 13px;
+        word-break: break-all;
       }
 
-      .market-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .market-tab {
-        padding: 0.4rem 1rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        background: none;
-        color: var(--hud-text-3);
-        transition: all 0.2s;
-      }
-
-      .market-tab.active {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-        border-color: var(--hud-text-1);
-      }
-
-      .controls {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-
-      @media (max-width: 768px) {
-        .controls {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .controls {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .filter-label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--hud-text-3);
-      }
-
-      .filter-range {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .filter-range span {
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-      }
-
-      .filter-input {
+      .filter-pill input[type="number"] {
         flex: 1;
         min-width: 0;
-        padding: 0.5rem 0.6rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
-        background: var(--hud-bg);
+        width: 72px;
       }
 
-      .filter-input:focus {
-        border-color: var(--hud-text-1);
-        background: var(--hud-card-bg);
+      .filter-pill.check {
+        cursor: pointer;
+        color: var(--text);
+        font-size: 14px;
       }
 
-      .filter-checkbox {
+      .filter-pill.check input {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+
+      .actions-row {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--hud-text-1);
-        cursor: pointer;
-        padding-top: 0.4rem;
-      }
-
-      .filter-checkbox input {
-        width: 1rem;
-        height: 1rem;
-        cursor: pointer;
-      }
-
-      .btn-apply {
-        padding: 0.6rem 1.5rem;
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-
-        border-radius: 2px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s;
-        align-self: flex-end;
-      }
-
-      .btn-apply:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-clear {
-        padding: 0.6rem 1rem;
-        background: none;
-        color: var(--hud-text-3);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        align-self: flex-end;
-      }
-
-      .btn-clear:hover {
-        background: var(--hud-bg);
-      }
-
-      th:hover {
-        background-color: var(--hud-card-bg);
+        gap: var(--s2);
+        justify-content: flex-end;
       }
 
       .contraction-chips {
         display: flex;
-        gap: 0.25rem;
+        gap: var(--s1);
         flex-wrap: nowrap;
       }
 
       .contraction-chip {
-        background: transparent;
-        border: 1px solid rgba(67, 56, 202, 0.35);
-        color: rgba(67, 56, 202, 0.9);
-        border-radius: 2px;
-        padding: 0.1rem 0.4rem;
-        font-size: 0.75rem;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 0 var(--s2);
+        font-size: 12px;
         font-weight: 600;
       }
 
@@ -298,76 +168,59 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 2.75rem;
-        padding: 0.2rem 0.5rem;
-        border-radius: 2px;
-        font-weight: 800;
-        font-size: 0.9rem;
+        min-width: 44px;
+        padding: 2px var(--s2);
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13px;
       }
 
       .score-high {
-        background: transparent;
-        border: 1px solid rgba(21, 128, 61, 0.35);
-        color: rgba(21, 128, 61, 0.9);
+        background: var(--accent-soft);
+        color: var(--accent);
       }
 
       .score-mid {
-        background: transparent;
-        border: 1px solid rgba(161, 98, 7, 0.35);
-        color: rgba(161, 98, 7, 0.9);
+        background: var(--warn-soft);
+        color: var(--warn);
       }
 
       .score-low {
-        background: transparent;
-        border: 1px solid rgba(100, 116, 139, 0.35);
-        color: rgba(100, 116, 139, 0.9);
+        background: var(--hover);
+        color: var(--text-muted);
       }
 
       .tag-ma {
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 0.1rem 0.4rem;
-        border-radius: 2px;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 0 var(--s2);
+        border-radius: 4px;
       }
 
       .tag-ma-above {
-        background: transparent;
-        border: 1px solid rgba(21, 128, 61, 0.35);
-        color: rgba(21, 128, 61, 0.9);
+        background: var(--accent-soft);
+        color: var(--accent);
       }
 
       .tag-ma-below {
-        background: transparent;
-        border: 1px solid rgba(100, 116, 139, 0.35);
-        color: rgba(100, 116, 139, 0.9);
+        background: var(--hover);
+        color: var(--text-muted);
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📐</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right">
-        <select id="date-picker" class="date-select"></select>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">VCP 選股</h1>
+          <p class="page-subtitle">Minervini 收縮型態（VCP）篩選</p>
+        </div>
+        <div class="page-actions">
+          <select id="date-picker" class="date-select" aria-label="選擇日期"></select>
+        </div>
+      </div>
       <div class="card">
         <div class="card-title">
           <span style="display: flex; align-items: center"
@@ -376,122 +229,58 @@
               id="help-btn"
               class="help-btn"
               title="說明：這頁怎麼算出來的"
+              aria-label="說明：這頁怎麼算出來的"
             >
               ?
             </button></span
           >
         </div>
 
-        <div
-          style="
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-          "
-        >
-          <div class="market-tabs" style="margin-bottom: 0">
-            <button class="market-tab active" data-market="twse">上市</button>
-            <button class="market-tab" data-market="tpex">上櫃</button>
+        <div class="toolbar">
+          <div class="tabs">
+            <button class="tab market-tab active" data-market="twse">上市</button>
+            <button class="tab market-tab" data-market="tpex">上櫃</button>
           </div>
         </div>
 
         <!-- Filters -->
-        <div class="controls">
-          <div class="filter-group">
-            <span class="filter-label">型態分數</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="score-min"
-                class="filter-input"
-                placeholder="最小 (0-100)"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="score-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+        <div class="toolbar">
+          <div class="filter-pill">
+            <span>型態分數</span>
+            <input type="number" id="score-min" class="filter-input" placeholder="最小" aria-label="型態分數 最小" />
+            <span>~</span>
+            <input type="number" id="score-max" class="filter-input" placeholder="最大" aria-label="型態分數 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">收盤價</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="close-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="close-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>收盤價</span>
+            <input type="number" id="close-min" class="filter-input" placeholder="最小" aria-label="收盤價 最小" />
+            <span>~</span>
+            <input type="number" id="close-max" class="filter-input" placeholder="最大" aria-label="收盤價 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">成交量 (張)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="vol-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="vol-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>成交量 (張)</span>
+            <input type="number" id="vol-min" class="filter-input" placeholder="最小" aria-label="成交量 (張) 最小" />
+            <span>~</span>
+            <input type="number" id="vol-max" class="filter-input" placeholder="最大" aria-label="成交量 (張) 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">最少收縮次數</span>
-            <input
-              type="number"
-              id="contractions-min"
-              class="filter-input"
-              placeholder="例如 2"
-              min="2"
-            />
+          <div class="filter-pill">
+            <span>最少收縮次數</span>
+            <input type="number" id="contractions-min" class="filter-input" placeholder="例如 2" min="2" aria-label="最少收縮次數" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">距樞紐點 (%)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="pivot-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="pivot-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>距樞紐點 (%)</span>
+            <input type="number" id="pivot-min" class="filter-input" placeholder="最小" aria-label="距樞紐點 最小" />
+            <span>~</span>
+            <input type="number" id="pivot-max" class="filter-input" placeholder="最大" aria-label="距樞紐點 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">條件</span>
-            <label class="filter-checkbox">
-              <input type="checkbox" id="ma50-only" />
-              僅顯示站上 50 日均線
-            </label>
-          </div>
+          <label class="filter-pill check">
+            <input type="checkbox" id="ma50-only" />
+            僅顯示站上 50 日均線
+          </label>
         </div>
-        <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
-          <button class="btn-clear" id="btn-clear">清除條件</button>
-          <button class="btn-apply" id="btn-apply">套用篩選</button>
+        <div class="actions-row">
+          <button class="btn btn-secondary" id="btn-clear">清除條件</button>
+          <button class="btn btn-primary" id="btn-apply">套用篩選</button>
         </div>
       </div>
 
@@ -541,31 +330,13 @@
             <tbody id="result-list"></tbody>
           </table>
         </div>
+        <div id="result-state"></div>
         <div id="loader" class="loader" style="display: none">載入中...</div>
 
-        <div
-          id="pagination"
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--hud-border-2);
-          "
-        >
-          <button id="prev-page" class="btn-secondary">上一頁</button>
-          <span
-            id="page-info"
-            style="
-              font-size: 0.875rem;
-              color: var(--hud-text-3);
-              font-weight: 600;
-            "
-            >第 1 / 1 頁</span
-          >
-          <button id="next-page" class="btn-secondary">下一頁</button>
+        <div id="pagination" class="pagination">
+          <button id="prev-page" class="btn btn-secondary">上一頁</button>
+          <span id="page-info">第 1 / 1 頁</span>
+          <button id="next-page" class="btn btn-secondary">下一頁</button>
         </div>
       </div>
     </div>
@@ -649,12 +420,12 @@
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       let manifest = null;
       let rawData = [];
+      let loadFailed = false;
       let filteredData = [];
       let currentMarket = "twse";
       let sortColumn = "score";
@@ -748,6 +519,7 @@
 
       // ── data loading ──────────────────────────────────────────────────────
       async function loadData() {
+        loadFailed = false;
         const m = manifest[currentMarket];
         if (!m) return;
         const dates = m.vcp || [];
@@ -767,6 +539,11 @@
           rawData = await resp.json();
         } catch (e) {
           rawData = [];
+          loadFailed = true;
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: loadData,
+          });
         } finally {
           document.getElementById("loader").style.display = "none";
         }
@@ -848,6 +625,7 @@
       function renderTable() {
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
+        if (!loadFailed) document.getElementById("result-state").innerHTML = "";
 
         const countEl = document.getElementById("result-count");
         if (countEl) countEl.textContent = filteredData.length;
@@ -906,7 +684,11 @@
         );
 
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="11" style="text-align:center;padding:2rem;color:var(--hud-text-3);font-style:italic;">無符合條件的股票</td></tr>`;
+          if (loadFailed) return;
+          UIData.renderState(document.getElementById("result-state"), "empty", {
+            title: "沒有符合的資料",
+            hint: "請調整日期或篩選條件",
+          });
           return;
         }
 
@@ -939,13 +721,13 @@
               <a href="http://cnyes.com/twstock/${s.id}/analysis/performance" target="_blank" class="stock-link">${s.name}</a>
             </td>
             <td style="font-size:1rem;">${s.close}</td>
-            <td style="color:var(--hud-text-3);">${s.pivot_price}</td>
+            <td style="color:var(--text-muted);">${s.pivot_price}</td>
             <td class="${distClass}">${s.distance_to_pivot ?? "-"}%</td>
             <td>${s.num_contractions}</td>
             <td><div class="contraction-chips">${chips}</div></td>
             <td>${volRatioText}</td>
             <td>${maTag}</td>
-            <td style="color:var(--hud-text-3);">${volK} 張</td>
+            <td style="color:var(--text-muted);">${volK} 張</td>
           `;
           tbody.appendChild(tr);
         });
