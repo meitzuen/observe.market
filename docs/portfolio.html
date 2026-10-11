@@ -3,143 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>持股計算機 | Market Observer</title>
+    <title>持股試算 | Market Observer</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .page-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .page-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin: 0;
-        color: var(--hud-text-1);
-      }
-
       .eval-date-box {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.45rem 0.75rem;
-      }
-
-      .eval-date-box label {
-        font-size: 0.85rem;
-        color: var(--hud-text-3);
-        font-weight: 600;
-        white-space: nowrap;
+        gap: var(--s2);
       }
 
       .eval-date-box input[type="date"] {
-        border: none;
-        font-family: inherit;
-        font-size: 0.9rem;
-        color: var(--hud-text-1);
-        background: transparent;
-        outline: none;
-      }
-
-      .btn-primary {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-      }
-
-      .btn-primary:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-secondary:hover {
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
+        width: auto;
+        padding: 4px 8px;
       }
 
       .btn-icon {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0.2rem 0.35rem;
-        font-size: 0.9rem;
+        padding: var(--s1) 6px;
+        font-size: 14px;
         line-height: 1;
-        border-radius: 2px;
-        transition:
-          background 0.15s,
-          opacity 0.15s;
+        border-radius: var(--radius);
       }
 
       .btn-icon:hover {
-        background: var(--hud-bg);
+        background: var(--hover);
       }
 
       /* Summary cards */
       .summary-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
+        gap: var(--s3);
+        margin-bottom: var(--s4);
       }
 
       .summary-card {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.9rem 1.1rem;
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        padding: var(--s4);
       }
 
       .summary-card .label {
-        font-size: 0.78rem;
-        color: var(--hud-text-3);
-        margin-bottom: 0.3rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: var(--s1);
       }
 
       .summary-card .value {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--hud-text-1);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text);
       }
 
-      /* Form panel */
+      .summary-card .value.price-up {
+        color: var(--up);
+      }
+
+      .summary-card .value.price-down {
+        color: var(--down);
+      }
+
+      .summary-card .value.price-neutral {
+        color: var(--text-muted);
+      }
+
+      /* Form panel (toggled via inline display by the page script) */
       .form-panel {
         display: none;
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .form-panel h2 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 1rem;
-        color: var(--hud-text-1);
+        margin-bottom: var(--s4);
       }
 
       .form-row {
         display: flex;
-        gap: 0.75rem;
+        gap: var(--s3);
         flex-wrap: wrap;
         align-items: flex-end;
       }
@@ -147,31 +88,13 @@
       .form-row .field {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
+        gap: var(--s1);
       }
 
       .form-row label {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
+        font-size: 12px;
+        color: var(--text-muted);
         font-weight: 500;
-      }
-
-      .form-row input,
-      .form-row select {
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        transition: border-color 0.15s;
-        outline: none;
-      }
-
-      .form-row input:focus,
-      .form-row select:focus {
-        border-color: var(--hud-text-1);
       }
 
       .form-row input#h-stock-id {
@@ -181,132 +104,105 @@
       .form-row input#h-buy-date,
       .form-row input#h-qty,
       .form-row input#h-cost {
-        width: 130px;
+        width: 140px;
       }
 
       .form-row select#h-unit {
-        width: 70px;
+        width: 80px;
       }
 
       .stock-name-hint {
-        font-size: 0.82rem;
-        color: var(--hud-text-3);
+        font-size: 13px;
+        color: var(--text-muted);
         min-width: 90px;
       }
 
       .form-actions {
         display: flex;
-        gap: 0.5rem;
+        gap: var(--s2);
       }
 
       .error-msg {
-        color: var(--hud-up);
-        font-size: 0.85rem;
-        margin-top: 0.6rem;
+        color: var(--up);
+        font-size: 13px;
+        margin-top: var(--s3);
+      }
+
+      .hint-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s2);
       }
 
       /* Table */
-      .table-wrap {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        overflow-x: auto;
-      }
-
-      th:first-child,
-      td:first-child {
-        text-align: left;
+      .table-card {
+        padding: 0;
+        overflow: hidden;
       }
 
       tbody tr:last-child td {
         border-bottom: none;
       }
 
-      tbody tr:hover {
-        background: color-mix(in srgb, var(--hud-text-1) 4%, transparent);
-      }
-
       .stock-cell .code {
-        font-weight: 700;
-        color: var(--hud-text-1);
+        font-weight: 600;
+        color: var(--text);
       }
 
       .stock-cell .name {
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-        margin-left: 0.35rem;
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-left: var(--s1);
       }
 
       .price-neutral {
-        color: var(--hud-text-3);
+        color: var(--text-muted);
       }
 
       .no-data-tag {
-        color: var(--hud-text-3);
-        font-size: 0.78rem;
-        font-style: italic;
+        color: var(--text-muted);
+        font-size: 12px;
       }
 
       .row-actions {
         display: flex;
-        gap: 0.25rem;
+        gap: var(--s1);
         justify-content: flex-end;
       }
 
-      tfoot td {
-        font-weight: 700;
-        border-top: 2px solid var(--hud-border-2);
-        border-bottom: none;
-        background: var(--hud-bg);
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: var(--hud-text-3);
-      }
-
       .empty-state .icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
+        font-size: 32px;
+        margin-bottom: var(--s2);
       }
 
-      .hint-text {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        margin-top: 0.4rem;
+      #stock-info-status:not(:empty) {
+        margin-bottom: var(--s4);
+      }
+
+      #stock-info-status .banner {
+        border-radius: var(--radius);
+        justify-content: flex-start;
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <main class="container">
+    <main class="container" id="main">
       <div class="page-header">
-        <p class="page-title">🧮 持股計算機</p>
-        <div class="eval-date-box">
-          <label for="eval-date">計算基準日</label>
-          <input type="date" id="eval-date" />
+        <div>
+          <h1 class="page-title">持股試算</h1>
+          <p class="page-subtitle">持股損益試算</p>
+        </div>
+        <div class="page-actions">
+          <div class="filter-pill eval-date-box">
+            <label for="eval-date">計算基準日</label>
+            <input type="date" id="eval-date" />
+          </div>
         </div>
       </div>
+
+      <div id="stock-info-status"></div>
 
       <div class="summary-grid" id="summary-grid" style="display: none">
         <div class="summary-card">
@@ -327,15 +223,14 @@
         </div>
       </div>
 
-      <div class="page-header">
-        <span></span>
+      <div class="toolbar">
         <button class="btn btn-primary" id="toggle-form-btn">
           ＋ 新增持股
         </button>
       </div>
 
-      <div class="form-panel" id="form-panel">
-        <h2 id="form-panel-title">新增持股</h2>
+      <div class="card form-panel" id="form-panel">
+        <h2 class="card-title" id="form-panel-title">新增持股</h2>
         <div class="form-row">
           <div class="field">
             <label for="h-stock-id">股票代號</label>
@@ -405,15 +300,10 @@
         <div id="form-error" class="error-msg" style="display: none"></div>
       </div>
 
-      <div
-        class="loading"
-        id="loading-msg"
-        style="text-align: center; padding: 2rem; color: var(--hud-text-3)"
-      >
-        載入中…
-      </div>
+      <div class="loader" id="loading-msg">載入中…</div>
 
-      <div class="table-wrap" id="table-wrap" style="display: none">
+      <div class="card table-card" id="table-wrap" style="display: none">
+        <div class="table-container">
         <table>
           <thead>
             <tr>
@@ -431,22 +321,19 @@
           </thead>
           <tbody id="holdings-tbody"></tbody>
         </table>
+        </div>
       </div>
 
       <div id="empty-state" class="empty-state" style="display: none">
         <div class="icon">🧮</div>
-        <div>尚無持股紀錄</div>
-        <div style="font-size: 0.85rem; margin-top: 0.4rem">
-          點擊上方「＋ 新增持股」開始記錄
-        </div>
+        <div class="empty-title">尚無持股紀錄</div>
+        <div class="empty-hint">點擊上方「＋ 新增持股」開始記錄</div>
       </div>
     </main>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
-
       // ── Storage keys ────────────────────────────────────────────────────────
       const STORAGE_KEY = "portfolio_holdings";
       const EVAL_DATE_KEY = "portfolio_eval_date";
@@ -486,6 +373,8 @@
         } catch (e) {
           console.error("無法載入 stock_info.json：", e);
           stockInfo = {};
+          document.getElementById("stock-info-status").innerHTML =
+            '<div class="banner banner-warn" role="status">股票清單載入失敗，代號查詢與新增持股暫時無法使用</div>';
         }
         const datalist = document.getElementById("stock-datalist");
         datalist.innerHTML = Object.entries(stockInfo)

@@ -7,64 +7,21 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .page-header {
-        margin-bottom: 0.35rem;
-      }
-
-      .page-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin: 0;
-        color: var(--hud-text-1);
-      }
-
-      .page-subtitle {
-        font-size: 0.85rem;
-        color: var(--hud-text-3);
-        margin: 0 0 1.25rem;
-      }
-
       .calc-grid {
-        display: grid;
-        grid-template-columns: 380px 1fr;
-        gap: 1.25rem;
         align-items: start;
       }
 
-      @media (max-width: 900px) {
+      @media (min-width: 1024px) {
         .calc-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(320px, 1fr) minmax(0, 2fr);
         }
       }
 
-      .card-panel {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 1.25rem 1.4rem;
-      }
-
-      .card-panel h2 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin: 0 0 1.1rem;
-        color: var(--hud-text-1);
-      }
-
       .field-block {
-        margin-bottom: 1rem;
+        margin-bottom: var(--s4);
       }
 
       .field-block:last-child {
@@ -73,121 +30,101 @@
 
       .field-label {
         display: block;
-        font-size: 0.8rem;
+        font-size: 12px;
         font-weight: 600;
-        color: var(--hud-text-3);
-        margin-bottom: 0.4rem;
+        color: var(--text-muted);
+        margin-bottom: var(--s1);
+      }
+
+      .plain-input {
+        width: 100%;
       }
 
       /* Tab groups (交易類型 / 交易方向) */
       .tab-group {
         display: flex;
-        gap: 0.5rem;
+        gap: var(--s2);
       }
 
       .tab-btn {
         flex: 1;
-        padding: 0.55rem 0.5rem;
-        border-radius: 3px;
-        border: 1px solid var(--hud-border-2);
-        background: var(--hud-bg);
-        color: var(--hud-text-3);
+        padding: var(--s2);
+        border-radius: var(--radius);
+        border: 1px solid var(--border-strong);
+        background: var(--surface);
+        color: var(--text-muted);
         font-weight: 600;
-        font-size: 0.82rem;
+        font-size: 13px;
         font-family: inherit;
         cursor: pointer;
-        transition:
-          background 0.15s,
-          border-color 0.15s,
-          color 0.15s;
       }
 
       .tab-btn:hover {
-        border-color: var(--hud-border-1);
-        color: var(--hud-text-1);
+        background: var(--hover);
+        color: var(--text);
       }
 
       .tab-btn.type-active {
-        background: var(--hud-text-1);
-        border-color: var(--hud-text-1);
-        color: var(--hud-bg);
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: var(--accent);
       }
 
       .tab-btn.dir-long.dir-active {
-        background: var(--hud-up);
-        border-color: var(--hud-up);
+        background: var(--up);
+        border-color: var(--up);
         color: #fff;
       }
 
       .tab-btn.dir-short.dir-active {
-        background: var(--hud-down);
-        border-color: var(--hud-down);
+        background: var(--down);
+        border-color: var(--down);
         color: #fff;
       }
 
       /* Price / qty inputs with suffix */
       .input-with-suffix {
         display: flex;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 3px;
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
         overflow: hidden;
-        background: var(--hud-bg);
-        transition: border-color 0.15s;
+        background: var(--surface);
       }
 
       .input-with-suffix:focus-within {
-        border-color: var(--hud-text-1);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent);
       }
 
       .input-with-suffix input {
         flex: 1;
         min-width: 0;
         border: none;
+        border-radius: 0;
         outline: none;
         background: transparent;
-        padding: 0.55rem 0.75rem;
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
       }
 
       .input-with-suffix .suffix {
         display: flex;
         align-items: center;
-        padding: 0 0.75rem;
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        background: var(--hud-hover-bg);
-        border-left: 1px solid var(--hud-border-2);
+        padding: 0 var(--s3);
+        font-size: 13px;
+        color: var(--text-muted);
+        background: var(--hover);
+        border-left: 1px solid var(--border);
         white-space: nowrap;
-      }
-
-      .plain-input {
-        width: 100%;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 3px;
-        padding: 0.55rem 0.75rem;
-        line-height: 1.3rem;
-        font-family: inherit;
-        font-size: 0.9rem;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        outline: none;
-        transition: border-color 0.15s;
-      }
-
-      .plain-input:focus {
-        border-color: var(--hud-text-1);
       }
 
       .fee-row {
         display: flex;
-        gap: 0.75rem;
+        gap: var(--s3);
       }
 
       .fee-row .field-block {
         flex: 1;
         min-width: 0;
+        margin-bottom: 0;
       }
 
       /* Unit toggle switch */
@@ -195,30 +132,27 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 0.75rem;
-        padding: 0.6rem 0.85rem;
-        background: var(--hud-hover-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 3px;
+        gap: var(--s3);
+        padding: var(--s2) var(--s3);
+        background: var(--hover);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
       }
 
       .unit-toggle-label {
-        font-size: 0.85rem;
         font-weight: 600;
-        color: var(--hud-text-1);
       }
 
       .unit-toggle-hint {
-        font-size: 0.75rem;
-        color: var(--hud-text-3);
-        margin-top: 0.15rem;
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
       .switch {
         position: relative;
         display: inline-block;
         width: 42px;
-        height: 23px;
+        height: 24px;
         flex-shrink: 0;
       }
 
@@ -231,7 +165,7 @@
       .switch-slider {
         position: absolute;
         inset: 0;
-        background: var(--hud-border-2);
+        background: var(--border-strong);
         border-radius: 999px;
         cursor: pointer;
         transition: background 0.15s;
@@ -240,27 +174,32 @@
       .switch-slider::before {
         content: "";
         position: absolute;
-        width: 17px;
-        height: 17px;
+        width: 18px;
+        height: 18px;
         left: 3px;
         top: 3px;
-        background: var(--hud-card-bg);
+        background: var(--surface);
         border-radius: 50%;
         transition: transform 0.15s;
       }
 
       .switch input:checked + .switch-slider {
-        background: var(--hud-text-1);
+        background: var(--accent);
       }
 
       .switch input:checked + .switch-slider::before {
-        transform: translateX(19px);
+        transform: translateX(18px);
+      }
+
+      .switch input:focus-visible + .switch-slider {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
       }
 
       .stock-lookup-row {
         display: flex;
-        gap: 0.6rem;
-        align-items: flex-end;
+        gap: var(--s2);
+        align-items: flex-start;
         flex-wrap: wrap;
       }
 
@@ -271,139 +210,87 @@
       }
 
       #dt-autofill-btn {
-        padding: 0.55rem 0.9rem;
-        line-height: 1.3rem;
-        font-size: 0.78rem;
         white-space: nowrap;
       }
 
       .stock-name-hint {
-        font-size: 0.78rem;
-        color: var(--hud-text-3);
-        margin-top: 0.35rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s1);
         min-height: 1em;
       }
 
       #dt-calc-btn {
         width: 100%;
-        margin-top: 0.35rem;
-        padding: 0.65rem;
-        font-size: 0.92rem;
-        font-weight: 700;
-        background: var(--hud-text-1);
-        color: var(--hud-bg);
-        border: 1px solid var(--hud-text-1);
-        border-radius: 3px;
-        cursor: pointer;
-        transition: opacity 0.15s;
-      }
-
-      #dt-calc-btn:hover {
-        opacity: 0.85;
+        justify-content: center;
+        margin-top: var(--s1);
       }
 
       .error-msg {
-        color: var(--hud-up);
-        font-size: 0.82rem;
-        margin-top: 0.6rem;
+        color: var(--up);
+        font-size: 13px;
+        margin-top: var(--s3);
       }
 
       .hint-text {
-        font-size: 0.75rem;
-        color: var(--hud-text-3);
-        margin-top: 0.9rem;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s4);
         line-height: 1.5;
       }
 
       /* Results table */
-      .results-table-wrap {
-        overflow-x: auto;
-      }
-
-      table.results-table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
       table.results-table th,
       table.results-table td {
-        padding: 0.55rem 0.7rem;
         text-align: center;
-        font-size: 0.85rem;
-        white-space: nowrap;
       }
 
-      table.results-table thead th {
-        color: var(--hud-text-3);
-        font-weight: 600;
-        font-size: 0.78rem;
-        border-bottom: 2px solid var(--hud-border-2);
+      .price-neutral {
+        color: var(--text-muted);
       }
 
-      table.results-table tbody tr {
-        border-bottom: 1px solid var(--hud-border-2);
-      }
-
-      table.results-table tbody tr:last-child {
-        border-bottom: none;
-      }
-
-      table.results-table tbody tr:hover {
-        background: color-mix(in srgb, var(--hud-text-1) 4%, transparent);
-      }
-
-      table.results-table tbody tr.row-current {
-        background: color-mix(in srgb, var(--hud-text-1) 8%, transparent);
+      table.results-table tbody tr.row-current td {
+        background: var(--accent-soft);
       }
 
       .load-more-row {
         display: flex;
         justify-content: center;
-        padding: 0.75rem;
-        border-top: 1px solid var(--hud-border-2);
+        padding: var(--s3);
       }
 
       .results-empty {
         text-align: center;
-        padding: 2.5rem 1rem;
-        color: var(--hud-text-3);
-        font-size: 0.9rem;
+        padding: var(--s6) var(--s4);
+        color: var(--text-muted);
+      }
+
+      #stock-info-status:not(:empty) {
+        margin-bottom: var(--s4);
+      }
+
+      #stock-info-status .banner {
+        border-radius: var(--radius);
+        justify-content: flex-start;
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <main class="container">
+    <main class="container" id="main">
       <div class="page-header">
-        <p class="page-title">🧮 台股當沖計算機</p>
+        <div>
+          <h1 class="page-title">當沖計算機</h1>
+          <p class="page-subtitle">當沖損益與成本試算</p>
+        </div>
       </div>
-      <p class="page-subtitle">
-        輸入開倉價格與交易數量，自動試算不同檔位下的手續費、證交稅（一般 0.3%／現股當沖
-        0.15%／ETF 0.1%）與損益，找出損益兩平與目標價位。
-      </p>
 
-      <div class="calc-grid">
-        <div class="card-panel">
-          <h2>計算機</h2>
+      <div id="stock-info-status"></div>
+
+      <div class="grid calc-grid">
+        <div class="card">
+          <h2 class="card-title">計算機</h2>
 
           <div class="field-block">
             <label class="field-label">股票代號（選填）</label>
@@ -522,7 +409,7 @@
             </div>
           </div>
 
-          <button id="dt-calc-btn" type="button">計算</button>
+          <button id="dt-calc-btn" class="btn btn-primary" type="button">計算</button>
 
           <div id="form-error" class="error-msg" style="display: none"></div>
 
@@ -532,8 +419,8 @@
           </div>
         </div>
 
-        <div class="card-panel">
-          <h2>計算結果</h2>
+        <div class="card">
+          <h2 class="card-title">計算結果</h2>
           <div
             class="load-more-row"
             id="load-more-row-top"
@@ -543,7 +430,7 @@
               ＋ 顯示更多
             </button>
           </div>
-          <div class="results-table-wrap">
+          <div class="table-container">
             <table class="results-table">
               <thead>
                 <tr>
@@ -577,11 +464,9 @@
       </div>
     </main>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
-
       const STATE_KEY = "day_trade_calc_state_v2";
       const DEFAULT_FEE_RATE = 0.001425; // 0.1425%
       const TAX_RATES = { stock: 0.003, daytrade: 0.0015, etf: 0.001 };
@@ -785,6 +670,8 @@
         } catch (e) {
           console.error("無法載入 stock_info.json：", e);
           stockInfo = {};
+          document.getElementById("stock-info-status").innerHTML =
+            '<div class="banner banner-warn" role="status">股票清單載入失敗，代號查詢暫時無法使用</div>';
         }
         const datalist = document.getElementById("stock-datalist");
         datalist.innerHTML = Object.entries(stockInfo)
