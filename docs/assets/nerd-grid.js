@@ -165,11 +165,48 @@
     document.addEventListener("click", closeAllMenus);
   }
 
+  // Renders the shared site footer (brand, disclaimer, data-source credit,
+  // copyright) and appends it to <body>. Self-mounting — any page that
+  // loads this script gets the footer with no HTML edit needed, the same
+  // way every page already gets the shared nav without hand-written markup.
+  function renderFooter() {
+    if (document.getElementById("site-footer")) return;
+    const year = new Date().getFullYear();
+    const footer = document.createElement("footer");
+    footer.id = "site-footer";
+    footer.innerHTML = `
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-title">Market Observer 市場觀測站</span>
+          <span class="footer-tagline">台股即時數據觀測平台</span>
+        </div>
+        <div class="footer-disclaimer">
+          本站資訊僅供參考，不構成任何投資建議，投資一定有風險，請謹慎評估並自行承擔投資決策之風險。<br />
+          資料來源：臺灣證券交易所（TWSE）、證券櫃買中心（TPEx）公開資訊。
+        </div>
+        <div class="footer-copyright">© ${year} Market Observer. All rights reserved.</div>
+      </div>
+    `;
+    document.body.appendChild(footer);
+  }
+
+  function initFooter() {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderFooter);
+    } else {
+      renderFooter();
+    }
+  }
+
+  // Auto-run on script load so every page gets the footer for free.
+  initFooter();
+
   global.NerdGrid = {
     initThemeToggle,
     onThemeChange,
     initNavDropdowns,
     initNav,
+    initFooter,
     currentTheme,
     chartColors,
   };

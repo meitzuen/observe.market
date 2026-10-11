@@ -672,3 +672,87 @@ select {
     order: 3;
   }
 }
+
+/* -------------------------------------------------------------------- */
+/* Header tagline                                                         */
+/* -------------------------------------------------------------------- */
+
+/* Sits under the site title so the header reads as a product with a
+   stated purpose, not just a logo + name. Used only on the homepage;
+   kept here so every page's header gets consistent spacing if reused. */
+.header-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  justify-content: center;
+}
+
+.header-tagline {
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--hud-text-4);
+  font-weight: 400;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 767px) {
+  .header-tagline {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/* Footer                                                                 */
+/* -------------------------------------------------------------------- */
+
+/* Auto-injected by NerdGrid.initFooter() (see nerd-grid.js) — every page
+   that loads nerd-grid.js gets this with no per-page HTML edit. Mirrors
+   the header's wireframe style: thin top border, no fill, mono font. */
+#site-footer {
+  border-top: 1px solid var(--hud-border-1);
+  margin-top: 2.5rem;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.footer-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--hud-text-2);
+  font-weight: 500;
+}
+
+.footer-tagline {
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--hud-text-4);
+}
+
+.footer-disclaimer {
+  font-size: 0.62rem;
+  line-height: 1.75;
+  color: var(--hud-text-4);
+  max-width: 720px;
+  margin: 0.2rem auto 0;
+}
+
+.footer-copyright {
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--hud-text-4);
+  margin-top: 0.25rem;
+}
