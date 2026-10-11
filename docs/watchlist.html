@@ -7,60 +7,40 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      .logo {
-        width: 36px;
-        height: 36px;
-        border-radius: 2px;
-        flex-shrink: 0;
-      }
-
-      @media (max-width: 480px) {
-        h1 span.title-text {
+      @media (max-width: 767px) {
+        .hide-mobile {
           display: none;
         }
-      }
-
-      .page-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin: 0 0 1.25rem;
-        color: var(--hud-text-1);
       }
 
       /* Watchlist selector (searchable dropdown) */
       .wl-selector {
         position: relative;
         display: inline-block;
-        margin-bottom: 1rem;
+        margin-bottom: var(--s4);
       }
 
       .wl-selector-trigger {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.55rem 1rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        background: var(--hud-card-bg);
-        color: var(--hud-text-1);
-        font-family: inherit;
-        font-size: 0.95rem;
-        font-weight: 700;
+        gap: var(--s2);
+        padding: 8px var(--s3);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text);
+        font: inherit;
+        font-weight: 600;
         cursor: pointer;
         min-width: 220px;
         max-width: 90vw;
-
-        transition: border-color 0.15s;
       }
 
       .wl-selector-trigger:hover {
-        border-color: var(--hud-text-1);
+        background: var(--hover);
       }
 
       .wl-selector-label {
@@ -72,8 +52,8 @@
       }
 
       .wl-selector-caret {
-        font-size: 0.7rem;
-        color: var(--hud-text-3);
+        font-size: 11px;
+        color: var(--text-muted);
         transition: transform 0.15s;
       }
 
@@ -85,73 +65,53 @@
         position: absolute;
         top: calc(100% + 6px);
         left: 0;
-        z-index: 200;
+        z-index: 40;
         width: min(340px, 90vw);
-        background: var(--hud-bg-raised);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-pop);
         overflow: hidden;
       }
 
       .wl-dropdown-search-row {
-        padding: 0.6rem 0.6rem 0.4rem;
-        border-bottom: 1px solid var(--hud-border-2);
+        padding: var(--s2);
+        border-bottom: 1px solid var(--border);
       }
 
       .wl-search-input {
         width: 100%;
-        box-sizing: border-box;
-        padding: 0.45rem 0.7rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.88rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        outline: none;
-      }
-
-      .wl-search-input:focus {
-        border-color: var(--hud-text-1);
       }
 
       .wl-dropdown-list {
         max-height: min(360px, 55vh);
         overflow-y: auto;
-        padding: 0.3rem;
+        padding: var(--s1);
       }
 
       .wl-dropdown-item {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: var(--s2);
         width: 100%;
-        box-sizing: border-box;
-        padding: 0.5rem 0.65rem;
-        border: none;
-        border-radius: 2px;
+        padding: 8px var(--s3);
+        border: 0;
+        border-radius: var(--radius);
         background: none;
-        color: var(--hud-text-1);
-        font-family: inherit;
-        font-size: 0.88rem;
+        color: var(--text);
+        font: inherit;
         text-align: left;
         cursor: pointer;
-        transition: background 0.12s;
       }
 
       .wl-dropdown-item:hover {
-        background: var(--hud-bg);
+        background: var(--hover);
       }
 
       .wl-dropdown-item.active {
-        background: color-mix(
-          in srgb,
-          var(--hud-text-1) 14%,
-          var(--hud-card-bg)
-        );
-        color: var(--hud-text-1);
-        font-weight: 700;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 600;
       }
 
       .wl-dropdown-item-name {
@@ -162,8 +122,7 @@
       }
 
       .wl-dropdown-item-check {
-        font-size: 0.8rem;
-        color: var(--hud-text-1);
+        font-size: 12px;
         visibility: hidden;
       }
 
@@ -180,40 +139,25 @@
       }
 
       .wl-dropdown-item.drag-over {
+        box-shadow: inset 0 2px 0 var(--accent);
       }
 
       .wl-dropdown-empty {
-        padding: 1rem 0.75rem;
+        padding: var(--s4) var(--s3);
         text-align: center;
-        color: var(--hud-text-3);
-        font-size: 0.85rem;
+        color: var(--text-muted);
       }
 
       .wl-dropdown-footer {
-        padding: 0.5rem;
-        border-top: 1px solid var(--hud-border-2);
+        padding: var(--s2);
+        border-top: 1px solid var(--border);
       }
 
       .wl-dropdown-new-btn {
         width: 100%;
-        padding: 0.45rem 0.7rem;
-        border: 1px dashed var(--hud-text-1);
-        border-radius: 2px;
-        background: none;
-        color: var(--hud-text-1);
-        font-family: inherit;
-        font-size: 0.85rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.12s;
-      }
-
-      .wl-dropdown-new-btn:hover {
-        background: color-mix(
-          in srgb,
-          var(--hud-text-1) 10%,
-          var(--hud-card-bg)
-        );
+        justify-content: center;
+        border-style: dashed;
+        color: var(--accent);
       }
 
       #watchlist-tbody tr[draggable="true"] {
@@ -225,59 +169,71 @@
       }
 
       #watchlist-tbody tr.drag-over td {
-        background: color-mix(
-          in srgb,
-          var(--hud-text-1) 8%,
-          var(--hud-card-bg)
-        );
+        background: var(--accent-soft);
+      }
+
+      /* Pending order bars */
+      .pending-bar {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--s3);
+        padding: var(--s2) var(--s3);
+        margin-bottom: var(--s3);
+        background: var(--warn-soft);
+        color: var(--warn);
+        border-radius: var(--radius);
+        font-size: 13px;
       }
 
       /* Create panel */
       .create-panel {
         display: none;
-        gap: 0.5rem;
+        gap: var(--s2);
         align-items: center;
         flex-wrap: wrap;
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.75rem 1rem;
-        margin: 0.75rem 0 1rem;
+        margin-bottom: var(--s4);
+      }
+
+      .create-panel input {
+        min-width: 180px;
       }
 
       /* Watchlist section */
       .watchlist-header {
         display: flex;
+        flex-wrap: wrap;
+        gap: var(--s3);
         justify-content: space-between;
         align-items: center;
-        margin: 1.25rem 0 1rem;
+        margin-bottom: var(--s4);
       }
 
       .watchlist-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--hud-text-1);
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      #header-manage-btns {
+        gap: var(--s2);
       }
 
       /* Add stock panel */
       .add-panel {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1rem;
+        padding: var(--s4);
+        margin-bottom: var(--s4);
+        background: var(--bg);
+        border-radius: var(--radius);
       }
 
       .add-panel h2 {
-        font-size: 1rem;
+        margin: 0 0 var(--s3);
+        font-size: 14px;
         font-weight: 600;
-        margin: 0 0 1rem;
-        color: var(--hud-text-1);
       }
 
       .add-row {
         display: flex;
-        gap: 0.75rem;
+        gap: var(--s3);
         flex-wrap: wrap;
         align-items: flex-end;
       }
@@ -285,45 +241,44 @@
       .add-row .field {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
+        gap: var(--s1);
+      }
+
+      .add-row .field.field-note {
+        flex: 1;
+        min-width: 160px;
+        max-width: 420px;
       }
 
       .add-row label {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        font-weight: 500;
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
-      .add-row input,
-      .add-row select {
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        transition: border-color 0.15s;
-        outline: none;
+      .add-row .required {
+        color: var(--up);
       }
 
-      .add-row input:focus,
-      .add-row select:focus {
-        border-color: var(--hud-text-1);
+      #stock-id {
+        width: 100px;
       }
 
-      .add-row input#stock-note {
-        width: 140px;
+      #stock-note {
+        width: 100%;
+      }
+
+      .toggle-box {
+        display: flex;
+        align-items: center;
+        height: 38px;
       }
 
       .toggle-wrap {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
+        gap: var(--s2);
         cursor: pointer;
         user-select: none;
-        font-size: 0.85rem;
-        color: var(--hud-text-1);
       }
 
       .toggle-input {
@@ -336,137 +291,95 @@
 
       .toggle-track {
         position: relative;
-        width: 2.25rem;
-        height: 1.25rem;
-        border-radius: 2px;
-        background: var(--hud-border-2);
-        border: 1px solid var(--hud-border-2);
-        transition:
-          background 0.2s,
-          border-color 0.2s;
+        width: 36px;
+        height: 20px;
+        border-radius: 999px;
+        background: var(--border-strong);
+        transition: background 0.2s;
         flex-shrink: 0;
       }
 
       .toggle-input:checked + .toggle-track {
-        background: transparent;
-        border: 1px solid rgba(253, 186, 116, 0.35);
-        border-color: rgba(253, 186, 116, 0.9);
+        background: var(--accent);
+      }
+
+      .toggle-input:focus-visible + .toggle-track {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
       }
 
       .toggle-thumb {
         position: absolute;
         top: 2px;
         left: 2px;
-        width: 0.85rem;
-        height: 0.85rem;
-        border-radius: 2px;
-        background: var(--hud-text-4);
-        transition:
-          transform 0.2s,
-          background 0.2s;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.2s;
       }
 
       .toggle-input:checked + .toggle-track .toggle-thumb {
-        transform: translateX(1rem);
-        background: rgba(194, 65, 12, 0.18);
-      }
-
-      .btn-primary {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-      }
-
-      .btn-primary:hover {
-        background: var(--hud-hover-bg);
+        transform: translateX(16px);
       }
 
       .btn-danger {
-        background: transparent;
-        color: var(--hud-up);
-        border: 1px solid var(--hud-up);
-        padding: 0.25rem 0.6rem;
-        font-size: 0.8rem;
+        background: var(--surface);
+        color: var(--up);
+        border-color: var(--up);
       }
 
-      .btn-danger:hover {
-        background: transparent;
-        border: 1px solid rgba(239, 68, 68, 0.35);
-        color: rgba(239, 68, 68, 0.9);
+      .btn-danger:hover:not(:disabled) {
+        background: var(--up-soft);
       }
 
-      .btn-secondary:hover {
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
+      .btn-sm,
+      #watchlist-tbody .btn-danger {
+        padding: 4px var(--s3);
+        font-size: 13px;
       }
 
       /* Data table */
-      .table-wrapper {
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
       th[data-col] {
         cursor: pointer;
         user-select: none;
       }
 
       th[data-col]:hover {
-        background: rgba(42, 77, 127, 0.18);
+        background: var(--hover);
       }
 
       th.sort-asc::after {
         content: " ▲";
-        font-size: 0.65rem;
+        font-size: 10px;
       }
 
       th.sort-desc::after {
         content: " ▼";
-        font-size: 0.65rem;
-      }
-
-      td:first-child,
-      td:nth-child(2) {
-        text-align: left;
-      }
-
-      td:nth-child(2) {
-        position: relative;
-      }
-
-      tr:last-child td {
-        border-bottom: none;
+        font-size: 10px;
       }
 
       .sector-badge {
         display: inline-block;
-        padding: 0.15rem 0.55rem;
-        border-radius: 2px;
-        font-size: 0.75rem;
-        font-weight: 600;
+        padding: 1px var(--s2);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 500;
         white-space: nowrap;
+        background: color-mix(in srgb, var(--c, var(--accent)) 12%, #fff);
+        color: var(--c, var(--accent));
       }
 
       .top-tag {
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-size: 0.55rem;
-        font-weight: 700;
-        padding: 0.06rem 0.32rem;
-        border-radius: 2px;
-        background: transparent;
-        border: 1px solid rgba(194, 65, 12, 0.35);
-        color: rgba(194, 65, 12, 0.9);
-        border-right: 1px solid rgba(253, 186, 116, 0.4);
-        border-bottom: 1px solid rgba(253, 186, 116, 0.4);
+        display: inline-block;
+        margin-right: var(--s1);
+        padding: 0 6px;
+        border-radius: 4px;
+        background: var(--warn-soft);
+        color: var(--warn);
+        font-size: 11px;
+        font-weight: 600;
         white-space: nowrap;
-        letter-spacing: 0.03em;
-        line-height: 1.3;
-        z-index: 1;
       }
 
       .sector-badge.truncated {
@@ -479,312 +392,169 @@
         opacity: 0.8;
       }
 
-      @keyframes note-overlay-in {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes note-modal-in {
-        from {
-          opacity: 0;
-          transform: scale(0.93) translateY(14px);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-
+      /* Note modal */
       .note-modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.52);
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
+        background: rgba(20, 30, 60, 0.45);
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 999;
-        animation: note-overlay-in 0.18s ease both;
+        padding: var(--s4);
+        z-index: 300;
       }
 
       .note-modal-box {
-        background: var(--hud-bg-raised);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-pop);
         overflow: hidden;
         max-width: min(500px, 92vw);
         width: 100%;
       }
 
-      .note-modal-box.is-open {
-        animation: note-modal-in 0.24s cubic-bezier(0.22, 0.68, 0, 1.2) both;
-      }
-
       .note-modal-accent {
-        height: 5px;
+        height: 4px;
         width: 100%;
+        background: var(--c, var(--accent));
       }
 
       .note-modal-inner {
-        padding: 1.35rem 1.75rem 1.6rem;
+        padding: var(--s5);
       }
 
       .note-modal-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.85rem;
+        margin-bottom: var(--s3);
       }
 
       .note-modal-title {
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: var(--hud-text-3);
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
       }
 
       .note-modal-close-btn {
         background: none;
-        border: none;
+        border: 0;
         cursor: pointer;
-        color: var(--hud-text-3);
-        font-size: 1rem;
-        line-height: 1;
-        padding: 0.25rem 0.4rem;
-        border-radius: 2px;
-        margin: -0.25rem -0.4rem;
-        transition:
-          color 0.15s,
-          background 0.15s;
-        font-family: inherit;
+        color: var(--text-muted);
+        font: inherit;
+        padding: var(--s1) var(--s2);
+        border-radius: var(--radius);
       }
 
       .note-modal-close-btn:hover {
-        color: var(--hud-text-1);
-        background: var(--hud-border-2);
+        color: var(--text);
+        background: var(--hover);
       }
 
       .note-modal-stock-wrap {
-        margin-bottom: 0.85rem;
+        margin-bottom: var(--s3);
       }
 
       .note-modal-content {
-        background: var(--hud-bg);
-        border-radius: 2px;
-        padding: 0.9rem 1.1rem;
+        background: var(--bg);
+        border-radius: var(--radius);
+        padding: var(--s3) var(--s4);
       }
 
       .note-modal-body {
         white-space: pre-wrap;
-        word-break: break-word;
-        font-size: 0.93rem;
-        line-height: 1.85;
-        color: var(--hud-text-1);
-      }
-
-      .up {
-        color: var(--hud-up);
-        font-weight: 700;
-      }
-
-      .down {
-        color: var(--hud-down);
-        font-weight: 700;
+        overflow-wrap: anywhere;
+        line-height: 1.8;
       }
 
       .flat {
-        color: var(--hud-text-3);
+        color: var(--text-muted);
       }
 
       .text-muted {
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: var(--hud-text-3);
-      }
-
-      .empty-state .icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
+        color: var(--text-muted);
       }
 
       .data-date-row {
         display: flex;
         align-items: center;
-        gap: 0.6rem;
+        gap: var(--s3);
         flex-wrap: wrap;
-        margin-bottom: 0.75rem;
+        margin-bottom: var(--s3);
       }
 
       .data-date {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-      }
-
-      .date-picker-select {
-        padding: 0.25rem 0.5rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.8rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        cursor: pointer;
-        outline: none;
-        transition: border-color 0.15s;
-      }
-
-      .date-picker-select:focus {
-        border-color: var(--hud-text-1);
-      }
-
-      .loading {
-        text-align: center;
-        padding: 2rem;
-        color: var(--hud-text-3);
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
       .error-msg {
-        color: var(--hud-up);
-        font-size: 0.85rem;
-        margin-top: 0.4rem;
+        margin-top: var(--s2);
+        color: var(--up);
+        font-size: 13px;
+      }
+
+      #wl-state:not(:empty) {
+        margin-bottom: var(--s4);
       }
 
       /* Note cell edit */
-      .note-cell {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-        text-align: left;
-      }
-
       .btn-icon {
         background: none;
-        border: none;
+        border: 0;
         cursor: pointer;
-        padding: 0 0.2rem;
-        font-size: 0.75rem;
+        padding: 0 var(--s1);
+        font-size: 12px;
         opacity: 0;
         transition: opacity 0.15s;
         line-height: 1;
       }
 
-      tr:hover .btn-icon {
-        opacity: 0.5;
+      tr:hover .btn-icon,
+      .btn-icon:focus-visible {
+        opacity: 0.6;
       }
 
       tr:hover .btn-icon:hover {
         opacity: 1;
       }
 
+      @media (hover: none) {
+        .btn-icon {
+          opacity: 0.6;
+        }
+      }
+
       .note-edit-input {
-        padding: 0.2rem 0.5rem;
-        border: 1px solid var(--hud-text-1);
-        border-radius: 2px;
-        font-size: 0.82rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        outline: none;
-        width: 90px;
+        width: 120px;
+        padding: 2px var(--s2);
       }
 
       /* Sector color palette */
-      .sc-0 {
-        background: transparent;
-        border: 1px solid rgba(29, 78, 216, 0.35);
-        color: rgba(29, 78, 216, 0.9);
-      }
-
-      .sc-1 {
-        background: transparent;
-        border: 1px solid rgba(21, 128, 61, 0.35);
-        color: rgba(21, 128, 61, 0.9);
-      }
-
-      .sc-2 {
-        background: transparent;
-        border: 1px solid rgba(146, 64, 14, 0.35);
-        color: rgba(146, 64, 14, 0.9);
-      }
-
-      .sc-3 {
-        background: transparent;
-        border: 1px solid rgba(190, 24, 93, 0.35);
-        color: rgba(190, 24, 93, 0.9);
-      }
-
-      .sc-4 {
-        background: transparent;
-        border: 1px solid rgba(109, 40, 217, 0.35);
-        color: rgba(109, 40, 217, 0.9);
-      }
-
-      .sc-5 {
-        background: transparent;
-        border: 1px solid rgba(194, 65, 12, 0.35);
-        color: rgba(194, 65, 12, 0.9);
-      }
-
-      .sc-6 {
-        background: transparent;
-        border: 1px solid rgba(14, 116, 144, 0.35);
-        color: rgba(14, 116, 144, 0.9);
-      }
-
-      .sc-7 {
-        background: transparent;
-        border: 1px solid rgba(22, 101, 52, 0.35);
-        color: rgba(22, 101, 52, 0.9);
-      }
-
-      .sc-8 {
-        background: transparent;
-        border: 1px solid rgba(157, 23, 77, 0.35);
-        color: rgba(157, 23, 77, 0.9);
-      }
-
-      .sc-9 {
-        background: transparent;
-        border: 1px solid rgba(133, 77, 14, 0.35);
-        color: rgba(133, 77, 14, 0.9);
-      }
+      .sc-0 { --c: #1d4ed8; }
+      .sc-1 { --c: #15803d; }
+      .sc-2 { --c: #92400e; }
+      .sc-3 { --c: #be185d; }
+      .sc-4 { --c: #6d28d9; }
+      .sc-5 { --c: #c2410c; }
+      .sc-6 { --c: #0e7490; }
+      .sc-7 { --c: #166534; }
+      .sc-8 { --c: #9d174d; }
+      .sc-9 { --c: #854d0e; }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right"></div>
-    </header>
+    <header id="site-header"></header>
 
-    <main class="container">
-      <p class="page-title">⭐ 精選類股</p>
+    <main class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">精選類股</h1>
+          <p class="page-subtitle">依類股瀏覽精選股票</p>
+        </div>
+      </div>
+
+      <div id="wl-state"></div>
 
       <!-- Watchlist selector -->
       <div class="wl-selector" id="wl-selector">
@@ -805,7 +575,7 @@
               type="text"
               id="wl-search-input"
               class="wl-search-input"
-              placeholder="🔍 搜尋清單…"
+              placeholder="搜尋清單…"
               oninput="renderListSelector()"
             />
           </div>
@@ -817,7 +587,7 @@
           >
             <button
               type="button"
-              class="wl-dropdown-new-btn"
+              class="btn wl-dropdown-new-btn"
               onclick="
                 toggleCreatePanel();
                 toggleListDropdown(false);
@@ -830,74 +600,27 @@
       </div>
 
       <!-- Pending order bar (admin only, shown after drag) -->
-      <div
-        id="order-pending-bar"
-        style="
-          display: none;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 0.5rem 0.75rem;
-          background: color-mix(
-            in srgb,
-            var(--hud-text-1) 8%,
-            var(--hud-card-bg)
-          );
-          border: 1px solid
-            color-mix(in srgb, var(--hud-text-1) 30%, var(--hud-border-2));
-          border-radius: 2px;
-          margin-bottom: 0.75rem;
-          font-size: 0.83rem;
-          color: var(--hud-text-3);
-        "
-      >
+      <div id="order-pending-bar" class="pending-bar" style="display: none">
         <span>排序已變更，尚未儲存</span>
         <button
-          class="btn btn-primary"
+          class="btn btn-primary btn-sm"
           onclick="saveWatchlistOrder()"
-          style="padding: 0.3rem 0.85rem; font-size: 0.82rem"
           id="save-order-btn"
         >
           更新排序
         </button>
-        <button
-          class="btn btn-secondary"
-          onclick="cancelOrderChange()"
-          style="padding: 0.3rem 0.7rem; font-size: 0.82rem"
-        >
+        <button class="btn btn-secondary btn-sm" onclick="cancelOrderChange()">
           取消
         </button>
       </div>
 
       <!-- Create new watchlist panel -->
-      <div class="create-panel" id="create-panel">
-        <input
-          type="text"
-          id="new-list-name"
-          placeholder="新列表名稱"
-          style="
-            padding: 0.45rem 0.75rem;
-            border: 1px solid var(--hud-border-2);
-            border-radius: 2px;
-            font-size: 0.9rem;
-            font-family: inherit;
-            color: var(--hud-text-1);
-            background: var(--hud-bg);
-            outline: none;
-            min-width: 180px;
-          "
-        />
-        <button
-          class="btn btn-primary"
-          onclick="createWatchlist()"
-          style="padding: 0.45rem 1rem"
-        >
+      <div class="card create-panel" id="create-panel">
+        <input type="text" id="new-list-name" placeholder="新列表名稱" />
+        <button class="btn btn-primary" onclick="createWatchlist()">
           建立
         </button>
-        <button
-          class="btn btn-secondary"
-          onclick="toggleCreatePanel()"
-          style="padding: 0.45rem 0.85rem"
-        >
+        <button class="btn btn-secondary" onclick="toggleCreatePanel()">
           取消
         </button>
         <div
@@ -908,49 +631,24 @@
       </div>
 
       <!-- No watchlists state -->
-      <div
-        id="no-list-state"
-        style="
-          display: none;
-          text-align: center;
-          padding: 4rem 1rem;
-          color: var(--hud-text-3);
-        "
-      >
-        <div style="font-size: 2.5rem; margin-bottom: 0.75rem">📋</div>
-        <div
-          style="
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            color: var(--hud-text-1);
-          "
-        >
-          尚未建立精選類股列表
-        </div>
-        <div style="font-size: 0.85rem">點擊上方「＋」建立第一個列表</div>
-      </div>
+      <div id="no-list-state" style="display: none"></div>
 
       <!-- Active watchlist section -->
-      <div id="watchlist-section" style="display: none">
+      <div class="card" id="watchlist-section" style="display: none">
         <!-- Watchlist header -->
         <div class="watchlist-header">
           <span class="watchlist-title"
             >📋 <span id="active-list-name"></span
           ></span>
-          <div id="header-manage-btns" style="display: none; gap: 0.5rem">
+          <div id="header-manage-btns" style="display: none">
             <button
-              class="btn btn-primary"
+              class="btn btn-primary btn-sm"
               onclick="toggleAddPanel()"
               id="toggle-add-btn"
-              style="padding: 0.35rem 0.85rem; font-size: 0.82rem"
             >
               ＋ 新增個股
             </button>
-            <button
-              class="btn btn-danger"
-              onclick="deleteWatchlist()"
-              style="padding: 0.35rem 0.85rem; font-size: 0.82rem"
-            >
+            <button class="btn btn-danger btn-sm" onclick="deleteWatchlist()">
               刪除此列表
             </button>
           </div>
@@ -962,41 +660,17 @@
           <div class="add-row">
             <div class="field">
               <label for="stock-id">股票代號</label>
-              <input
-                type="text"
-                id="stock-id"
-                placeholder="ex: 2330"
-                style="width: 100px"
-              />
+              <input type="text" id="stock-id" placeholder="ex: 2330" />
             </div>
-            <div
-              class="field"
-              style="flex: 1; min-width: 160px; max-width: 420px"
-            >
+            <div class="field field-note">
               <label for="stock-note"
-                >標籤 <span style="color: var(--hud-up)">*</span></label
+                >標籤 <span class="required">*</span></label
               >
-              <input
-                type="text"
-                id="stock-note"
-                placeholder="必填"
-                style="width: 100%"
-              />
+              <input type="text" id="stock-note" placeholder="必填" />
             </div>
-            <div class="field" style="margin-left: 2rem">
+            <div class="field">
               <label for="stock-is-top">產業龍頭</label>
-              <div
-                style="
-                  border: 1px solid var(--hud-border-2);
-                  border-radius: 2px;
-                  background: var(--hud-bg);
-                  padding: 0.5rem 0.75rem;
-                  display: flex;
-                  align-items: center;
-                  height: 34px;
-                  box-sizing: border-box;
-                "
-              >
+              <div class="toggle-box">
                 <label class="toggle-wrap" for="stock-is-top">
                   <input
                     type="checkbox"
@@ -1010,10 +684,6 @@
               </div>
             </div>
             <div class="field">
-              <label
-                style="visibility: hidden; font-size: 0.8rem; line-height: 1.2"
-                >&nbsp;</label
-              >
               <button class="btn btn-primary" id="add-btn">新增</button>
             </div>
           </div>
@@ -1029,7 +699,7 @@
           <span class="data-date" id="data-date"></span>
           <select
             id="date-picker"
-            class="date-picker-select"
+            class="date-select"
             title="選擇資料日期"
             style="display: none"
           ></select>
@@ -1038,45 +708,28 @@
         <!-- Pending items order bar (admin only, shown after row drag) -->
         <div
           id="items-order-pending-bar"
-          style="
-            display: none;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.45rem 0.75rem;
-            margin-bottom: 0.5rem;
-            background: color-mix(
-              in srgb,
-              var(--hud-text-1) 8%,
-              var(--hud-card-bg)
-            );
-            border: 1px solid
-              color-mix(in srgb, var(--hud-text-1) 30%, var(--hud-border-2));
-            border-radius: 2px;
-            font-size: 0.83rem;
-            color: var(--hud-text-3);
-          "
+          class="pending-bar"
+          style="display: none"
         >
           <span>列表排序已變更，尚未儲存</span>
           <button
-            class="btn btn-primary"
+            class="btn btn-primary btn-sm"
             onclick="saveItemsOrder()"
-            style="padding: 0.3rem 0.85rem; font-size: 0.82rem"
             id="save-items-order-btn"
           >
             更新列表排序
           </button>
           <button
-            class="btn btn-secondary"
+            class="btn btn-secondary btn-sm"
             onclick="cancelItemsOrderChange()"
-            style="padding: 0.3rem 0.7rem; font-size: 0.82rem"
           >
             取消
           </button>
         </div>
 
         <!-- Table -->
-        <div class="table-wrapper" id="table-wrapper">
-          <div class="loading" id="loading-msg">載入中…</div>
+        <div class="table-container" id="table-wrapper">
+          <div class="loader" id="loading-msg">載入中…</div>
           <table id="watchlist-table" style="display: none">
             <thead>
               <tr>
@@ -1117,13 +770,7 @@
             </thead>
             <tbody id="watchlist-tbody"></tbody>
           </table>
-          <div id="empty-state" class="empty-state" style="display: none">
-            <div class="icon">⭐</div>
-            <div>此列表尚無個股</div>
-            <div style="font-size: 0.85rem; margin-top: 0.4rem">
-              在上方輸入股票代號開始追蹤
-            </div>
-          </div>
+          <div id="empty-state" style="display: none"></div>
         </div>
       </div>
     </main>
@@ -1162,13 +809,12 @@
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
       const isManage =
         new URLSearchParams(location.search).get("admin") === "True";
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -1280,11 +926,16 @@
 
       // ── Price data ───────────────────────────────────────────────────────────
       let availableDates = [];
+      let loadFailed = false;
+      let pricesFailed = false;
 
       async function fetchPrices(market, date) {
         try {
           const res = await fetch(`data/${market}/daily_price/${date}.json`);
-          if (!res.ok) return {};
+          if (!res.ok) {
+            pricesFailed = true;
+            return {};
+          }
           const arr = await res.json();
           const map = {};
           arr.forEach((s) => {
@@ -1292,12 +943,15 @@
           });
           return map;
         } catch {
+          pricesFailed = true;
           return {};
         }
       }
 
       async function loadAllPrices(selectedDate) {
+        pricesFailed = false;
         const res = await fetch("data/manifest.json");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const manifest = await res.json();
 
         // Build union of all available dates across markets, newest first
@@ -1759,7 +1413,15 @@
 
         if (allWatchlists.length === 0) {
           section.style.display = "none";
-          noListState.style.display = "block";
+          if (loadFailed) {
+            noListState.style.display = "none";
+          } else {
+            noListState.style.display = "block";
+            UIData.renderState(noListState, "empty", {
+              title: "尚未建立精選類股列表",
+              hint: "點擊上方「＋」建立第一個列表",
+            });
+          }
           return;
         }
 
@@ -1780,6 +1442,10 @@
         if (!wl.items || wl.items.length === 0) {
           table.style.display = "none";
           emptyState.style.display = "block";
+          UIData.renderState(emptyState, "empty", {
+            title: "此列表尚無個股",
+            hint: "在上方輸入股票代號開始追蹤",
+          });
           return;
         }
 
@@ -1807,7 +1473,8 @@
             const close = stock.close;
             const change = stock.change;
             const changePct = stock.change_percent;
-            const cls = change > 0 ? "up" : change < 0 ? "down" : "flat";
+            const cls =
+              change > 0 ? "price-up" : change < 0 ? "price-down" : "flat";
             const sign = change > 0 ? "+" : "";
             const topTag = item.is_top
               ? `<span class="top-tag">產業龍頭</span>`
@@ -2044,16 +1711,43 @@
         });
       document
         .getElementById("date-picker")
-        .addEventListener("change", async function () {
-          document.getElementById("loading-msg").style.display = "block";
-          document.getElementById("watchlist-table").style.display = "none";
-          document.getElementById("empty-state").style.display = "none";
-          await loadAllPrices(this.value);
-          renderWatchlist();
+        .addEventListener("change", function () {
+          reloadPrices(this.value);
         });
 
-      (async function init() {
-        await loadAllPrices();
+      async function reloadPrices(date) {
+        const stateEl = document.getElementById("wl-state");
+        stateEl.innerHTML = "";
+        document.getElementById("loading-msg").style.display = "block";
+        document.getElementById("watchlist-table").style.display = "none";
+        document.getElementById("empty-state").style.display = "none";
+        let failed = false;
+        try {
+          await loadAllPrices(date);
+        } catch (e) {
+          console.error("無法載入價格資料：", e.message);
+          failed = true;
+        }
+        if (failed || pricesFailed) {
+          UIData.renderState(stateEl, "error", {
+            message: "資料載入失敗",
+            onRetry: () => reloadPrices(date),
+          });
+        }
+        renderWatchlist();
+      }
+
+      async function init() {
+        const stateEl = document.getElementById("wl-state");
+        loadFailed = false;
+        UIData.renderState(stateEl, "loading", { rows: 3 });
+        try {
+          await loadAllPrices();
+        } catch (e) {
+          console.error("無法載入價格資料：", e.message);
+          loadFailed = true;
+        }
+        if (pricesFailed) loadFailed = true;
         try {
           allWatchlists = await apiGetWatchlists();
           if (allWatchlists.length > 0) activeListName = allWatchlists[0].name;
@@ -2063,13 +1757,23 @@
         } catch (e) {
           console.error("無法載入精選類股列表：", e.message);
           allWatchlists = [];
+          loadFailed = true;
+        }
+        stateEl.innerHTML = "";
+        if (loadFailed) {
+          UIData.renderState(stateEl, "error", {
+            message: "資料載入失敗",
+            onRetry: init,
+          });
         }
         if (isManage) {
           document.getElementById("header-manage-btns").style.display = "flex";
         }
         renderListSelector();
         renderWatchlist();
-      })();
+      }
+
+      init();
     </script>
   </body>
 </html>
