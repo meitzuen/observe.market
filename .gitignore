@@ -52,3 +52,6 @@ htmlcov/
 
 # Generated Mongo import files
 mongo_import/
+
+# Visual companion mockups
+.superpowers/
