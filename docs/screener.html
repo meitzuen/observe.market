@@ -7,222 +7,94 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
       .hint {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        margin: -0.75rem 0 1.25rem;
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: var(--s2);
       }
 
       .section-label {
-        font-size: 0.8rem;
+        font-size: 12px;
         font-weight: 600;
-        color: var(--hud-text-3);
-        margin-bottom: 0.5rem;
+        color: var(--text-muted);
+        margin-bottom: var(--s1);
       }
 
-      .market-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-        flex-wrap: wrap;
+      .filter-pill input[type="date"] {
+        width: auto;
       }
 
-      .market-tab {
-        padding: 0.4rem 1rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        font-size: 0.875rem;
-        font-weight: 600;
+      .filter-pill.check {
         cursor: pointer;
-        background: none;
-        color: var(--hud-text-3);
-        transition: all 0.2s;
-        white-space: nowrap;
+        color: var(--text);
+        font-size: 14px;
       }
 
-      .market-tab.active {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-        border-color: var(--hud-text-1);
-      }
-
-      .controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr auto;
-        gap: 1rem;
-        align-items: end;
-        margin-bottom: 1rem;
-      }
-
-      @media (max-width: 640px) {
-        .controls {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .filter-label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--hud-text-3);
-      }
-
-      .filter-input {
-        min-width: 0;
-        padding: 0.5rem 0.6rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
-        font-family: inherit;
-      }
-
-      .filter-input:focus {
-        border-color: var(--hud-text-1);
-        background: var(--hud-card-bg);
-      }
-
-      .btn-apply {
-        padding: 0.6rem 1.5rem;
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-
-        border-radius: 2px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s;
-        white-space: nowrap;
-      }
-
-      .btn-apply:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-apply:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-
-      .checkbox-row {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.85rem;
-        color: var(--hud-text-3);
-        margin-bottom: 1.25rem;
-      }
-
-      .checkbox-row input {
-        width: 1rem;
-        height: 1rem;
-        cursor: pointer;
-      }
-
-      .checkbox-row label {
+      .filter-pill.check input {
+        width: 16px;
+        height: 16px;
         cursor: pointer;
       }
 
       .range-summary {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        margin-bottom: 0.5rem;
-      }
-
-      th:hover {
-        background-color: var(--hud-card-bg);
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: var(--s2);
       }
 
       .badge-market-twse {
-        background: transparent;
-        border: 1px solid rgba(30, 64, 175, 0.35);
-        color: rgba(30, 64, 175, 0.9);
+        background: var(--accent-soft);
+        color: var(--accent);
       }
 
       .badge-market-tpex {
-        background: transparent;
-        border: 1px solid rgba(109, 40, 217, 0.35);
-        color: rgba(109, 40, 217, 0.9);
+        background: var(--warn-soft);
+        color: var(--warn);
       }
 
       .rank-cell {
         font-weight: 700;
-        color: var(--hud-text-3);
+        color: var(--text-muted);
       }
 
       .badge-newhigh {
-        background: transparent;
-        border: 1px solid var(--hud-up);
-        color: var(--hud-up);
+        background: var(--up-soft);
+        color: var(--up);
       }
 
       .badge-secondhigh {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-      }
-
-      .btn-secondary:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+        background: var(--hover);
+        color: var(--text);
       }
 
       .page-size-select {
-        padding: 0.4rem 0.6rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
-        font-size: 0.85rem;
-        cursor: pointer;
-        font-family: inherit;
+        padding: 4px var(--s2);
+        font-size: 13px;
       }
 
       .help-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 1.4rem;
-        height: 1.4rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        background: var(--hud-bg);
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-        font-weight: 700;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 1px solid var(--border-strong);
+        background: var(--surface);
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 600;
         cursor: pointer;
-        margin-left: 0.5rem;
+        margin-left: var(--s2);
         flex-shrink: 0;
-        transition: all 0.2s;
       }
 
       .help-btn:hover {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        border-color: var(--hud-text-1);
-        color: var(--hud-text-1);
+        background: var(--hover);
+        color: var(--text);
       }
 
       .modal-overlay {
@@ -233,7 +105,7 @@
         z-index: 10000;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
+        padding: var(--s4);
       }
 
       .modal-overlay.open {
@@ -241,10 +113,10 @@
       }
 
       .modal-box {
-        background: var(--hud-bg-raised);
-        color: var(--hud-text-1);
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-pop);
         max-width: 640px;
         width: 100%;
         max-height: 85vh;
@@ -255,43 +127,41 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1.1rem 1.25rem;
-        border-bottom: 1px solid var(--hud-border-2);
+        padding: var(--s4) var(--s5);
+        border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        background: var(--hud-card-bg);
+        background: var(--surface);
       }
 
       .modal-header h2 {
         margin: 0;
-        font-size: 1.05rem;
-        font-family: "Huninn", "Noto Sans TC", sans-serif;
+        font-size: 16px;
       }
 
       .modal-close {
         background: none;
         border: none;
-        font-size: 1.3rem;
+        font-size: 22px;
         line-height: 1;
         cursor: pointer;
-        color: var(--hud-text-3);
-        padding: 0.25rem;
+        color: var(--text-muted);
+        padding: var(--s1);
       }
 
       .modal-close:hover {
-        color: var(--hud-text-1);
+        color: var(--text);
       }
 
       .modal-body {
-        padding: 1.25rem;
-        font-size: 0.875rem;
+        padding: var(--s5);
+        font-size: 14px;
         line-height: 1.75;
       }
 
       .modal-body h3 {
-        font-size: 0.95rem;
-        margin: 1.25rem 0 0.5rem;
-        color: var(--hud-text-1);
+        font-size: 15px;
+        margin: var(--s5) 0 var(--s2);
       }
 
       .modal-body h3:first-child {
@@ -299,51 +169,39 @@
       }
 
       .modal-body p {
-        margin: 0.4rem 0;
+        margin: var(--s2) 0;
       }
 
       .modal-body ul,
       .modal-body ol {
-        margin: 0.4rem 0;
-        padding-left: 1.25rem;
+        margin: var(--s2) 0;
+        padding-left: var(--s5);
       }
 
       .modal-body li {
-        margin: 0.3rem 0;
+        margin: var(--s1) 0;
       }
 
       .modal-body code {
-        background: var(--hud-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 0.05rem 0.35rem;
-        font-size: 0.82rem;
+        background: var(--hover);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 13px;
+        word-break: break-all;
       }
+
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >🔍</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right"></div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">股票篩選</h1>
+          <p class="page-subtitle">區間漲跌幅、成交量與連續上漲天數排行</p>
+        </div>
+      </div>
       <div class="card">
         <div class="card-title">
           <span style="display: flex; align-items: center"
@@ -352,6 +210,7 @@
               id="help-btn"
               class="help-btn"
               title="說明：這頁怎麼算出來的"
+              aria-label="說明：這頁怎麼算出來的"
             >
               ?
             </button></span
@@ -359,42 +218,39 @@
         </div>
 
         <div class="section-label">市場</div>
-        <div class="market-tabs">
-          <button class="market-tab active" data-market="twse">上市</button>
-          <button class="market-tab" data-market="tpex">上櫃</button>
-          <button class="market-tab" data-market="all">全部</button>
+        <div class="tabs">
+          <button class="tab market-tab active" data-market="twse">上市</button>
+          <button class="tab market-tab" data-market="tpex">上櫃</button>
+          <button class="tab market-tab" data-market="all">全部</button>
         </div>
 
-        <div class="controls">
-          <div class="filter-group">
-            <span class="filter-label">起始日期</span>
-            <input type="date" id="date-from" class="filter-input" />
+        <div class="toolbar">
+          <div class="filter-pill">
+            <span>起始日期</span>
+            <input type="date" id="date-from" class="filter-input" aria-label="起始日期" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">結束日期</span>
-            <input type="date" id="date-to" class="filter-input" />
+          <div class="filter-pill">
+            <span>結束日期</span>
+            <input type="date" id="date-to" class="filter-input" aria-label="結束日期" />
           </div>
-          <button class="btn-apply" id="btn-calc">套用區間</button>
-        </div>
-
-        <div class="checkbox-row">
-          <input type="checkbox" id="full-coverage" checked />
-          <label for="full-coverage"
-            >只計算區間內每個交易日都有成交的股票（避免中途下市／停牌股票因資料不全而失真）</label
-          >
+          <label class="filter-pill check" for="full-coverage">
+            <input type="checkbox" id="full-coverage" checked />
+            只計算區間內每個交易日都有成交的股票（避免中途下市／停牌股票因資料不全而失真）
+          </label>
+          <button class="btn btn-primary" id="btn-calc">套用區間</button>
         </div>
 
         <div class="hint" id="range-hint">載入資料中…</div>
 
-        <div class="section-label">排行類型</div>
-        <div class="market-tabs" id="rank-tabs">
-          <button class="market-tab active" data-rank="gain">漲幅排行</button>
-          <button class="market-tab" data-rank="loss">跌幅排行</button>
-          <button class="market-tab" data-rank="volume">成交量排行</button>
-          <button class="market-tab" data-rank="streak">
+        <div class="section-label" style="margin-top: var(--s4)">排行類型</div>
+        <div class="tabs" id="rank-tabs">
+          <button class="tab market-tab active" data-rank="gain">漲幅排行</button>
+          <button class="tab market-tab" data-rank="loss">跌幅排行</button>
+          <button class="tab market-tab" data-rank="volume">成交量排行</button>
+          <button class="tab market-tab" data-rank="streak">
             連續上漲天數排行
           </button>
-          <button class="market-tab" data-rank="high">創新高/次高</button>
+          <button class="tab market-tab" data-rank="high">創新高/次高</button>
         </div>
       </div>
 
@@ -404,13 +260,14 @@
             >漲幅排行
             <span id="result-count" class="badge badge-primary">0</span></span
           >
-          <select id="page-size" class="page-size-select">
+          <select id="page-size" class="page-size-select" aria-label="每頁筆數">
             <option value="30">每頁 30 筆</option>
             <option value="50" selected>每頁 50 筆</option>
             <option value="100">每頁 100 筆</option>
           </select>
         </div>
         <div class="range-summary" id="result-summary"></div>
+        <div id="result-state"></div>
 
         <div class="table-container">
           <table>
@@ -420,29 +277,10 @@
         </div>
         <div id="loader" class="loader" style="display: none">計算中…</div>
 
-        <div
-          id="pagination"
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--hud-border-2);
-          "
-        >
-          <button id="prev-page" class="btn-secondary">上一頁</button>
-          <span
-            id="page-info"
-            style="
-              font-size: 0.875rem;
-              color: var(--hud-text-3);
-              font-weight: 600;
-            "
-            >第 1 / 1 頁</span
-          >
-          <button id="next-page" class="btn-secondary">下一頁</button>
+        <div id="pagination" class="pagination">
+          <button id="prev-page" class="btn btn-secondary">上一頁</button>
+          <span id="page-info">第 1 / 1 頁</span>
+          <button id="next-page" class="btn btn-secondary">下一頁</button>
         </div>
       </div>
     </div>
@@ -517,11 +355,11 @@
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       let manifest = null;
+      let loadFailed = false;
       let currentMarket = "twse";
       let rankType = "gain";
       let results = [];
@@ -698,6 +536,8 @@
         // stats[market_id] = { market, id, name, rows: [{date, close, volume}] }
         const stats = new Map();
         const marketDateCounts = {};
+        let failedFetches = 0;
+        loadFailed = false;
 
         try {
           for (const market of markets) {
@@ -713,9 +553,13 @@
                   const resp = await fetch(
                     `data/${market}/daily_price/${date}.json`,
                   );
-                  if (!resp.ok) return;
+                  if (!resp.ok) {
+                    failedFetches++;
+                    return;
+                  }
                   rows = await resp.json();
                 } catch (e) {
+                  failedFetches++;
                   return;
                 }
                 for (const r of rows) {
@@ -810,7 +654,17 @@
           `區間 ${from} ～ ${to}，共 ${totalDates} 個交易日 · 符合條件個股 ${results.length} 檔`;
 
         currentPage = 1;
+        loadFailed = failedFetches > 0;
         renderTable();
+        if (loadFailed) {
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message:
+              failedFetches >= totalDates
+                ? "資料載入失敗"
+                : "部分資料載入失敗，結果可能不完整",
+            onRetry: calculate,
+          });
+        }
       }
 
       // ── columns ───────────────────────────────────────────────────────────
@@ -852,7 +706,7 @@
           key: "nDays",
           label: "交易天數",
           sortable: true,
-          style: "color:var(--hud-text-3);",
+          style: "color:var(--text-muted);",
           cell: (r) => `${r.nDays} / ${r.totalDays}`,
         });
 
@@ -906,7 +760,7 @@
               key: "streak",
               label: "連續上漲天數",
               sortable: true,
-              style: "font-weight:700;color:var(--hud-up);",
+              style: "font-weight:700;color:var(--up);",
               cell: (r) => `${r.streak} 天`,
             },
             {
@@ -999,6 +853,7 @@
 
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
+        if (!loadFailed) document.getElementById("result-state").innerHTML = "";
 
         const displayResults = getDisplayResults();
 
@@ -1039,7 +894,11 @@
         );
 
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="${columns.length + 1}" style="text-align:center;padding:2rem;color:var(--hud-text-3);font-style:italic;">無符合條件的股票，請調整區間或篩選條件</td></tr>`;
+          if (loadFailed) return;
+          UIData.renderState(document.getElementById("result-state"), "empty", {
+            title: "沒有符合的資料",
+            hint: "請調整日期或篩選條件",
+          });
           return;
         }
 
