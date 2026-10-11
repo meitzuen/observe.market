@@ -1,1 +1,10 @@
-["twse.html", "tpex.html", "index.html", "stock.html"]
+[
+  "twse.html",
+  "tpex.html",
+  "index.html",
+  "stock.html",
+  "gap.html",
+  "volume-candle.html",
+  "xiaoge-strategy.html",
+  "punish.html"
+]

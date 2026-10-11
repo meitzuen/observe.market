@@ -7,237 +7,70 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-
-      @media (max-width: 480px) {
-        .controls {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .filter-label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--hud-text-3);
-      }
-
-      .filter-range {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .filter-range span {
-        color: var(--hud-text-3);
-        font-size: 0.8rem;
-      }
-
-      .filter-input {
-        flex: 1;
-        min-width: 0;
-        padding: 0.5rem 0.6rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
-        background: var(--hud-bg);
-      }
-
-      .filter-input:focus {
-        border-color: var(--hud-text-1);
-        background: var(--hud-card-bg);
-      }
-
-      .type-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .type-tab {
-        padding: 0.5rem 1.25rem;
-        border-radius: 2px;
-        border: 2px solid var(--hud-border-2);
-        font-size: 0.9rem;
-        font-weight: 700;
-        cursor: pointer;
-        background: none;
-        color: var(--hud-text-3);
-        transition: all 0.2s;
-      }
-
-      .type-tab.active-red {
-        background: rgba(185, 28, 28, 0.08);
-        border: 2px solid rgba(185, 28, 28, 0.6);
-        color: rgba(185, 28, 28, 0.95);
-      }
-
-      .type-tab.active-black {
-        background: rgba(21, 128, 61, 0.08);
-        border: 2px solid rgba(21, 128, 61, 0.6);
-        color: rgba(21, 128, 61, 0.95);
-      }
-
-      .market-tabs {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .market-tab {
-        padding: 0.4rem 1rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        background: none;
-        color: var(--hud-text-3);
-        transition: all 0.2s;
-      }
-
-      .market-tab.active {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-        border-color: var(--hud-text-1);
-      }
-
-      .btn-apply {
-        padding: 0.6rem 1.5rem;
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-
-        border-radius: 2px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background 0.2s;
-        align-self: flex-end;
-      }
-
-      .btn-apply:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-clear {
-        padding: 0.6rem 1rem;
-        background: none;
-        color: var(--hud-text-3);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        align-self: flex-end;
-      }
-
-      .btn-clear:hover {
-        background: var(--hud-bg);
-      }
-
-      th:hover {
-        background-color: var(--hud-card-bg);
+      .toolbar .tabs {
+        margin-bottom: 0;
       }
 
       .badge-up {
-        background: transparent;
-        border: 1px solid rgba(185, 28, 28, 0.35);
-        color: rgba(185, 28, 28, 0.9);
+        background: var(--up-soft);
+        color: var(--up);
       }
 
       .badge-down {
-        background: transparent;
-        border: 1px solid rgba(21, 128, 61, 0.35);
-        color: rgba(21, 128, 61, 0.9);
+        background: var(--down-soft);
+        color: var(--down);
       }
 
       .note-box {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        margin-bottom: 1rem;
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: var(--s4);
         line-height: 1.6;
+      }
+
+      .filter-pill input {
+        flex: 1;
+        min-width: 0;
+        width: 72px;
+      }
+
+      .actions-row {
+        display: flex;
+        gap: var(--s2);
+        justify-content: flex-end;
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >🚀</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right">
-        <select id="date-picker" class="date-select"></select>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">爆量長紅黑K</h1>
+          <p class="page-subtitle">爆量長紅／長黑 K 線個股</p>
+        </div>
+        <div class="page-actions">
+          <select id="date-picker" class="date-select" aria-label="選擇日期"></select>
+        </div>
+      </div>
       <div class="card">
         <div class="card-title"><span>🔴⚫ 爆量長紅黑K 篩選設定</span></div>
-        <!-- Type + Market tabs -->
-        <div
-          style="
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-          "
-        >
-          <div class="type-tabs" style="margin-bottom: 0">
-            <button
-              class="type-tab active-red"
-              data-type="vol_candle_red"
-              id="tab-red"
-            >
+        <div class="toolbar">
+          <div class="tabs">
+            <button class="tab type-tab active" data-type="vol_candle_red" id="tab-red">
               🔴 爆量長紅K
             </button>
-            <button class="type-tab" data-type="vol_candle_black" id="tab-black">
+            <button class="tab type-tab" data-type="vol_candle_black" id="tab-black">
               ⚫ 爆量長黑K
             </button>
           </div>
-          <div class="market-tabs" style="margin-bottom: 0">
-            <button class="market-tab active" data-market="twse">上市</button>
-            <button class="market-tab" data-market="tpex">上櫃</button>
+          <div class="tabs">
+            <button class="tab market-tab active" data-market="twse">上市</button>
+            <button class="tab market-tab" data-market="tpex">上櫃</button>
           </div>
         </div>
 
@@ -247,84 +80,35 @@
           500 張的個股。
         </div>
 
-        <!-- Filters -->
-        <div class="controls">
-          <div class="filter-group">
-            <span class="filter-label">收盤價</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="close-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="close-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+        <div class="toolbar">
+          <div class="filter-pill">
+            <span>收盤價</span>
+            <input type="number" id="close-min" class="filter-input" placeholder="最小" aria-label="收盤價 最小" />
+            <span>~</span>
+            <input type="number" id="close-max" class="filter-input" placeholder="最大" aria-label="收盤價 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">成交量 (張)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="vol-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="vol-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>成交量 (張)</span>
+            <input type="number" id="vol-min" class="filter-input" placeholder="最小" aria-label="成交量 (張) 最小" />
+            <span>~</span>
+            <input type="number" id="vol-max" class="filter-input" placeholder="最大" aria-label="成交量 (張) 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">量比 (倍)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="ratio-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="ratio-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>量比 (倍)</span>
+            <input type="number" id="ratio-min" class="filter-input" placeholder="最小" aria-label="量比 (倍) 最小" />
+            <span>~</span>
+            <input type="number" id="ratio-max" class="filter-input" placeholder="最大" aria-label="量比 (倍) 最大" />
           </div>
-          <div class="filter-group">
-            <span class="filter-label">漲跌幅 (%)</span>
-            <div class="filter-range">
-              <input
-                type="number"
-                id="chg-min"
-                class="filter-input"
-                placeholder="最小"
-              />
-              <span>~</span>
-              <input
-                type="number"
-                id="chg-max"
-                class="filter-input"
-                placeholder="最大"
-              />
-            </div>
+          <div class="filter-pill">
+            <span>漲跌幅 (%)</span>
+            <input type="number" id="chg-min" class="filter-input" placeholder="最小" aria-label="漲跌幅 (%) 最小" />
+            <span>~</span>
+            <input type="number" id="chg-max" class="filter-input" placeholder="最大" aria-label="漲跌幅 (%) 最大" />
           </div>
         </div>
-        <div style="display: flex; gap: 0.75rem; justify-content: flex-end">
-          <button class="btn-clear" id="btn-clear">清除條件</button>
-          <button class="btn-apply" id="btn-apply">套用篩選</button>
+        <div class="actions-row">
+          <button class="btn btn-secondary" id="btn-clear">清除條件</button>
+          <button class="btn btn-primary" id="btn-apply">套用篩選</button>
         </div>
       </div>
 
@@ -367,39 +151,20 @@
             <tbody id="result-list"></tbody>
           </table>
         </div>
+        <div id="result-state"></div>
         <div id="loader" class="loader" style="display: none">載入中...</div>
 
-        <div
-          id="pagination"
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--hud-border-2);
-          "
-        >
-          <button id="prev-page" class="btn-secondary">上一頁</button>
-          <span
-            id="page-info"
-            style="
-              font-size: 0.875rem;
-              color: var(--hud-text-3);
-              font-weight: 600;
-            "
-            >第 1 / 1 頁</span
-          >
-          <button id="next-page" class="btn-secondary">下一頁</button>
+        <div id="pagination" class="pagination">
+          <button id="prev-page" class="btn btn-secondary">上一頁</button>
+          <span id="page-info">第 1 / 1 頁</span>
+          <button id="next-page" class="btn btn-secondary">下一頁</button>
         </div>
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       let manifest = null;
       let rawData = [];
       let filteredData = [];
@@ -569,9 +334,9 @@
         const isRed = currentType === "vol_candle_red";
 
         document.getElementById("tab-red").className =
-          "type-tab" + (isRed ? " active-red" : "");
+          "tab type-tab" + (isRed ? " active" : "");
         document.getElementById("tab-black").className =
-          "type-tab" + (!isRed ? " active-black" : "");
+          "tab type-tab" + (!isRed ? " active" : "");
 
         const badge = isRed ? "badge-up" : "badge-down";
         document.getElementById("result-title").innerHTML =
@@ -595,6 +360,7 @@
       function renderTable() {
         const tbody = document.getElementById("result-list");
         tbody.innerHTML = "";
+        document.getElementById("result-state").innerHTML = "";
 
         const countEl = document.getElementById("result-count");
         if (countEl) countEl.textContent = filteredData.length;
@@ -648,7 +414,10 @@
         );
 
         if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--hud-text-3);font-style:italic;">無符合條件的股票</td></tr>`;
+          UIData.renderState(document.getElementById("result-state"), "empty", {
+            title: "沒有符合的資料",
+            hint: "請調整日期或篩選條件",
+          });
           return;
         }
 
@@ -669,10 +438,10 @@
             </td>
             <td class="${priceClass}" style="font-size:1rem;">${s.close}</td>
             <td class="${priceClass}" style="font-weight:800;">${chgPrefix}${s.change_percent?.toFixed(2) ?? "-"}%</td>
-            <td style="color:var(--hud-text-3);">${volK} 張</td>
-            <td style="color:var(--hud-text-3);">${avgVolK} 張</td>
+            <td style="color:var(--text-muted);">${volK} 張</td>
+            <td style="color:var(--text-muted);">${avgVolK} 張</td>
             <td class="${priceClass}" style="font-weight:800;">${s.vol_ratio?.toFixed(2) ?? "-"}x</td>
-            <td style="color:var(--hud-text-3);">${s.body_ratio?.toFixed(2) ?? "-"}</td>
+            <td style="color:var(--text-muted);">${s.body_ratio?.toFixed(2) ?? "-"}</td>
           `;
           tbody.appendChild(tr);
         });
