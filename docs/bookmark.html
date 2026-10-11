@@ -7,352 +7,168 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      .logo {
-        width: 36px;
-        height: 36px;
-        border-radius: 2px;
-        flex-shrink: 0;
-      }
-
-      @media (max-width: 480px) {
-        h1 span.title-text {
-          display: none;
-        }
-      }
-
-      .page-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 1.25rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 1px solid var(--hud-border-2);
-      }
-
-      .page-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin: 0 0 0.6rem;
-        color: var(--hud-text-1);
-      }
-
-      .page-eyebrow {
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        color: var(--bm-accent);
-        text-transform: uppercase;
-        margin: 0 0 0.4rem;
-      }
-
-      .page-desc {
-        font-size: 0.95rem;
-        color: var(--hud-text-3);
-        margin: 0;
-        max-width: 46rem;
-      }
-
-      .btn-add {
-        background: var(--bm-accent);
-        color: var(--hud-text-1);
-        white-space: nowrap;
-      }
-
-      .btn-add:hover {
-        background: var(--bm-accent-dark);
-      }
-
-      .btn-primary {
-        background: transparent;
-        border: 1px solid var(--hud-border-1);
-        color: var(--hud-text-1);
-      }
-
-      .btn-primary:hover {
-        background: var(--hud-hover-bg);
-      }
-
-      .btn-danger {
-        background: transparent;
-        color: var(--hud-up);
-        border: 1px solid var(--hud-up);
-        padding: 0.25rem 0.6rem;
-        font-size: 0.8rem;
-      }
-
-      .btn-danger:hover {
-        background: transparent;
-        border: 1px solid rgba(239, 68, 68, 0.35);
-        color: rgba(239, 68, 68, 0.9);
-      }
-
-      .btn-secondary:hover {
-        background: var(--hud-bg);
-        color: var(--hud-text-1);
-      }
-
-      .btn-icon {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.2rem 0.35rem;
-        font-size: 0.85rem;
-        line-height: 1;
-        border-radius: 2px;
-        transition:
-          background 0.15s,
-          opacity 0.15s;
-      }
-
-      .btn-icon:hover {
-        background: var(--hud-bg);
-      }
-
-      /* Add / edit panel */
       .form-panel {
         display: none;
-        background: var(--hud-card-bg);
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 1.25rem;
-      }
-
-      .form-panel h2 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 1rem;
-        color: var(--hud-text-1);
+        margin-bottom: var(--s4);
       }
 
       .form-row {
         display: flex;
-        gap: 0.75rem;
         flex-wrap: wrap;
+        gap: var(--s3);
         align-items: flex-end;
       }
 
       .form-row .field {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
+        gap: var(--s1);
+        flex: 1 1 200px;
+        min-width: 0;
       }
 
-      .form-row label {
-        font-size: 0.8rem;
-        color: var(--hud-text-3);
-        font-weight: 500;
+      .form-row .field label {
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
-      .form-row input {
-        padding: 0.5rem 0.75rem;
-        border: 1px solid var(--hud-border-2);
-        border-radius: 2px;
-        font-size: 0.9rem;
-        font-family: inherit;
-        color: var(--hud-text-1);
-        background: var(--hud-bg);
-        transition: border-color 0.15s;
-        outline: none;
+      .form-row .field input {
+        width: 100%;
       }
 
-      .form-row input:focus {
-        border-color: var(--bm-accent);
-      }
-
-      .form-row input#bm-name {
-        width: 160px;
-      }
-
-      .form-row input#bm-url {
-        width: 260px;
-      }
-
-      .form-row input#bm-note {
-        width: 160px;
+      .form-row .field.field-actions {
+        flex: 0 0 auto;
       }
 
       .form-actions {
         display: flex;
-        gap: 0.5rem;
+        gap: var(--s2);
       }
 
       .error-msg {
-        color: var(--hud-up);
-        font-size: 0.85rem;
-        margin-top: 0.6rem;
+        margin-top: var(--s2);
+        color: var(--up);
+        font-size: 13px;
       }
 
-      /* Bookmark grid */
       .bookmark-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: var(--s4);
       }
 
       .bookmark-card {
         position: relative;
-        background: var(--bm-card-bg);
-        border: none;
-        border-radius: 2px;
-        padding: 1rem;
-        transition: background 0.15s;
-      }
-
-      .bookmark-card:hover {
-        background: color-mix(in srgb, var(--bm-accent) 6%, var(--bm-card-bg));
+        min-width: 0;
       }
 
       .bookmark-card-main {
         display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
+        align-items: center;
+        gap: var(--s3);
+        min-width: 0;
       }
 
       .bookmark-icon {
-        flex-shrink: 0;
-        width: 2.75rem;
-        height: 2.75rem;
-        border-radius: var(--hud-radius);
-        border: 1px solid var(--hud-border-1);
-        background: var(--hud-card-bg);
-        color: var(--hud-text-1);
-        font-weight: 700;
-        font-size: 1.05rem;
+        flex: 0 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius);
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 700;
       }
 
       .bookmark-card-body {
         min-width: 0;
-        flex: 1;
-        padding-right: 3.5rem;
       }
 
       .bookmark-name {
         display: block;
-        font-weight: 700;
-        font-size: 1rem;
-        color: var(--hud-text-1);
-        text-decoration: none;
-        margin: 0 0 0.25rem;
-        word-break: break-word;
-      }
-
-      .bookmark-name:hover {
-        color: var(--bm-accent);
-        text-decoration: underline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 600;
       }
 
       .bookmark-url {
         display: flex;
         align-items: center;
-        gap: 0.3rem;
-        font-size: 0.78rem;
-        color: var(--bm-accent);
-        word-break: break-all;
-      }
-
-      .bookmark-url svg {
-        flex-shrink: 0;
-        opacity: 0.85;
+        gap: var(--s1);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text-muted);
+        font-size: 12px;
       }
 
       .bookmark-note {
-        font-size: 0.85rem;
-        color: var(--hud-text-3);
-        white-space: pre-wrap;
-        word-break: break-word;
-        margin: 0.6rem 0 0;
+        margin-top: var(--s3);
+        padding-top: var(--s3);
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 13px;
+        overflow-wrap: anywhere;
       }
 
       .bookmark-actions {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: var(--s2);
+        right: var(--s2);
         display: flex;
-        gap: 0.35rem;
+        gap: var(--s1);
       }
 
-      .bookmark-actions .btn-icon {
-        color: var(--bm-accent);
+      .btn-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        background: none;
+        border: 0;
+        border-radius: var(--radius);
+        color: var(--text-muted);
+        cursor: pointer;
       }
 
-      .bookmark-actions .btn-icon:hover {
-        background: var(--bm-accent-tint);
-      }
-
-      .empty-state {
-        text-align: center;
-        padding: 3rem 1rem;
-        color: var(--hud-text-3);
-      }
-
-      .empty-state .icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .loading {
-        text-align: center;
-        padding: 2rem;
-        color: var(--hud-text-3);
+      .btn-icon:hover {
+        background: var(--hover);
+        color: var(--text);
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >📈</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-      <div class="header-right"></div>
-    </header>
+    <header id="site-header"></header>
 
-    <main class="container">
+    <main class="container" id="main">
       <div class="page-header">
         <div>
-          <p class="page-eyebrow">Bookmarks</p>
-          <h2 class="page-title">🔖 常用連結</h2>
-          <p class="page-desc">
-            收藏常看的股票頁面、看盤網址與研究筆記，全部集中在這裡。
-          </p>
+          <h1 class="page-title">常用連結</h1>
+          <p class="page-subtitle">常用外部連結</p>
         </div>
-        <button
-          class="btn btn-add"
-          onclick="toggleFormPanel()"
-          id="toggle-form-btn"
-          style="display: none"
-        >
-          ＋ 新增連結
-        </button>
+        <div class="page-actions">
+          <button
+            class="btn btn-primary"
+            onclick="toggleFormPanel()"
+            id="toggle-form-btn"
+            style="display: none"
+          >
+            ＋ 新增連結
+          </button>
+        </div>
       </div>
 
       <!-- Add / edit panel -->
-      <div class="form-panel" id="form-panel">
-        <h2 id="form-panel-title">新增連結</h2>
+      <div class="card form-panel" id="form-panel">
+        <h2 class="card-title" id="form-panel-title">新增連結</h2>
         <div class="form-row">
           <div class="field">
             <label for="bm-name">名稱</label>
@@ -366,13 +182,9 @@
             <label for="bm-note">備註</label>
             <input type="text" id="bm-note" placeholder="選填" />
           </div>
-          <div class="field">
-            <label
-              style="visibility: hidden; font-size: 0.8rem; line-height: 1.2"
-              >&nbsp;</label
-            >
+          <div class="field field-actions">
             <div class="form-actions">
-              <button class="btn btn-add" id="form-submit-btn">新增</button>
+              <button class="btn btn-primary" id="form-submit-btn">新增</button>
               <button class="btn btn-secondary" onclick="closeFormPanel()">
                 取消
               </button>
@@ -382,27 +194,21 @@
         <div id="form-error" class="error-msg" style="display: none"></div>
       </div>
 
-      <div class="loading" id="loading-msg">載入中…</div>
+      <div id="bookmark-state"></div>
+
+      <div class="loader" id="loading-msg">載入中…</div>
 
       <div class="bookmark-grid" id="bookmark-grid" style="display: none"></div>
 
-      <div id="empty-state" class="empty-state" style="display: none">
-        <div class="icon">🔖</div>
-        <div>尚無常用連結</div>
-        <div
-          style="font-size: 0.85rem; margin-top: 0.4rem"
-          id="empty-hint"
-        ></div>
-      </div>
+      <div id="empty-state" style="display: none"></div>
     </main>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
       const isManage =
         new URLSearchParams(location.search).get("admin") === "True";
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -582,15 +388,19 @@
 
       function renderBookmarks() {
         document.getElementById("loading-msg").style.display = "none";
+        document.getElementById("bookmark-state").innerHTML = "";
         const grid = document.getElementById("bookmark-grid");
         const emptyState = document.getElementById("empty-state");
 
         if (bookmarks.length === 0) {
           grid.style.display = "none";
           emptyState.style.display = "block";
-          document.getElementById("empty-hint").textContent = isManage
-            ? "點擊右上方「＋ 新增連結」開始新增"
-            : "";
+          UIData.renderState(emptyState, "empty", {
+            title: "尚無常用連結",
+            hint: isManage ? "點擊右上方「＋ 新增連結」開始新增" : "",
+          });
+          const hintEl = emptyState.querySelector(".empty-hint");
+          if (hintEl) hintEl.id = "empty-hint";
           return;
         }
 
@@ -609,7 +419,7 @@
                  <button class="btn-icon" title="刪除" onclick='deleteBookmark(${JSON.stringify(id)})'>${ICON_TRASH}</button>
                </div>`
               : "";
-            return `<div class="bookmark-card">
+            return `<div class="card bookmark-card">
             ${actions}
             <div class="bookmark-card-main">
               <div class="bookmark-icon">${escHtml((bm.name || "?").trim().charAt(0) || "?")}</div>
@@ -651,18 +461,40 @@
         });
       });
 
-      (async function init() {
-        if (isManage) {
-          document.getElementById("toggle-form-btn").style.display =
-            "inline-block";
-        }
+      let loadFailed = false;
+
+      async function loadBookmarks() {
+        const stateEl = document.getElementById("bookmark-state");
+        const loadingEl = document.getElementById("loading-msg");
+        loadFailed = false;
+        stateEl.innerHTML = "";
+        loadingEl.style.display = "";
+        document.getElementById("bookmark-grid").style.display = "none";
+        document.getElementById("empty-state").style.display = "none";
         try {
           bookmarks = await apiGetBookmarks();
         } catch (e) {
           console.error("無法載入常用連結：", e.message);
           bookmarks = [];
+          loadFailed = true;
+        }
+        if (loadFailed) {
+          loadingEl.style.display = "none";
+          UIData.renderState(stateEl, "error", {
+            message: "資料載入失敗",
+            onRetry: loadBookmarks,
+          });
+          return;
         }
         renderBookmarks();
+      }
+
+      (async function init() {
+        if (isManage) {
+          document.getElementById("toggle-form-btn").style.display =
+            "inline-block";
+        }
+        await loadBookmarks();
       })();
     </script>
   </body>
