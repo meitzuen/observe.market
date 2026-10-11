@@ -622,7 +622,43 @@
         return result;
       }
 
+      // Set when any primary data fetch of the current load fails; the error
+      // banner (Retry re-runs the load for the CURRENT date-picker value) shows.
+      let loadFailed = false;
+
+      function markLoadFailed() {
+        loadFailed = true;
+        ["gap-list", "punish-list"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el && el.querySelector(".loader")) {
+            el.innerHTML =
+              '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center;">—</div>';
+          }
+        });
+        UIData.renderState(document.getElementById("result-state"), "error", {
+          message: "資料載入失敗",
+          onRetry: () => loadStockData(document.getElementById("date-picker").value),
+        });
+      }
+
+      // Fetch one market's JSON array; a failure flags the load as failed.
+      function fetchMarketRows(m, path) {
+        return fetch(path)
+          .then((r) => {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+          })
+          .then((arr) => arr.map((s) => ({ ...s, market: m })))
+          .catch((e) => {
+            console.error("Error loading " + path + ":", e);
+            loadFailed = true;
+            return [];
+          });
+      }
+
       async function loadStockData(date) {
+        loadFailed = false;
+        document.getElementById("result-state").innerHTML = "";
         updateSummary(date);
         document.getElementById("stock-list").innerHTML = "";
         document.getElementById("stock-loader").style.display = "flex";
@@ -636,10 +672,7 @@
             MARKETS.map((m) => {
               const dates = fullManifest[m]?.daily_price || [];
               if (!dates.includes(date)) return Promise.resolve([]);
-              return fetch(`data/${m}/daily_price/${date}.json`)
-                .then((r) => (r.ok ? r.json() : []))
-                .then((arr) => arr.map((s) => ({ ...s, market: m })))
-                .catch(() => []);
+              return fetchMarketRows(m, `data/${m}/daily_price/${date}.json`);
             }),
           );
           currentStockData = results.flat();
@@ -655,8 +688,10 @@
           filterStocks();
           await loadGapData(date);
           await loadPunishData(date);
+          if (loadFailed) markLoadFailed();
         } catch (error) {
           console.error("Error loading data:", error);
+          markLoadFailed();
         } finally {
           document.getElementById("stock-loader").style.display = "none";
         }
@@ -687,14 +722,12 @@
           MARKETS.map((m) => {
             const dates = fullManifest[m]?.[type] || [];
             if (!dates.includes(date)) return Promise.resolve([]);
-            return fetch(`data/${m}/${type}/${date}.json`)
-              .then((r) => (r.ok ? r.json() : []))
-              .then((arr) => arr.map((s) => ({ ...s, market: m })))
-              .catch(() => []);
+            return fetchMarketRows(m, `data/${m}/${type}/${date}.json`);
           }),
         );
         currentGapData = results.flat();
         renderGapList();
+        if (loadFailed) markLoadFailed();
       }
 
       async function loadPunishData(date) {
@@ -702,10 +735,7 @@
           MARKETS.map((m) => {
             const dates = fullManifest[m]?.daily_punish || [];
             if (!dates.includes(date)) return Promise.resolve([]);
-            return fetch(`data/${m}/daily_punish/${date}.json`)
-              .then((r) => (r.ok ? r.json() : []))
-              .then((arr) => arr.map((s) => ({ ...s, market: m })))
-              .catch(() => []);
+            return fetchMarketRows(m, `data/${m}/daily_punish/${date}.json`);
           }),
         );
         currentPunishData = results.flat();

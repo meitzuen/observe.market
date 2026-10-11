@@ -33,7 +33,7 @@
       label: "選股",
       items: [
         { href: "screener.html", label: "股票篩選", desc: "區間漲跌幅與成交量排行" },
-        { href: "watchlist.html", label: "精選類股", desc: "依類股瀏覽精選股票" },
+        { href: "watchlist.html", label: "精選類股", desc: "我的自選股清單與即時價格" },
       ],
     },
     {
@@ -377,7 +377,7 @@
           <div><span class="footer-title">Market Observer 市場觀測站</span></div>
           <div class="footer-asof">資料日期載入中…</div>
           <div class="footer-disclaimer">本站資訊僅供參考，不構成任何投資建議，投資一定有風險，請謹慎評估並自行承擔投資決策之風險。<br>資料來源：臺灣證券交易所（TWSE）、證券櫃買中心（TPEx）公開資訊。</div>
-          <div>© ${new Date().getFullYear()} Market Observer · <a href="https://github.com/mzuen/observe.market">GitHub</a></div>
+          <div>© ${new Date().getFullYear()} Market Observer · <a href="https://github.com/meitzuen/observe.market">GitHub</a></div>
         </div>`;
     }
 

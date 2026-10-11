@@ -1,6 +1,6 @@
 /* ==========================================================================
    Market Observer design system — modern fintech, light theme.
-   Tokens first; dark mode later = override :root values only.
+   Tokens first. Grid colours in chart-theme.js are fixed light-theme values for now.
    ========================================================================== */
 
 :root {
