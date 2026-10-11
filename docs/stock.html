@@ -273,19 +273,36 @@
         return `${year}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`;
       }
 
+      // Escape any text that originates from the URL (or other untrusted
+      // input) before it reaches innerHTML / attributes.
+      function esc(v) {
+        return String(v).replace(/[&<>"']/g, (c) => ({
+          "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+        })[c]);
+      }
+
       function showEmptyState(title, message, backHref) {
         document.getElementById("content-area").innerHTML = `
           <div class="card">
             <div class="empty-state">
-              <h2 style="color: var(--text); margin-bottom: 0.5rem;">${title}</h2>
-              <p>${message}</p>
-              <a href="${backHref}">&larr; 返回股票列表</a>
+              <h2 style="color: var(--text); margin-bottom: 0.5rem;">${esc(title)}</h2>
+              <p>${esc(message)}</p>
+              <a href="${esc(backHref)}">&larr; 返回股票列表</a>
             </div>
           </div>
         `;
       }
 
+      function showLoadError() {
+        UIData.renderState(document.getElementById("content-area"), "error", {
+          message: "資料載入失敗",
+          onRetry: () => init(),
+        });
+      }
+
       async function init() {
+        document.getElementById("content-area").innerHTML =
+          '<div class="loader">載入中...</div>';
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
 
@@ -301,10 +318,16 @@
         let stockInfo;
         try {
           const infoResponse = await fetch("data/stock_info.json");
+          if (!infoResponse.ok) throw new Error("HTTP " + infoResponse.status);
           const allStockInfo = await infoResponse.json();
-          stockInfo = allStockInfo[id];
+          // own-property check: ids like "constructor" must not resolve
+          stockInfo = Object.prototype.hasOwnProperty.call(allStockInfo, id)
+            ? allStockInfo[id]
+            : undefined;
         } catch (e) {
           console.error("Error loading stock_info.json:", e);
+          showLoadError();
+          return;
         }
 
         if (!stockInfo) {
@@ -327,10 +350,13 @@
           );
           if (historyResponse.ok) {
             history = await historyResponse.json();
+          } else if (historyResponse.status !== 404) {
+            throw new Error("HTTP " + historyResponse.status);
           }
         } catch (e) {
           console.error("Error loading stock_history:", e);
-          history = [];
+          showLoadError();
+          return;
         }
 
         if (!history || history.length === 0) {

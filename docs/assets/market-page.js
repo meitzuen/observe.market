@@ -222,7 +222,29 @@ function updateSummary(date) {
     Math.round(summaryData.transactions / 10000) + " 萬";
 }
 
+// Set when any primary data fetch of the current load fails; the error banner
+// (with Retry re-running the load for the CURRENT date-picker value) is shown.
+let loadFailed = false;
+
+function markLoadFailed() {
+  loadFailed = true;
+  // sidebars must not stay on their "載入中..." placeholder
+  ["gap-list", "punish-list"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el && el.querySelector(".loader")) {
+      el.innerHTML =
+        '<div style="padding: 1.5rem; color: var(--text-muted); text-align: center;">—</div>';
+    }
+  });
+  UIData.renderState(document.getElementById("result-state"), "error", {
+    message: "資料載入失敗",
+    onRetry: () => loadStockData(document.getElementById("date-picker").value),
+  });
+}
+
 async function loadStockData(date) {
+  loadFailed = false;
+  document.getElementById("result-state").innerHTML = "";
   updateSummary(date);
   document.getElementById("stock-list").innerHTML = "";
   document.getElementById("stock-loader").style.display = "flex";
@@ -235,6 +257,7 @@ async function loadStockData(date) {
     const response = await fetch(
       `data/${currentMarket}/daily_price/${date}.json`,
     );
+    if (!response.ok) throw new Error("HTTP " + response.status);
     currentStockData = await response.json();
 
     // Use pre-computed change/change_percent from the API data
@@ -252,6 +275,7 @@ async function loadStockData(date) {
       const punishResponse = await fetch(
         `data/${currentMarket}/daily_punish/${date}.json`,
       );
+      if (!punishResponse.ok) throw new Error("HTTP " + punishResponse.status);
       currentPunishData = await punishResponse.json();
       renderPunishList();
     } else {
@@ -262,6 +286,9 @@ async function loadStockData(date) {
     }
   } catch (error) {
     console.error("Error loading data:", error);
+    currentStockData = [];
+    filterStocks();
+    markLoadFailed();
   } finally {
     document.getElementById("stock-loader").style.display = "none";
   }
@@ -293,12 +320,14 @@ async function loadGapData(date) {
       const gapResponse = await fetch(
         `data/${currentMarket}/${type}/${date}.json`,
       );
+      if (!gapResponse.ok) throw new Error("HTTP " + gapResponse.status);
       currentGapData = await gapResponse.json();
       renderGapList();
     } catch (e) {
       console.error(`Error loading ${type}:`, e);
       currentGapData = [];
       renderGapList();
+      markLoadFailed();
     }
   } else {
     currentGapData = [];

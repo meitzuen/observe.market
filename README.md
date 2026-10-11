@@ -4,7 +4,7 @@
 
 ## 專案特色
 
-- **現代化 UI 設計**：現代化金融風格介面（Inter／Noto Sans TC），共用頂部導覽、全站搜尋（⌘K / Ctrl+K）與「資料截至」提示；支援手機版。導覽列依「市場」「策略」「權證」「選股」「個人」分類，方便快速切換頁面。
+- **現代化 UI 設計**：現代化金融風格介面（Inter／Noto Sans TC），共用頂部導覽、全站搜尋（⌘K / Ctrl+K）與「資料截至」提示；支援手機版。導覽列依「市場」「策略」「權證」「選股」「個人」「當沖」分類，方便快速切換頁面。
 - **上市／上櫃雙市場**：分別追蹤 TWSE 上市與 TPEx 上櫃個股，資料結構一致。
 - **數據視覺化**：整合 Chart.js 展示大盤趨勢，提供即時漲跌狀態與成交資訊。
 - **進階篩選功能**：支援搜尋、價格區間過濾及成交量篩選，快速鎖定目標個股。
@@ -79,7 +79,7 @@ observe.market/
 4. **VCP 策略 (`src/vcp_strategy.py`)**：以 zigzag 抓取價格波段、計算收縮型態分數，輸出至 `vcp/{date}.json`，供 `vcp.html` 選股。
 5. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
 6. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
-7. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
+7. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人／當沖」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
 
 ## 本地開發
 

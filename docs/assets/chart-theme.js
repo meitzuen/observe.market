@@ -26,7 +26,8 @@
   }
 
   // Resolves chart colours from the design tokens in ui.css. Reads them at
-  // call time so a future dark theme works.
+  // call time. Note: gridH/gridV are fixed light-theme values for now (not
+  // token-driven), so a dark theme would need those two made themeable.
   function colors() {
     return {
       seriesA: cssVar("--accent", FALLBACK.seriesA),
