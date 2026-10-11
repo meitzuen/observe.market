@@ -7,106 +7,47 @@
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/nerd-grid.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
     <style>
-      .controls {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
-        align-items: center;
-        background: var(--hud-bg);
-        padding: 1rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-      }
-
-      .control-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .control-label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--hud-text-3);
-      }
-
-      .select-input,
-      .date-input {
-        padding: 0.5rem 0.75rem;
-        border-radius: 2px;
-        border: 1px solid var(--hud-border-2);
-        background: var(--hud-card-bg);
-        color: var(--hud-text-1);
-        font-size: 0.875rem;
-        outline: none;
-        color-scheme: light;
-      }
-
-      .select-input:focus,
-      .date-input:focus {
-        border-color: var(--hud-text-1);
-      }
-
-      th:hover {
-        background-color: var(--hud-card-bg);
-      }
-
-      [v-cloak] {
-        display: none;
+      .filter-pill select,
+      .filter-pill input[type="date"] {
+        width: auto;
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          id="header-logo"
-          src="assets/logo.png"
-          alt="Logo"
-          style="height: 40px; width: auto"
-          onerror="
-            this.style.display = 'none';
-            document.getElementById('header-emoji').style.display = 'inline';
-          "
-        />
-        <span id="header-emoji" style="display: none; font-size: 1.5rem"
-          >⚖️</span
-        >
-        <h1><span class="title-text">Market Observer</span></h1>
-        <nav class="nav-bar" id="nav-bar"></nav>
-      </div>
-    </header>
+    <header id="site-header"></header>
 
-    <div class="container">
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">處置股票</h1>
+          <p class="page-subtitle">最新處置股票名單</p>
+        </div>
+      </div>
       <div class="card">
         <div class="card-title">
           <span>處置股票紀錄</span>
         </div>
 
-        <div class="controls">
-          <div class="control-item">
-            <span class="control-label">市場:</span>
+        <div class="toolbar">
+          <label class="filter-pill">
+            <span>市場:</span>
             <select id="market-select" class="select-input">
               <option value="twse">上市 (TWSE)</option>
               <option value="tpex">上櫃 (TPEX)</option>
             </select>
-          </div>
-          <div class="control-item">
-            <span class="control-label">起始日期:</span>
+          </label>
+          <label class="filter-pill">
+            <span>起始日期:</span>
             <input type="date" id="start-date" class="date-input" />
-          </div>
-          <div class="control-item">
-            <span class="control-label">結束日期:</span>
+          </label>
+          <label class="filter-pill">
+            <span>結束日期:</span>
             <input type="date" id="end-date" class="date-input" />
-          </div>
-          <button id="fetch-btn" class="btn">查詢</button>
+          </label>
+          <button id="fetch-btn" class="btn btn-primary">查詢</button>
         </div>
 
         <div class="table-container">
@@ -142,17 +83,18 @@
             </tbody>
           </table>
         </div>
+        <div id="punish-state"></div>
         <div id="loader" class="loader" style="display: none">載入中...</div>
       </div>
     </div>
 
-    <script src="assets/nerd-grid.js"></script>
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
     <script>
-      NerdGrid.initThemeToggle();
-      NerdGrid.initNav();
       let punishData = [];
       let sortColumn = "publish_date";
       let sortDirection = "desc";
+      let fetchFailed = false;
 
       async function init() {
         try {
@@ -197,9 +139,12 @@
 
         const loader = document.getElementById("loader");
         const tbody = document.getElementById("punish-list");
+        const stateEl = document.getElementById("punish-state");
 
         loader.style.display = "flex";
         tbody.innerHTML = "";
+        stateEl.innerHTML = "";
+        fetchFailed = false;
         punishData = [];
 
         try {
@@ -209,7 +154,11 @@
           punishData = await resp.json();
         } catch (e) {
           console.error(`Error fetching punishment data:`, e);
-          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--hud-up);">載入失敗: ${e.message}</td></tr>`;
+          fetchFailed = true;
+          UIData.renderState(stateEl, "error", {
+            message: "資料載入失敗",
+            onRetry: fetchData,
+          });
         } finally {
           loader.style.display = "none";
           renderTable();
@@ -262,14 +211,20 @@
                 <td>${item.accumulated}</td>
                 <td>${item.from}</td>
                 <td>${item.to}</td>
-                <td style="font-size: 0.8rem; color: var(--hud-text-3);">${item.condition}</td>
+                <td style="font-size: 0.8rem; color: var(--text-muted);">${item.condition}</td>
             `;
           tbody.appendChild(tr);
         });
 
-        if (punishData.length === 0) {
-          tbody.innerHTML =
-            '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: var(--hud-text-3); font-style: italic;">無處置紀錄</td></tr>';
+        if (!fetchFailed) {
+          const stateEl = document.getElementById("punish-state");
+          stateEl.innerHTML = "";
+          if (punishData.length === 0) {
+            UIData.renderState(stateEl, "empty", {
+              title: "沒有符合的資料",
+              hint: "請調整日期或篩選條件",
+            });
+          }
         }
       }
 
