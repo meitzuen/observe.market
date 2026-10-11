@@ -72,3 +72,7 @@ test("isStale: more than 3 calendar days is stale, exactly 3 is not", () => {
 test("isStale: unknown latest date is not reported as stale", () => {
   assert.equal(Shell.isStale(null, "2026-10-09"), false);
 });
+
+test("mount is exported as a function (no-op outside the browser)", () => {
+  assert.equal(typeof Shell.mount, "function");
+});
