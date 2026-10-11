@@ -1,8 +1,18 @@
 {
-  "index.html": { "mobile": 69 },
-  "twse.html": { "mobile": 21 },
-  "gap.html": { "mobile": 112 },
-  "volume-candle.html": { "mobile": 112 },
-  "vcp.html": { "desktop": 192, "mobile": 112 },
-  "day-trade-calculator.html": { "mobile": 111 }
+  "index.html": {
+    "mobile": 69
+  },
+  "gap.html": {
+    "mobile": 112
+  },
+  "volume-candle.html": {
+    "mobile": 112
+  },
+  "vcp.html": {
+    "desktop": 192,
+    "mobile": 112
+  },
+  "day-trade-calculator.html": {
+    "mobile": 111
+  }
 }
