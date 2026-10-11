@@ -4,7 +4,7 @@ const path = require("node:path");
 
 const pages = require("./pages.json");
 const migrated = new Set(require("./migrated.json"));
-const baselineOverflow = new Set(require("./baseline-overflow.json"));
+const baselineOverflow = require("./baseline-overflow.json");
 const known404 = require("./known-404.json").map((s) => new RegExp(s));
 const ORIGIN = "http://127.0.0.1:4173";
 
@@ -35,9 +35,13 @@ for (const file of pages) {
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - window.innerWidth,
     );
-    if (migrated.has(file) || !baselineOverflow.has(file)) {
-      expect(overflow, "horizontal page overflow (px)").toBeLessThanOrEqual(1);
-    }
+    const ceiling = migrated.has(file)
+      ? 1
+      : Math.max(1, baselineOverflow[file]?.[testInfo.project.name] ?? 1);
+    expect(
+      overflow,
+      `horizontal page overflow (px), ceiling ${ceiling}`,
+    ).toBeLessThanOrEqual(ceiling);
 
     if (migrated.has(file)) {
       await expect(page.locator("#site-header .brand")).toBeVisible();
