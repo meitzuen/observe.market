@@ -54,6 +54,15 @@ jobs:
           python src/generate_manifest.py
           python src/fetch_stock_info.py
 
+      - name: Check published site size
+        # GitHub Pages limits a published site to 1 GB; warn well before that.
+        run: |
+          SIZE_MB=$(du -sm docs | cut -f1)
+          echo "docs/ size: ${SIZE_MB} MB (Pages limit: 1024 MB)" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$SIZE_MB" -ge 700 ]; then
+            echo "::warning title=Site size::docs/ is ${SIZE_MB} MB, approaching the 1 GB GitHub Pages limit. Time to archive old data."
+          fi
+
       - name: Commit and Push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
