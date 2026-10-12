@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Code / UI changes merged to main
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "tests/ui/**"
+      - ".github/workflows/deploy-pages.yml"
+  # Data refresh: pushes made with GITHUB_TOKEN do not trigger `push` workflows,
+  # so deploy after the data job finishes instead.
+  workflow_run:
+    workflows: ["Update Stock Data"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer run supersedes a queued one but never cancels a running deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    # Skip when the data job failed
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tests/ui/package-lock.json
+      - run: npm ci
+        working-directory: tests/ui
+      - run: npx playwright install --with-deps chromium
+        working-directory: tests/ui
+      - run: npm run test:unit
+        working-directory: tests/ui
+      - run: npm test
+        working-directory: tests/ui
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
