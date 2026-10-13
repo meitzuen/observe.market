@@ -7,7 +7,10 @@
   - 做空策略（xiaoge_short、gap_drop）報酬取負號
   - 當日漲停鎖死（開盤 >= 前收 +9.5%）無法買進、跌停鎖死無法放空，該筆排除
   - 資料未還原權息：持有期間任一日單日變動超過 ±10.5% 視為除權息／分割，該筆排除
-  - 基準為「同進出場日、全市場等權平均」，用來看策略是否贏過大盤
+  - 基準為「同進出場日、全市場等權平均」（不含成本）。
+    超額(淨) = 策略報酬 - 基準 - 成本；毛超額 = 策略報酬 - 基準，看選股本身有無優勢
+  - 累計／MDD 為每日 cohort 等權、攤成 1/max(持有日,1) 資金後的「單利加總」，
+    非複利；持有 1 日每天全額換手，成本累計可能超過 -100%，請看與基準的相對差
 
 用法：
     python src/backtest.py
@@ -125,6 +128,22 @@ def summarize(rets, excess, cost):
     }
 
 
+def equity_stats(daily, all_dates, hold, cost):
+    """daily: {date: [單筆報酬...]}；每日 cohort 取等權平均，並攤成 1/max(hold,1) 的資金。
+
+    回傳 (累計報酬, 最大回撤)；無訊號的日子報酬為 0。
+    """
+    scale = 1 / max(hold, 1)
+    cum = peak = mdd = 0.0
+    for d in all_dates:
+        rs = daily.get(d)
+        if rs:
+            cum += (sum(rs) / len(rs) - cost) * scale
+        peak = max(peak, cum)
+        mdd = min(mdd, cum - peak)
+    return cum, mdd
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strategies", nargs="+", default=list(STRATEGIES), choices=list(STRATEGIES))
@@ -142,7 +161,11 @@ def main():
     data = {m: load_prices(m) for m in MARKETS}
     print(f"來回成本 {cost:.3%}（手續費 {args.fee:.4%} x2 + 證交稅 {args.tax:.2%} + 滑價 {args.slippage:.2%} x2）")
     print(f"流動性門檻：成交金額 >= {args.min_amount:,.0f}\n")
-    head = f"{'策略':<15}{'進場':<10}{'持有':>4}{'筆數':>7}{'勝率':>8}{'平均':>9}{'中位數':>9}{'超額':>9}{'t值':>7}"
+    head = (
+        f"{'策略':<15}{'進場':<10}{'持有':>4}{'筆數':>7}{'勝率':>8}{'平均':>9}{'中位數':>9}{'超額':>9}{'t值':>7}"
+        f"{'累計':>9}{'MDD':>8}{'基準累計':>10}{'基準MDD':>9}"
+    )
+    all_dates = sorted({d for m in MARKETS for d in data[m][0]})
 
     for strat in args.strategies:
         direction = STRATEGIES[strat]
@@ -154,6 +177,7 @@ def main():
                 if hold == 0 and entry == "close":
                     continue  # 收盤進、收盤出沒有意義
                 rets, excess = [], []
+                daily, bench = defaultdict(list), defaultdict(list)
                 base_cache = {}
                 for m in MARKETS:
                     dates, series = data[m]
@@ -174,15 +198,20 @@ def main():
                             if key not in base_cache:
                                 base_cache[key] = baseline(series, di, entry, hold, args.min_amount)
                             rets.append(ret)
+                            daily[d].append(ret)
                             if base_cache[key] is not None:
+                                bench[d].append(direction * base_cache[key])
                                 excess.append(ret - direction * base_cache[key])
                 if not rets:
                     continue
                 any_row = True
                 s = summarize(rets, excess, cost)
+                cum, mdd = equity_stats(daily, all_dates, hold, cost)
+                bcum, bmdd = equity_stats(bench, all_dates, hold, cost)
                 print(
                     f"{strat:<15}{entry:<10}{hold:>4}{s['n']:>7}{s['win']:>8.1%}"
-                    f"{s['mean']:>9.2%}{s['median']:>9.2%}{s['excess']:>9.2%}{s['t']:>7.1f}"
+                    f"{s['mean']:>9.2%}{s['median']:>9.2%}{s['excess']:>9.2%}{s['excess'] + cost:>8.2%}{s['t']:>7.1f}"
+                    f"{cum:>9.1%}{mdd:>8.1%}{bcum:>10.1%}{bmdd:>9.1%}"
                 )
         if not any_row:
             print("（無可用樣本）")
