@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>頭肩底/頂 | 當沖選股觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .toolbar .tabs {
+        margin-bottom: 0;
+      }
+
+      .badge-up {
+        background: var(--up-soft);
+        color: var(--up);
+      }
+
+      .badge-down {
+        background: var(--down-soft);
+        color: var(--down);
+      }
+
+      .note-box {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: var(--s4);
+        line-height: 1.6;
+      }
+
+      .warn-box {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: var(--s4);
+        padding: var(--s3) var(--s4);
+        background: var(--warn-soft);
+        border-radius: var(--radius);
+      }
+
+      .pattern-dates {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">頭肩底/頂</h1>
+          <p class="page-subtitle">頭肩底／頭肩頂型態選股</p>
+        </div>
+        <div class="page-actions">
+          <select id="date-picker" class="date-select" aria-label="選擇日期"></select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span>📐 型態選股設定</span></div>
+        <div class="toolbar">
+          <div class="tabs">
+            <button class="tab type-tab active" data-type="hs_bottom" id="tab-bottom">
+              🔴 頭肩底（偏多）
+            </button>
+            <button class="tab type-tab" data-type="hs_top" id="tab-top">
+              ⚫ 頭肩頂（偏空）
+            </button>
+          </div>
+          <div class="tabs">
+            <button class="tab market-tab active" data-market="twse">上市</button>
+            <button class="tab market-tab" data-market="tpex">上櫃</button>
+          </div>
+          <select id="status-filter" aria-label="型態狀態">
+            <option value="">全部狀態</option>
+            <option value="breakout">已突破／跌破</option>
+            <option value="forming">右肩成形中</option>
+          </select>
+        </div>
+
+        <div id="note-bottom" class="note-box">
+          篩選邏輯：近 120 日日 K 中，三個轉折低點依序為左肩、頭、右肩，頭明顯最低（至少低於肩部
+          3%）、兩肩相差 10% 以內、頭到頸線至少 6%，且左肩之前已有 8% 以上跌勢。頸線為兩個反彈高點連線。
+          「已突破」＝最近 3 日內收盤站上頸線；「右肩成形中」＝尚未突破，收盤距頸線 10% 內。目標價＝頸線＋頭到頸線的高度。
+        </div>
+        <div id="note-top" class="note-box" style="display: none">
+          篩選邏輯：與頭肩底相同規則的鏡像。三個轉折高點依序為左肩、頭、右肩，頭明顯最高，頸線為兩個回檔低點連線，右肩之前需有
+          8% 以上漲勢。「已跌破」＝最近 3 日內收盤跌破頸線；「右肩成形中」＝尚未跌破，收盤距頸線 10%
+          內。目標價＝頸線－頭到頸線的高度。
+        </div>
+
+        <div class="warn-box">
+          ⚠️ 型態為依規則在盤後日 K 上自動偵測，僅供技術面參考，不含籌碼與基本面。頸線突破後仍可能假突破，請搭配量能（量比）與停損自行判斷。
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span id="result-title"
+            >🔴 頭肩底候選
+            <span id="result-count" class="badge badge-up">0</span></span
+          >
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th onclick="setSort('id')">代號 <span id="sort-id"></span></th>
+                <th onclick="setSort('name')">名稱 <span id="sort-name"></span></th>
+                <th onclick="setSort('close')">收盤價 <span id="sort-close"></span></th>
+                <th onclick="setSort('change_percent')">
+                  漲跌幅 <span id="sort-change_percent"></span>
+                </th>
+                <th onclick="setSort('status')">狀態 <span id="sort-status"></span></th>
+                <th onclick="setSort('neckline')">頸線 <span id="sort-neckline"></span></th>
+                <th onclick="setSort('dist_to_neckline_pct')">
+                  距頸線 <span id="sort-dist_to_neckline_pct"></span>
+                </th>
+                <th onclick="setSort('target')">目標價 <span id="sort-target"></span></th>
+                <th onclick="setSort('head_depth_pct')">
+                  型態深度 <span id="sort-head_depth_pct"></span>
+                </th>
+                <th onclick="setSort('vol_ratio')">量比 <span id="sort-vol_ratio"></span></th>
+                <th>左肩／頭／右肩</th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="result-state"></div>
+        <div id="loader" class="loader" style="display: none">載入中...</div>
+
+        <div id="pagination" class="pagination">
+          <button id="prev-page" class="btn btn-secondary">上一頁</button>
+          <span id="page-info">第 1 / 1 頁</span>
+          <button id="next-page" class="btn btn-secondary">下一頁</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
+    <script>
+      let manifest = null;
+      let rawData = [];
+      let loadFailed = false;
+      let currentMarket = "twse";
+      let currentType = "hs_bottom";
+      let sortColumn = "status";
+      let sortDirection = "asc";
+      let currentPage = 1;
+      const rowsPerPage = 30;
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      // ── init ──────────────────────────────────────────────────────────────
+      function wireHandlers() {
+        document.querySelectorAll(".market-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".market-tab")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentMarket = btn.dataset.market;
+            populateDatePicker();
+          });
+        });
+
+        document.querySelectorAll(".type-tab").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            currentType = btn.dataset.type;
+            updateTypeTabs();
+            populateDatePicker();
+          });
+        });
+
+        document.getElementById("date-picker").addEventListener("change", loadData);
+        document.getElementById("status-filter").addEventListener("change", () => {
+          currentPage = 1;
+          renderTable();
+        });
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+          }
+        });
+        document.getElementById("next-page").addEventListener("click", () => {
+          if (currentPage < Math.ceil(filteredData().length / rowsPerPage)) {
+            currentPage++;
+            renderTable();
+          }
+        });
+      }
+
+      async function init() {
+        try {
+          const resp = await fetch("data/manifest.json");
+          if (!resp.ok) throw new Error("HTTP " + resp.status);
+          manifest = await resp.json();
+        } catch (e) {
+          document.getElementById("loader").style.display = "none";
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: init,
+          });
+          return;
+        }
+        document.getElementById("result-state").innerHTML = "";
+        populateDatePicker();
+      }
+
+      function populateDatePicker() {
+        const m = manifest[currentMarket];
+        const dates = (m && m[currentType]) || [];
+        const picker = document.getElementById("date-picker");
+        const prev = picker.value;
+        picker.innerHTML = "";
+        dates.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d;
+          picker.appendChild(opt);
+        });
+        if (prev && dates.includes(prev)) picker.value = prev;
+        loadData();
+      }
+
+      // ── data loading ──────────────────────────────────────────────────────
+      async function loadData() {
+        loadFailed = false;
+        const m = manifest[currentMarket];
+        if (!m) return;
+        const dates = m[currentType] || [];
+        const date = document.getElementById("date-picker").value;
+        if (!date || !dates.includes(date)) {
+          rawData = [];
+          renderTable();
+          return;
+        }
+
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("result-list").innerHTML = "";
+
+        try {
+          const resp = await fetch(`data/${currentMarket}/${currentType}/${date}.json`);
+          if (!resp.ok) throw new Error("HTTP " + resp.status);
+          rawData = await resp.json();
+        } catch (e) {
+          rawData = [];
+          loadFailed = true;
+          UIData.renderState(document.getElementById("result-state"), "error", {
+            message: "資料載入失敗",
+            onRetry: loadData,
+          });
+        } finally {
+          document.getElementById("loader").style.display = "none";
+        }
+
+        currentPage = 1;
+        renderTable();
+      }
+
+      // ── render ────────────────────────────────────────────────────────────
+      function updateTypeTabs() {
+        const isBottom = currentType === "hs_bottom";
+        document.getElementById("tab-bottom").className =
+          "tab type-tab" + (isBottom ? " active" : "");
+        document.getElementById("tab-top").className =
+          "tab type-tab" + (!isBottom ? " active" : "");
+        document.getElementById("note-bottom").style.display = isBottom ? "" : "none";
+        document.getElementById("note-top").style.display = isBottom ? "none" : "";
+
+        const badge = isBottom ? "badge-up" : "badge-down";
+        document.getElementById("result-title").innerHTML =
+          (isBottom ? "🔴 頭肩底候選" : "⚫ 頭肩頂候選") +
+          ` <span id="result-count" class="badge ${badge}">0</span>`;
+      }
+
+      function setSort(col) {
+        sortDirection =
+          sortColumn === col
+            ? sortDirection === "asc"
+              ? "desc"
+              : "asc"
+            : col === "id" || col === "name" || col === "status"
+              ? "asc"
+              : "desc";
+        sortColumn = col;
+        renderTable();
+      }
+
+      function filteredData() {
+        const status = document.getElementById("status-filter").value;
+        return status ? rawData.filter((r) => r.status === status) : rawData;
+      }
+
+      function statusLabel(s) {
+        const isBottom = currentType === "hs_bottom";
+        if (s.status === "breakout") return isBottom ? "已突破" : "已跌破";
+        return "右肩成形中";
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("result-list");
+        tbody.innerHTML = "";
+        if (!loadFailed) document.getElementById("result-state").innerHTML = "";
+
+        const data = filteredData();
+        const countEl = document.getElementById("result-count");
+        if (countEl) countEl.textContent = data.length;
+
+        const isTextCol = ["id", "name", "status"].includes(sortColumn);
+        const sorted = [...data].sort((a, b) => {
+          const va = a[sortColumn] ?? (isTextCol ? "" : 0);
+          const vb = b[sortColumn] ?? (isTextCol ? "" : 0);
+          // breakout sorts before forming when ascending on status
+          if (isTextCol)
+            return sortDirection === "asc"
+              ? String(va).localeCompare(String(vb))
+              : String(vb).localeCompare(String(va));
+          return sortDirection === "asc" ? va - vb : vb - va;
+        });
+
+        [
+          "id",
+          "name",
+          "close",
+          "change_percent",
+          "status",
+          "neckline",
+          "dist_to_neckline_pct",
+          "target",
+          "head_depth_pct",
+          "vol_ratio",
+        ].forEach((col) => {
+          const el = document.getElementById("sort-" + col);
+          if (el) el.textContent = col === sortColumn ? (sortDirection === "asc" ? " ↑" : " ↓") : "";
+        });
+
+        const maxPage = Math.ceil(sorted.length / rowsPerPage) || 1;
+        if (currentPage > maxPage) currentPage = maxPage;
+        document.getElementById("page-info").textContent = `第 ${currentPage} / ${maxPage} 頁`;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled = currentPage === maxPage;
+
+        const pageData = sorted.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+        if (pageData.length === 0) {
+          if (loadFailed) return;
+          UIData.renderState(document.getElementById("result-state"), "empty", {
+            title: "沒有符合的資料",
+            hint: "請調整日期或篩選條件",
+          });
+          return;
+        }
+
+        const signed = (v, d = 2) =>
+          v == null ? "-" : (v > 0 ? "+" : "") + v.toFixed(d) + "%";
+
+        pageData.forEach((s) => {
+          const tr = document.createElement("tr");
+          const priceClass =
+            s.change_percent > 0 ? "price-up" : s.change_percent < 0 ? "price-down" : "";
+          const badge = s.status === "breakout" ? "badge-up" : "";
+          tr.innerHTML = `
+            <td style="font-weight:500;"><a href="stock.html?id=${encodeURIComponent(s.id)}" class="stock-link">${esc(s.id)}</a></td>
+            <td style="font-weight:600;">
+              <a href="http://cnyes.com/twstock/${encodeURIComponent(s.id)}/analysis/performance" target="_blank" class="stock-link">${esc(s.name)}</a>
+            </td>
+            <td class="${priceClass}" style="font-size:1rem;">${esc(s.close)}</td>
+            <td class="${priceClass}" style="font-weight:800;">${signed(s.change_percent)}</td>
+            <td><span class="badge ${badge}">${statusLabel(s)}</span></td>
+            <td>${esc(s.neckline)}</td>
+            <td>${signed(s.dist_to_neckline_pct)}</td>
+            <td>${esc(s.target)}</td>
+            <td>${s.head_depth_pct != null ? s.head_depth_pct.toFixed(1) + "%" : "-"}</td>
+            <td>${s.vol_ratio != null ? s.vol_ratio.toFixed(2) + "x" : "-"}</td>
+            <td class="pattern-dates">
+              ${esc(s.left_shoulder_date)} · ${esc(s.left_shoulder_price)}<br />
+              ${esc(s.head_date)} · ${esc(s.head_price)}<br />
+              ${esc(s.right_shoulder_date)} · ${esc(s.right_shoulder_price)}
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      wireHandlers();
+      init();
+    </script>
+  </body>
+</html>

@@ -20,6 +20,7 @@
         { href: "wantgoo.html", label: "基本面", desc: "Wantgoo 基本面數據排行" },
         { href: "volatility.html", label: "區間波動率", desc: "區間日／年化波動率與漲跌" },
         { href: "vcp.html", label: "VCP選股", desc: "收縮型態（VCP）選股" },
+        { href: "head-shoulders.html", label: "頭肩底/頂", desc: "頭肩底／頭肩頂型態選股" },
         { href: "backtest.html", label: "策略回測", desc: "策略訊號的事後報酬與回撤" },
       ],
     },

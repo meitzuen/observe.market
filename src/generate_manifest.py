@@ -21,6 +21,8 @@ def generate_manifest():
             "gap_drop": [],
             "daily_punish": [],
             "vcp": [],
+            "hs_bottom": [],
+            "hs_top": [],
             "vol_candle_red": [],
             "vol_candle_black": [],
             "xiaoge_long": [],

@@ -30,6 +30,7 @@ observe.market/
 │   ├── fetch_stock_info.py     # 抓取個股基本資料
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
 │   ├── vcp_strategy.py         # VCP（收縮型態）策略分析
+│   ├── head_shoulders.py       # 頭肩底／頭肩頂型態選股
 │   ├── backtest.py             # 策略回測（--json 輸出 docs/data/backtest.json、--by 敏感度分析）
 │   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
 │   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
@@ -42,6 +43,7 @@ observe.market/
 │   ├── wantgoo.html            # 基本面排行
 │   ├── volatility.html         # 區間波動率排行
 │   ├── vcp.html                # VCP 選股
+│   ├── head-shoulders.html     # 頭肩底/頂選股
 │   ├── screener.html           # 股票篩選器（漲幅／跌幅／成交量／連續上漲天數排行）
 │   ├── watchlist.html          # 精選類股
 │   ├── premium-warrant.html    # 精選權證
@@ -64,7 +66,7 @@ observe.market/
 │   └── data/
 │       ├── manifest.json       # 資料索引清單
 │       ├── stock_info.json     # 個股基本資料
-│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, stock_history）
+│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, hs_bottom, hs_top, stock_history）
 │       ├── tpex/               # 上櫃數據（同上結構）
 │       └── warrant/            # 權證數據
 ├── tests/ui/                   # Playwright 與單元測試
@@ -79,9 +81,10 @@ observe.market/
 2. **個股資料 (`src/fetch_stock_info.py`)**：抓取上市／上櫃個股基本資訊，輸出至 `stock_info.json`。
 3. **跳空漲跌 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
 4. **VCP 策略 (`src/vcp_strategy.py`)**：以 zigzag 抓取價格波段、計算收縮型態分數，輸出至 `vcp/{date}.json`，供 `vcp.html` 選股。
-5. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
-6. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
-7. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人／當沖」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
+5. **頭肩底/頂 (`src/head_shoulders.py`)**：在近 120 日日 K 上以轉折點偵測左肩／頭／右肩與頸線，標記「右肩成形中」或「已突破／跌破」，輸出至 `hs_bottom/{date}.json`、`hs_top/{date}.json`，供 `head-shoulders.html` 選股。
+6. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
+7. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
+8. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人／當沖」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
 
 ## 本地開發
 
@@ -103,6 +106,7 @@ python src/gap_strategy.py --date_str 2026-04-20
 
 # 執行 VCP 策略分析
 python src/vcp_strategy.py --date_str 2026-04-20
+python src/head_shoulders.py --date_str 2026-04-20
 
 # 彙整個股歷史資料
 python src/generate_stock_history.py
