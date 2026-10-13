@@ -150,6 +150,7 @@ def main():
     ap.add_argument("--holds", nargs="+", type=int, default=[0, 1, 3, 5, 10])
     ap.add_argument("--entries", nargs="+", default=["close", "next_open"], choices=["close", "next_open"])
     ap.add_argument("--min-amount", type=float, default=0, help="訊號日成交金額下限（元），過濾流動性不足標的")
+    ap.add_argument("--exclude-etf", action="store_true", help="排除 ETF／ETN（代號以 00 開頭）")
     ap.add_argument("--fee", type=float, default=0.001425, help="單邊手續費率（未打折）")
     ap.add_argument("--tax", type=float, default=0.003, help="賣出證交稅率")
     ap.add_argument("--slippage", type=float, default=0.001, help="單邊滑價")
@@ -160,7 +161,7 @@ def main():
 
     data = {m: load_prices(m) for m in MARKETS}
     print(f"來回成本 {cost:.3%}（手續費 {args.fee:.4%} x2 + 證交稅 {args.tax:.2%} + 滑價 {args.slippage:.2%} x2）")
-    print(f"流動性門檻：成交金額 >= {args.min_amount:,.0f}\n")
+    print(f"流動性門檻：成交金額 >= {args.min_amount:,.0f}　排除 ETF：{'是' if args.exclude_etf else '否'}\n")
     head = (
         f"{'策略':<15}{'進場':<10}{'持有':>4}{'筆數':>7}{'勝率':>8}{'平均':>9}{'中位數':>9}{'超額':>9}{'t值':>7}"
         f"{'累計':>9}{'MDD':>8}{'基準累計':>10}{'基準MDD':>9}"
@@ -187,6 +188,8 @@ def main():
                         if di is None:
                             continue
                         for r in rows:
+                            if args.exclude_etf and r["id"].startswith("00"):
+                                continue
                             bars = series.get(r["id"])
                             bar = bars.get(di) if bars else None
                             if bar is None or bar[3] * bar[4] < args.min_amount:
