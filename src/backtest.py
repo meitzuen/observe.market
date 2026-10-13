@@ -35,6 +35,14 @@ STRATEGIES = {
     "vol_candle_red": 1,
     "xiaoge_long": 1,
     "xiaoge_short": -1,
+    "hs_bottom": 1,
+    "hs_top": -1,
+}
+
+# 頭肩底／頂：只回測突破（跌破）頸線「當天」的訊號，同一型態只算一次
+SIGNAL_FILTERS = {
+    "hs_bottom": lambda r: r.get("status") == "breakout" and r.get("days_since_cross") == 0,
+    "hs_top": lambda r: r.get("status") == "breakout" and r.get("days_since_cross") == 0,
 }
 
 LIMIT_PCT = 0.095
@@ -60,11 +68,20 @@ def load_prices(market):
     return dates, series
 
 
+def keep_signal(strategy, row):
+    f = SIGNAL_FILTERS.get(strategy)
+    return f(row) if f else True
+
+
 def load_signals(market, strategy):
     d = os.path.join(DATA, market, strategy)
     if not os.path.isdir(d):
         return {}
-    return {f[:-5]: load_json(os.path.join(d, f)) for f in sorted(os.listdir(d)) if f.endswith(".json")}
+    return {
+        f[:-5]: [r for r in load_json(os.path.join(d, f)) if keep_signal(strategy, r)]
+        for f in sorted(os.listdir(d))
+        if f.endswith(".json")
+    }
 
 
 def trade_return(bars, di, entry, hold, direction):

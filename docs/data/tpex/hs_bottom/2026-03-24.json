@@ -1,0 +1,42 @@
+[
+    {
+        "id": "6218",
+        "name": "豪勉",
+        "pattern": "bottom",
+        "status": "forming",
+        "days_since_cross": null,
+        "close": 25.35,
+        "change_percent": 7.19,
+        "neckline": 25.44,
+        "dist_to_neckline_pct": -0.37,
+        "target": 31.48,
+        "head_depth_pct": 23.7,
+        "left_shoulder_date": "2026-01-12",
+        "left_shoulder_price": 24.15,
+        "head_date": "2026-02-06",
+        "head_price": 21.1,
+        "right_shoulder_date": "2026-03-16",
+        "right_shoulder_price": 22.7,
+        "vol_ratio": 5.73
+    },
+    {
+        "id": "6667",
+        "name": "信紘科",
+        "pattern": "bottom",
+        "status": "forming",
+        "days_since_cross": null,
+        "close": 245.5,
+        "change_percent": -0.41,
+        "neckline": 263.65,
+        "dist_to_neckline_pct": -6.88,
+        "target": 316.36,
+        "head_depth_pct": 20.0,
+        "left_shoulder_date": "2026-01-09",
+        "left_shoulder_price": 252.0,
+        "head_date": "2026-02-06",
+        "head_price": 232.0,
+        "right_shoulder_date": "2026-03-16",
+        "right_shoulder_price": 243.0,
+        "vol_ratio": 0.39
+    }
+]

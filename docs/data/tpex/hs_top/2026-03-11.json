@@ -1,0 +1,22 @@
+[
+    {
+        "id": "9962",
+        "name": "有益",
+        "pattern": "top",
+        "status": "forming",
+        "days_since_cross": null,
+        "close": 11.45,
+        "change_percent": 0.88,
+        "neckline": 11.06,
+        "dist_to_neckline_pct": 3.48,
+        "target": 10.08,
+        "head_depth_pct": 9.8,
+        "left_shoulder_date": "2026-01-20",
+        "left_shoulder_price": 11.9,
+        "head_date": "2026-01-30",
+        "head_price": 12.3,
+        "right_shoulder_date": "2026-03-05",
+        "right_shoulder_price": 11.6,
+        "vol_ratio": 0.25
+    }
+]

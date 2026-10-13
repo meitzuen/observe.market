@@ -7,7 +7,8 @@
 3. 在最近的轉折低點中挑出 (左肩, 頭, 右肩)：頭明顯最低、兩肩高度相近、
    兩肩之前有一段跌勢，頭與兩肩之間的反彈高點連成頸線。
 4. 依收盤價相對頸線分類：``forming``（右肩已成形，尚未突破）、
-   ``breakout``（最近 ``BREAKOUT_RECENT`` 根內收盤突破頸線）。
+   ``breakout``（最近 ``BREAKOUT_RECENT`` 根內收盤突破頸線；
+   ``days_since_cross`` 為突破日距今根數，0 = 突破當天，回測只取 0）。
    更早就突破、或收盤跌破頭部低點的型態一律丟棄。
 
 頭肩頂是同一套規則在鏡像價格（取負的對數）上執行。
@@ -104,6 +105,7 @@ def _find_bottom(lo, hi, cl):
             "b": b,
             "c": c,
             "status": status,
+            "days_since_cross": None if first_cross is None else last - first_cross,
             "neck_last": neck(last),
             "depth": depth,
             "key": (c, -shoulder_diff),
@@ -153,6 +155,7 @@ def analyze_stock(points):
             {
                 "pattern": pattern,
                 "status": cand["status"],
+                "days_since_cross": cand["days_since_cross"],
                 "close": last["close"],
                 "change_percent": round((last["close"] / prev_close - 1) * 100, 2),
                 "neckline": round(neck, 2),
@@ -209,19 +212,75 @@ def run_strategy_for_market(market_type, date_str=None, data_dir=None):
             found[r["pattern"]].append({"id": stock["id"], "name": stock["name"], **r})
 
     for pattern, rows in found.items():
-        # 已突破的排前面，其次依距頸線距離由近到遠
-        rows.sort(key=lambda r: (r["status"] != "breakout", abs(r["dist_to_neckline_pct"])))
-        out_dir = os.path.join(market_dir, f"hs_{pattern}")
-        os.makedirs(out_dir, exist_ok=True)
-        with open(os.path.join(out_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-            json.dump(rows[:MAX_RESULTS], f, ensure_ascii=False, indent=4)
+        _write_rows(market_dir, pattern, today_date, rows)
         print(f"[{market_type}] {len(rows)} head-and-shoulders {pattern} for {today_date}.")
+
+
+def _write_rows(market_dir, pattern, date, rows):
+    # 已突破的排前面，其次依距頸線距離由近到遠
+    rows.sort(key=lambda r: (r["status"] != "breakout", abs(r["dist_to_neckline_pct"])))
+    out_dir = os.path.join(market_dir, f"hs_{pattern}")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, f"{date}.json"), "w", encoding="utf-8") as f:
+        json.dump(rows[:MAX_RESULTS], f, ensure_ascii=False, indent=4)
+
+
+def backfill_market(market_type, data_dir=None):
+    """為 daily_price 的每個歷史日期產生訊號（每檔歷史只讀一次）。
+
+    每個日期只使用該日以前的日 K，結果與逐日執行 run_strategy_for_market 相同。
+    """
+    if data_dir is None:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        data_dir = os.path.join(base_dir, "docs", "data")
+    market_dir = os.path.join(data_dir, market_type)
+    price_dir = os.path.join(market_dir, "daily_price")
+    history_dir = os.path.join(market_dir, "stock_history")
+    if not os.path.exists(price_dir) or not os.path.exists(history_dir):
+        print(f"Missing price/history data for {market_type}, skipping.")
+        return
+
+    names = {}  # date -> {id: name}
+    for fn in sorted(os.listdir(price_dir)):
+        if fn.endswith(".json"):
+            with open(os.path.join(price_dir, fn), encoding="utf-8") as f:
+                names[fn[:-5]] = {s["id"]: s["name"] for s in json.load(f)}
+
+    found = {date: {"bottom": [], "top": []} for date in names}
+    evaluated = set()  # 至少有一檔股票歷史足夠、實際被分析過的日期
+    for fn in sorted(os.listdir(history_dir)):
+        if not fn.endswith(".json"):
+            continue
+        stock_id = fn[:-5]
+        with open(os.path.join(history_dir, fn), encoding="utf-8") as f:
+            points = json.load(f)
+        for i in range(MIN_POINTS - 1, len(points)):
+            date = points[i]["date"]
+            if date not in names or stock_id not in names[date]:
+                continue
+            evaluated.add(date)
+            for r in analyze_stock(points[: i + 1]):
+                found[date][r["pattern"]].append(
+                    {"id": stock_id, "name": names[date][stock_id], **r}
+                )
+
+    for date in sorted(evaluated):
+        for pattern, rows in found[date].items():
+            _write_rows(market_dir, pattern, date, rows)
+    print(f"[{market_type}] backfilled {len(evaluated)} dates.")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run head-and-shoulders screener.")
     parser.add_argument("--date_str", type=str, help="Date string in YYYY-MM-DD format")
+    parser.add_argument(
+        "--backfill", action="store_true", help="為所有歷史日期產生訊號（供回測使用）"
+    )
     args = parser.parse_args()
 
-    run_strategy_for_market("twse", args.date_str)
-    run_strategy_for_market("tpex", args.date_str)
+    run = backfill_market if args.backfill else None
+    for market in ("twse", "tpex"):
+        if run:
+            run(market)
+        else:
+            run_strategy_for_market(market, args.date_str)

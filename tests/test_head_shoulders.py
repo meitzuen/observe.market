@@ -69,7 +69,19 @@ class HeadShouldersBottomTest(unittest.TestCase):
         res = one(make_points(BREAKOUT, 74), "bottom")
         self.assertEqual(len(res), 1)
         self.assertEqual(res[0]["status"], "breakout")
+        self.assertEqual(res[0]["days_since_cross"], 0)
         self.assertGreater(res[0]["dist_to_neckline_pct"], 0)
+
+    def test_breakout_one_day_old(self):
+        wps = BASE + [(73, 115), (74, 116)]
+        res = one(make_points(wps, 75), "bottom")
+        self.assertEqual(len(res), 1)
+        self.assertEqual(res[0]["status"], "breakout")
+        self.assertEqual(res[0]["days_since_cross"], 1)
+
+    def test_forming_has_no_cross_day(self):
+        res = one(make_points(FORMING, 75), "bottom")
+        self.assertIsNone(res[0]["days_since_cross"])
 
     def test_stale_breakout_is_dropped(self):
         wps = BASE + [(73, 115), (83, 118)]
@@ -132,6 +144,32 @@ class RunStrategyTest(unittest.TestCase):
             self.assertEqual([r["id"] for r in bottom], ["1111"])
             self.assertEqual(bottom[0]["name"], "測試")
             self.assertEqual(top, [])
+
+    def test_backfill_matches_single_day_run_and_skips_short_history(self):
+        with tempfile.TemporaryDirectory() as d:
+            m = os.path.join(d, "twse")
+            os.makedirs(os.path.join(m, "daily_price"))
+            os.makedirs(os.path.join(m, "stock_history"))
+            pts = make_points(FORMING, 75)
+            with open(os.path.join(m, "stock_history", "1111.json"), "w") as f:
+                json.dump(pts, f)
+            for p in pts:
+                with open(os.path.join(m, "daily_price", p["date"] + ".json"), "w") as f:
+                    json.dump([{"id": "1111", "name": "測試"}], f)
+
+            hs.backfill_market("twse", data_dir=d)
+            out = os.path.join(m, "hs_bottom")
+            dates = sorted(os.listdir(out))
+            # earliest date needs MIN_POINTS bars of history
+            self.assertEqual(dates[0], pts[hs.MIN_POINTS - 1]["date"] + ".json")
+            self.assertEqual(dates[-1], "d074.json")
+            with open(os.path.join(out, "d074.json"), encoding="utf-8") as f:
+                backfilled = json.load(f)
+
+            os.remove(os.path.join(out, "d074.json"))
+            hs.run_strategy_for_market("twse", "d074", data_dir=d)
+            with open(os.path.join(out, "d074.json"), encoding="utf-8") as f:
+                self.assertEqual(json.load(f), backfilled)
 
 
 if __name__ == "__main__":

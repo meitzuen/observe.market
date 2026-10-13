@@ -1,0 +1,42 @@
+[
+    {
+        "id": "4737",
+        "name": "華廣",
+        "pattern": "bottom",
+        "status": "forming",
+        "days_since_cross": null,
+        "close": 62.6,
+        "change_percent": -1.88,
+        "neckline": 65.25,
+        "dist_to_neckline_pct": -4.06,
+        "target": 73.11,
+        "head_depth_pct": 12.0,
+        "left_shoulder_date": "2026-01-21",
+        "left_shoulder_price": 52.9,
+        "head_date": "2026-02-02",
+        "head_price": 50.8,
+        "right_shoulder_date": "2026-03-13",
+        "right_shoulder_price": 57.7,
+        "vol_ratio": 0.72
+    },
+    {
+        "id": "3665",
+        "name": "貿聯-KY",
+        "pattern": "bottom",
+        "status": "forming",
+        "days_since_cross": null,
+        "close": 1720.0,
+        "change_percent": 1.78,
+        "neckline": 1877.65,
+        "dist_to_neckline_pct": -8.4,
+        "target": 2516.41,
+        "head_depth_pct": 34.0,
+        "left_shoulder_date": "2026-01-12",
+        "left_shoulder_price": 1380.0,
+        "head_date": "2026-02-06",
+        "head_price": 1245.0,
+        "right_shoulder_date": "2026-03-10",
+        "right_shoulder_price": 1490.0,
+        "vol_ratio": 0.92
+    }
+]
