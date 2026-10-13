@@ -144,6 +144,70 @@ def equity_stats(daily, all_dates, hold, cost):
     return cum, mdd
 
 
+def collect(data, strat, entry, hold, args):
+    """回傳 [(單筆報酬, 基準報酬或 None, 訊號列)]，已套用流動性／ETF 過濾。"""
+    direction = STRATEGIES[strat]
+    out, base_cache = [], {}
+    for m in MARKETS:
+        dates, series = data[m]
+        idx = {d: i for i, d in enumerate(dates)}
+        for d, rows in load_signals(m, strat).items():
+            di = idx.get(d)
+            if di is None:
+                continue
+            for r in rows:
+                if args.exclude_etf and r["id"].startswith("00"):
+                    continue
+                bars = series.get(r["id"])
+                bar = bars.get(di) if bars else None
+                if bar is None or bar[3] * bar[4] < args.min_amount:
+                    continue
+                ret = trade_return(bars, di, entry, hold, direction)
+                if ret is None:
+                    continue
+                key = (m, di)
+                if key not in base_cache:
+                    base_cache[key] = baseline(series, di, entry, hold, args.min_amount)
+                b = base_cache[key]
+                out.append((ret, None if b is None else direction * b, r))
+    return out
+
+
+def sensitivity(data, strat, field, entry, hold, args, cost, bins=4):
+    """依訊號欄位分組（數值取分位數、其他取類別），比較各組報酬。"""
+    trades = [t for t in collect(data, strat, entry, hold, args) if t[2].get(field) is not None]
+    if not trades:
+        print(f"（{strat} 沒有 {field} 欄位或無樣本）\n")
+        return
+    vals = [t[2][field] for t in trades]
+    numeric = all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in vals)
+    groups = defaultdict(list)
+    if numeric:
+        sv = sorted(vals)
+        cuts = [sv[len(sv) * k // bins] for k in range(1, bins)]
+        for t in trades:
+            groups[sum(t[2][field] >= c for c in cuts)].append(t)
+        lo = [sv[0]] + cuts
+        hi = cuts + [sv[-1]]
+        labels = {k: f"Q{k + 1} [{lo[k]:g} ~ {hi[k]:g}]" for k in range(bins)}
+    else:
+        for t in trades:
+            groups[str(t[2][field])].append(t)
+        labels = {k: k for k in groups}
+    print(f"== {strat} 依 {field} 分組（進場 {entry}、持有 {hold}）==")
+    print(f"{'組別':<28}{'筆數':>7}{'勝率':>8}{'平均(淨)':>10}{'毛超額':>9}{'t值':>7}")
+    for k in sorted(groups):
+        g = groups[k]
+        ex = [t[0] - t[1] for t in g if t[1] is not None]
+        sm = summarize([t[0] for t in g], ex, cost)
+        flag = " *" if sm["n"] < 100 else ""
+        print(
+            f"{labels[k]:<28}{sm['n']:>7}{sm['win']:>8.1%}{sm['mean']:>10.2%}"
+            f"{sm['excess'] + cost:>9.2%}{sm['t']:>7.1f}{flag}"
+        )
+    print("（* 樣本 < 100，僅供參考；t 值未考慮同日訊號相關，偏樂觀）\n")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strategies", nargs="+", default=list(STRATEGIES), choices=list(STRATEGIES))
@@ -151,6 +215,7 @@ def main():
     ap.add_argument("--entries", nargs="+", default=["close", "next_open"], choices=["close", "next_open"])
     ap.add_argument("--min-amount", type=float, default=0, help="訊號日成交金額下限（元），過濾流動性不足標的")
     ap.add_argument("--exclude-etf", action="store_true", help="排除 ETF／ETN（代號以 00 開頭）")
+    ap.add_argument("--by", nargs="+", metavar="FIELD", help="敏感度分析：依訊號欄位分組（搭配單一 --strategies）")
     ap.add_argument("--fee", type=float, default=0.001425, help="單邊手續費率（未打折）")
     ap.add_argument("--tax", type=float, default=0.003, help="賣出證交稅率")
     ap.add_argument("--slippage", type=float, default=0.001, help="單邊滑價")
@@ -167,6 +232,17 @@ def main():
         f"{'累計':>9}{'MDD':>8}{'基準累計':>10}{'基準MDD':>9}"
     )
     all_dates = sorted({d for m in MARKETS for d in data[m][0]})
+
+    if args.by:
+        if len(args.strategies) != 1:
+            ap.error("--by 需搭配恰好一個 --strategies")
+        for field in args.by:
+            for entry in args.entries:
+                for hold in args.holds:
+                    if hold == 0 and entry == "close":
+                        continue
+                    sensitivity(data, args.strategies[0], field, entry, hold, args, cost)
+        return
 
     for strat in args.strategies:
         direction = STRATEGIES[strat]
