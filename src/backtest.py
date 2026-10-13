@@ -216,6 +216,7 @@ def main():
     ap.add_argument("--min-amount", type=float, default=0, help="訊號日成交金額下限（元），過濾流動性不足標的")
     ap.add_argument("--exclude-etf", action="store_true", help="排除 ETF／ETN（代號以 00 開頭）")
     ap.add_argument("--by", nargs="+", metavar="FIELD", help="敏感度分析：依訊號欄位分組（搭配單一 --strategies）")
+    ap.add_argument("--json", metavar="PATH", help="把彙總結果寫成 JSON（供 docs/backtest.html 使用）")
     ap.add_argument("--fee", type=float, default=0.001425, help="單邊手續費率（未打折）")
     ap.add_argument("--tax", type=float, default=0.003, help="賣出證交稅率")
     ap.add_argument("--slippage", type=float, default=0.001, help="單邊滑價")
@@ -244,6 +245,7 @@ def main():
                     sensitivity(data, args.strategies[0], field, entry, hold, args, cost)
         return
 
+    report = []
     for strat in args.strategies:
         direction = STRATEGIES[strat]
         print(f"== {strat} ({'做多' if direction > 0 else '做空'}) ==")
@@ -292,9 +294,50 @@ def main():
                     f"{s['mean']:>9.2%}{s['median']:>9.2%}{s['excess']:>9.2%}{s['excess'] + cost:>8.2%}{s['t']:>7.1f}"
                     f"{cum:>9.1%}{mdd:>8.1%}{bcum:>10.1%}{bmdd:>9.1%}"
                 )
+                report.append(
+                    {
+                        "strategy": strat,
+                        "direction": direction,
+                        "entry": entry,
+                        "hold": hold,
+                        "n": s["n"],
+                        "win": round(s["win"], 4),
+                        "mean": round(s["mean"], 5),
+                        "median": round(s["median"], 5),
+                        "excess_net": round(s["excess"], 5),
+                        "excess_gross": round(s["excess"] + cost, 5),
+                        "t": round(s["t"], 2),
+                        "cum": round(cum, 4),
+                        "mdd": round(mdd, 4),
+                        "bench_cum": round(bcum, 4),
+                        "bench_mdd": round(bmdd, 4),
+                    }
+                )
         if not any_row:
             print("（無可用樣本）")
         print()
+
+    if args.json:
+        write_json(args.json, report, args, cost, data)
+
+
+def write_json(path, report, args, cost, data):
+    dates = sorted({d for m in MARKETS for d in data[m][0]})
+    out = {
+        "generated_from": {"start": dates[0], "end": dates[-1], "trading_days": len(dates)},
+        "params": {
+            "cost_round_trip": round(cost, 5),
+            "fee": args.fee,
+            "tax": args.tax,
+            "slippage": args.slippage,
+            "min_amount": args.min_amount,
+            "exclude_etf": args.exclude_etf,
+        },
+        "rows": report,
+    }
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
 
 
 if __name__ == "__main__":

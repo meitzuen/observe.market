@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>策略回測 | 市場觀測站</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .toolbar .tabs {
+        margin-bottom: 0;
+      }
+
+      .warn-box {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: var(--s4);
+        padding: var(--s3) var(--s4);
+        background: var(--warn-soft);
+        border-radius: var(--radius);
+      }
+
+      .note-box {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-top: var(--s3);
+      }
+
+      .pos {
+        color: var(--up);
+      }
+
+      .neg {
+        color: var(--down);
+      }
+
+      .num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <div class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">策略回測</h1>
+          <p class="page-subtitle">站內策略訊號的事後報酬、勝率與最大回撤</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="warn-box">
+          ⚠️ 樣本僅約一個行情段落（約 9 個月、單一多頭環境），且資料為盤後日 K、未還原權息。
+          結果只能說明「這段期間」的表現，不代表策略長期有效或無效；t 值未考慮同日訊號的相關性，偏樂觀。
+        </div>
+        <div class="toolbar">
+          <div class="tabs" id="strategy-tabs"></div>
+          <div class="tabs" id="entry-tabs">
+            <button class="tab entry-tab active" data-entry="close">訊號日收盤進場</button>
+            <button class="tab entry-tab" data-entry="next_open">隔日開盤進場</button>
+          </div>
+        </div>
+        <div class="note-box" id="params"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span id="result-title">回測結果</span></div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>持有</th>
+                <th class="num">筆數</th>
+                <th class="num">勝率</th>
+                <th class="num">平均報酬(淨)</th>
+                <th class="num">中位數</th>
+                <th class="num">毛超額</th>
+                <th class="num">淨超額</th>
+                <th class="num">t 值</th>
+                <th class="num">累計</th>
+                <th class="num">最大回撤</th>
+                <th class="num">基準累計</th>
+                <th class="num">基準回撤</th>
+              </tr>
+            </thead>
+            <tbody id="result-list"></tbody>
+          </table>
+        </div>
+        <div id="result-state"></div>
+        <div class="note-box">
+          平均報酬、中位數與淨超額已扣除來回成本；毛超額 = 策略報酬 − 同期全市場等權平均，用來看選股本身有無優勢。
+          累計與最大回撤為每日 cohort 等權、攤成 1/持有日 資金後的單利加總（非複利），持有 1 日每天全額換手，
+          成本累計可能低於 −100%，請對照基準欄位看相對差。做空策略報酬已取負號；漲跌停鎖死與疑似除權息的樣本已排除。
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
+    <script>
+      const STRATEGY_LABELS = {
+        gap_jump: "跳空上漲（做多）",
+        gap_drop: "跳空下跌（做空）",
+        vcp: "VCP（做多）",
+        vol_candle_red: "爆量長紅（做多）",
+        xiaoge_long: "小哥多方（做多）",
+        xiaoge_short: "小哥空方（做空）",
+      };
+
+      let report = null;
+      let currentStrategy = "gap_jump";
+      let currentEntry = "close";
+
+      function pct(v, digits) {
+        return (v * 100).toFixed(digits == null ? 2 : digits) + "%";
+      }
+
+      function signed(v, digits) {
+        const cls = v > 0 ? "pos" : v < 0 ? "neg" : "";
+        return '<span class="' + cls + '">' + pct(v, digits) + "</span>";
+      }
+
+      function renderTabs() {
+        const box = document.getElementById("strategy-tabs");
+        const keys = Object.keys(STRATEGY_LABELS).filter((k) =>
+          report.rows.some((r) => r.strategy === k),
+        );
+        box.innerHTML = keys
+          .map(
+            (k) =>
+              '<button class="tab strategy-tab' +
+              (k === currentStrategy ? " active" : "") +
+              '" data-strategy="' +
+              k +
+              '">' +
+              STRATEGY_LABELS[k] +
+              "</button>",
+          )
+          .join("");
+        box.querySelectorAll(".strategy-tab").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            currentStrategy = btn.dataset.strategy;
+            renderTabs();
+            renderTable();
+          }),
+        );
+      }
+
+      function renderTable() {
+        const rows = report.rows
+          .filter((r) => r.strategy === currentStrategy && r.entry === currentEntry)
+          .sort((a, b) => a.hold - b.hold);
+        document.getElementById("result-title").textContent =
+          STRATEGY_LABELS[currentStrategy] +
+          "・" +
+          (currentEntry === "close" ? "訊號日收盤進場" : "隔日開盤進場");
+        const state = document.getElementById("result-state");
+        const tbody = document.getElementById("result-list");
+        if (!rows.length) {
+          tbody.innerHTML = "";
+          UIData.renderState(state, "empty", { title: "此組合沒有可用樣本" });
+          return;
+        }
+        state.innerHTML = "";
+        tbody.innerHTML = rows
+          .map(
+            (r) =>
+              "<tr>" +
+              "<td>" + (r.hold === 0 ? "當日收盤" : r.hold + " 日") + "</td>" +
+              '<td class="num">' + r.n.toLocaleString() + "</td>" +
+              '<td class="num">' + pct(r.win, 1) + "</td>" +
+              '<td class="num">' + signed(r.mean) + "</td>" +
+              '<td class="num">' + signed(r.median) + "</td>" +
+              '<td class="num">' + signed(r.excess_gross) + "</td>" +
+              '<td class="num">' + signed(r.excess_net) + "</td>" +
+              '<td class="num">' + r.t.toFixed(1) + "</td>" +
+              '<td class="num">' + signed(r.cum, 1) + "</td>" +
+              '<td class="num">' + signed(r.mdd, 1) + "</td>" +
+              '<td class="num">' + signed(r.bench_cum, 1) + "</td>" +
+              '<td class="num">' + signed(r.bench_mdd, 1) + "</td>" +
+              "</tr>",
+          )
+          .join("");
+      }
+
+      function renderParams() {
+        const p = report.params;
+        const g = report.generated_from;
+        document.getElementById("params").textContent =
+          "資料區間 " + g.start + " ～ " + g.end + "（" + g.trading_days + " 個交易日）；" +
+          "來回成本 " + pct(p.cost_round_trip, 3) +
+          "（手續費 " + pct(p.fee, 4) + "×2 + 證交稅 " + pct(p.tax, 2) +
+          " + 滑價 " + pct(p.slippage, 2) + "×2）；" +
+          "成交金額 ≥ " + (p.min_amount / 1e4).toLocaleString() + " 萬" +
+          (p.exclude_etf ? "；已排除 ETF" : "");
+      }
+
+      async function init() {
+        const state = document.getElementById("result-state");
+        try {
+          report = await UIData.loadJSON("data/backtest.json");
+        } catch (e) {
+          UIData.renderState(state, "error", { message: "回測資料載入失敗", onRetry: init });
+          return;
+        }
+        document.querySelectorAll(".entry-tab").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            currentEntry = btn.dataset.entry;
+            document
+              .querySelectorAll(".entry-tab")
+              .forEach((b) => b.classList.toggle("active", b === btn));
+            renderTable();
+          }),
+        );
+        renderParams();
+        renderTabs();
+        renderTable();
+      }
+
+      init();
+    </script>
+  </body>
+</html>

@@ -9,9 +9,9 @@ const stocks = {
   "6488": { name: "環球晶", type: "tpex" },
 };
 
-test("NAV has 6 groups and 17 pages", () => {
+test("NAV has 6 groups and 18 pages", () => {
   assert.equal(Shell.NAV.length, 6);
-  assert.equal(Shell.NAV.reduce((n, g) => n + g.items.length, 0), 17);
+  assert.equal(Shell.NAV.reduce((n, g) => n + g.items.length, 0), 18);
 });
 
 test("searchStocks: exact code ranks first", () => {
