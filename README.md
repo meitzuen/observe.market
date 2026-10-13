@@ -30,6 +30,7 @@ observe.market/
 │   ├── fetch_stock_info.py     # 抓取個股基本資料
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
 │   ├── vcp_strategy.py         # VCP（收縮型態）策略分析
+│   ├── backtest.py             # 策略回測（--json 輸出 docs/data/backtest.json、--by 敏感度分析）
 │   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
 │   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
 ├── docs/                       # GitHub Pages 部署根目錄
@@ -50,6 +51,7 @@ observe.market/
 │   ├── portfolio.html           # 持股試算
 │   ├── volume-candle.html      # 量價K線
 │   ├── xiaoge-strategy.html    # 小哥策略
+│   ├── backtest.html           # 策略回測（讀取 data/backtest.json）
 │   ├── day-trade-calculator.html # 當沖試算
 │   ├── ui-gallery.html         # 元件展示（不在導覽中）
 │   ├── assets/                 # 前端資源
