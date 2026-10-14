@@ -228,7 +228,7 @@ def sensitivity(data, strat, field, entry, hold, args, cost, bins=4):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--strategies", nargs="+", default=list(STRATEGIES), choices=list(STRATEGIES))
-    ap.add_argument("--holds", nargs="+", type=int, default=[0, 1, 3, 5, 10])
+    ap.add_argument("--holds", nargs="+", type=int, default=[1, 5, 10, 20, 60, 120])
     ap.add_argument("--entries", nargs="+", default=["close", "next_open"], choices=["close", "next_open"])
     ap.add_argument("--min-amount", type=float, default=0, help="訊號日成交金額下限（元），過濾流動性不足標的")
     ap.add_argument("--exclude-etf", action="store_true", help="排除 ETF／ETN（代號以 00 開頭）")
