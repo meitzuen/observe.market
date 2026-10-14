@@ -1,5 +1,45 @@
 [
     {
+        "publish_date": "2026-10-13",
+        "measure": "第一次處置",
+        "id": "3265",
+        "name": "台星科",
+        "accumulated": 4,
+        "condition": "連續3個營業日",
+        "from": "2026-10-14",
+        "to": "2026-10-20"
+    },
+    {
+        "publish_date": "2026-10-13",
+        "measure": "第一次處置",
+        "id": "3597",
+        "name": "映興",
+        "accumulated": 4,
+        "condition": "連續3個營業日",
+        "from": "2026-10-14",
+        "to": "2026-10-20"
+    },
+    {
+        "publish_date": "2026-10-13",
+        "measure": "第一次處置",
+        "id": "5205",
+        "name": "中茂",
+        "accumulated": 4,
+        "condition": "連續3個營業日",
+        "from": "2026-10-14",
+        "to": "2026-10-20"
+    },
+    {
+        "publish_date": "2026-10-13",
+        "measure": "第一次處置",
+        "id": "7772",
+        "name": "耀穎",
+        "accumulated": 4,
+        "condition": "連續3個營業日",
+        "from": "2026-10-14",
+        "to": "2026-10-20"
+    },
+    {
         "publish_date": "2026-10-12",
         "measure": "第一次處置",
         "id": "5228",
