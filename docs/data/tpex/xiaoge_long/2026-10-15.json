@@ -1,0 +1,44 @@
+[
+    {
+        "id": "8437",
+        "name": "大地-KY",
+        "close": 13.55,
+        "open": 13.15,
+        "high": 13.55,
+        "low": 12.8,
+        "diff": 1.2,
+        "change_percent": 9.72,
+        "volume": 825000,
+        "avg_volume": 77650,
+        "vol_ratio": 10.62,
+        "prior_change_percent": 9.78,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    },
+    {
+        "id": "3485",
+        "name": "敘豐",
+        "close": 248.0,
+        "open": 224.5,
+        "high": 248.0,
+        "low": 220.5,
+        "diff": 22.5,
+        "change_percent": 9.98,
+        "volume": 714000,
+        "avg_volume": 88000,
+        "vol_ratio": 8.11,
+        "prior_change_percent": 10.0,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 0,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高"
+        ]
+    }
+]
