@@ -24,7 +24,7 @@ test.describe("desktop shell", () => {
     const strategy = buttons.nth(1);
     await strategy.click();
     await expect(strategy).toHaveAttribute("aria-expanded", "true");
-    await expect(page.locator("#mega-1 .mega-item")).toHaveCount(8);
+    await expect(page.locator("#mega-1 .mega-item")).toHaveCount(9);
     await page.keyboard.press("Escape");
     await expect(strategy).toHaveAttribute("aria-expanded", "false");
     await expect(page.locator("#mega-1")).toBeHidden();

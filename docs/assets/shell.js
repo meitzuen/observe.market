@@ -22,6 +22,7 @@
         { href: "vcp.html", label: "VCP選股", desc: "收縮型態（VCP）選股" },
         { href: "head-shoulders.html", label: "頭肩底/頂", desc: "頭肩底／頭肩頂型態選股" },
         { href: "backtest.html", label: "策略回測", desc: "策略訊號的事後報酬與回撤" },
+        { href: "surge.html", label: "飆股分析", desc: "起漲日後漲到各門檻所需的交易日" },
       ],
     },
     {
