@@ -44,6 +44,7 @@ observe.market/
 │   ├── volatility.html         # 區間波動率排行
 │   ├── vcp.html                # VCP 選股
 │   ├── head-shoulders.html     # 頭肩底/頂選股
+│   ├── surge.html              # 飆股分析（起漲日後漲到各門檻的交易日）
 │   ├── screener.html           # 股票篩選器（漲幅／跌幅／成交量／連續上漲天數排行）
 │   ├── watchlist.html          # 精選類股
 │   ├── premium-warrant.html    # 精選權證
