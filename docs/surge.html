@@ -121,7 +121,6 @@
         { name: "尖點", symbol: "8021" },
         { name: "金居", symbol: "8358" },
         { name: "凱崴", symbol: "5498" },
-        { name: "沛爾生醫-創", symbol: "6949" },
         { name: "華東", symbol: "8110" },
         { name: "國精化", symbol: "4722" },
         { name: "勤誠", symbol: "8210" },
@@ -148,7 +147,7 @@
       function daysCell(m, extraClass) {
         const cls = "num" + (extraClass ? " " + extraClass : "");
         const body =
-          m.days == null ? '<span class="miss">未達</span>' : String(m.days);
+          m.days == null ? '<span class="miss">未達</span>' : m.days + "天";
         return `<td class="${cls}">${body}</td>`;
       }
 
@@ -156,7 +155,7 @@
         const cls = "num" + (extraClass ? " " + extraClass : "");
         if (!m) return `<td class="${cls}"><span class="miss">—</span></td>`;
         const body =
-          m.days == null ? '<span class="miss">未達</span>' : String(m.days);
+          m.days == null ? '<span class="miss">未達</span>' : m.days + "天";
         return `<td class="${cls}"><span class="tier">${esc(m.label)}</span>${body}</td>`;
       }
 
