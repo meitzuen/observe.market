@@ -143,6 +143,7 @@ test("analyzeSurge: startDate pins the start day and reports hit details", () =>
   assert.equal(m.date, "d007");
   assert.equal(m.close, 150);
   assert.equal(m.suspect, false);
+  assert.equal(a.lastClose, 150);
   assert.equal(analyzeSurge(r, { startDate: "nope" }), null);
 });
 

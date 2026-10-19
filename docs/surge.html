@@ -219,6 +219,7 @@
         <div class="tabs" role="tablist" id="view-tabs">
           <button class="tab active" role="tab" aria-selected="true" data-view="percent">報酬率</button>
           <button class="tab" role="tab" aria-selected="false" data-view="points">漲點</button>
+          <button class="tab" role="tab" aria-selected="false" data-view="band">股價區間</button>
         </div>
         <div class="legend" aria-hidden="true">
           <span>快</span><span class="legend-bar"></span><span>慢</span>
@@ -238,6 +239,9 @@
           <div>
             <strong>起漲日：</strong>以 STOCKS 清單中的 start 日期收盤價為準；沒填 start 的股票，自動取資料期間內收盤價最高那天之前、收盤價最低的一天。天數 =
             從起漲日算起的交易日數，以收盤價判斷是否到達，滑鼠移到天數上可看到達標日、收盤價與工作天（週一到週五，國定假日也算）。
+          </div>
+          <div>
+            <strong>股價區間：</strong>依最新收盤價分組，每格是該組到達門檻的中位數交易日（已排除疑似除權息的數字），下方小字是達標檔數／總檔數。
           </div>
           <div>
             <strong>漲點門檻：</strong>起漲價 1000 元以上看漲 250／500／750／1000／1250 元，100 元以上看漲 100／200／300／400／500 元，低於 100 元看漲 25／50／75／100／125 元，格子上方小字是該格的門檻。
@@ -446,11 +450,11 @@
       { label: "無資料", test: () => true },
     ];
 
-    function groupItems(items) {
+    function groupItems(items, priceOf = (a) => a.startClose) {
       const groups = BANDS.map((b) => ({ label: b.label, items: [] }));
       items.forEach((it) => {
         const a = it.result.analysis;
-        const i = a ? BANDS.findIndex((b) => b.test(a.startClose)) : BANDS.length - 1;
+        const i = a ? BANDS.findIndex((b) => b.test(priceOf(a))) : BANDS.length - 1;
         groups[i].items.push(it);
       });
       return groups.filter((g) => g.items.length);
@@ -474,8 +478,72 @@
       return `<tr class="group-row"><td colspan="4">${esc(title)}</td>${cells}</tr>`;
     }
 
+    const median = (xs) => {
+      const v = xs.slice().sort((a, b) => a - b);
+      const mid = v.length >> 1;
+      return v.length % 2 ? v[mid] : (v[mid - 1] + v[mid]) / 2;
+    };
+
+    // "股價區間" view: one row per latest-close band, median days to reach each
+    // percent milestone. Suspect (post ex-rights) figures are left out.
+    function bandStats(items) {
+      return groupItems(items, (a) => a.lastClose)
+        .map((g) => ({ label: g.label, items: g.items.filter((it) => it.result.analysis) }))
+        .filter((g) => g.items.length)
+        .map((g) => ({
+          label: g.label,
+          count: g.items.length,
+          cells: HEADS.percent.map((_, i) => {
+            const all = g.items.map((it) => it.result.analysis.percent[i]);
+            const days = all.filter((m) => m.days != null && !m.suspect).map((m) => m.days);
+            return { n: days.length, total: all.length, med: days.length ? median(days) : null };
+          }),
+        }));
+    }
+
+    function renderBands(items) {
+      const bands = bandStats(items);
+      let cap = 1;
+      bands.forEach((b) => b.cells.forEach((c) => c.med != null && (cap = Math.max(cap, c.med))));
+      const body = (c) =>
+        c.med == null
+          ? '<span class="miss">—</span>'
+          : `${c.med}天<span class="tier">${c.n}/${c.total} 檔達標</span>`;
+      const tip = (c) => `中位數；已排除疑似除權息，${c.n} 檔達標，共 ${c.total} 檔`;
+      document.getElementById("result-head").innerHTML =
+        '<tr><th>最新收盤價區間</th><th class="num">檔數</th>' +
+        HEADS.percent.map((h) => `<th class="num">${h}</th>`).join("") +
+        "</tr>";
+      document.getElementById("result-list").innerHTML = bands
+        .map(
+          (b) =>
+            `<tr><td class="name-cell">${esc(b.label)}</td><td class="num">${b.count}</td>` +
+            b.cells
+              .map((c) => `<td class="num"${heatStyle({ days: c.med }, cap)} title="${esc(tip(c))}">${body(c)}</td>`)
+              .join("") +
+            "</tr>",
+        )
+        .join("");
+      document.getElementById("result-cards").innerHTML = bands
+        .map(
+          (b) =>
+            `<div class="surge-card"><div class="name-cell">${esc(b.label)}</div>` +
+            `<div class="surge-card-sub">${b.count} 檔 · 中位數天數</div><div class="chips">` +
+            b.cells
+              .map(
+                (c, i) =>
+                  `<div class="chip"${heatStyle({ days: c.med }, cap)} title="${esc(tip(c))}"><span class="tier">${HEADS.percent[i]}</span>${body(c)}</div>`,
+              )
+              .join("") +
+            "</div></div>",
+        )
+        .join("");
+      document.getElementById("result-count").textContent = items.length;
+    }
+
     function render() {
       const items = sortedItems();
+      if (state.view === "band") return renderBands(items);
       const groups = groupItems(items);
       const cols = HEADS[state.view].length + 4;
       let cap = 1;
