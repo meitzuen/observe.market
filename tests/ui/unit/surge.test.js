@@ -5,6 +5,7 @@ const {
   pointTiers,
   daysToReach,
   analyzeSurge,
+  weekdays,
 } = require("../../../docs/assets/surge.js");
 
 const rows = (closes) =>
@@ -34,11 +35,13 @@ test("findSurgeStart: no rise (peak on the first day) returns null", () => {
   assert.equal(findSurgeStart([]), null);
 });
 
-test("pointTiers: 100+ uses 100/200/300, below 100 uses 25/50/75/100", () => {
-  assert.deepEqual(pointTiers(100), [100, 200, 300]);
-  assert.deepEqual(pointTiers(954), [100, 200, 300]);
-  assert.deepEqual(pointTiers(99.9), [25, 50, 75, 100]);
-  assert.deepEqual(pointTiers(7.4), [25, 50, 75, 100]);
+test("pointTiers: 1000+ uses 250..1250, 100+ uses 100..500, below 100 uses 25..125", () => {
+  assert.deepEqual(pointTiers(100), [100, 200, 300, 400, 500]);
+  assert.deepEqual(pointTiers(954), [100, 200, 300, 400, 500]);
+  assert.deepEqual(pointTiers(1000), [250, 500, 750, 1000, 1250]);
+  assert.deepEqual(pointTiers(1685), [250, 500, 750, 1000, 1250]);
+  assert.deepEqual(pointTiers(99.9), [25, 50, 75, 100, 125]);
+  assert.deepEqual(pointTiers(7.4), [25, 50, 75, 100, 125]);
 });
 
 test("daysToReach: counts trading days from the start day, first close at or above target", () => {
@@ -78,7 +81,7 @@ test("analyzeSurge: percent milestones and low-price point tiers", () => {
       ["+400%", null],
     ],
   );
-  // start < 100 -> 25/50/75/100 points: targets 35, 60, 85, 110
+  // start < 100 -> 25/50/75/100/125 points: targets 35, 60, 85, 110, 135
   assert.deepEqual(
     a.points.map((m) => [m.label, m.days]),
     [
@@ -86,11 +89,12 @@ test("analyzeSurge: percent milestones and low-price point tiers", () => {
       ["+50元", null],
       ["+75元", null],
       ["+100元", null],
+      ["+125元", null],
     ],
   );
 });
 
-test("analyzeSurge: high-price stock uses 100/200/300 points", () => {
+test("analyzeSurge: high-price stock uses 100..500 points", () => {
   const r = rows([900, 954, 1100, 1250, 1500]);
   const a = analyzeSurge(r);
   assert.equal(a.startClose, 900);
@@ -100,6 +104,8 @@ test("analyzeSurge: high-price stock uses 100/200/300 points", () => {
       ["+100元", 2], // 1000 <= 1100 (day 2)
       ["+200元", 2], // 1100 <= 1100 (day 2)
       ["+300元", 3], // 1200 <= 1250 (day 3)
+      ["+400元", 4], // 1300 <= 1500 (day 4)
+      ["+500元", 4], // 1400 <= 1500 (day 4)
     ],
   );
 });
@@ -151,4 +157,11 @@ test("analyzeSurge: flags milestones after a >10.5% single-day move", () => {
   assert.equal(a.percent[0].suspect, false); // hit before the anomaly
   assert.equal(a.percent[1].days, null);
   assert.equal(a.percent[1].suspect, true); // never hit, anomaly in the way
+});
+
+test("weekdays: counts Mon-Fri after the start day through the end day", () => {
+  assert.equal(weekdays("2026-10-16", "2026-10-16"), 0);
+  assert.equal(weekdays("2026-10-16", "2026-10-19"), 1); // Fri -> Mon skips the weekend
+  assert.equal(weekdays("2026-10-19", "2026-10-26"), 5); // Mon -> next Mon
+  assert.equal(weekdays("2026-10-17", "2026-10-18"), 0); // Sat -> Sun
 });

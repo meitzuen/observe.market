@@ -24,10 +24,13 @@
     return { startIdx, peakIdx };
   }
 
-  // Point (NT$) milestones: 100+ closes use 100/200/300, below 100 use
-  // 25/50/75/100.
+  // Point (NT$) milestones: 1000+ closes use 250..1250 (step 250), 100+ use
+  // 100..500 (step 100), below 100 use 25..125 (step 25).
   function pointTiers(startClose) {
-    return startClose >= 100 ? [100, 200, 300] : [25, 50, 75, 100];
+    if (startClose >= 1000) return [250, 500, 750, 1000, 1250];
+    return startClose >= 100
+      ? [100, 200, 300, 400, 500]
+      : [25, 50, 75, 100, 125];
   }
 
   // Trading days from the start row to the first later close at or above
@@ -68,8 +71,15 @@
     return out;
   }
 
-  function calendarDays(a, b) {
-    return Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
+  // Mon-Fri days after a, up to and including b (public holidays count).
+  function weekdays(a, b) {
+    const end = Date.parse(b);
+    let n = 0;
+    for (let t = Date.parse(a) + 86400000; t <= end; t += 86400000) {
+      const dow = new Date(t).getUTCDay();
+      if (dow !== 0 && dow !== 6) n++;
+    }
+    return n;
   }
 
   // Milestone for one target: days, plus when/where it was hit. suspect = hit
@@ -86,7 +96,7 @@
       days: hit - startIdx,
       date: rows[hit].date,
       close: rows[hit].close,
-      calendarDays: calendarDays(rows[startIdx].date, rows[hit].date),
+      weekdays: weekdays(rows[startIdx].date, rows[hit].date),
       suspect: afterAnomaly && hit >= firstAnomalyIdx,
     };
   }
@@ -148,6 +158,7 @@
     pointTiers,
     daysToReach,
     findAnomalies,
+    weekdays,
     analyzeSurge,
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

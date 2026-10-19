@@ -2,7 +2,7 @@
 
   - 基準價 = 起漲日收盤價；目標價 = 基準價 × (1 + 漲幅)
   - 達標 = 起漲日之後，收盤價第一次 >= 目標價
-  - 交易日 = 在 stock_history 中相隔的 K 棒數；日曆天 = 日期相差天數
+  - 交易日 = 在 stock_history 中相隔的 K 棒數；工作天 = 起漲日之後（含達標日）的週一到週五天數，國定假日也算
   - 資料未還原權息：起漲日之後任一日單日變動超過 ±10.5% 視為疑似除權息／分割並標記，
     達標日落在異常日之後的門檻會註記「可能失真」
 
@@ -49,6 +49,12 @@ def find_anomalies(history, start_idx):
     return out
 
 
+def weekdays(start, end):
+    """start 之後到 end（含）的週一到週五天數。"""
+    return sum(1 for i in range(1, (end - start).days + 1)
+               if (start.toordinal() + i) % 7 not in (6, 0))  # 6=Sat, 0=Sun
+
+
 def analyze(stock_id, start_date, targets=DEFAULT_TARGETS):
     market, history = load_history(stock_id)
     if history is None:
@@ -74,7 +80,7 @@ def analyze(stock_id, start_date, targets=DEFAULT_TARGETS):
                 "date": history[hit]["date"],
                 "close": history[hit]["close"],
                 "trading_days": hit - start_idx,
-                "calendar_days": (date.fromisoformat(history[hit]["date"]) - d0).days,
+                "weekdays": weekdays(d0, date.fromisoformat(history[hit]["date"])),
             }
             row["suspect"] = first_anomaly is not None and hit >= first_anomaly
         elif first_anomaly is not None:
@@ -91,13 +97,13 @@ def analyze(stock_id, start_date, targets=DEFAULT_TARGETS):
 def print_report(res):
     print(f"\n{res['stock_id']} ({res['market']})  起漲日 {res['start_date']}  "
           f"基準收盤 {res['base']:g}  資料至 {res['last_date']}")
-    print(f"{'漲幅':>6} {'目標價':>10} {'達標日':>12} {'收盤':>9} {'交易日':>6} {'日曆天':>6}  備註")
+    print(f"{'漲幅':>6} {'目標價':>10} {'達標日':>12} {'收盤':>9} {'交易日':>6} {'工作天':>6}  備註")
     for r in res["rows"]:
         h = r["hit"]
         note = "可能失真" if r["suspect"] else ""
         if h:
             print(f"{'+%d%%' % r['pct']:>6} {r['target']:>10.2f} {h['date']:>12} {h['close']:>9g} "
-                  f"{h['trading_days']:>6} {h['calendar_days']:>6}  {note}")
+                  f"{h['trading_days']:>6} {h['weekdays']:>6}  {note}")
         else:
             note = "未達成" + ("（期間有異常，無法確定）" if r["suspect"] else "")
             print(f"{'+%d%%' % r['pct']:>6} {r['target']:>10.2f} {'-':>12} {'-':>9} {'-':>6} {'-':>6}  {note}")
