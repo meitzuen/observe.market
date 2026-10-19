@@ -145,6 +145,7 @@
       startClose,
       peakDate: rows[peakIdx].date,
       peakClose: rows[peakIdx].close,
+      lastClose: rows[rows.length - 1].close,
       // The run-up may have begun before our data does.
       startAtDataEdge: startIdx === 0,
       anomalies,
