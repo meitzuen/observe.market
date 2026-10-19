@@ -1,236 +1,509 @@
 <!doctype html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surge Observer | 飆股分析</title>
-    <link rel="icon" href="assets/favicon.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/ui.css" />
-    <style>
-      .hint {
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-top: var(--s2);
-        line-height: 1.7;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surge Observer | 飆股分析</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/ui.css" />
+  <style>
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s3);
+      margin-bottom: var(--s3);
+    }
+
+    .toolbar .tabs {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .toolbar .tab {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px var(--s4);
+    }
+
+    .toolbar .tab.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .legend {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--s2);
+    }
+
+    .legend-bar {
+      width: 72px;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, rgba(59, 91, 219, 0.4), rgba(59, 91, 219, 0.08));
+    }
+
+    td.num,
+    th.num {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .sort-btn {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    th[aria-sort="ascending"] .sort-btn::after {
+      content: " ↑";
+      color: var(--accent);
+    }
+
+    th[aria-sort="descending"] .sort-btn::after {
+      content: " ↓";
+      color: var(--accent);
+    }
+
+    .miss {
+      color: var(--text-subtle);
+    }
+
+    .tier {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .suspect {
+      opacity: 0.55;
+      text-decoration: underline dotted;
+      text-underline-offset: 3px;
+    }
+
+    .mark {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-left: 4px;
+      border-radius: 50%;
+      background: var(--hover);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 16px;
+      text-align: center;
+      vertical-align: 1px;
+      cursor: help;
+    }
+
+    .mark-warn {
+      background: var(--warn-soft);
+      color: var(--warn);
+    }
+
+    .name-cell {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .name-cell .code {
+      font-weight: 400;
+      color: var(--text-subtle);
+    }
+
+    .surge-cards {
+      display: none;
+    }
+
+    .surge-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--s3);
+    }
+
+    .surge-card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 2px 0 var(--s2);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s2);
+    }
+
+    .chip {
+      min-width: 64px;
+      padding: 4px var(--s2);
+      border-radius: 6px;
+      background: var(--hover);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 767px) {
+      .table-container {
+        display: none;
       }
 
-      .group-head {
-        text-align: center;
-        border-left: 2px solid var(--border-strong);
+      .surge-cards {
+        display: grid;
+        gap: var(--s3);
       }
+    }
 
-      .group-start {
-        border-left: 2px solid var(--border-strong);
-      }
+    .hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: var(--s4);
+      line-height: 1.7;
+    }
 
-      td.num,
-      th.num {
-        text-align: center;
-        white-space: nowrap;
-      }
+    .hint summary {
+      cursor: pointer;
+    }
 
-      .miss {
-        color: var(--text-muted);
-      }
+    .hint-body>div {
+      margin-top: var(--s2);
+    }
+  </style>
+</head>
 
-      .tier {
-        display: block;
-        font-size: 11px;
-        color: var(--text-muted);
-      }
+<body>
+  <header id="site-header"></header>
 
-      .edge-mark {
-        color: var(--warn);
-        cursor: help;
-      }
-    </style>
-  </head>
-  <body>
-    <header id="site-header"></header>
-
-    <div class="container" id="main">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">飆股分析</h1>
-          <p class="page-subtitle">起漲日之後，漲到各個門檻各花了幾個交易日</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">
-          <span
-            >起漲到各門檻的交易日
-            <span id="result-count" class="badge badge-primary">0</span></span
-          >
-        </div>
-        <div id="result-state"></div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th rowspan="2">代號</th>
-                <th rowspan="2">名稱</th>
-                <th rowspan="2" class="num">起漲日</th>
-                <th rowspan="2" class="num">起漲價</th>
-                <th colspan="5" class="group-head">報酬率：幾天到達</th>
-                <th colspan="4" class="group-head">漲點：幾天到達</th>
-              </tr>
-              <tr>
-                <th class="num group-start">+50%</th>
-                <th class="num">+100%</th>
-                <th class="num">+200%</th>
-                <th class="num">+300%</th>
-                <th class="num">+400%</th>
-                <th class="num group-start">第 1 門檻</th>
-                <th class="num">第 2 門檻</th>
-                <th class="num">第 3 門檻</th>
-                <th class="num">第 4 門檻</th>
-              </tr>
-            </thead>
-            <tbody id="result-list"></tbody>
-          </table>
-        </div>
-        <div class="hint">
-          <div>
-            <strong>怎麼算：</strong>起漲日 = 資料期間內收盤價最高的那一天，往回找之前收盤價最低的那一天。
-            天數 = 從起漲日算起的交易日數，以收盤價判斷是否到達。
-          </div>
-          <div>
-            <strong>漲點門檻：</strong>起漲日收盤價 100 元以上看漲 100／200／300 元，低於 100 元看漲 25／50／75／100 元，每格上方的小字是該格的門檻。
-          </div>
-          <div>
-            <strong>未達：</strong>沒有漲到該門檻。<span class="edge-mark">※</span> 表示起漲日落在資料的第一天，實際起漲可能更早，天數會偏短。
-          </div>
-        </div>
+  <div class="container" id="main">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">飆股分析</h1>
+        <p class="page-subtitle">起漲日之後，漲到各個門檻各花了幾個交易日</p>
       </div>
     </div>
 
-    <script src="assets/data.js"></script>
-    <script src="assets/shell.js"></script>
-    <script src="assets/surge.js"></script>
-    <script>
-      // Hard-coded watch list; swap this for a configurable source later.
-      const STOCKS = [
-        { name: "德宏", symbol: "5475" },
-        { name: "南亞科", symbol: "2408" },
-        { name: "華邦電", symbol: "2344" },
-        { name: "旺宏", symbol: "2337" },
-        { name: "尖點", symbol: "8021" },
-        { name: "金居", symbol: "8358" },
-        { name: "凱崴", symbol: "5498" },
-        { name: "華東", symbol: "8110" },
-        { name: "國精化", symbol: "4722" },
-        { name: "勤誠", symbol: "8210" },
-        { name: "禾伸堂", symbol: "3026" },
-        { name: "大甲", symbol: "2221" },
-        { name: "全友", symbol: "2305" },
-        { name: "景碩", symbol: "3189" },
-        { name: "鼎元", symbol: "2426" },
-        { name: "光鼎", symbol: "6226" },
-        { name: "南電", symbol: "8046" },
-        { name: "聯茂", symbol: "6213" },
-        { name: "欣興", symbol: "3037" },
-        { name: "尚茂", symbol: "8291" },
-        { name: "騰輝電子-KY", symbol: "6672" },
-      ];
+    <div class="card">
+      <div class="card-title">
+        <span>起漲到各門檻的交易日
+          <span id="result-count" class="badge badge-primary">0</span></span>
+      </div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist" id="view-tabs">
+          <button class="tab active" role="tab" aria-selected="true" data-view="percent">報酬率</button>
+          <button class="tab" role="tab" aria-selected="false" data-view="points">漲點</button>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span>快</span><span class="legend-bar"></span><span>慢</span>
+        </div>
+      </div>
+      <div id="result-state"></div>
+      <div class="table-container">
+        <table>
+          <thead id="result-head"></thead>
+          <tbody id="result-list"></tbody>
+        </table>
+      </div>
+      <div class="surge-cards" id="result-cards"></div>
+      <details class="hint">
+        <summary>說明：怎麼算、標記代表什麼</summary>
+        <div class="hint-body">
+          <div>
+            <strong>起漲日：</strong>以 STOCKS 清單中的 start 日期收盤價為準；沒填 start 的股票，自動取資料期間內收盤價最高那天之前、收盤價最低的一天。天數 =
+            從起漲日算起的交易日數，以收盤價判斷是否到達，滑鼠移到天數上可看到達標日、收盤價與日曆天。
+          </div>
+          <div>
+            <strong>漲點門檻：</strong>起漲價 100 元以上看漲 100／200／300 元，低於 100 元看漲 25／50／75／100 元，格子上方小字是該格的門檻。
+          </div>
+          <div>
+            <strong>黃色 !（疑似除權息）：</strong>價格未還原權息，起漲日之後單日變動超過 ±10.5% 就標記，滑鼠移上去看日期與價格；落在異常日之後的天數會變淡並加底線，表示可能失真。
+          </div>
+          <div>
+            <strong>灰色 !（資料起點）：</strong>起漲日落在資料第一天，實際起漲可能更早，天數會偏短。<strong>未達：</strong>沒有漲到該門檻。
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
 
-      const esc = (s) =>
-        String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
+  <script src="assets/data.js"></script>
+  <script src="assets/shell.js"></script>
+  <script src="assets/surge.js"></script>
+  <script>
+    // Hard-coded watch list (names come from stock_info.json); swap this for a configurable source later.
+    const STOCKS = [
+      // start (optional): pins the start day; omit it to auto-detect.
+      { symbol: "2408", start: "2026-03-31" },
+      { symbol: "2344", start: "2026-04-20" },
+      { symbol: "2337", start: "2026-01-02" },
+      { symbol: "8110", start: "2026-01-02" },
+      { symbol: "8021", start: "2026-01-05" },
+      { symbol: "5498", start: "2026-01-08" },
+      { symbol: "4722", start: "2026-02-02" },
+      { symbol: "3026", start: "2026-02-02" },
+      { symbol: "2221", start: "2026-01-05" },
+      { symbol: "2305", start: "2026-01-05" },
+      { symbol: "2426", start: "2026-01-09" },
+      { symbol: "8046", start: "2026-01-08" },
+      { symbol: "3189", start: "2026-01-02" },
+      { symbol: "3037", start: "2026-01-02" },
+      { symbol: "8358", start: "2026-03-24" },
+      { symbol: "6213", start: "2026-02-02" },
+      { symbol: "6672", start: "2026-02-02" },
+    ];
 
-      function daysCell(m, extraClass) {
-        const cls = "num" + (extraClass ? " " + extraClass : "");
-        const body =
-          m.days == null ? '<span class="miss">未達</span>' : m.days + "天";
-        return `<td class="${cls}">${body}</td>`;
+    const esc = (s) =>
+      String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+    const HEADS = {
+      percent: ["+50%", "+100%", "+200%", "+300%", "+400%"],
+      points: ["門檻 1", "門檻 2", "門檻 3", "門檻 4"],
+    };
+    const state = { view: "percent", key: null, dir: 1, items: [] };
+
+    // Hover text: when it was reached; suspect = after a suspected
+    // ex-rights/split, which raw prices do not reflect.
+    function hitTitle(m) {
+      if (m.days == null) {
+        return m.suspect ? "未達，但期間有疑似除權息／分割，無法確定" : "";
+      }
+      const warn = m.suspect ? "（起漲後有疑似除權息／分割，可能失真）" : "";
+      return `${m.date} 收盤 ${m.close}，${m.calendarDays} 個日曆天${warn}`;
+    }
+
+    // Faster = darker. Scaled to the slowest hit currently on screen.
+    function heatStyle(m, cap) {
+      if (!m || m.days == null) return "";
+      const alpha = 0.08 + 0.32 * (1 - Math.min(m.days, cap) / cap);
+      return ` style="background:rgba(59,91,219,${alpha.toFixed(3)})"`;
+    }
+
+    function daysBody(m) {
+      if (m.days == null) return '<span class="miss">未達</span>';
+      return `<span${m.suspect ? ' class="suspect"' : ""}>${m.days}天</span>`;
+    }
+
+    // Milestones for the active view; points are padded to 4 slots.
+    function milestones(a) {
+      const list = a[state.view];
+      return state.view === "points" ? [0, 1, 2, 3].map((i) => list[i] || null) : list;
+    }
+
+    function anomalyTip(a) {
+      return (
+        "疑似除權息／分割，資料未還原：\n" +
+        a.anomalies
+          .map(
+            (x) =>
+              `${x.date} ${x.prevClose} → ${x.close}（${(x.change * 100).toFixed(1)}%）`,
+          )
+          .join("\n")
+      );
+    }
+
+    // Single-line "!" marks keep every row the same height; details on hover.
+    function tagsHtml(stock, a) {
+      const t = [];
+      if (a && a.anomalies.length) {
+        t.push(`<span class="mark mark-warn" title="${esc(anomalyTip(a))}">!</span>`);
+      }
+      if (a && a.startAtDataEdge) {
+        t.push('<span class="mark" title="資料起點：起漲日落在資料第一天，實際起漲可能更早">!</span>');
+      }
+      return t.join("");
+    }
+
+    const stockLink = (stock, text) =>
+      `<a href="stock.html?id=${esc(stock.symbol)}" class="stock-link">${esc(text)}</a>`;
+
+    // Table: code and name in separate cells. Cards: one combined line.
+    function nameHtml(stock, a) {
+      return stockLink(stock, stock.name) + tagsHtml(stock, a);
+    }
+
+    function msCell(m, cap) {
+      if (!m) return '<td class="num"><span class="miss">—</span></td>';
+      const tier = state.view === "points" ? `<span class="tier">${esc(m.label)}</span>` : "";
+      return `<td class="num"${heatStyle(m, cap)} title="${esc(hitTitle(m))}">${tier}${daysBody(m)}</td>`;
+    }
+
+    function rowHtml(item, cap) {
+      const { stock, result } = item;
+      const a = result.analysis;
+      const head =
+        `<td>${stockLink(stock, stock.symbol)}</td>` +
+        `<td class="name-cell">${nameHtml(stock, a)}</td>`;
+      if (!a) {
+        const cols = HEADS[state.view].length + 2; // start date, start close
+        const msg = result.error || "資料期間內沒有上漲";
+        return `<tr>${head}<td colspan="${cols}" class="miss">${esc(msg)}</td></tr>`;
+      }
+      return (
+        `<tr>${head}` +
+        `<td class="num">${esc(a.startDate)}</td>` +
+        `<td class="num">${a.startClose.toFixed(2)}</td>` +
+        milestones(a).map((m) => msCell(m, cap)).join("") +
+        "</tr>"
+      );
+    }
+
+    function cardHtml(item, cap) {
+      const { stock, result } = item;
+      const a = result.analysis;
+      const head = `<div class="name-cell">${nameHtml(stock, a)} <span class="code">${esc(stock.symbol)}</span></div>`;
+      if (!a) {
+        return `<div class="surge-card">${head}<div class="miss">${esc(result.error || "資料期間內沒有上漲")}</div></div>`;
+      }
+      const chips = milestones(a)
+        .filter(Boolean)
+        .map(
+          (m) =>
+            `<div class="chip"${heatStyle(m, cap)} title="${esc(hitTitle(m))}"><span class="tier">${esc(m.label)}</span>${daysBody(m)}</div>`,
+        )
+        .join("");
+      return (
+        `<div class="surge-card">${head}` +
+        `<div class="surge-card-sub">起漲 ${esc(a.startDate)} · ${a.startClose.toFixed(2)}</div>` +
+        `<div class="chips">${chips}</div></div>`
+      );
+    }
+
+    function sortValue(item, key) {
+      const a = item.result.analysis;
+      if (!a) return null;
+      if (key === "start") return a.startDate;
+      if (key === "close") return a.startClose;
+      const m = milestones(a)[Number(key.slice(1))];
+      return m && m.days != null ? m.days : null;
+    }
+
+    function sortedItems() {
+      const items = state.items.slice();
+      if (!state.key) return items;
+      const key = state.key;
+      // Missing values (no rise / not reached) always sink to the bottom.
+      return items.sort((x, y) => {
+        const vx = sortValue(x, key);
+        const vy = sortValue(y, key);
+        if (vx == null && vy == null) return 0;
+        if (vx == null) return 1;
+        if (vy == null) return -1;
+        return (vx < vy ? -1 : vx > vy ? 1 : 0) * state.dir;
+      });
+    }
+
+    function headHtml() {
+      const th = (key, label, cls) => {
+        const sort = state.key === key ? (state.dir > 0 ? "ascending" : "descending") : "none";
+        return `<th class="${cls}" aria-sort="${sort}"><button class="sort-btn" data-key="${key}">${label}</button></th>`;
+      };
+      return (
+        "<tr><th>代號</th><th>名稱</th>" +
+        th("start", "起漲日", "num") +
+        th("close", "起漲價", "num") +
+        HEADS[state.view].map((h, i) => th("m" + i, h, "num")).join("") +
+        "</tr>"
+      );
+    }
+
+    function render() {
+      const items = sortedItems();
+      let cap = 1;
+      items.forEach((it) => {
+        const a = it.result.analysis;
+        if (!a) return;
+        milestones(a).forEach((m) => {
+          if (m && m.days != null) cap = Math.max(cap, m.days);
+        });
+      });
+      document.getElementById("result-head").innerHTML = headHtml();
+      document.getElementById("result-list").innerHTML = items.map((it) => rowHtml(it, cap)).join("");
+      document.getElementById("result-cards").innerHTML = items.map((it) => cardHtml(it, cap)).join("");
+      document.getElementById("result-count").textContent = items.length;
+    }
+
+    document.getElementById("view-tabs").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-view]");
+      if (!btn || btn.dataset.view === state.view) return;
+      state.view = btn.dataset.view;
+      state.key = null; // column meaning changes with the view
+      document.querySelectorAll("#view-tabs .tab").forEach((t) => {
+        const on = t === btn;
+        t.classList.toggle("active", on);
+        t.setAttribute("aria-selected", String(on));
+      });
+      render();
+    });
+
+    document.getElementById("result-head").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-key]");
+      if (!btn) return;
+      state.dir = state.key === btn.dataset.key ? -state.dir : 1;
+      state.key = btn.dataset.key;
+      render();
+    });
+
+    async function load() {
+      const stateEl = document.getElementById("result-state");
+      UIData.renderState(stateEl, "loading", { rows: 4 });
+      document.getElementById("result-list").innerHTML = "";
+
+      let info;
+      try {
+        info = await UIData.loadJSON("data/stock_info.json");
+      } catch (e) {
+        UIData.renderState(stateEl, "error", {
+          message: "資料載入失敗",
+          onRetry: load,
+        });
+        return;
       }
 
-      function pointsCell(m, extraClass) {
-        const cls = "num" + (extraClass ? " " + extraClass : "");
-        if (!m) return `<td class="${cls}"><span class="miss">—</span></td>`;
-        const body =
-          m.days == null ? '<span class="miss">未達</span>' : m.days + "天";
-        return `<td class="${cls}"><span class="tier">${esc(m.label)}</span>${body}</td>`;
-      }
+      const results = await Promise.all(
+        STOCKS.map(async (stock) => {
+          const meta = info[stock.symbol];
+          if (!meta) return { error: "找不到這檔股票的資料" };
+          // Only listed (twse) and OTC (tpex) stocks have a history file.
+          if (meta.type !== "twse" && meta.type !== "tpex") {
+            return { error: "興櫃股票，沒有歷史資料" };
+          }
+          try {
+            const rows = await UIData.loadJSON(
+              `data/${meta.type}/stock_history/${stock.symbol}.json`,
+            );
+            return { analysis: Surge.analyzeSurge(rows, { startDate: stock.start }) };
+          } catch (e) {
+            return { error: "資料載入失敗" };
+          }
+        }),
+      );
 
-      function rowHtml(stock, result) {
-        const head =
-          `<td style="font-weight:500;"><a href="stock.html?id=${esc(stock.symbol)}" class="stock-link">${esc(stock.symbol)}</a></td>` +
-          `<td style="font-weight:600;">${esc(stock.name)}</td>`;
-        if (result.error) {
-          return `<tr>${head}<td colspan="11" class="miss">${esc(result.error)}</td></tr>`;
-        }
-        const a = result.analysis;
-        if (!a) {
-          return `<tr>${head}<td colspan="11" class="miss">資料期間內沒有上漲</td></tr>`;
-        }
-        const edge = a.startAtDataEdge
-          ? ' <span class="edge-mark" title="起漲日落在資料第一天，實際起漲可能更早">※</span>'
-          : "";
-        const pct = a.percent
-          .map((m, i) => daysCell(m, i === 0 ? "group-start" : ""))
-          .join("");
-        const pts = [0, 1, 2, 3]
-          .map((i) => pointsCell(a.points[i], i === 0 ? "group-start" : ""))
-          .join("");
-        return (
-          `<tr>${head}` +
-          `<td class="num">${esc(a.startDate)}${edge}</td>` +
-          `<td class="num">${a.startClose.toFixed(2)}</td>` +
-          pct +
-          pts +
-          "</tr>"
-        );
-      }
+      stateEl.innerHTML = "";
+      state.items = STOCKS.map((stock, i) => ({
+        stock: { ...stock, name: (info[stock.symbol] || {}).name || stock.symbol },
+        result: results[i],
+      }));
+      render();
+    }
 
-      async function load() {
-        const state = document.getElementById("result-state");
-        const tbody = document.getElementById("result-list");
-        UIData.renderState(state, "loading", { rows: 4 });
-        tbody.innerHTML = "";
+    load();
+  </script>
+</body>
 
-        let info;
-        try {
-          info = await UIData.loadJSON("data/stock_info.json");
-        } catch (e) {
-          UIData.renderState(state, "error", {
-            message: "資料載入失敗",
-            onRetry: load,
-          });
-          return;
-        }
-
-        const results = await Promise.all(
-          STOCKS.map(async (stock) => {
-            const meta = info[stock.symbol];
-            if (!meta) return { error: "找不到這檔股票的資料" };
-            // Only listed (twse) and OTC (tpex) stocks have a history file.
-            if (meta.type !== "twse" && meta.type !== "tpex") {
-              return { error: "興櫃股票，沒有歷史資料" };
-            }
-            try {
-              const rows = await UIData.loadJSON(
-                `data/${meta.type}/stock_history/${stock.symbol}.json`,
-              );
-              return { analysis: Surge.analyzeSurge(rows) };
-            } catch (e) {
-              return { error: "資料載入失敗" };
-            }
-          }),
-        );
-
-        state.innerHTML = "";
-        document.getElementById("result-count").textContent = STOCKS.length;
-        tbody.innerHTML = STOCKS.map((s, i) => rowHtml(s, results[i])).join("");
-      }
-
-      load();
-    </script>
-  </body>
 </html>

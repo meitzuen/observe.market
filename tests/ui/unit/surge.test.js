@@ -126,3 +126,29 @@ test("analyzeSurge: returns null when the stock never rose", () => {
   assert.equal(analyzeSurge(rows([30, 20, 10])), null);
   assert.equal(analyzeSurge([]), null);
 });
+
+test("analyzeSurge: startDate pins the start day and reports hit details", () => {
+  const r = rows([90, 100, 105, 110, 120, 130, 140, 150]);
+  const a = analyzeSurge(r, { startDate: "d001" });
+  assert.equal(a.startIdx, 1);
+  assert.equal(a.startClose, 100);
+  const m = a.percent[0]; // +50% = 150 at idx 7
+  assert.equal(m.days, 6);
+  assert.equal(m.date, "d007");
+  assert.equal(m.close, 150);
+  assert.equal(m.suspect, false);
+  assert.equal(analyzeSurge(r, { startDate: "nope" }), null);
+});
+
+test("analyzeSurge: flags milestones after a >10.5% single-day move", () => {
+  // +50% hit at idx 6, then a split-like -95%; +100% never reached
+  const a = analyzeSurge(rows([100, 105, 110, 120, 130, 140, 150, 7.5, 8]), {
+    startDate: "d000",
+  });
+  assert.equal(a.anomalies.length, 1);
+  assert.equal(a.anomalies[0].date, "d007");
+  assert.equal(a.percent[0].days, 6);
+  assert.equal(a.percent[0].suspect, false); // hit before the anomaly
+  assert.equal(a.percent[1].days, null);
+  assert.equal(a.percent[1].suspect, true); // never hit, anomaly in the way
+});
