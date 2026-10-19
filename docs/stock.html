@@ -982,10 +982,25 @@
           rightPriceScale: {
             borderVisible: false,
           },
+          // Dates as 2026-01-01 on the crosshair label and the time axis.
+          localization: { dateFormat: "yyyy-MM-dd" },
           timeScale: {
             borderVisible: false,
             timeVisible: false,
             rightOffset: 2,
+            tickMarkFormatter: (time, tickMarkType) => {
+              // Business-day strings arrive as { year, month, day }.
+              const t =
+                typeof time === "object"
+                  ? time
+                  : { year: time, month: 1, day: 1 };
+              const mm = String(t.month).padStart(2, "0");
+              const dd = String(t.day).padStart(2, "0");
+              // 0 = Year, 1 = Month, otherwise day of month and finer.
+              if (tickMarkType === 0) return `${t.year}`;
+              if (tickMarkType === 1) return `${t.year}-${mm}`;
+              return `${t.year}-${mm}-${dd}`;
+            },
           },
           crosshair: {
             mode: LightweightCharts.CrosshairMode.Normal,
