@@ -6,30 +6,30 @@
     {
       label: "市場",
       items: [
+        { href: "index.html", label: "全部", desc: "上市＋上櫃整合大盤" },
         { href: "twse.html", label: "上市", desc: "上市大盤與個股行情" },
         { href: "tpex.html", label: "上櫃", desc: "上櫃大盤與個股行情" },
-        { href: "index.html", label: "全部", desc: "上市＋上櫃整合大盤" },
       ],
     },
     {
       label: "策略",
       items: [
-        { href: "punish.html", label: "處置股票", desc: "最新處置股票名單" },
-        { href: "volume-candle.html", label: "爆量長紅黑K", desc: "爆量長紅／長黑 K 線個股" },
-        { href: "gap.html", label: "跳空漲跌", desc: "開盤跳空強弱勢個股" },
-        { href: "wantgoo.html", label: "基本面", desc: "Wantgoo 基本面數據排行" },
-        { href: "volatility.html", label: "區間波動率", desc: "區間日／年化波動率與漲跌" },
-        { href: "vcp.html", label: "VCP選股", desc: "收縮型態（VCP）選股" },
-        { href: "head-shoulders.html", label: "頭肩底/頂", desc: "頭肩底／頭肩頂型態選股" },
+        { href: "punish.html", label: "處置股", desc: "最新處置股票名單" },
+        { href: "surge.html", label: "飆股", desc: "起漲日後漲到各門檻所需的交易日" },
+        { href: "volume-candle.html", label: "爆量紅黑K", desc: "爆量長紅/長黑K線個股" },
         { href: "backtest.html", label: "策略回測", desc: "策略訊號的事後報酬與回撤" },
-        { href: "surge.html", label: "飆股分析", desc: "起漲日後漲到各門檻所需的交易日" },
+        { href: "gap.html", label: "跳空缺口", desc: "開盤跳空強弱勢個股" },
+        { href: "wantgoo.html", label: "玩股基本面", desc: "Wantgoo基本面數據排行" },
+        { href: "volatility.html", label: "區間波動率", desc: "區間日/年化波動率與漲跌" },
+        { href: "head-shoulders.html", label: "頭肩型態", desc: "頭肩底/頭肩頂型態選股" },
+        { href: "vcp.html", label: "VCP型態", desc: "收縮型態(VCP)選股" },
       ],
     },
     {
       label: "權證",
       items: [
-        { href: "premium-warrant.html", label: "精選權證", desc: "精選權證清單" },
         { href: "warrant-filter.html", label: "權證篩選", desc: "依條件篩選權證" },
+        { href: "premium-warrant.html", label: "精選權證", desc: "精選權證清單" },
       ],
     },
     {
@@ -127,7 +127,7 @@
     return ms / 86400000 > (maxDays == null ? 3 : maxDays);
   }
 
-  const api = { NAV, searchPages, searchStocks, latestDate, isStale, mount: function () {} };
+  const api = { NAV, searchPages, searchStocks, latestDate, isStale, mount: function () { } };
 
   // ---- DOM (browser only) ---------------------------------------------------
 
@@ -143,9 +143,9 @@
       global.UIData
         ? global.UIData.loadJSON(url)
         : fetch(url).then((r) => {
-            if (!r.ok) throw new Error("HTTP " + r.status);
-            return r.json();
-          });
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        });
 
     function currentPage() {
       const p = location.pathname;
