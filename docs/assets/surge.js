@@ -2,6 +2,45 @@
   "use strict";
 
   const PERCENT_STEPS = [0.5, 1, 2, 3, 4];
+  // "股價" view: start-close bands, each with its own absolute price targets.
+  // Under 100 the targets step by 25 from the band's top; from 100 up, bands
+  // are 100 wide and targets start at the band's top, stepping by 100.
+  const PRICE_BANDS = (() => {
+    const bands = [
+      { label: "50 元以下", min: 0, max: 50, targets: [50, 75, 100, 125, 150] },
+      { label: "50 – 100 元", min: 50, max: 100, targets: [100, 125, 150, 175, 200] },
+    ];
+    for (let lo = 100; lo < 1000; lo += 100) {
+      const hi = lo + 100;
+      bands.push({
+        label: lo + " – " + hi + " 元",
+        min: lo,
+        max: hi,
+        targets: [0, 1, 2, 3, 4].map((k) => hi + k * 100),
+      });
+    }
+    for (let lo = 1000; lo < 3000; lo += 500) {
+      const hi = lo + 500;
+      bands.push({
+        label: lo + " – " + hi + " 元",
+        min: lo,
+        max: hi,
+        targets: [0, 1, 2, 3, 4].map((k) => hi + k * 250),
+      });
+    }
+    bands.push({
+      label: "3000 元以上",
+      min: 3000,
+      max: Infinity,
+      targets: [3500, 4000, 4500, 5000, 5500],
+    });
+    return bands;
+  })();
+
+  function priceTargets(startClose) {
+    const b = PRICE_BANDS.find((x) => startClose >= x.min && startClose < x.max);
+    return b ? b.targets : [];
+  }
   const EPS = 1e-9;
   // Prices are not adjusted for ex-rights/splits, so a single-day move beyond
   // this is flagged (same threshold as src/backtest.py).
@@ -105,7 +144,7 @@
   function addGaps(list) {
     let prev = 0;
     for (const m of list) {
-      if (m.days == null) continue;
+      if (!m || m.days == null) continue;
       m.gap = m.days - prev;
       prev = m.days;
     }
@@ -149,8 +188,13 @@
       milestone(rows, startIdx, "+" + pt + "元", startClose + pt, firstAnomalyIdx),
     );
 
+    const prices = priceTargets(startClose).map((p) =>
+      milestone(rows, startIdx, p + "元", p, firstAnomalyIdx),
+    );
+
     addGaps(percent);
     addGaps(points);
+    addGaps(prices);
 
     return {
       startIdx,
@@ -164,10 +208,13 @@
       anomalies,
       percent,
       points,
+      prices,
     };
   }
 
   const api = {
+    PRICE_BANDS,
+    priceTargets,
     findSurgeStart,
     pointTiers,
     daysToReach,

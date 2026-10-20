@@ -241,7 +241,7 @@
             從起漲日算起的交易日數，以收盤價判斷是否到達，滑鼠移到天數上可看到達標日、收盤價與跟前一個門檻相差的交易日數（第一個門檻則是距起漲日的天數）。
           </div>
           <div>
-            <strong>股價：</strong>依最新收盤價分組，每格是該組到達門檻的中位數交易日（已排除疑似除權息的數字），下方小字是達標檔數／總檔數。
+            <strong>股價：</strong>依起漲價分組，每組有自己的目標股價（格子上方小字／分組標題列）：50 元以下 50／75／100／125／150，50–100 元 100／125／150／175／200，100–1000 元每 100 元一組，目標從該組上限開始每次加 100（例如 100–200 元為 200／300／400／500／600），1000 元以上每 500 元一組，目標從該組上限開始每次加 250（3000 元以上為 3500／4000／4500／5000／5500）。天數 = 起漲日到收盤價第一次達到該股價的交易日數。
           </div>
           <div>
             <strong>漲點門檻：</strong>起漲價 1000 元以上看漲 250／500／750／1000／1250 元，100 元以上看漲 100／200／300／400／500 元，低於 100 元看漲 25／50／75／100／125 元，格子上方小字是該格的門檻。
@@ -290,6 +290,7 @@
     const HEADS = {
       percent: ["+50%", "+100%", "+200%", "+300%", "+400%"],
       points: ["門檻一", "門檻二", "門檻三", "門檻四", "門檻五"],
+      band: ["價位一", "價位二", "價位三", "價位四", "價位五"],
     };
     const state = { view: "percent", key: null, dir: 1, items: [] };
 
@@ -317,7 +318,7 @@
 
     // Milestones for the active view; points are padded to 5 slots.
     function milestones(a) {
-      const list = a[state.view];
+      const list = a[state.view === "band" ? "prices" : state.view];
       return state.view === "points" ? [0, 1, 2, 3, 4].map((i) => list[i] || null) : list;
     }
 
@@ -432,9 +433,9 @@
         "<tr><th>代號</th><th>名稱</th>" +
         th("start", "起漲日", "num") +
         th("close", "起漲價", "num") +
-        (state.view === "points"
-          ? '<th class="num" colspan="5">漲點門檻（見各分組標題）</th>'
-          : HEADS.percent.map((h, i) => th("m" + i, h, "num")).join("")) +
+        (state.view !== "percent"
+          ? `<th class="num" colspan="5">${state.view === "band" ? "目標股價" : "漲點門檻"}（見各分組標題）</th>`
+          : HEADS[state.view].map((h, i) => th("m" + i, h, "num")).join("")) +
         "</tr>"
       );
     }
@@ -451,10 +452,17 @@
     ];
 
     function groupItems(items, priceOf = (a) => a.startClose) {
-      const groups = BANDS.map((b) => ({ label: b.label, items: [] }));
+      const bands =
+        state.view === "band"
+          ? [
+              ...Surge.PRICE_BANDS.map((b) => ({ label: b.label, test: (c) => c >= b.min && c < b.max })),
+              BANDS[BANDS.length - 1],
+            ]
+          : BANDS;
+      const groups = bands.map((b) => ({ label: b.label, items: [] }));
       items.forEach((it) => {
         const a = it.result.analysis;
-        const i = a ? BANDS.findIndex((b) => b.test(priceOf(a))) : BANDS.length - 1;
+        const i = a ? bands.findIndex((b) => b.test(priceOf(a))) : bands.length - 1;
         groups[i].items.push(it);
       });
       return groups.filter((g) => g.items.length);
@@ -464,86 +472,25 @@
     // group, so they replace the column headings here and act as sort handles.
     function groupRowHtml(g, title, cols) {
       const first = g.items.find((it) => it.result.analysis);
-      if (state.view !== "points" || !first) {
+      if (state.view === "percent" || !first) {
         return `<tr class="group-row"><td colspan="${cols}">${esc(title)}</td></tr>`;
       }
-      const tiers = Surge.pointTiers(first.result.analysis.startClose);
+      const isBand = state.view === "band";
+      const tiers = isBand
+        ? Surge.priceTargets(first.result.analysis.startClose)
+        : Surge.pointTiers(first.result.analysis.startClose);
       const cells = [0, 1, 2, 3, 4]
         .map((i) => {
           if (i >= tiers.length) return '<td class="num"></td>';
           const sort = state.key === "m" + i ? (state.dir > 0 ? "ascending" : "descending") : "none";
-          return `<td class="num" aria-sort="${sort}"><button class="sort-btn" data-key="m${i}">+${tiers[i]}元</button></td>`;
+          return `<td class="num" aria-sort="${sort}"><button class="sort-btn" data-key="m${i}">${isBand ? "" : "+"}${tiers[i]}元</button></td>`;
         })
         .join("");
       return `<tr class="group-row"><td colspan="4">${esc(title)}</td>${cells}</tr>`;
     }
 
-    const median = (xs) => {
-      const v = xs.slice().sort((a, b) => a - b);
-      const mid = v.length >> 1;
-      return v.length % 2 ? v[mid] : (v[mid - 1] + v[mid]) / 2;
-    };
-
-    // "股價" view: one row per latest-close band, median days to reach each
-    // percent milestone. Suspect (post ex-rights) figures are left out.
-    function bandStats(items) {
-      return groupItems(items, (a) => a.lastClose)
-        .map((g) => ({ label: g.label, items: g.items.filter((it) => it.result.analysis) }))
-        .filter((g) => g.items.length)
-        .map((g) => ({
-          label: g.label,
-          count: g.items.length,
-          cells: HEADS.percent.map((_, i) => {
-            const all = g.items.map((it) => it.result.analysis.percent[i]);
-            const days = all.filter((m) => m.days != null && !m.suspect).map((m) => m.days);
-            return { n: days.length, total: all.length, med: days.length ? median(days) : null };
-          }),
-        }));
-    }
-
-    function renderBands(items) {
-      const bands = bandStats(items);
-      let cap = 1;
-      bands.forEach((b) => b.cells.forEach((c) => c.med != null && (cap = Math.max(cap, c.med))));
-      const body = (c) =>
-        c.med == null
-          ? '<span class="miss">—</span>'
-          : `${c.med}天<span class="tier">${c.n}/${c.total} 檔達標</span>`;
-      const tip = (c) => `中位數；已排除疑似除權息，${c.n} 檔達標，共 ${c.total} 檔`;
-      document.getElementById("result-head").innerHTML =
-        '<tr><th>最新收盤價區間</th><th class="num">檔數</th>' +
-        HEADS.percent.map((h) => `<th class="num">${h}</th>`).join("") +
-        "</tr>";
-      document.getElementById("result-list").innerHTML = bands
-        .map(
-          (b) =>
-            `<tr><td class="name-cell">${esc(b.label)}</td><td class="num">${b.count}</td>` +
-            b.cells
-              .map((c) => `<td class="num"${heatStyle({ days: c.med }, cap)} title="${esc(tip(c))}">${body(c)}</td>`)
-              .join("") +
-            "</tr>",
-        )
-        .join("");
-      document.getElementById("result-cards").innerHTML = bands
-        .map(
-          (b) =>
-            `<div class="surge-card"><div class="name-cell">${esc(b.label)}</div>` +
-            `<div class="surge-card-sub">${b.count} 檔 · 中位數天數</div><div class="chips">` +
-            b.cells
-              .map(
-                (c, i) =>
-                  `<div class="chip"${heatStyle({ days: c.med }, cap)} title="${esc(tip(c))}"><span class="tier">${HEADS.percent[i]}</span>${body(c)}</div>`,
-              )
-              .join("") +
-            "</div></div>",
-        )
-        .join("");
-      document.getElementById("result-count").textContent = items.length;
-    }
-
     function render() {
       const items = sortedItems();
-      if (state.view === "band") return renderBands(items);
       const groups = groupItems(items);
       const cols = HEADS[state.view].length + 4;
       let cap = 1;
