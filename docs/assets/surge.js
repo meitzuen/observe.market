@@ -96,9 +96,19 @@
       days: hit - startIdx,
       date: rows[hit].date,
       close: rows[hit].close,
-      weekdays: weekdays(rows[startIdx].date, rows[hit].date),
       suspect: afterAnomaly && hit >= firstAnomalyIdx,
     };
+  }
+
+  // Trading days since the previous hit milestone (the start day for the
+  // first one), stored as m.gap.
+  function addGaps(list) {
+    let prev = 0;
+    for (const m of list) {
+      if (m.days == null) continue;
+      m.gap = m.days - prev;
+      prev = m.days;
+    }
   }
 
   // opts.startDate pins the start day; otherwise it is auto-detected. Returns
@@ -138,6 +148,9 @@
     const points = pointTiers(startClose).map((pt) =>
       milestone(rows, startIdx, "+" + pt + "元", startClose + pt, firstAnomalyIdx),
     );
+
+    addGaps(percent);
+    addGaps(points);
 
     return {
       startIdx,
