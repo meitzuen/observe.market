@@ -37,7 +37,6 @@ observe.market/
 │   ├── strategy_scan.py        # 候選策略掃描（樣本內／樣本外勝率）
 │   ├── moneydj_concept.py      # 抓取 MoneyDJ 概念股分類
 │   ├── add_concepts_to_watchlist.py # 把概念股分類寫入 watchlist API
-│   ├── clean_data.py           # 一次性資料清理（daily_index、daily_punish）
 │   ├── generate_mongo_import.py # 轉出 Mongo Compass 匯入用 JSON
 │   ├── backtest.py             # 策略回測（--json 輸出 docs/data/backtest.json、--by 敏感度分析）
 │   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
@@ -81,8 +80,6 @@ observe.market/
 │       └── warrant/            # 權證數據
 ├── scripts/                    # 格式化腳本（format-html.sh、format-python.sh）
 ├── tests/ui/                   # Playwright 與單元測試
-├── specs/                      # 設計文件
-├── plans/                      # 實作計畫
 └── .github/workflows/          # 定時自動化任務配置
 ```
 
