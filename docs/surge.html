@@ -182,6 +182,37 @@
       }
     }
 
+    .admin-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s2);
+      margin-bottom: var(--s3);
+    }
+
+    .admin-form[hidden] {
+      display: none;
+    }
+
+    .admin-actions {
+      display: inline-flex;
+      gap: var(--s2);
+      margin-left: var(--s2);
+    }
+
+    .admin-actions button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .admin-actions button[data-act="delete"] {
+      color: var(--warn);
+    }
+
     .hint {
       font-size: 13px;
       color: var(--text-muted);
@@ -225,6 +256,11 @@
           <span>快</span><span class="legend-bar"></span><span>慢</span>
         </div>
       </div>
+      <form class="admin-form" id="add-form" hidden>
+        <input type="text" id="add-symbol" placeholder="股票代號" required />
+        <input type="date" id="add-start" required />
+        <button class="btn btn-primary" type="submit">新增</button>
+      </form>
       <div id="result-state"></div>
       <div class="table-container">
         <table>
@@ -237,7 +273,7 @@
         <summary>說明：怎麼算、標記代表什麼</summary>
         <div class="hint-body">
           <div>
-            <strong>起漲日：</strong>以 STOCKS 清單中的 start 日期收盤價為準；沒填 start 的股票，自動取資料期間內收盤價最高那天之前、收盤價最低的一天。天數 =
+            <strong>起漲日：</strong>以清單中的起漲日收盤價為準（清單來自 API）；沒有起漲日的股票，自動取資料期間內收盤價最高那天之前、收盤價最低的一天。天數 =
             從起漲日算起的交易日數，以收盤價判斷是否到達，滑鼠移到天數上可看到達標日、收盤價與跟前一個門檻相差的交易日數（第一個門檻則是距起漲日的天數）。
           </div>
           <div>
@@ -261,24 +297,10 @@
   <script src="assets/shell.js"></script>
   <script src="assets/surge.js"></script>
   <script>
-    // Hard-coded watch list (names come from stock_info.json); swap this for a configurable source later.
-    const STOCKS = [
-      // start (optional): pins the start day; omit it to auto-detect.
-      { symbol: "2408", start: "2026-05-04" },
-      { symbol: "2344", start: "2026-05-04" },
-      { symbol: "2337", start: "2026-01-02" },
-      { symbol: "8021", start: "2026-04-07" },
-      { symbol: "3026", start: "2026-03-26" },
-      { symbol: "2221", start: "2026-04-20" },
-      { symbol: "2305", start: "2026-05-22" },
-      { symbol: "2426", start: "2026-03-05" },
-      { symbol: "8046", start: "2026-01-08" },
-      { symbol: "3189", start: "2026-01-02" },
-      { symbol: "3037", start: "2026-01-02" },
-      { symbol: "8358", start: "2026-04-13" },
-      { symbol: "6213", start: "2026-08-06" },
-      { symbol: "6672", start: "2026-03-19" },
-    ];
+    const API_BASE = "https://market.smallplum.xyz";
+    const SURGE_API = `${API_BASE}/api/mktobs/surge`;
+    // Create / update / delete are only offered with ?admin=True.
+    const isAdmin = new URLSearchParams(location.search).get("admin") === "True";
 
     const esc = (s) =>
       String(s)
@@ -350,8 +372,18 @@
       `<a href="stock.html?id=${esc(stock.symbol)}" class="stock-link">${esc(text)}</a>`;
 
     // Table: code and name in separate cells. Cards: one combined line.
+    function adminHtml(stock) {
+      if (!isAdmin) return "";
+      const sym = esc(stock.symbol);
+      return (
+        `<span class="admin-actions">` +
+        `<button data-act="edit" data-symbol="${sym}" data-start="${esc(stock.start || "")}">改起漲日</button>` +
+        `<button data-act="delete" data-symbol="${sym}">刪除</button></span>`
+      );
+    }
+
     function nameHtml(stock, a) {
-      return stockLink(stock, stock.name) + tagsHtml(stock, a);
+      return stockLink(stock, stock.name) + tagsHtml(stock, a) + adminHtml(stock);
     }
 
     function msCell(m, cap) {
@@ -539,14 +571,79 @@
     document.getElementById("result-head").addEventListener("click", onSortClick);
     document.getElementById("result-list").addEventListener("click", onSortClick);
 
+    async function callApi(url, options) {
+      const res = await fetch(url, {
+        headers: { "Content-Type": "application/json" },
+        ...options,
+      });
+      if (!res.ok) {
+        let detail = "";
+        try {
+          detail = JSON.stringify((await res.json()).detail || "");
+        } catch (e) {}
+        throw new Error(`${res.status} ${detail}`.trim());
+      }
+      return res.json();
+    }
+
+    const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+    async function adminAction(fn) {
+      try {
+        await fn();
+      } catch (e) {
+        alert("操作失敗：" + e.message);
+        return;
+      }
+      load();
+    }
+
+    if (isAdmin) {
+      const form = document.getElementById("add-form");
+      form.hidden = false;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const symbol = document.getElementById("add-symbol").value.trim();
+        const start = document.getElementById("add-start").value;
+        adminAction(async () => {
+          await callApi(SURGE_API, { method: "POST", body: JSON.stringify({ symbol, start }) });
+          form.reset();
+        });
+      });
+
+      const onAdminClick = (e) => {
+        const btn = e.target.closest("[data-act]");
+        if (!btn) return;
+        const { act, symbol, start } = btn.dataset;
+        const url = `${SURGE_API}/${encodeURIComponent(symbol)}`;
+        if (act === "delete") {
+          if (!confirm(`確定刪除 ${symbol}？`)) return;
+          adminAction(() => callApi(url, { method: "DELETE" }));
+        } else if (act === "edit") {
+          const next = prompt(`${symbol} 的新起漲日 (YYYY-MM-DD)`, start);
+          if (next == null || next === start) return;
+          if (!DATE_RE.test(next)) {
+            alert("日期格式需為 YYYY-MM-DD");
+            return;
+          }
+          adminAction(() => callApi(url, { method: "PUT", body: JSON.stringify({ start: next }) }));
+        }
+      };
+      document.getElementById("result-list").addEventListener("click", onAdminClick);
+      document.getElementById("result-cards").addEventListener("click", onAdminClick);
+    }
+
     async function load() {
       const stateEl = document.getElementById("result-state");
       UIData.renderState(stateEl, "loading", { rows: 4 });
       document.getElementById("result-list").innerHTML = "";
 
-      let info;
+      let info, STOCKS;
       try {
-        info = await UIData.loadJSON("data/stock_info.json");
+        [info, STOCKS] = await Promise.all([
+          UIData.loadJSON("data/stock_info.json"),
+          callApi(`${SURGE_API}?sort_by=start&order=asc`),
+        ]);
       } catch (e) {
         UIData.renderState(stateEl, "error", {
           message: "資料載入失敗",
