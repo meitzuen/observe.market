@@ -1,0 +1,45 @@
+[
+    {
+        "id": "3354",
+        "name": "律勝",
+        "close": 50.5,
+        "open": 47.5,
+        "high": 50.5,
+        "low": 46.5,
+        "diff": 4.55,
+        "change_percent": 9.9,
+        "volume": 23822000,
+        "avg_volume": 3025900,
+        "vol_ratio": 7.87,
+        "prior_change_percent": 9.93,
+        "prior_pattern": "big_red",
+        "is_new_high": true,
+        "peer_strong_count": 31,
+        "tags": [
+            "⚠️ 前日大長紅，慎防隔日沖倒貨",
+            "創20日新高",
+            "同族群31檔同步走強"
+        ]
+    },
+    {
+        "id": "3230",
+        "name": "錦明",
+        "close": 23.45,
+        "open": 19.25,
+        "high": 23.45,
+        "low": 19.25,
+        "diff": 2.1,
+        "change_percent": 9.84,
+        "volume": 2897000,
+        "avg_volume": 525950,
+        "vol_ratio": 5.51,
+        "prior_change_percent": -9.92,
+        "prior_pattern": "big_black",
+        "is_new_high": false,
+        "peer_strong_count": 29,
+        "tags": [
+            "⚠️ 前日大黑K，剛套牢賣壓",
+            "同族群29檔同步走強"
+        ]
+    }
+]

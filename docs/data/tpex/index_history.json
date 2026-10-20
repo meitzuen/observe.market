@@ -982,5 +982,13 @@
         "transactions": 1052363,
         "index": 394.05,
         "changes": "-6.21"
+    },
+    {
+        "date": "115/10/20",
+        "volume": 1005444000,
+        "turnover": 206533740000,
+        "transactions": 1031400,
+        "index": 387.88,
+        "changes": "-6.17"
     }
 ]
