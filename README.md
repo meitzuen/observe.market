@@ -31,6 +31,14 @@ observe.market/
 │   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
 │   ├── vcp_strategy.py         # VCP（收縮型態）策略分析
 │   ├── head_shoulders.py       # 頭肩底／頭肩頂型態選股
+│   ├── volume_candle_strategy.py # 爆量長紅K／長黑K選股
+│   ├── xiaoge_strategy.py      # 小哥策略當沖選股（多方／空方）
+│   ├── gain_timing.py          # 起漲後漲幅與所需時間（命令列工具）
+│   ├── strategy_scan.py        # 候選策略掃描（樣本內／樣本外勝率）
+│   ├── moneydj_concept.py      # 抓取 MoneyDJ 概念股分類
+│   ├── add_concepts_to_watchlist.py # 把概念股分類寫入 watchlist API
+│   ├── clean_data.py           # 一次性資料清理（daily_index、daily_punish）
+│   ├── generate_mongo_import.py # 轉出 Mongo Compass 匯入用 JSON
 │   ├── backtest.py             # 策略回測（--json 輸出 docs/data/backtest.json、--by 敏感度分析）
 │   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
 │   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
@@ -63,6 +71,7 @@ observe.market/
 │   │   ├── data.js             # 資料載入
 │   │   ├── chart-theme.js      # 圖表主題
 │   │   ├── ui-table.js         # 表格元件
+│   │   ├── surge.js            # 飆股計算（起漲日、各門檻達標天數）
 │   │   └── market-page.js      # 大盤頁共用邏輯
 │   └── data/
 │       ├── manifest.json       # 資料索引清單
@@ -70,6 +79,7 @@ observe.market/
 │       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, hs_bottom, hs_top, stock_history）
 │       ├── tpex/               # 上櫃數據（同上結構）
 │       └── warrant/            # 權證數據
+├── scripts/                    # 格式化腳本（format-html.sh、format-python.sh）
 ├── tests/ui/                   # Playwright 與單元測試
 ├── specs/                      # 設計文件
 ├── plans/                      # 實作計畫
