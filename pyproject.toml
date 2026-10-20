@@ -10,7 +10,7 @@ authors = [
 ]
 description = "Market data observer for Taiwan stocks"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 dependencies = [
     "requests",
 ]
@@ -21,7 +21,7 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/mzuen/observe.market"
+"Homepage" = "https://github.com/meitzuen/observe.market"
 
 [dependency-groups]
 dev = [
