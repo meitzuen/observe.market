@@ -1,0 +1,42 @@
+[
+    {
+        "publish_date": "2026-10-15",
+        "measure": "人工管制撮合",
+        "id": "2424",
+        "name": "隴華",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-10-16",
+        "to": "2026-10-22"
+    },
+    {
+        "publish_date": "2026-10-16",
+        "measure": "第二次處置",
+        "id": "3055",
+        "name": "蔚華科",
+        "accumulated": 1,
+        "condition": "連續三次",
+        "from": "2026-10-19",
+        "to": "2026-10-23"
+    },
+    {
+        "publish_date": "2026-10-19",
+        "measure": "第二次處置",
+        "id": "3167",
+        "name": "大量",
+        "accumulated": 1,
+        "condition": "連續五次",
+        "from": "2026-10-20",
+        "to": "2026-10-27"
+    },
+    {
+        "publish_date": "2026-10-20",
+        "measure": "人工管制撮合",
+        "id": "2424",
+        "name": "隴華",
+        "accumulated": 2,
+        "condition": "連續三次",
+        "from": "2026-10-21",
+        "to": "2026-10-28"
+    }
+]
