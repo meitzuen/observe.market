@@ -1,5 +1,15 @@
 [
     {
+        "publish_date": "2026-10-21",
+        "measure": "第一次處置",
+        "id": "3287",
+        "name": "廣寰科",
+        "accumulated": 1,
+        "condition": "連續3個營業日",
+        "from": "2026-10-22",
+        "to": "2026-10-29"
+    },
+    {
         "publish_date": "2026-10-20",
         "measure": "第一次處置",
         "id": "3354",

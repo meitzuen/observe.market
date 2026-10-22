@@ -1,0 +1,58 @@
+[
+    {
+        "id": "2465",
+        "name": "麗臺",
+        "close": 96.2,
+        "open": 89.0,
+        "high": 96.2,
+        "low": 89.0,
+        "diff": 8.7,
+        "change_percent": 9.94,
+        "volume": 10480813,
+        "avg_volume": 1160904,
+        "vol_ratio": 9.03,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "7730",
+        "name": "暉盛-創",
+        "close": 242.5,
+        "open": 229.5,
+        "high": 242.5,
+        "low": 229.5,
+        "diff": 22.0,
+        "change_percent": 9.98,
+        "volume": 556086,
+        "avg_volume": 172699,
+        "vol_ratio": 3.22,
+        "body_ratio": 1.0
+    },
+    {
+        "id": "6902",
+        "name": "GOGOLOOK",
+        "close": 166.0,
+        "open": 154.0,
+        "high": 169.0,
+        "low": 153.0,
+        "diff": 12.0,
+        "change_percent": 7.79,
+        "volume": 1909881,
+        "avg_volume": 646509,
+        "vol_ratio": 2.95,
+        "body_ratio": 0.75
+    },
+    {
+        "id": "1101",
+        "name": "台泥",
+        "close": 27.95,
+        "open": 27.15,
+        "high": 28.2,
+        "low": 27.05,
+        "diff": 1.15,
+        "change_percent": 4.29,
+        "volume": 103437782,
+        "avg_volume": 38488985,
+        "vol_ratio": 2.69,
+        "body_ratio": 0.7
+    }
+]
