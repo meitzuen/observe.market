@@ -1,10 +1,1 @@
-[
-    {
-        "date": "115/04/28",
-        "volume": 1111700000,
-        "turnover": 265708204000,
-        "transactions": 1179631,
-        "index": 382.06,
-        "changes": "5.01"
-    }
-]
+[{"date":"115/04/28","volume":1111700000,"turnover":265708204000,"transactions":1179631,"index":382.06,"changes":"5.01"}]

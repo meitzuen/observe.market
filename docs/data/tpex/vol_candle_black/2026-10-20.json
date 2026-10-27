@@ -1,16 +1,1 @@
-[
-    {
-        "id": "6609",
-        "name": "瀧澤科",
-        "close": 41.0,
-        "open": 43.75,
-        "high": 44.7,
-        "low": 41.0,
-        "diff": -2.75,
-        "change_percent": -6.29,
-        "volume": 2803000,
-        "avg_volume": 499200,
-        "vol_ratio": 5.61,
-        "body_ratio": 0.74
-    }
-]
+[{"id":"6609","name":"瀧澤科","close":41.0,"open":43.75,"high":44.7,"low":41.0,"diff":-2.75,"change_percent":-6.29,"volume":2803000,"avg_volume":499200,"vol_ratio":5.61,"body_ratio":0.74}]
