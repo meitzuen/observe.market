@@ -8,12 +8,6 @@ on:
       - "docs/**"
       - "tests/ui/**"
       - ".github/workflows/deploy-pages.yml"
-  # Data refresh: pushes made with GITHUB_TOKEN do not trigger `push` workflows,
-  # so deploy after the data job finishes instead.
-  workflow_run:
-    workflows: ["Update Stock Data"]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -27,9 +21,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Full UI verification: code/UI changes and manual runs only
+  # Data now lives in R2 (see update_data.yml), so only code/UI changes deploy.
   verify:
-    if: github.event_name != 'workflow_run'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -50,30 +43,8 @@ jobs:
       - run: npm test
         working-directory: tests/ui
 
-  # Data refresh: lightweight sanity check only (no browser, no smoke suite)
-  check-data:
-    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-      - name: Check manifest and stock info are valid
-        run: |
-          node -e "
-            const m = require('./docs/data/manifest.json');
-            const d = m.twse && m.twse.daily_index;
-            if (!Array.isArray(d) || d.length === 0) throw new Error('manifest.twse.daily_index is empty');
-            const info = require('./docs/data/stock_info.json');
-            if (!info || typeof info !== 'object' || Object.keys(info).length === 0) throw new Error('stock_info.json is empty');
-            console.log('latest twse date:', d[0]);
-          "
-
   deploy:
-    needs: [verify, check-data]
-    # One gate runs per event and the other is skipped. Never deploy after a failed data run.
-    if: ${{ !failure() && !cancelled() && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
+    needs: [verify]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:

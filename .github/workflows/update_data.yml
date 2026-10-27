@@ -16,7 +16,18 @@ on:
 
 # 明確宣告權限
 permissions:
-  contents: write
+  contents: read
+
+env:
+  R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+  R2_BUCKET: ${{ secrets.R2_BUCKET }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+
+# The bucket is the source of truth; two overlapping runs would race on it.
+concurrency:
+  group: update-data
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -24,8 +35,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
+
+      - name: Pull existing data from R2
+        run: scripts/sync-data-r2.sh pull
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -55,25 +67,19 @@ jobs:
           python src/generate_manifest.py
           python src/fetch_stock_info.py
 
-      - name: Check published site size
-        # GitHub Pages limits a published site to 1 GB; warn well before that.
+      - name: Sanity check before publishing
         run: |
-          SIZE_MB=$(du -sm docs | cut -f1)
-          echo "docs/ size: ${SIZE_MB} MB (Pages limit: 1024 MB)" | tee -a "$GITHUB_STEP_SUMMARY"
-          if [ "$SIZE_MB" -ge 700 ]; then
-            echo "::warning title=Site size::docs/ is ${SIZE_MB} MB, approaching the 1 GB GitHub Pages limit. Time to archive old data."
-          fi
+          python - <<'PY'
+          import json
+          m = json.load(open("docs/data/manifest.json"))
+          d = m.get("twse", {}).get("daily_index")
+          assert d, "manifest.twse.daily_index is empty"
+          info = json.load(open("docs/data/stock_info.json"))
+          assert info, "stock_info.json is empty"
+          print("latest twse date:", d[0])
+          PY
+          SIZE_MB=$(du -sm docs/data | cut -f1)
+          echo "docs/data size: ${SIZE_MB} MB (R2 free tier: 10 GB)" | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit and Push changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          git add docs/data/
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Auto update stock data: $(date +'%Y-%m-%d')"
-            git push
-          fi
+      - name: Push data to R2
+        run: scripts/sync-data-r2.sh push
