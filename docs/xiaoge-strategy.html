@@ -183,7 +183,7 @@
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
         try {
-          const resp = await fetch("data/manifest.json");
+          const resp = await fetch(UIData.dataUrl("manifest.json"));
           manifest = await resp.json();
         } catch (e) {
           document.getElementById("loader").style.display = "none";
@@ -268,7 +268,7 @@
         document.getElementById("result-list").innerHTML = "";
 
         try {
-          const resp = await fetch(`data/${currentMarket}/${currentType}/${date}.json`);
+          const resp = await fetch(UIData.dataUrl(`${currentMarket}/${currentType}/${date}.json`));
           rawData = await resp.json();
         } catch (e) {
           rawData = [];

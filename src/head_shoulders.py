@@ -222,7 +222,7 @@ def _write_rows(market_dir, pattern, date, rows):
     out_dir = os.path.join(market_dir, f"hs_{pattern}")
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, f"{date}.json"), "w", encoding="utf-8") as f:
-        json.dump(rows[:MAX_RESULTS], f, ensure_ascii=False, indent=4)
+        json.dump(rows[:MAX_RESULTS], f, ensure_ascii=False, separators=(",", ":"))
 
 
 def backfill_market(market_type, data_dir=None):

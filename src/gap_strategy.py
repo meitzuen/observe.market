@@ -129,14 +129,14 @@ def run_strategy_for_market(market_type, date_str=None):
     jump_dir = os.path.join(market_dir, "gap_jump")
     os.makedirs(jump_dir, exist_ok=True)
     with open(os.path.join(jump_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(jump_results, f, ensure_ascii=False, indent=4)
+        json.dump(jump_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] Found {len(jump_results)} stocks for Gap Jump.")
 
     # Save Gap Drop
     drop_dir = os.path.join(market_dir, "gap_drop")
     os.makedirs(drop_dir, exist_ok=True)
     with open(os.path.join(drop_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(drop_results, f, ensure_ascii=False, indent=4)
+        json.dump(drop_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] Found {len(drop_results)} stocks for Gap Drop.")
 
 

@@ -371,7 +371,7 @@
 
       // ---- Stock name lookup (loaded from static file) ----
       let stockInfo = {};
-      fetch("data/stock_info.json")
+      fetch(UIData.dataUrl("stock_info.json"))
         .then((r) => r.json())
         .then((d) => {
           stockInfo = d;

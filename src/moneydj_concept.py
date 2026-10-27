@@ -30,6 +30,6 @@ for code, name in concepts:
     time.sleep(0.3)
 
 with open("stock_concepts.json", "w", encoding="utf-8") as f:
-    json.dump(results, f, ensure_ascii=False, indent=2)
+    json.dump(results, f, ensure_ascii=False, separators=(",", ":"))
 
 print(f"done, {len(results)} concepts")

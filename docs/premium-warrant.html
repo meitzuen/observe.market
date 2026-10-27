@@ -133,7 +133,7 @@
         stateEl.innerHTML = "";
         let fullManifest;
         try {
-          const resp = await fetch("data/manifest.json");
+          const resp = await fetch(UIData.dataUrl("manifest.json"));
           fullManifest = await resp.json();
         } catch (e) {
           console.error("Error in init:", e);
@@ -232,7 +232,7 @@
         document.getElementById("warrant-list").innerHTML = "";
         document.getElementById("loader").style.display = "flex";
         try {
-          const resp = await fetch(`data/warrant/${date}.json`);
+          const resp = await fetch(UIData.dataUrl(`warrant/${date}.json`));
           rawData = await resp.json();
           document.getElementById("last-update").textContent =
             "最後更新: " + date;

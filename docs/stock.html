@@ -317,7 +317,7 @@
 
         let stockInfo;
         try {
-          const infoResponse = await fetch("data/stock_info.json");
+          const infoResponse = await fetch(UIData.dataUrl("stock_info.json"));
           if (!infoResponse.ok) throw new Error("HTTP " + infoResponse.status);
           const allStockInfo = await infoResponse.json();
           // own-property check: ids like "constructor" must not resolve
@@ -346,7 +346,7 @@
         let history = [];
         try {
           const historyResponse = await fetch(
-            `data/${market}/stock_history/${id}.json`,
+            UIData.dataUrl(`${market}/stock_history/${id}.json`),
           );
           if (historyResponse.ok) {
             history = await historyResponse.json();
@@ -385,7 +385,7 @@
 
       async function loadConceptTags(id) {
         try {
-          const res = await fetch("data/concept/stock_concepts.json");
+          const res = await fetch(UIData.dataUrl("concept/stock_concepts.json"));
           if (!res.ok) return [];
           const concepts = await res.json();
           return concepts
@@ -399,7 +399,7 @@
 
       async function loadPunishRecords(id, market) {
         try {
-          const res = await fetch(`data/${market}/punish_history.json`);
+          const res = await fetch(UIData.dataUrl(`${market}/punish_history.json`));
           if (!res.ok) return [];
           const all = await res.json();
           return all
@@ -414,7 +414,7 @@
       async function loadIndexHistory(market) {
         indexLabel = market === "tpex" ? "櫃買指數" : "加權指數";
         try {
-          const res = await fetch(`data/${market}/index_history.json`);
+          const res = await fetch(UIData.dataUrl(`${market}/index_history.json`));
           if (!res.ok) {
             indexHistory = [];
             return;

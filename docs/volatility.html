@@ -360,7 +360,7 @@
       // ── init ──────────────────────────────────────────────────────────────
       async function init() {
         try {
-          const resp = await fetch("data/manifest.json");
+          const resp = await fetch(UIData.dataUrl("manifest.json"));
           manifest = await resp.json();
         } catch (e) {
           UIData.renderState(document.getElementById("result-state"), "error", {
@@ -478,7 +478,7 @@
                 let rows;
                 try {
                   const resp = await fetch(
-                    `data/${market}/daily_price/${date}.json`,
+                    UIData.dataUrl(`${market}/daily_price/${date}.json`),
                   );
                   if (!resp.ok) {
                     failedFetches++;

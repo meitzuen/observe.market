@@ -329,7 +329,7 @@
         try {
 
           try {
-            const response = await fetch("data/manifest.json");
+            const response = await fetch(UIData.dataUrl("manifest.json"));
             fullManifest = await response.json();
           } catch (e) {
             console.error("Manifest load error:", e);
@@ -467,8 +467,8 @@
       async function loadIndexData() {
         try {
           const [twseRes, tpexRes] = await Promise.all([
-            fetch("data/twse/index_history.json"),
-            fetch("data/tpex/index_history.json"),
+            fetch(UIData.dataUrl("twse/index_history.json")),
+            fetch(UIData.dataUrl("tpex/index_history.json")),
           ]);
           indexDataTwse = twseRes.ok ? await twseRes.json() : [];
           indexDataTpex = tpexRes.ok ? await tpexRes.json() : [];
@@ -672,7 +672,7 @@
             MARKETS.map((m) => {
               const dates = fullManifest[m]?.daily_price || [];
               if (!dates.includes(date)) return Promise.resolve([]);
-              return fetchMarketRows(m, `data/${m}/daily_price/${date}.json`);
+              return fetchMarketRows(m, UIData.dataUrl(`${m}/daily_price/${date}.json`));
             }),
           );
           currentStockData = results.flat();
@@ -722,7 +722,7 @@
           MARKETS.map((m) => {
             const dates = fullManifest[m]?.[type] || [];
             if (!dates.includes(date)) return Promise.resolve([]);
-            return fetchMarketRows(m, `data/${m}/${type}/${date}.json`);
+            return fetchMarketRows(m, UIData.dataUrl(`${m}/${type}/${date}.json`));
           }),
         );
         currentGapData = results.flat();
@@ -735,7 +735,7 @@
           MARKETS.map((m) => {
             const dates = fullManifest[m]?.daily_punish || [];
             if (!dates.includes(date)) return Promise.resolve([]);
-            return fetchMarketRows(m, `data/${m}/daily_punish/${date}.json`);
+            return fetchMarketRows(m, UIData.dataUrl(`${m}/daily_punish/${date}.json`));
           }),
         );
         currentPunishData = results.flat();
