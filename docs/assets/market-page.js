@@ -17,7 +17,7 @@ let sortDirection = "asc";
 async function init() {
   try {
     try {
-      const response = await fetch("data/manifest.json");
+      const response = await fetch(UIData.dataUrl("manifest.json"));
       fullManifest = await response.json();
     } catch (e) {
       console.error("Manifest load error:", e);
@@ -162,7 +162,7 @@ async function updateMarketData() {
 async function loadIndexData() {
   try {
     const response = await fetch(
-      `data/${currentMarket}/index_history.json`,
+      UIData.dataUrl(`${currentMarket}/index_history.json`),
     );
     indexData = await response.json();
   } catch (e) {
@@ -255,7 +255,7 @@ async function loadStockData(date) {
 
   try {
     const response = await fetch(
-      `data/${currentMarket}/daily_price/${date}.json`,
+      UIData.dataUrl(`${currentMarket}/daily_price/${date}.json`),
     );
     if (!response.ok) throw new Error("HTTP " + response.status);
     currentStockData = await response.json();
@@ -273,7 +273,7 @@ async function loadStockData(date) {
 
     if (manifest.daily_punish && manifest.daily_punish.includes(date)) {
       const punishResponse = await fetch(
-        `data/${currentMarket}/daily_punish/${date}.json`,
+        UIData.dataUrl(`${currentMarket}/daily_punish/${date}.json`),
       );
       if (!punishResponse.ok) throw new Error("HTTP " + punishResponse.status);
       currentPunishData = await punishResponse.json();
@@ -318,7 +318,7 @@ async function loadGapData(date) {
   if (manifest[type] && manifest[type].includes(date)) {
     try {
       const gapResponse = await fetch(
-        `data/${currentMarket}/${type}/${date}.json`,
+        UIData.dataUrl(`${currentMarket}/${type}/${date}.json`),
       );
       if (!gapResponse.ok) throw new Error("HTTP " + gapResponse.status);
       currentGapData = await gapResponse.json();

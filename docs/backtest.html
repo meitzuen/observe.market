@@ -208,7 +208,7 @@
       async function init() {
         const state = document.getElementById("result-state");
         try {
-          report = await UIData.loadJSON("data/backtest.json");
+          report = await UIData.loadJSON(UIData.dataUrl("backtest.json"));
         } catch (e) {
           UIData.renderState(state, "error", { message: "回測資料載入失敗", onRetry: init });
           return;

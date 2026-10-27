@@ -244,7 +244,7 @@
 
     function ensureStocks() {
       if (stockCache || stockError) return Promise.resolve();
-      return loadJSON("data/stock_info.json")
+      return loadJSON(UIData.dataUrl("stock_info.json"))
         .then((d) => { stockCache = d; })
         .catch(() => { stockError = true; });
     }
@@ -408,7 +408,7 @@
     }
 
     function loadManifestInfo() {
-      return loadJSON("data/manifest.json")
+      return loadJSON(UIData.dataUrl("manifest.json"))
         .then((m) => {
           const d = latestDate(m);
           setAsOf(d);

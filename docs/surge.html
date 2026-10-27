@@ -641,7 +641,7 @@
       let info, STOCKS;
       try {
         [info, STOCKS] = await Promise.all([
-          UIData.loadJSON("data/stock_info.json"),
+          UIData.loadJSON(UIData.dataUrl("stock_info.json")),
           callApi(`${SURGE_API}?sort_by=start&order=asc`),
         ]);
       } catch (e) {
@@ -662,7 +662,7 @@
           }
           try {
             const rows = await UIData.loadJSON(
-              `data/${meta.type}/stock_history/${stock.symbol}.json`,
+              UIData.dataUrl(`${meta.type}/stock_history/${stock.symbol}.json`),
             );
             const analysis = Surge.analyzeSurge(rows, { startDate: stock.start });
             // A pinned start that is missing from the data (e.g. a weekend).

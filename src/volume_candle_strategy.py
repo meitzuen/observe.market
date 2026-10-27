@@ -137,13 +137,13 @@ def run_strategy_for_market(market_type, date_str=None):
     red_dir = os.path.join(market_dir, "vol_candle_red")
     os.makedirs(red_dir, exist_ok=True)
     with open(os.path.join(red_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(red_results, f, ensure_ascii=False, indent=4)
+        json.dump(red_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] Found {len(red_results)} stocks for 爆量長紅K.")
 
     black_dir = os.path.join(market_dir, "vol_candle_black")
     os.makedirs(black_dir, exist_ok=True)
     with open(os.path.join(black_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(black_results, f, ensure_ascii=False, indent=4)
+        json.dump(black_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] Found {len(black_results)} stocks for 爆量長黑K.")
 
 

@@ -368,7 +368,7 @@
       // ── Data loading ────────────────────────────────────────────────────────
       async function loadStockInfo() {
         try {
-          const res = await fetch("data/stock_info.json");
+          const res = await fetch(UIData.dataUrl("stock_info.json"));
           stockInfo = await res.json();
         } catch (e) {
           console.error("無法載入 stock_info.json：", e);
@@ -391,7 +391,7 @@
         const market = info?.type === "tpex" ? "tpex" : "twse";
         try {
           const res = await fetch(
-            `data/${market}/stock_history/${stockId}.json`,
+            UIData.dataUrl(`${market}/stock_history/${stockId}.json`),
           );
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           const data = await res.json();

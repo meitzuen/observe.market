@@ -931,7 +931,7 @@
 
       async function fetchPrices(market, date) {
         try {
-          const res = await fetch(`data/${market}/daily_price/${date}.json`);
+          const res = await fetch(UIData.dataUrl(`${market}/daily_price/${date}.json`));
           if (!res.ok) {
             pricesFailed = true;
             return {};
@@ -950,7 +950,7 @@
 
       async function loadAllPrices(selectedDate) {
         pricesFailed = false;
-        const res = await fetch("data/manifest.json");
+        const res = await fetch(UIData.dataUrl("manifest.json"));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const manifest = await res.json();
 
