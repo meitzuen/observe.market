@@ -298,7 +298,7 @@ def run_strategy_for_market(market_type, date_str=None):
     vcp_dir = os.path.join(market_dir, "vcp")
     os.makedirs(vcp_dir, exist_ok=True)
     with open(os.path.join(vcp_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=4)
+        json.dump(results, f, ensure_ascii=False, separators=(",", ":"))
 
     print(f"[{market_type}] Found {len(results)} VCP candidates for {today_date}.")
 

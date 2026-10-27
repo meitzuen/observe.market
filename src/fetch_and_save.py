@@ -93,7 +93,7 @@ def save_to_file(data: Dict[str, Any], path: str, filename: str) -> None:
         os.makedirs(target_dir, exist_ok=True)
         file_path = os.path.join(target_dir, f"{filename}.json")
         with open(file_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
+            json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
         print(f"成功更新資料: {filename} at {file_path}")
     except Exception as e:
         print(f"抓取失敗: {e}")
@@ -126,7 +126,7 @@ def rebuild_index_history(market: str) -> None:
 
     out_path = os.path.join(data_root, market, "index_history.json")
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(all_rows, f, ensure_ascii=False, indent=4)
+        json.dump(all_rows, f, ensure_ascii=False, separators=(",", ":"))
     print(f"Rebuilt index_history.json for {market}: {len(all_rows)} rows")
 
 
@@ -136,7 +136,7 @@ def write_latest(market: str, price_data: List[Dict], date_str: str) -> None:
     out = {"date": date_str, "stocks": price_data}
     out_path = os.path.join(data_root, market, "latest.json")
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=4)
+        json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
     print(f"Wrote latest.json for {market} ({date_str})")
 
 
@@ -165,7 +165,7 @@ def update_punish_history(market: str, new_records: List[Dict]) -> None:
     existing.sort(key=lambda r: r.get("publish_date", ""), reverse=True)
 
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(existing, f, ensure_ascii=False, indent=4)
+        json.dump(existing, f, ensure_ascii=False, separators=(",", ":"))
     print(
         f"Updated punish_history.json for {market}: +{added} new records, {len(existing)} total"
     )

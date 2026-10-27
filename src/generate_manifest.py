@@ -57,7 +57,7 @@ def generate_manifest():
 
     manifest_path = os.path.join(data_dir, "manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, ensure_ascii=False, indent=4)
+        json.dump(manifest, f, ensure_ascii=False, separators=(",", ":"))
 
     print(f"Manifest generated successfully at {manifest_path}")
 

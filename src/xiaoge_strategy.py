@@ -298,13 +298,13 @@ def run_strategy_for_market(
     long_dir = os.path.join(market_dir, "xiaoge_long")
     os.makedirs(long_dir, exist_ok=True)
     with open(os.path.join(long_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(long_results, f, ensure_ascii=False, indent=4)
+        json.dump(long_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] {today_date}: {len(long_results)} 檔多方候選（小哥策略）")
 
     short_dir = os.path.join(market_dir, "xiaoge_short")
     os.makedirs(short_dir, exist_ok=True)
     with open(os.path.join(short_dir, f"{today_date}.json"), "w", encoding="utf-8") as f:
-        json.dump(short_results, f, ensure_ascii=False, indent=4)
+        json.dump(short_results, f, ensure_ascii=False, separators=(",", ":"))
     print(f"[{market_type}] {today_date}: {len(short_results)} 檔空方候選（小哥策略）")
 
 
