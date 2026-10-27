@@ -82,10 +82,9 @@
     }
   }
 
-  // Static JSON (docs/data) is served from DATA_BASE. Leave it as "data/" to
-  // read from the same origin, or point it at the R2 custom domain, e.g.
-  // "https://data.observe.market/". Always ends with "/".
-  const DATA_BASE = "data/";
+  // Static JSON (docs/data) is served from the R2 custom domain. Use "data/"
+  // to read from the same origin instead. Always ends with "/".
+  const DATA_BASE = "https://observer.smallplum.xyz/";
 
   function dataUrl(path) {
     return DATA_BASE + String(path).replace(/^\/+/, "");

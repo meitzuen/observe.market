@@ -27,6 +27,12 @@ http
         res.writeHead(404).end("not found");
         return;
       }
+      // Production reads data from R2; tests read the local docs/data fixtures.
+      if (file === path.join(root, "assets", "data.js")) {
+        buf = Buffer.from(
+          buf.toString().replace(/const DATA_BASE = "[^"]*";/, 'const DATA_BASE = "data/";'),
+        );
+      }
       res
         .writeHead(200, {
           "content-type": types[path.extname(file)] || "application/octet-stream",

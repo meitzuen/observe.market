@@ -152,7 +152,7 @@ cd tests/ui && npm install && npx playwright install chromium && npm run test:un
 
 The JSON under `docs/data` is served from an R2 bucket instead of GitHub Pages.
 
-- Front end: every data URL goes through `UIData.dataUrl()` (`docs/assets/data.js`). `DATA_BASE` is `"data/"` (same origin) until cutover; set it to the R2 custom domain, e.g. `"https://data.smallplum.xyz/"`.
+- Front end: every data URL goes through `UIData.dataUrl()` (`docs/assets/data.js`). `DATA_BASE` points at the R2 custom domain `https://observer.smallplum.xyz/`; set it back to `"data/"` to read from the same origin.
 - Pipeline: `update_data.yml` pulls the bucket into `docs/data`, runs the fetch/strategy scripts, then pushes back. Nothing is committed to git. Needs the repo secrets `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`.
 - Manual sync: `scripts/sync-data-r2.sh pull|push` (same env vars, plus `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`).
 
