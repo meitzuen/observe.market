@@ -154,12 +154,7 @@ The JSON under `docs/data` is served from an R2 bucket instead of GitHub Pages.
 
 - Front end: every data URL goes through `UIData.dataUrl()` (`docs/assets/data.js`). `DATA_BASE` points at the R2 custom domain `https://observer.smallplum.xyz/`; set it back to `"data/"` to read from the same origin.
 - Pipeline: `update_data.yml` pulls the bucket into `docs/data`, runs the fetch/strategy scripts, then pushes back. Nothing is committed to git. Needs the repo secrets `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`.
-- Manual sync: `scripts/sync-data-r2.sh pull|push` (same env vars, plus `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`).
+- Manual sync: `scripts/sync-data-r2.sh pull|push` (needs `R2_ACCOUNT_ID`, `R2_BUCKET`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
+- Bucket setup: attach a custom domain and apply `scripts/r2-cors.json` (R2 dashboard → bucket → Settings → CORS policy).
 
-One-time cutover:
-
-1. Create the bucket, attach a custom domain, and apply `scripts/r2-cors.json` (R2 dashboard → bucket → Settings → CORS policy).
-2. Run `scripts/sync-data-r2.sh push` locally to upload the current `docs/data`.
-3. Add the four secrets, then trigger `Update Stock Data` once and confirm it succeeds.
-4. Set `DATA_BASE` in `docs/assets/data.js`, merge, and check the site.
-5. Only then stop tracking the data in git (`git rm -r --cached docs/data` plus a `.gitignore` entry). The UI tests read fixtures from `docs/data`, so give them their own fixtures first.
+`docs/data` is not tracked in git (it is in `.gitignore`). A fresh clone has no data; run `scripts/sync-data-r2.sh pull` if you need it locally, e.g. for the Python scripts. The UI tests do not need it: `tests/ui/serve.js` serves `/data/*` from the snapshot in `tests/ui/fixtures/data`.

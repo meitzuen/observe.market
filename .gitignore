@@ -60,3 +60,6 @@ mongo_import/
 tests/ui/node_modules/
 tests/ui/test-results/
 tests/ui/playwright-report/
+
+# Static data lives in R2 (scripts/sync-data-r2.sh pull). Tests use tests/ui/fixtures.
+/docs/data/
