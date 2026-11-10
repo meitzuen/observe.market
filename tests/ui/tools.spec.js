@@ -188,6 +188,78 @@ test.describe("tool pages behaviour", () => {
     await expect(page.locator("#stock-info-status .banner")).toHaveCount(0);
   });
 
+  // ---- margin-calculator ---------------------------------------------------
+  test("margin-calculator: 融資 worked example (hand computed)", async ({ page }) => {
+    const errors = collectErrors(page);
+    await mockStockData(page);
+    await page.goto("/margin-calculator.html");
+    await page.click('[data-mode="long"]');
+    await page.click('[data-ratio="0.6"]');
+    await page.fill("#mg-price", "100");
+    await page.fill("#mg-qty", "1");
+    await page.fill("#mg-current", "70");
+    await page.fill("#mg-days", "30");
+    await page.fill("#mg-rate", "6.5");
+
+    // loan = 100,000 x 0.6 = 60,000; call = 60,000 x 1.3 / 1,000 = 78.
+    await expect(page.locator("#out-funded")).toHaveText("60,000");
+    await expect(page.locator("#out-own")).toHaveText("40,000");
+    await expect(page.locator("#out-call")).toHaveText("78.00");
+    // ratio = 70,000 / 60,000 = 116.67%.
+    await expect(page.locator("#out-ratio")).toHaveText("116.67%");
+    // cash = 60,000 x 1.66 - 70,000; repay = ceil(60,000 - 70,000 / 1.66).
+    await expect(page.locator("#out-cash")).toHaveText("29,600 元");
+    await expect(page.locator("#out-repay")).toHaveText("17,832 元");
+    // interest = floor(60,000 x 6.5% x 30 / 365) = 320.
+    await expect(page.locator("#out-pnl")).toHaveText("-30,320");
+    await expect(page.locator("#scenario-tbody tr.row-call")).toHaveCount(1);
+    expect(errors).toEqual([]);
+  });
+
+  test("margin-calculator: 150% and below is marked 警戒區", async ({ page }) => {
+    await mockStockData(page);
+    await page.goto("/margin-calculator.html");
+    await page.click('[data-mode="long"]');
+    await page.click('[data-ratio="0.6"]');
+    await page.fill("#mg-price", "100");
+    await page.fill("#mg-qty", "1");
+
+    // 90,000 / 60,000 = exactly 150% -> 警戒區.
+    await page.fill("#mg-current", "90");
+    await expect(page.locator("#out-ratio")).toHaveText("150.00%");
+    await expect(page.locator("#out-status")).toHaveClass(/status-warn/);
+    await expect(page.locator("#out-status")).toContainText("警戒區");
+
+    // 91,000 / 60,000 = 151.67% -> safe.
+    await page.fill("#mg-current", "91");
+    await expect(page.locator("#out-status")).toHaveClass(/status-ok/);
+    await expect(page.locator("#out-status")).not.toContainText("警戒區");
+  });
+
+  test("margin-calculator: 融券 worked example and autofill", async ({ page }) => {
+    const errors = collectErrors(page);
+    await mockStockData(page);
+    await page.goto("/margin-calculator.html");
+    await page.click('[data-mode="short"]');
+    await expect(page.locator("#interest-block")).toBeHidden();
+    await page.click('[data-ratio="0.9"]');
+    await page.fill("#mg-price", "100");
+    await page.fill("#mg-qty", "1");
+    await page.fill("#mg-current", "150");
+
+    // margin 90,000; collateral 190,000; ratio = 190,000 / 150,000.
+    await expect(page.locator("#out-funded")).toHaveText("90,000");
+    await expect(page.locator("#out-ratio")).toHaveText("126.67%");
+    await expect(page.locator("#out-call")).toHaveText("146.15");
+    // cash = 150,000 x 1.66 - 190,000 = 59,000.
+    await expect(page.locator("#out-cash")).toHaveText("59,000 元");
+
+    await page.fill("#mg-stock-id", "2330");
+    await page.click("#mg-autofill-btn");
+    await expect(page.locator("#mg-current")).toHaveValue("600");
+    expect(errors).toEqual([]);
+  });
+
   // ---- portfolio -----------------------------------------------------------
   const STORAGE_KEY = "portfolio_holdings";
 
