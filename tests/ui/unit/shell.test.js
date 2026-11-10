@@ -11,7 +11,7 @@ const stocks = {
 
 test("NAV has 6 groups and 20 pages", () => {
   assert.equal(Shell.NAV.length, 6);
-  assert.equal(Shell.NAV.reduce((n, g) => n + g.items.length, 0), 20);
+  assert.equal(Shell.NAV.reduce((n, g) => n + g.items.length, 0), 21);
 });
 
 test("searchStocks: exact code ranks first", () => {

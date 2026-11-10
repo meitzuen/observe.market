@@ -44,6 +44,7 @@
       items: [
         { href: "bookmark.html", label: "常用連結", desc: "常用外部連結" },
         { href: "portfolio.html", label: "持股試算", desc: "持股損益試算" },
+        { href: "margin-calculator.html", label: "融資計算機", desc: "融資融券維持率與追繳價試算" },
       ],
     },
     {
