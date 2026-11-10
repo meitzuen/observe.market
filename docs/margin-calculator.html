@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>融資計算機 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .calc-grid {
+        align-items: start;
+      }
+
+      @media (min-width: 1024px) {
+        .calc-grid {
+          grid-template-columns: minmax(320px, 1fr) minmax(0, 2fr);
+        }
+      }
+
+      .field-block {
+        margin-bottom: var(--s4);
+      }
+
+      .field-label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: var(--s1);
+      }
+
+      .plain-input {
+        width: 100%;
+      }
+
+      .tab-group {
+        display: flex;
+        gap: var(--s2);
+      }
+
+      .tab-btn {
+        flex: 1;
+        min-width: 0;
+        padding: var(--s2);
+        border-radius: var(--radius);
+        border: 1px solid var(--border-strong);
+        background: var(--surface);
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 13px;
+        font-family: inherit;
+        cursor: pointer;
+        line-height: 1.3;
+      }
+
+      .tab-btn small {
+        display: block;
+        font-weight: 400;
+        font-size: 11px;
+      }
+
+      .tab-btn:hover {
+        background: var(--hover);
+        color: var(--text);
+      }
+
+      .tab-btn.active {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .tab-btn.mode-long.active {
+        background: var(--up);
+        border-color: var(--up);
+        color: #fff;
+      }
+
+      .tab-btn.mode-short.active {
+        background: var(--down);
+        border-color: var(--down);
+        color: #fff;
+      }
+
+      .input-with-suffix {
+        display: flex;
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--surface);
+      }
+
+      .input-with-suffix:focus-within {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent);
+      }
+
+      .input-with-suffix input {
+        flex: 1;
+        min-width: 0;
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: transparent;
+      }
+
+      .input-with-suffix .suffix {
+        display: flex;
+        align-items: center;
+        padding: 0 var(--s3);
+        font-size: 13px;
+        color: var(--text-muted);
+        background: var(--hover);
+        border-left: 1px solid var(--border);
+        white-space: nowrap;
+      }
+
+      .two-col {
+        display: flex;
+        gap: var(--s3);
+      }
+
+      .two-col .field-block {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .stock-lookup-row {
+        display: flex;
+        gap: var(--s2);
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .stock-lookup-row input {
+        flex: 1;
+        min-width: 120px;
+      }
+
+      .field-hint {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s1);
+        min-height: 1em;
+        line-height: 1.5;
+      }
+
+      .unit-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s1);
+        font-size: 12px;
+        color: var(--text-muted);
+        font-weight: 400;
+        cursor: pointer;
+      }
+
+      .label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: var(--s2);
+      }
+
+      #mg-calc-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .error-msg {
+        color: var(--up);
+        font-size: 13px;
+        margin-top: var(--s3);
+      }
+
+      .hint-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s4);
+        line-height: 1.6;
+      }
+
+      /* ── Results ─────────────────────────────────────────────── */
+      .status-banner {
+        padding: var(--s3) var(--s4);
+        border-radius: var(--radius);
+        font-weight: 600;
+        margin-bottom: var(--s4);
+      }
+
+      .status-danger {
+        background: var(--up-soft);
+        color: var(--up);
+      }
+
+      .status-warn {
+        background: var(--warn-soft);
+        color: var(--warn);
+      }
+
+      .status-ok {
+        background: var(--down-soft);
+        color: var(--down);
+      }
+
+      .stats {
+        margin-bottom: var(--s4);
+      }
+
+      @media (min-width: 640px) {
+        .stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .stat-value {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .stat-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .gauge {
+        margin: var(--s2) 0 var(--s5);
+      }
+
+      .gauge-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: var(--s2);
+      }
+
+      .gauge-value {
+        font-size: 28px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .gauge-track {
+        position: relative;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--hover);
+        overflow: hidden;
+      }
+
+      .gauge-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        border-radius: 999px;
+        transition: width 0.2s;
+      }
+
+      .gauge-scale {
+        position: relative;
+        height: 18px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .gauge-scale span {
+        position: absolute;
+        top: 2px;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .gauge-scale span:first-child {
+        transform: none;
+      }
+
+      /* 130% sits close to 150%: hang it left of its mark so the labels don't collide. */
+      .gauge-scale span.end,
+      .gauge-scale span:last-child {
+        transform: translateX(calc(-100% - 3px));
+      }
+
+      .gauge-zone {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: var(--warn-soft);
+      }
+
+      .gauge-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s3);
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .gauge-legend i {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 4px;
+      }
+
+      .gauge-mark {
+        position: absolute;
+        top: -2px;
+        bottom: -2px;
+        width: 2px;
+        background: var(--text);
+        opacity: 0.35;
+      }
+
+      .topup {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--s3) var(--s4);
+        margin-bottom: var(--s5);
+      }
+
+      .topup h3 {
+        font-size: 14px;
+        margin: 0 0 var(--s2);
+      }
+
+      .topup-row {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--s3);
+        padding: var(--s2) 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .topup-row:first-of-type {
+        border-top: none;
+      }
+
+      .topup-row b {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      .section-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 var(--s2);
+      }
+
+      table.scenario-table th,
+      table.scenario-table td {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      table.scenario-table th:last-child,
+      table.scenario-table td:last-child {
+        text-align: center;
+      }
+
+      table.scenario-table tr.row-cost td {
+        background: var(--accent-soft);
+      }
+
+      table.scenario-table tr.row-call td {
+        background: var(--up-soft);
+        font-weight: 600;
+      }
+
+      table.scenario-table tr.row-now td {
+        background: var(--warn-soft);
+      }
+
+      .price-neutral {
+        color: var(--text-muted);
+      }
+
+      .results-empty {
+        text-align: center;
+        padding: var(--s6) var(--s4);
+        color: var(--text-muted);
+      }
+
+      #stock-info-status:not(:empty) {
+        margin-bottom: var(--s4);
+      }
+
+      #stock-info-status .banner {
+        border-radius: var(--radius);
+        justify-content: flex-start;
+      }
+
+      .notes {
+        margin-top: var(--s4);
+      }
+
+      .notes h2 {
+        font-size: 16px;
+      }
+
+      .notes h3 {
+        font-size: 14px;
+        margin: var(--s4) 0 var(--s1);
+      }
+
+      .notes p,
+      .notes li {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-muted);
+      }
+
+      .notes code {
+        font-family: inherit;
+        background: var(--hover);
+        padding: 1px 6px;
+        border-radius: 4px;
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">融資計算機</h1>
+          <p class="page-subtitle">融資融券維持率、追繳價與補繳金額試算</p>
+        </div>
+      </div>
+
+      <div id="stock-info-status"></div>
+
+      <div class="grid calc-grid">
+        <div class="card">
+          <h2 class="card-title">計算機</h2>
+
+          <div class="field-block">
+            <label class="field-label">交易類型</label>
+            <div class="tab-group">
+              <button class="tab-btn mode-long" data-mode="long" type="button">
+                融資（做多）<small>向券商借錢買股票</small>
+              </button>
+              <button class="tab-btn mode-short" data-mode="short" type="button">
+                融券（做空）<small>借股票來賣</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label" for="mg-stock-id">股票代號（選填）</label>
+            <div class="stock-lookup-row">
+              <input
+                type="text"
+                id="mg-stock-id"
+                placeholder="ex: 2330"
+                list="stock-datalist"
+                autocomplete="off"
+              />
+              <datalist id="stock-datalist"></datalist>
+              <button class="btn btn-secondary" id="mg-autofill-btn" type="button">
+                帶入最新收盤價
+              </button>
+            </div>
+            <div class="field-hint" id="mg-stock-name">&nbsp;</div>
+          </div>
+
+          <div class="field-block" id="ratio-block">
+            <label class="field-label" id="ratio-label">融資成數</label>
+            <div class="tab-group" id="ratio-group"></div>
+            <div class="field-hint" id="ratio-hint"></div>
+          </div>
+
+          <div class="two-col">
+            <div class="field-block">
+              <label class="field-label" for="mg-price" id="price-label">買進價格</label>
+              <div class="input-with-suffix">
+                <input type="number" id="mg-price" min="0" step="0.01" placeholder="例如 100" />
+                <span class="suffix">元</span>
+              </div>
+            </div>
+            <div class="field-block">
+              <div class="label-row">
+                <label class="field-label" for="mg-qty" id="qty-label">買進數量</label>
+                <label class="unit-toggle">
+                  <input type="checkbox" id="mg-unit-toggle" checked />以張計
+                </label>
+              </div>
+              <div class="input-with-suffix">
+                <input type="number" id="mg-qty" min="0" step="1" placeholder="例如 1" />
+                <span class="suffix" id="qty-suffix">張</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-block">
+            <label class="field-label" for="mg-current">目前股價（選填）</label>
+            <div class="input-with-suffix">
+              <input type="number" id="mg-current" min="0" step="0.01" placeholder="空白則以成交價計算" />
+              <span class="suffix">元</span>
+            </div>
+          </div>
+
+          <div class="field-block" id="interest-block">
+            <label class="field-label">融資利息試算（選填）</label>
+            <div class="two-col">
+              <div class="field-block" style="margin-bottom: 0">
+                <div class="input-with-suffix">
+                  <input type="number" id="mg-days" min="0" step="1" placeholder="持有天數" aria-label="持有天數" />
+                  <span class="suffix">天</span>
+                </div>
+              </div>
+              <div class="field-block" style="margin-bottom: 0">
+                <div class="input-with-suffix">
+                  <input type="number" id="mg-rate" min="0" step="0.01" placeholder="6.5" aria-label="年利率" />
+                  <span class="suffix">%/年</span>
+                </div>
+              </div>
+            </div>
+            <div class="field-hint">各券商融資年利率約 6%～7%，按日計息、賣出時結算</div>
+          </div>
+
+          <button id="mg-calc-btn" class="btn btn-primary" type="button">計算維持率與追繳價</button>
+          <div id="form-error" class="error-msg" style="display: none"></div>
+
+          <div class="hint-text">
+            融資金額以千元為單位、千元以下捨去；融券保證金百元以下進位。試算未計手續費、交易稅與融券手續費（借券費），實際金額以券商通知為準。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">計算結果</h2>
+          <div id="results">
+            <div class="results-empty">請輸入成交價格與數量</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card notes">
+        <h2 class="card-title">融資融券觀念</h2>
+        <h3>維持率怎麼算？</h3>
+        <p>
+          融資維持率 = <code>股票市值 ÷ 融資金額 × 100%</code>；融券維持率 =
+          <code>(賣出價金 + 保證金) ÷ 目前市值 × 100%</code>。
+          以 6 成融資買進，起始維持率約 166.67%（5 成為 200%、4 成為 250%）；融券保證金 9 成，起始維持率 190%。
+        </p>
+        <h3>警戒區（150%）</h3>
+        <p>
+          維持率降到 <b>150%</b> 以下時進入警戒區，代表離 130% 追繳線已經不遠，建議先準備資金或考慮減碼。
+          以 6 成融資為例，股價下跌約 10% 就會進入警戒區。
+        </p>
+        <h3>什麼時候會被追繳？</h3>
+        <p>
+          整戶維持率低於 <b>130%</b> 時，券商會發出追繳通知，須於 2 個營業日內補繳至 <b>166%</b> 以上，
+          否則券商會在次一營業日開盤強制賣出（融資）或買回（融券），也就是俗稱的「斷頭」。
+          以 6 成融資為例，股價下跌約 22% 就會跌破 130%；9 成融券則是股價上漲約 46%。
+        </p>
+        <h3>補繳金額</h3>
+        <ul>
+          <li>增提現金（擔保品）：<code>融資金額 × 166% − 股票市值</code></li>
+          <li>償還部分融資：<code>融資金額 − 股票市值 ÷ 166%</code></li>
+          <li>融券補繳保證金：<code>目前市值 × 166% − (賣出價金 + 保證金)</code></li>
+        </ul>
+        <h3>融資利息</h3>
+        <p><code>融資金額 × 年利率 × 持有天數 ÷ 365</code>，元以下捨去。</p>
+        <p>本頁試算僅供參考，實際成數、利率、維持率以券商及交易所公告為準。</p>
+      </div>
+    </main>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
+    <script>
+      const STATE_KEY = "margin_calc_state_v1";
+      const CALL_RATIO = 1.3; // 追繳線 130%
+      const TARGET_RATIO = 1.66; // 補繳目標 166%
+      const WARN_RATIO = 1.5; // 警戒區 150%
+      const RATIOS = {
+        long: [
+          { v: 0.6, label: "6 成", sub: "一般標準" },
+          { v: 0.5, label: "5 成", sub: "調降一成" },
+          { v: 0.4, label: "4 成", sub: "調降二成" },
+        ],
+        short: [
+          { v: 0.9, label: "9 成", sub: "一般標準" },
+          { v: 1.0, label: "10 成", sub: "調高一成" },
+          { v: 1.1, label: "11 成", sub: "調高二成" },
+        ],
+      };
+      const STEPS = [40, 30, 20, 15, 10, 5, 0, -5, -10, -15, -20, -25, -30, -40];
+
+      let stockInfo = {};
+      const historyCache = {};
+      let mode = "long";
+      let ratioByMode = { long: 0.6, short: 0.9 };
+
+      // ── Formatting ───────────────────────────────────────────────
+      const $ = (id) => document.getElementById(id);
+      function fmtMoney(v) {
+        if (v == null || !Number.isFinite(v)) return "—";
+        return Math.round(v).toLocaleString("zh-TW");
+      }
+      function fmtSigned(v) {
+        if (v == null || !Number.isFinite(v)) return "—";
+        return (v > 0 ? "+" : "") + fmtMoney(v);
+      }
+      function fmtPrice(v) {
+        if (v == null || !Number.isFinite(v)) return "—";
+        return v.toLocaleString("zh-TW", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      function fmtPct(v, signed) {
+        if (v == null || !Number.isFinite(v)) return "—";
+        return (signed && v > 0 ? "+" : "") + v.toFixed(2) + "%";
+      }
+      function plClass(v) {
+        if (!v || !Number.isFinite(v)) return "price-neutral";
+        return v > 0 ? "price-up" : "price-down";
+      }
+      function escHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+
+      // ── Core maths (pure) ────────────────────────────────────────
+      // 融資：融資金額千元以下捨去；自備款 = 成交金額 − 融資金額。
+      function longPosition({ price, shares, ratio, days, rate }) {
+        const amount = price * shares;
+        const loan = Math.floor((amount * ratio) / 1000) * 1000;
+        const own = amount - loan;
+        const interest = days > 0 && rate > 0 ? Math.floor((loan * (rate / 100) * days) / 365) : 0;
+        const callPrice = loan > 0 ? (loan * CALL_RATIO) / shares : null;
+        const ratioAt = (p) => (loan > 0 ? (p * shares) / loan : null);
+        const pnlAt = (p) => (p - price) * shares - interest;
+        return { amount, loan, own, interest, callPrice, ratioAt, pnlAt };
+      }
+
+      // 融券：保證金百元以下進位；擔保品 = 賣出價金 + 保證金。
+      function shortPosition({ price, shares, ratio }) {
+        const amount = price * shares;
+        const margin = Math.ceil((amount * ratio) / 100) * 100;
+        const collateral = amount + margin;
+        const callPrice = collateral / (CALL_RATIO * shares);
+        const ratioAt = (p) => (p > 0 ? collateral / (p * shares) : null);
+        const pnlAt = (p) => (price - p) * shares;
+        return { amount, margin, own: margin, collateral, callPrice, ratioAt, pnlAt };
+      }
+
+      // Round to cents first so float noise (60000 * 1.66 = 99600.00000001) can't add 1 元.
+      const ceilMoney = (v) => Math.max(0, Math.ceil(Math.round(v * 100) / 100));
+
+      function topUp(pos, current, shares) {
+        const mv = current * shares;
+        if (mode === "long") {
+          return {
+            cash: ceilMoney(pos.loan * TARGET_RATIO - mv),
+            repay: ceilMoney(pos.loan - mv / TARGET_RATIO),
+          };
+        }
+        return { cash: ceilMoney(mv * TARGET_RATIO - pos.collateral) };
+      }
+
+      // ── Form state ───────────────────────────────────────────────
+      function isLot() {
+        return $("mg-unit-toggle").checked;
+      }
+
+      function renderRatioGroup() {
+        const group = $("ratio-group");
+        group.innerHTML = RATIOS[mode]
+          .map(
+            (r) =>
+              `<button type="button" class="tab-btn${r.v === ratioByMode[mode] ? " active" : ""}" data-ratio="${r.v}">${r.label}<small>${r.sub}</small></button>`,
+          )
+          .join("");
+        group.querySelectorAll("[data-ratio]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            ratioByMode[mode] = parseFloat(btn.dataset.ratio);
+            renderRatioGroup();
+            calculate();
+          }),
+        );
+      }
+
+      function setMode(m) {
+        mode = m;
+        document.querySelectorAll("[data-mode]").forEach((b) => b.classList.toggle("active", b.dataset.mode === m));
+        const isLong = m === "long";
+        $("ratio-label").textContent = isLong ? "融資成數" : "融券保證金成數";
+        $("ratio-hint").textContent = isLong
+          ? "上市櫃股票最高融資 6 成；異常個股會被調降，以券商顯示為準"
+          : "融券保證金一般為 9 成；異常個股會被調高，以券商顯示為準";
+        $("price-label").textContent = isLong ? "買進價格" : "賣出價格";
+        $("qty-label").textContent = isLong ? "買進數量" : "賣出數量";
+        $("interest-block").style.display = isLong ? "" : "none";
+        renderRatioGroup();
+      }
+
+      function loadState() {
+        try {
+          return JSON.parse(localStorage.getItem(STATE_KEY)) || {};
+        } catch {
+          return {};
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(
+            STATE_KEY,
+            JSON.stringify({
+              mode,
+              ratioByMode,
+              stockId: $("mg-stock-id").value,
+              price: $("mg-price").value,
+              qty: $("mg-qty").value,
+              isLot: isLot(),
+              current: $("mg-current").value,
+              days: $("mg-days").value,
+              rate: $("mg-rate").value,
+            }),
+          );
+        } catch {}
+      }
+
+      function showFormError(msg) {
+        $("form-error").textContent = msg;
+        $("form-error").style.display = "block";
+      }
+      function clearFormError() {
+        $("form-error").style.display = "none";
+      }
+
+      // ── Rendering ────────────────────────────────────────────────
+      function statusOf(ratio) {
+        if (ratio == null) return { cls: "status-ok", text: "—", color: "var(--text-muted)" };
+        if (ratio < CALL_RATIO) return { cls: "status-danger", text: "追繳", color: "var(--up)" };
+        // 1e-9 so an exact 150% (90,000 / 60,000) still counts as 警戒區.
+        if (ratio <= WARN_RATIO + 1e-9) return { cls: "status-warn", text: "警戒區", color: "var(--warn)" };
+        return { cls: "status-ok", text: "安全", color: "var(--down)" };
+      }
+
+      function gaugeHtml(ratio) {
+        const MAX = 200;
+        const pct = (v) => Math.min(100, (v / MAX) * 100);
+        const st = statusOf(ratio);
+        const pctVal = ratio * 100;
+        return `<div class="gauge">
+          <div class="gauge-head">
+            <span class="stat-label">目前維持率</span>
+            <span class="gauge-value" id="out-ratio" style="color:${st.color}">${fmtPct(pctVal)}</span>
+          </div>
+          <div class="gauge-track">
+            <div class="gauge-zone" style="left:${pct(130)}%;width:${pct(150) - pct(130)}%" title="警戒區 130%～150%"></div>
+            <div class="gauge-fill" style="width:${pct(pctVal)}%;background:${st.color}"></div>
+            <div class="gauge-mark" style="left:${pct(130)}%"></div>
+            <div class="gauge-mark" style="left:${pct(150)}%"></div>
+            <div class="gauge-mark" style="left:${pct(166)}%"></div>
+          </div>
+          <div class="gauge-scale">
+            <span style="left:0">0%</span>
+            <span class="end" style="left:${pct(130)}%">130%</span>
+            <span style="left:${pct(150)}%">150%</span>
+            <span style="left:100%">200%+</span>
+          </div>
+          <div class="gauge-legend">
+            <span><i style="background:var(--up)"></i>追繳 &lt;130%</span>
+            <span><i style="background:var(--warn)"></i>警戒區 ≤150%</span>
+            <span><i style="background:var(--down)"></i>安全</span>
+          </div>
+        </div>`;
+      }
+
+      function scenarioRows(pos, price, shares, current) {
+        const rows = STEPS.map((s) => ({ price: price * (1 + s / 100), kind: s === 0 ? "cost" : "" }));
+        if (pos.callPrice) rows.push({ price: pos.callPrice, kind: "call" });
+        if (current !== price) rows.push({ price: current, kind: "now" });
+        rows.sort((a, b) => b.price - a.price);
+        return rows
+          .filter((r) => r.price > 0)
+          .map((r) => {
+            const ratio = pos.ratioAt(r.price);
+            const st = statusOf(ratio);
+            const chg = ((r.price - price) / price) * 100;
+            const pnl = pos.pnlAt(r.price);
+            const label = r.kind === "call" ? "追繳價" : r.kind === "now" ? "目前" : r.kind === "cost" ? "成本" : st.text;
+            return `<tr class="${r.kind ? "row-" + r.kind : ""}">
+              <td class="${plClass(chg)}">${fmtPct(chg, true)}</td>
+              <td>${fmtPrice(r.price)}</td>
+              <td>${fmtMoney(r.price * shares)}</td>
+              <td style="color:${st.color}">${fmtPct(ratio * 100)}</td>
+              <td class="${plClass(pnl)}">${fmtSigned(pnl)}</td>
+              <td>${label}</td>
+            </tr>`;
+          })
+          .join("");
+      }
+
+      function calculate() {
+        saveState();
+        clearFormError();
+        const price = parseFloat($("mg-price").value);
+        const qty = parseFloat($("mg-qty").value);
+        const currentRaw = parseFloat($("mg-current").value);
+        const out = $("results");
+
+        if (!(price > 0) || !(qty > 0)) {
+          out.innerHTML = '<div class="results-empty">請輸入成交價格與數量</div>';
+          return;
+        }
+
+        const shares = isLot() ? qty * 1000 : qty;
+        const current = currentRaw > 0 ? currentRaw : price;
+        const ratio = ratioByMode[mode];
+        const isLong = mode === "long";
+        const pos = isLong
+          ? longPosition({
+              price,
+              shares,
+              ratio,
+              days: parseFloat($("mg-days").value) || 0,
+              rate: parseFloat($("mg-rate").value) || 0,
+            })
+          : shortPosition({ price, shares, ratio });
+
+        if (isLong && pos.loan <= 0) {
+          out.innerHTML = '<div class="results-empty">成交金額太小，融資金額不足 1,000 元</div>';
+          return;
+        }
+
+        const curRatio = pos.ratioAt(current);
+        const st = statusOf(curRatio);
+        const pnl = pos.pnlAt(current);
+        const roi = pos.own > 0 ? (pnl / pos.own) * 100 : null;
+        const distance = ((pos.callPrice - current) / current) * 100;
+
+        const banner =
+          curRatio < CALL_RATIO
+            ? `目前維持率已低於 130%，面臨追繳或斷頭風險！`
+            : st.text === "警戒區"
+            ? `⚠ 維持率已進入 150% 警戒區，距離追繳價還有 ${fmtPct(Math.abs(distance))}（${fmtPrice(pos.callPrice)} 元）`
+            : `距離追繳價還有 ${fmtPct(Math.abs(distance))}（股價${isLong ? "下跌" : "上漲"}至 ${fmtPrice(pos.callPrice)} 元）`;
+
+        const stats = isLong
+          ? [
+              ["成交金額", fmtMoney(pos.amount), ""],
+              ["融資金額", fmtMoney(pos.loan), `${ratio * 10} 成`],
+              ["自備款", fmtMoney(pos.own), ""],
+              ["追繳價（130%）", fmtPrice(pos.callPrice), `跌 ${fmtPct(((price - pos.callPrice) / price) * 100)}`],
+              ["目前損益", fmtSigned(pnl), pos.interest ? `已扣利息 ${fmtMoney(pos.interest)}` : "未計利息"],
+              ["自備款報酬率", fmtPct(roi, true), ""],
+            ]
+          : [
+              ["賣出價金", fmtMoney(pos.amount), ""],
+              ["融券保證金", fmtMoney(pos.margin), `${Math.round(ratio * 10)} 成`],
+              ["擔保品合計", fmtMoney(pos.collateral), "價金 + 保證金"],
+              ["追繳價（130%）", fmtPrice(pos.callPrice), `漲 ${fmtPct(((pos.callPrice - price) / price) * 100)}`],
+              ["目前損益", fmtSigned(pnl), "未計費用"],
+              ["保證金報酬率", fmtPct(roi, true), ""],
+            ];
+
+        const statIds = ["out-amount", "out-funded", "out-own", "out-call", "out-pnl", "out-roi"];
+        const statsHtml = stats
+          .map(
+            ([label, value, sub], i) => `<div class="stat-item">
+              <span class="stat-label">${label}</span>
+              <span class="stat-value ${i >= 4 ? plClass(i === 4 ? pnl : roi) : ""}" id="${statIds[i]}">${value}</span>
+              ${sub ? `<span class="stat-sub">${sub}</span>` : ""}
+            </div>`,
+          )
+          .join("");
+
+        let topupHtml = "";
+        if (curRatio < CALL_RATIO) {
+          const t = topUp(pos, current, shares);
+          topupHtml = `<div class="topup">
+            <h3>追繳需補繳金額（回到 166%）</h3>
+            ${
+              isLong
+                ? `<div class="topup-row"><span>方法一：增提現金（擔保品）</span><b id="out-cash">${fmtMoney(t.cash)} 元</b></div>
+                   <div class="topup-row"><span>方法二：償還部分融資</span><b id="out-repay">${fmtMoney(t.repay)} 元</b></div>`
+                : `<div class="topup-row"><span>補繳保證金</span><b id="out-cash">${fmtMoney(t.cash)} 元</b></div>`
+            }
+            <div class="field-hint">收到追繳通知後須於 2 個營業日內補繳，逾期券商將於次一營業日強制${isLong ? "賣出" : "買回"}。</div>
+          </div>`;
+        }
+
+        out.innerHTML = `
+          <div class="status-banner ${st.cls}" id="out-status">${banner}</div>
+          ${gaugeHtml(curRatio)}
+          ${topupHtml}
+          <div class="stats">${statsHtml}</div>
+          <h3 class="section-title">股價漲跌情境模擬</h3>
+          <div class="table-container">
+            <table class="scenario-table">
+              <thead><tr>
+                <th>漲跌幅（對成本）</th><th>假設股價</th><th>市值</th><th>維持率</th><th>損益</th><th>狀態</th>
+              </tr></thead>
+              <tbody id="scenario-tbody">${scenarioRows(pos, price, shares, current)}</tbody>
+            </table>
+          </div>`;
+      }
+
+      // ── Stock lookup ─────────────────────────────────────────────
+      async function loadStockInfo() {
+        try {
+          const res = await fetch(UIData.dataUrl("stock_info.json"));
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          stockInfo = await res.json();
+        } catch (e) {
+          console.error("無法載入 stock_info.json：", e);
+          stockInfo = {};
+          $("stock-info-status").innerHTML =
+            '<div class="banner banner-warn" role="status">股票清單載入失敗，代號查詢暫時無法使用</div>';
+        }
+        $("stock-datalist").innerHTML = Object.entries(stockInfo)
+          .map(([id, info]) => `<option value="${escHtml(id)}">${escHtml(info.name || "")}</option>`)
+          .join("");
+      }
+
+      async function getHistory(stockId) {
+        if (historyCache[stockId] !== undefined) return historyCache[stockId];
+        const market = stockInfo[stockId]?.type === "tpex" ? "tpex" : "twse";
+        try {
+          const res = await fetch(UIData.dataUrl(`${market}/stock_history/${stockId}.json`));
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          historyCache[stockId] = await res.json();
+        } catch {
+          historyCache[stockId] = null;
+        }
+        return historyCache[stockId];
+      }
+
+      function updateStockNameHint() {
+        const info = stockInfo[$("mg-stock-id").value.trim()];
+        $("mg-stock-name").textContent = info ? `${info.name}（${info.type === "tpex" ? "上櫃" : "上市"}）` : " ";
+      }
+
+      async function autofillLatestClose() {
+        clearFormError();
+        const id = $("mg-stock-id").value.trim();
+        if (!id || !stockInfo[id]) {
+          showFormError("請先輸入有效的股票代號");
+          return;
+        }
+        const history = await getHistory(id);
+        if (!history || history.length === 0) {
+          showFormError("查無該股票的收盤價資料，請手動輸入");
+          return;
+        }
+        const close = history[history.length - 1].close;
+        $("mg-current").value = close;
+        if (!$("mg-price").value) $("mg-price").value = close;
+        calculate();
+      }
+
+      // ── Wire up ──────────────────────────────────────────────────
+      document.querySelectorAll("[data-mode]").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          setMode(btn.dataset.mode);
+          calculate();
+        }),
+      );
+      $("mg-unit-toggle").addEventListener("change", () => {
+        $("qty-suffix").textContent = isLot() ? "張" : "股";
+        calculate();
+      });
+      ["mg-price", "mg-qty", "mg-current", "mg-days", "mg-rate"].forEach((id) =>
+        $(id).addEventListener("input", calculate),
+      );
+      $("mg-stock-id").addEventListener("input", updateStockNameHint);
+      $("mg-autofill-btn").addEventListener("click", autofillLatestClose);
+      $("mg-calc-btn").addEventListener("click", calculate);
+
+      (async function init() {
+        const saved = loadState();
+        if (saved.ratioByMode) ratioByMode = { ...ratioByMode, ...saved.ratioByMode };
+        setMode(saved.mode === "short" ? "short" : "long");
+        $("mg-stock-id").value = saved.stockId || "";
+        $("mg-price").value = saved.price ?? "100";
+        $("mg-qty").value = saved.qty ?? "1";
+        $("mg-unit-toggle").checked = saved.isLot !== undefined ? saved.isLot : true;
+        $("qty-suffix").textContent = isLot() ? "張" : "股";
+        $("mg-current").value = saved.current || "";
+        $("mg-days").value = saved.days || "";
+        $("mg-rate").value = saved.rate || "6.5";
+        calculate();
+
+        await loadStockInfo();
+        // Deep link from a stock page: margin-calculator.html?id=2330
+        const linkId = new URLSearchParams(location.search).get("id");
+        if (linkId && stockInfo[linkId]) $("mg-stock-id").value = linkId;
+        updateStockNameHint();
+      })();
+    </script>
+  </body>
+</html>
