@@ -985,6 +985,27 @@
         const c = ChartTheme.colors();
         const monoFont = { family: '"Inter", "Noto Sans TC", sans-serif', size: 10 };
 
+        // Daily volume (shares) per market, drawn as stacked translucent bars
+        // along the bottom of the chart on a hidden axis. The axis max is
+        // 4x the tallest stack so bars stay in the bottom quarter.
+        const twseVolByIso = new Map(
+          indexDataTwse.map((d) => [toISO(d.date), d.volume]),
+        );
+        const tpexVolByIso = new Map(
+          indexDataTpex.map((d) => [toISO(d.date), d.volume]),
+        );
+        const twseVol = isoDates.map((iso) => twseVolByIso.get(iso) ?? null);
+        const tpexVol = isoDates.map((iso) => tpexVolByIso.get(iso) ?? null);
+        const maxVol = Math.max(
+          1,
+          ...isoDates.map((_, i) => (twseVol[i] || 0) + (tpexVol[i] || 0)),
+        );
+        const withAlpha = (color, alpha) =>
+          /^#[0-9a-f]{6}$/i.test(color)
+            ? color + Math.round(alpha * 255).toString(16).padStart(2, "0")
+            : color;
+        const fmtVol = (v) => (v / 100000000).toFixed(1) + " 億股";
+
         // MA overlays: dashed lines in each series' own color, one dash
         // pattern per period, so toggling them on doesn't require new hues.
         const maDashPatterns = { 5: [3, 3], 10: [7, 4], 20: [12, 5] };
@@ -1058,11 +1079,32 @@
                 spanGaps: true,
               },
               ...maDatasets,
+              {
+                type: "bar",
+                label: "上市成交量",
+                data: twseVol,
+                backgroundColor: withAlpha(c.seriesA, 0.3),
+                borderWidth: 0,
+                stack: "volume",
+                yAxisID: "yVol",
+                order: 10,
+              },
+              {
+                type: "bar",
+                label: "上櫃成交量",
+                data: tpexVol,
+                backgroundColor: withAlpha(c.seriesB, 0.3),
+                borderWidth: 0,
+                stack: "volume",
+                yAxisID: "yVol",
+                order: 10,
+              },
             ],
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: { mode: "index", intersect: false },
             plugins: {
               legend: {
                 display: true,
@@ -1085,9 +1127,23 @@
                 titleColor: c.tooltipText,
                 bodyColor: c.tooltipText,
                 displayColors: false,
+                callbacks: {
+                  label: (item) =>
+                    item.dataset.yAxisID === "yVol"
+                      ? `${item.dataset.label}: ${fmtVol(item.parsed.y)}`
+                      : `${item.dataset.label}: ${item.formattedValue}`,
+                },
               },
             },
             scales: {
+              yVol: {
+                display: false,
+                stacked: true,
+                position: "right",
+                min: 0,
+                max: maxVol * 4,
+                grid: { display: false },
+              },
               y: {
                 beginAtZero: false,
                 position: "left",
