@@ -260,6 +260,105 @@ test.describe("tool pages behaviour", () => {
     expect(errors).toEqual([]);
   });
 
+  // ---- screenshot-ocr ------------------------------------------------------
+  // The real Tesseract.js comes from a CDN and downloads a 15 MB model, so the
+  // test swaps in a fake that "reads" a fixed text.
+  const OCR_STOCKS = {
+    2330: { name: "台積電", type: "twse" },
+    2317: { name: "鴻海", type: "twse" },
+    6488: { name: "環球晶", type: "tpex" },
+    2454: { name: "聯發科", type: "twse" },
+  };
+  const OCR_TEXT = "2330 台積電 1,050.00 +1.45%\n環 球 晶 512\n聯發料 1200\n總量 2317";
+  const PNG_1PX = Buffer.from(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+    "base64",
+  );
+
+  // Windows turns \n into \r\n on the way through the system clipboard.
+  const readClipboard = async (page) =>
+    (await page.evaluate(() => navigator.clipboard.readText())).replace(/\r\n/g, "\n");
+
+  async function mockOcr(page, text) {
+    await page.route("**/data/stock_info.json", (r) => r.fulfill(json(OCR_STOCKS)));
+    await page.route("**/tesseract.js@*/**", (r) =>
+      r.fulfill({
+        status: 200,
+        contentType: "application/javascript",
+        body: `window.Tesseract = { createWorker: async (langs, oem, opts) => ({
+          recognize: async () => { opts.logger({ status: "recognizing text", progress: 1 });
+            return { data: { text: ${JSON.stringify(text)} } }; },
+        }) };`,
+      }),
+    );
+  }
+
+  test("screenshot-ocr: finds codes and names, copies the confident ones", async ({ page, context }) => {
+    const errors = collectErrors(page);
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await mockOcr(page, OCR_TEXT);
+    await page.goto("/screenshot-ocr.html");
+    await page.setInputFiles("#file-input", { name: "shot.png", mimeType: "image/png", buffer: PNG_1PX });
+
+    const rows = page.locator("#result-tbody tr");
+    await expect(rows).toHaveCount(4);
+    await expect(rows.locator(".code")).toHaveText(["2330", "6488", "2454", "2317"]);
+    await expect(rows.locator(".name")).toHaveText(["台積電", "環球晶", "聯發科", "鴻海"]);
+    await expect(page.locator("#result-summary")).toHaveText("共找到 4 檔，已選 2 檔");
+    await expect(page.locator(".shot.done")).toHaveText("找到 4 檔");
+
+    await page.click("#copy-codes-btn");
+    expect(await readClipboard(page)).toBe("2330\n6488");
+
+    // Opt in to the code-only match.
+    await rows.nth(3).locator("input").check();
+    await expect(page.locator("#result-summary")).toHaveText("共找到 4 檔，已選 3 檔");
+    await page.click("#copy-both-btn");
+    expect(await readClipboard(page)).toBe("2330 台積電\n6488 環球晶\n2317 鴻海");
+
+    await page.click("#clear-btn");
+    await expect(page.locator("#results")).toContainText("尚未辨識任何截圖");
+    expect(errors).toEqual([]);
+  });
+
+  test("screenshot-ocr: switch between table and list views", async ({ page }) => {
+    const errors = collectErrors(page);
+    await mockOcr(page, OCR_TEXT);
+    await page.goto("/screenshot-ocr.html");
+    await page.setInputFiles("#file-input", { name: "shot.png", mimeType: "image/png", buffer: PNG_1PX });
+    await expect(page.locator("#result-tbody tr")).toHaveCount(4);
+    await expect(page.locator('[data-view="table"]')).toHaveAttribute("aria-pressed", "true");
+
+    // The list shows only the checked stocks, one "code name" per line.
+    await page.click('[data-view="list"]');
+    await expect(page.locator("#result-tbody")).toHaveCount(0);
+    await expect(page.locator("#result-list")).toHaveValue("2330 台積電\n6488 環球晶");
+
+    // Back to the table, opt in to 2317, and the list follows.
+    await page.click('[data-view="table"]');
+    await page.locator('#result-tbody tr[data-code="2317"] input').check();
+    await page.click('[data-view="list"]');
+    await expect(page.locator("#result-list")).toHaveValue("2330 台積電\n6488 環球晶\n2317 鴻海");
+
+    // The choice survives a reload.
+    await page.reload();
+    await page.setInputFiles("#file-input", { name: "shot.png", mimeType: "image/png", buffer: PNG_1PX });
+    await expect(page.locator("#result-list")).toHaveValue("2330 台積電\n6488 環球晶");
+    expect(errors).toEqual([]);
+  });
+
+  test("screenshot-ocr: no stocks found and non-image files", async ({ page }) => {
+    await mockOcr(page, "今天天氣很好 123");
+    await page.goto("/screenshot-ocr.html");
+    await page.setInputFiles("#file-input", { name: "a.txt", mimeType: "text/plain", buffer: Buffer.from("x") });
+    await expect(page.locator("#ocr-error")).toHaveText("請選擇圖片檔（PNG、JPG 等）");
+
+    await page.setInputFiles("#file-input", { name: "shot.png", mimeType: "image/png", buffer: PNG_1PX });
+    await expect(page.locator("#results-none")).toBeVisible();
+    await expect(page.locator("#ocr-error")).toBeHidden();
+    await expect(page.locator("#raw-text-pre")).toContainText("今天天氣很好");
+  });
+
   // ---- portfolio -----------------------------------------------------------
   const STORAGE_KEY = "portfolio_holdings";
 
