@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>辨識工具 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .ocr-grid {
+        align-items: start;
+      }
+
+      @media (min-width: 1024px) {
+        .ocr-grid {
+          grid-template-columns: minmax(320px, 1fr) minmax(0, 1.4fr);
+        }
+      }
+
+      .dropzone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--s2);
+        min-height: 180px;
+        padding: var(--s5) var(--s4);
+        border: 2px dashed var(--border-strong);
+        border-radius: var(--radius-lg);
+        background: var(--bg);
+        color: var(--text-muted);
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.15s, background 0.15s;
+      }
+
+      .dropzone:hover,
+      .dropzone:focus-visible,
+      .dropzone.dragover {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .dropzone-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .dropzone kbd {
+        padding: 0 6px;
+        border: 1px solid var(--border-strong);
+        border-radius: 4px;
+        background: var(--surface);
+        font: inherit;
+        font-size: 12px;
+      }
+
+      .progress {
+        margin-top: var(--s4);
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--s2);
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: var(--s1);
+      }
+
+      .progress-track {
+        height: 6px;
+        border-radius: 999px;
+        background: var(--hover);
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        background: var(--accent);
+        transition: width 0.2s;
+      }
+
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+        gap: var(--s2);
+        margin-top: var(--s4);
+      }
+
+      .shot {
+        position: relative;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--bg);
+      }
+
+      .shot img {
+        display: block;
+        width: 100%;
+        height: 96px;
+        object-fit: cover;
+        object-position: top;
+      }
+
+      .shot-status {
+        display: block;
+        padding: 2px var(--s2);
+        font-size: 11px;
+        color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .shot.done .shot-status {
+        color: var(--down);
+      }
+
+      .shot.failed .shot-status {
+        color: var(--up);
+      }
+
+      .result-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s2);
+        margin-bottom: var(--s3);
+      }
+
+      .result-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s2);
+        margin-bottom: var(--s3);
+      }
+
+      .result-summary {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .view-toggle {
+        display: flex;
+        gap: var(--s1);
+      }
+
+      .result-list {
+        display: block;
+        width: 100%;
+        padding: var(--s3);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
+        background: var(--bg);
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        line-height: 1.8;
+        resize: vertical;
+      }
+
+      .result-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .result-table th,
+      .result-table td {
+        padding: var(--s2);
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      .result-table th {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .result-table td.check,
+      .result-table th.check {
+        width: 32px;
+      }
+
+      .result-table tr.unchecked td:not(.check) {
+        color: var(--text-subtle);
+      }
+
+      .result-table .code {
+        font-weight: 600;
+      }
+
+      .results-empty {
+        padding: var(--s6) var(--s4);
+        text-align: center;
+        color: var(--text-muted);
+      }
+
+      .raw-text {
+        margin-top: var(--s4);
+        font-size: 13px;
+      }
+
+      .raw-text summary {
+        cursor: pointer;
+        color: var(--text-muted);
+      }
+
+      .raw-text pre {
+        max-height: 280px;
+        overflow: auto;
+        padding: var(--s3);
+        border-radius: var(--radius);
+        background: var(--bg);
+        white-space: pre-wrap;
+        word-break: break-all;
+        font-size: 12px;
+      }
+
+      .copy-msg {
+        align-self: center;
+        font-size: 12px;
+        color: var(--down);
+      }
+
+      .field-hint {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .error-msg {
+        color: var(--up);
+        font-size: 13px;
+        margin-top: var(--s3);
+      }
+
+      .hint-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: var(--s4);
+        line-height: 1.6;
+      }
+
+      .tag-ok {
+        background: var(--down-soft);
+        color: var(--down);
+      }
+
+      .notes h3 {
+        font-size: 14px;
+        margin: var(--s4) 0 var(--s1);
+      }
+
+      .notes p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">辨識工具</h1>
+          <p class="page-subtitle">上傳截圖，找出圖中的台股代號與名稱</p>
+        </div>
+      </div>
+
+      <div id="stock-info-status"></div>
+
+      <div class="grid ocr-grid">
+        <div class="card">
+          <h2 class="card-title">上傳截圖</h2>
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="選擇截圖檔案">
+            <div class="dropzone-title">拖曳截圖到這裡，或點擊選擇檔案</div>
+            <div>也可以直接按 <kbd>Ctrl</kbd> + <kbd>V</kbd> 貼上</div>
+            <div class="field-hint">可一次選擇多張圖片</div>
+          </div>
+          <input type="file" id="file-input" accept="image/*" multiple hidden />
+
+          <div class="progress" id="progress" hidden>
+            <div class="progress-label">
+              <span id="progress-text">準備中…</span>
+              <span id="progress-pct"></span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          </div>
+          <div id="ocr-error" class="error-msg" style="display: none"></div>
+
+          <div class="shots" id="shots"></div>
+
+          <div class="hint-text">
+            圖片只在你的瀏覽器裡辨識，不會上傳到任何伺服器。第一次使用需下載約 15 MB 的中文辨識模型，之後會快取。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">辨識結果</h2>
+          <div id="results">
+            <div class="results-empty">尚未辨識任何截圖</div>
+          </div>
+          <details class="raw-text" id="raw-text" hidden>
+            <summary>查看原始辨識文字</summary>
+            <pre id="raw-text-pre"></pre>
+          </details>
+        </div>
+      </div>
+
+      <div class="card notes">
+        <h2 class="card-title">使用說明</h2>
+        <h3>怎麼辨識的？</h3>
+        <p>
+          先用 OCR 讀出截圖裡的文字，再和上市櫃股票清單比對：找出清單中存在的代號（例如 2330、00878），
+          以及出現在文字中的股票名稱（例如「台積電」）。
+        </p>
+        <h3>比對方式</h3>
+        <p>
+          <span class="tag tag-ok">代號＋名稱</span>同一行同時出現代號與名稱，最可靠。
+          <span class="tag">名稱</span>只找到名稱。
+          <span class="tag tag-warn">相似名稱</span>名稱有一個字不同，可能是辨識錯字。
+          <span class="tag tag-warn">僅代號</span>只找到數字，可能是價格或張數，請確認。
+          後兩種預設不勾選，不會被複製。
+        </p>
+        <h3>提高準確度</h3>
+        <p>使用原尺寸截圖、避免裁切到文字；深色背景的截圖會自動反轉處理。</p>
+      </div>
+    </main>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
+    <script src="assets/stock-ocr.js"></script>
+    <script>
+      const TESSERACT_URL = "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+      const LANGS = ["chi_tra", "eng"];
+      const VIA_LABEL = {
+        both: { text: "代號＋名稱", cls: "tag-ok" },
+        name: { text: "名稱", cls: "" },
+        fuzzy: { text: "相似名稱", cls: "tag-warn" },
+        code: { text: "僅代號", cls: "tag-warn" },
+      };
+      const DEFAULT_CHECKED = new Set(["both", "name"]);
+
+      const $ = (id) => document.getElementById(id);
+      const escHtml = (s) =>
+        String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+      let stockInfoPromise = null;
+      let workerPromise = null;
+      let queue = Promise.resolve();
+      const perShot = []; // [{ text, rows }]
+      const VIEW_KEY = "screenshot_ocr_view";
+      let view = "table";
+      try {
+        if (localStorage.getItem(VIEW_KEY) === "list") view = "list";
+      } catch {
+        /* storage blocked: default to table */
+      }
+      const unchecked = new Set(); // codes the user toggled off
+      const checkedOverride = new Set(); // low-confidence codes the user toggled on
+
+      // ── Data ─────────────────────────────────────────────────────
+      function loadStockInfo() {
+        if (!stockInfoPromise) {
+          stockInfoPromise = fetch(UIData.dataUrl("stock_info.json"))
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              return res.json();
+            })
+            .catch((e) => {
+              console.error("無法載入 stock_info.json：", e);
+              $("stock-info-status").innerHTML =
+                '<div class="banner banner-warn" role="status">股票清單載入失敗，暫時無法比對代號與名稱</div>';
+              return {};
+            });
+        }
+        return stockInfoPromise;
+      }
+
+      // ── OCR engine (loaded on first use) ─────────────────────────
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const s = document.createElement("script");
+          s.src = src;
+          s.onload = resolve;
+          s.onerror = () => reject(new Error("無法載入辨識引擎，請檢查網路連線"));
+          document.head.appendChild(s);
+        });
+      }
+
+      let progressLabel = "";
+      function getWorker() {
+        if (!workerPromise) {
+          workerPromise = (async () => {
+            if (!window.Tesseract) await loadScript(TESSERACT_URL);
+            return Tesseract.createWorker(LANGS, 1, {
+              logger: (m) => {
+                if (typeof m.progress !== "number") return;
+                const label = m.status === "recognizing text" ? progressLabel : "下載／載入辨識模型";
+                setProgress(label, m.progress);
+              },
+            });
+          })();
+          workerPromise.catch(() => (workerPromise = null));
+        }
+        return workerPromise;
+      }
+
+      // Upscale small screenshots, convert to grayscale and invert dark themes:
+      // Tesseract reads dark text on a light background best.
+      async function preprocess(file) {
+        const bitmap = await createImageBitmap(file);
+        const maxSide = 4000;
+        let scale = bitmap.width < 1600 ? Math.min(2.5, 1600 / bitmap.width) : 1;
+        scale = Math.min(scale, maxSide / Math.max(bitmap.width, bitmap.height));
+        const w = Math.max(1, Math.round(bitmap.width * scale));
+        const h = Math.max(1, Math.round(bitmap.height * scale));
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        ctx.imageSmoothingQuality = "high";
+        ctx.drawImage(bitmap, 0, 0, w, h);
+        bitmap.close && bitmap.close();
+
+        const img = ctx.getImageData(0, 0, w, h);
+        const d = img.data;
+        let sum = 0;
+        for (let i = 0; i < d.length; i += 4) {
+          const y = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+          d[i] = d[i + 1] = d[i + 2] = y;
+          sum += y;
+        }
+        if (sum / (d.length / 4) < 128) {
+          for (let i = 0; i < d.length; i += 4) d[i] = d[i + 1] = d[i + 2] = 255 - d[i];
+        }
+        ctx.putImageData(img, 0, 0);
+        return canvas;
+      }
+
+      // ── UI ───────────────────────────────────────────────────────
+      function setProgress(label, frac) {
+        $("progress").hidden = false;
+        $("progress-text").textContent = label;
+        const pct = Math.round(Math.max(0, Math.min(1, frac)) * 100);
+        $("progress-pct").textContent = `${pct}%`;
+        $("progress-fill").style.width = `${pct}%`;
+      }
+
+      function showError(msg) {
+        $("ocr-error").textContent = msg;
+        $("ocr-error").style.display = msg ? "" : "none";
+      }
+
+      function addShot(file) {
+        const el = document.createElement("div");
+        el.className = "shot";
+        const url = URL.createObjectURL(file);
+        el.innerHTML = `<img alt="" /><span class="shot-status">等待中</span>`;
+        el.querySelector("img").src = url;
+        el.querySelector("img").alt = file.name || "截圖";
+        $("shots").appendChild(el);
+        return {
+          set(status, cls) {
+            el.querySelector(".shot-status").textContent = status;
+            el.classList.remove("done", "failed");
+            if (cls) el.classList.add(cls);
+          },
+        };
+      }
+
+      function isChecked(r) {
+        if (unchecked.has(r.code)) return false;
+        return DEFAULT_CHECKED.has(r.via) || checkedOverride.has(r.code);
+      }
+
+      function currentRows() {
+        return StockOCR.mergeResults(perShot.map((s) => s.rows));
+      }
+
+      function render() {
+        const rows = currentRows();
+        const raw = perShot.map((s, i) => `── 第 ${i + 1} 張 ──\n${s.text.trim()}`).join("\n\n");
+        $("raw-text").hidden = perShot.length === 0;
+        $("raw-text-pre").textContent = raw;
+
+        if (perShot.length === 0) {
+          $("results").innerHTML = '<div class="results-empty">尚未辨識任何截圖</div>';
+          return;
+        }
+        if (rows.length === 0) {
+          $("results").innerHTML =
+            '<div class="results-empty" id="results-none">沒有找到台股代號或名稱，可以展開下方的原始辨識文字檢查</div>' +
+            '<div class="result-toolbar"><button class="btn btn-secondary" id="clear-btn" type="button">清除</button></div>';
+          $("clear-btn").addEventListener("click", clearAll);
+          return;
+        }
+
+        const nChecked = rows.filter(isChecked).length;
+        const viewToggle = ["table", "list"]
+          .map(
+            (v) =>
+              `<button class="chip ${view === v ? "active" : ""}" data-view="${v}" type="button" aria-pressed="${
+                view === v
+              }">${v === "table" ? "表格" : "清單"}</button>`,
+          )
+          .join("");
+        const listText = rows
+          .filter(isChecked)
+          .map((r) => `${r.code} ${r.name}`)
+          .join("\n");
+        const body = rows
+          .map((r) => {
+            const v = VIA_LABEL[r.via];
+            const on = isChecked(r);
+            return `<tr data-code="${escHtml(r.code)}" class="${on ? "" : "unchecked"}">
+              <td class="check"><input type="checkbox" ${on ? "checked" : ""} aria-label="選取 ${escHtml(r.code)}" /></td>
+              <td class="code"><a href="stock.html?id=${encodeURIComponent(r.code)}">${escHtml(r.code)}</a></td>
+              <td class="name">${escHtml(r.name)}</td>
+              <td>${r.market}</td>
+              <td><span class="tag ${v.cls}">${v.text}</span></td>
+            </tr>`;
+          })
+          .join("");
+
+        $("results").innerHTML = `
+          <div class="result-head">
+            <div class="result-summary" id="result-summary">共找到 ${rows.length} 檔，已選 ${nChecked} 檔</div>
+            <div class="view-toggle" role="group" aria-label="顯示方式">${viewToggle}</div>
+          </div>
+          <div class="result-toolbar">
+            <button class="btn btn-primary" id="copy-codes-btn" type="button">複製代號</button>
+            <button class="btn" id="copy-both-btn" type="button">複製代號＋名稱</button>
+            <button class="btn btn-secondary" id="clear-btn" type="button">清除</button>
+            <span class="copy-msg" id="copy-msg" aria-live="polite"></span>
+          </div>
+          ${
+            view === "list"
+              ? `<textarea class="result-list" id="result-list" readonly rows="${Math.min(14, Math.max(4, nChecked + 1))}"
+                  aria-label="已選股票清單" placeholder="沒有已選的股票，切換到表格勾選">${escHtml(listText)}</textarea>
+                 <div class="field-hint">清單只列出已勾選的股票，切換到「表格」可調整勾選</div>`
+              : `<div class="table-container">
+            <table class="result-table">
+              <thead><tr><th class="check"><input type="checkbox" id="check-all" aria-label="全選" ${
+                nChecked === rows.length ? "checked" : ""
+              } /></th><th>代號</th><th>名稱</th><th>市場</th><th>比對方式</th></tr></thead>
+              <tbody id="result-tbody">${body}</tbody>
+            </table>
+          </div>`
+          }`;
+
+        $("results").querySelectorAll("[data-view]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            setView(btn.dataset.view);
+            render();
+          }),
+        );
+        $("copy-codes-btn").addEventListener("click", () => copy(rows, false));
+        $("copy-both-btn").addEventListener("click", () => copy(rows, true));
+        $("clear-btn").addEventListener("click", clearAll);
+        if (view === "list") {
+          $("result-list").addEventListener("focus", (e) => e.target.select());
+          return;
+        }
+
+        $("result-tbody").addEventListener("change", (e) => {
+          const tr = e.target.closest("tr[data-code]");
+          if (tr) setChecked(rows.find((r) => r.code === tr.dataset.code), e.target.checked);
+          render();
+        });
+        $("check-all").addEventListener("change", (e) => {
+          rows.forEach((r) => setChecked(r, e.target.checked));
+          render();
+        });
+      }
+
+      function setView(v) {
+        view = v === "list" ? "list" : "table";
+        try {
+          localStorage.setItem(VIEW_KEY, view);
+        } catch {
+          /* private mode: keep it for this visit only */
+        }
+      }
+
+      function setChecked(r, on) {
+        if (on) {
+          unchecked.delete(r.code);
+          if (!DEFAULT_CHECKED.has(r.via)) checkedOverride.add(r.code);
+        } else {
+          unchecked.add(r.code);
+          checkedOverride.delete(r.code);
+        }
+      }
+
+      async function copy(rows, withName) {
+        const picked = rows.filter(isChecked);
+        const text = picked.map((r) => (withName ? `${r.code} ${r.name}` : r.code)).join("\n");
+        let ok = true;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          ok = false;
+        }
+        $("copy-msg").textContent = ok ? `已複製 ${picked.length} 檔` : "複製失敗，請手動選取";
+      }
+
+      function clearAll() {
+        perShot.length = 0;
+        unchecked.clear();
+        checkedOverride.clear();
+        $("shots").innerHTML = "";
+        $("progress").hidden = true;
+        showError("");
+        render();
+      }
+
+      // ── Pipeline ─────────────────────────────────────────────────
+      function handleFiles(files) {
+        const images = [...files].filter((f) => f && f.type.startsWith("image/"));
+        if (images.length === 0) {
+          showError("請選擇圖片檔（PNG、JPG 等）");
+          return;
+        }
+        showError("");
+        const total = images.length;
+        images.forEach((file, i) => {
+          const shot = addShot(file);
+          queue = queue.then(() => recognize(file, shot, total > 1 ? `辨識第 ${i + 1}／${total} 張` : "辨識中"));
+        });
+      }
+
+      async function recognize(file, shot, label) {
+        progressLabel = label;
+        shot.set("辨識中…");
+        setProgress(label, 0);
+        try {
+          const [info, worker, canvas] = await Promise.all([loadStockInfo(), getWorker(), preprocess(file)]);
+          const { data } = await worker.recognize(canvas);
+          const text = data.text || "";
+          const rows = StockOCR.extractStocks(text, info);
+          perShot.push({ text, rows });
+          shot.set(`找到 ${rows.length} 檔`, "done");
+          setProgress("完成", 1);
+        } catch (e) {
+          console.error(e);
+          shot.set("辨識失敗", "failed");
+          showError(e && e.message ? e.message : "辨識失敗，請再試一次");
+          $("progress").hidden = true;
+        }
+        render();
+      }
+
+      // ── Wire up ──────────────────────────────────────────────────
+      const dz = $("dropzone");
+      dz.addEventListener("click", () => $("file-input").click());
+      dz.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          $("file-input").click();
+        }
+      });
+      $("file-input").addEventListener("change", (e) => {
+        handleFiles(e.target.files);
+        e.target.value = "";
+      });
+      ["dragenter", "dragover"].forEach((t) =>
+        dz.addEventListener(t, (e) => {
+          e.preventDefault();
+          dz.classList.add("dragover");
+        }),
+      );
+      ["dragleave", "drop"].forEach((t) => dz.addEventListener(t, () => dz.classList.remove("dragover")));
+      dz.addEventListener("drop", (e) => {
+        e.preventDefault();
+        handleFiles(e.dataTransfer.files);
+      });
+      // Ignore drops outside the zone so the browser doesn't navigate to the image.
+      window.addEventListener("dragover", (e) => e.preventDefault());
+      window.addEventListener("drop", (e) => e.preventDefault());
+      document.addEventListener("paste", (e) => {
+        const files = [...(e.clipboardData?.items || [])]
+          .filter((it) => it.kind === "file" && it.type.startsWith("image/"))
+          .map((it) => it.getAsFile());
+        if (files.length) {
+          e.preventDefault();
+          handleFiles(files);
+        }
+      });
+
+      loadStockInfo();
+    </script>
+  </body>
+</html>
