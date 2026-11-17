@@ -38,7 +38,7 @@ test.describe("desktop shell", () => {
     await page.locator("#search-input").fill("2330");
     await expect(page.locator(".search-item").first()).toContainText("2330");
     await page.keyboard.press("Enter");
-    await expect(page).toHaveURL(/stock\.html\?id=2330$/);
+    await expect(page).toHaveURL(/stock\?id=2330$/);
   });
 
   test("search finds pages by name", async ({ page }) => {
@@ -46,7 +46,7 @@ test.describe("desktop shell", () => {
     await page.locator("[data-open-search]").click();
     await page.locator("#search-input").fill("跳空");
     await page.keyboard.press("Enter");
-    await expect(page).toHaveURL(/gap\.html$/);
+    await expect(page).toHaveURL(/gap$/);
   });
 
   test("lowercase letter-suffixed code is found", async ({ page }) => {

@@ -855,7 +855,7 @@
         updateStockNameHint();
         calculate();
 
-        // Deep link from a stock detail page: day-trade-calculator.html?id=2330
+        // Deep link from a stock detail page: day-trade-calculator?id=2330
         const linkId = new URLSearchParams(location.search).get("id");
         if (linkId && stockInfo[linkId]) {
           document.getElementById("dt-stock-id").value = linkId;

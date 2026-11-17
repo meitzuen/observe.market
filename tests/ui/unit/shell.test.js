@@ -41,8 +41,8 @@ test("searchStocks: empty query or missing data returns []", () => {
 });
 
 test("searchPages: matches label, then description", () => {
-  assert.equal(Shell.searchPages("跳空", Shell.NAV)[0].href, "gap.html");
-  assert.ok(Shell.searchPages("VCP", Shell.NAV).some((p) => p.href === "vcp.html"));
+  assert.equal(Shell.searchPages("跳空", Shell.NAV)[0].href, "gap");
+  assert.ok(Shell.searchPages("VCP", Shell.NAV).some((p) => p.href === "vcp"));
 });
 
 test("searchPages: hostile text returns []", () => {

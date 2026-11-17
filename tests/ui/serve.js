@@ -20,6 +20,8 @@ http
   .createServer((req, res) => {
     let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
     if (p.endsWith("/")) p += "index.html";
+    // Mirror GitHub Pages: /stock serves stock.html.
+    else if (!path.extname(p)) p += ".html";
     const base = p.startsWith("/data/") ? fixtures : root;
     const file = path.normalize(path.join(base, p));
     if (file !== base && !file.startsWith(base + path.sep)) {

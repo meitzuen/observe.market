@@ -261,7 +261,7 @@
       let watchlistsCache = null;
 
       function backHref(market) {
-        return market === "tpex" ? "tpex.html" : "twse.html";
+        return market === "tpex" ? "tpex" : "twse";
       }
 
       // Index history dates are ROC calendar ("115/08/13") — convert to ISO
@@ -310,7 +310,7 @@
           showEmptyState(
             "缺少股票代號",
             "請由股票列表點擊股票代號以查看歷史走勢。",
-            "twse.html",
+            "twse",
           );
           return;
         }
@@ -334,7 +334,7 @@
           showEmptyState(
             "查無此股票",
             `找不到股票代號 ${id} 的基本資料。`,
-            "twse.html",
+            "twse",
           );
           return;
         }
@@ -534,7 +534,7 @@
                 <button class="btn" id="btn-add-watchlist">＋ 加入自選股</button>
                 <div class="watchlist-picker" id="watchlist-picker"></div>
               </div>
-              <a href="portfolio.html?add=${id}" class="btn">＋ 加入持股試算</a>`
+              <a href="portfolio?add=${id}" class="btn">＋ 加入持股試算</a>`
                   : ""
               }
               <a
@@ -881,7 +881,7 @@
         }
 
         if (!watchlistsCache || watchlistsCache.length === 0) {
-          picker.innerHTML = `<div class="watchlist-picker-empty">尚無自選股清單<br /><a href="watchlist.html">前往建立 →</a></div>`;
+          picker.innerHTML = `<div class="watchlist-picker-empty">尚無自選股清單<br /><a href="watchlist">前往建立 →</a></div>`;
           return;
         }
 

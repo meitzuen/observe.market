@@ -65,11 +65,11 @@ test.describe("market redirects", () => {
 
   test("cross-market and warrant params redirect", async ({ page }) => {
     await page.goto("/twse.html?market=tpex");
-    await page.waitForURL(/\/tpex\.html/);
+    await page.waitForURL(/\/tpex$/);
     await page.goto("/tpex.html?market=twse");
-    await page.waitForURL(/\/twse\.html/);
+    await page.waitForURL(/\/twse$/);
     await page.goto("/twse.html?market=warrant");
-    await page.waitForURL(/\/premium-warrant\.html/);
+    await page.waitForURL(/\/premium-warrant$/);
   });
 
   test("same-market param does not redirect", async ({ page }) => {

@@ -6,53 +6,53 @@
     {
       label: "市場",
       items: [
-        { href: "index.html", label: "全部", desc: "上市＋上櫃整合大盤" },
-        { href: "twse.html", label: "上市", desc: "上市大盤與個股行情" },
-        { href: "tpex.html", label: "上櫃", desc: "上櫃大盤與個股行情" },
+        { href: "./", label: "全部", desc: "上市＋上櫃整合大盤" },
+        { href: "twse", label: "上市", desc: "上市大盤與個股行情" },
+        { href: "tpex", label: "上櫃", desc: "上櫃大盤與個股行情" },
       ],
     },
     {
       label: "策略",
       items: [
-        { href: "punish.html", label: "處置股", desc: "最新處置股票名單" },
-        { href: "surge.html", label: "飆股", desc: "起漲日後漲到各門檻所需的交易日" },
-        { href: "volume-candle.html", label: "爆量紅黑K", desc: "爆量長紅/長黑K線個股" },
-        { href: "backtest.html", label: "策略回測", desc: "策略訊號的事後報酬與回撤" },
-        { href: "gap.html", label: "跳空缺口", desc: "開盤跳空強弱勢個股" },
-        { href: "wantgoo.html", label: "玩股基本面", desc: "Wantgoo基本面數據排行" },
-        { href: "volatility.html", label: "區間波動率", desc: "區間日/年化波動率與漲跌" },
-        { href: "head-shoulders.html", label: "頭肩型態", desc: "頭肩底/頭肩頂型態選股" },
-        { href: "vcp.html", label: "VCP型態", desc: "收縮型態(VCP)選股" },
+        { href: "punish", label: "處置股", desc: "最新處置股票名單" },
+        { href: "surge", label: "飆股", desc: "起漲日後漲到各門檻所需的交易日" },
+        { href: "volume-candle", label: "爆量紅黑K", desc: "爆量長紅/長黑K線個股" },
+        { href: "backtest", label: "策略回測", desc: "策略訊號的事後報酬與回撤" },
+        { href: "gap", label: "跳空缺口", desc: "開盤跳空強弱勢個股" },
+        { href: "wantgoo", label: "玩股基本面", desc: "Wantgoo基本面數據排行" },
+        { href: "volatility", label: "區間波動率", desc: "區間日/年化波動率與漲跌" },
+        { href: "head-shoulders", label: "頭肩型態", desc: "頭肩底/頭肩頂型態選股" },
+        { href: "vcp", label: "VCP型態", desc: "收縮型態(VCP)選股" },
       ],
     },
     {
       label: "權證",
       items: [
-        { href: "warrant-filter.html", label: "權證篩選", desc: "依條件篩選權證" },
-        { href: "premium-warrant.html", label: "精選權證", desc: "精選權證清單" },
+        { href: "warrant-filter", label: "權證篩選", desc: "依條件篩選權證" },
+        { href: "premium-warrant", label: "精選權證", desc: "精選權證清單" },
       ],
     },
     {
       label: "選股",
       items: [
-        { href: "screener.html", label: "股票篩選", desc: "區間漲跌幅與成交量排行" },
-        { href: "watchlist.html", label: "精選類股", desc: "我的自選股清單與即時價格" },
+        { href: "screener", label: "股票篩選", desc: "區間漲跌幅與成交量排行" },
+        { href: "watchlist", label: "精選類股", desc: "我的自選股清單與即時價格" },
       ],
     },
     {
       label: "個人",
       items: [
-        { href: "bookmark.html", label: "常用連結", desc: "常用外部連結" },
-        { href: "portfolio.html", label: "持股試算", desc: "持股損益試算" },
-        { href: "margin-calculator.html", label: "融資計算機", desc: "融資融券維持率與追繳價試算" },
-        { href: "screenshot-ocr.html", label: "辨識工具", desc: "從截圖辨識台股代號與名稱" },
+        { href: "bookmark", label: "常用連結", desc: "常用外部連結" },
+        { href: "portfolio", label: "持股試算", desc: "持股損益試算" },
+        { href: "margin-calculator", label: "融資計算機", desc: "融資融券維持率與追繳價試算" },
+        { href: "screenshot-ocr", label: "辨識工具", desc: "從截圖辨識台股代號與名稱" },
       ],
     },
     {
       label: "當沖",
       items: [
-        { href: "day-trade-calculator.html", label: "當沖計算機", desc: "當沖損益與成本試算" },
-        { href: "xiaoge-strategy.html", label: "小哥策略", desc: "小哥當沖策略選股" },
+        { href: "day-trade-calculator", label: "當沖計算機", desc: "當沖損益與成本試算" },
+        { href: "xiaoge-strategy", label: "小哥策略", desc: "小哥當沖策略選股" },
       ],
     },
   ];
@@ -151,7 +151,8 @@
 
     function currentPage() {
       const p = location.pathname;
-      return p.substring(p.lastIndexOf("/") + 1) || "index.html";
+      const slug = p.substring(p.lastIndexOf("/") + 1).replace(/\.html$/, "");
+      return slug && slug !== "index" ? slug : "./";
     }
 
     function todayTaipei() {
@@ -182,7 +183,7 @@
       ).join("");
       return `<a class="skip-link" href="#main">跳到主要內容</a>
         <div class="site-header-inner">
-          <a class="brand" href="index.html"><img src="assets/logo.png" alt="" onerror="this.remove()"><span>Market Observer</span></a>
+          <a class="brand" href="./"><img src="assets/logo.png" alt="" onerror="this.remove()"><span>Market Observer</span></a>
           <nav class="site-nav" aria-label="主選單">${groups}</nav>
           <button class="search-btn" type="button" aria-label="搜尋" data-open-search><span class="search-icon" aria-hidden="true">🔍</span><span class="search-text">搜尋代號或頁面</span><kbd>⌘K</kbd></button>
           <button class="nav-toggle" type="button" aria-label="選單" aria-expanded="false" aria-controls="site-drawer">☰</button>
@@ -276,7 +277,7 @@
       if (stocks.length) {
         html += '<div class="search-group">個股</div>';
         stocks.forEach((s) => {
-          items.push({ href: "stock.html?id=" + encodeURIComponent(s.id) });
+          items.push({ href: "stock?id=" + encodeURIComponent(s.id) });
           const tag = s.type === "tpex" ? "上櫃" : s.type === "twse" ? "上市" : "";
           html += itemHtml(items.length - 1, esc(s.id), esc(s.name), tag);
         });

@@ -36,14 +36,14 @@ async function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const marketParam = urlParams.get("market");
     if (marketParam === "warrant") {
-      window.location.href = "premium-warrant.html";
+      window.location.href = "premium-warrant";
       return;
     }
     if (
       (marketParam === "twse" || marketParam === "tpex") &&
       marketParam !== currentMarket
     ) {
-      window.location.href = marketParam + ".html";
+      window.location.href = marketParam;
       return;
     }
 
@@ -375,7 +375,7 @@ function renderGapList() {
 
     item.innerHTML = `
               <div>
-                  <div style="font-weight: 700; color: var(--text);"><a href="https://www.cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
+                  <div style="font-weight: 700; color: var(--text);"><a href="https://www.cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
                   <div style="font-size: 0.75rem; color: var(--text-muted);">量: ${(stock.volume / 1000).toFixed(0)} 張</div>
               </div>
               <div style="text-align: right;">
@@ -406,7 +406,7 @@ function renderPunishList() {
 
     item.innerHTML = `
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.25rem;">
-                  <div style="font-weight: 700; color: var(--text);"><a href="https://www.cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock.html?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
+                  <div style="font-weight: 700; color: var(--text);"><a href="https://www.cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a> <a href="stock?id=${stock.id}" class="stock-link" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">${stock.id}</a></div>
                   <span class="tag" style="margin: 0; background: transparent; border: 1px solid rgba(185, 28, 28, 0.35); color: rgba(185, 28, 28, 0.9);">${stock.measure}</span>
               </div>
               <div style="font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
@@ -493,7 +493,7 @@ function renderStockTable() {
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-              <td style="font-weight: 500;"><a href="stock.html?id=${stock.id}" class="stock-link">${stock.id}</a></td>
+              <td style="font-weight: 500;"><a href="stock?id=${stock.id}" class="stock-link">${stock.id}</a></td>
               <td style="font-weight: 600;"><a href="https://www.cnyes.com/twstock/${stock.id}/analysis/performance" target="_blank" class="stock-link">${stock.name}</a></td>
               <td style="font-weight: 600;">${stock.close}</td>
               <td class="${diffClass}" style="font-weight: 700;">${diff !== null ? diffPrefix + diffText : "n/a"}</td>
