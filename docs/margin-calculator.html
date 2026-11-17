@@ -986,7 +986,7 @@
         calculate();
 
         await loadStockInfo();
-        // Deep link from a stock page: margin-calculator.html?id=2330
+        // Deep link from a stock page: margin-calculator?id=2330
         const linkId = new URLSearchParams(location.search).get("id");
         if (linkId && stockInfo[linkId]) $("mg-stock-id").value = linkId;
         updateStockNameHint();

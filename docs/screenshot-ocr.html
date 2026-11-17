@@ -526,7 +526,7 @@
             const on = isChecked(r);
             return `<tr data-code="${escHtml(r.code)}" class="${on ? "" : "unchecked"}">
               <td class="check"><input type="checkbox" ${on ? "checked" : ""} aria-label="選取 ${escHtml(r.code)}" /></td>
-              <td class="code"><a href="stock.html?id=${encodeURIComponent(r.code)}">${escHtml(r.code)}</a></td>
+              <td class="code"><a href="stock?id=${encodeURIComponent(r.code)}">${escHtml(r.code)}</a></td>
               <td class="name">${escHtml(r.name)}</td>
               <td>${r.market}</td>
               <td><span class="tag ${v.cls}">${v.text}</span></td>

@@ -12,18 +12,28 @@ RETENTION_DAYS = 730
 CONDITION_ARTIFACT_RE = re.compile(r"\(\./[^)]*\)\s*$")
 
 
-def to_roc_date(date_str: str) -> str:
-    y, m, d = date_str.split("-")
-    return f"{int(y) - 1911}/{m}/{d}"
+def roc_to_iso(roc_date: str) -> str:
+    y, m, d = roc_date.split("/")
+    return f"{int(y) + 1911}-{m}-{d}"
 
 
-def filter_index_for_date(rows: List[Dict], date_str: str) -> List[Dict]:
-    """The upstream index endpoint returns a rolling window of the current
-    month instead of a single day, so keep only the row for date_str."""
-    if not rows:
-        return rows
-    roc_date = to_roc_date(date_str)
-    return [row for row in rows if row.get("date") == roc_date]
+def split_index_by_date(rows: List[Dict]) -> Dict[str, List[Dict]]:
+    """Group the upstream rolling-month index window by ISO date. Saving every
+    row (not just today's) backfills days a previous run missed and replaces
+    same-day preliminary figures with the final ones."""
+    out: Dict[str, List[Dict]] = {}
+    for row in rows or []:
+        try:
+            out.setdefault(roc_to_iso(row["date"]), []).append(row)
+        except (KeyError, ValueError, AttributeError, TypeError):
+            continue
+    return out
+
+
+def save_index_window(rows: List[Dict], market: str) -> None:
+    for iso, day_rows in split_index_by_date(rows).items():
+        save_to_file(day_rows, f"{market}/daily_index", iso)
+    rebuild_index_history(market)
 
 
 def strip_condition_artifacts(records: List[Dict]) -> List[Dict]:
@@ -199,10 +209,7 @@ if __name__ == "__main__":
     # --- TWSE ---
     twse_index = get_daily_index("twse", date_str)
     if twse_index:
-        twse_index = filter_index_for_date(twse_index, date_str)
-    if twse_index:
-        save_to_file(twse_index, "twse/daily_index", date_str)
-        rebuild_index_history("twse")
+        save_index_window(twse_index, "twse")
 
     twse_price = get_daily_price("twse", date_str)
     if twse_price:
@@ -218,10 +225,7 @@ if __name__ == "__main__":
     # --- TPEX ---
     tpex_index = get_daily_index("tpex", date_str)
     if tpex_index:
-        tpex_index = filter_index_for_date(tpex_index, date_str)
-    if tpex_index:
-        save_to_file(tpex_index, "tpex/daily_index", date_str)
-        rebuild_index_history("tpex")
+        save_index_window(tpex_index, "tpex")
 
     tpex_price = get_daily_price("tpex", date_str)
     if tpex_price:

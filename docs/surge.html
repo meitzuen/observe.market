@@ -369,7 +369,7 @@
     }
 
     const stockLink = (stock, text) =>
-      `<a href="stock.html?id=${esc(stock.symbol)}" class="stock-link">${esc(text)}</a>`;
+      `<a href="stock?id=${esc(stock.symbol)}" class="stock-link">${esc(text)}</a>`;
 
     // Table: code and name in separate cells. Cards: one combined line.
     function adminHtml(stock) {
