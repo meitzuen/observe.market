@@ -391,6 +391,82 @@
         justify-content: flex-start;
       }
 
+      /* 融資成數有 6 個選項，排成 3 欄 */
+      #ratio-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .view-tabs {
+        max-width: 420px;
+        margin-bottom: var(--s4);
+      }
+
+      /* ── 整戶維持率 ─────────────────────────────────────────── */
+      .pos-row {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: var(--s3);
+        margin-bottom: var(--s3);
+      }
+
+      .pos-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--s2);
+      }
+
+      .pos-badge {
+        font-size: 12px;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: 999px;
+        color: #fff;
+      }
+
+      .pos-badge.long {
+        background: var(--up);
+      }
+
+      .pos-badge.short {
+        background: var(--down);
+      }
+
+      .pos-del {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+      }
+
+      .pos-del:hover {
+        color: var(--up);
+      }
+
+      .pos-fields {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--s2) var(--s3);
+      }
+
+      .pos-fields > div {
+        min-width: 0;
+      }
+
+      .pos-fields .field-label {
+        margin-bottom: 2px;
+      }
+
+      .add-row {
+        display: flex;
+        gap: var(--s2);
+        margin-bottom: var(--s4);
+        flex-wrap: wrap;
+      }
+
       .notes {
         margin-top: var(--s4);
       }
@@ -433,7 +509,50 @@
 
       <div id="stock-info-status"></div>
 
-      <div class="grid calc-grid">
+      <div class="tab-group view-tabs">
+        <button class="tab-btn active" data-view="single" type="button">單筆試算</button>
+        <button class="tab-btn" data-view="account" type="button">整戶維持率</button>
+      </div>
+
+      <div id="view-account" style="display: none">
+        <div class="grid calc-grid">
+          <div class="card">
+            <h2 class="card-title">整戶部位</h2>
+            <div id="ac-rows"></div>
+            <div class="add-row">
+              <button class="btn btn-secondary" id="ac-add-long" type="button">＋ 新增融資</button>
+              <button class="btn btn-secondary" id="ac-add-short" type="button">＋ 新增融券</button>
+            </div>
+
+            <div class="field-block">
+              <div class="label-row">
+                <label class="field-label" for="ac-extra">其他擔保品（現金、股票市值，選填）</label>
+                <label class="unit-toggle">
+                  <input type="checkbox" id="ac-unit-toggle" checked />以張計
+                </label>
+              </div>
+              <div class="input-with-suffix">
+                <input type="number" id="ac-extra" min="0" step="1" placeholder="0" />
+                <span class="suffix">元</span>
+              </div>
+            </div>
+
+            <div class="hint-text">
+              整戶維持率 = (融資股票市值 + 融券賣出價金 + 融券保證金 + 其他擔保品) ÷ (融資金額 + 融券目前市值)。
+              目前股價空白則以成交價計算。試算未計手續費、交易稅與利息，實際以券商通知為準。
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card-title">整戶計算結果</h2>
+            <div id="ac-results">
+              <div class="results-empty">請輸入至少一筆部位</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-single" class="grid calc-grid">
         <div class="card">
           <h2 class="card-title">計算機</h2>
 
@@ -581,6 +700,9 @@
           { v: 0.6, label: "6 成", sub: "一般標準" },
           { v: 0.5, label: "5 成", sub: "調降一成" },
           { v: 0.4, label: "4 成", sub: "調降二成" },
+          { v: 0.3, label: "3 成", sub: "調降三成" },
+          { v: 0.2, label: "2 成", sub: "調降四成" },
+          { v: 0.1, label: "1 成", sub: "調降五成" },
         ],
         short: [
           { v: 0.9, label: "9 成", sub: "一般標準" },
@@ -739,7 +861,7 @@
         return { cls: "status-ok", text: "安全", color: "var(--down)" };
       }
 
-      function gaugeHtml(ratio) {
+      function gaugeHtml(ratio, id = "out-ratio") {
         const MAX = 200;
         const pct = (v) => Math.min(100, (v / MAX) * 100);
         const st = statusOf(ratio);
@@ -747,7 +869,7 @@
         return `<div class="gauge">
           <div class="gauge-head">
             <span class="stat-label">目前維持率</span>
-            <span class="gauge-value" id="out-ratio" style="color:${st.color}">${fmtPct(pctVal)}</span>
+            <span class="gauge-value" id="${id}" style="color:${st.color}">${fmtPct(pctVal)}</span>
           </div>
           <div class="gauge-track">
             <div class="gauge-zone" style="left:${pct(130)}%;width:${pct(150) - pct(130)}%" title="警戒區 130%～150%"></div>
@@ -900,6 +1022,231 @@
           </div>`;
       }
 
+      // ── 整戶維持率 ───────────────────────────────────────────────
+      const ACCOUNT_KEY = "margin_account_state_v1";
+      let view = "single";
+      let acRows = [];
+      let acSeq = 0;
+
+      // Pure: 整戶 = Σ擔保品 ÷ Σ債務。融資擔保品 = 股票市值、債務 = 融資金額；
+      // 融券擔保品 = 賣出價金 + 保證金（固定）、債務 = 融券目前市值。
+      function accountSummary(items, extra) {
+        let loan = 0, longMV = 0, shortCol = 0, shortMV = 0;
+        for (const it of items) {
+          const mv = it.current * it.shares;
+          if (it.type === "long") {
+            const pos = longPosition({ price: it.price, shares: it.shares, ratio: it.ratio, days: 0, rate: 0 });
+            loan += pos.loan;
+            longMV += mv;
+          } else {
+            const pos = shortPosition({ price: it.price, shares: it.shares, ratio: it.ratio });
+            shortCol += pos.collateral;
+            shortMV += mv;
+          }
+        }
+        const num = longMV + shortCol + extra;
+        const den = loan + shortMV;
+        const ratioAtMove = (s) => {
+          const d = loan + shortMV * (1 + s);
+          return d > 0 ? (longMV * (1 + s) + shortCol + extra) / d : null;
+        };
+        // 全部股價同步漲跌 s 時剛好 130%：(1+s)(L − 1.3S) = 1.3D − C − E
+        const k = longMV - CALL_RATIO * shortMV;
+        let callMove = null;
+        if (Math.abs(k) > 1e-9) {
+          const t = (CALL_RATIO * loan - shortCol - extra) / k;
+          if (t > 0) callMove = t - 1;
+        }
+        return { loan, longMV, shortCol, shortMV, num, den, ratio: den > 0 ? num / den : null, ratioAtMove, callMove };
+      }
+
+      function newAcRow(type, init) {
+        return {
+          type,
+          stockId: "",
+          price: "",
+          qty: "",
+          current: "",
+          ratio: type === "long" ? 0.6 : 0.9,
+          ...init,
+          id: ++acSeq,
+        };
+      }
+
+      function saveAccount() {
+        try {
+          localStorage.setItem(
+            ACCOUNT_KEY,
+            JSON.stringify({ view, rows: acRows, extra: $("ac-extra").value, isLot: $("ac-unit-toggle").checked }),
+          );
+        } catch {}
+      }
+
+      function acRowHtml(r) {
+        const opts = RATIOS[r.type]
+          .map((o) => `<option value="${o.v}"${o.v === r.ratio ? " selected" : ""}>${o.label}</option>`)
+          .join("");
+        const isLong = r.type === "long";
+        const field = (label, f, html) => `<div><label class="field-label">${label}</label>${html}</div>`;
+        const num = (f, ph, suffix) =>
+          `<div class="input-with-suffix"><input type="number" min="0" step="0.01" data-f="${f}" value="${escHtml(r[f])}" placeholder="${ph}" /><span class="suffix">${suffix}</span></div>`;
+        return `<div class="pos-row" data-rid="${r.id}">
+          <div class="pos-head">
+            <span class="pos-badge ${r.type}">${isLong ? "融資（做多）" : "融券（做空）"}</span>
+            <button class="pos-del" type="button" data-del>刪除</button>
+          </div>
+          <div class="pos-fields">
+            ${field("股票代號（選填）", "stockId", `<input type="text" data-f="stockId" list="stock-datalist" autocomplete="off" value="${escHtml(r.stockId)}" placeholder="ex: 2330" />`)}
+            ${field(isLong ? "融資成數" : "保證金成數", "ratio", `<select data-f="ratio">${opts}</select>`)}
+            ${field(isLong ? "買進價格" : "賣出價格", "price", num("price", "100", "元"))}
+            ${field(isLong ? "買進數量" : "賣出數量", "qty", num("qty", "1", '<span class="ac-unit">' + (acIsLot() ? "張" : "股") + "</span>"))}
+            ${field("目前股價（選填）", "current", num("current", "同成交價", "元"))}
+          </div>
+        </div>`;
+      }
+
+      function acIsLot() {
+        return $("ac-unit-toggle").checked;
+      }
+
+      function renderAcRows() {
+        $("ac-rows").innerHTML = acRows.length
+          ? acRows.map(acRowHtml).join("")
+          : '<div class="field-hint" style="margin-bottom: var(--s3)">尚無部位，請按下方按鈕新增</div>';
+      }
+
+      function acRowFromEl(el) {
+        const row = el.closest("[data-rid]");
+        return row ? acRows.find((r) => r.id === Number(row.dataset.rid)) : null;
+      }
+
+      function acRowsHtmlScenario(s) {
+        const rows = STEPS.map((p) => ({ s: p / 100, kind: p === 0 ? "now" : "" }));
+        if (s.callMove != null) rows.push({ s: s.callMove, kind: "call" });
+        rows.sort((a, b) => b.s - a.s);
+        return rows
+          .map((r) => {
+            const ratio = s.ratioAtMove(r.s);
+            const st = statusOf(ratio);
+            const label = r.kind === "call" ? "追繳點" : r.kind === "now" ? "目前" : st.text;
+            return `<tr class="${r.kind ? "row-" + r.kind : ""}">
+              <td class="${plClass(r.s)}">${fmtPct(r.s * 100, true)}</td>
+              <td>${fmtMoney(s.longMV * (1 + r.s))}</td>
+              <td>${fmtMoney(s.shortMV * (1 + r.s))}</td>
+              <td style="color:${st.color}">${fmtPct(ratio * 100)}</td>
+              <td>${label}</td>
+            </tr>`;
+          })
+          .join("");
+      }
+
+      function calculateAccount() {
+        saveAccount();
+        const out = $("ac-results");
+        const mult = acIsLot() ? 1000 : 1;
+        const items = acRows
+          .map((r) => {
+            const price = parseFloat(r.price);
+            const qty = parseFloat(r.qty);
+            const cur = parseFloat(r.current);
+            return price > 0 && qty > 0
+              ? { type: r.type, price, shares: qty * mult, current: cur > 0 ? cur : price, ratio: Number(r.ratio) }
+              : null;
+          })
+          .filter(Boolean);
+        const extra = Math.max(0, parseFloat($("ac-extra").value) || 0);
+        const s = accountSummary(items, extra);
+
+        if (!(s.den > 0)) {
+          out.innerHTML = '<div class="results-empty">請輸入至少一筆有效的融資或融券部位（價格與數量）</div>';
+          return;
+        }
+
+        const st = statusOf(s.ratio);
+        let banner;
+        if (s.ratio < CALL_RATIO) banner = "整戶維持率已低於 130%，面臨追繳或斷頭風險！";
+        else {
+          const move =
+            s.callMove == null
+              ? "整戶股價無論漲跌都不會觸及追繳線"
+              : `若所有股票同步${s.callMove < 0 ? "下跌" : "上漲"} ${fmtPct(Math.abs(s.callMove) * 100)} 即達 130% 追繳線`;
+          banner = st.text === "警戒區" ? `⚠ 整戶維持率已進入 150% 警戒區，${move}` : move;
+        }
+
+        let topupHtml = "";
+        if (s.ratio < CALL_RATIO) {
+          const cash = ceilMoney(s.den * TARGET_RATIO - s.num);
+          const repay = ceilMoney(s.den - s.num / TARGET_RATIO);
+          const repayRow =
+            s.loan > 0
+              ? `<div class="topup-row"><span>方法二：償還部分融資</span><b id="ac-repay">${
+                  repay > s.loan ? "不足（超過融資金額）" : fmtMoney(repay) + " 元"
+                }</b></div>`
+              : "";
+          topupHtml = `<div class="topup">
+            <h3>追繳需補繳金額（整戶回到 166%）</h3>
+            <div class="topup-row"><span>方法一：增提現金（擔保品）</span><b id="ac-cash">${fmtMoney(cash)} 元</b></div>
+            ${repayRow}
+            <div class="field-hint">收到追繳通知後須於 2 個營業日內補繳，逾期券商將於次一營業日強制處分。</div>
+          </div>`;
+        }
+
+        const stats = [
+          ["融資金額", fmtMoney(s.loan), ""],
+          ["融資股票市值", fmtMoney(s.longMV), "擔保品"],
+          ["融券擔保品", fmtMoney(s.shortCol), "價金 + 保證金"],
+          ["融券目前市值", fmtMoney(s.shortMV), "債務"],
+          ["其他擔保品", fmtMoney(extra), ""],
+          ["總擔保品 ÷ 總債務", `${fmtMoney(s.num)} ÷ ${fmtMoney(s.den)}`, ""],
+        ];
+        const ids = ["ac-loan", "ac-long-mv", "ac-short-col", "ac-short-mv", "ac-extra-out", "ac-frac"];
+        const statsHtml = stats
+          .map(
+            ([label, value, sub], i) => `<div class="stat-item">
+              <span class="stat-label">${label}</span>
+              <span class="stat-value" id="${ids[i]}">${value}</span>
+              ${sub ? `<span class="stat-sub">${sub}</span>` : ""}
+            </div>`,
+          )
+          .join("");
+
+        out.innerHTML = `
+          <div class="status-banner ${st.cls}" id="ac-status">${banner}</div>
+          ${gaugeHtml(s.ratio, "ac-ratio")}
+          ${topupHtml}
+          <div class="stats">${statsHtml}</div>
+          <h3 class="section-title">整戶股價同步漲跌情境</h3>
+          <div class="table-container">
+            <table class="scenario-table">
+              <thead><tr>
+                <th>同步漲跌幅</th><th>融資市值</th><th>融券市值</th><th>整戶維持率</th><th>狀態</th>
+              </tr></thead>
+              <tbody id="ac-tbody">${acRowsHtmlScenario(s)}</tbody>
+            </table>
+          </div>`;
+      }
+
+      async function acAutofill(r, rowEl) {
+        const id = r.stockId.trim();
+        if (!stockInfo[id]) return;
+        const history = await getHistory(id);
+        if (!history || history.length === 0) return;
+        const close = history[history.length - 1].close;
+        r.current = String(close);
+        if (!r.price) r.price = String(close);
+        rowEl.querySelector('[data-f="current"]').value = r.current;
+        rowEl.querySelector('[data-f="price"]').value = r.price;
+        calculateAccount();
+      }
+
+      function setView(v) {
+        view = v;
+        document.querySelectorAll("[data-view]").forEach((b) => b.classList.toggle("active", b.dataset.view === v));
+        $("view-single").style.display = v === "single" ? "" : "none";
+        $("view-account").style.display = v === "account" ? "" : "none";
+        saveAccount();
+      }
+
       // ── Stock lookup ─────────────────────────────────────────────
       async function loadStockInfo() {
         try {
@@ -971,6 +1318,40 @@
       $("mg-autofill-btn").addEventListener("click", autofillLatestClose);
       $("mg-calc-btn").addEventListener("click", calculate);
 
+      document.querySelectorAll("[data-view]").forEach((btn) =>
+        btn.addEventListener("click", () => setView(btn.dataset.view)),
+      );
+      ["ac-add-long", "ac-add-short"].forEach((id) =>
+        $(id).addEventListener("click", () => {
+          acRows.push(newAcRow(id === "ac-add-long" ? "long" : "short"));
+          renderAcRows();
+          calculateAccount();
+        }),
+      );
+      $("ac-extra").addEventListener("input", calculateAccount);
+      $("ac-unit-toggle").addEventListener("change", () => {
+        document.querySelectorAll(".ac-unit").forEach((el) => (el.textContent = acIsLot() ? "張" : "股"));
+        calculateAccount();
+      });
+      $("ac-rows").addEventListener("input", (e) => {
+        const r = acRowFromEl(e.target);
+        const f = e.target.dataset.f;
+        if (!r || !f) return;
+        r[f] = f === "ratio" ? Number(e.target.value) : e.target.value;
+        calculateAccount();
+      });
+      $("ac-rows").addEventListener("change", (e) => {
+        const r = acRowFromEl(e.target);
+        if (r && e.target.dataset.f === "stockId") acAutofill(r, e.target.closest("[data-rid]"));
+      });
+      $("ac-rows").addEventListener("click", (e) => {
+        if (!e.target.closest("[data-del]")) return;
+        const r = acRowFromEl(e.target);
+        acRows = acRows.filter((x) => x !== r);
+        renderAcRows();
+        calculateAccount();
+      });
+
       (async function init() {
         const saved = loadState();
         if (saved.ratioByMode) ratioByMode = { ...ratioByMode, ...saved.ratioByMode };
@@ -984,6 +1365,19 @@
         $("mg-days").value = saved.days || "";
         $("mg-rate").value = saved.rate || "6.5";
         calculate();
+
+        let ac = {};
+        try {
+          ac = JSON.parse(localStorage.getItem(ACCOUNT_KEY)) || {};
+        } catch {}
+        acRows = Array.isArray(ac.rows)
+          ? ac.rows.filter((r) => r && (r.type === "long" || r.type === "short")).map((r) => newAcRow(r.type, r))
+          : [newAcRow("long", { price: "100", qty: "1" }), newAcRow("short", { price: "100", qty: "1" })];
+        $("ac-extra").value = ac.extra || "";
+        $("ac-unit-toggle").checked = ac.isLot !== undefined ? ac.isLot : true;
+        renderAcRows();
+        calculateAccount();
+        setView(ac.view === "account" ? "account" : "single");
 
         await loadStockInfo();
         // Deep link from a stock page: margin-calculator?id=2330
