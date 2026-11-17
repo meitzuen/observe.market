@@ -86,8 +86,12 @@
   // to read from the same origin instead. Always ends with "/".
   const DATA_BASE = "https://observer.smallplum.xyz/";
 
+  // On localhost, read same-origin "data/" instead: scripts/serve.py serves a
+  // local docs/data if present, otherwise proxies to R2 (so no CORS / port limits).
+  const LOCAL = typeof location !== "undefined" && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+
   function dataUrl(path) {
-    return DATA_BASE + String(path).replace(/^\/+/, "");
+    return (LOCAL ? "data/" : DATA_BASE) + String(path).replace(/^\/+/, "");
   }
 
   const api = { loadJSON, renderState, dataUrl };

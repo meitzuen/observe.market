@@ -206,7 +206,7 @@ test.describe("collection pages behaviour", () => {
       expect(ids).toEqual(list.items.map((it) => it.stock_id));
       // links go to the stock page
       for (const id of ids) {
-        await expect(page.locator(`#watchlist-tbody a[href="stock.html?id=${id}"]`)).toHaveCount(1);
+        await expect(page.locator(`#watchlist-tbody a[href="stock?id=${id}"]`)).toHaveCount(1);
       }
       // close price comes from the price fixture
       const firstClose = (await page.locator("#watchlist-tbody tr").first().locator("td").nth(2).textContent()).trim();

@@ -600,7 +600,7 @@
             "beforeend",
             `
             <tr>
-              <td style="font-weight:600;"><a href="stock.html?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
+              <td style="font-weight:600;"><a href="stock?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
               <td style="font-weight:600;">${stockName(row.stockNo)}</td>
               <td style="color:var(--text-muted);">${date}</td>
               <td class="${pctClass(row.preMonthRevenueDiff)}">${pctPrefix(row.preMonthRevenueDiff)}${fmt(row.preMonthRevenueDiff)}%</td>
@@ -660,7 +660,7 @@
             "beforeend",
             `
             <tr>
-              <td style="font-weight:600;"><a href="stock.html?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
+              <td style="font-weight:600;"><a href="stock?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
               <td style="font-weight:600;">${stockName(row.stockNo)}</td>
               <td style="color:var(--text-muted);">${season}</td>
               <td class="${pctClass(row.top4SumRoe)}">${pctPrefix(row.top4SumRoe)}${fmt(row.top4SumRoe)}%</td>
@@ -738,7 +738,7 @@
             "beforeend",
             `
             <tr>
-              <td style="font-weight:600;"><a href="stock.html?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
+              <td style="font-weight:600;"><a href="stock?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
               <td style="font-weight:600;">${stockName(row.stockNo)}</td>
               <td style="color:var(--text-muted);">${season}</td>
               <td class="${pctClass(row.grossProfitMargin)}">${pctPrefix(row.grossProfitMargin)}${fmt(row.grossProfitMargin)}%</td>
@@ -818,7 +818,7 @@
             "beforeend",
             `
             <tr>
-              <td style="font-weight:600;"><a href="stock.html?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
+              <td style="font-weight:600;"><a href="stock?id=${row.stockNo}" class="stock-link">${row.stockNo}</a></td>
               <td style="font-weight:600;">${stockName(row.stockNo)}</td>
               <td style="color:var(--text-muted);">${season}</td>
               <td class="${pctClass(row.currentEps)}">${fmt(row.currentEps)}</td>

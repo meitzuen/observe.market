@@ -125,11 +125,11 @@ python src/generate_manifest.py
 ```
 
 ### 3. 預覽網頁
-切換至 `docs` 目錄並啟動本地伺服器：
+啟動本地伺服器（需支援 `/stock` 對應 `stock.html` 的網址，所以不要用 `python -m http.server`）：
 ```bash
-cd docs
-python3 -m http.server 8000
+python3 scripts/serve.py 8000
 ```
+`/data/*` 會優先讀本機 `docs/data`，沒有的話由 server 代理到 R2，所以不需要先下載資料，任何 port／`localhost` 或 `127.0.0.1` 都可以。
 造訪 `http://localhost:8000` 即可預覽。
 
 ## 部署至 GitHub Pages

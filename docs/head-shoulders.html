@@ -379,7 +379,7 @@
             s.change_percent > 0 ? "price-up" : s.change_percent < 0 ? "price-down" : "";
           const badge = s.status === "breakout" ? "badge-up" : "";
           tr.innerHTML = `
-            <td style="font-weight:500;"><a href="stock.html?id=${encodeURIComponent(s.id)}" class="stock-link">${esc(s.id)}</a></td>
+            <td style="font-weight:500;"><a href="stock?id=${encodeURIComponent(s.id)}" class="stock-link">${esc(s.id)}</a></td>
             <td style="font-weight:600;">
               <a href="https://www.cnyes.com/twstock/${encodeURIComponent(s.id)}/analysis/performance" target="_blank" class="stock-link">${esc(s.name)}</a>
             </td>
