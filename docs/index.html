@@ -485,9 +485,12 @@
 
       function findIndexEntry(arr, date) {
         if (!arr || arr.length === 0) return null;
-        return (
-          arr.find((item) => toISO(item.date) === date) || arr[arr.length - 1]
-        );
+        const hit = arr.find((item) => toISO(item.date) === date);
+        if (hit) return hit;
+        // Only fall back to the latest row when `date` is newer than the data
+        // (not published yet). A gap inside the range must not show another day.
+        const last = arr[arr.length - 1];
+        return date > toISO(last.date) ? last : null;
       }
 
       function renderIndexStat(market, entry) {
