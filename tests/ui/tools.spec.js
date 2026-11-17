@@ -260,6 +260,46 @@ test.describe("tool pages behaviour", () => {
     expect(errors).toEqual([]);
   });
 
+  test("margin-calculator: 融資成數 3/2/1 成", async ({ page }) => {
+    await mockStockData(page);
+    await page.goto("/margin-calculator.html");
+    await page.click('[data-mode="long"]');
+    await page.fill("#mg-price", "100");
+    await page.fill("#mg-qty", "1");
+    for (const [ratio, loan] of [["0.3", "30,000"], ["0.2", "20,000"], ["0.1", "10,000"]]) {
+      await page.click(`#ratio-group [data-ratio="${ratio}"]`);
+      await expect(page.locator("#out-funded")).toHaveText(loan);
+    }
+  });
+
+  test("margin-calculator: 整戶維持率 (融資 + 融券, hand computed)", async ({ page }) => {
+    const errors = collectErrors(page);
+    await mockStockData(page);
+    await page.goto("/margin-calculator.html");
+    await page.click('[data-view="account"]');
+
+    // Default rows: 融資 1 張 @100 (6 成) and 融券 1 張 @100 (9 成).
+    const cur = page.locator('#ac-rows [data-f="current"]');
+    await cur.nth(0).fill("70");
+    await cur.nth(1).fill("100");
+    // collateral = 70,000 + (100,000 + 90,000) = 260,000; debt = 60,000 + 100,000.
+    await expect(page.locator("#ac-ratio")).toHaveText("162.50%");
+
+    // Extra collateral lifts it: (260,000 + 40,000) / 160,000 = 187.50%.
+    await page.fill("#ac-extra", "40000");
+    await expect(page.locator("#ac-ratio")).toHaveText("187.50%");
+    await page.fill("#ac-extra", "");
+
+    // 融資 40 / 融券 150: 230,000 / 210,000 = 109.52% -> 追繳.
+    await cur.nth(0).fill("40");
+    await cur.nth(1).fill("150");
+    await expect(page.locator("#ac-ratio")).toHaveText("109.52%");
+    await expect(page.locator("#ac-status")).toHaveClass(/status-danger/);
+    // cash = 210,000 x 1.66 - 230,000 = 118,600.
+    await expect(page.locator("#ac-cash")).toHaveText("118,600 元");
+    expect(errors).toEqual([]);
+  });
+
   // ---- screenshot-ocr ------------------------------------------------------
   // The real Tesseract.js comes from a CDN and downloads a 15 MB model, so the
   // test swaps in a fake that "reads" a fixed text.
