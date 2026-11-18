@@ -1,160 +1,186 @@
 # Market Observer | 市場觀測站
 
-一個自動化抓取台灣股市大盤與個股資料，並透過 GitHub Pages 進行視覺化展示的現代化市場監控工具。
+每天自動抓取台灣股市（上市 TWSE／上櫃 TPEx）的大盤與個股資料，跑完各種選股策略後，用純靜態網頁（GitHub Pages）呈現的市場觀測工具。
 
-## 專案特色
+## 目錄
 
-- **現代化 UI 設計**：現代化金融風格介面（Inter／Noto Sans TC），共用頂部導覽、全站搜尋（⌘K / Ctrl+K）與「資料截至」提示；支援手機版。導覽列依「市場」「策略」「權證」「選股」「個人」「當沖」分類，方便快速切換頁面。
-- **上市／上櫃雙市場**：分別追蹤 TWSE 上市與 TPEx 上櫃個股，資料結構一致。
-- **數據視覺化**：整合 Chart.js 展示大盤趨勢，提供即時漲跌狀態與成交資訊。
-- **進階篩選功能**：支援搜尋、價格區間過濾及成交量篩選，快速鎖定目標個股。
-- **股票篩選器**：選取任意日期區間，計算漲幅排行／跌幅排行／成交量排行／連續上漲天數排行。
-- **處置股追蹤**：自動同步最新的處置股票資訊，掌握市場風險。
-- **跳空漲跌分析**：內建 Gap Jump／Gap Drop 策略，自動篩選當日強弱勢個股。
-- **基本面排行**：整合 Wantgoo 基本面數據排行。
-- **區間波動率**：計算指定區間內個股日／年化波動率與期間漲跌，找出穩定或劇烈震盪的標的。
-- **VCP 選股**：依 Mark Minervini 的 VCP（Volatility Contraction Pattern）邏輯篩選收縮型態個股。
-- **精選類股**：依類股分類瀏覽精選股票。
-- **權證功能**：精選權證與權證篩選器，協助掌握衍生性商品機會。
-- **個股歷史走勢**：點擊任一股票代號即可查看該股歷史股價走勢圖與近期成交明細。
-- **常用連結與持股試算**：整理個人常用外部連結，並提供簡易持股損益試算。
-- **自動化流程**：利用 GitHub Actions 每天自動更新數據，無須人工干預。
+- [功能一覽](#功能一覽)
+- [運作方式](#運作方式)
+- [快速開始](#快速開始)
+- [資料管線與 R2](#資料管線與-r2)
+- [專案結構](#專案結構)
+- [測試](#測試)
+- [CI／CD](#cicd)
+- [授權](#授權)
+
+## 功能一覽
+
+網站導覽列依用途分成六類（頁面檔名皆在 `docs/` 下）。
+
+| 分類 | 頁面 | 說明 |
+|---|---|---|
+| 市場 | `index`、`twse`、`tpex` | 上市＋上櫃整合大盤、單一市場大盤與個股行情；Chart.js 趨勢圖、搜尋、價格與成交量篩選 |
+| 市場 | `stock` | 個股歷史走勢與近期成交明細（從任一股票代號進入） |
+| 策略 | `gap` | 跳空缺口：Gap Jump／Gap Drop 強弱勢個股 |
+| 策略 | `vcp` | 依 Mark Minervini 的 VCP（Volatility Contraction Pattern）篩選收縮型態 |
+| 策略 | `head-shoulders` | 頭肩底／頭肩頂型態選股 |
+| 策略 | `volume-candle` | 爆量長紅 K／長黑 K |
+| 策略 | `surge` | 飆股分析：起漲日後漲到各門檻所需交易日 |
+| 策略 | `punish` | 最新處置股票名單 |
+| 策略 | `wantgoo` | Wantgoo 基本面排行 |
+| 策略 | `volatility` | 區間日／年化波動率與期間漲跌 |
+| 策略 | `backtest` | 各策略訊號的事後報酬與回撤 |
+| 權證 | `warrant-filter`、`premium-warrant` | 權證篩選器、精選權證 |
+| 選股 | `screener` | 任意日期區間的漲幅／跌幅／成交量／連續上漲天數排行 |
+| 選股 | `watchlist` | 依類股分類的精選股票 |
+| 個人 | `bookmark`、`portfolio` | 常用連結、持股損益試算 |
+| 個人 | `margin-calculator` | 融資融券維持率與追繳價試算 |
+| 個人 | `screenshot-ocr` | 從截圖辨識台股代號與名稱 |
+| 當沖 | `day-trade-calculator`、`xiaoge-strategy` | 當沖損益與成本試算、小哥策略當沖選股（多方／空方） |
+
+另外：全站搜尋（⌘K / Ctrl+K）、「資料截至」提示、手機版版面，以及不在導覽中的元件展示頁 `ui-gallery`。
+
+## 運作方式
+
+```
+ TWSE / TPEx / Wantgoo / MoneyDJ …
+              │  (GitHub Actions 每個交易日)
+              ▼
+   src/*.py  抓取 + 策略計算 ──► docs/data/*.json
+                                    │
+                                    ▼
+                       Cloudflare R2 (公開讀取)
+                                    │  fetch (UIData.dataUrl)
+                                    ▼
+          docs/*.html  靜態頁面 ──► GitHub Pages
+```
+
+- **資料與程式分離**：`docs/data/` 不進 git（在 `.gitignore`），由 R2 儲存並提供給前端。
+- **前端是純靜態多頁應用**：沒有建置步驟，共用 `docs/assets/` 裡的設計系統與工具。`volatility`、`screener` 等頁面直接讀每日快照在瀏覽器計算，不需要額外的資料管線。
+
+## 快速開始
+
+需求：Python 3.11+、Node.js 22+（只有跑 UI 測試才需要）。
+
+### 1. 安裝 Python 環境
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. 預覽網頁
+
+```bash
+python3 scripts/serve.py 8000
+```
+
+開啟 <http://localhost:8000>。請不要用 `python -m http.server`，因為需要 `/stock` 對應到 `stock.html` 的路由。
+
+`/data/*` 會先讀本機的 `docs/data`，沒有就由 server 代理到 R2，所以**不用先下載資料**。
+
+### 3. 手動執行資料腳本（選用）
+
+腳本需要本機有 `docs/data`（先 `scripts/sync-data-r2.sh pull`，見下節）。以下為 CI 的執行順序：
+
+```bash
+D=2026-04-20
+python src/fetch_and_save.py --date_str $D          # 大盤、個股、處置股、權證
+python src/generate_stock_history.py                # daily_price → 個股歷史
+python src/gap_strategy.py --date_str $D            # 跳空
+python src/vcp_strategy.py --date_str $D            # VCP
+python src/head_shoulders.py --date_str $D          # 頭肩（--backfill 回補歷史訊號）
+python src/volume_candle_strategy.py --date_str $D  # 爆量長紅／長黑 K
+python src/xiaoge_strategy.py --date_str $D         # 小哥策略
+python src/generate_manifest.py                     # 更新資料索引
+python src/fetch_stock_info.py                      # 個股基本資料
+```
+
+其他命令列工具：`src/backtest.py`（`--json` 輸出 `backtest.json`、`--by` 做敏感度分析）、`src/gain_timing.py`（起漲後漲幅與所需時間）、`src/strategy_scan.py`（候選策略的樣本內／外勝率）、`src/moneydj_concept.py`、`src/add_concepts_to_watchlist.py`（概念股分類寫入 watchlist API）。
+
+### 4. 格式化
+
+```bash
+scripts/format-python.sh    # poetry run ruff format src/
+scripts/format-html.sh
+```
+
+Python 依賴以 `pyproject.toml`／`poetry.lock` 為準；`requirements.txt` 只給 CI 快速安裝，內容需與 `[project].dependencies` 保持一致。
+
+## 資料管線與 R2
+
+`docs/data` 的 JSON 由 Cloudflare R2 bucket 提供，**不在 git 內**。全新 clone 沒有資料，需要的話：
+
+```bash
+export R2_ACCOUNT_ID=… R2_BUCKET=… AWS_ACCESS_KEY_ID=… AWS_SECRET_ACCESS_KEY=…
+scripts/sync-data-r2.sh pull    # bucket → docs/data
+scripts/sync-data-r2.sh push    # docs/data → bucket（不會刪除遠端檔案）
+```
+
+- **前端**：所有資料網址都經過 `UIData.dataUrl()`（`docs/assets/data.js`）。`DATA_BASE` 指向 R2 自訂網域 `https://observer.smallplum.xyz/`；改回 `"data/"` 即可改讀同源。
+- **自動更新**：`update_data.yml` 先從 R2 拉下現有資料，執行上節的腳本，通過檢查後推回 R2。需要 repo secrets：`R2_ACCOUNT_ID`、`R2_BUCKET`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。
+- **Bucket 設定**：綁定自訂網域，並在 R2 dashboard → bucket → Settings → CORS policy 套用 `scripts/r2-cors.json`。
+- **資料格式**：`twse/`、`tpex/` 下依類型分資料夾（`daily_index`、`daily_price`、`daily_punish`、`gap_jump`、`gap_drop`、`vcp`、`hs_bottom`、`hs_top`、`stock_history` …），另有 `warrant/`、`manifest.json`（資料索引）、`stock_info.json`。`scripts/compact_data.py` 可把舊的縮排 JSON 轉成精簡格式。
+
+> ⚠️ 這個 repo 與 R2 資料都是公開的，不要放入個人持股、損益等私人資料。
 
 ## 專案結構
 
 ```
 observe.market/
-├── src/                        # 核心 Python 腳本
-│   ├── config.py               # 共用設定（路徑、來源網址等）
-│   ├── fetch_and_save.py       # 抓取大盤、個股、處置股與跳空數據
-│   ├── fetch_stock_info.py     # 抓取個股基本資料
-│   ├── gap_strategy.py         # Gap Jump / Gap Drop 策略分析
-│   ├── vcp_strategy.py         # VCP（收縮型態）策略分析
-│   ├── head_shoulders.py       # 頭肩底／頭肩頂型態選股
-│   ├── volume_candle_strategy.py # 爆量長紅K／長黑K選股
-│   ├── xiaoge_strategy.py      # 小哥策略當沖選股（多方／空方）
-│   ├── gain_timing.py          # 起漲後漲幅與所需時間（命令列工具）
-│   ├── strategy_scan.py        # 候選策略掃描（樣本內／樣本外勝率）
-│   ├── moneydj_concept.py      # 抓取 MoneyDJ 概念股分類
-│   ├── add_concepts_to_watchlist.py # 把概念股分類寫入 watchlist API
-│   ├── generate_mongo_import.py # 轉出 Mongo Compass 匯入用 JSON
-│   ├── backtest.py             # 策略回測（--json 輸出 docs/data/backtest.json、--by 敏感度分析）
-│   ├── generate_manifest.py   # 生成前端讀取所需的資料索引
-│   └── generate_stock_history.py # 彙整 daily_price 為個股歷史資料
-├── docs/                       # GitHub Pages 部署根目錄
-│   ├── index.html              # 上市＋上櫃整合大盤（首頁）
-│   ├── twse.html               # 上市大盤（TWSE）
-│   ├── tpex.html               # 上櫃大盤（TPEx）
-│   ├── gap.html                # 跳空漲跌觀測站
-│   ├── punish.html             # 處置股票觀測站
-│   ├── wantgoo.html            # 基本面排行
-│   ├── volatility.html         # 區間波動率排行
-│   ├── vcp.html                # VCP 選股
-│   ├── head-shoulders.html     # 頭肩底/頂選股
-│   ├── surge.html              # 飆股分析（起漲日後漲到各門檻的交易日）
-│   ├── screener.html           # 股票篩選器（漲幅／跌幅／成交量／連續上漲天數排行）
-│   ├── watchlist.html          # 精選類股
-│   ├── premium-warrant.html    # 精選權證
-│   ├── warrant-filter.html     # 權證篩選器
-│   ├── stock.html               # 個股歷史走勢頁面
-│   ├── bookmark.html            # 常用連結
-│   ├── portfolio.html           # 持股試算
-│   ├── volume-candle.html      # 量價K線
-│   ├── xiaoge-strategy.html    # 小哥策略
-│   ├── backtest.html           # 策略回測（讀取 data/backtest.json）
-│   ├── day-trade-calculator.html # 當沖試算
-│   ├── ui-gallery.html         # 元件展示（不在導覽中）
-│   ├── assets/                 # 前端資源
-│   │   ├── ui.css              # 設計系統
-│   │   ├── shell.js            # 導覽／搜尋／頁尾
-│   │   ├── data.js             # 資料載入
-│   │   ├── chart-theme.js      # 圖表主題
-│   │   ├── ui-table.js         # 表格元件
-│   │   ├── surge.js            # 飆股計算（起漲日、各門檻達標天數）
-│   │   └── market-page.js      # 大盤頁共用邏輯
-│   └── data/
-│       ├── manifest.json       # 資料索引清單
-│       ├── stock_info.json     # 個股基本資料
-│       ├── twse/               # 上市數據（daily_index, daily_price, daily_punish, gap_jump, gap_drop, vcp, hs_bottom, hs_top, stock_history）
-│       ├── tpex/               # 上櫃數據（同上結構）
-│       └── warrant/            # 權證數據
-├── scripts/                    # 格式化腳本（format-html.sh、format-python.sh）
-├── tests/ui/                   # Playwright 與單元測試
-└── .github/workflows/          # 定時自動化任務配置
+├── src/                  # Python：抓取、策略、回測
+│   ├── config.py         # 共用設定（路徑、來源網址）
+│   ├── fetch_and_save.py, fetch_stock_info.py
+│   ├── gap_strategy.py, vcp_strategy.py, head_shoulders.py,
+│   │   volume_candle_strategy.py, xiaoge_strategy.py
+│   ├── backtest.py, gain_timing.py, strategy_scan.py
+│   ├── generate_manifest.py, generate_stock_history.py
+│   └── moneydj_concept.py, add_concepts_to_watchlist.py
+├── docs/                 # GitHub Pages 根目錄（純靜態）
+│   ├── *.html            # 各功能頁面（見「功能一覽」）
+│   ├── assets/
+│   │   ├── ui.css        # 設計系統
+│   │   ├── shell.js      # 導覽／搜尋／頁尾
+│   │   ├── data.js       # 資料載入（含逾時與重試）
+│   │   ├── fmt.js        # 共用格式化與跳脫函式
+│   │   ├── ui-table.js   # 表格元件
+│   │   ├── chart-theme.js, market-page.js, surge.js, stock-ocr.js
+│   └── data/             # 不進 git，由 R2 提供
+├── scripts/              # serve.py、sync-data-r2.sh、format-*.sh、compact_data.py
+├── tests/
+│   ├── test_*.py         # Python 單元測試（pytest）
+│   └── ui/               # Playwright 與前端單元測試、fixtures
+└── .github/workflows/    # CI／CD
 ```
 
-## 核心組件
-
-1. **數據抓取 (`src/fetch_and_save.py`)**：抓取大盤指數、個股行情、處置股名單與跳空數據，分別儲存至 `twse/` 與 `tpex/`。
-2. **個股資料 (`src/fetch_stock_info.py`)**：抓取上市／上櫃個股基本資訊，輸出至 `stock_info.json`。
-3. **跳空漲跌 (`src/gap_strategy.py`)**：根據當日開盤跳空幅度，篩選強勢 (gap_jump) 與弱勢 (gap_drop) 個股。
-4. **VCP 策略 (`src/vcp_strategy.py`)**：以 zigzag 抓取價格波段、計算收縮型態分數，輸出至 `vcp/{date}.json`，供 `vcp.html` 選股。
-5. **頭肩底/頂 (`src/head_shoulders.py`)**：在近 120 日日 K 上以轉折點偵測左肩／頭／右肩與頸線，標記「右肩成形中」或「已突破／跌破」，輸出至 `hs_bottom/{date}.json`、`hs_top/{date}.json`，供 `head-shoulders.html` 選股。回測只計入突破／跌破頸線當天（`days_since_cross == 0`）的訊號。
-6. **清單生成 (`src/generate_manifest.py`)**：掃描 `data/` 目錄並輸出 `manifest.json`，供前端動態載入歷史資料。
-7. **個股歷史彙整 (`src/generate_stock_history.py`)**：將每日 `daily_price` 資料依股票代號重新彙整，輸出至 `stock_history/{id}.json`，供 `stock.html` 繪製個股走勢圖。
-8. **視覺化介面 (`docs/*.html`)**：多頁式靜態應用程式，共用同一導覽列，依「市場／策略／權證／選股／個人／當沖」分類，部署於 GitHub Pages。其中區間波動率與股票篩選器（`volatility.html`、`screener.html`）純前端讀取每日快照即時計算，不需額外資料管線。
-
-## 本地開發
-
-### 1. 安裝環境
-```bash
-pip install -r requirements.txt
-```
-
-### 2. 數據操作 (範例)
-```bash
-# 抓取指定日期數據（上市 + 上櫃）
-python src/fetch_and_save.py --date_str 2026-04-20
-
-# 抓取個股基本資料
-python src/fetch_stock_info.py
-
-# 執行跳空漲跌分析
-python src/gap_strategy.py --date_str 2026-04-20
-
-# 執行 VCP 策略分析
-python src/vcp_strategy.py --date_str 2026-04-20
-python src/head_shoulders.py --date_str 2026-04-20
-python src/head_shoulders.py --backfill   # 回補所有歷史日期訊號（回測用）
-
-# 彙整個股歷史資料
-python src/generate_stock_history.py
-
-# 更新數據清單
-python src/generate_manifest.py
-```
-
-### 3. 預覽網頁
-啟動本地伺服器（需支援 `/stock` 對應 `stock.html` 的網址，所以不要用 `python -m http.server`）：
-```bash
-python3 scripts/serve.py 8000
-```
-`/data/*` 會優先讀本機 `docs/data`，沒有的話由 server 代理到 R2，所以不需要先下載資料，任何 port／`localhost` 或 `127.0.0.1` 都可以。
-造訪 `http://localhost:8000` 即可預覽。
-
-## 部署至 GitHub Pages
-
-1. 進入 GitHub 儲存庫 **Settings** > **Pages**。
-2. 在 **Build and deployment** 下，將 **Branch** 設定為 `main`。
-3. **關鍵步驟**：將資料夾路徑設定為 **`/docs`** 而非 root。
-4. 點擊 **Save** 並等待部署完成。
-
-## UI 測試
+## 測試
 
 ```bash
-cd tests/ui && npm install && npx playwright install chromium && npm run test:unit && npm test
+# Python
+pip install pytest && python -m pytest tests -q
+
+# 前端（單元 + Playwright）
+cd tests/ui
+npm ci && npx playwright install chromium
+npm run test:unit
+npm test
 ```
+
+UI 測試不需要真實資料：`tests/ui/serve.js` 會從 `tests/ui/fixtures/data` 提供 `/data/*`。
+
+## CI／CD
+
+| Workflow | 觸發 | 內容 |
+|---|---|---|
+| `update_data.yml` | 平日排程、外部 cron（`repository_dispatch`）、手動 | 抓資料、跑策略、檢查後推到 R2 |
+| `deploy-pages.yml` | push 到 `main`（`docs/`、`tests/ui/`） | 先跑 UI 測試，通過後部署到 GitHub Pages |
+| `ui-smoke.yml` | PR（`docs/`、`tests/ui/`） | UI 測試 |
+| `python-tests.yml` | PR／push `main`（`src/`、`tests/*.py`） | pytest（Python 3.11 與 3.14） |
+| `ui-tests.yml` | 被上面兩個 workflow 呼叫 | 共用的 UI 測試流程（含 Playwright 快取） |
+
+### 部署到 GitHub Pages
+
+在儲存庫 **Settings → Pages → Build and deployment** 將 **Source** 設為 **GitHub Actions**。之後推到 `main` 會由 `deploy-pages.yml` 自動部署 `docs/`。
 
 ## 授權
+
 本專案採用 [LICENSE](LICENSE) 授權。
-
-## Static data on Cloudflare R2
-
-The JSON under `docs/data` is served from an R2 bucket instead of GitHub Pages.
-
-- Front end: every data URL goes through `UIData.dataUrl()` (`docs/assets/data.js`). `DATA_BASE` points at the R2 custom domain `https://observer.smallplum.xyz/`; set it back to `"data/"` to read from the same origin.
-- Pipeline: `update_data.yml` pulls the bucket into `docs/data`, runs the fetch/strategy scripts, then pushes back. Nothing is committed to git. Needs the repo secrets `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`.
-- Manual sync: `scripts/sync-data-r2.sh pull|push` (needs `R2_ACCOUNT_ID`, `R2_BUCKET`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
-- Bucket setup: attach a custom domain and apply `scripts/r2-cors.json` (R2 dashboard → bucket → Settings → CORS policy).
-
-`docs/data` is not tracked in git (it is in `.gitignore`). A fresh clone has no data; run `scripts/sync-data-r2.sh pull` if you need it locally, e.g. for the Python scripts. The UI tests do not need it: `tests/ui/serve.js` serves `/data/*` from the snapshot in `tests/ui/fixtures/data`.
