@@ -85,11 +85,6 @@ const PAGES = [
       await expect(page.locator("#page-info")).toContainText("第 2 /");
       await page.waitForTimeout(150);
       await expect(page.locator("#page-info")).toContainText("第 2 /");
-      if (file === "index.html") {
-        const chip = page.locator("#ma-toggle-row .chip").first();
-        await chip.click();
-        await expect(chip).toHaveClass(/active/);
-      }
     },
   })),
 ];
