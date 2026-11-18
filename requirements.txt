@@ -1,1 +1,2 @@
+# Runtime deps for CI (fast pip install). Keep in sync with [project].dependencies in pyproject.toml.
 requests

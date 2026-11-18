@@ -466,6 +466,7 @@
 
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
+    <script src="assets/fmt.js"></script>
     <script>
       const STATE_KEY = "day_trade_calc_state_v2";
       const DEFAULT_FEE_RATE = 0.001425; // 0.1425%
@@ -487,36 +488,7 @@
       let bottomShown = 0; // rows revealed below the entry row (lower price)
 
       // ── Formatting ──────────────────────────────────────────────────────────
-      function fmtMoney(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        return v.toLocaleString("zh-TW", { maximumFractionDigits: 0 });
-      }
-
-      function fmtPrice(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        return v.toLocaleString("zh-TW", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        });
-      }
-
-      function fmtPct(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        const sign = v > 0 ? "+" : "";
-        return `${sign}${v.toFixed(2)}%`;
-      }
-
-      function plClass(v) {
-        if (v == null || Number.isNaN(v) || v === 0) return "price-neutral";
-        return v > 0 ? "price-up" : "price-down";
-      }
-
-      function escHtml(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-      }
+      const { fmtMoney, fmtPrice, fmtPct, plClass, escHtml } = window.UIFmt;
 
       function round2(v) {
         return Math.round(v * 100) / 100;
