@@ -5,7 +5,7 @@ test.describe("index.html and stock.html behaviour", () => {
     test.skip(testInfo.project.name !== "desktop");
   });
 
-  test("index: table rows, chart created, MA chips toggle", async ({ page }) => {
+  test("index: table rows, chart created", async ({ page }) => {
     const errors = [];
     page.on("pageerror", (e) => errors.push(String(e)));
     await page.goto("/index.html", { waitUntil: "networkidle" });
@@ -15,13 +15,6 @@ test.describe("index.html and stock.html behaviour", () => {
       .poll(() => page.evaluate(() => !!Chart.getChart("indexChart")))
       .toBe(true);
 
-    const chip = page.locator("#ma-toggle-row .chip").first();
-    expect(await page.locator("#ma-toggle-row .chip").count()).toBe(3);
-    await expect(chip).not.toHaveClass(/active/);
-    await chip.click();
-    await expect(chip).toHaveClass(/active/);
-    await chip.click();
-    await expect(chip).not.toHaveClass(/active/);
     expect(errors).toEqual([]);
   });
 

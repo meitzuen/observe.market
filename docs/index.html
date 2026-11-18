@@ -80,11 +80,6 @@
                 "
               ></div>
             </div>
-            <div class="chip-row" id="ma-toggle-row">
-              <button class="chip" data-ma="5">MA5</button>
-              <button class="chip" data-ma="10">MA10</button>
-              <button class="chip" data-ma="20">MA20</button>
-            </div>
             <div style="height: 300px; position: relative">
               <canvas id="indexChart"></canvas>
             </div>
@@ -310,7 +305,6 @@
       let currentPunishData = [];
       let filteredStocks = [];
       let chart = null;
-      let activeMAs = new Set();
 
       // Pagination & Sorting State
       let currentPage = 1;
@@ -408,21 +402,6 @@
               rowsPerPage = 10;
               filterStocks();
             });
-
-          // MA indicator toggles on the index trend chart
-          document.querySelectorAll("#ma-toggle-row .chip").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const period = parseInt(btn.dataset.ma, 10);
-              if (activeMAs.has(period)) {
-                activeMAs.delete(period);
-                btn.classList.remove("active");
-              } else {
-                activeMAs.add(period);
-                btn.classList.add("active");
-              }
-              renderChart();
-            });
-          });
 
           // Gap Jump sort listener
           document
@@ -607,22 +586,6 @@
         const isUp = nums[nums.length - 1] >= nums[0];
         const color = isUp ? c.up : c.down;
         svg.innerHTML = `<path d="${d}" fill="none" stroke="${color}" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />`;
-      }
-
-      // Simple moving average over a market's chronological index history,
-      // keyed by ISO date so it can be aligned onto the chart's date axis.
-      function computeMA(dataArr, period) {
-        const sorted = [...dataArr].sort((a, b) =>
-          toISO(a.date) < toISO(b.date) ? -1 : 1,
-        );
-        const closes = sorted.map((d) => d.index);
-        const result = new Map();
-        for (let i = period - 1; i < sorted.length; i++) {
-          const window = closes.slice(i - period + 1, i + 1);
-          const avg = window.reduce((a, b) => a + b, 0) / period;
-          result.set(toISO(sorted[i].date), avg);
-        }
-        return result;
       }
 
       // Set when any primary data fetch of the current load fails; the error
@@ -988,14 +951,14 @@
         const c = ChartTheme.colors();
         const monoFont = { family: '"Inter", "Noto Sans TC", sans-serif', size: 10 };
 
-        // Daily volume (shares) per market, drawn as stacked translucent bars
+        // Daily turnover (NT$) per market, drawn as stacked translucent bars
         // along the bottom of the chart on a hidden axis. The axis max is
         // 4x the tallest stack so bars stay in the bottom quarter.
         const twseVolByIso = new Map(
-          indexDataTwse.map((d) => [toISO(d.date), d.volume]),
+          indexDataTwse.map((d) => [toISO(d.date), d.turnover]),
         );
         const tpexVolByIso = new Map(
-          indexDataTpex.map((d) => [toISO(d.date), d.volume]),
+          indexDataTpex.map((d) => [toISO(d.date), d.turnover]),
         );
         const twseVol = isoDates.map((iso) => twseVolByIso.get(iso) ?? null);
         const tpexVol = isoDates.map((iso) => tpexVolByIso.get(iso) ?? null);
@@ -1007,46 +970,7 @@
           /^#[0-9a-f]{6}$/i.test(color)
             ? color + Math.round(alpha * 255).toString(16).padStart(2, "0")
             : color;
-        const fmtVol = (v) => (v / 100000000).toFixed(1) + " 億股";
-
-        // MA overlays: dashed lines in each series' own color, one dash
-        // pattern per period, so toggling them on doesn't require new hues.
-        const maDashPatterns = { 5: [3, 3], 10: [7, 4], 20: [12, 5] };
-        const maDatasets = [];
-        [...activeMAs]
-          .sort((a, b) => a - b)
-          .forEach((period) => {
-            const twseMA = computeMA(indexDataTwse, period);
-            const tpexMA = computeMA(indexDataTpex, period);
-            maDatasets.push({
-              label: `MA${period} 上市`,
-              data: isoDates.map((iso) =>
-                twseMA.has(iso) ? twseMA.get(iso) : null,
-              ),
-              borderColor: c.seriesA,
-              borderWidth: 1,
-              borderDash: maDashPatterns[period],
-              pointRadius: 0,
-              fill: false,
-              tension: 0.15,
-              yAxisID: "y",
-              spanGaps: true,
-            });
-            maDatasets.push({
-              label: `MA${period} 上櫃`,
-              data: isoDates.map((iso) =>
-                tpexMA.has(iso) ? tpexMA.get(iso) : null,
-              ),
-              borderColor: c.seriesB,
-              borderWidth: 1,
-              borderDash: maDashPatterns[period],
-              pointRadius: 0,
-              fill: false,
-              tension: 0.15,
-              yAxisID: "y1",
-              spanGaps: true,
-            });
-          });
+        const fmtVol = (v) => (v / 100000000).toFixed(0) + " 億元";
 
         chart = new Chart(ctx, {
           type: "line",
@@ -1081,10 +1005,9 @@
                 yAxisID: "y1",
                 spanGaps: true,
               },
-              ...maDatasets,
               {
                 type: "bar",
-                label: "上市成交量",
+                label: "上市成交金額",
                 data: twseVol,
                 backgroundColor: withAlpha(c.seriesA, 0.3),
                 borderWidth: 0,
@@ -1094,7 +1017,7 @@
               },
               {
                 type: "bar",
-                label: "上櫃成交量",
+                label: "上櫃成交金額",
                 data: tpexVol,
                 backgroundColor: withAlpha(c.seriesB, 0.3),
                 borderWidth: 0,

@@ -565,12 +565,48 @@ function renderChart(data) {
         },
       ],
     },
+    plugins: [
+      {
+        // Vertical guide line at the hovered date
+        id: "crosshair",
+        afterDatasetsDraw(ch) {
+          const active = ch.tooltip && ch.tooltip.getActiveElements();
+          if (!active || !active.length) return;
+          const x = active[0].element.x;
+          const { top, bottom } = ch.chartArea;
+          const g = ch.ctx;
+          g.save();
+          g.beginPath();
+          g.moveTo(x, top);
+          g.lineTo(x, bottom);
+          g.lineWidth = 1;
+          g.strokeStyle = c.tick;
+          g.setLineDash([4, 3]);
+          g.stroke();
+          g.restore();
+        },
+      },
+    ],
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
       plugins: {
         legend: { display: false },
         tooltip: {
+          callbacks: {
+            label: (item) => {
+              const d = data[item.dataIndex];
+              const chg = parseFloat(d.changes);
+              const lines = [`指數: ${item.formattedValue}`];
+              if (!isNaN(chg)) lines.push(`漲跌: ${chg > 0 ? "+" : ""}${chg}`);
+              if (d.turnover != null)
+                lines.push(`成交金額: ${(d.turnover / 100000000).toFixed(0)} 億元`);
+              if (d.volume != null)
+                lines.push(`成交股數: ${(d.volume / 100000000).toFixed(1)} 億股`);
+              return lines;
+            },
+          },
           backgroundColor: c.tooltipBg,
           borderColor: c.tooltipBorder,
           borderWidth: 1,
