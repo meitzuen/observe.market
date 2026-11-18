@@ -700,6 +700,7 @@
 
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
+    <script src="assets/fmt.js"></script>
     <script>
       const STATE_KEY = "margin_calc_state_v1";
       const CALL_RATIO = 1.3; // 追繳線 130%
@@ -749,9 +750,7 @@
         if (!v || !Number.isFinite(v)) return "price-neutral";
         return v > 0 ? "price-up" : "price-down";
       }
-      function escHtml(s) {
-        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      }
+      const { escHtml } = window.UIFmt;
 
       // ── Core maths (pure) ────────────────────────────────────────
       // 融資：融資金額千元以下捨去；自備款 = 成交金額 − 融資金額。

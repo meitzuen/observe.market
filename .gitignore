@@ -15,6 +15,7 @@ pip-wheel-metadata/
 venv/
 env/
 ENV/
+myenv/
 
 # Distribution / packaging
 *.whl

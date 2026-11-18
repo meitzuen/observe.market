@@ -333,6 +333,7 @@
 
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
+    <script src="assets/fmt.js"></script>
     <script>
       // ── Storage keys ────────────────────────────────────────────────────────
       const STORAGE_KEY = "portfolio_holdings";
@@ -416,29 +417,7 @@
       }
 
       // ── Formatting ──────────────────────────────────────────────────────────
-      function fmtMoney(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        return v.toLocaleString("zh-TW", { maximumFractionDigits: 0 });
-      }
-
-      function fmtPrice(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        return v.toLocaleString("zh-TW", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        });
-      }
-
-      function fmtPct(v) {
-        if (v == null || Number.isNaN(v)) return "—";
-        const sign = v > 0 ? "+" : "";
-        return `${sign}${v.toFixed(2)}%`;
-      }
-
-      function plClass(v) {
-        if (v == null || Number.isNaN(v) || v === 0) return "price-neutral";
-        return v > 0 ? "price-up" : "price-down";
-      }
+      const { fmtMoney, fmtPrice, fmtPct, plClass, escHtml } = window.UIFmt;
 
       function fmtQty(shares, unit) {
         if (unit === "lot") {
@@ -446,13 +425,6 @@
           return `${lots.toLocaleString("zh-TW", { maximumFractionDigits: 3 })} 張`;
         }
         return `${shares.toLocaleString("zh-TW")} 股`;
-      }
-
-      function escHtml(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
       }
 
       // ── Form panel ──────────────────────────────────────────────────────────

@@ -8,6 +8,7 @@ on:
       - "docs/**"
       - "tests/ui/**"
       - ".github/workflows/deploy-pages.yml"
+      - ".github/workflows/ui-tests.yml"
   workflow_dispatch:
 
 permissions:
@@ -23,25 +24,9 @@ concurrency:
 jobs:
   # Data now lives in R2 (see update_data.yml), so only code/UI changes deploy.
   verify:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: npm
-          cache-dependency-path: tests/ui/package-lock.json
-      - run: npm ci
-        working-directory: tests/ui
-      - run: npx playwright install --with-deps chromium
-        working-directory: tests/ui
-      - run: npm run test:unit
-        working-directory: tests/ui
-      - run: npm test
-        working-directory: tests/ui
+    uses: ./.github/workflows/ui-tests.yml
+    with:
+      ref: main
 
   deploy:
     needs: [verify]
