@@ -128,10 +128,11 @@ scripts/sync-data-r2.sh push    # docs/data → bucket（不會刪除遠端檔�
 
 新增／編輯／刪除（`bookmark`、`watchlist`、`surge`、個股頁的加入自選股）只有登入的管理員能用，不再依賴網址的 `?admin=True`。
 
-- 到 `/dashboard` 用 Google 登入；登入、白名單與 session cookie 全由後端 API（FastAPI on Cloud Run）處理，前端不碰 token。
-- 各頁用 `UIAuth.isAdmin()`（`GET /api/mktobs/auth/me`）決定是否顯示管理按鈕；寫入請求一律經 `UIAuth.apiFetch`（帶 cookie 與 `X-Requested-With: mktobs`）。
+- 到 `/dashboard` 用 Google 登入（Google Identity Services）。取得的 Google ID token 存在瀏覽器 `localStorage`，約 1 小時過期，過期後需重新登入。
+- 各頁用 `UIAuth.isAdmin()`（`GET /api/mktobs/auth/me`，帶 `Authorization: Bearer <ID token>`）決定是否顯示管理按鈕；寫入請求一律經 `UIAuth.apiFetch`（自動帶 Bearer）。
+- 後端每次請求都驗 token（audience、`email_verified`、白名單）；前端的判斷只影響顯示。
 - 後端契約與環境變數見 [`docs/superpowers/specs/2026-11-20-admin-auth-openapi.yaml`](docs/superpowers/specs/2026-11-20-admin-auth-openapi.yaml)。
-- 本機（`localhost`）收不到 `.smallplum.xyz` 的 cookie，要用真實後端測試時需另行設定（見 OpenAPI 的 `COOKIE_DOMAIN`、`FRONTEND_ORIGINS`）。
+- 本機預覽（`localhost:8000`）要把該來源加到 Google OAuth client 的「已授權的 JavaScript 來源」，且後端 `FRONTEND_ORIGINS` 要包含它。
 
 ## 專案結構
 
@@ -151,7 +152,7 @@ observe.market/
 │   │   ├── ui.css        # 設計系統
 │   │   ├── shell.js      # 導覽／搜尋／頁尾
 │   │   ├── data.js       # 資料載入（含逾時與重試）
-│   │   ├── auth.js       # 管理登入狀態與帶 cookie 的寫入請求
+│   │   ├── auth.js       # 管理登入（Google ID token）與帶 Bearer 的寫入請求
 │   │   ├── fmt.js        # 共用格式化與跳脫函式
 │   │   ├── ui-table.js   # 表格元件
 │   │   ├── chart-theme.js, market-page.js, surge.js, stock-ocr.js

@@ -54,3 +54,14 @@ Frontend:
 
 ## Left to the builder
 Exact visual layout of `/dashboard` (follow `ui.css` design system), error messages, session lifetime tuning.
+
+## Revision (2026-11-20, after backend delivery): Bearer ID token instead of session cookie
+The user asked for the admin APIs to be called with `Authorization: Bearer <Google ID token>`.
+This replaces approach A's cookie flow with approach B:
+- Frontend signs in with Google Identity Services on `/dashboard`; the ID token is kept in `localStorage`
+  (key `mktobs_id_token`) and expires in about 1 hour (no refresh; the user signs in again).
+- `UIAuth.apiFetch` adds the Bearer header; `UIAuth.me()` calls `GET /auth/me` with it (401 -> signed out,
+  403 -> not on the allowlist). No cookies, so no CSRF header, no `/auth/google/*` or `/auth/logout` endpoints.
+- Backend verifies the token on every request (audience, `email_verified`, `ADMIN_EMAILS`).
+- Consequences accepted: the token is readable by page JavaScript (mitigated by the short lifetime); the OAuth
+  setup needs "Authorized JavaScript origins" instead of a redirect URI.
