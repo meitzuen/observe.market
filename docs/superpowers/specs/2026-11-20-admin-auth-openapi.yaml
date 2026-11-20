@@ -1,0 +1,268 @@
+openapi: 3.1.0
+info:
+  title: mktobs admin auth contract
+  version: 1.0.0
+  description: |
+    Contract for adding Google login + admin-only writes to the existing mktobs API.
+    Only auth behaviour is specified; request/response bodies of the existing
+    bookmark / watchlist / surge endpoints are unchanged (shown as free-form objects).
+
+    ## Deployment notes (FastAPI on Cloud Run)
+    Environment variables:
+    - `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`: Google OAuth web client.
+    - `SESSION_SECRET`: key used to sign the session and `state` cookies.
+    - `ADMIN_EMAILS`: comma-separated allowlist of Google emails (compare case-insensitively).
+    - `FRONTEND_ORIGINS`: comma-separated allowed frontend origins, e.g. `https://observe.smallplum.xyz`.
+      Used for CORS and to validate the `next` redirect target.
+    - `COOKIE_DOMAIN`: `.smallplum.xyz` in production; leave unset for local development.
+
+    Google Cloud Console: add `https://market.smallplum.xyz/api/mktobs/auth/google/callback`
+    as an authorized redirect URI.
+
+    CORS: `allow_origins` = `FRONTEND_ORIGINS` (never `*`), `allow_credentials=True`,
+    allow_methods GET/POST/PUT/PATCH/DELETE/OPTIONS, allow_headers includes
+    `Content-Type` and `X-Requested-With`.
+
+    Session cookie `mktobs_session`: signed, HttpOnly, Secure, SameSite=Lax,
+    `Domain=COOKIE_DOMAIN`, Path=/, Max-Age about 7 days.
+
+    Write protection: every POST/PUT/PATCH/DELETE under /bookmark, /watchlist, /surge
+    (and POST /auth/logout) must pass a `require_admin` dependency:
+    1. header `X-Requested-With: mktobs` present, else 400 `{"detail": "missing_csrf_header"}`;
+    2. valid session cookie, else 401 `{"detail": "not_authenticated"}`;
+    3. session email still in `ADMIN_EMAILS`, else 403 `{"detail": "forbidden"}`.
+    GET endpoints stay public.
+servers:
+  - url: https://market.smallplum.xyz/api/mktobs
+
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: mktobs_session
+  parameters:
+    CsrfHeader:
+      name: X-Requested-With
+      in: header
+      required: true
+      schema: { type: string, const: mktobs }
+  schemas:
+    Detail:
+      type: object
+      required: [detail]
+      properties:
+        detail: { type: string }
+    Me:
+      type: object
+      required: [email, admin]
+      properties:
+        email: { type: string }
+        admin: { type: boolean, const: true }
+    FreeObject:
+      type: object
+      additionalProperties: true
+  responses:
+    Unauthorized:
+      description: No valid session.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Detail" }
+          example: { detail: not_authenticated }
+    Forbidden:
+      description: Logged in but not on the allowlist.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Detail" }
+          example: { detail: forbidden }
+    MissingCsrf:
+      description: Missing X-Requested-With header.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Detail" }
+          example: { detail: missing_csrf_header }
+    AdminWrite:
+      description: Unchanged success response of the existing endpoint.
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/FreeObject" }
+
+paths:
+  /auth/google/login:
+    get:
+      summary: Start Google login
+      description: |
+        Sets a signed short-lived `state` cookie (carrying `next`) and redirects to Google
+        (scope `openid email`).
+      parameters:
+        - name: next
+          in: query
+          required: true
+          description: Absolute URL to return to; its origin must be in FRONTEND_ORIGINS.
+          schema: { type: string, format: uri }
+      responses:
+        "302": { description: Redirect to accounts.google.com }
+        "400":
+          description: "`next` origin is not allowed."
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Detail" }
+  /auth/google/callback:
+    get:
+      summary: Google OAuth callback
+      description: |
+        Verifies `state` against the cookie, exchanges `code`, requires `email_verified`
+        and email in ADMIN_EMAILS.
+        - Success: Set-Cookie `mktobs_session`, 302 to `next`.
+        - Not allowlisted / unverified email / user denied: no cookie, 302 to `next`
+          with `auth_error=forbidden` appended to the query string.
+      parameters:
+        - { name: code, in: query, schema: { type: string } }
+        - { name: state, in: query, required: true, schema: { type: string } }
+        - { name: error, in: query, schema: { type: string } }
+      responses:
+        "302": { description: Redirect to `next` }
+        "400":
+          description: Missing or invalid `state`.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Detail" }
+  /auth/me:
+    get:
+      summary: Current session
+      security: [{ sessionCookie: [] }]
+      responses:
+        "200":
+          description: Logged-in admin.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Me" }
+              example: { email: me@example.com, admin: true }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+  /auth/logout:
+    post:
+      summary: Clear the session cookie
+      parameters:
+        - $ref: "#/components/parameters/CsrfHeader"
+      responses:
+        "204": { description: Cookie cleared (also when there was no session). }
+        "400": { $ref: "#/components/responses/MissingCsrf" }
+
+  /bookmark:
+    post:
+      summary: Create bookmark (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: &write_responses
+        "200": { $ref: "#/components/responses/AdminWrite" }
+        "400": { $ref: "#/components/responses/MissingCsrf" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+  /bookmark/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    put:
+      summary: Update bookmark (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+    delete:
+      summary: Delete bookmark (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      responses: *write_responses
+
+  /watchlist:
+    post:
+      summary: Create watchlist (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+  /watchlist/orders:
+    patch:
+      summary: Reorder watchlists (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+  /watchlist/{name}:
+    parameters:
+      - { name: name, in: path, required: true, schema: { type: string } }
+    put:
+      summary: Replace a watchlist's items and order (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+    delete:
+      summary: Delete a watchlist (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      responses: *write_responses
+  /watchlist/{name}/items:
+    parameters:
+      - { name: name, in: path, required: true, schema: { type: string } }
+    patch:
+      summary: Add an item to a watchlist (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+  /watchlist/{name}/items/{stock_id}:
+    parameters:
+      - { name: name, in: path, required: true, schema: { type: string } }
+      - { name: stock_id, in: path, required: true, schema: { type: string } }
+    delete:
+      summary: Remove an item from a watchlist (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      responses: *write_responses
+
+  /surge:
+    post:
+      summary: Add a surge stock (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+  /surge/{symbol}:
+    parameters:
+      - { name: symbol, in: path, required: true, schema: { type: string } }
+    put:
+      summary: Update a surge stock's start date (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/FreeObject" }
+      responses: *write_responses
+    delete:
+      summary: Delete a surge stock (admin)
+      security: [{ sessionCookie: [] }]
+      parameters: [{ $ref: "#/components/parameters/CsrfHeader" }]
+      responses: *write_responses

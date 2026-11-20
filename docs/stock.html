@@ -247,8 +247,10 @@
     <script src="assets/data.js"></script>
     <script src="assets/chart-theme.js"></script>
     <script src="assets/shell.js"></script>
+    <script src="assets/auth.js"></script>
     <script>
-      const isAdmin = new URLSearchParams(location.search).get("admin") === "True";
+      // Admin mode comes from the login session (resolved in init), not the URL.
+      let isAdmin = false;
       let chart = null;
       let candleSeries = null;
       let volumeSeries = null;
@@ -303,6 +305,7 @@
       async function init() {
         document.getElementById("content-area").innerHTML =
           '<div class="loader">載入中...</div>';
+        isAdmin = await UIAuth.isAdmin();
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
 
@@ -917,7 +920,7 @@
         itemBtn.disabled = true;
         itemBtn.textContent = "加入中…";
         try {
-          const res = await fetch(
+          const res = await UIAuth.apiFetch(
             `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`,
             {
               method: "PATCH",

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>管理後台 | Market Observer</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <style>
+      .auth-card {
+        max-width: 480px;
+      }
+
+      .auth-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s2);
+        margin-top: var(--s4);
+      }
+
+      .auth-user {
+        font-weight: 600;
+        word-break: break-all;
+      }
+
+      .admin-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--s3);
+        margin-top: var(--s4);
+      }
+
+      .admin-links a {
+        display: block;
+        padding: var(--s3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .admin-links a:hover {
+        background: var(--hover);
+      }
+
+      .admin-links .desc {
+        display: block;
+        margin-top: var(--s1);
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .auth-error {
+        margin-top: var(--s3);
+        color: var(--up);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container" id="main">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">管理後台</h1>
+          <p class="page-subtitle">登入後可使用新增、編輯、刪除等管理功能</p>
+        </div>
+      </div>
+
+      <div id="auth-state"></div>
+
+      <div class="loader" id="auth-loading">載入中…</div>
+
+      <div class="card auth-card" id="auth-logged-out" hidden>
+        <h2 class="card-title">尚未登入</h2>
+        <p>請使用已加入白名單的 Google 帳號登入。</p>
+        <div class="auth-error" id="auth-error" role="alert" hidden>
+          此 Google 帳號不在白名單內，或登入未完成。請改用其他帳號再試一次。
+        </div>
+        <div class="auth-actions">
+          <a class="btn btn-primary" id="login-btn" href="#">使用 Google 登入</a>
+        </div>
+      </div>
+
+      <div class="card" id="auth-logged-in" hidden>
+        <h2 class="card-title">已登入</h2>
+        <p>目前帳號：<span class="auth-user" id="user-email"></span></p>
+        <div class="admin-links">
+          <a href="bookmark"><strong>常用連結</strong><span class="desc">新增、編輯、刪除連結</span></a>
+          <a href="watchlist"><strong>精選類股</strong><span class="desc">管理自選股清單與排序</span></a>
+          <a href="surge"><strong>飆股分析</strong><span class="desc">新增或調整追蹤個股</span></a>
+          <a href="index"><strong>個股頁</strong><span class="desc">從個股頁加入自選股</span></a>
+        </div>
+        <div class="auth-actions">
+          <button class="btn btn-secondary" type="button" id="logout-btn">登出</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="assets/data.js"></script>
+    <script src="assets/shell.js"></script>
+    <script src="assets/auth.js"></script>
+    <script>
+      const $ = (id) => document.getElementById(id);
+
+      function show(which) {
+        $("auth-loading").hidden = which !== "loading";
+        $("auth-logged-out").hidden = which !== "out";
+        $("auth-logged-in").hidden = which !== "in";
+        if (which !== "error") $("auth-state").innerHTML = "";
+      }
+
+      async function check(force) {
+        show("loading");
+        let me;
+        try {
+          me = await UIAuth.me({ force });
+        } catch (e) {
+          $("auth-loading").hidden = true;
+          UIData.renderState($("auth-state"), "error", {
+            message: "無法確認登入狀態",
+            onRetry: () => check(true),
+          });
+          return;
+        }
+        if (me && me.admin) {
+          $("user-email").textContent = me.email; // text, never HTML
+          show("in");
+        } else {
+          show("out");
+        }
+      }
+
+      $("login-btn").href = UIAuth.loginUrl();
+      if (new URLSearchParams(location.search).get("auth_error")) {
+        $("auth-error").hidden = false;
+      }
+
+      $("logout-btn").addEventListener("click", async () => {
+        try {
+          await UIAuth.logout();
+        } catch (e) {
+          alert("登出失敗：" + e.message);
+          return;
+        }
+        history.replaceState(null, "", location.pathname);
+        show("out");
+        $("auth-error").hidden = true;
+      });
+
+      check(false);
+    </script>
+  </body>
+</html>
