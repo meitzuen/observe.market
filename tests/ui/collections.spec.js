@@ -6,11 +6,25 @@ const { test, expect } = require("@playwright/test");
 // computed in the test from those fixtures.
 
 const API = "https://market.smallplum.xyz";
+// Writes are credentialed (session cookie), so the browser rejects "*" here.
 const CORS = {
-  "access-control-allow-origin": "*",
+  "access-control-allow-origin": "http://127.0.0.1:4173",
+  "access-control-allow-credentials": "true",
   "access-control-allow-methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-  "access-control-allow-headers": "*",
+  "access-control-allow-headers": "content-type,x-requested-with",
 };
+
+// Admin mode now comes from GET /auth/me (the login session), not ?admin=True.
+async function mockAuth(page, admin) {
+  await page.route(/\/api\/mktobs\/auth\/me/, (route) => {
+    if (route.request().method() === "OPTIONS") return route.fulfill({ status: 204, headers: CORS });
+    return route.fulfill(
+      admin
+        ? { status: 200, contentType: "application/json", headers: CORS, body: JSON.stringify({ email: "admin@example.com", admin: true }) }
+        : { status: 401, contentType: "application/json", headers: CORS, body: JSON.stringify({ detail: "not_authenticated" }) },
+    );
+  });
+}
 const json = (body, status = 200) => ({
   status,
   contentType: "application/json",
@@ -25,8 +39,9 @@ function collectErrors(page) {
 }
 
 test.describe("collection pages behaviour", () => {
-  test.beforeEach(async ({}, testInfo) => {
+  test.beforeEach(async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop");
+    await mockAuth(page, false); // logged out unless a test overrides it
   });
 
   // ---- bookmark ----------------------------------------------------------
@@ -76,7 +91,8 @@ test.describe("collection pages behaviour", () => {
   test("bookmark: admin add, edit and delete use the API", async ({ page }) => {
     const errors = collectErrors(page);
     const api = await mockBookmarks(page);
-    await page.goto("/bookmark.html?admin=True");
+    await mockAuth(page, true);
+    await page.goto("/bookmark.html");
     const cards = page.locator("#bookmark-grid .bookmark-card");
     await expect(cards).toHaveCount(2);
 
@@ -237,7 +253,8 @@ test.describe("collection pages behaviour", () => {
   test("watchlist: admin add and remove call the API and update rows", async ({ page }) => {
     const errors = collectErrors(page);
     const api = await mockWatchlist(page);
-    await page.goto("/watchlist.html?admin=True");
+    await mockAuth(page, true);
+    await page.goto("/watchlist.html");
     await expect(rowIds(page)).toHaveCount(3);
     await page.locator("#toggle-add-btn").click();
     await page.locator("#stock-id").fill("6488");
@@ -264,8 +281,9 @@ test.describe("collection pages behaviour", () => {
     await expect(page.locator("#watchlist-table")).toBeHidden();
 
     const page2 = await page.context().newPage();
+    await mockAuth(page2, true);
     await mockWatchlist(page2, { lists: [] });
-    await page2.goto("/watchlist.html?admin=True");
+    await page2.goto("/watchlist.html");
     await expect(page2.locator("#no-list-state .empty-state")).toBeVisible();
     await expect(page2.locator(".banner-error")).toHaveCount(0);
   });

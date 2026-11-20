@@ -812,10 +812,11 @@
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
     <script src="assets/fmt.js"></script>
+    <script src="assets/auth.js"></script>
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
-      const isManage =
-        new URLSearchParams(location.search).get("admin") === "True";
+      // Admin mode comes from the login session (resolved in init), not the URL.
+      let isManage = false;
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -851,7 +852,7 @@
       }
 
       async function apiCreateWatchlist(name) {
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist`, {
+        const res = await UIAuth.apiFetch(`${API_BASE}/api/mktobs/watchlist`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -868,7 +869,7 @@
       }
 
       async function apiDeleteWatchlist(name) {
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(name)}`,
           {
             method: "DELETE",
@@ -878,7 +879,7 @@
       }
 
       async function apiAddItem(listName, stock_id, note, is_top = false) {
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items`,
           {
             method: "PATCH",
@@ -895,7 +896,7 @@
 
       async function apiUpdateItems(listName, items) {
         const wl = allWatchlists.find((w) => w.name === listName);
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}`,
           {
             method: "PUT",
@@ -908,7 +909,7 @@
       }
 
       async function apiRemoveItem(listName, stock_id) {
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/watchlist/${encodeURIComponent(listName)}/items/${encodeURIComponent(stock_id)}`,
           { method: "DELETE" },
         );
@@ -916,7 +917,7 @@
       }
 
       async function apiUpdateWatchlistOrders(orders) {
-        const res = await fetch(`${API_BASE}/api/mktobs/watchlist/orders`, {
+        const res = await UIAuth.apiFetch(`${API_BASE}/api/mktobs/watchlist/orders`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(orders),
@@ -1734,6 +1735,7 @@
         const stateEl = document.getElementById("wl-state");
         loadFailed = false;
         UIData.renderState(stateEl, "loading", { rows: 3 });
+        isManage = await UIAuth.isAdmin();
         try {
           await loadAllPrices();
         } catch (e) {

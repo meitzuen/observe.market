@@ -34,6 +34,7 @@
 | 選股 | `screener` | 任意日期區間的漲幅／跌幅／成交量／連續上漲天數排行 |
 | 選股 | `watchlist` | 依類股分類的精選股票 |
 | 個人 | `bookmark`、`portfolio` | 常用連結、持股損益試算 |
+| 管理 | `dashboard` | Google 登入（白名單）後才能使用新增／編輯／刪除等管理功能 |
 | 個人 | `margin-calculator` | 融資融券維持率與追繳價試算 |
 | 個人 | `screenshot-ocr` | 從截圖辨識台股代號與名稱 |
 | 當沖 | `day-trade-calculator`、`xiaoge-strategy` | 當沖損益與成本試算、小哥策略當沖選股（多方／空方） |
@@ -123,6 +124,15 @@ scripts/sync-data-r2.sh push    # docs/data → bucket（不會刪除遠端檔�
 
 > ⚠️ 這個 repo 與 R2 資料都是公開的，不要放入個人持股、損益等私人資料。
 
+## 管理功能與登入
+
+新增／編輯／刪除（`bookmark`、`watchlist`、`surge`、個股頁的加入自選股）只有登入的管理員能用，不再依賴網址的 `?admin=True`。
+
+- 到 `/dashboard` 用 Google 登入；登入、白名單與 session cookie 全由後端 API（FastAPI on Cloud Run）處理，前端不碰 token。
+- 各頁用 `UIAuth.isAdmin()`（`GET /api/mktobs/auth/me`）決定是否顯示管理按鈕；寫入請求一律經 `UIAuth.apiFetch`（帶 cookie 與 `X-Requested-With: mktobs`）。
+- 後端契約與環境變數見 [`docs/superpowers/specs/2026-11-20-admin-auth-openapi.yaml`](docs/superpowers/specs/2026-11-20-admin-auth-openapi.yaml)。
+- 本機（`localhost`）收不到 `.smallplum.xyz` 的 cookie，要用真實後端測試時需另行設定（見 OpenAPI 的 `COOKIE_DOMAIN`、`FRONTEND_ORIGINS`）。
+
 ## 專案結構
 
 ```
@@ -141,6 +151,7 @@ observe.market/
 │   │   ├── ui.css        # 設計系統
 │   │   ├── shell.js      # 導覽／搜尋／頁尾
 │   │   ├── data.js       # 資料載入（含逾時與重試）
+│   │   ├── auth.js       # 管理登入狀態與帶 cookie 的寫入請求
 │   │   ├── fmt.js        # 共用格式化與跳脫函式
 │   │   ├── ui-table.js   # 表格元件
 │   │   ├── chart-theme.js, market-page.js, surge.js, stock-ocr.js

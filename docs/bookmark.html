@@ -206,10 +206,11 @@
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
     <script src="assets/fmt.js"></script>
+    <script src="assets/auth.js"></script>
     <script>
       // ── Mode ────────────────────────────────────────────────────────────────
-      const isManage =
-        new URLSearchParams(location.search).get("admin") === "True";
+      // Admin mode comes from the login session (resolved in init), not the URL.
+      let isManage = false;
 
       // ── Config ───────────────────────────────────────────────────────────────
       const API_BASE = "https://market.smallplum.xyz";
@@ -235,7 +236,7 @@
       }
 
       async function apiCreateBookmark(name, url, note) {
-        const res = await fetch(`${API_BASE}/api/mktobs/bookmark`, {
+        const res = await UIAuth.apiFetch(`${API_BASE}/api/mktobs/bookmark`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, url, note: note || "" }),
@@ -248,7 +249,7 @@
       }
 
       async function apiUpdateBookmark(id, data) {
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/bookmark/${encodeURIComponent(id)}`,
           {
             method: "PUT",
@@ -264,7 +265,7 @@
       }
 
       async function apiDeleteBookmark(id) {
-        const res = await fetch(
+        const res = await UIAuth.apiFetch(
           `${API_BASE}/api/mktobs/bookmark/${encodeURIComponent(id)}`,
           {
             method: "DELETE",
@@ -483,6 +484,7 @@
       }
 
       (async function init() {
+        isManage = await UIAuth.isAdmin();
         if (isManage) {
           document.getElementById("toggle-form-btn").style.display =
             "inline-block";

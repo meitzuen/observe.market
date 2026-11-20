@@ -296,11 +296,12 @@
   <script src="assets/data.js"></script>
   <script src="assets/shell.js"></script>
   <script src="assets/surge.js"></script>
+  <script src="assets/auth.js"></script>
   <script>
     const API_BASE = "https://market.smallplum.xyz";
     const SURGE_API = `${API_BASE}/api/mktobs/surge`;
-    // Create / update / delete are only offered with ?admin=True.
-    const isAdmin = new URLSearchParams(location.search).get("admin") === "True";
+    // Create / update / delete are only offered to a logged-in admin (resolved before first load).
+    let isAdmin = false;
 
     const esc = (s) =>
       String(s)
@@ -572,7 +573,9 @@
     document.getElementById("result-list").addEventListener("click", onSortClick);
 
     async function callApi(url, options) {
-      const res = await fetch(url, {
+      // Writes carry the session cookie + CSRF header; reads stay anonymous.
+      const send = options && options.method && options.method !== "GET" ? UIAuth.apiFetch : fetch;
+      const res = await send(url, {
         headers: { "Content-Type": "application/json" },
         ...options,
       });
@@ -598,7 +601,7 @@
       load();
     }
 
-    if (isAdmin) {
+    function setupAdmin() {
       const form = document.getElementById("add-form");
       form.hidden = false;
       form.addEventListener("submit", (e) => {
@@ -684,7 +687,11 @@
       render();
     }
 
-    load();
+    (async function init() {
+      isAdmin = await UIAuth.isAdmin();
+      if (isAdmin) setupAdmin();
+      load();
+    })();
   </script>
 </body>
 

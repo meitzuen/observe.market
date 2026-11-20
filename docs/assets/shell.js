@@ -44,6 +44,7 @@
       items: [
         { href: "bookmark", label: "常用連結", desc: "常用外部連結" },
         { href: "portfolio", label: "持股試算", desc: "持股損益試算" },
+        { href: "dashboard", label: "管理後台", desc: "Google 登入後使用管理功能" },
         { href: "margin-calculator", label: "融資計算機", desc: "融資融券維持率與追繳價試算" },
         { href: "screenshot-ocr", label: "辨識工具", desc: "從截圖辨識台股代號與名稱" },
       ],
