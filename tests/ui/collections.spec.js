@@ -6,31 +6,33 @@ const { test, expect } = require("@playwright/test");
 // computed in the test from those fixtures.
 
 const API = "https://market.smallplum.xyz";
-// Writes are credentialed (session cookie), so the browser rejects "*" here.
 const CORS = {
-  "access-control-allow-origin": "http://127.0.0.1:4173",
-  "access-control-allow-credentials": "true",
+  "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-  "access-control-allow-headers": "content-type,x-requested-with",
+  "access-control-allow-headers": "*",
 };
-
-// Admin mode now comes from GET /auth/me (the login session), not ?admin=True.
-async function mockAuth(page, admin) {
-  await page.route(/\/api\/mktobs\/auth\/me/, (route) => {
-    if (route.request().method() === "OPTIONS") return route.fulfill({ status: 204, headers: CORS });
-    return route.fulfill(
-      admin
-        ? { status: 200, contentType: "application/json", headers: CORS, body: JSON.stringify({ email: "admin@example.com", admin: true }) }
-        : { status: 401, contentType: "application/json", headers: CORS, body: JSON.stringify({ detail: "not_authenticated" }) },
-    );
-  });
-}
 const json = (body, status = 200) => ({
   status,
   contentType: "application/json",
   headers: CORS,
   body: JSON.stringify(body),
 });
+
+// Admin mode now comes from GET /auth/me with a stored Google ID token, not ?admin=True.
+// A fake (unsigned) JWT with a far-future exp is enough: the backend is mocked.
+const b64 = (o) => Buffer.from(JSON.stringify(o)).toString("base64url");
+const FAKE_TOKEN = `${b64({ alg: "none" })}.${b64({ exp: 4102444800, email: "admin@example.com" })}.sig`;
+async function mockAuth(page, admin) {
+  if (admin) {
+    await page.addInitScript((t) => localStorage.setItem("mktobs_id_token", t), FAKE_TOKEN);
+  }
+  await page.route(/\/api\/mktobs\/auth\/me/, (route) => {
+    if (route.request().method() === "OPTIONS") return route.fulfill({ status: 204, headers: CORS });
+    return route.fulfill(
+      admin ? json({ email: "admin@example.com", admin: true }) : json({ detail: "not_authenticated" }, 401),
+    );
+  });
+}
 
 function collectErrors(page) {
   const errors = [];

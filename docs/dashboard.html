@@ -78,11 +78,9 @@
       <div class="card auth-card" id="auth-logged-out" hidden>
         <h2 class="card-title">尚未登入</h2>
         <p>請使用已加入白名單的 Google 帳號登入。</p>
-        <div class="auth-error" id="auth-error" role="alert" hidden>
-          此 Google 帳號不在白名單內，或登入未完成。請改用其他帳號再試一次。
-        </div>
+        <div class="auth-error" id="auth-error" role="alert" hidden></div>
         <div class="auth-actions">
-          <a class="btn btn-primary" id="login-btn" href="#">使用 Google 登入</a>
+          <div id="gsi-button"></div>
         </div>
       </div>
 
@@ -114,12 +112,24 @@
         if (which !== "error") $("auth-state").innerHTML = "";
       }
 
+      function showAuthError(msg) {
+        const el = $("auth-error");
+        el.textContent = msg; // text, never HTML
+        el.hidden = !msg;
+      }
+
       async function check(force) {
         show("loading");
         let me;
         try {
           me = await UIAuth.me({ force });
         } catch (e) {
+          if (e.status === 403) {
+            // Signed in with Google, but the account is not on the allowlist.
+            showAuthError("此 Google 帳號不在白名單內，請改用其他帳號再試一次。");
+            show("out");
+            return;
+          }
           $("auth-loading").hidden = true;
           UIData.renderState($("auth-state"), "error", {
             message: "無法確認登入狀態",
@@ -128,6 +138,7 @@
           return;
         }
         if (me && me.admin) {
+          showAuthError("");
           $("user-email").textContent = me.email; // text, never HTML
           show("in");
         } else {
@@ -135,21 +146,14 @@
         }
       }
 
-      $("login-btn").href = UIAuth.loginUrl();
-      if (new URLSearchParams(location.search).get("auth_error")) {
-        $("auth-error").hidden = false;
-      }
-
-      $("logout-btn").addEventListener("click", async () => {
-        try {
-          await UIAuth.logout();
-        } catch (e) {
-          alert("登出失敗：" + e.message);
-          return;
-        }
-        history.replaceState(null, "", location.pathname);
+      $("logout-btn").addEventListener("click", () => {
+        UIAuth.logout();
+        showAuthError("");
         show("out");
-        $("auth-error").hidden = true;
+      });
+
+      UIAuth.renderSignIn($("gsi-button"), () => check(true)).catch((e) => {
+        showAuthError(e.message);
       });
 
       check(false);
