@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "public": "docs",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "ignore": ["firebase.json", "**/.*", "CNAME", "data/**", "superpowers/**"]
+  }
+}

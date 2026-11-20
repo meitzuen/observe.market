@@ -185,6 +185,7 @@ UI 測試不需要真實資料：`tests/ui/serve.js` 會從 `tests/ui/fixtures/d
 |---|---|---|
 | `update_data.yml` | 平日排程、外部 cron（`repository_dispatch`）、手動 | 抓資料、跑策略、檢查後推到 R2 |
 | `deploy-pages.yml` | push 到 `main`（`docs/`、`tests/ui/`） | 先跑 UI 測試，通過後部署到 GitHub Pages |
+| `deploy-firebase.yml` | push 到 `main`、PR、手動（需設 `FIREBASE_DEPLOY=true`） | 通過 UI 測試後部署到 Firebase Hosting；PR 會產生預覽網址。切換前處於停用狀態 |
 | `ui-smoke.yml` | PR（`docs/`、`tests/ui/`） | UI 測試 |
 | `python-tests.yml` | PR／push `main`（`src/`、`tests/*.py`） | pytest（Python 3.11 與 3.14） |
 | `ui-tests.yml` | 被上面兩個 workflow 呼叫 | 共用的 UI 測試流程（含 Playwright 快取） |
@@ -192,6 +193,40 @@ UI 測試不需要真實資料：`tests/ui/serve.js` 會從 `tests/ui/fixtures/d
 ### 部署到 GitHub Pages
 
 在儲存庫 **Settings → Pages → Build and deployment** 將 **Source** 設為 **GitHub Actions**。之後推到 `main` 會由 `deploy-pages.yml` 自動部署 `docs/`。
+
+## 遷移到 Firebase Hosting
+
+目前仍部署在 GitHub Pages。repo 已備好 Firebase 的設定與 workflow（`firebase.json`、`.github/workflows/deploy-firebase.yml`），在設定 repo 變數 `FIREBASE_DEPLOY=true` 之前不會執行，因此不影響現有部署。
+
+**為什麼換**：PR 預覽網址、一鍵 rollback、可自訂 header／cache；之後也能用 rewrite 把 `/api/**` 轉到 Cloud Run 做到同源。不換也能正常使用（Google 登入不依賴 hosting）。
+
+**repo 內已完成**
+
+- `firebase.json`：`public` 指向 `docs`、`cleanUrls`（對應 Pages 的 `/stock` → `stock.html`），並排除 `CNAME`、`data/`、`superpowers/`（設計文件不對外發佈）。
+- `deploy-firebase.yml`：沿用 `ui-tests.yml` 驗證後部署；push 到 `main` 發佈正式站，PR 產生 preview channel。
+
+**切換步驟（需要你操作）**
+
+1. 建立 Firebase 專案（或選既有的 GCP 專案），啟用 Hosting。Firebase 專案 ID 記下來。
+2. 建立部署用 service account（角色：`Firebase Hosting Admin`、`Service Account User`），下載 JSON key。也可在本機執行 `firebase init hosting:github` 讓它自動建立並寫入 secret。
+3. GitHub repo → Settings → Secrets and variables → Actions：
+   - Secret `FIREBASE_SERVICE_ACCOUNT`：上面的 JSON 內容。
+   - Variable `FIREBASE_PROJECT_ID`：專案 ID。
+   - Variable `FIREBASE_DEPLOY`：`true`（開啟 workflow）。
+4. 先用手動執行（Actions → Deploy to Firebase Hosting → Run workflow）或合併一個小 PR，確認 `https://<專案 ID>.web.app` 正常：頁面、`/stock?id=2330` 之類的乾淨網址、資料載入、導覽列。
+5. 後端與登入設定：
+   - 後端 `FRONTEND_ORIGINS` 加上新網域（`.web.app`，以及自訂網域）。
+   - Google OAuth client 的「已授權的 JavaScript 來源」加上同樣的網域，否則 `/dashboard` 的 Google 登入會失敗。
+   - 注意：PR 預覽網址每次不同，無法加入白名單，預覽版只能看唯讀頁面。
+6. 切換自訂網域 `observe.smallplum.xyz`：在 Firebase Hosting → Add custom domain，依指示更新 DNS（先加驗證用 TXT，再把 A／CNAME 改指向 Firebase），等憑證發放完成。這段期間可能短暫無法連線，建議在低流量時間操作。
+7. 切換完成並確認無誤後：
+   - 刪除 `deploy-pages.yml`、`CNAME`、`docs/CNAME`。
+   - Settings → Pages 關閉 GitHub Pages。
+   - 更新本 README 中所有「GitHub Pages」字樣，並移除本節的「尚未切換」說明。
+
+**回復方式**：切換前後兩邊都能運作。若 Firebase 有問題，把 DNS 改回 GitHub Pages 並將 `FIREBASE_DEPLOY` 改為 `false` 即可。
+
+**選配：同源 `/api`**：在 `firebase.json` 加上 `rewrites`（`/api/**` → Cloud Run 服務），前端就能改成相對路徑，不再需要 CORS。因為前後端的網域設計與 token 流程會一起變動，這不在這次遷移範圍內。
 
 ## 授權
 

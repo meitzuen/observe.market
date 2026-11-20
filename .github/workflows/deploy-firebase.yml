@@ -1,0 +1,58 @@
+name: Deploy to Firebase Hosting
+
+# Dormant until the repo variable FIREBASE_DEPLOY is "true" (see README, "遷移到 Firebase Hosting").
+# Push to main -> live site; pull request -> preview channel.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "tests/ui/**"
+      - "firebase.json"
+      - ".github/workflows/deploy-firebase.yml"
+      - ".github/workflows/ui-tests.yml"
+  pull_request:
+    paths:
+      - "docs/**"
+      - "tests/ui/**"
+      - "firebase.json"
+      - ".github/workflows/deploy-firebase.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+# One live deploy at a time; never cancel a running deploy.
+concurrency:
+  group: firebase-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: ${{ vars.FIREBASE_DEPLOY == 'true' }}
+    uses: ./.github/workflows/ui-tests.yml
+
+  deploy:
+    needs: [verify]
+    if: ${{ vars.FIREBASE_DEPLOY == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      # Preview channel for pull requests (secrets are not available to fork PRs).
+      - if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+      # Live site
+      - if: ${{ github.event_name != 'pull_request' }}
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          channelId: live
