@@ -85,18 +85,18 @@ python3 scripts/serve.py 8000
 
 ```bash
 D=2026-04-20
-python src/fetch_and_save.py --date_str $D          # 大盤、個股、處置股、權證
-python src/generate_stock_history.py                # daily_price → 個股歷史
-python src/gap_strategy.py --date_str $D            # 跳空
-python src/vcp_strategy.py --date_str $D            # VCP
-python src/head_shoulders.py --date_str $D          # 頭肩（--backfill 回補歷史訊號）
-python src/volume_candle_strategy.py --date_str $D  # 爆量長紅／長黑 K
-python src/xiaoge_strategy.py --date_str $D         # 小哥策略
-python src/generate_manifest.py                     # 更新資料索引
-python src/fetch_stock_info.py                      # 個股基本資料
+python src/fetch_market_data.py --date_str $D        # 大盤、個股、處置股、權證
+python src/build_stock_history.py                    # daily_price → 個股歷史
+python src/strategy_gap.py --date_str $D             # 跳空
+python src/strategy_vcp.py --date_str $D             # VCP
+python src/strategy_head_shoulders.py --date_str $D  # 頭肩（--backfill 回補歷史訊號）
+python src/strategy_volume_candle.py --date_str $D   # 爆量長紅／長黑 K
+python src/strategy_xiaoge.py --date_str $D          # 小哥策略
+python src/build_manifest.py                         # 更新資料索引
+python src/fetch_stock_info.py                       # 個股基本資料
 ```
 
-其他命令列工具：`src/backtest.py`（`--json` 輸出 `backtest.json`、`--by` 做敏感度分析）、`src/gain_timing.py`（起漲後漲幅與所需時間）、`src/strategy_scan.py`（候選策略的樣本內／外勝率）、`src/moneydj_concept.py`、`src/add_concepts_to_watchlist.py`（概念股分類寫入 watchlist API）。
+其他命令列工具：`src/tool_backtest.py`（`--json` 輸出 `backtest.json`、`--by` 做敏感度分析）、`src/tool_gain_timing.py`（起漲後漲幅與所需時間）、`src/tool_strategy_scan.py`（候選策略的樣本內／外勝率）、`src/tool_moneydj_concept.py`、`src/tool_add_concepts_to_watchlist.py`（概念股分類寫入 watchlist API）。
 
 ### 4. 格式化
 
@@ -140,12 +140,12 @@ scripts/sync-data-r2.sh push    # docs/data → bucket（不會刪除遠端檔�
 observe.market/
 ├── src/                  # Python：抓取、策略、回測
 │   ├── config.py         # 共用設定（路徑、來源網址）
-│   ├── fetch_and_save.py, fetch_stock_info.py
-│   ├── gap_strategy.py, vcp_strategy.py, head_shoulders.py,
-│   │   volume_candle_strategy.py, xiaoge_strategy.py
-│   ├── backtest.py, gain_timing.py, strategy_scan.py
-│   ├── generate_manifest.py, generate_stock_history.py
-│   └── moneydj_concept.py, add_concepts_to_watchlist.py
+│   ├── fetch_market_data.py, fetch_stock_info.py
+│   ├── strategy_gap.py, strategy_vcp.py, strategy_head_shoulders.py,
+│   │   strategy_volume_candle.py, strategy_xiaoge.py
+│   ├── tool_backtest.py, tool_gain_timing.py, tool_strategy_scan.py
+│   ├── build_manifest.py, build_stock_history.py
+│   └── tool_moneydj_concept.py, tool_add_concepts_to_watchlist.py
 ├── docs/                 # GitHub Pages 根目錄（純靜態）
 │   ├── *.html            # 各功能頁面（見「功能一覽」）
 │   ├── assets/

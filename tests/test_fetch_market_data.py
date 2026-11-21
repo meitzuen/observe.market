@@ -3,7 +3,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
-import fetch_and_save as fas  # noqa: E402
+import fetch_market_data as fas  # noqa: E402
 
 
 class SplitIndexByDateTest(unittest.TestCase):

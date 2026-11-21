@@ -14,7 +14,7 @@ Implements a simplified version of Mark Minervini's VCP screen:
    sorted/filtered on the front-end instead of a hard pass/fail cut.
 
 Consumes ``docs/data/{market}/stock_history/{id}.json`` (produced by
-``generate_stock_history.py``) and writes
+``build_stock_history.py``) and writes
 ``docs/data/{market}/vcp/{date}.json``.
 """
 

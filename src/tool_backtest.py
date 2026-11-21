@@ -13,8 +13,8 @@
     非複利；持有 1 日每天全額換手，成本累計可能超過 -100%，請看與基準的相對差
 
 用法：
-    python src/backtest.py
-    python src/backtest.py --strategies gap_jump vcp --min-amount 5e7
+    python src/tool_backtest.py
+    python src/tool_backtest.py --strategies gap_jump vcp --min-amount 5e7
 """
 
 import argparse

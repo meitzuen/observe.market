@@ -7,8 +7,8 @@
     達標日落在異常日之後的門檻會註記「可能失真」
 
 用法：
-    python src/gain_timing.py 6949 2026-05-04
-    python src/gain_timing.py 6949:2026-05-04 2330:2026-03-02 --targets 30 50 100
+    python src/tool_gain_timing.py 6949 2026-05-04
+    python src/tool_gain_timing.py 6949:2026-05-04 2330:2026-03-02 --targets 30 50 100
 """
 
 import argparse

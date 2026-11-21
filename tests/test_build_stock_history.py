@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
-import generate_stock_history as gsh  # noqa: E402
+import build_stock_history as gsh  # noqa: E402
 
 
 def row(stock_id, close):

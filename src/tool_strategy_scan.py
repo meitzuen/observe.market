@@ -1,9 +1,9 @@
-"""候選策略掃描：只用日 K 產生訊號，沿用 backtest.py 的成交與成本假設，
+"""候選策略掃描：只用日 K 產生訊號，沿用 tool_backtest.py 的成交與成本假設，
 並把訊號日切成前 60%（樣本內）與後 40%（樣本外）比較勝率，避免只是挑到雜訊。
 
 用法：
-    python src/strategy_scan.py
-    python src/strategy_scan.py --min-amount 1e8 --holds 1 3 5
+    python src/tool_strategy_scan.py
+    python src/tool_strategy_scan.py --min-amount 1e8 --holds 1 3 5
 """
 
 import argparse
@@ -12,7 +12,7 @@ import sys
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import backtest as bt  # noqa: E402
+import tool_backtest as bt  # noqa: E402
 
 MIN_HISTORY = 100
 

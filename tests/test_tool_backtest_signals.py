@@ -3,7 +3,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
-import backtest as bt  # noqa: E402
+import tool_backtest as bt  # noqa: E402
 
 
 class SignalFilterTest(unittest.TestCase):

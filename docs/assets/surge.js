@@ -43,7 +43,7 @@
   }
   const EPS = 1e-9;
   // Prices are not adjusted for ex-rights/splits, so a single-day move beyond
-  // this is flagged (same threshold as src/backtest.py).
+  // this is flagged (same threshold as src/tool_backtest.py).
   const SPLIT_PCT = 0.105;
 
   // Surge start = the lowest close before the highest close. Ties on the low

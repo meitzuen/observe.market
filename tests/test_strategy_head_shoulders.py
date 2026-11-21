@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
-import head_shoulders as hs  # noqa: E402
+import strategy_head_shoulders as hs  # noqa: E402
 
 
 def make_points(waypoints, n, mirror=None):
