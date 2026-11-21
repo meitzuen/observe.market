@@ -501,6 +501,10 @@ tbody tr:hover td {
   height: 160px;
   color: var(--text-muted);
 }
+/* display:flex above would otherwise override the `hidden` attribute. */
+.loader[hidden] {
+  display: none;
+}
 .skeleton-block {
   display: grid;
   gap: var(--s2);
