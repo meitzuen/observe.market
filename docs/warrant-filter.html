@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/ui.css" />
     <style>
+      /* A select is shorter than a text input; stretch so every pill in a row matches. */
+      .toolbar {
+        align-items: stretch;
+      }
+
       .filter-pill input,
       .filter-pill select {
         flex: 1;
@@ -39,6 +44,127 @@
         background: var(--hover);
       }
 
+      /* Compact, accent-tinted action that sits inside a filter pill. */
+      .btn-pick {
+        flex: none;
+        gap: 4px;
+        padding: 3px 10px;
+        border-color: transparent;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .btn-pick:hover:not(:disabled) {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .btn-pick:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .btn-pick .pick-n:not(:empty) {
+        padding: 0 6px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 11px;
+      }
+
+      .btn-pick:hover .pick-n:not(:empty) {
+        background: #fff;
+        color: var(--accent);
+      }
+
+      .pick-dialog {
+        width: min(560px, calc(100vw - 2 * var(--s3)));
+        max-height: 80vh;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        color: var(--text);
+        box-shadow: var(--shadow);
+      }
+
+      .pick-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .pick-dialog[open] {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pick-head,
+      .pick-foot {
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+        padding: var(--s3) var(--s4);
+      }
+
+      .pick-head {
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .pick-head h2 {
+        flex: 1 1 100%;
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .pick-head input[type="search"] {
+        flex: 1 1 200px;
+        min-width: 0;
+      }
+
+      .pick-foot {
+        justify-content: space-between;
+        border-top: 1px solid var(--border);
+      }
+
+      .pick-list {
+        flex: 1;
+        min-height: 200px;
+        overflow-y: auto;
+        padding: var(--s1) 0;
+      }
+
+      .pick-row {
+        display: grid;
+        grid-template-columns: auto 5rem 1fr auto;
+        align-items: center;
+        gap: var(--s2);
+        padding: var(--s2) var(--s4);
+        cursor: pointer;
+      }
+
+      .pick-row:hover {
+        background: var(--hover);
+      }
+
+      .pick-row .pk-code {
+        font-weight: 600;
+      }
+
+      .pick-row .pk-tag {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .pick-empty {
+        padding: var(--s5) var(--s4);
+        text-align: center;
+        color: var(--text-muted);
+      }
+
       .actions-row {
         display: flex;
         gap: var(--s2);
@@ -62,6 +188,7 @@
           <div class="filter-pill grow">
             <label for="stock_codes">標的代號</label>
             <input type="text" id="stock_codes" class="filter-input" placeholder="多個請用逗號隔開，例如: 2330, 2317" />
+            <button type="button" id="pick-btn" class="btn btn-pick" aria-haspopup="dialog">＋ 選擇標的<span id="pick-n" class="pick-n"></span></button>
           </div>
           <div class="filter-pill">
             <label for="type">權證類型</label>
@@ -109,6 +236,7 @@
           </div>
         </div>
         <div class="actions-row">
+          <button id="clear-btn" class="btn btn-secondary" type="button">清除篩選</button>
           <button id="search-btn" class="btn btn-primary">執行篩選</button>
         </div>
       </div>
@@ -160,6 +288,9 @@
                 <th onclick="setSort('實質槓桿')">
                   實質槓桿 <span id="sort-實質槓桿"></span>
                 </th>
+                <th onclick="setSort('差槓比')" title="買賣價差比 ÷ 實質槓桿，越小越好">
+                  差槓比 <span id="sort-差槓比"></span>
+                </th>
               </tr>
             </thead>
             <tbody id="warrant-list"></tbody>
@@ -169,6 +300,28 @@
         <div id="loader" class="loader">正在分析市場數據...</div>
       </div>
     </div>
+
+    <dialog id="pick-dialog" class="pick-dialog" aria-labelledby="pick-title">
+      <div class="pick-head">
+        <h2 id="pick-title">選擇標的</h2>
+        <input type="search" id="pick-q" placeholder="搜尋代號或名稱" aria-label="搜尋代號或名稱" autocomplete="off" />
+        <select id="pick-market" aria-label="市場">
+          <option value="">全部市場</option>
+          <option value="twse">上市</option>
+          <option value="tpex">上櫃</option>
+          <option value="other">興櫃</option>
+        </select>
+      </div>
+      <div id="pick-list" class="pick-list" role="group" aria-label="股票清單"></div>
+      <div class="pick-foot">
+        <span>已選 <span id="pick-count" class="badge badge-primary">0</span></span>
+        <span class="actions-row">
+          <button type="button" id="pick-clear" class="btn btn-secondary">清除選取</button>
+          <button type="button" id="pick-cancel" class="btn btn-secondary">取消</button>
+          <button type="button" id="pick-apply" class="btn btn-primary">加入</button>
+        </span>
+      </div>
+    </dialog>
 
     <script src="assets/data.js"></script>
     <script src="assets/shell.js"></script>
@@ -237,7 +390,7 @@
 
           if (!response.ok) throw new Error("API request failed");
 
-          currentData = await response.json();
+          currentData = (await response.json()).map(withSpreadLeverageRatio);
           renderTable();
         } catch (error) {
           console.error("Error:", error);
@@ -250,6 +403,14 @@
         } finally {
           loader.style.display = "none";
         }
+      }
+
+      // 差槓比 = 買賣價差比 ÷ 實質槓桿 (smaller is better); null when not computable.
+      function withSpreadLeverageRatio(w) {
+        const spread = parseFloat(w["買賣價差比率"]);
+        const leverage = parseFloat(w["實質槓桿"]);
+        const ok = Number.isFinite(spread) && Number.isFinite(leverage) && leverage > 0;
+        return { ...w, 差槓比: ok ? spread / leverage : null };
       }
 
       function setSort(col) {
@@ -271,6 +432,13 @@
         const sortedData = [...currentData].sort((a, b) => {
           let vA = a[sortColumn];
           let vB = b[sortColumn];
+
+          // Rows without a value (差槓比 not computable) always sort last.
+          if (sortColumn === "差槓比") {
+            if (vA === null && vB === null) return 0;
+            if (vA === null) return 1;
+            if (vB === null) return -1;
+          }
 
           if (
             [
@@ -319,6 +487,7 @@
             <td>${w["剩餘天數"]}</td>
             <td>${w["價內外程度"]}</td>
             <td style="font-weight: 700;">${w["實質槓桿"]}</td>
+            <td style="font-weight: 700;">${w["差槓比"] === null ? "—" : w["差槓比"].toFixed(2)}</td>
           `;
           list.appendChild(tr);
         });
@@ -357,6 +526,20 @@
         "buy_sell_rate_left",
         "buy_sell_rate_right",
       ];
+      // Clear every filter (type goes back to 全部) and forget the saved values.
+      document.getElementById("clear-btn").onclick = () => {
+        filterIds.forEach((id) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          el.value = el.tagName === "SELECT" ? "0" : "";
+          try {
+            localStorage.removeItem("wf_" + id);
+          } catch (e) {}
+        });
+        syncPickBadge();
+        document.getElementById("stock_codes").focus();
+      };
+
       filterIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -366,6 +549,111 @@
           localStorage.setItem("wf_" + id, el.value),
         );
       });
+
+      // ---- stock picker panel ------------------------------------------------
+      const pickDialog = document.getElementById("pick-dialog");
+      const pickList = document.getElementById("pick-list");
+      const pickQ = document.getElementById("pick-q");
+      const pickMarket = document.getElementById("pick-market");
+      const marketLabel = { twse: "上市", tpex: "上櫃" };
+      let pickStocks = null; // [{id, name, market}] sorted by code
+      let picked = new Set();
+
+      const escapeHtml = (s) =>
+        String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+      // Show how many codes are currently in the input on the button.
+      function syncPickBadge() {
+        const n = codesFromInput().length;
+        document.getElementById("pick-n").textContent = n ? String(n) : "";
+      }
+      ["input", "change"].forEach((ev) =>
+        document.getElementById("stock_codes").addEventListener(ev, syncPickBadge),
+      );
+
+      function codesFromInput() {
+        return document
+          .getElementById("stock_codes")
+          .value.split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+      }
+
+      async function loadPickStocks() {
+        if (pickStocks) return;
+        const info = await UIData.loadJSON(UIData.dataUrl("stock_info.json"));
+        pickStocks = Object.keys(info)
+          .map((id) => ({
+            id,
+            name: (info[id] && info[id].name) || "",
+            market: info[id] && (info[id].type === "twse" || info[id].type === "tpex") ? info[id].type : "other",
+          }))
+          .sort((a, b) => a.id.localeCompare(b.id));
+      }
+
+      function updatePickCount() {
+        document.getElementById("pick-count").textContent = picked.size;
+      }
+
+      function renderPickList() {
+        const q = pickQ.value.trim().toLowerCase();
+        const market = pickMarket.value;
+        const rows = pickStocks.filter(
+          (s) =>
+            (!market || s.market === market) &&
+            (!q || s.id.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)),
+        );
+        if (!rows.length) {
+          pickList.innerHTML = '<div class="pick-empty">沒有符合的股票</div>';
+          return;
+        }
+        pickList.innerHTML = rows
+          .map(
+            (s) =>
+              `<label class="pick-row"><input type="checkbox" value="${escapeHtml(s.id)}"${picked.has(s.id) ? " checked" : ""} /><span class="pk-code">${escapeHtml(s.id)}</span><span>${escapeHtml(s.name)}</span><span class="pk-tag">${marketLabel[s.market] || "興櫃"}</span></label>`,
+          )
+          .join("");
+      }
+
+      document.getElementById("pick-btn").onclick = async () => {
+        pickList.innerHTML = '<div class="pick-empty">載入中…</div>';
+        pickQ.value = "";
+        pickMarket.value = "";
+        picked = new Set(codesFromInput());
+        updatePickCount();
+        pickDialog.showModal();
+        try {
+          await loadPickStocks();
+          renderPickList();
+          pickQ.focus();
+        } catch (e) {
+          console.error("Error:", e);
+          pickList.innerHTML = '<div class="pick-empty">股票清單載入失敗，請關閉後再試一次</div>';
+        }
+      };
+
+      pickList.addEventListener("change", (e) => {
+        if (!e.target.matches('input[type="checkbox"]')) return;
+        if (e.target.checked) picked.add(e.target.value);
+        else picked.delete(e.target.value);
+        updatePickCount();
+      });
+      pickQ.addEventListener("input", () => pickStocks && renderPickList());
+      pickMarket.addEventListener("change", () => pickStocks && renderPickList());
+      document.getElementById("pick-clear").onclick = () => {
+        picked.clear();
+        updatePickCount();
+        if (pickStocks) renderPickList();
+      };
+      document.getElementById("pick-cancel").onclick = () => pickDialog.close();
+      document.getElementById("pick-apply").onclick = () => {
+        const input = document.getElementById("stock_codes");
+        input.value = [...picked].sort().join(", ");
+        input.dispatchEvent(new Event("change")); // persist to localStorage
+        pickDialog.close();
+      };
+
+      syncPickBadge();
 
       // Initial fetch
       fetchFilteredWarrants();
